@@ -1,0 +1,93 @@
+http://www.dandwiki.com/wiki/MSRD:Basics
+http://www.dandwiki.com/wiki/MSRD:Combat
+http://www.dandwiki.com/wiki/MSRD:Modern_System_Reference_Document
+
+logic:
+character
++   level
+    =   choose
++   ability scores  [W]
+    =   4d6 creation
+    +   Strength
+    +   Dexterity
+    +   Constitution
+    +   Intelligence
+    +   Wisdom
+    +   Charisma
+
++   ability modifiers
+    =   (ability/2) - 5 [round result down]
+    The modifier is the number you add to or subtract from the die roll
+    when your character tries to do something related to that ability.
+    http://www.dandwiki.com/wiki/MSRD:Ability_Scores
+
++   hit points
+    =   hit die + con mod
+    Each roll of a Hit Die (from classes, d10 for fighter)
+    (though a penalty can never drop a result below 1—that is,
+    a character always gains at least 1 hit point
+    each time he or she advances in level).
+
+    Level 1 d10 = 8
+    level 2 d10 = 2, con -5 = 9
+
++   armor class [W]
+    =   dexterity modifer | worn armor
+    =   10 + armor.ac + shield.ac + Dexterity modifier
+
++   attack bonus [W]
+    =   level | strength modi | dexterity modi,
+    A character’s attack bonus with a melee weapon is:
+    Base attack bonus + Strength modifier +/ size modifier
+
++   damage bonus [W]
+    =   strength modi of melee weapon (Ref > Combat > Strength Bonus)
+
+Attack
+    When a character makes an attack roll,
+    he or she rolls 1d20 and adds his or her attack bonus.
+    If the result equals or beats the target’s Defense, the character hits and deals damage
+
+    A character’s Defense is equal to:
+    10 + Dexterity modifier +/ class bonus + equipment bonus + size modifier
+
+
+
+
+
++   owned items
+    +   armor,
+    +   ring,
+    +   helmet,
+    +   boots,
+    +   belt,
+    +   weapon,
+    +   shield
+
++   backpacks
+    +   10 items
+
+item:
+
+
+Inventory view
++   worn items slots one of each
++   equip or unequip items
++   worn items have an effect on the character’s abilities.
+
+
+Map:
++   entry/exit door
++   walls
++   chest
++   characters
+
+Campaign
++   map
+
+Item creation/editing
+
+
+
+
+.
