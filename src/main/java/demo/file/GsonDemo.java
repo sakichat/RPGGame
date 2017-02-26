@@ -1,13 +1,10 @@
 package demo.file;
 
 import com.google.gson.Gson;
-import game.FileManager;
+import persistence.FileManager;
 
 import java.io.File;
 
-/**
- * Created by Zhaozhe on 26/02/2017.
- */
 public class GsonDemo {
     public static void main(String[] args) {
 

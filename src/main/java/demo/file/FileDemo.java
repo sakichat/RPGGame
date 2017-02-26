@@ -1,14 +1,10 @@
 package demo.file;
 
-import game.FileManager;
-import org.apache.commons.io.FileUtils;
+import persistence.FileManager;
 
 import java.io.File;
-import java.io.IOException;
 
-/**
- * Created by Zhaozhe on 26/02/2017.
- */
+
 public class FileDemo {
     public static void main(String[] args) {
 

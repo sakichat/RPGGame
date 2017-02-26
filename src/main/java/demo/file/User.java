@@ -1,8 +1,5 @@
 package demo.file;
 
-/**
- * Created by Zhaozhe on 26/02/2017.
- */
 public class User {
 
     private String name;
