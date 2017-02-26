@@ -1,0 +1,68 @@
+--------
+7 下午
+QK ZL
+Charactor / game.Equipment / game.Chest  代码 注释
+
+QK
+文件路径确定
+
+XQ
+GameMap / Validator[s] / Content / Cell / Point 代码
+
+SY
+界面图
+--------
+7 晚上
+QK ZL XQ
+Merge /
+ZL 建立 repo 空
+QK down, folder, up
+ZL down, project, up
+ZL QK XQ down, code, up
+
+/
++   /...
++   /space
+    +   /src
+        +   /game
+            +   Xxxx.java
+    +   /test
+        +
+
+SY
+跟我核对
+--------
+6 早
+ZZ
+开会
+--------
+6 下
+QK ZL XQ
+paint, event
+
+SY
+界面框架
+
+GB
+测试
+--------
+6 晚
+MS: 每个界面能单独运转
+--------
+5 早
+界面 merge
+--------
+5 下
+上课 文件
+--------
+5 晚
+马三 碰面
+--------
+4
+写存储代码
+-------
+3
+能run
+-------
+2 1
+留空
