@@ -126,7 +126,6 @@ public class ItemEditingScene extends View {
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 60);
         nameLabel = label;
-//        label.setText(equipment.getName());
         this.add(label);
 
         label = new JLabel();
@@ -136,7 +135,6 @@ public class ItemEditingScene extends View {
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 110);
         typeLabel = label;
-//        label.setText(equipment.getType());
         this.add(label);
 
         label = new JLabel();
@@ -146,7 +144,6 @@ public class ItemEditingScene extends View {
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 210);
         enhanceOnLabel = label;
-//        label.setText(equipment.getEnhancedAttribute());
         this.add(label);
 
         /*
@@ -334,7 +331,7 @@ public class ItemEditingScene extends View {
         label.setText("Attack Bonus");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_STR);
+                equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
             }
         });
         this.add(label);
@@ -397,7 +394,6 @@ public class ItemEditingScene extends View {
         nameLabel.setText(equipment.getName());
         typeLabel.setText(equipment.getType());
         enhanceOnLabel.setText(equipment.getEnhancedAttribute());
-
 
     }
 
