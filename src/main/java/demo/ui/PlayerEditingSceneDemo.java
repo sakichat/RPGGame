@@ -17,7 +17,6 @@ public class PlayerEditingSceneDemo {
         frame.setSize(1000, 600);
         frame.setLayout(null);
         frame.setVisible(true);
-        View view = new View();
 
         PlayerEditingScene playerEditingScene = new PlayerEditingScene();
         playerEditingScene.setPlayer(Simulation.newPlayer());

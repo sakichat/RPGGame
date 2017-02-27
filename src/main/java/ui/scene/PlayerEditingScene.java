@@ -129,8 +129,8 @@ public class PlayerEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 player.setLevel(Integer.valueOf(levelField.getText()));
-                playerPanel.dataToView();
-            }
+//                playerPanel.dataToView();
+        }
         });
     }
 }
