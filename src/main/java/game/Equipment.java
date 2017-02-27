@@ -19,7 +19,7 @@ public class Equipment {
 
     private String name;
     private String type;
-    private String enhancedAttribute;
+    private String enhancedAttribute = new String();
     private int enhancedValue;
 
     public Equipment(String name) {

@@ -1,9 +1,6 @@
 package ui.scene;
 
-import ui.view.View;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,41 +9,51 @@ import java.awt.event.ActionListener;
  *
  * @author Siyu Chen
  */
-public class MainScene extends View {
+public class MainScene extends Scene {
 
     public MainScene() {
         setLayout(null);
-        setSize(1000, 600);
+//        setSize(1000, 600);
 
+//        this.initSubviews();
+
+        this.initHeader();
+        this.initWindows();
         initSubviews();
     }
 
-    private void initSubviews() {
+    public void initSubviews() {
+//
+//        JPanel title = new JPanel();
+//        title.setSize(1000, 40);
+//        title.setLocation(0, 0);
+//        add(title);
+//        title.setBackground(new Color(0xf4f4f4));
 
-        JPanel title = new JPanel();
-        title.setSize(1000, 40);
-        title.setLocation(0, 0);
-        add(title);
-        title.setBackground(new Color(0xf4f4f4));
+//        JLabel gameLabel = new JLabel("Game", JLabel.CENTER);
+//        gameLabel.setSize(1000, 40);
+//        title.add(gameLabel);
 
-        JLabel gameLabel = new JLabel("Game", JLabel.CENTER);
-        gameLabel.setSize(1000, 40);
-        title.add(gameLabel);
+//        JPanel main = new JPanel();
+//        main.setSize(1000, 560);
+//        main.setLocation(0, 40);
+//        add(main);
+//        JLabel title = super.getSceneTitle();
+//        title.setText("Game");
+//        super.setSceneTitle(title);
 
-        JPanel main = new JPanel();
-        main.setSize(1000, 540);
-        main.setLocation(0, 40);
-        add(main);
+//        sceneTitle.setText("Game");
+
 
         JButton playButton = new JButton("Play");
         playButton.setSize(160, 40);
-        playButton.setLocation(20, 20);
-        main.add(playButton);
+        playButton.setLocation(20, 60);
+        add(playButton);
 
         JButton editorButton = new JButton("Editor");
         editorButton.setSize(160, 40);
-        editorButton.setLocation(20, 60);
-        main.add(editorButton);
+        editorButton.setLocation(20, 100);
+        add(editorButton);
 
         repaint();
 
