@@ -3,7 +3,8 @@ package ui.view;
 import javax.swing.*;
 
 /**
- * Created by Kai QI on 2017/2/24.
+ * @author Kai QI
+ * @version 0.1
  */
 public class AbilityView extends JPanel {
 
