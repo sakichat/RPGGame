@@ -1,5 +1,6 @@
 package persistence;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +15,11 @@ public class FileManagerTest {
 
     @Test
     public void nameToFileName() throws Exception {
+        String testIt = "AB CDE";
+        String after = FileManager.nameToFileName(testIt);
+        String shouldBe = "ab_cde";
 
+        Assert.assertEquals(shouldBe, after);
     }
 
     @Test
