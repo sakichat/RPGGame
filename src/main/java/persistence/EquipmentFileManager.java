@@ -41,20 +41,11 @@ public class EquipmentFileManager {
 
     public static void save(Equipment equipment){
         String name = equipment.getName();
-        File file = new File("/data/equipments/" + name + ".eqp.json");
-        if (file.exists()){
-            file.delete();
-            File file1 = new File("\"/data/equipments/\" + name + \".eqp.json\"");
+        File file = path(name);
             Gson gson = new Gson();
             String content = gson.toJson(equipment);
-            FileManager.stringToFile(content,file1);
+            FileManager.stringToFile(content,file);
 
-        }else {
-            File file1 = new File("\"/data/equipments/\" + name + \".eqp.json\"");
-            Gson gson = new Gson();
-            String content = gson.toJson(equipment);
-            FileManager.stringToFile(content,file1);
-        }
     }
 
     /**
@@ -69,7 +60,7 @@ public class EquipmentFileManager {
             @Override
             public boolean accept(File dir, String name) {
 
-                return name.contains(".eqp.json");
+                return name.endsWith(".eqp.json");
             }
         });
         nameList = new String[fileName.length];
@@ -78,7 +69,6 @@ public class EquipmentFileManager {
             nameList[i] = FileManager.fileNameToName(fileName[i].substring(0,number));
         }
         return nameList;
-
 
     }
 }

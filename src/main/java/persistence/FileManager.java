@@ -31,10 +31,8 @@ public class FileManager {
      */
 
     public static String fileNameToName(String fileName){
-        fileName.replaceAll("_","\\s");
-        char[] name = fileName.toCharArray();
-        name[0] -= 32;
-        return String.valueOf(name);
+        fileName.replaceAll("_"," ");
+        return String.valueOf(fileName);
 
     }
 
