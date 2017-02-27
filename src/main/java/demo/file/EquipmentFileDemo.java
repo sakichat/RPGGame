@@ -1,6 +1,7 @@
 package demo.file;
 
 import game.Equipment;
+import game.Player;
 import persistence.EquipmentFileManager;
 
 /**
@@ -8,7 +9,7 @@ import persistence.EquipmentFileManager;
  */
 public class EquipmentFileDemo {
     public static void main(String[] args) {
-        Equipment equipment = new Equipment("s b","HELMET","AC",3);
+        Equipment equipment = new Equipment("s b","HELMET", Player.ATTRIBUTE_ARMOR_CLASS,3);
         EquipmentFileManager.save(equipment);
     }
 
