@@ -9,8 +9,10 @@ import persistence.EquipmentFileManager;
  */
 public class EquipmentFileDemo {
     public static void main(String[] args) {
-        Equipment equipment = new Equipment("s b","HELMET", Player.ATTRIBUTE_ARMOR_CLASS,3);
+        Equipment equipment = new Equipment("s b",Equipment.HELMET, Player.ATTRIBUTE_ARMOR_CLASS,3);
         EquipmentFileManager.save(equipment);
+        Equipment equipment1 = EquipmentFileManager.read("s b");
+        System.out.println(equipment1.getName() + equipment1.getEnhancedAttribute() + equipment1.getType());
     }
 
 }

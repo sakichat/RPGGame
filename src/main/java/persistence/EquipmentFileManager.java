@@ -18,7 +18,8 @@ public class EquipmentFileManager {
      */
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
-        newName = "/data/equipments/" + newName + ".eqp.json";
+        newName = "data/equipments/" + newName + ".eqp.json";
+        System.out.println(newName);
         return new File(newName);
 
     }
@@ -42,9 +43,9 @@ public class EquipmentFileManager {
     public static void save(Equipment equipment){
         String name = equipment.getName();
         File file = path(name);
-            Gson gson = new Gson();
-            String content = gson.toJson(equipment);
-            FileManager.stringToFile(content,file);
+        Gson gson = new Gson();
+        String content = gson.toJson(equipment);
+        FileManager.stringToFile(content,file);
 
     }
 
