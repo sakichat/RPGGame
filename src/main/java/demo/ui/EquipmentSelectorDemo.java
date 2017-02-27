@@ -13,8 +13,6 @@ public class EquipmentSelectorDemo {
         jFrame.setSize(600,600);
         EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
         equipmentSelectorPanel.setLocation(0,0);
-        equipmentSelectorPanel.initSubviews();
-        equipmentSelectorPanel.dataToView();
         jFrame.add(equipmentSelectorPanel);
     }
 
