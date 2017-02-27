@@ -2,7 +2,6 @@ package ui.panel;
 
 import game.Equipment;
 import game.Player;
-import game.Simulation;
 import ui.view.EquipmentView;
 
 import javax.swing.*;

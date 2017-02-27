@@ -1,11 +1,8 @@
 package persistence;
 
-import com.google.gson.Gson;
-import game.Equipment;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
-import java.io.FilenameFilter;
 import java.io.IOException;
 
 /**

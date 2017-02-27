@@ -2,7 +2,6 @@ package map;
 
 
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * Created by Saki on 2017/2/20.

@@ -1,7 +1,6 @@
 package ui.scene;
 
 import game.Player;
-import game.Simulation;
 import ui.panel.BackpackPanel;
 import ui.panel.EquipmentSelectorPanel;
 import ui.panel.PlayerPanel;
