@@ -1,5 +1,6 @@
 package game;
 
+import java.security.PublicKey;
 import java.util.*;
 
 /**
@@ -310,12 +311,25 @@ public class Player extends Observable{
     }
 
     /**
+     * This method is used to get the total armor class of object after enhanced by equipments.
+     * @return
+     */
+    public int getTotalArmorClass() {
+        return getArmorClass() + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
+    }
+
+
+    /**
      * This method is used to calculate the attack bonus value based on the D20 rules.
      * @return
      */
     public int getAttackBonus() {
         int strModifier = getAbilityModifier(ABILITY_STR);
         return level + strModifier;
+    }
+
+    public int getTotalAttackBonus() {
+        return getAttackBonus() + enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS);
     }
 
     /**
@@ -326,5 +340,9 @@ public class Player extends Observable{
         int dexModifier = getAbilityModifier(ABILITY_DEX);
         int equipmentBonus = enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
         return 10 + dexModifier + equipmentBonus;
+    }
+
+    public int getTotalDamageBonus() {
+        return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
     }
 }
