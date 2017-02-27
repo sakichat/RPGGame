@@ -15,10 +15,18 @@ import ui.view.*;
  * @author Li Zhen
  * @version 0.1
  */
+
+/**
+ * this class is to create panel to search equipment to add to player
+ */
 public class EquipmentSelectorPanel extends JPanel {
     private Player player = Simulation.newPlayer();
     private TextField textField = new TextField();
     private JButton search = new JButton();
+
+    /**
+     * this method is  a constructor
+     */
     public EquipmentSelectorPanel() {
         setSize(520,170);
         setLayout(null);
@@ -26,17 +34,36 @@ public class EquipmentSelectorPanel extends JPanel {
 
     }
 
+    /**
+     * this method is to return a Player
+     * @return Player
+     */
+
     public Player getPlayer() {
         return player;
     }
+
+    /**
+     * this method is to set Player
+     * @param player Player
+     */
 
     public void setPlayer(Player player) {
         this.player = player;
     }
 
+    /**
+     * this method is to set Player
+     * @param player Player
+     */
+
     public void givePlayer(Player player){
         this.player = player;
     }
+
+    /**
+     * this method is to add euiqpment to Player
+     */
     public void dataToView(){
 
         search.addActionListener(new ActionListener() {
@@ -71,6 +98,10 @@ public class EquipmentSelectorPanel extends JPanel {
         });
 
     }
+
+    /**
+     * this method is to create the  fixed view
+     */
 
 
     public void initSubviews(){
