@@ -14,7 +14,7 @@ public class Scene extends View {
     public JLabel sceneTitle;
 
     public Scene() {
-        super();
+//        super();
 
         setLayout(null);
         this.setSize(1000, 600);

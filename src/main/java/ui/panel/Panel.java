@@ -9,6 +9,10 @@ public class Panel extends View {
     public Panel() {
         setLayout(null);
 
-        
+        this.initHeader();
+    }
+
+    public void initHeader() {
+
     }
 }

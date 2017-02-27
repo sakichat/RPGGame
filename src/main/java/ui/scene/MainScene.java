@@ -37,6 +37,7 @@ public class MainScene extends Scene {
 //        main.setSize(1000, 560);
 //        main.setLocation(0, 40);
 //        add(main);
+
 //        JLabel title = super.getSceneTitle();
 //        title.setText("Game");
 //        super.setSceneTitle(title);
