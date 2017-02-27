@@ -6,8 +6,13 @@ import javax.swing.*;
 
 /**
  * @author Qi Xia
+ * @version 0.1
  */
 public class EquipmentView extends JPanel {
+
+    /**
+     * The Equipment attribute and getter & setter
+     */
 
     private Equipment equipment;
 
@@ -20,9 +25,17 @@ public class EquipmentView extends JPanel {
         dataToView();
     }
 
+    /**
+     * The JLabel attribute
+     */
+
     public JLabel typeLabel;
     public JLabel nameLabel;
     public JLabel enhanceLabel;
+
+    /**
+     * Constructor
+     */
 
     public EquipmentView(){
         this.setLayout(null);
@@ -30,6 +43,10 @@ public class EquipmentView extends JPanel {
 
         initSubviews();
     }
+
+    /**
+     * @param
+     */
 
     private void initSubviews(){
 

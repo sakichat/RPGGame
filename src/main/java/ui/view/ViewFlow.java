@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Penelope on 17/2/24.
- *
  * @author Siyu Chen
+ * @version 0.1
  */
 public class ViewFlow extends View {
 

@@ -5,9 +5,8 @@ import ui.view.ViewFlow;
 import ui.view.Window;
 
 /**
- * Created by Penelope on 17/2/24.
- *
  * @author Siyu Chen
+ * @version 0.1
  */
 public class Demo {
     public static void main(String[] args) {

@@ -3,7 +3,8 @@ package ui.panel;
 import ui.view.View;
 
 /**
- * Created by Penelope on 17/2/27.
+ * @author Siyu Chen
+ * @version 0.1
  */
 public class Panel extends View {
     public Panel() {
