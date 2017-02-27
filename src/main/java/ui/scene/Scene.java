@@ -11,6 +11,7 @@ import java.awt.*;
  */
 public class Scene extends View {
     public JPanel main;
+    public String titleName;
     public JLabel sceneTitle;
 
     public Scene() {
@@ -20,13 +21,10 @@ public class Scene extends View {
         this.setSize(1000, 600);
 
         this.initHeader();
-//        this.initHeader();
         this.initWindows();
+        this.initBack();
+        this.initSave();
     }
-//
-//    public Scene(JLabel sceneTitle) {
-//        this.sceneTitle = sceneTitle;
-//    }
 
     public void initHeader() {
 
@@ -36,15 +34,11 @@ public class Scene extends View {
         this.add(header);
         header.setBackground(new Color(0xf4f4f4));
 
-        JLabel sceneTitle = new JLabel("", JLabel.CENTER);
+        JLabel sceneTitle = new JLabel(titleName, JLabel.CENTER);
         sceneTitle.setSize(1000, 40);
         sceneTitle.setLocation(0, 0);
         header.add(sceneTitle);
     }
-//
-//    public Scene(JPanel main) {
-//        this.main = main;
-//    }
 
     public void initWindows() {
         JPanel main = new JPanel();
@@ -52,6 +46,20 @@ public class Scene extends View {
         main.setLocation(0, 40);
         this.add(main);
         main.setBackground(new Color(0xFFFFFF));
+    }
+
+    public void initBack() {
+        JButton back = new JButton();
+        back.setSize(60, 20);
+        back.setLocation(10, 10);
+        this.add(back);
+    }
+
+    public void initSave() {
+        JButton save = new JButton();
+        save.setSize(60, 20);
+        save.setLocation(930, 10);
+        this.add(save);
     }
 
 

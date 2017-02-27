@@ -14,8 +14,6 @@ public class MainScene extends Scene {
         setLayout(null);
 //        setSize(1000, 600);
 
-//        this.initSubviews();
-
         this.initHeader();
         this.initWindows();
         initSubviews();
@@ -44,6 +42,7 @@ public class MainScene extends Scene {
 
 //        sceneTitle.setText("Game");
 
+        titleName = "Game";
 
         JButton playButton = new JButton("Play");
         playButton.setSize(160, 40);

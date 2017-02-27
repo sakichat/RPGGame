@@ -38,70 +38,70 @@ public class EditorScene extends View {
         editorLabel.setLocation(0, 0);
         title.add(editorLabel);
 
-        JPanel desktop = new JPanel();
-        desktop.setSize(1000, 540);
-        desktop.setLocation(0, 40);
-        add(desktop);
+        JPanel main = new JPanel();
+        main.setSize(1000, 540);
+        main.setLocation(0, 40);
+        add(main);
 
         JLabel itemLabel = new JLabel("Item");
         itemLabel.setSize(160, 40);
         itemLabel.setLocation(20, 20);
-        desktop.add(itemLabel);
+        main.add(itemLabel);
 
         JLabel charaLabel = new JLabel("Player");
         charaLabel.setSize(160, 40);
         charaLabel.setLocation(210, 20);
-        desktop.add(charaLabel);
+        main.add(charaLabel);
 
         JLabel mapLabel = new JLabel("Map");
         mapLabel.setSize(160, 40);
         mapLabel.setLocation(400, 20);
-        desktop.add(mapLabel);
+        main.add(mapLabel);
 
         JLabel campLabel = new JLabel("Campaign");
         campLabel.setSize(160, 40);
         campLabel.setLocation(590, 20);
-        desktop.add(campLabel);
+        main.add(campLabel);
 
         JButton itemCreate = new JButton("Create");
         itemCreate.setSize(160, 40);
         itemCreate.setLocation(20, 70);
-        desktop.add(itemCreate);
+        main.add(itemCreate);
 
         JButton charaCreate = new JButton("Create");
         charaCreate.setSize(160, 40);
         charaCreate.setLocation(210, 70);
-        desktop.add(charaCreate);
+        main.add(charaCreate);
 
         JButton mapCreate = new JButton("Create");
         mapCreate.setSize(160, 40);
         mapCreate.setLocation(400, 70);
-        desktop.add(mapCreate);
+        main.add(mapCreate);
 
         JButton campCreate = new JButton("Create");
         campCreate.setSize(160, 40);
         campCreate.setLocation(590, 70);
-        desktop.add(campCreate);
+        main.add(campCreate);
 
         JButton itemEdit = new JButton("Edit");
         itemEdit.setSize(160, 40);
         itemEdit.setLocation(20, 150);
-        desktop.add(itemEdit);
+        main.add(itemEdit);
 
         JButton charaEdit = new JButton("Edit");
         charaEdit.setSize(160, 40);
         charaEdit.setLocation(210, 150);
-        desktop.add(charaEdit);
+        main.add(charaEdit);
 
         JButton mapEdit = new JButton("Edit");
         mapEdit.setSize(160, 40);
         mapEdit.setLocation(400, 150);
-        desktop.add(mapEdit);
+        main.add(mapEdit);
 
         JButton campEdit = new JButton("Edit");
         campEdit.setSize(160, 40);
         campEdit.setLocation(590, 150);
-        desktop.add(campEdit);
+        main.add(campEdit);
 
         repaint();
 
