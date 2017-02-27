@@ -41,7 +41,7 @@ public class MainScene extends Scene {
 //        title.setText("Game");
 //        super.setSceneTitle(title);
 
-        sceneTitle.setText("Game");
+//        sceneTitle.setText("Game");
 
 
         JButton playButton = new JButton("Play");
