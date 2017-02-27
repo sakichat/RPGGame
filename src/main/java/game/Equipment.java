@@ -189,4 +189,13 @@ public class Equipment {
         this.enhancedValue = enhancedValue;
     }
 
+    @Override
+    public String toString() {
+        return "Equipment{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", enhancedAttribute='" + enhancedAttribute + '\'' +
+                ", enhancedValue=" + enhancedValue +
+                '}';
+    }
 }

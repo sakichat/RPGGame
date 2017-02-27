@@ -312,6 +312,13 @@ public class ItemEditingScene extends View {
         validateButton = button;
         add(button);
 
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+
         repaint();
     }
 
