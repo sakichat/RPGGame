@@ -13,6 +13,7 @@ import java.util.Observer;
 
 /**
  * @author Qi Xia
+ * @version 0.1
  */
 public class BackpackPanel extends JPanel implements Observer{
     private Player player;

@@ -3,7 +3,7 @@ package game;
 /**
  * This class is the equitment
  * @author Li Zhen
- * @version 1.0
+ * @version 0.1
  */
 
 public class Equipment {

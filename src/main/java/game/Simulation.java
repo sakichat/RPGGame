@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * @author Qi Xia
+ * no doc
  */
 public class Simulation {
     public static Player newPlayer(){

@@ -37,14 +37,6 @@ public class FileManager {
 
     }
 
-
-
-
-
-
-
-
-
     /**
      * this mehod is to transfer equipment to a file
      * @param content String

@@ -7,7 +7,7 @@ import java.util.*;
  * This Class is character, which includes users and NPCs.
  *
  * @author Kai QI
- * @version 1.2
+ * @version 0.1
  *
  */
 public class Player extends Observable{

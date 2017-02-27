@@ -3,7 +3,7 @@ package game;
 /**
  * this class is the game.Chest in the game
  * @author Li Zhen
- * @version 1.0
+ * @version 0.1
  */
 public class Chest {
     private Equipment equipment;
