@@ -25,6 +25,10 @@ public class PlayerEditingScene extends View {
     private PlayerPanel playerPanel;
     private BackpackPanel backpackPanel;
 
+    JTextField levelField;
+    JButton setButton;
+    JButton geneButton;
+
     public Player getPlayer() {
         return player;
     }
@@ -80,17 +84,17 @@ public class PlayerEditingScene extends View {
         level.setLocation(20, 20);
         desktop.add(level);
 
-        JTextField levelField = new JTextField();
+        levelField = new JTextField();
         levelField.setSize(160,40);
         levelField.setLocation(150, 20);
         desktop.add(levelField);
 
-        JButton setButton = new JButton("Set");
+        setButton = new JButton("Set");
         setButton.setSize(100, 40);
         setButton.setLocation(320, 20);
         desktop.add(setButton);
 
-        JButton geneButton = new JButton("Generate Ability Scores");
+        geneButton = new JButton("Generate Ability Scores");
         geneButton.setSize(270, 40);
         geneButton.setLocation(150, 70);
         desktop.add(geneButton);
@@ -129,9 +133,19 @@ public class PlayerEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 player.setLevel(Integer.valueOf(levelField.getText()));
-//                playerPanel.dataToView();
-        }
+                playerPanel.dataToView();
+            }
         });
+
+        geneButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                player.generateAbilities();
+                player.setHp(100);
+                playerPanel.dataToView();
+            }
+        });
+
     }
 }
 
