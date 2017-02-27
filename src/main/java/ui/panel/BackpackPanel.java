@@ -12,15 +12,26 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
+ * This is a view class extends JPanel, and implements Observer
  * @author Qi Xia
  * @version 0.1
  */
 public class BackpackPanel extends JPanel implements Observer{
+
+    /**
+     * Player attribute and getter & setter
+     */
+
     private Player player;
 
     public Player getPlayer() {
         return player;
     }
+
+    /**
+     * @param player Player
+     * call dataToView and addOberserver
+     */
 
     public void setPlayer(Player player) {
         this.player = player;
@@ -30,12 +41,20 @@ public class BackpackPanel extends JPanel implements Observer{
 
     private JPanel equipmentsPanel;
 
+    /**
+     * Constructor
+     */
+
     public BackpackPanel(){
         this.setLayout(null);
         this.setSize(460, 330);
 
         initSubviews();
     }
+
+    /**
+     * This is a method makes initialized
+     */
 
     private void initSubviews(){
         JLabel label = new JLabel("Backpack", JLabel.CENTER);
@@ -50,6 +69,13 @@ public class BackpackPanel extends JPanel implements Observer{
         add(equipmentsPanel);
     }
 
+    /**
+     *
+     * @param observer Observable
+     * @param x Object
+     * Observer method, update change
+     */
+
     @Override
     public void update(Observable observer, Object x) {
 
@@ -60,6 +86,10 @@ public class BackpackPanel extends JPanel implements Observer{
             dataToView();
         }
     }
+
+    /**
+     * This is a method makes data transfer to view
+     */
 
     public void dataToView(){
         equipmentsPanel.removeAll();
