@@ -75,6 +75,7 @@ public class EquipmentView extends JPanel {
      * This is a method to get data and transfer to view
      */
     private void dataToView(){
+
         typeLabel.setText(equipment.getType());
         nameLabel.setText(equipment.getName());
 

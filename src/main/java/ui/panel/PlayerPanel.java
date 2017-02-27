@@ -427,37 +427,67 @@ public class PlayerPanel extends JPanel implements Observer {
         Equipment weapon = player.getEquipment(Equipment.WEAPON);
         if (weapon != null) {
             weaponEquipmentView.setEquipment(weapon);
+        } else {
+            weaponEquipmentView.typeLabel.setText(Equipment.WEAPON);
+            weaponEquipmentView.nameLabel.setText("");
+            weaponEquipmentView.enhanceLabel.setText("");
         }
 
         Equipment shield = player.getEquipment(Equipment.SHIELD);
         if (shield != null) {
             shieldEquipmentView.setEquipment(shield);
+        } else {
+            shieldEquipmentView.typeLabel.setText(Equipment.SHIELD);
+            shieldEquipmentView.nameLabel.setText("");
+            shieldEquipmentView.enhanceLabel.setText("");
         }
 
         Equipment armor = player.getEquipment(Equipment.ARMOR);
         if (armor != null) {
             armorEquipmentView.setEquipment(armor);
+        } else {
+            armorEquipmentView.typeLabel.setText(Equipment.ARMOR);
+            armorEquipmentView.nameLabel.setText("");
+            armorEquipmentView.enhanceLabel.setText("");
         }
 
         Equipment helmet = player.getEquipment(Equipment.HELMET);
         if (helmet != null) {
             helmetEquipmentView.setEquipment(helmet);
+        } else {
+            armorEquipmentView.typeLabel.setText(Equipment.HELMET);
+            armorEquipmentView.nameLabel.setText("");
+            armorEquipmentView.enhanceLabel.setText("");
         }
 
         Equipment ring = player.getEquipment(Equipment.RING);
         if (ring != null) {
             ringEquipmentView.setEquipment(ring);
+        } else {
+            ringEquipmentView.typeLabel.setText(Equipment.RING);
+            ringEquipmentView.nameLabel.setText("");
+            ringEquipmentView.enhanceLabel.setText("");
         }
 
         Equipment belt = player.getEquipment(Equipment.BELT);
         if (belt != null) {
             beltEquipmentView.setEquipment(belt);
+        } else {
+            beltEquipmentView.typeLabel.setText(Equipment.BELT);
+            beltEquipmentView.nameLabel.setText("");
+            beltEquipmentView.enhanceLabel.setText("");
         }
 
         Equipment boots = player.getEquipment(Equipment.BOOTS);
         if (boots != null) {
             bootsEquipmentView.setEquipment(boots);
+        } else {
+            bootsEquipmentView.typeLabel.setText(Equipment.BOOTS);
+            bootsEquipmentView.nameLabel.setText("");
+            bootsEquipmentView.enhanceLabel.setText("");
         }
+
+        repaint();
 
     }
 
