@@ -1,12 +1,27 @@
 package game;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by GU_HAN on 2017-02-26.
+ * @author GU_HAN
+ * @version 1.0.1
  */
+    /*
+     * this class is to test the method of boolean validate() in Equipment.
+     */
 public class EquipmentTest {
+
+    @Before
+    public void beforeEachTest(){
+    }
+
+
+    /*
+     * this method is to test if the weapon can be correctly created.
+     */
     @Test
     public void validateWeapon() throws Exception {
         Equipment equipment;
@@ -20,10 +35,12 @@ public class EquipmentTest {
 
     }
 
+    /*
+     * this method is to test if the shield can be correctly created.
+     */
     @Test
     public void validateShield() throws Exception {
         Equipment equipment;
-
 
         equipment = new Equipment("", Equipment.SHIELD, Player.ATTRIBUTE_ARMOR_CLASS, 5);
         Assert.assertEquals(true, equipment.validate());
@@ -33,14 +50,29 @@ public class EquipmentTest {
 
     }
 
-
+    /*
+     * this method is to test if the corresponding equipment can be correctly created when enhanceOn type is null.
+     */
     @Test
     public void validateEmpty() throws Exception {
         Equipment equipment;
 
-        equipment = new Equipment("", Equipment.WEAPON, null, 0);
+        equipment = new Equipment("", Equipment.WEAPON, null, 2);
+        Assert.assertEquals(false, equipment.validate());
+
+        equipment = new Equipment("", null, Player.ABILITY_STR, 2);
         Assert.assertEquals(false, equipment.validate());
 
     }
+
+    @Test
+    public void validateBoots() throws Exception{
+        Equipment equipment;
+
+        equipment = new Equipment("", Equipment.BOOTS, Player.ABILITY_DEX, -1);
+        Assert.assertEquals(false, equipment.validate());
+    }
+
+
 
 }
