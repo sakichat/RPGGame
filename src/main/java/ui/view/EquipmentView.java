@@ -45,7 +45,7 @@ public class EquipmentView extends JPanel {
     }
 
     /**
-     * @param
+     * This is a method to make initialization
      */
 
     private void initSubviews(){
@@ -71,6 +71,9 @@ public class EquipmentView extends JPanel {
         enhanceLabel = label;
     }
 
+    /**
+     * This is a method to get data and transfer to view
+     */
     private void dataToView(){
         typeLabel.setText(equipment.getType());
         nameLabel.setText(equipment.getName());
