@@ -11,20 +11,23 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.1
  */
-public class EditorScene extends View {
+public class EditorScene extends Scene {
     public EditorScene() {
         setLayout(null);
-        setSize(1000, 600);
+//        setSize(1000, 600);
 
         initSubviews();
+        this.initHeader();
+        this.initWindows();
+//        this.initBack();
     }
 
 
-    private void initSubviews() {
+    protected void initSubviews() {
         JPanel title = new JPanel();
         title.setSize(1000, 40);
         title.setLocation(0, 0);
-        add(title);
+        this.add(title);
         title.setBackground(new Color(0xf4f4f4));
 
 
@@ -41,7 +44,7 @@ public class EditorScene extends View {
         JPanel main = new JPanel();
         main.setSize(1000, 540);
         main.setLocation(0, 40);
-        add(main);
+        this.add(main);
 
         JLabel itemLabel = new JLabel("Item");
         itemLabel.setSize(160, 40);

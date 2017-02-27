@@ -13,6 +13,8 @@ public class Scene extends View {
     public JPanel main;
     public String titleName;
     public JLabel sceneTitle;
+    public JButton back;
+    public JButton save;
 
     public Scene() {
 //        super();
@@ -20,10 +22,16 @@ public class Scene extends View {
         setLayout(null);
         this.setSize(1000, 600);
 
-        this.initHeader();
-        this.initWindows();
-        this.initBack();
-        this.initSave();
+        init();
+        initHeader();
+        initWindows();
+        initBack();
+        initSave();
+        initSubviews();
+    }
+
+    protected void init(){
+
     }
 
     public void initHeader() {
@@ -41,7 +49,7 @@ public class Scene extends View {
     }
 
     public void initWindows() {
-        JPanel main = new JPanel();
+        main = new JPanel();
         main.setSize(1000, 560);
         main.setLocation(0, 40);
         this.add(main);
@@ -49,17 +57,21 @@ public class Scene extends View {
     }
 
     public void initBack() {
-        JButton back = new JButton();
+        JButton back = new JButton("Back");
         back.setSize(60, 20);
         back.setLocation(10, 10);
         this.add(back);
     }
 
     public void initSave() {
-        JButton save = new JButton();
+        JButton save = new JButton("Save");
         save.setSize(60, 20);
         save.setLocation(930, 10);
         this.add(save);
+    }
+
+    protected void initSubviews(){
+
     }
 
 
@@ -78,4 +90,29 @@ public class Scene extends View {
     public void setSceneTitle(JLabel sceneTitle) {
         this.sceneTitle = sceneTitle;
     }
+
+    public String getTitleName() {
+        return titleName;
+    }
+
+    public void setTitleName(String titleName) {
+        this.titleName = titleName;
+    }
+
+    public JButton getBack() {
+        return back;
+    }
+
+    public void setBack(JButton back) {
+        this.back = back;
+    }
+
+    public JButton getSave() {
+        return save;
+    }
+
+    public void setSave(JButton save) {
+        this.save = save;
+    }
+
 }

@@ -10,13 +10,11 @@ import java.awt.event.ActionListener;
  */
 public class MainScene extends Scene {
 
-    public MainScene() {
-        setLayout(null);
-//        setSize(1000, 600);
 
-        this.initHeader();
-        this.initWindows();
-        initSubviews();
+    @Override
+    public void init() {
+        super.init();
+        titleName = "Main";
     }
 
     public void initSubviews() {
@@ -46,8 +44,8 @@ public class MainScene extends Scene {
 
         JButton playButton = new JButton("Play");
         playButton.setSize(160, 40);
-        playButton.setLocation(20, 60);
-        add(playButton);
+        playButton.setLocation(20, 20);
+        main.add(playButton);
 
         JButton editorButton = new JButton("Editor");
         editorButton.setSize(160, 40);
