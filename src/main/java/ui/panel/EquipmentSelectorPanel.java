@@ -12,7 +12,8 @@ import java.util.List;
 import ui.view.*;
 
 /**
- * Created by thereaghostflash on 2017-02-25.
+ * @author Li Zhen
+ * @version 0.1
  */
 public class EquipmentSelectorPanel extends JPanel {
     private Player player = Simulation.newPlayer();
