@@ -219,18 +219,20 @@ public class PlayerTest {
     }
 
     /*
-     * This method tests the ordinary cases when picking up and dropping.
+     * This method tests if the player can wear something not in the backpack.
      */
     @Test
-    public void test() throws Exception {
-        int pre = player.getTotalAbilityScore(Player.ABILITY_STR);
-        player.dropEquipment(equipment4);
-        player.dropEquipment(equipment1);
-        player.pickUpEquipment(equipment20);
-        player.pickUpEquipment(equipment21);
-        int now = player.getTotalAbilityScore(Player.ABILITY_STR);
+    public void testWearing() throws Exception {
+        int pre = player.getTotalAbilityScore(Player.ABILITY_CHA);
+        player.equip(equipment23);
+        int now = player.getTotalAbilityScore(Player.ABILITY_CHA);
 
         Assert.assertEquals(pre, now);
+    }
+
+    @Test
+    public void test() throws Exception{
+
     }
 
 
