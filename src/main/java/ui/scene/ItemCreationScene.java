@@ -8,9 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Penelope on 17/2/24.
- *
  * @author Siyu Chen
+ * @version 0.1
  */
 public class ItemCreationScene extends View {
 

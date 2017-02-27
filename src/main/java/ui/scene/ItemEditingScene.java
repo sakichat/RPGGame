@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
  * @version 1.0.1
  */

@@ -10,9 +10,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 /**
- * Created by Penelope on 17/2/24.
- *
  * @author Siyu Chen
+ * @version 0.1
  */
 public class MapCreationScene extends View {
     public MapCreationScene() {

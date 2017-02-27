@@ -6,9 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by Penelope on 17/2/26.
- *
  * @author Siyu Chen
+ * @version 0.1
  */
 public class Scene extends View {
     public JPanel main;
