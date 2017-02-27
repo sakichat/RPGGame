@@ -93,12 +93,6 @@ public class ItemEditingScene extends View {
         button.setLocation(930, 10);
         button.setText("Save");
         button.setEnabled(false);
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
         saveButton = button;
         label.add(button);
 
@@ -181,12 +175,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(150, 160);
         button.setText("Weapon");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         weaponButton = button;
         add(button);
 
@@ -194,12 +182,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(260, 160);
         button.setText("Shield");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         shieldButton = button;
         add(button);
 
@@ -207,12 +189,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(370, 160);
         button.setText("Armor");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         armorButton = button;
         add(button);
 
@@ -220,12 +196,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(480, 160);
         button.setText("Helmet");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         helmetButton = button;
         add(button);
 
@@ -233,12 +203,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(590, 160);
         button.setText("Ring");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         ringButton = button;
         add(button);
 
@@ -246,12 +210,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(700, 160);
         button.setText("Belt");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         beltButton = button;
         add(button);
 
@@ -259,12 +217,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(810, 160);
         button.setText("Boots");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         bootsButton = button;
         add(button);
 
@@ -276,12 +228,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(150, 260);
         button.setText("Str");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         strButton = button;
         add(button);
 
@@ -289,12 +235,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(260, 260);
         button.setText("Dex");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         dexButton = button;
         add(button);
 
@@ -302,12 +242,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(370, 260);
         button.setText("Con");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         conButton = button;
         add(button);
 
@@ -315,12 +249,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(480, 260);
         button.setText("Int");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         intButton = button;
         add(button);
 
@@ -328,12 +256,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(590, 260);
         button.setText("Wis");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         wisButton = button;
         add(button);
 
@@ -341,12 +263,6 @@ public class ItemEditingScene extends View {
         button.setSize(100, 40);
         button.setLocation(700, 260);
         button.setText("Cha");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         chaButton = button;
         add(button);
 
@@ -358,12 +274,6 @@ public class ItemEditingScene extends View {
         button.setSize(210, 40);
         button.setLocation(150, 310);
         button.setText("Armor Class");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         armorClassButton = button;
         add(button);
 
@@ -371,12 +281,6 @@ public class ItemEditingScene extends View {
         button.setSize(210, 40);
         button.setLocation(370, 310);
         button.setText("Attack Bonus");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         attackBonusButton = button;
         add(button);
 
@@ -384,12 +288,6 @@ public class ItemEditingScene extends View {
         button.setSize(210, 40);
         button.setLocation(590, 310);
         button.setText("Damage Bonus");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-            }
-        });
         damageBonusButton = button;
         add(button);
 
@@ -413,6 +311,9 @@ public class ItemEditingScene extends View {
         button.setText("Validate");
         validateButton = button;
         add(button);
+        /*
+         * add Listener
+         */
 
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -421,17 +322,6 @@ public class ItemEditingScene extends View {
             }
         });
 
-        repaint();
-    }
-
-    public void dataToView(){
-        nameLabel.setText(equipment.getName());
-        typeLabel.setText(equipment.getType());
-        enhanceOnLabel.setText(equipment.getEnhancedAttribute());
-
-    }
-
-    public void ViewToData(){
         weaponButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -484,42 +374,42 @@ public class ItemEditingScene extends View {
         strButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_STR);
+                equipment.setType(Player.ABILITY_STR);
             }
         });
 
         dexButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_DEX);
+                equipment.setType(Player.ABILITY_DEX);
             }
         });
 
         conButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_CON);
+                equipment.setType(Player.ABILITY_CON);
             }
         });
 
         intButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_INT);
+                equipment.setType(Player.ABILITY_INT);
             }
         });
 
         wisButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_WIS);
+                equipment.setType(Player.ABILITY_WIS);
             }
         });
 
         chaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_CHA);
+                equipment.setType(Player.ABILITY_CHA);
             }
         });
 
@@ -543,6 +433,18 @@ public class ItemEditingScene extends View {
                 equipment.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
             }
         });
+
+        repaint();
+    }
+
+    public void dataToView(){
+        nameLabel.setText(equipment.getName());
+        typeLabel.setText(equipment.getType());
+        enhanceOnLabel.setText(equipment.getEnhancedAttribute());
+
+    }
+
+    public void ViewToData(){
 
         valueTextField.addActionListener(new ActionListener() {
             @Override
