@@ -45,7 +45,8 @@ public class CampaignCreationScene extends Scene {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                CampaignEditingScene campaignEditingScene = new CampaignEditingScene();
+                CampaignCreationScene.this.navigationView.push(campaignEditingScene);
             }
         });
     }

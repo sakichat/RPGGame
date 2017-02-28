@@ -14,6 +14,9 @@ import java.io.File;
  * @version 0.1
  */
 public class EditorScene extends Scene {
+    private JLabel label;
+    private JButton button;
+
     @Override
     protected void init() {
         super.init();
@@ -23,65 +26,73 @@ public class EditorScene extends Scene {
         saveButtonEnabled = false;
     }
     protected void initSubviews() {
-        JLabel itemLabel = new JLabel("Item");
-        itemLabel.setSize(160, 40);
-        itemLabel.setLocation(20, 20);
-        contentView.add(itemLabel);
+        label = new JLabel("Item");
+        label.setSize(160, 40);
+        label.setLocation(20, 20);
+        contentView.add(label);
 
-        JLabel charaLabel = new JLabel("Player");
-        charaLabel.setSize(160, 40);
-        charaLabel.setLocation(210, 20);
-        contentView.add(charaLabel);
+        label = new JLabel("Player");
+        label.setSize(160, 40);
+        label.setLocation(210, 20);
+        contentView.add(label);
 
         JLabel mapLabel = new JLabel("Map");
         mapLabel.setSize(160, 40);
         mapLabel.setLocation(400, 20);
         contentView.add(mapLabel);
 
-        JLabel campLabel = new JLabel("Campaign");
-        campLabel.setSize(160, 40);
-        campLabel.setLocation(590, 20);
-        contentView.add(campLabel);
+        label = new JLabel("Campaign");
+        label.setSize(160, 40);
+        label.setLocation(590, 20);
+        contentView.add(label);
 
-        JButton itemCreate = new JButton("Create");
-        itemCreate.setSize(160, 40);
-        itemCreate.setLocation(20, 70);
-        contentView.add(itemCreate);
+        button = new JButton("Create");
+        button.setSize(160, 40);
+        button.setLocation(20, 70);
+        contentView.add(button);
+        JButton itemCreateButton = button;
 
-        JButton charaCreate = new JButton("Create");
-        charaCreate.setSize(160, 40);
-        charaCreate.setLocation(210, 70);
-        contentView.add(charaCreate);
+        button = new JButton("Create");
+        button.setSize(160, 40);
+        button.setLocation(210, 70);
+        contentView.add(button);
+        JButton playerCreateButton = button;
 
-        JButton mapCreate = new JButton("Create");
-        mapCreate.setSize(160, 40);
-        mapCreate.setLocation(400, 70);
-        contentView.add(mapCreate);
+        button = new JButton("Create");
+        button.setSize(160, 40);
+        button.setLocation(400, 70);
+        contentView.add(button);
+        JButton mapCreateButton = button;
 
-        JButton campCreate = new JButton("Create");
-        campCreate.setSize(160, 40);
-        campCreate.setLocation(590, 70);
-        contentView.add(campCreate);
+        button = new JButton("Create");
+        button.setSize(160, 40);
+        button.setLocation(590, 70);
+        contentView.add(button);
+        JButton campaignCreateButton = button;
 
-        JButton itemEdit = new JButton("Edit");
-        itemEdit.setSize(160, 40);
-        itemEdit.setLocation(20, 150);
-        contentView.add(itemEdit);
+        button = new JButton("Edit");
+        button.setSize(160, 40);
+        button.setLocation(20, 150);
+        contentView.add(button);
+        JButton itemEditButton = button;
 
-        JButton charaEdit = new JButton("Edit");
-        charaEdit.setSize(160, 40);
-        charaEdit.setLocation(210, 150);
-        contentView.add(charaEdit);
+        button = new JButton("Edit");
+        button.setSize(160, 40);
+        button.setLocation(210, 150);
+        contentView.add(button);
+        JButton playerEditButton = button;
 
-        JButton mapEdit = new JButton("Edit");
-        mapEdit.setSize(160, 40);
-        mapEdit.setLocation(400, 150);
-        contentView.add(mapEdit);
+        button = new JButton("Edit");
+        button.setSize(160, 40);
+        button.setLocation(400, 150);
+        contentView.add(button);
+        JButton mapEditButton = button;
 
-        JButton campEdit = new JButton("Edit");
-        campEdit.setSize(160, 40);
-        campEdit.setLocation(590, 150);
-        contentView.add(campEdit);
+        button = new JButton("Edit");
+        button.setSize(160, 40);
+        button.setLocation(590, 150);
+        contentView.add(button);
+        JButton campaignEditButton = button;
 
         repaint();
 
@@ -92,7 +103,7 @@ public class EditorScene extends Scene {
             }
         });
 
-        itemCreate.addActionListener(new ActionListener() {
+        itemCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ItemCreationScene itemCreationScene = new ItemCreationScene();
@@ -100,14 +111,14 @@ public class EditorScene extends Scene {
             }
         });
 
-        itemEdit.addActionListener(new ActionListener() {
+        itemEditButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 itemEdit();
             }
         });
 
-        charaCreate.addActionListener(new ActionListener() {
+        playerCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerCreationScene playerCreationScene = new PlayerCreationScene();
@@ -115,11 +126,19 @@ public class EditorScene extends Scene {
             }
         });
 
-        mapCreate.addActionListener(new ActionListener() {
+        mapCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MapCreationScene mapCreationScene = new MapCreationScene();
                 EditorScene.this.navigationView.push(mapCreationScene);
+            }
+        });
+
+        campaignCreateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CampaignCreationScene campaignCreationScene = new CampaignCreationScene();
+                EditorScene.this.navigationView.push(campaignCreationScene);
             }
         });
     }
