@@ -1,7 +1,7 @@
 package demo.ui;
 
 import ui.scene.MainScene;
-import ui.view.ViewFlow;
+import ui.view.NavigationView;
 import ui.view.Window;
 
 /**
@@ -10,8 +10,8 @@ import ui.view.Window;
  */
 public class Demo {
     public static void main(String[] args) {
-        ViewFlow viewFlow = new ViewFlow();
-        new Window(viewFlow);
-        viewFlow.push(new MainScene());
+        NavigationView navigationView = new NavigationView();
+        new Window(navigationView);
+        navigationView.push(new MainScene());
     }
 }

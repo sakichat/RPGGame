@@ -1,9 +1,6 @@
 package ui.scene;
 
-import ui.scene.Scene;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -42,7 +39,7 @@ public class PlayerCreationScene extends Scene {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PlayerCreationScene.this.viewFlow.pop();
+                PlayerCreationScene.this.navigationView.pop();
             }
         });
 
@@ -50,7 +47,7 @@ public class PlayerCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerEditingScene playerEditingScene = new PlayerEditingScene();
-                PlayerCreationScene.this.viewFlow.push(playerEditingScene);
+                PlayerCreationScene.this.navigationView.push(playerEditingScene);
             }
         });
     }

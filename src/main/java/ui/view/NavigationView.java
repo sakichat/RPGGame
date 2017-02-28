@@ -1,27 +1,26 @@
 package ui.view;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 
 /**
  * @author Siyu Chen
  * @version 0.1
  */
-public class ViewFlow extends View {
+public class NavigationView extends View {
 
     /**
      * This is a constructor
      */
-    public ViewFlow() {
+    public NavigationView() {
         this.setLayout(null);
         this.setSize(1000, 600);
-        contentViews = new ArrayList<View>();
+        contentViews = new LinkedList<>();
     }
 
     /**
      * This is to declare a List for scene classes
      */
-    private List<View> contentViews;
+    private LinkedList<View> contentViews;
 
     /**
      * This method is for switching views
@@ -29,28 +28,35 @@ public class ViewFlow extends View {
      */
     public void push(View view) {
         if (contentViews.size() > 0) {
+            remove(contentViews.getLast());
         }
 
         contentViews.add(view);
-        view.setViewFlow(this);
+
+        view.setNavigationView(this);
         view.setSize(this.getSize());
-        this.add(view);
+        add(view);
         view.viewDidDisplay();
 
     }
 
     public void pop() {
         if (contentViews.size() > 0) {
-            View view = contentViews.get(contentViews.size() - 1);
-            this.remove(view);
+            View view = contentViews.getLast();
+            remove(view);
             contentViews.remove(view);
-            contentViews.add(contentViews.get(contentViews.size() - 1));
         }
 
         if (contentViews.size() > 0) {
-            View view = contentViews.get(contentViews.size() - 1);
+            View view = contentViews.getLast();
+            add(view);
             view.viewDidDisplay();
         }
+    }
 
+    public void popTo(Class<?> viewClass){
+        while (contentViews.size() > 1 && contentViews.getLast().getClass() != viewClass){
+            pop();
+        }
     }
 }

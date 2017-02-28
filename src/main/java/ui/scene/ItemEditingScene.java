@@ -3,7 +3,6 @@ package ui.scene;
 import game.Equipment;
 import game.Player;
 import persistence.EquipmentFileManager;
-import ui.scene.Scene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -292,7 +291,7 @@ public class ItemEditingScene extends Scene {
          */
         back.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ItemEditingScene.this.viewFlow.pop();
+                ItemEditingScene.this.navigationView.pop();
             }
         });
 
@@ -455,7 +454,7 @@ public class ItemEditingScene extends Scene {
 
     public void save(){
         EquipmentFileManager.save(equipment);
-        viewFlow.pop();
+        navigationView.pop();
     }
 
     public void dataToView(){

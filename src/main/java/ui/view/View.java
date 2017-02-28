@@ -35,15 +35,15 @@ public class View extends JPanel {
     }
 
     /**
-     * This is a parameter for ViewFlow class
+     * This is a parameter for NavigationView class
      */
-    protected ViewFlow viewFlow;
+    protected NavigationView navigationView;
 
-    public ViewFlow getViewFlow() {
-        return viewFlow;
+    public NavigationView getNavigationView() {
+        return navigationView;
     }
 
-    public void setViewFlow(ViewFlow viewFlow) {
-        this.viewFlow = viewFlow;
+    public void setNavigationView(NavigationView navigationView) {
+        this.navigationView = navigationView;
     }
 }

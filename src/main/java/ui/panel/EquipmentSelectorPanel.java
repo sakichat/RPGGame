@@ -1,5 +1,7 @@
 package ui.panel;
 
+import ui.panel.Panel;
+
 import game.Equipment;
 import game.Player;
 import game.Simulation;
@@ -19,19 +21,18 @@ import ui.view.*;
 /**
  * this class is to create panel to search equipment to add to player
  */
-public class EquipmentSelectorPanel extends JPanel {
+public class EquipmentSelectorPanel extends Panel {
     private Player player = Simulation.newPlayer();
-    private TextField textField = new TextField();
-    private JButton search = new JButton();
+    private JTextField textField;
+    private JButton search;
 
-    /**
-     * this method is  a constructor
-     */
-    public EquipmentSelectorPanel() {
-        setSize(520,170);
-        setLayout(null);
-        initSubviews();
+    @Override
+    protected void init() {
+        super.init();
 
+        w = 520;
+        h = 170;
+        titleName = "Equipment Selector";
     }
 
     /**
@@ -104,24 +105,26 @@ public class EquipmentSelectorPanel extends JPanel {
      */
 
 
-    public void initSubviews(){
+    protected void initSubviews(){
         JLabel title = new JLabel("Character");
         title.setLocation(0,0);
         title.setSize(520,20);
         title.setBackground(new Color(244,244,244));
-        this.add(title);
+        add(title);
 
         JLabel itemName = new JLabel("Item");
         itemName.setLocation(10,30);
         itemName.setSize(120,40);
         itemName.setBackground(new Color(236,245,248));
-        this.add(itemName);
+        add(itemName);
 
 
+        textField = new JTextField();
         textField.setLocation(140,30);
         textField.setSize(160,40);
-        this.add(textField);
+        add(textField);
 
+        search = new JButton();
         search.setText("Search");
         search.setLocation(310,30);
         search.setSize(100,40);

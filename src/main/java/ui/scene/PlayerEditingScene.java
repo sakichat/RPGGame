@@ -4,10 +4,8 @@ import game.Player;
 import ui.panel.BackpackPanel;
 import ui.panel.EquipmentSelectorPanel;
 import ui.panel.PlayerPanel;
-import ui.scene.Scene;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -97,7 +95,7 @@ public class PlayerEditingScene extends Scene {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PlayerEditingScene.this.viewFlow.pop();
+                PlayerEditingScene.this.navigationView.pop();
             }
         });
 

@@ -37,7 +37,7 @@ public class MainScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 EditorScene editorScene = new EditorScene();
-                MainScene.this.viewFlow.push(editorScene);
+                MainScene.this.navigationView.push(editorScene);
 //                MainScene.this.add(editorScene);
             }
         });

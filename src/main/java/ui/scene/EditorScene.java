@@ -1,9 +1,6 @@
 package ui.scene;
 
-import ui.view.View;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -86,7 +83,7 @@ public class EditorScene extends Scene {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EditorScene.this.viewFlow.pop();
+                EditorScene.this.navigationView.pop();
             }
         });
 
@@ -94,7 +91,7 @@ public class EditorScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ItemCreationScene itemCreationScene = new ItemCreationScene();
-                EditorScene.this.viewFlow.push(itemCreationScene);
+                EditorScene.this.navigationView.push(itemCreationScene);
             }
         });
 
@@ -102,7 +99,7 @@ public class EditorScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerCreationScene playerCreationScene = new PlayerCreationScene();
-                EditorScene.this.viewFlow.push(playerCreationScene);
+                EditorScene.this.navigationView.push(playerCreationScene);
             }
         });
 
@@ -110,7 +107,7 @@ public class EditorScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MapCreationScene mapCreationScene = new MapCreationScene();
-                EditorScene.this.viewFlow.push(mapCreationScene);
+                EditorScene.this.navigationView.push(mapCreationScene);
             }
         });
     }
