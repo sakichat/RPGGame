@@ -1,5 +1,7 @@
 package ui.panel;
 
+import ui.panel.Panel;
+
 import game.Equipment;
 import game.Player;
 import ui.view.EquipmentView;
@@ -16,7 +18,7 @@ import java.util.Observer;
  * @author Qi Xia
  * @version 0.1
  */
-public class BackpackPanel extends JPanel implements Observer{
+public class BackpackPanel extends Panel implements Observer{
 
     /**
      * Player attribute and getter & setter
@@ -41,27 +43,20 @@ public class BackpackPanel extends JPanel implements Observer{
 
     private JPanel equipmentsPanel;
 
-    /**
-     * Constructor
-     */
+    @Override
+    protected void init() {
+        super.init();
 
-    public BackpackPanel(){
-        this.setLayout(null);
-        this.setSize(460, 330);
-
-        initSubviews();
+        w = 460;
+        h = 330;
+        titleName = "Backpack";
     }
 
     /**
      * This is a method makes initialized
      */
 
-    private void initSubviews(){
-        JLabel label = new JLabel("Backpack", JLabel.CENTER);
-        label.setSize(460, 20);
-        label.setLocation(0, 0);
-        this.add(label);
-
+    protected void initSubviews(){
         equipmentsPanel = new JPanel();
         equipmentsPanel.setLayout(null);
         equipmentsPanel.setSize(460, 310);
