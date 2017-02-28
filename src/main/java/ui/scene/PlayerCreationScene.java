@@ -20,6 +20,7 @@ public class PlayerCreationScene extends Scene {
         backButton = true;
         saveButton = false;
     }
+
     protected void initSubviews() {
         JLabel nameLabel = new JLabel("Name", JLabel.RIGHT);
         nameLabel.setSize(120, 40);
