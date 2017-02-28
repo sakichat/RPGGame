@@ -1,8 +1,13 @@
 package ui.scene;
 
+import game.Equipment;
+import persistence.EquipmentFileManager;
+
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 /**
  * @author Siyu Chen
@@ -95,6 +100,13 @@ public class EditorScene extends Scene {
             }
         });
 
+        itemEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                itemEdit();
+            }
+        });
+
         charaCreate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -110,5 +122,19 @@ public class EditorScene extends Scene {
                 EditorScene.this.navigationView.push(mapCreationScene);
             }
         });
+    }
+    private void itemEdit(){
+        JFileChooser fileChooser = new JFileChooser(EquipmentFileManager.folderPath());
+        fileChooser.setFileFilter(new FileNameExtensionFilter("json", "json"));
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String name = EquipmentFileManager.filePathToName(selectedFile.getName());
+            Equipment equipment = EquipmentFileManager.read(name);
+
+            ItemEditingScene itemEditingScene = new ItemEditingScene();
+            itemEditingScene.setEquipment(equipment);
+            navigationView.push(itemEditingScene);
+        }
     }
 }

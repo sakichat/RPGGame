@@ -11,6 +11,11 @@ import java.io.FilenameFilter;
  * @version 0.1
  */
 public class EquipmentFileManager {
+
+    public static File folderPath(){
+        return new File("data/equipments");
+    }
+
     /**
      * this method is to create a file with path
      * @param name String
@@ -66,10 +71,15 @@ public class EquipmentFileManager {
         });
         nameList = new String[fileName.length];
         for (int i = 0; i < fileName.length; i++){
-            int number = fileName[i].indexOf(".");
-            nameList[i] = FileManager.fileNameToName(fileName[i].substring(0,number));
+            nameList[i] = filePathToName(fileName[i]);
         }
         return nameList;
-
     }
+
+    public static String filePathToName(String filePath){
+        int number = filePath.indexOf(".");
+        return FileManager.fileNameToName(filePath.substring(0, number));
+    }
+
+
 }
