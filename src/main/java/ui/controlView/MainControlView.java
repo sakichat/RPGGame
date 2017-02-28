@@ -25,10 +25,10 @@ public class MainControlView extends View{
 
     public void initSubviews() {
 
-        JLabel topicLable = new JLabel();
-        topicLable.setSize(160, 40);
-        topicLable.setLocation(10, 10);
-        add(topicLable);
+        JLabel topicLabel = new JLabel();
+        topicLabel.setSize(160, 40);
+        topicLabel.setLocation(10, 10);
+        add(topicLabel);
 
         JButton jButton;
 
@@ -103,7 +103,7 @@ public class MainControlView extends View{
         chestButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
             }
         });
 
