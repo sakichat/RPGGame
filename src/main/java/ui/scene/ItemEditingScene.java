@@ -22,6 +22,7 @@ public class ItemEditingScene extends Scene {
 
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
+        dataToView();
     }
 
 
@@ -76,8 +77,6 @@ public class ItemEditingScene extends Scene {
 
         label = new JLabel();
         label.setSize(120, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.RIGHT);
         label.setLocation(20, 60);
         label.setText("Name");
@@ -85,8 +84,6 @@ public class ItemEditingScene extends Scene {
 
         label = new JLabel();
         label.setSize(120, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.RIGHT);
         label.setLocation(20, 110);
         label.setText("Type");
@@ -94,8 +91,6 @@ public class ItemEditingScene extends Scene {
 
         label = new JLabel();
         label.setSize(120, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.RIGHT);
         label.setLocation(20, 210);
         label.setText("Enhance On");
@@ -103,8 +98,6 @@ public class ItemEditingScene extends Scene {
 
         label = new JLabel();
         label.setSize(120, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.RIGHT);
         label.setLocation(20, 360);
         label.setText("Value");
@@ -116,8 +109,6 @@ public class ItemEditingScene extends Scene {
 
         label = new JLabel();
         label.setSize(200, 40);
-//        label.setOpaque(true);
-//        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 60);
         nameLabel = label;
@@ -125,8 +116,6 @@ public class ItemEditingScene extends Scene {
 
         label = new JLabel();
         label.setSize(200, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 110);
         typeLabel = label;
@@ -134,8 +123,6 @@ public class ItemEditingScene extends Scene {
 
         label = new JLabel();
         label.setSize(200, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 210);
         enhanceOnLabel = label;
