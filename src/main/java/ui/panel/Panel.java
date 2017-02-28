@@ -24,6 +24,8 @@ public class Panel extends JPanel {
 
     protected void init() {
         setLayout(null);
+
+        setBackground(new Color(0xFFFFFF));
     }
 
 

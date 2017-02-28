@@ -1,5 +1,8 @@
 package ui.scene;
 
+import ui.panel.MapConnection;
+import ui.panel.Panel;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,11 +23,10 @@ public class CampaignEditingScene extends Scene {
     }
 
     protected void initSubviews() {
-        JPanel mapConnection = new JPanel();
-        mapConnection.setSize(640, 520);
+
+        MapConnection mapConnection = new MapConnection();
         mapConnection.setLocation(330, 20);
         contentView.add(mapConnection);
-
 
         backButton.addActionListener(new ActionListener() {
             @Override

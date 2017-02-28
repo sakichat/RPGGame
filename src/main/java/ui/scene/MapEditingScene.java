@@ -29,10 +29,11 @@ public class MapEditingScene extends Scene {
     }
 
     protected void initSubviews() {
-        panel = new JPanel();
-        panel.setLocation(820, 40);
         mainControlView = new MainControlView();
-        panel = this.mainControlView;
+        mainControlView.setLocation(820, 40);
+        add(mainControlView);
+
+        repaint();
 
         backButton.addActionListener(new ActionListener() {
             @Override
