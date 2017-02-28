@@ -64,36 +64,7 @@ public class EquipmentSelectorPanel extends Panel {
      */
     public void dataToView(){
 
-        search.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                List<Equipment> list = player.equipmentsInBackpack();
-                int number = 0;
-                int yOfView = 80;
-                int xOfView = 140;
-                for (Equipment equipment : list){
-                    if (equipment.getName().equals(textField.getText()) && number < 3){
-                        EquipmentView equipmentView = new EquipmentView();
-                        equipmentView.setLocation(xOfView,yOfView);
-                        JButton addButton = new JButton("Add");
-                        addButton.setLocation(450,yOfView);
-                        addButton.setSize(60,20);
-                        addButton.addActionListener(new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                player.pickUpEquipment(equipment);
-                            }
-                        });
-                        EquipmentSelectorPanel.this.add(equipmentView);
-                        EquipmentSelectorPanel.this.add(addButton);
 
-                        number++;
-                        yOfView += 30;
-
-                    }
-                }
-
-            }
-        });
 
     }
 
@@ -125,10 +96,44 @@ public class EquipmentSelectorPanel extends Panel {
         search.setText("Search");
         search.setLocation(310,30);
         search.setSize(100,40);
+        add(search);
+
+        search.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                search();
+            }
+        });
 
 
 
+    }
 
+    private void search(){
+        List<Equipment> list = player.equipmentsInBackpack();
+        int number = 0;
+        int yOfView = 80;
+        int xOfView = 140;
+        for (Equipment equipment : list){
+            if (equipment.getName().equals(textField.getText()) && number < 3){
+                EquipmentView equipmentView = new EquipmentView();
+                equipmentView.setLocation(xOfView,yOfView);
+                JButton addButton = new JButton("Add");
+                addButton.setLocation(450,yOfView);
+                addButton.setSize(60,20);
+                addButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        player.pickUpEquipment(equipment);
+                    }
+                });
+                EquipmentSelectorPanel.this.add(equipmentView);
+                EquipmentSelectorPanel.this.add(addButton);
+
+                number++;
+                yOfView += 30;
+
+            }
+        }
     }
 
 }
