@@ -8,7 +8,7 @@ import javax.swing.*;
  * @author Qi Xia
  * @version 0.1
  */
-public class EquipmentView extends JPanel {
+public class EquipmentView extends View {
 
     /**
      * The Equipment attribute and getter & setter
@@ -38,7 +38,6 @@ public class EquipmentView extends JPanel {
      */
 
     public EquipmentView(){
-        this.setLayout(null);
         this.setSize(300, 20);
 
         initSubviews();

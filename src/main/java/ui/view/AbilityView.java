@@ -7,14 +7,13 @@ import javax.swing.*;
  * @author Kai QI
  * @version 0.1
  */
-public class AbilityView extends JPanel {
+public class AbilityView extends View {
 
     public JLabel nameLabel;
     public JLabel scoreLabel;
     public JLabel modifierLabel;
 
     public AbilityView() {
-        this.setLayout(null);
         this.setSize(160, 20);
 
         initSubviews();
