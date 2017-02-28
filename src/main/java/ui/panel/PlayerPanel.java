@@ -1,5 +1,7 @@
 package ui.panel;
 
+import ui.panel.Panel;
+
 import game.Equipment;
 import game.Player;
 import ui.view.AbilityView;
@@ -16,7 +18,7 @@ import java.util.Observer;
  * @author Kai QI
  * @version 1.0
  */
-public class PlayerPanel extends JPanel implements Observer {
+public class PlayerPanel extends Panel implements Observer {
 
     /**
      * The attribute player and Getter & Setter.
@@ -51,15 +53,13 @@ public class PlayerPanel extends JPanel implements Observer {
         }
     }
 
-    /**
-     * Constructor.
-     */
+    @Override
+    protected void init() {
+        super.init();
 
-    public PlayerPanel() {
-        this.setLayout(null);
-        this.setSize(400, 420);
-
-        initSubviews();
+        w = 400;
+        h = 420;
+        titleName = "Player";
     }
 
     /**
@@ -97,21 +97,12 @@ public class PlayerPanel extends JPanel implements Observer {
     Button unequipBeltBotton;
     Button unequipBootsBotton;
 
-    private void initSubviews(){
+    protected void initSubviews(){
 
         JLabel label;
         AbilityView abilityView;
         EquipmentView equipmentView = new EquipmentView();
         Button button;
-
-        label = new JLabel("", JLabel.CENTER);
-        label.setSize(400, 20);
-        label.setLocation(0, 0);
-        add(label);
-        label.setText("Player");
-        label.setBackground(new Color(200, 200, 200));
-        JLabel titleBackground = new JLabel();
-        titleBackground = label;
 
         label = new JLabel("", JLabel.RIGHT);
         label.setSize(60, 20);
