@@ -19,11 +19,6 @@ public class Scene extends View {
     public boolean saveButton;
 
     public Scene() {
-//        super();
-
-        setLayout(null);
-        this.setSize(1000, 600);
-
         init();
         initHeader();
         initWindows();
@@ -33,7 +28,9 @@ public class Scene extends View {
     }
 
     protected void init(){
+        setLayout(null);
 
+        this.setSize(1000, 600);
     }
 
     protected void initHeader() {

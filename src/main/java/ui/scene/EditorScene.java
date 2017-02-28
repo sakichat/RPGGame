@@ -12,29 +12,15 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class EditorScene extends Scene {
+    @Override
+    protected void init() {
+        super.init();
+
+        titleName = "Editor";
+        backButton = true;
+        saveButton = false;
+    }
     protected void initSubviews() {
-        JPanel title = new JPanel();
-        title.setSize(1000, 40);
-        title.setLocation(0, 0);
-        this.add(title);
-        title.setBackground(new Color(0xf4f4f4));
-
-
-        JButton back = new JButton("Back");
-        back.setSize(60, 20);
-        back.setLocation(10, 10);
-        title.add(back);
-
-        JLabel editorLabel = new JLabel("Editor", JLabel.CENTER);
-        editorLabel.setSize(1000, 40);
-        editorLabel.setLocation(0, 0);
-        title.add(editorLabel);
-
-        JPanel main = new JPanel();
-        main.setSize(1000, 540);
-        main.setLocation(0, 40);
-        this.add(main);
-
         JLabel itemLabel = new JLabel("Item");
         itemLabel.setSize(160, 40);
         itemLabel.setLocation(20, 20);
