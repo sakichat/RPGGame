@@ -89,10 +89,10 @@ public class MapCreationScene extends Scene {
             }
         });
 
-        JButton create = new JButton("Create");
-        create.setSize(160, 40);
-        create.setLocation(150, 190);
-        contentView.add(create);
+        JButton createButton = new JButton("Create");
+        createButton.setSize(160, 40);
+        createButton.setLocation(150, 190);
+        contentView.add(createButton);
 
         repaint();
 
@@ -103,7 +103,7 @@ public class MapCreationScene extends Scene {
             }
         });
 
-        create.addActionListener(new ActionListener() {
+        createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MapEditingScene mapEditingScene = new MapEditingScene();
