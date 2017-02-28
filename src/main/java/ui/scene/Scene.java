@@ -35,7 +35,7 @@ public class Scene extends View {
 
     protected void initHeader() {
 
-        JPanel header = new JPanel();
+        View header = new View();
         header.setSize(1000, 40);
         header.setLocation(0, 0);
         this.add(header);

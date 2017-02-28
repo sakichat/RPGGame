@@ -1,7 +1,5 @@
 package ui.panel;
 
-import ui.panel.Panel;
-
 import game.Equipment;
 import game.Player;
 import ui.view.EquipmentView;
@@ -47,9 +45,8 @@ public class BackpackPanel extends Panel implements Observer{
     protected void init() {
         super.init();
 
-        w = 460;
-        h = 330;
-        titleName = "Backpack";
+        setSize(460, 330);
+        title = "Backpack";
     }
 
     /**

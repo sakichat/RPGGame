@@ -1,7 +1,5 @@
 package ui.panel;
 
-import ui.panel.Panel;
-
 import game.Equipment;
 import game.Player;
 import game.Simulation;
@@ -30,9 +28,8 @@ public class EquipmentSelectorPanel extends Panel {
     protected void init() {
         super.init();
 
-        w = 520;
-        h = 170;
-        titleName = "Equipment Selector";
+        setSize(520, 170);
+        title = "Equipment Selector";
     }
 
     /**
