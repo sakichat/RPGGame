@@ -7,7 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Penelope on 17/2/28.
+ * @author Kai QI
+ * @version 0.1
  */
 public class ExitControlView extends View {
 

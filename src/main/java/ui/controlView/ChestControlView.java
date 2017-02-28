@@ -8,7 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Penelope on 17/2/28.
+ * @author Kai QI
+ * @version 0.1
  */
 public class ChestControlView extends View {
 
@@ -44,8 +45,8 @@ public class ChestControlView extends View {
         jLabel.setLocation(10, 60);
         add(jLabel);
         jLabel.setText(chest.getEquipment().getName());
-        JLabel chestNamecLabel = new JLabel();
-        chestNamecLabel = jLabel;
+        JLabel chestNameLabel = new JLabel();
+        chestNameLabel = jLabel;
 
         JButton jButton;
 
