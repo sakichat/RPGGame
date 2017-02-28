@@ -102,5 +102,13 @@ public class MapCreationScene extends Scene {
                 MapCreationScene.this.navigationView.pop();
             }
         });
+
+        create.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MapEditingScene mapEditingScene = new MapEditingScene();
+                MapCreationScene.this.navigationView.push(mapEditingScene);
+            }
+        });
     }
 }
