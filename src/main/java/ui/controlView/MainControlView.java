@@ -3,6 +3,8 @@ package ui.controlView;
 import ui.view.View;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Penelope on 17/2/28.
@@ -14,7 +16,7 @@ public class MainControlView extends View{
     public final static String EXIT = "Exit";
     public final static String CHEST = "Chest";
     public final static String PLAYER = "Player";
-
+    public final static String REMOVE = "Remove";
 
     public MainControlView() {
         this.setSize(180,560);
@@ -69,6 +71,41 @@ public class MainControlView extends View{
         jButton.setText(PLAYER);
         JButton playerButton = new JButton();
         playerButton = jButton;
+
+        wallButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        entranceButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        chestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+
+        chestButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
 
     }
 }
