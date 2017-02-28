@@ -95,7 +95,15 @@ public class PlayerEditingScene extends Scene {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PlayerEditingScene.this.navigationView.pop();
+                PlayerEditingScene.this.navigationView.popTo(EditorScene.class);
+            }
+        });
+
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                save();
+                PlayerEditingScene.this.navigationView.popTo(EditorScene.class);
             }
         });
 
@@ -115,6 +123,10 @@ public class PlayerEditingScene extends Scene {
                 playerPanel.dataToView();
             }
         });
+
+    }
+
+    private void save(){
 
     }
 }

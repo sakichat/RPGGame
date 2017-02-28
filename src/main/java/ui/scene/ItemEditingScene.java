@@ -278,7 +278,7 @@ public class ItemEditingScene extends Scene {
          */
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                ItemEditingScene.this.navigationView.pop();
+                ItemEditingScene.this.navigationView.popTo(EditorScene.class);
             }
         });
 
@@ -286,6 +286,7 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 save();
+                ItemEditingScene.this.navigationView.popTo(EditorScene.class);
             }
         });
 

@@ -1,5 +1,8 @@
 package ui.scene;
 
+import game.Player;
+import game.Simulation;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,7 +50,12 @@ public class PlayerCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerEditingScene playerEditingScene = new PlayerEditingScene();
+                Player player = Simulation.newPlayer();
+                player.setName(nameField.getText());
+                playerEditingScene.setPlayer(player);
                 PlayerCreationScene.this.navigationView.push(playerEditingScene);
+
+
             }
         });
     }
