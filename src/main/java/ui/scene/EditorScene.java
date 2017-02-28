@@ -12,17 +12,6 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class EditorScene extends Scene {
-    public EditorScene() {
-        setLayout(null);
-//        setSize(1000, 600);
-
-        initSubviews();
-        this.initHeader();
-        this.initWindows();
-//        this.initBack();
-    }
-
-
     protected void initSubviews() {
         JPanel title = new JPanel();
         title.setSize(1000, 40);

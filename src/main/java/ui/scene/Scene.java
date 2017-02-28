@@ -34,7 +34,7 @@ public class Scene extends View {
 
     }
 
-    public void initHeader() {
+    protected void initHeader() {
 
         JPanel header = new JPanel();
         header.setSize(1000, 40);
@@ -42,13 +42,13 @@ public class Scene extends View {
         this.add(header);
         header.setBackground(new Color(0xf4f4f4));
 
-        JLabel sceneTitle = new JLabel(titleName, JLabel.CENTER);
+        sceneTitle = new JLabel(titleName, JLabel.CENTER);
         sceneTitle.setSize(1000, 40);
         sceneTitle.setLocation(0, 0);
         header.add(sceneTitle);
     }
 
-    public void initWindows() {
+    protected void initWindows() {
         main = new JPanel();
         main.setSize(1000, 560);
         main.setLocation(0, 40);
@@ -56,15 +56,15 @@ public class Scene extends View {
         main.setBackground(new Color(0xFFFFFF));
     }
 
-    public void initBack() {
-        JButton back = new JButton("Back");
+    protected void initBack() {
+        back = new JButton("Back");
         back.setSize(60, 20);
         back.setLocation(10, 10);
         this.add(back);
     }
 
-    public void initSave() {
-        JButton save = new JButton("Save");
+    protected void initSave() {
+        save = new JButton("Save");
         save.setSize(60, 20);
         save.setLocation(930, 10);
         this.add(save);
@@ -72,47 +72,6 @@ public class Scene extends View {
 
     protected void initSubviews(){
 
-    }
-
-
-    public JPanel getMain() {
-        return main;
-    }
-
-    public void setMain(JPanel main) {
-        this.main = main;
-    }
-
-    public JLabel getSceneTitle() {
-        return sceneTitle;
-    }
-
-    public void setSceneTitle(JLabel sceneTitle) {
-        this.sceneTitle = sceneTitle;
-    }
-
-    public String getTitleName() {
-        return titleName;
-    }
-
-    public void setTitleName(String titleName) {
-        this.titleName = titleName;
-    }
-
-    public JButton getBack() {
-        return back;
-    }
-
-    public void setBack(JButton back) {
-        this.back = back;
-    }
-
-    public JButton getSave() {
-        return save;
-    }
-
-    public void setSave(JButton save) {
-        this.save = save;
     }
 
 }

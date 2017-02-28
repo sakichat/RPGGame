@@ -2,6 +2,7 @@ package ui.panel;
 
 import ui.view.View;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -11,23 +12,35 @@ import java.awt.*;
 public class Panel extends View {
     public int w;
     public int h;
+    public JPanel header;
 
     public Panel() {
-        this.setLayout(null);
+        setLayout(null);
 
-        this.initSize();
-        this.initHeader();
+        init();
+        initSize();
+        initHeader();
+        initSubviews();
     }
 
-    public void initSize() {
+    protected void init() {
+
+    }
+
+    protected void initSize() {
         setSize(w, h);
         setBackground(new Color(0xFFFFFF));
     }
 
-    public void initHeader() {
+    protected void initHeader() {
+        header = new JPanel();
         setSize(w, 40);
         setLocation(0, 0);
 
         setBackground(new Color(0xF4F4F4));
+    }
+
+    protected void initSubviews() {
+
     }
 }
