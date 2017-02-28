@@ -22,6 +22,15 @@ public class ItemEditingScene extends Scene {
 
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
+        if(equipment.getType() == null){
+            equipment.setType(Equipment.WEAPON);
+        }
+        if(equipment.getEnhancedAttribute() == null){
+            equipment.setEnhancedAttribute(Player.ABILITY_STR);
+        }
+//        if(equipment.getEnhancedValue() == 0){
+//            equipment.setEnhancedValue(1);
+//        }
         dataToView();
     }
 
@@ -31,6 +40,8 @@ public class ItemEditingScene extends Scene {
     private JLabel typeLabel;
     private JLabel enhanceOnLabel;
     private TextField valueTextField;
+
+    private JLabel validateResultLabel;
 
     private JButton weaponButton;
     private JButton shieldButton;
@@ -273,6 +284,14 @@ public class ItemEditingScene extends Scene {
         validateButton = button;
         add(button);
 
+        label = new JLabel();
+        label.setSize(200, 40);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setLocation(350, 440);
+        validateResultLabel = label;
+        add(label);
+
+
         /*
          * add Listener
          */
@@ -419,20 +438,16 @@ public class ItemEditingScene extends Scene {
             }
         });
 
-        valueTextField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedValue(Integer.valueOf(valueTextField.getText()));
-            }
-        });
-
         validateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                equipment.setEnhancedValue(Integer.valueOf(textField.getText()));
                 if(equipment.validate()){
                     saveButton.setEnabled(true);
+                    validateResultLabel.setText("success");
                 }else{
                     saveButton.setEnabled(false);
+                    validateResultLabel.setText("failure");
                 }
             }
         });

@@ -17,9 +17,9 @@ public class Equipment {
     public final static String WEAPON = "Weapon";
 
 
-    private String name = new String();
-    private String type = new String();
-    private String enhancedAttribute = new String();
+    private String name;
+    private String type;
+    private String enhancedAttribute;
     private int enhancedValue = 0;
 
     public Equipment(String name) {
