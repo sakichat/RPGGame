@@ -23,6 +23,15 @@ public class EquipmentSelectorPanel extends Panel {
     private Player player = Simulation.newPlayer();
     private JTextField textField;
     private JButton search;
+    private EquipmentDelegate equipmentDelegate;
+
+    public EquipmentDelegate getEquipmentDelegate() {
+        return equipmentDelegate;
+    }
+
+    public void setEquipmentDelegate(EquipmentDelegate equipmentDelegate) {
+        this.equipmentDelegate = equipmentDelegate;
+    }
 
     @Override
     protected void init() {
@@ -123,7 +132,7 @@ public class EquipmentSelectorPanel extends Panel {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        player.pickUpEquipment(equipment);
+                        equipmentDelegate.equipmentDelegate(equipment);
                     }
                 });
                 EquipmentSelectorPanel.this.add(equipmentView);
@@ -135,5 +144,7 @@ public class EquipmentSelectorPanel extends Panel {
             }
         }
     }
+
+
 
 }
