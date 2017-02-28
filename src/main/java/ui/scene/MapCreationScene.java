@@ -1,6 +1,6 @@
 package ui.scene;
 
-import ui.view.View;
+import ui.scene.Scene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,66 +13,48 @@ import java.awt.event.MouseListener;
  * @author Siyu Chen
  * @version 0.1
  */
-public class MapCreationScene extends View {
-    public MapCreationScene() {
-        setLayout(null);
-        setSize(1000, 600);
+public class MapCreationScene extends Scene {
+    @Override
+    protected void init() {
+        super.init();
 
-        initSubviews();
+        titleName = "Create Map";
+        backButton = true;
+        saveButton = false;
     }
 
-    private void initSubviews() {
-        JPanel title = new JPanel();
-        title.setSize(1000, 40);
-        title.setLocation(0, 0);
-        add(title);
-        title.setBackground(new Color(0xf4f4f4));
-
-        JButton back = new JButton("Back");
-        back.setSize(60, 20);
-        back.setLocation(10, 10);
-        title.add(back);
-
-        JLabel createMapLabel = new JLabel("Create Map", JLabel.CENTER);
-        createMapLabel.setSize(1000, 40);
-        title.add(createMapLabel);
-
-        JPanel desktop = new JPanel();
-        desktop.setSize(1000, 540);
-        desktop.setLocation(0, 40);
-        add(desktop);
-
+    protected void initSubviews() {
         JLabel nameLabel = new JLabel("Name", JLabel.RIGHT);
         nameLabel.setSize(120, 40);
         nameLabel.setLocation(20, 20);
-        desktop.add(nameLabel);
+        main.add(nameLabel);
 
         JTextField nameField = new JTextField();
         nameField.setSize(160, 40);
         nameField.setLocation(150, 20);
-        desktop.add(nameField);
+        main.add(nameField);
 
         JLabel sizeLabel = new JLabel("Size", JLabel.RIGHT);
         sizeLabel.setSize(120, 40);
         sizeLabel.setLocation(20, 70);
-        desktop.add(sizeLabel);
+        main.add(sizeLabel);
 
         JLabel sizeSet = new JLabel();
         sizeSet.setSize(200, 40);
         sizeSet.setLocation(150, 70);
         sizeSet.setText("4 x 4");
-        desktop.add(sizeSet);
+        main.add(sizeSet);
 
         JButton smallSize = new JButton();
         smallSize.setSize(100, 40);
         smallSize.setLocation(150, 120);
-        desktop.add(smallSize);
+        main.add(smallSize);
         smallSize.setText("4 x 4");
         smallSize.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 sizeSet.setText(smallSize.getText());
-                desktop.repaint();
+                main.repaint();
             }
 
             @Override
@@ -106,12 +88,12 @@ public class MapCreationScene extends View {
         JButton mediumSize = new JButton("8 x 8");
         mediumSize.setSize(100, 40);
         mediumSize.setLocation(260, 120);
-        desktop.add(mediumSize);
+        main.add(mediumSize);
         mediumSize.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 sizeSet.setText(mediumSize.getText());
-                desktop.repaint();
+                main.repaint();
             }
 
             @Override
@@ -145,12 +127,12 @@ public class MapCreationScene extends View {
         JButton largeSize = new JButton("12 x 12");
         largeSize.setSize(100, 40);
         largeSize.setLocation(370, 120);
-        desktop.add(largeSize);
+        main.add(largeSize);
         largeSize.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 sizeSet.setText(largeSize.getText());
-                desktop.repaint();
+                main.repaint();
             }
 
             @Override
@@ -184,7 +166,7 @@ public class MapCreationScene extends View {
         JButton create = new JButton("Create");
         create.setSize(160, 40);
         create.setLocation(150, 190);
-        desktop.add(create);
+        main.add(create);
 
         repaint();
 
