@@ -2,13 +2,15 @@ package ui.panel;
 
 import game.Equipment;
 import game.Player;
-import game.Simulation;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+
+import game.Simulation;
+import persistence.EquipmentFileManager;
 import ui.view.*;
 
 /**
@@ -17,12 +19,10 @@ import ui.view.*;
  */
 
 /**
- * this class is to create panel to search equipment to add to player
+ * this class is to create panel to searchButton equipment to add to player
  */
 public class EquipmentSelectorPanel extends Panel {
-    private Player player = Simulation.newPlayer();
-    private JTextField textField;
-    private JButton search;
+
     private EquipmentDelegate equipmentDelegate;
 
     public EquipmentDelegate getEquipmentDelegate() {
@@ -33,6 +33,9 @@ public class EquipmentSelectorPanel extends Panel {
         this.equipmentDelegate = equipmentDelegate;
     }
 
+    private JTextField textField;
+    private JButton searchButton;
+
     @Override
     protected void init() {
         super.init();
@@ -41,41 +44,6 @@ public class EquipmentSelectorPanel extends Panel {
         title = "Equipment Selector";
     }
 
-    /**
-     * this method is to return a Player
-     * @return Player
-     */
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    /**
-     * this method is to set Player
-     * @param player Player
-     */
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    /**
-     * this method is to set Player
-     * @param player Player
-     */
-
-    public void givePlayer(Player player){
-        this.player = player;
-    }
-
-    /**
-     * this method is to add euiqpment to Player
-     */
-    public void dataToView(){
-
-
-
-    }
 
     /**
      * this method is to create the  fixed view
@@ -101,13 +69,13 @@ public class EquipmentSelectorPanel extends Panel {
         textField.setSize(160,40);
         add(textField);
 
-        search = new JButton();
-        search.setText("Search");
-        search.setLocation(310,30);
-        search.setSize(100,40);
-        add(search);
+        searchButton = new JButton();
+        searchButton.setText("Search");
+        searchButton.setLocation(310,30);
+        searchButton.setSize(100,40);
+        add(searchButton);
 
-        search.addActionListener(new ActionListener() {
+        searchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 search();
             }
@@ -118,31 +86,38 @@ public class EquipmentSelectorPanel extends Panel {
     }
 
     private void search(){
-        List<Equipment> list = player.equipmentsInBackpack();
+        EquipmentFileManager.allName();
+        List<Equipment> list = Simulation.getEquipments();
         int number = 0;
         int yOfView = 80;
         int xOfView = 140;
+
+
+
         for (Equipment equipment : list){
-            if (equipment.getName().equals(textField.getText()) && number < 3){
+            if (equipment.getName().contains(textField.getText()) && number < 3){
                 EquipmentView equipmentView = new EquipmentView();
                 equipmentView.setLocation(xOfView,yOfView);
+                add(equipmentView);
+                equipmentView.setEquipment(equipment);
+
                 JButton addButton = new JButton("Add");
                 addButton.setLocation(450,yOfView);
                 addButton.setSize(60,20);
+                add(addButton);
+
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         equipmentDelegate.equipmentDelegate(equipment);
                     }
                 });
-                EquipmentSelectorPanel.this.add(equipmentView);
-                EquipmentSelectorPanel.this.add(addButton);
 
                 number++;
                 yOfView += 30;
-
             }
         }
+        repaint();
     }
 
 

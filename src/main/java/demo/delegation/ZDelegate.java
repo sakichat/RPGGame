@@ -1,4 +1,4 @@
-package DelegateDemo;
+package demo.delegation;
 
 /**
  * Created by thereaghostflash on 2017-02-27.

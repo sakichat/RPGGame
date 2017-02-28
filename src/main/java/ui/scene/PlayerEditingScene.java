@@ -1,7 +1,9 @@
 package ui.scene;
 
+import game.Equipment;
 import game.Player;
 import ui.panel.BackpackPanel;
+import ui.panel.EquipmentDelegate;
 import ui.panel.EquipmentSelectorPanel;
 import ui.panel.PlayerPanel;
 
@@ -16,7 +18,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.1
  */
-public class PlayerEditingScene extends Scene {
+public class PlayerEditingScene extends Scene implements EquipmentDelegate{
 
     private Player player;
 
@@ -90,6 +92,8 @@ public class PlayerEditingScene extends Scene {
         equipmentSelectorPanel.setLocation(440, 20);
         contentView.add(equipmentSelectorPanel);
 
+        equipmentSelectorPanel.setEquipmentDelegate(this);
+
         repaint();
 
         backButton.addActionListener(new ActionListener() {
@@ -128,6 +132,11 @@ public class PlayerEditingScene extends Scene {
 
     private void save(){
 
+    }
+
+    @Override
+    public void equipmentDelegate(Equipment equipment) {
+        player.pickUpEquipment(equipment);
     }
 }
 

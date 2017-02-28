@@ -1,4 +1,4 @@
-package demo.ui;
+package demo;
 
 import ui.scene.MainScene;
 import ui.view.NavigationView;
