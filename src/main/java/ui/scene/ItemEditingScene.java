@@ -116,8 +116,8 @@ public class ItemEditingScene extends Scene {
 
         label = new JLabel();
         label.setSize(200, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
+//        label.setOpaque(true);
+//        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 60);
         nameLabel = label;

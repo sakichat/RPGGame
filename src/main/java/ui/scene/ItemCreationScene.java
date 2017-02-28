@@ -1,5 +1,10 @@
 package ui.scene;
 
+<<<<<<< Updated upstream
+=======
+import game.Equipment;
+
+>>>>>>> Stashed changes
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -46,8 +51,14 @@ public class ItemCreationScene extends Scene {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                Equipment equipment = new Equipment(nameField.getText());
                 ItemEditingScene itemEditingScene = new ItemEditingScene();
+<<<<<<< Updated upstream
                 ItemCreationScene.this.navigationView.push(itemEditingScene);
+=======
+                itemEditingScene.setEquipment(equipment);
+                ItemCreationScene.this.viewFlow.push(itemEditingScene);
+>>>>>>> Stashed changes
             }
         });
     }

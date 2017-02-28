@@ -193,6 +193,7 @@ public class PlayerTest {
 
     /*
      * This methods test if player can put unqualified items in backpack.
+     * This method is useless.
      */
     @Test
     public void testUnqualifiedEquipPickup() throws Exception {
@@ -231,7 +232,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void test() throws Exception{
+    public void testFullBackpackFullBody() throws Exception{
 
     }
 
