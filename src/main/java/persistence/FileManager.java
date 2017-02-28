@@ -20,7 +20,7 @@ public class FileManager {
      * @return String
      */
     public static String nameToFileName(String name){
-        name.toLowerCase();
+        name = name.toLowerCase();
         return name.replaceAll("\\s", "_");
     }
 

@@ -94,13 +94,13 @@ public class Simulation {
         equipment = new Equipment("Bloodhoof Runespear",Equipment.WEAPON,Player.ATTRIBUTE_DAMAGE_BONUS,5);
         equipments.add(equipment);
 
-        equipment = new Equipment("Phyrix's Embrace",Equipment.RING,Player.ATTRIBUTE_ARMOR_CLASS,2);
+        equipment = new Equipment("Phyrix Embrace",Equipment.RING,Player.ATTRIBUTE_ARMOR_CLASS,2);
         equipments.add(equipment);
 
-        equipment = new Equipment("Sephuz's Secret",Equipment.RING,Player.ABILITY_STR,2);
+        equipment = new Equipment("Sephuz Secret",Equipment.RING,Player.ABILITY_STR,2);
         equipments.add(equipment);
 
-        equipment = new Equipment("Alythess's Pyrogenics",Equipment.RING,Player.ABILITY_CON,3);
+        equipment = new Equipment("Alythess Pyrogenics",Equipment.RING,Player.ABILITY_CON,3);
         equipments.add(equipment);
 
         equipment = new Equipment("Chatoyant Signet",Equipment.RING,Player.ABILITY_WIS,5);

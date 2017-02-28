@@ -6,6 +6,7 @@ import game.Equipment;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -62,26 +63,22 @@ public class EquipmentFileManager {
      * @return String[]
      */
 
-    public static List<String> allName(){
-        String[] nameList;
-        File file = new File("/data/equipments/");
-        String[] fileName = file.list(new FilenameFilter() {
+    public static List<String> allNames(){
+        File folder = new File("data/equipments/");
+        
+        String[] fileNames = folder.list(new FilenameFilter() {
             @Override
             public boolean accept(File dir, String name) {
-
                 return name.endsWith(".eqp.json");
             }
         });
 
-        nameList = new String[fileName.length];
-        for (int i = 0; i < fileName.length; i++){
-            nameList[i] = filePathToName(fileName[i]);
+
+        List<String> names = new LinkedList<>();
+        for (String fileName : fileNames) {
+            names.add(filePathToName(fileName));
         }
-        List<String> stringList = new LinkedList<>();
-        for (int i = 0; i < fileName.length; i++){
-            stringList.add(fileName[i]);
-        }
-        return stringList;
+        return names;
     }
 
     public static String filePathToName(String filePath){

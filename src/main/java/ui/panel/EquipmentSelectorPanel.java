@@ -1,7 +1,6 @@
 package ui.panel;
 
 import game.Equipment;
-import game.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,9 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import game.Simulation;
 import persistence.EquipmentFileManager;
-import persistence.FileManager;
 import ui.view.*;
 
 /**
@@ -25,6 +22,7 @@ import ui.view.*;
 public class EquipmentSelectorPanel extends Panel {
 
     private EquipmentDelegate equipmentDelegate;
+    private View equipmentPanel;
 
     public EquipmentDelegate getEquipmentDelegate() {
         return equipmentDelegate;
@@ -43,6 +41,7 @@ public class EquipmentSelectorPanel extends Panel {
 
         setSize(520, 170);
         title = "Equipment Selector";
+
     }
 
 
@@ -52,6 +51,12 @@ public class EquipmentSelectorPanel extends Panel {
 
 
     protected void initSubviews(){
+        equipmentPanel = new View();
+        equipmentPanel.setLayout(null);
+        equipmentPanel.setSize(380,90);
+        equipmentPanel.setLocation(140,80);
+        add(equipmentPanel);
+        
         JLabel title = new JLabel("Character");
         title.setLocation(0,0);
         title.setSize(520,20);
@@ -76,8 +81,11 @@ public class EquipmentSelectorPanel extends Panel {
         searchButton.setSize(100,40);
         add(searchButton);
 
+
+
         searchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                equipmentPanel.removeAll();
                 search();
             }
         });
@@ -87,25 +95,26 @@ public class EquipmentSelectorPanel extends Panel {
     }
 
     private void search(){
-        List<String> stringList = EquipmentFileManager.allName();
+        List<String> names = EquipmentFileManager.allNames();
         int number = 0;
-        int yOfView = 80;
-        int xOfView = 140;
+        int yOfView = 0;
+        int xOfView = 0;
 
 
 
-        for (String name : stringList){
+        for (String name : names){
             if (name.contains(textField.getText()) && number < 3){
+                Equipment equipment = EquipmentFileManager.read(name);
+
                 EquipmentView equipmentView = new EquipmentView();
                 equipmentView.setLocation(xOfView,yOfView);
-                add(equipmentView);
-                Equipment equipment = EquipmentFileManager.read(name);
+                equipmentPanel.add(equipmentView);
                 equipmentView.setEquipment(equipment);
 
                 JButton addButton = new JButton("Add");
-                addButton.setLocation(450,yOfView);
+                addButton.setLocation(310,yOfView);
                 addButton.setSize(60,20);
-                add(addButton);
+                equipmentPanel.add(addButton);
 
                 addButton.addActionListener(new ActionListener() {
                     @Override
