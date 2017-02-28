@@ -3,7 +3,7 @@ package ui.scene;
 import game.Equipment;
 import game.Player;
 import persistence.EquipmentFileManager;
-import ui.view.View;
+import ui.scene.Scene;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
  * @author GU_HAN
  * @version 1.0.1
  */
-public class ItemEditingScene extends View {
+public class ItemEditingScene extends Scene {
     private Equipment equipment;
 
     public Equipment getEquipment() {
@@ -31,8 +31,6 @@ public class ItemEditingScene extends View {
     private JLabel typeLabel;
     private JLabel enhanceOnLabel;
     private TextField valueTextField;
-
-    private JButton saveButton;
 
     private JButton weaponButton;
     private JButton shieldButton;
@@ -54,14 +52,16 @@ public class ItemEditingScene extends View {
 
     private JButton validateButton;
 
-    public ItemEditingScene() {
-        setLayout(null);
-        setSize(1000, 600);
-
-        initSubviews();
+    @Override
+    protected void init() {
+        super.init();
+        
+        titleName = "Edit Item";
+        backButton = true;
+        saveButton = true;
     }
 
-    private void initSubviews(){
+    protected void initSubviews(){
 
         /*
          * First Line
@@ -70,34 +70,6 @@ public class ItemEditingScene extends View {
         JLabel label;
         JButton button;
         TextField textField;
-
-        label = new JLabel();
-        label.setSize(1000, 40);
-        label.setLocation(0, 0);
-        label.setText("Edit Item");
-        label.setHorizontalAlignment(JLabel.CENTER);
-        label.setBackground(new Color(0x92A99C));
-        label.setOpaque(true);
-        this.add(label);
-
-        button = new JButton();
-        button.setSize(60, 20);
-        button.setLocation(10, 10);
-        button.setText("Back");
-        label.add(button);
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ItemEditingScene.this.viewFlow.pop();
-            }
-        });
-
-        button = new JButton();
-        button.setSize(60, 20);
-        button.setLocation(930, 10);
-        button.setText("Save");
-        button.setEnabled(false);
-        saveButton = button;
-        label.add(button);
 
         /*
          * 4 Stable Label
@@ -314,11 +286,17 @@ public class ItemEditingScene extends View {
         button.setText("Validate");
         validateButton = button;
         add(button);
+
         /*
          * add Listener
          */
+        back.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ItemEditingScene.this.viewFlow.pop();
+            }
+        });
 
-        saveButton.addActionListener(new ActionListener() {
+        save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 save();
@@ -465,9 +443,9 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(equipment.validate()){
-                    saveButton.setEnabled(true);
+                    save.setEnabled(true);
                 }else{
-                    saveButton.setEnabled(false);
+                    save.setEnabled(false);
                 }
             }
         });
