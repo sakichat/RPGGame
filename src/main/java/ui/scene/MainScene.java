@@ -14,22 +14,22 @@ public class MainScene extends Scene {
     @Override
     public void init() {
         super.init();
-        titleName = "Game";
+        title = "Game";
 
-        backButton = false;
-        saveButton = false;
+        backButtonEnabled = false;
+        saveButtonEnabled = false;
     }
 
     protected void initSubviews() {
         JButton playButton = new JButton("Play");
         playButton.setSize(160, 40);
         playButton.setLocation(20, 20);
-        main.add(playButton);
+        contentView.add(playButton);
 
         JButton editorButton = new JButton("Editor");
         editorButton.setSize(160, 40);
         editorButton.setLocation(20, 60);
-        main.add(editorButton);
+        contentView.add(editorButton);
 
         repaint();
 

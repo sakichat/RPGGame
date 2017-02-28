@@ -43,56 +43,56 @@ public class PlayerEditingScene extends Scene {
     protected void init() {
         super.init();
 
-        titleName = "Edit Player";
-        backButton = true;
-        saveButton = true;
+        title = "Edit Player";
+        backButtonEnabled = true;
+        saveButtonEnabled = true;
     }
 
     protected void initSubviews() {
         JLabel level = new JLabel("Level", JLabel.RIGHT);
         level.setSize(120, 40);
         level.setLocation(20, 20);
-        main.add(level);
+        contentView.add(level);
 
         levelField = new JTextField();
         levelField.setSize(160,40);
         levelField.setLocation(150, 20);
-        main.add(levelField);
+        contentView.add(levelField);
 
         setButton = new JButton("Set");
         setButton.setSize(100, 40);
         setButton.setLocation(320, 20);
-        main.add(setButton);
+        contentView.add(setButton);
 
         geneButton = new JButton("Generate Ability Scores");
         geneButton.setSize(270, 40);
         geneButton.setLocation(150, 70);
-        main.add(geneButton);
+        contentView.add(geneButton);
 
         /**
          * Player Panel
          */
         playerPanel = new PlayerPanel();
         playerPanel.setLocation(20, 120);
-        main.add(playerPanel);
+        contentView.add(playerPanel);
 
         /**
          * Backpack Panel
          */
         backpackPanel = new BackpackPanel();
         backpackPanel.setLocation(440, 200);
-        main.add(backpackPanel);
+        contentView.add(backpackPanel);
 
         /**
          * Equipment Selector Panel
          */
         EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
         equipmentSelectorPanel.setLocation(440, 20);
-        main.add(equipmentSelectorPanel);
+        contentView.add(equipmentSelectorPanel);
 
         repaint();
 
-        back.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerEditingScene.this.navigationView.pop();

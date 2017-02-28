@@ -13,30 +13,30 @@ public class PlayerCreationScene extends Scene {
     protected void init() {
         super.init();
 
-        titleName = "Create Player";
-        backButton = true;
-        saveButton = false;
+        title = "Create Player";
+        backButtonEnabled = true;
+        saveButtonEnabled = false;
     }
 
     protected void initSubviews() {
         JLabel nameLabel = new JLabel("Name", JLabel.RIGHT);
         nameLabel.setSize(120, 40);
         nameLabel.setLocation(20, 20);
-        main.add(nameLabel);
+        contentView.add(nameLabel);
 
         JTextField nameField = new JTextField();
         nameField.setSize(160,40);
         nameField.setLocation(150, 20);
-        main.add(nameField);
+        contentView.add(nameField);
 
         JButton createButton = new JButton("Create");
         createButton.setSize(160, 40);
         createButton.setLocation(150, 90);
-        main.add(createButton);
+        contentView.add(createButton);
 
         repaint();
 
-        back.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerCreationScene.this.navigationView.pop();

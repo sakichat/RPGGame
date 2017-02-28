@@ -10,13 +10,13 @@ import java.awt.*;
  * @version 0.1
  */
 public class Scene extends View {
-    public JPanel main;
-    public String titleName;
-    public JLabel sceneTitle;
-    public JButton back;
-    public JButton save;
-    public boolean backButton;
-    public boolean saveButton;
+    public View contentView;
+    public String title;
+    public JLabel titleLabel;
+    public JButton backButton;
+    public JButton saveButton;
+    public boolean backButtonEnabled;
+    public boolean saveButtonEnabled;
 
     public Scene() {
         init();
@@ -41,35 +41,35 @@ public class Scene extends View {
         this.add(header);
         header.setBackground(new Color(0xf4f4f4));
 
-        sceneTitle = new JLabel(titleName, JLabel.CENTER);
-        sceneTitle.setSize(1000, 40);
-        sceneTitle.setLocation(0, 0);
-        header.add(sceneTitle);
+        titleLabel = new JLabel(title, JLabel.CENTER);
+        titleLabel.setSize(1000, 40);
+        titleLabel.setLocation(0, 0);
+        header.add(titleLabel);
     }
 
     protected void initWindows() {
-        main = new JPanel();
-        main.setSize(1000, 560);
-        main.setLocation(0, 40);
-        this.add(main);
-        main.setBackground(new Color(0xFFFFFF));
+        contentView = new View();
+        contentView.setSize(1000, 560);
+        contentView.setLocation(0, 40);
+        this.add(contentView);
+        contentView.setBackground(new Color(0xFFFFFF));
     }
 
     protected void initBack() {
-        if (backButton == true) {
-            back = new JButton("Back");
-            back.setSize(60, 20);
-            back.setLocation(10, 10);
-            this.add(back);
+        if (backButtonEnabled == true) {
+            backButton = new JButton("Back");
+            backButton.setSize(60, 20);
+            backButton.setLocation(10, 10);
+            this.add(backButton);
         }
     }
 
     protected void initSave() {
-        if (saveButton == true) {
-            save = new JButton("Save");
-            save.setSize(60, 20);
-            save.setLocation(930, 10);
-            this.add(save);
+        if (saveButtonEnabled == true) {
+            saveButton = new JButton("Save");
+            saveButton.setSize(60, 20);
+            saveButton.setLocation(930, 10);
+            this.add(saveButton);
         }
     }
 

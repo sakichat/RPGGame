@@ -36,7 +36,7 @@ public class EquipmentFileManager {
 
     }
     /**
-     * this method is to save equipement to a file
+     * this method is to saveButton equipement to a file
      * @param equipment Equipment
      */
 

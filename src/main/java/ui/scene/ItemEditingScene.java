@@ -55,9 +55,9 @@ public class ItemEditingScene extends Scene {
     protected void init() {
         super.init();
         
-        titleName = "Edit Item";
-        backButton = true;
-        saveButton = true;
+        title = "Edit Item";
+        backButtonEnabled = true;
+        saveButtonEnabled = true;
     }
 
     protected void initSubviews(){
@@ -289,13 +289,13 @@ public class ItemEditingScene extends Scene {
         /*
          * add Listener
          */
-        back.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ItemEditingScene.this.navigationView.pop();
             }
         });
 
-        save.addActionListener(new ActionListener() {
+        saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 save();
@@ -442,9 +442,9 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(equipment.validate()){
-                    save.setEnabled(true);
+                    saveButton.setEnabled(true);
                 }else{
-                    save.setEnabled(false);
+                    saveButton.setEnabled(false);
                 }
             }
         });
