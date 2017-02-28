@@ -1,10 +1,13 @@
 package persistence;
 
 import com.google.gson.Gson;
+import com.sun.xml.internal.ws.api.ha.StickyFeature;
 import game.Equipment;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Li Zhen
@@ -59,7 +62,7 @@ public class EquipmentFileManager {
      * @return String[]
      */
 
-    public static String[] allName(){
+    public static List<String> allName(){
         String[] nameList;
         File file = new File("/data/equipments/");
         String[] fileName = file.list(new FilenameFilter() {
@@ -69,11 +72,16 @@ public class EquipmentFileManager {
                 return name.endsWith(".eqp.json");
             }
         });
+
         nameList = new String[fileName.length];
         for (int i = 0; i < fileName.length; i++){
             nameList[i] = filePathToName(fileName[i]);
         }
-        return nameList;
+        List<String> stringList = new LinkedList<>();
+        for (int i = 0; i < fileName.length; i++){
+            stringList.add(fileName[i]);
+        }
+        return stringList;
     }
 
     public static String filePathToName(String filePath){

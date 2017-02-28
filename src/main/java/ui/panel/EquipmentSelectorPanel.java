@@ -11,6 +11,7 @@ import java.util.List;
 
 import game.Simulation;
 import persistence.EquipmentFileManager;
+import persistence.FileManager;
 import ui.view.*;
 
 /**
@@ -86,19 +87,19 @@ public class EquipmentSelectorPanel extends Panel {
     }
 
     private void search(){
-        EquipmentFileManager.allName();
-        List<Equipment> list = Simulation.getEquipments();
+        List<String> stringList = EquipmentFileManager.allName();
         int number = 0;
         int yOfView = 80;
         int xOfView = 140;
 
 
 
-        for (Equipment equipment : list){
-            if (equipment.getName().contains(textField.getText()) && number < 3){
+        for (String name : stringList){
+            if (name.contains(textField.getText()) && number < 3){
                 EquipmentView equipmentView = new EquipmentView();
                 equipmentView.setLocation(xOfView,yOfView);
                 add(equipmentView);
+                Equipment equipment = EquipmentFileManager.read(name);
                 equipmentView.setEquipment(equipment);
 
                 JButton addButton = new JButton("Add");
