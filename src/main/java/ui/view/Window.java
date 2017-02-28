@@ -10,6 +10,10 @@ import java.awt.*;
 public class Window extends JFrame{
     private View contentView;
 
+    /**
+     * This is a constructor. It assigns parameters for the frame.
+     * @param contentView
+     */
     public Window(View contentView) {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

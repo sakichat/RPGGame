@@ -8,10 +8,13 @@ import java.awt.*;
  * @version 0.1
  */
 public class View extends JPanel {
+
+    /**
+     * This is a constructor
+     */
     public View() {
         super();
         this.setLayout(null);
-//        this.setSize(1000, 600);
     }
 
     protected void viewDidDisplay() {
@@ -31,6 +34,9 @@ public class View extends JPanel {
         this.repaint();
     }
 
+    /**
+     * This is a parameter for ViewFlow class
+     */
     protected ViewFlow viewFlow;
 
     public ViewFlow getViewFlow() {

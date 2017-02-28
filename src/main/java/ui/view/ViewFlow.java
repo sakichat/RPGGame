@@ -9,18 +9,26 @@ import java.util.List;
  */
 public class ViewFlow extends View {
 
+    /**
+     * This is a constructor
+     */
     public ViewFlow() {
         this.setLayout(null);
         this.setSize(1000, 600);
         contentViews = new ArrayList<View>();
     }
 
+    /**
+     * This is to declare a List for scene classes
+     */
     private List<View> contentViews;
 
+    /**
+     * This method is for switching views
+     * @param view
+     */
     public void push(View view) {
         if (contentViews.size() > 0) {
-//            contentViews.get(contentViews.size() - 1).setVisible(false);
-//            contentViews.remove(contentViews.get(contentViews.size() - 1));
         }
 
         contentViews.add(view);
@@ -36,7 +44,6 @@ public class ViewFlow extends View {
             View view = contentViews.get(contentViews.size() - 1);
             this.remove(view);
             contentViews.remove(view);
-//            contentViews.get(contentViews.size() - 1).setVisible(true);
             contentViews.add(contentViews.get(contentViews.size() - 1));
         }
 
