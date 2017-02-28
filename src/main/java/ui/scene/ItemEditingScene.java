@@ -2,6 +2,7 @@ package ui.scene;
 
 import game.Equipment;
 import game.Player;
+import persistence.EquipmentFileManager;
 import ui.view.View;
 
 import javax.swing.*;
@@ -23,6 +24,8 @@ public class ItemEditingScene extends View {
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
     }
+
+
 
     private JLabel nameLabel;
     private JLabel typeLabel;
@@ -318,7 +321,7 @@ public class ItemEditingScene extends View {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                save();
             }
         });
 
@@ -326,6 +329,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.WEAPON);
+                typeLabel.setText(Equipment.WEAPON);
             }
         });
 
@@ -333,6 +337,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.SHIELD);
+                typeLabel.setText(Equipment.SHIELD);
             }
         });
 
@@ -340,6 +345,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.ARMOR);
+                typeLabel.setText(Equipment.ARMOR);
             }
         });
 
@@ -347,6 +353,8 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.HELMET);
+                typeLabel.setText(Equipment.HELMET);
+
             }
         });
 
@@ -354,6 +362,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.RING);
+                typeLabel.setText(Equipment.RING);
             }
         });
 
@@ -361,6 +370,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.BELT);
+                typeLabel.setText(Equipment.BELT);
             }
         });
 
@@ -368,6 +378,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.BOOTS);
+                typeLabel.setText(Equipment.BOOTS);
             }
         });
 
@@ -375,6 +386,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Player.ABILITY_STR);
+                enhanceOnLabel.setText("Str");
             }
         });
 
@@ -382,6 +394,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Player.ABILITY_DEX);
+                enhanceOnLabel.setText("Dex");
             }
         });
 
@@ -389,6 +402,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Player.ABILITY_CON);
+                enhanceOnLabel.setText("Con");
             }
         });
 
@@ -396,6 +410,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Player.ABILITY_INT);
+                enhanceOnLabel.setText("Int");
             }
         });
 
@@ -403,6 +418,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Player.ABILITY_WIS);
+                enhanceOnLabel.setText("Wis");
             }
         });
 
@@ -410,6 +426,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Player.ABILITY_CHA);
+                enhanceOnLabel.setText("Cha");
             }
         });
 
@@ -417,6 +434,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
+                enhanceOnLabel.setText("Armor Class");
             }
         });
 
@@ -424,6 +442,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
+                enhanceOnLabel.setText("Attck Bonus");
             }
         });
 
@@ -431,20 +450,9 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
+                enhanceOnLabel.setText("Damage Bonus");
             }
         });
-
-        repaint();
-    }
-
-    public void dataToView(){
-        nameLabel.setText(equipment.getName());
-        typeLabel.setText(equipment.getType());
-        enhanceOnLabel.setText(equipment.getEnhancedAttribute());
-
-    }
-
-    public void ViewToData(){
 
         valueTextField.addActionListener(new ActionListener() {
             @Override
@@ -463,7 +471,24 @@ public class ItemEditingScene extends View {
                 }
             }
         });
+
+        repaint();
     }
+
+    public void save(){
+        EquipmentFileManager.save(equipment);
+        viewFlow.pop();
+    }
+
+    public void dataToView(){
+        nameLabel.setText(equipment.getName());
+        typeLabel.setText(equipment.getType());
+        enhanceOnLabel.setText(equipment.getEnhancedAttribute());
+        valueTextField.setText(equipment.getEnhancedValue() + "");
+
+    }
+
+
 }
 
 
