@@ -15,6 +15,8 @@ public class Scene extends View {
     public JLabel sceneTitle;
     public JButton back;
     public JButton save;
+    public boolean backButton;
+    public boolean saveButton;
 
     public Scene() {
 //        super();
@@ -57,17 +59,21 @@ public class Scene extends View {
     }
 
     protected void initBack() {
-        back = new JButton("Back");
-        back.setSize(60, 20);
-        back.setLocation(10, 10);
-        this.add(back);
+        if (backButton == true) {
+            back = new JButton("Back");
+            back.setSize(60, 20);
+            back.setLocation(10, 10);
+            this.add(back);
+        }
     }
 
     protected void initSave() {
-        save = new JButton("Save");
-        save.setSize(60, 20);
-        save.setLocation(930, 10);
-        this.add(save);
+        if (saveButton == true) {
+            save = new JButton("Save");
+            save.setSize(60, 20);
+            save.setLocation(930, 10);
+            this.add(save);
+        }
     }
 
     protected void initSubviews(){

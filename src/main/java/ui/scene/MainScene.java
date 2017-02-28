@@ -15,6 +15,9 @@ public class MainScene extends Scene {
     public void init() {
         super.init();
         titleName = "Game";
+
+        backButton = false;
+        saveButton = false;
     }
 
     protected void initSubviews() {
