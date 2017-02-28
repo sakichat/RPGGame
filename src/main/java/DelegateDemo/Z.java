@@ -6,9 +6,14 @@ package DelegateDemo;
 public class Z {
     private ZDelegate zDelegate;
 
-    public Z(ZDelegate zDelegate) {
+    public ZDelegate getzDelegate() {
+        return zDelegate;
+    }
+
+    public void setzDelegate(ZDelegate zDelegate) {
         this.zDelegate = zDelegate;
     }
+
     public void run(){
         zDelegate.message();
     }
