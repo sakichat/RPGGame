@@ -1,5 +1,7 @@
 package game;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * This class is the equitment
  * @author Li Zhen
@@ -16,10 +18,13 @@ public class Equipment {
     public final static String BOOTS = "Boots";
     public final static String WEAPON = "Weapon";
 
-
+    @Expose
     private String name;
+    @Expose
     private String type;
+    @Expose
     private String enhancedAttribute;
+    @Expose
     private int enhancedValue = 0;
 
     public Equipment(String name) {
