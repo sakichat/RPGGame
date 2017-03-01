@@ -444,10 +444,10 @@ public class ItemEditingScene extends Scene {
                 equipment.setEnhancedValue(Integer.valueOf(textField.getText()));
                 if(equipment.validate()){
                     saveButton.setEnabled(true);
-                    validateResultLabel.setText("success");
+                    validateResultLabel.setText("Success!");
                 }else{
                     saveButton.setEnabled(false);
-                    validateResultLabel.setText("failure");
+                    validateResultLabel.setText("Failure!");
                 }
             }
         });
