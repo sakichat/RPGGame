@@ -23,38 +23,38 @@ public class GameMap {
         this.name = name;
     }
 
-    public void addContent(Content content, Point location){
-        int x = location.getX();
-        int y = location.getY();
-        cells[x][y].content = content;
-    }
+//    public void addContent(Content content, Point location){
+//        int x = location.getX();
+//        int y = location.getY();
+//        cells[x][y].content = content;
+//    }
+//
+//    public void removeContent(Point location){
+//        int x = location.getX();
+//        int y = location.getY();
+//        cells[x][y].content = null;
+//    }
+//
+//    public Content getContent(Point location){
+//        Content content;
+//
+//        int x = location.getX();
+//        int y = location.getY();
+//        content = cells[x][y].content;
+//
+//        return content;
+//    }
 
-    public void removeContent(Point location){
-        int x = location.getX();
-        int y = location.getY();
-        cells[x][y].content = null;
-    }
-
-    public Content getContent(Point location){
-        Content content;
-
-        int x = location.getX();
-        int y = location.getY();
-        content = cells[x][y].content;
-
-        return content;
-    }
-
-    public boolean hasContent(Point location){
-        int x = location.getX();
-        int y = location.getY();
-
-        if(cells[x][y].content != null){
-            return true;
-        }
-
-        return false;
-    }
+//    public boolean hasContent(Point location){
+//        int x = location.getX();
+//        int y = location.getY();
+//
+//        if(cells[x][y].content != null){
+//            return true;
+//        }
+//
+//        return false;
+//    }
 
     public Cell getCell(Point location){
         Cell cell;
@@ -67,64 +67,64 @@ public class GameMap {
         return cell;
     }
 
-    public List bfsSearch(Point source, int depth){
-        LinkedList<Cell> searchCell = new LinkedList<>();
-
-        int x = source.getX();
-        int y = source.getY();
-
-        searchCell.add(cells[x][y]);
-
-        Queue<Point> searchResult = new LinkedList<>();
-
-        LinkedList<Point> neighbour;
-        neighbour = source.directions();
-        for (int i = 0; i < 4; i++) {
-            int neiX = neighbour.get(i).getX();
-            int neiY = neighbour.get(i).getY();
-            searchResult.add(neighbour.get(i));
-            searchCell.add(cells[neiX][neiY]);
-            neighbour.clear();
-        }
-
-        if(depth == 0){
-            while(searchResult != null){
-                Point newSource = searchResult.poll();
-                neighbour = newSource.directions();
-                for (int i = 0; i < neighbour.size(); i++) {
-                    int neiX = neighbour.get(i).getX();
-                    int neiY = neighbour.get(i).getY();
-                    if(cells[neiX][neiY].content == null){
-                        for (Cell cell : searchCell) {
-                            if(!cells[neiX][neiY].equals(cell)){
-                                searchResult.add(neighbour.get(i));
-                                searchCell.add(cells[neiX][neiY]);
-                            }
-                        }
-                    }
-                }
-                neighbour.clear();
-            }
-        }else{
-            for (int i = 0; i < depth - 1; i++) {
-                if(searchResult != null){
-                    Point newSource = searchResult.poll();
-                    neighbour = newSource.directions();
-                    for (int j = 0; j < 4; j++) {
-                        int neiX = neighbour.get(j).getX();
-                        int neiY = neighbour.get(j).getY();
-                        if(cells[neiX][neiY].content == null){
-                            searchResult.add(neighbour.get(j));
-                            searchCell.add(cells[neiX][neiY]);
-                            neighbour.clear();
-                        }
-                    }
-                }
-            }
-        }
-
-        return searchCell;
-    }
+//    public List bfsSearch(Point source, int depth){
+//        LinkedList<Cell> searchCell = new LinkedList<>();
+//
+//        int x = source.getX();
+//        int y = source.getY();
+//
+//        searchCell.add(cells[x][y]);
+//
+//        Queue<Point> searchResult = new LinkedList<>();
+//
+//        LinkedList<Point> neighbour;
+//        neighbour = source.directions();
+//        for (int i = 0; i < 4; i++) {
+//            int neiX = neighbour.get(i).getX();
+//            int neiY = neighbour.get(i).getY();
+//            searchResult.add(neighbour.get(i));
+//            searchCell.add(cells[neiX][neiY]);
+//            neighbour.clear();
+//        }
+//
+//        if(depth == 0){
+//            while(searchResult != null){
+//                Point newSource = searchResult.poll();
+//                neighbour = newSource.directions();
+//                for (int i = 0; i < neighbour.size(); i++) {
+//                    int neiX = neighbour.get(i).getX();
+//                    int neiY = neighbour.get(i).getY();
+//                    if(cells[neiX][neiY].content == null){
+//                        for (Cell cell : searchCell) {
+//                            if(!cells[neiX][neiY].equals(cell)){
+//                                searchResult.add(neighbour.get(i));
+//                                searchCell.add(cells[neiX][neiY]);
+//                            }
+//                        }
+//                    }
+//                }
+//                neighbour.clear();
+//            }
+//        }else{
+//            for (int i = 0; i < depth - 1; i++) {
+//                if(searchResult != null){
+//                    Point newSource = searchResult.poll();
+//                    neighbour = newSource.directions();
+//                    for (int j = 0; j < 4; j++) {
+//                        int neiX = neighbour.get(j).getX();
+//                        int neiY = neighbour.get(j).getY();
+//                        if(cells[neiX][neiY].content == null){
+//                            searchResult.add(neighbour.get(j));
+//                            searchCell.add(cells[neiX][neiY]);
+//                            neighbour.clear();
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        return searchCell;
+//    }
 
     public int getSize() {
         return size;

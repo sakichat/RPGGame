@@ -3,7 +3,7 @@ game.Dice[QK, ZL, XQ, GB, SY]
 +   roll(face:int, modifier:int) -> int sta
 +   roll(times:int, face:int, modifier:int) -> int sta
 
-game.Player
+game.Player:Cell
 +   ABILITY_STR:String sta
 +   ABILITY_DEX:String sta
 +   ABILITY_CON:String sta
@@ -44,9 +44,6 @@ game.Player
 +   getAttackBonus() -> int
 +   getDamageBonus() -> int
 
-game.Chest
--   equipment:game.Equipment get set
-
 game.Equipment
 +   HELMET:String sta
 +   ARMOR:String sta
@@ -69,39 +66,6 @@ game.Simulation
 +   newPlayer() -> Player sta
 +   equipments21() -> [game.Equipment] sta
 
-map.Point
--   x:int get set
--   y:int get set
-+   add(delta:Point) -> Point
-+   directions() -> [Point] sta
-
-map.GameMap
--   size:int get set
--   cells:[[Cell]]
--   name:String get set
--   exitPoint:Point get
--   enterPoint:Point get
-
-+   addContent(content:Content, location:Point)
-+   removeContent(location:Point)
-+   getContent(location:Point) -> Content
-+   hasContent(location:Point) -> boolean
-+   moveContent(fromLocation:Point, toLocation:Point)
-
-+   getCell(location:Point) -> Cell
-
-+   bfsSearch(source:Point, int depth) -> [Cell]
-
-map.Cell
-+   location:Point
-+   content:Content
-
-map.MapValidator
-+   validate() -> boolean
-
-map.validate.MapValidatorEntrance : MapValidator
-map.validate.MapValidatorExit : MapValidator
-map.validate.MapValidatorInterConnection : MapValidator
 
 ui.view.AbilityView : JPanel
 +   nameLabel:JLabel
@@ -130,6 +94,51 @@ EquipmentFileManager
 
 
 
+
+
+map.Point
+-   x:int get set
+-   y:int get set
++   add(delta:Point) -> g
++   directions() -> [Point] sta
+
+map.Cell : Observable
++   location:Point
+
+map.Obstacle : Cell
+
+map.Entrance : Cell
+
+map.Exit : Cell
+
+game.Chest : Cell
+-   equipment:game.Equipment get set
+
+game.Player : Cell
+Refer
+
+
+map.GameMap
+-   name:String get set
+-   size:int get set
+-   cells:[[Cell]]
++   addCell(cell:Cell, location:Point)
++   removeCell()
++   getCell(location:Point) -> Cell
++   hasCell(location:Point) -> boolean
++   moveCell(from:Point, to:Point)
+
++   getEntrances() -> [Entrance]
++   getExits() -> [Exit]
+
+
+map.MapValidator
++   validate() -> boolean
+
+map.validate.MapValidatorEntrance : MapValidator
+map.validate.MapValidatorExit : MapValidator
+
+map.validate.MapValidatorInterConnection : MapValidator
 
 
 
