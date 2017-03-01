@@ -1,5 +1,6 @@
 package ui.controlView;
 
+import ui.scene.MapEditingScene;
 import ui.view.View;
 
 import javax.swing.*;
@@ -11,6 +12,15 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class MainControlView extends View{
+    private MapEditingScene mapEditingScene;
+
+    public MapEditingScene getMapEditingScene() {
+        return mapEditingScene;
+    }
+
+    public void setMapEditingScene(MapEditingScene mapEditingScene) {
+        this.mapEditingScene = mapEditingScene;
+    }
 
     public final static String WALL = "Wall";
     public final static String ENTRANCE = "Entrance";
@@ -107,6 +117,6 @@ public class MainControlView extends View{
 
             }
         });
-
     }
+
 }

@@ -1,6 +1,7 @@
 package ui.controlView;
 
 import game.Player;
+import ui.scene.MapEditingScene;
 import ui.view.View;
 
 import javax.swing.*;
@@ -12,6 +13,15 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class PlayerControlView extends View {
+    private MapEditingScene mapEditingScene;
+
+    public MapEditingScene getMapEditingScene() {
+        return mapEditingScene;
+    }
+
+    public void setMapEditingScene(MapEditingScene mapEditingScene) {
+        this.mapEditingScene = mapEditingScene;
+    }
 
     private Player player;
 
