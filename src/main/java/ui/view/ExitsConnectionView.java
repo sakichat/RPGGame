@@ -28,10 +28,10 @@ public class ExitsConnectionView extends View{
         add(label);
         JLabel mapNameLabel = label;
 
-        label = new JLabel();
-        label.setSize(160, 40);
-        label.setLocation(220, 0);
-        add(label);
-        JLabel exitsConnection = label;
+        textField = new JTextField();
+        textField.setSize(160, 40);
+        textField.setLocation(220, 0);
+        add(textField);
+        JTextField exitsConnection = textField;
     }
 }
