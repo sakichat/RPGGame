@@ -1,6 +1,7 @@
 package ui.scene;
 
 import ui.controlView.*;
+import ui.view.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +18,7 @@ public class MapEditingScene extends Scene {
     private PlayerControlView playerControlView;
     private ChestControlView chestControlView;
 
-    private JPanel panel;
+    private View view;
 
     @Override
     protected void init() {
