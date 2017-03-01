@@ -122,6 +122,7 @@ map.GameMap
 -   name:String get set
 -   size:int get set
 -   cells:[[Cell]]
+
 +   addCell(cell:Cell, location:Point)
 +   removeCell()
 +   getCell(location:Point) -> Cell
