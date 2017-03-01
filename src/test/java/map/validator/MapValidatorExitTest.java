@@ -1,8 +1,7 @@
 package map.validator;
 
-import map.Cell;
-import map.Exit;
-import map.GameMap;
+import game.Simulation;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,12 +15,12 @@ public class MapValidatorExitTest {
     }
 
     @Test
-    public void validate() throws Exception {
-        GameMap gameMap = new GameMap();
-        gameMap.setSize(4);
+    public void validateExit() throws Exception {
+        MapValidatorExit mapValidatorExit = new MapValidatorExit();
+        mapValidatorExit.gameMap = Simulation.gameMap1();
 
-        Cell exitCell = new Exit();
-//        gameMap
+        Assert.assertEquals(false, mapValidatorExit.validate());
     }
+
 
 }

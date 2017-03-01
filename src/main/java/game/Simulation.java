@@ -147,8 +147,10 @@ public class Simulation {
         exit3.location = point3;
 
         gameMap.addCell(exit1, point1);
-//        gameMap.add
-        return null;
+        gameMap.addCell(exit2, point2);
+        gameMap.addCell(exit3, point3);
+
+        return gameMap;
     }
 
 }

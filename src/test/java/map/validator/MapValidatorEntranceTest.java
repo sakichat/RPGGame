@@ -1,5 +1,7 @@
 package map.validator;
 
+import game.Simulation;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,8 +15,11 @@ public class MapValidatorEntranceTest {
     }
 
     @Test
-    public void validate() throws Exception {
-        
+    public void validateEnrance() throws Exception{
+        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
+        mapValidatorEntrance.gameMap = Simulation.gameMap1();
+
+        Assert.assertEquals(false, mapValidatorEntrance.validate());
     }
 
 }
