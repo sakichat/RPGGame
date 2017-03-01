@@ -150,8 +150,8 @@ map.MapConnection
 
 map.Campaign
 -   name:String get set
-
 -   connections:[MapConnection]
+
 +   addConnection(map:GameMap)
 +   removeConnection(id:int)
 +   getConnection(id:int) -> MapConnection
