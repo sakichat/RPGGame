@@ -3,7 +3,6 @@ package ui.scene;
 import ui.controlView.*;
 import ui.view.View;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -55,4 +54,5 @@ public class MapEditingScene extends Scene {
     public void save() {
 
     }
+
 }

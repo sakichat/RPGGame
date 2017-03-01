@@ -39,7 +39,7 @@ public class EquipmentSelectorPanel extends Panel {
     protected void init() {
         super.init();
 
-        setSize(520, 170);
+        setSize(390, 170);
         title = "Equipment Selector";
 
     }
@@ -54,30 +54,20 @@ public class EquipmentSelectorPanel extends Panel {
         equipmentPanel = new View();
         equipmentPanel.setLayout(null);
         equipmentPanel.setSize(380,90);
-        equipmentPanel.setLocation(140,80);
+        equipmentPanel.setLocation(10,80);
         add(equipmentPanel);
-        
-        JLabel title = new JLabel("Character");
-        title.setLocation(0,0);
-        title.setSize(520,20);
-        title.setBackground(new Color(244,244,244));
-        add(title);
 
-        JLabel itemName = new JLabel("Item");
-        itemName.setLocation(10,30);
-        itemName.setSize(120,40);
-        itemName.setBackground(new Color(236,245,248));
-        add(itemName);
+
 
 
         textField = new JTextField();
-        textField.setLocation(140,30);
+        textField.setLocation(10,30);
         textField.setSize(160,40);
         add(textField);
 
         searchButton = new JButton();
         searchButton.setText("Search");
-        searchButton.setLocation(310,30);
+        searchButton.setLocation(180,30);
         searchButton.setSize(100,40);
         add(searchButton);
 
