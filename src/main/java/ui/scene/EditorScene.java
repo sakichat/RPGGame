@@ -1,21 +1,21 @@
 package ui.scene;
 
 import game.Equipment;
-import persistence.EquipmentFileManager;
+import ui.panel.EquipmentDelegate;
+import ui.panel.EquipmentSelectorPanel;
 
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 /**
  * @author Siyu Chen
  * @version 0.1
  */
-public class EditorScene extends Scene {
+public class EditorScene extends Scene implements EquipmentDelegate {
     private JLabel label;
     private JButton button;
+    private JPanel itemSelectLabel;
 
     @Override
     protected void init() {
@@ -143,17 +143,19 @@ public class EditorScene extends Scene {
         });
     }
     private void itemEdit(){
-        JFileChooser fileChooser = new JFileChooser(EquipmentFileManager.folderPath());
-        fileChooser.setFileFilter(new FileNameExtensionFilter("json", "json"));
-        int result = fileChooser.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            String name = EquipmentFileManager.filePathToName(selectedFile.getName());
-            Equipment equipment = EquipmentFileManager.read(name);
 
-            ItemEditingScene itemEditingScene = new ItemEditingScene();
-            itemEditingScene.setEquipment(equipment);
-            navigationView.push(itemEditingScene);
-        }
+        EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
+        equipmentSelectorPanel.setLocation(20,260);
+        equipmentSelectorPanel.setEquipmentDelegate(this);
+        add(equipmentSelectorPanel);
+    }
+
+    @Override
+    public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
+        remove(selectorPanel);
+
+        ItemEditingScene itemEditingScene = new ItemEditingScene();
+        itemEditingScene.setEquipment(equipment);
+        navigationView.push(itemEditingScene);
     }
 }

@@ -2,7 +2,6 @@ package ui.scene;
 
 import game.Equipment;
 import game.Player;
-import persistence.EquipmentFileManager;
 import persistence.PlayerFileManager;
 import ui.panel.BackpackPanel;
 import ui.panel.EquipmentDelegate;
@@ -138,7 +137,7 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
     }
 
     @Override
-    public void equipmentDelegate(Equipment equipment) {
+    public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
         player.pickUpEquipment(equipment);
     }
 }

@@ -3,7 +3,6 @@ package ui.panel;
 import game.Equipment;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -109,7 +108,7 @@ public class EquipmentSelectorPanel extends Panel {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        equipmentDelegate.equipmentDelegate(equipment);
+                        equipmentDelegate.equipmentSelectorPerformAction(EquipmentSelectorPanel.this, equipment);
                     }
                 });
 

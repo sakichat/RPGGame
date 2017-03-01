@@ -3,6 +3,7 @@ package ui.scene;
 import game.Equipment;
 import game.Player;
 import persistence.EquipmentFileManager;
+import ui.panel.EquipmentDelegate;
 
 import javax.swing.*;
 import java.awt.*;
