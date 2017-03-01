@@ -1,6 +1,7 @@
 package persistence;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import game.Equipment;
 import game.Player;
 
@@ -37,7 +38,7 @@ public class PlayerFileManager {
     public static void save(Player player){
         String name = player.getName();
         File file = path(name);
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         String content = gson.toJson(player);
         FileManager.stringToFile(content,file);
 

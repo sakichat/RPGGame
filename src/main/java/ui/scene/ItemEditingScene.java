@@ -457,7 +457,7 @@ public class ItemEditingScene extends Scene {
 
     public void save(){
         EquipmentFileManager.save(equipment);
-        navigationView.pop();
+        navigationView.popTo(EditorScene.class);
     }
 
     public void dataToView(){

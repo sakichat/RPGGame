@@ -50,7 +50,7 @@ public class PlayerCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerEditingScene playerEditingScene = new PlayerEditingScene();
-                Player player = Simulation.newPlayer();
+                Player player = new Player();
                 player.setName(nameField.getText());
                 playerEditingScene.setPlayer(player);
                 PlayerCreationScene.this.navigationView.push(playerEditingScene);

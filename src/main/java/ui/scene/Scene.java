@@ -1,5 +1,7 @@
 package ui.scene;
 
+import game.Player;
+import ui.panel.PlayerDelegate;
 import ui.view.View;
 
 import javax.swing.*;
@@ -9,7 +11,7 @@ import java.awt.*;
  * @author Siyu Chen
  * @version 0.1
  */
-public class Scene extends View {
+public class Scene extends View{
     public View contentView;
     public String title;
     public JLabel titleLabel;

@@ -1,5 +1,7 @@
 package game;
 
+import com.google.gson.annotations.Expose;
+
 import java.security.PublicKey;
 import java.util.*;
 
@@ -35,6 +37,7 @@ public class Player extends Observable{
      * Abilities and methods.
      */
 
+    @Expose
     private Map<String, Integer> abilityScores = new HashMap<>();
 
     /**
@@ -43,7 +46,9 @@ public class Player extends Observable{
      * @return Integer
      */
     public Integer getAbilityScore(String name) {
-        return abilityScores.get(name);
+
+        Integer score = abilityScores.get(name);
+        return score != null ? score : 0;
     }
 
     /**
@@ -52,7 +57,7 @@ public class Player extends Observable{
      * @return Integer
      */
     public Integer getTotalAbilityScore(String name){
-        return abilityScores.get(name) + enhancedValueOnEquipments(name);
+        return getAbilityScore(name) + enhancedValueOnEquipments(name);
     }
 
     /**
@@ -61,8 +66,12 @@ public class Player extends Observable{
      * @return Integer
      */
     public Integer getAbilityModifier(String name) {
-        int ability = getAbilityScore(name);
-        return (int)(Math.floor(ability / 2.0 - 5));
+        Integer ability = getAbilityScore(name);
+        if (ability != null) {
+            return (int) (Math.floor(ability / 2.0 - 5));
+        } else  {
+            return 0;
+        }
     }
 
     /**
@@ -85,6 +94,7 @@ public class Player extends Observable{
      * Backpack and methods.
      */
 
+    @Expose
     private List<Equipment> backpack = new LinkedList<>();
 
     /**
@@ -135,6 +145,7 @@ public class Player extends Observable{
      * Equipments and methods.
      */
 
+    @Expose
     private Map<String, Equipment> equipments = new HashMap<>();
 
     /**
@@ -206,7 +217,11 @@ public class Player extends Observable{
     /**
      * Level, name and Getter & Setter & constructor.
      */
+
+    @Expose
     private int level;
+
+    @Expose
     private String name;
 
     /**
@@ -265,6 +280,7 @@ public class Player extends Observable{
      * Hp and methods.
      */
 
+    @Expose
     private int hp;
 
     /**

@@ -2,6 +2,8 @@ package ui.scene;
 
 import game.Equipment;
 import game.Player;
+import persistence.EquipmentFileManager;
+import persistence.PlayerFileManager;
 import ui.panel.BackpackPanel;
 import ui.panel.EquipmentDelegate;
 import ui.panel.EquipmentSelectorPanel;
@@ -131,7 +133,8 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
     }
 
     private void save(){
-
+        PlayerFileManager.save(player);
+        navigationView.popTo(EditorScene.class);
     }
 
     @Override
