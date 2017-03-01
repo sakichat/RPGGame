@@ -1,5 +1,9 @@
 package game;
 
+import map.Exit;
+import map.GameMap;
+import map.Point;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -125,6 +129,26 @@ public class Simulation {
         }
 
         return filteredEquipments;
+    }
+
+    public static GameMap gameMap1(){
+        GameMap gameMap = new GameMap();
+        gameMap.setSize(4);
+        Exit exit1 = new Exit();
+        Exit exit2 = new Exit();
+        Exit exit3 = new Exit();
+
+        Point point1 = new Point(1, 1);
+        Point point2 = new Point(2, 3);
+        Point point3 = new Point(0, 1);
+
+        exit1.location = point1;
+        exit2.location = point2;
+        exit3.location = point3;
+
+        gameMap.addCell(exit1, point1);
+//        gameMap.add
+        return null;
     }
 
 }
