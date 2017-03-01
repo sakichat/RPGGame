@@ -13,7 +13,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * This is a view class extends JPanel, and implements Observer
+ * This is a view class extends Panel, and implements Observer
  * @author Qi Xia
  * @version 0.1
  */

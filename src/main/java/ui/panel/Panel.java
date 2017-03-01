@@ -9,7 +9,7 @@ import java.awt.*;
  * @author Siyu Chen
  * @version 0.1
  */
-public class Panel extends JPanel {
+public class Panel extends View {
 
     public JLabel titleLabel;
     public String title;
