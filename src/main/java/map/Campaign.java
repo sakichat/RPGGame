@@ -19,11 +19,12 @@ public class Campaign {
     }
 
     public void removeConnection(int id){
-        
+        connections.remove(id);
     }
 
     public MapConnection getConnection(int id){
-        return null;
+        MapConnection connection = connections.get(id);
+        return connection;
     }
 
     public boolean validate(){
