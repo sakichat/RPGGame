@@ -8,7 +8,7 @@ import java.util.LinkedList;
 public class GameMap {
     private String name;
     private int size;
-    private Cell[][] cells = new Cell[size][size];
+    private Cell[][] cells;
 
     public int getSize() {
         return size;
@@ -16,38 +16,23 @@ public class GameMap {
 
     public void setSize(int size) {
         this.size = size;
-        Cell cell = new Cell();
-        Point location = new Point();
-        addCell(cell , location);
-    }
-
-    public String getName() {
-        return name;
+        cells = new Cell[size][size];
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public GameMap() {
-    }
-
-    public GameMap(int size, Cell[][] cells, String name) {
-        this.size = size;
-        this.cells = cells;
-        this.name = name;
-    }
-
     public void addCell(Cell cell, Point location){
         int x = location.getX();
         int y = location.getY();
-        cells[x][y] = cell;
+        cells[y][x] = cell;
     }
 
     public void removeCell(Point location){
         int x = location.getX();
         int y = location.getY();
-        cells[x][y] = null;
+        cells[y][x] = null;
     }
 
     public Cell getCell(Point location){
@@ -56,7 +41,7 @@ public class GameMap {
 
         int x = location.getX();
         int y = location.getY();
-        cell = cells[x][y];
+        cell = cells[y][x];
 
         return cell;
     }
@@ -78,8 +63,8 @@ public class GameMap {
         int endY = endPoint.getY();
 
         Cell cell = cells[startX][startY];
-        cells[startX][startY] = null;
-        cells[endX][endY] = cell;
+        cells[startY][startX] = null;
+        cells[endY][endX] = cell;
     }
 
     public LinkedList<Entrance> getEntrances(){

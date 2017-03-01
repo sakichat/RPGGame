@@ -142,6 +142,27 @@ map.validate.MapValidatorExit : MapValidator
 map.validate.MapValidatorInterConnection : MapValidator
 
 
+map.MapConnection
+-   id:int get set
+-   map:GameMap get set
+-   targetId:int get set
+
+
+map.Campaign
+-   name:String get set
+
+-   connections:[MapConnection]
++   addConnection(map:GameMap)
++   removeConnection(id:int)
++   getConnection(id:int) -> MapConnection
+
++   validate() -> boolean
+
+
+
+
+
+
 
 
 
