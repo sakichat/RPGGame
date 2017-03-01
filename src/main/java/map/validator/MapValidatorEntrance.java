@@ -11,7 +11,7 @@ public class MapValidatorEntrance extends MapValidator{
 
     @Override
     public boolean validate() {
-        if (gameMap.getEntrances() != null) {
+        if (gameMap.getEntrances() != null && gameMap.getEntrances().size() < 2) {
             return true;
         }
 

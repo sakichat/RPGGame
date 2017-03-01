@@ -11,7 +11,7 @@ public class MapValidatorExit extends MapValidator{
 
     @Override
     public boolean validate() {
-        if (gameMap.getExits() != null){
+        if (gameMap.getExits() != null && gameMap.getExits().size() < 2){
             return true;
         }
 

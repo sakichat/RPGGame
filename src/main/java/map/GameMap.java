@@ -44,7 +44,7 @@ public class GameMap {
         cells[x][y] = cell;
     }
 
-    public void removeCell(Point location){ 
+    public void removeCell(Point location){
         int x = location.getX();
         int y = location.getY();
         cells[x][y] = null;
