@@ -1,8 +1,6 @@
 package map;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 
 /**
  * Created by Saki on 2017/2/20.
@@ -46,7 +44,7 @@ public class GameMap {
         cells[x][y] = cell;
     }
 
-    public void removeCell(Point location){ //传参？
+    public void removeCell(Point location){ 
         int x = location.getX();
         int y = location.getY();
         cells[x][y] = null;
