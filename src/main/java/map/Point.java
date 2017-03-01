@@ -19,23 +19,13 @@ public class Point {
     }
 
     public Point add(Point delta){
-        delta.x = this.x;
-        delta.y = this.y;
-        String movement = "";
-        if(movement == "up"){
-            delta.y += -1;
-        }else if(movement == "right"){
-            delta.x += 1;
-        }else if(movement == "down"){
-            delta.y +=1 ;
-        }else if(movement == "left"){
-            delta.x += -1;
-        }
-
-        return delta;
+        Point point = new Point();
+        point.x = x + delta.x;
+        point.y = y + delta.y;
+        return point;
     }
 
-    public static LinkedList directions(){
+    public static LinkedList<Point> directions(){
         LinkedList<Point> points = new LinkedList<>();
 
         Point pointUp = new Point(0,1);
@@ -67,5 +57,13 @@ public class Point {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

@@ -1,8 +1,8 @@
 package game;
 
 import com.google.gson.annotations.Expose;
+import map.Cell;
 
-import java.security.PublicKey;
 import java.util.*;
 
 /**
@@ -13,7 +13,7 @@ import java.util.*;
  * @version 0.1
  *
  */
-public class Player extends Observable{
+public class Player extends Cell{
 
     public final static String ABILITY_STR = "STR";
     public final static String ABILITY_DEX = "DEX";

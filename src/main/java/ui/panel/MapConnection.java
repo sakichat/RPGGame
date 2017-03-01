@@ -12,6 +12,8 @@ public class MapConnection extends Panel {
 
         setSize(640, 500);
         title = "Map Connection";
+
+        dataToView();
     }
 
     private JLabel label;
@@ -31,5 +33,10 @@ public class MapConnection extends Panel {
         label.setSize(160, 40);
         label.setLocation(320, 30);
         add(label);
+    }
+
+    public void dataToView() {
+        int x = 10;
+        int y = 80;
     }
 }
