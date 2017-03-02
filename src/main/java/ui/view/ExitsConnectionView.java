@@ -6,16 +6,21 @@ import javax.swing.*;
  * Created by Penelope on 17/2/28.
  */
 public class ExitsConnectionView extends View{
+
     public ExitsConnectionView() {
         this.setSize(380, 40);
 
         initSubviews();
     }
 
-    private JLabel label;
+    private JLabel idLabel;
+    private JLabel nameLabel;
     private JTextField textField;
 
     private void initSubviews() {
+
+        JLabel label;
+        JTextField textField;
 
         label = new JLabel("", JLabel.RIGHT);
         label.setSize(40, 40);
