@@ -1,5 +1,7 @@
 package ui.scene;
 
+import map.Campaign;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +10,17 @@ import java.awt.event.ActionListener;
  * Created by Penelope on 17/2/28.
  */
 public class CampaignCreationScene extends Scene {
+
+    private Campaign campaign;
+
+    public Campaign getCampaign() {
+        return campaign;
+    }
+
+    public void setCampaign(Campaign campaign) {
+        this.campaign = campaign;
+    }
+
     @Override
     protected void init() {
         super.init();
