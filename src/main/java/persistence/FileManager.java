@@ -31,9 +31,7 @@ public class FileManager {
      */
 
     public static String fileNameToName(String fileName){
-        fileName.replaceAll("_"," ");
-        return String.valueOf(fileName);
-
+        return fileName.replaceAll("_"," ");
     }
 
     /**

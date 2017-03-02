@@ -50,23 +50,6 @@ public class EquipmentTest {
 
     }
 
-    /*
-     * this method is to test if the corresponding equipment can be correctly created when enhanceOn type is null.
-     */
-    @Test
-    public void validateEmpty() throws Exception {
-        Equipment equipment;
-
-//        equipment = new Equipment("a", Equipment.WEAPON, null, 2);
-//        Assert.assertEquals(false, equipment.validate());
-
-//        equipment = new Equipment("a", null, Player.ABILITY_STR, 2);
-//        Assert.assertEquals(false, equipment.validate());
-
-//        equipment = new Equipment("a", Equipment.WEAPON, null, 2);
-//        Assert.assertEquals(false, equipment.validate());
-    }
-
     @Test
     public void validateBoots() throws Exception{
         Equipment equipment;
