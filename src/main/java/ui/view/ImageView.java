@@ -28,7 +28,9 @@ public class ImageView extends View {
     public void paint(Graphics g) {
         super.paint(g);
 
+        System.out.println("paint " + name);
+
         ImageIcon image = new ImageIcon("data/images/" + name);
-        g.drawImage(image.getImage(), 40, 40, null);
+        g.drawImage(image.getImage(), 0, 0, null);
     }
 }
