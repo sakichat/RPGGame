@@ -16,13 +16,14 @@ public class ExitsConnectionView extends View{
     private JTextField textField;
 
     private void initSubviews() {
-        label = new JLabel();
+
+        label = new JLabel("", JLabel.RIGHT);
         label.setSize(40, 40);
         label.setLocation(0, 0);
         add(label);
         JLabel idLabel = label;
 
-        label = new JLabel();
+        label = new JLabel("", JLabel.LEFT);
         label.setSize(160, 40);
         label.setLocation(50, 0);
         add(label);
@@ -33,5 +34,6 @@ public class ExitsConnectionView extends View{
         textField.setLocation(220, 0);
         add(textField);
         JTextField exitsConnection = textField;
+
     }
 }
