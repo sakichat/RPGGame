@@ -1,6 +1,9 @@
 package map.validator;
 
 import game.Simulation;
+import map.Entrance;
+import map.GameMap;
+import map.Point;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +26,23 @@ public class MapValidatorEntranceTest {
         mapValidatorEntrance.gameMap = Simulation.gameMap1();
 
         Assert.assertEquals(true, mapValidatorEntrance.validate());
+    }
+
+    /*
+     * This method tests if the map have two entrances.
+     */
+    @Test
+    public void validateEntrance() throws Exception{
+        GameMap gameMap2 = Simulation.gameMap1();
+        Point point = new Point(0, 0);
+        Entrance entrance = new Entrance();
+        gameMap2.addCell(entrance, point);
+
+        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
+        mapValidatorEntrance.gameMap = gameMap2;
+
+        Assert.assertEquals(false, mapValidatorEntrance);
+
     }
 
 }
