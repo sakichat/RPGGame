@@ -15,7 +15,6 @@ public class Campaign {
         connections.add(connection);
 
         connection.setId(connections.size());
-        connection.setTargetId(connections.size() + 1);
     }
 
     public void removeConnection(int id){
