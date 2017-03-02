@@ -30,10 +30,16 @@ public class ImageViewDemo extends JFrame {
 
 
         ImageView imageView = new ImageView();
-        imageView.setName("T1234.png");
+        imageView.setName("four_direction_road.png");
         imageView.setLocation(0, 0);
-        imageView.setSize(40, 40);
+//        imageView.setSize(40, 40);
         add(imageView);
+
+        ImageView mapCell = new ImageView();
+        mapCell.setName("mapcell.png");
+        mapCell.setLocation(0, 0);
+//        mapCell.setSize(40, 40);
+        add(mapCell, 0);
 
 
         repaint();
