@@ -1,0 +1,34 @@
+{
+  "abilityScores": {
+    "STR": 20,
+    "WIS": 4,
+    "CON": 12,
+    "DEX": 20,
+    "CHA": 20,
+    "INT": 20
+  },
+  "backpack": [],
+  "equipments": {
+    "Ring": {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    },
+    "Armor": {
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+    },
+    "Weapon": {
+      "name": "Ashbringer",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 5
+    }
+  },
+  "level": 1,
+  "name": "asd",
+  "hp": 100
+}

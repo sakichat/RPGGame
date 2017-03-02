@@ -24,10 +24,10 @@ public class EquipmentSelectorPanel extends Panel {
 
     private EquipmentDelegate equipmentDelegate;
     private View equipmentPanel;
-    private JButton addButton = new JButton();
+    private String buttonText;
 
-    public void setAddButton(String name) {
-        addButton.setText(name);
+    public void setButtonText(String buttonText) {
+        this.buttonText = buttonText;
     }
 
     public EquipmentDelegate getEquipmentDelegate() {
@@ -107,11 +107,7 @@ public class EquipmentSelectorPanel extends Panel {
                 equipmentPanel.add(equipmentView);
                 equipmentView.setEquipment(equipment);
 
-                if (equipmentDelegate instanceof EditorScene){
-                    setAddButton("Edit");
-                }else if (equipmentDelegate instanceof PlayerEditingScene){
-                    setAddButton("Add");
-                }
+                JButton addButton = new JButton(buttonText);
                 addButton.setLocation(310,yOfView);
                 addButton.setSize(60,20);
                 equipmentPanel.add(addButton);

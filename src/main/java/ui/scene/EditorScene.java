@@ -146,6 +146,7 @@ public class EditorScene extends Scene implements EquipmentDelegate {
 
         EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
         equipmentSelectorPanel.setLocation(20,260);
+        equipmentSelectorPanel.setButtonText("Edit");
         equipmentSelectorPanel.setEquipmentDelegate(this);
         add(equipmentSelectorPanel);
     }

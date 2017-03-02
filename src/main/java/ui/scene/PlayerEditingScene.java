@@ -91,6 +91,7 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
          */
         EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
         equipmentSelectorPanel.setLocation(440, 20);
+        equipmentSelectorPanel.setButtonText("Add");
         contentView.add(equipmentSelectorPanel);
 
         equipmentSelectorPanel.setEquipmentDelegate(this);
