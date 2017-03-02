@@ -1,8 +1,11 @@
 package ui.scene;
 
 import game.Equipment;
+import game.Player;
 import ui.panel.EquipmentDelegate;
 import ui.panel.EquipmentSelectorPanel;
+import ui.panel.PlayerDelegate;
+import ui.panel.PlayerSelectorPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -12,7 +15,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.1
  */
-public class EditorScene extends Scene implements EquipmentDelegate {
+public class EditorScene extends Scene implements EquipmentDelegate, PlayerDelegate {
     private JLabel label;
     private JButton button;
     private JPanel itemSelectLabel;
@@ -126,6 +129,14 @@ public class EditorScene extends Scene implements EquipmentDelegate {
             }
         });
 
+        playerEditButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerEdit();
+
+            }
+        });
+
         mapCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -158,5 +169,25 @@ public class EditorScene extends Scene implements EquipmentDelegate {
         ItemEditingScene itemEditingScene = new ItemEditingScene();
         itemEditingScene.setEquipment(equipment);
         navigationView.push(itemEditingScene);
+    }
+
+    private void playerEdit(){
+        PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
+        playerSelectorPanel.setLocation(420,260);
+        playerSelectorPanel.setButtonText("Edit");
+        playerSelectorPanel.setPlayerDelegate(this);
+        add(playerSelectorPanel);
+
+    }
+
+    @Override
+    public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
+        remove(playerSelectorPanel);
+
+        PlayerEditingScene playerEditingScene = new PlayerEditingScene();
+        playerEditingScene.setPlayer(player);
+        navigationView.push(playerEditingScene);
+
+
     }
 }

@@ -20,6 +20,11 @@ public class PlayerSelectorPanel extends Panel {
     private JButton searchButton;
     private View playerSelector;
     private PlayerDelegate playerDelegate;
+    private String buttonText;
+
+    public void setButtonText(String buttonText) {
+        this.buttonText = buttonText;
+    }
 
     public PlayerDelegate getPlayerDelegate() {
         return playerDelegate;
@@ -38,16 +43,19 @@ public class PlayerSelectorPanel extends Panel {
 
     @Override
     protected void initSubviews() {
+        playerSelector = new View();
         playerSelector.setLayout(null);
         playerSelector.setLocation(10,80);
         playerSelector.setSize(290,90);
         add(playerSelector);
 
+        textField = new JTextField();
         textField.setLayout(null);
         textField.setSize(160,40);
         textField.setLocation(10,30);
         add(textField);
 
+        searchButton = new JButton("Search");
         searchButton.setLayout(null);
         searchButton.setSize(100,40);
         searchButton.setLocation(180,30);
@@ -81,7 +89,7 @@ public class PlayerSelectorPanel extends Panel {
                 playerLabel.setText(player.getName());
                 playerSelector.add(playerLabel);
 
-                JButton addButton = new JButton("Add");
+                JButton addButton = new JButton(buttonText);
                 addButton.setLocation(170,yOfView);
                 addButton.setSize(60,20);
                 playerSelector.add(addButton);

@@ -39,16 +39,19 @@ public class MapSelectorPanel extends Panel  {
     @Override
     public void initSubviews() {
         super.initSubviews();
+        mapSelector = new View();
         mapSelector.setLayout(null);
         mapSelector.setLocation(10,80);
         mapSelector.setSize(290,90);
         add(mapSelector);
 
+        textField = new JTextField();
         textField.setLayout(null);
         textField.setSize(160,40);
         textField.setLocation(10,30);
         add(textField);
 
+        searchButton = new JButton();
         searchButton.setLayout(null);
         searchButton.setSize(100,40);
         searchButton.setLocation(180,30);
