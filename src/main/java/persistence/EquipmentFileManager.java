@@ -13,8 +13,14 @@ import java.util.List;
 /**
  * @author Li Zhen
  * @version 0.1
+ *
+ * this class is to manage the files of equipments
  */
 public class EquipmentFileManager {
+    /**
+     * this is to get file
+     * @return File
+     */
 
     public static File folderPath(){
         return new File("data/equipments");
@@ -45,7 +51,7 @@ public class EquipmentFileManager {
 
     }
     /**
-     * this method is to saveButton equipement to a file
+     * this method is to save equipement to a file
      * @param equipment Equipment
      */
 
@@ -80,6 +86,12 @@ public class EquipmentFileManager {
         }
         return names;
     }
+
+    /**
+     * this class is to return the path of file
+     * @param filePath String
+     * @return String
+     */
 
     public static String filePathToName(String filePath){
         int number = filePath.indexOf(".");

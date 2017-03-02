@@ -9,6 +9,14 @@ public class Campaign {
     private String name;
     private LinkedList<MapConnection> connections = new LinkedList<>();
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void addConnection(String name){
         MapConnection connection = new MapConnection();
         connection.setMapName(name);

@@ -2,7 +2,6 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import game.Player;
 import map.GameMap;
 
 import java.io.File;
@@ -12,13 +11,27 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by thereaghostflash on 2017-03-02.
+ * @author Li Zhen
+ * @version 0.1
+ *
+ * this class is to manage the files of map
  */
+
 public class MapFileManager {
+    /**
+     * this is to new a  file
+     * @return File
+     */
 
     public static File folderPath(){
         return new File("data/maps");
     }
+    /**
+     * this method is to get a file with path
+     * @param name String
+     * @return File
+     */
+
 
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
@@ -28,6 +41,12 @@ public class MapFileManager {
 
     }
 
+    /**
+     * this method is to read files of map
+     * @param name String
+     * @return GameMap
+     */
+
     public static GameMap read(String name){
         File file = MapFileManager.path(name);
         String mapName = FileManager.fileToString(file);
@@ -35,6 +54,10 @@ public class MapFileManager {
         return gameMap;
 
     }
+    /**
+     * this method is to save file
+     * @param gameMap GameMap
+     */
 
     public static void save(GameMap gameMap){
         String name = gameMap.getName();
@@ -44,6 +67,10 @@ public class MapFileManager {
         FileManager.stringToFile(content,file);
 
     }
+    /**
+     * this method is to get allNames of map
+     * @return List<String>
+     */
 
     public static List<String> allNames() {
         File folder = new File("data/maps/");
@@ -60,6 +87,11 @@ public class MapFileManager {
         }
         return names;
     }
+    /**
+     * this class is to return the path of file
+     * @param filePath String
+     * @return String
+     */
 
     public static String filePathToName(String filePath){
         int number = filePath.indexOf(".");

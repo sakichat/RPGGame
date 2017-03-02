@@ -1,10 +1,8 @@
 package ui.panel;
 
-import game.Equipment;
-import game.Player;
-import persistence.EquipmentFileManager;
-import persistence.PlayerFileManager;
-import ui.view.EquipmentView;
+import map.Campaign;
+import persistence.CampaignFileManager;
+import persistence.MapFileManager;
 import ui.view.View;
 
 import javax.swing.*;
@@ -13,18 +11,18 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
- * this class is the panel of playerSelector
+ * this class is the panel of campaignSelector
  */
-public class PlayerSelectorPanel extends Panel {
+public class CampaignSelectorPanel extends Panel{
     private JTextField textField;
     private JButton searchButton;
-    private View playerSelector;
-    private PlayerDelegate playerDelegate;
+    private View campaignSelector;
+    private CampaignDelegate campaignDelegate;
     private String buttonText;
 
     /**
-     *this method is to set text of addButton
-     * @param buttonText String
+     * this method is to set test of addButoon
+     * @param buttonText
      */
 
     public void setButtonText(String buttonText) {
@@ -32,21 +30,21 @@ public class PlayerSelectorPanel extends Panel {
     }
 
     /**
-     * this method is to get playerDelegate
-     * @return PlayerDelegate
+     * this method is to get CampaignDelegate
+     * @return CampaignDelegate
      */
 
-    public PlayerDelegate getPlayerDelegate() {
-        return playerDelegate;
+    public CampaignDelegate getCampaignDelegate() {
+        return campaignDelegate;
     }
 
     /**
-     * this method is to set PlayerDelegate
-     * @param playerDelegate PlayerDelegate
+     * this method is to set CampaignDelegate
+     * @param campaignDelegate CampaignDelegate
      */
 
-    public void setPlayerDelegate(PlayerDelegate playerDelegate) {
-        this.playerDelegate = playerDelegate;
+    public void setCampaignDelegate(CampaignDelegate campaignDelegate) {
+        this.campaignDelegate = campaignDelegate;
     }
 
     /**
@@ -54,23 +52,23 @@ public class PlayerSelectorPanel extends Panel {
      */
 
     @Override
-    protected void init() {
+    public void init() {
         super.init();
-        title = "Player Selector";
+        title = "Campaign Selector";
         setSize(290,170);
     }
-
     /**
      * this method is to set sub-views
      */
 
     @Override
-    protected void initSubviews() {
-        playerSelector = new View();
-        playerSelector.setLayout(null);
-        playerSelector.setLocation(10,80);
-        playerSelector.setSize(290,90);
-        add(playerSelector);
+    public void initSubviews() {
+        super.initSubviews();
+        campaignSelector = new View();
+        campaignSelector.setLayout(null);
+        campaignSelector.setLocation(10,80);
+        campaignSelector.setSize(290,90);
+        add(campaignSelector);
 
         textField = new JTextField();
         textField.setLayout(null);
@@ -78,7 +76,7 @@ public class PlayerSelectorPanel extends Panel {
         textField.setLocation(10,30);
         add(textField);
 
-        searchButton = new JButton("Search");
+        searchButton = new JButton();
         searchButton.setLayout(null);
         searchButton.setSize(100,40);
         searchButton.setLocation(180,30);
@@ -86,19 +84,18 @@ public class PlayerSelectorPanel extends Panel {
 
         searchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                playerSelector.removeAll();
+                campaignSelector.removeAll();
                 search();
             }
         });
 
     }
-
     /**
      * this method is to search the files
      */
 
     public void search(){
-        List<String> names = PlayerFileManager.allNames();
+        List<String> names = MapFileManager.allNames();
         int number = 0;
         int yOfView = 0;
         int xOfView = 0;
@@ -107,24 +104,25 @@ public class PlayerSelectorPanel extends Panel {
 
         for (String name : names){
             if (name.contains(textField.getText()) && number < 3){
-                Player player = PlayerFileManager.read(name);
+                Campaign campaign = CampaignFileManager.read(name);
 
-                JLabel playerLabel = new JLabel();
-                playerLabel.setLayout(null);
-                playerLabel.setSize(160,20);
-                playerLabel.setLocation(xOfView,yOfView);
-                playerLabel.setText(player.getName());
-                playerSelector.add(playerLabel);
+                JLabel mapLabel = new JLabel();
+                mapLabel.setLayout(null);
+                mapLabel.setSize(160,20);
+                mapLabel.setLocation(xOfView,yOfView);
+                mapLabel.setText(campaign.getName());
+                campaignSelector.add(mapLabel);
 
                 JButton addButton = new JButton(buttonText);
                 addButton.setLocation(170,yOfView);
                 addButton.setSize(60,20);
-                playerSelector.add(addButton);
+                campaignSelector.add(addButton);
 
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        playerDelegate.playerSelectorPerformAction(PlayerSelectorPanel.this,player);
+                        campaignDelegate.campaignSelectorPerformAction(CampaignSelectorPanel.this,campaign);
+
                     }
                 });
 

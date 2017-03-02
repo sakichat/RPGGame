@@ -26,13 +26,28 @@ public class EquipmentSelectorPanel extends Panel {
     private View equipmentPanel;
     private String buttonText;
 
+    /**
+     * this method is to set text of addButton
+     * @param buttonText String
+     */
+
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
     }
 
+    /**
+     * this method is to get EquipmentDelegate
+     * @return EquipmentDelegate
+     */
+
     public EquipmentDelegate getEquipmentDelegate() {
         return equipmentDelegate;
     }
+
+    /**
+     * this method is to set EquipmentDelegate
+     * @param equipmentDelegate EquipmentDelegate
+     */
 
     public void setEquipmentDelegate(EquipmentDelegate equipmentDelegate) {
         this.equipmentDelegate = equipmentDelegate;
@@ -40,6 +55,10 @@ public class EquipmentSelectorPanel extends Panel {
 
     private JTextField textField;
     private JButton searchButton;
+
+    /**
+     * this method is to initial the view
+     */
 
     @Override
     protected void init() {
@@ -89,6 +108,9 @@ public class EquipmentSelectorPanel extends Panel {
 
 
     }
+    /**
+     * this method is to search the files
+     */
 
     private void search(){
         List<String> names = EquipmentFileManager.allNames();
