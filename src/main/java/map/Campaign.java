@@ -9,9 +9,9 @@ public class Campaign {
     private String name;
     private LinkedList<MapConnection> connections = new LinkedList<>();
 
-    public void addConnection(GameMap map){
+    public void addConnection(String name){
         MapConnection connection = new MapConnection();
-        connection.setMapName(map.getName());
+        connection.setMapName(name);
         connections.add(connection);
 
         connection.setId(connections.size());
@@ -27,7 +27,7 @@ public class Campaign {
     }
 
     public boolean mapValidatorConnection(){
-        
+
         return true;
     }
 }
