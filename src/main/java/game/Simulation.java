@@ -147,8 +147,11 @@ public class Simulation {
     public static Campaign campaign1(){
         Campaign campaign = new Campaign();
         GameMap gameMap1 = gameMap1();
+        gameMap1.setName("Howling Abeiase");
         GameMap gameMap2 = gameMap1();
+        gameMap2.setName("Summoner's Rift");
         GameMap gameMap3 = gameMap1();
+        gameMap3.setName("Salty lake");
 
         campaign.addConnection(gameMap1);
         campaign.getConnection(1).setTargetId(2);
