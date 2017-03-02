@@ -1,6 +1,7 @@
 package ui.scene;
 
 import map.GameMap;
+import persistence.MapFileManager;
 import ui.panel.MapConnection;
 import ui.panel.MapDelegate;
 import ui.panel.MapSelectorPanel;
@@ -26,6 +27,9 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
     }
 
     protected void initSubviews() {
+        MapSelectorPanel mapSelectorPanel = new MapSelectorPanel();
+        mapSelectorPanel.setLocation(0,0);
+        contentView.add(mapSelectorPanel);
 
         MapConnection mapConnection = new MapConnection();
         mapConnection.setLocation(330, 20);
@@ -49,6 +53,7 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
     }
 
     public void save() {
+
 
     }
 
