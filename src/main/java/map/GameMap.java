@@ -27,6 +27,8 @@ public class GameMap {
         int x = location.getX();
         int y = location.getY();
         cells[y][x] = cell;
+
+        cell.location = location;
     }
 
     public void removeCell(Point location){
@@ -36,23 +38,13 @@ public class GameMap {
     }
 
     public Cell getCell(Point location){
-
-        Cell cell;
-
         int x = location.getX();
         int y = location.getY();
-        cell = cells[y][x];
-
-        return cell;
+        return cells[y][x];
     }
 
     public boolean hasCell(Point location){
-
-        if(getCell(location) != null){
-            return true;
-        }
-
-        return false;
+        return getCell(location) != null;
     }
 
     public void moveCell(Point startPoint, Point endPoint){
@@ -69,15 +61,12 @@ public class GameMap {
 
     public LinkedList<Entrance> getEntrances(){
         LinkedList<Entrance> entrances = new LinkedList<>();
-        Cell entranceCell;
-        Entrance entrancePoint;
-
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (cells[i][j] instanceof Entrance){
-                    entranceCell = cells[i][j];
-                    entrancePoint = (Entrance) entranceCell;
-                    entrances.add(entrancePoint);
+                    Cell cell = cells[i][j];
+                    Entrance entrance = (Entrance) cell;
+                    entrances.add(entrance);
                 }
             }
         }
@@ -87,15 +76,19 @@ public class GameMap {
 
     public LinkedList<Exit> getExits() {
         LinkedList<Exit> exits = new LinkedList<>();
-        Cell exitCell;
-        Exit exitPoint;
-
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
+<<<<<<< HEAD
                 if (cells[i][j] instanceof Exit){
                     exitCell = cells[i][j];
                     exitPoint = (Exit) exitCell;
                     exits.add(exitPoint);
+=======
+                if (cells[i][j] instanceof Entrance){
+                    Cell cell = cells[i][j];
+                    Exit exit = (Exit) cell;
+                    exits.add(exit);
+>>>>>>> origin/develop
                 }
             }
         }
