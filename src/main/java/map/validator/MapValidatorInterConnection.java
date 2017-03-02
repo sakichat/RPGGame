@@ -1,7 +1,6 @@
 package map.validator;
 
 import map.Entrance;
-import map.Exit;
 import map.MapValidator;
 import map.Point;
 
@@ -32,14 +31,25 @@ public class MapValidatorInterConnection extends MapValidator{
 
         pending.add(entrancePoint);
 
+        LinkedList<Point> aroundPoints =  aroundPoints(entrancePoint);
+        for (Point aroundPoint : aroundPoints) {
+
+        }
+
 
 
 
         return true;
     }
 
-    private LinkedList<Point> aroudPoints(){
-        LinkedList<Point> directions = new LinkedList<>();
-        return null;
+    private LinkedList<Point> aroundPoints(Point point){
+        LinkedList<Point> directions = Point.directions();
+        LinkedList<Point> aroundPoints = new LinkedList<>();
+        for (Point direction : directions) {
+            Point newPoint = point.add(direction);
+            aroundPoints.add(newPoint);
+        }
+
+        return aroundPoints;
     }
 }

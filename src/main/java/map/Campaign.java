@@ -34,10 +34,20 @@ public class Campaign {
             }
         }
 
-        if (visited.size() == connections.size() && visited.getLast() != 1){
+        if (visited.size() == connections.size() && mapContainsCircle(visited) == true){
             return true;
         }
 
         return false;
+    }
+
+    private boolean mapContainsCircle(LinkedList<Integer> visited){
+
+        for (int i = 0; i < visited.size() - 1; i++) {
+            if (visited.getLast() == visited.get(i)){
+                return false;
+            }
+        }
+        return true;
     }
 }
