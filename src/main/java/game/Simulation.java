@@ -146,18 +146,19 @@ public class Simulation {
 
     public static Campaign campaign1(){
         Campaign campaign = new Campaign();
-        GameMap gameMap1 = gameMap1();
-        gameMap1.setName("Howling Abeiase");
-        GameMap gameMap2 = gameMap1();
-        gameMap2.setName("Summoner's Rift");
-        GameMap gameMap3 = gameMap1();
-        gameMap3.setName("Salty lake");
+
+        String gameMap1 = "Howling Abeiase";
+        String gameMap2 = "Summoner's Rift";
+        String gameMap3 = "Salty Lake";
+        String gameMap4 = "Crystal Land";
 
         campaign.addConnection(gameMap1);
         campaign.getConnection(1).setTargetId(2);
         campaign.addConnection(gameMap2);
         campaign.getConnection(2).setTargetId(3);
         campaign.addConnection(gameMap3);
+        campaign.getConnection(3).setTargetId(4);
+        campaign.addConnection(gameMap4);
 
         return campaign;
     }
