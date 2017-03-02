@@ -7,9 +7,6 @@ import java.awt.*;
  * Created by Penelope on 17/3/1.
  */
 public class ImageView extends View {
-    public ImageView() {
-        setSize(40, 40);
-    }
 
     private String name;
 
