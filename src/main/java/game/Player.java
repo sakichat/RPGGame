@@ -308,9 +308,15 @@ public class Player extends Cell{
      * This method is used to calculate the hp value based on the D20 rules.
      */
     public void generateHp() {
-        int hitDie = Dice.rool(10);
-        int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
-        hp += levelAdvances > 1 ? levelAdvances : 1;
+
+        hp = 100;
+
+        for (int i = 0; i < level - 1; i++) {
+            int hitDie = Dice.rool(10);
+            int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
+            hp += levelAdvances > 1 ? levelAdvances : 1;
+        }
+
         setChanged();
         notifyObservers(HP_CHANGE);
     }

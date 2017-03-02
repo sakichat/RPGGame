@@ -117,6 +117,7 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
             @Override
             public void actionPerformed(ActionEvent e) {
                 player.setLevel(Integer.valueOf(levelField.getText()));
+                player.generateHp();
                 playerPanel.dataToView();
             }
         });
@@ -125,7 +126,6 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
             @Override
             public void actionPerformed(ActionEvent e) {
                 player.generateAbilities();
-                player.setHp(100);
                 playerPanel.dataToView();
             }
         });
