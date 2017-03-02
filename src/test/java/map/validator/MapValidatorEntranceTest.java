@@ -45,16 +45,16 @@ public class MapValidatorEntranceTest {
 
     }
 
-//    @Test
-//    public void validateEntrance3() throws Exception{
-//        Point point = new Point(3, 3);
-//        GameMap gameMap2 = Simulation.gameMap1();
-//        gameMap2.removeCell(point);
-//
-//        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
-//        mapValidatorEntrance.setGameMap(gameMap2);
-//
-//        Assert.assertEquals(false, mapValidatorEntrance.validate());
-//    }
+    @Test
+    public void validateEntrance3() throws Exception{
+        Point point = new Point(3, 3);
+        GameMap gameMap2 = Simulation.gameMap1();
+        gameMap2.removeCell(point);
+
+        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
+        mapValidatorEntrance.setGameMap(gameMap2);
+
+        Assert.assertEquals(false, mapValidatorEntrance.validate());
+    }
 
 }

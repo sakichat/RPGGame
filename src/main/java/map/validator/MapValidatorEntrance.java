@@ -1,6 +1,5 @@
 package map.validator;
 
-import map.GameMap;
 import map.MapValidator;
 
 /**
@@ -10,7 +9,7 @@ public class MapValidatorEntrance extends MapValidator{
 
     @Override
     public boolean validate() {
-        if (gameMap.getEntrances() != null && gameMap.getEntrances().size() < 2) {
+        if (gameMap.getEntrances() != null && gameMap.getEntrances().size() == 1) {
             return true;
         }
 

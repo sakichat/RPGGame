@@ -44,20 +44,20 @@ public class MapValidatorExitTest {
         Assert.assertEquals(false, mapValidatorExit.validate());
     }
 
-//    /*
-//    * This method tests if the map can have no exit.
-//    */
-//    @Test
-//    public void validateExit3() throws Exception{
-//        GameMap gameMap3 = Simulation.gameMap1();
-//
-//        Point point = new Point(1, 1);
-//        gameMap3.removeCell(point);
-//
-//        MapValidatorExit mapValidatorExit = new MapValidatorExit();
-//        mapValidatorExit.setGameMap(gameMap3);
-//
-//        Assert.assertEquals(false, mapValidatorExit.validate());
-//    }
+    /*
+    * This method tests if the map can have no exit.
+    */
+    @Test
+    public void validateExit3() throws Exception{
+        GameMap gameMap3 = Simulation.gameMap1();
+
+        Point point = new Point(1, 1);
+        gameMap3.removeCell(point);
+
+        MapValidatorExit mapValidatorExit = new MapValidatorExit();
+        mapValidatorExit.setGameMap(gameMap3);
+
+        Assert.assertEquals(false, mapValidatorExit.validate());
+    }
 
 }
