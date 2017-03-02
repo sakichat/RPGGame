@@ -14,12 +14,15 @@ public class MapValidatorEntranceTest {
 
     }
 
+    /*
+     * This method tests if the map has only one entrance.
+     */
     @Test
     public void validateEnrance() throws Exception{
         MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
         mapValidatorEntrance.gameMap = Simulation.gameMap1();
 
-        Assert.assertEquals(false, mapValidatorEntrance.validate());
+        Assert.assertEquals(true, mapValidatorEntrance.validate());
     }
 
 }

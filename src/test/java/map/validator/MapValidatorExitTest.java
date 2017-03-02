@@ -14,12 +14,15 @@ public class MapValidatorExitTest {
 
     }
 
+    /*
+     * This method tests if the map have only one exit.
+     */
     @Test
     public void validateExit() throws Exception {
         MapValidatorExit mapValidatorExit = new MapValidatorExit();
         mapValidatorExit.gameMap = Simulation.gameMap1();
 
-        Assert.assertEquals(false, mapValidatorExit.validate());
+        Assert.assertEquals(true, mapValidatorExit.validate());
     }
 
 
