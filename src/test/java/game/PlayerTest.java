@@ -149,7 +149,7 @@ public class PlayerTest {
         player.equip(equipment4);
         int now = player.getTotalAbilityScore(Player.ABILITY_INT);
 
-        Assert.assertEquals(pre, now - 3);
+        Assert.assertEquals(pre, now - equipment4.getEnhancedValue());
     }
 
     /*
@@ -186,7 +186,7 @@ public class PlayerTest {
         player.equip(equipment12);
         int now = player.getTotalAbilityScore(Player.ABILITY_CON);
 
-        Assert.assertEquals(pre, now - 5);
+        Assert.assertEquals(pre, now - equipment12.getEnhancedValue());
     }
 
 }
