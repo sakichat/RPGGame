@@ -17,19 +17,17 @@ public class GameMapView extends View {
 
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
+
     }
 
     private final static int _LAYER_BACKGROUND = 0;
+
+    private void initBackground() {
+
+    }
 
     private void initLayers() {
 
     }
 
-    private GameMapLayerView getLayer (int index) {
-        return new GameMapLayerView();
-    }
-
-    private void initBackground() {
-
-    }
 }
