@@ -1,47 +1,48 @@
 package ui.panel;
 
-import game.Equipment;
 import game.Player;
-import persistence.EquipmentFileManager;
+import map.GameMap;
+import persistence.MapFileManager;
 import persistence.PlayerFileManager;
-import ui.view.EquipmentView;
 import ui.view.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Created by thereaghostflash on 2017-02-28.
+ * Created by thereaghostflash on 2017-03-02.
  */
-public class PlayerSelectorPanel extends Panel {
+public class MapSelectorPanel extends Panel  {
     private JTextField textField;
     private JButton searchButton;
-    private View playerSelector;
-    private PlayerDelegate playerDelegate;
+    private View mapSelector;
+    private MapDelegate mapDelegate;
 
-    public PlayerDelegate getPlayerDelegate() {
-        return playerDelegate;
+    public MapDelegate getMapDelegate() {
+        return mapDelegate;
     }
 
-    public void setPlayerDelegate(PlayerDelegate playerDelegate) {
-        this.playerDelegate = playerDelegate;
+    public void setMapDelegate(MapDelegate mapDelegate) {
+        this.mapDelegate = mapDelegate;
     }
 
     @Override
-    protected void init() {
+    public void init() {
         super.init();
-        title = "Player Selector";
+        title = "Map Selector";
         setSize(290,170);
     }
 
     @Override
-    protected void initSubviews() {
-        playerSelector.setLayout(null);
-        playerSelector.setLocation(10,80);
-        playerSelector.setSize(290,90);
-        add(playerSelector);
+    public void initSubviews() {
+        super.initSubviews();
+        mapSelector.setLayout(null);
+        mapSelector.setLocation(10,80);
+        mapSelector.setSize(290,90);
+        add(mapSelector);
 
         textField.setLayout(null);
         textField.setSize(160,40);
@@ -55,7 +56,7 @@ public class PlayerSelectorPanel extends Panel {
 
         searchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                playerSelector.removeAll();
+                mapSelector.removeAll();
                 search();
             }
         });
@@ -63,7 +64,7 @@ public class PlayerSelectorPanel extends Panel {
     }
 
     public void search(){
-        List<String> names = PlayerFileManager.allNames();
+        List<String> names = MapFileManager.allNames();
         int number = 0;
         int yOfView = 0;
         int xOfView = 0;
@@ -72,24 +73,25 @@ public class PlayerSelectorPanel extends Panel {
 
         for (String name : names){
             if (name.contains(textField.getText()) && number < 3){
-                Player player = PlayerFileManager.read(name);
+                GameMap gameMap = MapFileManager.read(name);
 
-                JLabel playerLabel = new JLabel();
-                playerLabel.setLayout(null);
-                playerLabel.setSize(160,20);
-                playerLabel.setLocation(xOfView,yOfView);
-                playerLabel.setText(player.getName());
-                playerSelector.add(playerLabel);
+                JLabel mapLabel = new JLabel();
+                mapLabel.setLayout(null);
+                mapLabel.setSize(160,20);
+                mapLabel.setLocation(xOfView,yOfView);
+                mapLabel.setText(gameMap.getName());
+                mapSelector.add(mapLabel);
 
                 JButton addButton = new JButton("Add");
                 addButton.setLocation(170,yOfView);
                 addButton.setSize(60,20);
-                playerSelector.add(addButton);
+                mapSelector.add(addButton);
 
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        playerDelegate.playerSelectorPerformAction(PlayerSelectorPanel.this,player);
+                        mapDelegate.mapSelectorPerformAction(MapSelectorPanel.this,gameMap);
+
                     }
                 });
 

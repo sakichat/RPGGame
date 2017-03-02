@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import persistence.EquipmentFileManager;
+import ui.scene.EditorScene;
+import ui.scene.PlayerEditingScene;
 import ui.view.*;
 
 /**
@@ -22,6 +24,11 @@ public class EquipmentSelectorPanel extends Panel {
 
     private EquipmentDelegate equipmentDelegate;
     private View equipmentPanel;
+    private JButton addButton = new JButton();
+
+    public void setAddButton(String name) {
+        addButton.setText(name);
+    }
 
     public EquipmentDelegate getEquipmentDelegate() {
         return equipmentDelegate;
@@ -100,7 +107,11 @@ public class EquipmentSelectorPanel extends Panel {
                 equipmentPanel.add(equipmentView);
                 equipmentView.setEquipment(equipment);
 
-                JButton addButton = new JButton("Add");
+                if (equipmentDelegate instanceof EditorScene){
+                    setAddButton("Edit");
+                }else if (equipmentDelegate instanceof PlayerEditingScene){
+                    setAddButton("Add");
+                }
                 addButton.setLocation(310,yOfView);
                 addButton.setSize(60,20);
                 equipmentPanel.add(addButton);

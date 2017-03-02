@@ -23,6 +23,10 @@ public class GameMap {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void addCell(Cell cell, Point location){
         int x = location.getX();
         int y = location.getY();
