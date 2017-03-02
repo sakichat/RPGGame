@@ -33,8 +33,12 @@ public class MapValidatorInterConnection extends MapValidator{
 
         LinkedList<Point> aroundPoints =  aroundPoints(entrancePoint);
         for (Point aroundPoint : aroundPoints) {
-
+            if (!pending.contains(aroundPoint) && !visited.contains(aroundPoint)) {
+                pending.add(aroundPoint);
+            }
         }
+
+        visited.add(pending.getFirst());
 
 
 

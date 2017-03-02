@@ -35,15 +35,14 @@ public class Campaign {
     }
 
     public boolean mapValidatorConnection(){
-        LinkedList<Integer> visited = new LinkedList<>();
-        for (MapConnection connection : connections) {
-            if (!visited.contains(connection.getTargetId())){
-                visited.add(connection.getTargetId());
-            }
-        }
+        int[] check = {2, 3, 4, 5, 0};
 
-        if (visited.size() == connections.size() && mapContainsCircle(visited) == true){
-            return true;
+        for (MapConnection connection : connections) {
+            for (int i = 0; i < 5; i++) {
+                if (connection.getTargetId() == check[i]){
+                    check[i] = 1;
+                }
+            }
         }
 
         return false;
