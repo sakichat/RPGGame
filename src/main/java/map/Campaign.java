@@ -34,27 +34,46 @@ public class Campaign {
         return connection;
     }
 
-    public boolean mapValidatorConnection(){
-        int[] check = {2, 3, 4, 5, 0};
+    public boolean validate(){
 
-        for (MapConnection connection : connections) {
-            for (int i = 0; i < 5; i++) {
-                if (connection.getTargetId() == check[i]){
-                    check[i] = 1;
-                }
-            }
+        // if no connection
+        if (connections.size() == 0) {
+            return false;
         }
 
-        return false;
-    }
+        LinkedList<Integer> pendingIds = new LinkedList<>();
+        LinkedList<Integer> visitedIds = new LinkedList<>();
 
-    private boolean mapContainsCircle(LinkedList<Integer> visited){
+        pendingIds.addLast(1);
 
-        for (int i = 0; i < visited.size() - 1; i++) {
-            if (visited.getLast() == visited.get(i)){
+        while (pendingIds.size() > 0) {
+            int id = pendingIds.removeFirst();
+            int targetId = getConnection(id).getTargetId();
+
+            //  if id out of range
+            if (targetId < 0 || targetId >= connections.size()) {
                 return false;
             }
+
+            //  if pending or visited, cycle detected
+            if (pendingIds.contains(targetId) || visitedIds.contains(targetId)){
+                return false;
+            }
+
+            visitedIds.addLast(id);
+
+            if (targetId == 0) {
+                break;
+            }
+
+            pendingIds.addLast(targetId);
         }
+
+        //  if ends early, some maps are not reached
+        if (visitedIds.size() != connections.size()) {
+            return false;
+        }
+
         return true;
     }
 }
