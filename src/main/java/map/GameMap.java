@@ -76,15 +76,12 @@ public class GameMap {
 
     public LinkedList<Exit> getExits() {
         LinkedList<Exit> exits = new LinkedList<>();
-        Cell exitCell;
-        Exit exitPoint;
-
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (cells[i][j] instanceof Entrance){
-                    exitCell = cells[i][j];
-                    exitPoint = (Exit) exitCell;
-                    exits.add(exitPoint);
+                    Cell cell = cells[i][j];
+                    Exit exit = (Exit) cell;
+                    exits.add(exit);
                 }
             }
         }
