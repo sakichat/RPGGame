@@ -177,6 +177,18 @@ ui.view.ImageView : View
 *   paint()
 
 
+
+ui.view.GameMapLayerView : View
+-   size:int get set
+-   cells:[[View]]
+
++   addCell(cell:View, location:Point)
++   removeCell(location:Point)
++   getCell(location:Point) -> View
+
+
+
+
 ui.view.GameMapView : View
 -   gameMap:GameMap get set
 
@@ -187,14 +199,6 @@ ui.view.GameMapView : View
 -   getLayer(index:int) -> GameMapLayerView
 -   initBackground();
 
-
-ui.view.GameMapLayerView : View
--   size:int get set
--   cells:[[View]]
-
-+   addCell(cell:View, location:Point)
-+   removeCell(location:Point)
-+   getCell(location:Point) -> View
 
 
 

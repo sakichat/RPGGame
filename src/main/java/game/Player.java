@@ -258,6 +258,9 @@ public class Player extends Cell{
         this.name = name;
     }
 
+    {
+        imageName = "player_1.png";
+    }
 
     /**
      * Constructor without parameters.

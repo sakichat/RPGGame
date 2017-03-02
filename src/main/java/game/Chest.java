@@ -28,4 +28,8 @@ public class Chest extends Cell{
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
     }
+
+    public Chest() {
+        imageName = "chest.png";
+    }
 }

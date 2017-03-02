@@ -20,7 +20,7 @@ public class Window extends JFrame{
         this.contentView = contentView;
 
         this.setResizable(false);
-        this.setSize(1000, 600);
+        this.setSize(1000, 640);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
 

@@ -25,16 +25,21 @@ public class GameMapLayerViewDemo extends JFrame{
         this.add(gameMapLayerView);
 
 
-        for (int i = 0; i < 16; i++) {
-            for (int j = 0; j < 16; j++) {
+
+        for (int i = 0; i < gameMapLayerView.getGridSize(); i++) {
+            for (int j = 0; j < gameMapLayerView.getGridSize(); j++) {
 
                 ImageView imageView = new ImageView();
-                imageView.setName("four_direction_road.png");
+                imageView.setName("grass_background.png");
                 gameMapLayerView.addCell(imageView, new Point(j, i));
 
             }
 
         }
+
+        ImageView selected = new ImageView();
+        selected.setName("selected.png");
+        gameMapLayerView.addCell(selected, new Point(1, 1));
 
         this.repaint();
     }

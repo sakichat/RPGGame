@@ -15,4 +15,14 @@ public abstract class Cell extends Observable{
     public void setLocation(Point location) {
         this.location = location;
     }
+
+    protected String imageName;
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
 }
