@@ -1,9 +1,6 @@
 package game;
 
-import map.Entrance;
-import map.Exit;
-import map.GameMap;
-import map.Point;
+import map.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -147,4 +144,18 @@ public class Simulation {
         return gameMap;
     }
 
+    public static Campaign campaign1(){
+        Campaign campaign = new Campaign();
+        GameMap gameMap1 = gameMap1();
+        GameMap gameMap2 = gameMap1();
+        GameMap gameMap3 = gameMap1();
+
+        campaign.addConnection(gameMap1);
+        campaign.getConnection(1).setTargetId(2);
+        campaign.addConnection(gameMap2);
+        campaign.getConnection(2).setTargetId(3);
+        campaign.addConnection(gameMap3);
+
+        return campaign;
+    }
 }
