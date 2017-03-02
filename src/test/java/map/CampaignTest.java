@@ -17,10 +17,10 @@ public class CampaignTest {
      * This case test the ordinary sequence-like campaign.
      */
     @Test
-    public void mapValidatorConnection() throws Exception {
+    public void campaignConnection() throws Exception {
         Campaign campaign = Simulation.campaign1();
 
-        Assert.assertEquals(true, campaign.mapValidatorConnection());
+        Assert.assertEquals(true, campaign.validate());
     }
 
     /*
@@ -45,7 +45,7 @@ public class CampaignTest {
         campaign.getConnection(3).setTargetId(4);
         campaign.getConnection(4).setTargetId(1);
 
-        Assert.assertEquals(false, campaign.mapValidatorConnection());
+        Assert.assertEquals(false, campaign.validate());
     }
 
     /*
@@ -70,7 +70,7 @@ public class CampaignTest {
         campaign.getConnection(3).setTargetId(1);
         campaign.getConnection(4).setTargetId(0);
 
-        Assert.assertEquals(false, campaign.mapValidatorConnection());
+        Assert.assertEquals(false, campaign.validate());
     }
 
 }
