@@ -45,6 +45,9 @@ public class MapValidatorEntranceTest {
 
     }
 
+    /*
+     * This case test if the campaign can have no entrance.
+     */
     @Test
     public void validateEntrance3() throws Exception{
         Point point = new Point(3, 3);

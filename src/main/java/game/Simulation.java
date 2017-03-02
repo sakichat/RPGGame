@@ -159,6 +159,7 @@ public class Simulation {
         campaign.addConnection(gameMap3);
         campaign.getConnection(3).setTargetId(4);
         campaign.addConnection(gameMap4);
+        campaign.getConnection(4).setTargetId(0);
 
         return campaign;
     }

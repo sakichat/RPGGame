@@ -13,6 +13,9 @@ public class FileManagerTest {
 
     }
 
+    /*
+     * This case tests the nameToFileName() method.
+     */
     @Test
     public void nameToFileName() throws Exception {
         String testIt = "AB CDE";
@@ -22,6 +25,9 @@ public class FileManagerTest {
         Assert.assertEquals(shouldBe, after);
     }
 
+    /*
+     * This case tests the fileNameToName() method.
+     */
     @Test
     public void fileNameToName() throws Exception {
         String testIt = "AB___CDE";

@@ -50,6 +50,9 @@ public class EquipmentTest {
 
     }
 
+    /*
+     * This case test the ordinary equipment-creation.
+     */
     @Test
     public void validateBoots() throws Exception{
         Equipment equipment;
