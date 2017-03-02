@@ -1,11 +1,24 @@
 package ui.panel;
 
+import map.Campaign;
+
 import javax.swing.*;
 
 /**
  * Created by Penelope on 17/2/28.
  */
 public class MapConnectionPanel extends Panel {
+
+    private Campaign campaign;
+
+    public Campaign getCampaign() {
+        return campaign;
+    }
+
+    public void setCampaign(Campaign campaign) {
+        this.campaign = campaign;
+    }
+
     @Override
     protected void init() {
         super.init();
@@ -16,9 +29,9 @@ public class MapConnectionPanel extends Panel {
         dataToView();
     }
 
-    private JLabel label;
-
     protected void initSubviews() {
+
+        JLabel label;
 
         label = new JLabel("ID", JLabel.RIGHT);
         label.setSize(40, 40);
@@ -37,6 +50,7 @@ public class MapConnectionPanel extends Panel {
 
         //for 添加“remove按钮 +ExitsConnectionView”组合
         //添加validate按钮
+
 
     }
 
