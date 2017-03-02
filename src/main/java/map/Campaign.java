@@ -18,11 +18,11 @@ public class Campaign {
     }
 
     public void removeConnection(int id){
-        connections.remove(id);
+        connections.remove(id - 1);
     }
 
     public MapConnection getConnection(int id){
-        MapConnection connection = connections.get(id);
+        MapConnection connection = connections.get(id - 1);
         return connection;
     }
 
