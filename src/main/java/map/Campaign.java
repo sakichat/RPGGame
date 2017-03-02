@@ -11,7 +11,7 @@ public class Campaign {
 
     public void addConnection(GameMap map){
         MapConnection connection = new MapConnection();
-        connection.setMap(map);
+        connection.setMapName(map.getName());
         connections.add(connection);
 
         connection.setId(connections.size());
@@ -26,7 +26,8 @@ public class Campaign {
         return connection;
     }
 
-    public boolean validate(){
+    public boolean mapValidatorConnection(){
+        
         return true;
     }
 }

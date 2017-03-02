@@ -5,7 +5,7 @@ package map;
  */
 public class MapConnection {
     private int id;
-    private GameMap map;
+    private String mapName;
     private int targetId;
 
     public int getId() {
@@ -16,12 +16,12 @@ public class MapConnection {
         this.id = id;
     }
 
-    public GameMap getMap() {
-        return map;
+    public String getMapName() {
+        return mapName;
     }
 
-    public void setMap(GameMap map) {
-        this.map = map;
+    public void setMapName(String mapName) {
+        this.mapName = mapName;
     }
 
     public int getTargetId() {
