@@ -9,6 +9,7 @@ import java.util.LinkedList;
 public class Point {
     private int x;
     private int y;
+    private int visited;
 
     public Point() {
     }
