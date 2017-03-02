@@ -176,36 +176,6 @@ public class PlayerTest {
     }
 
     /*
-     * This method tests if player can pick up some items unqualified.
-     */
-    @Test
-    public void testPickupUnqualifiedEquipment() throws Exception {
-        Equipment unqualifiedEquipment = new Equipment("", null, Player.ABILITY_STR, 4);
-        int previousStr = player.getTotalAbilityScore(Player.ABILITY_STR);
-        int nowStr;
-        player.dropEquipment(equipment1);
-        player.pickUpEquipment(unqualifiedEquipment);
-        player.equip(unqualifiedEquipment);
-        nowStr = player.getTotalAbilityScore(Player.ABILITY_STR);
-
-        Assert.assertEquals(previousStr, nowStr);
-    }
-
-    /*
-     * This methods test if player can put unqualified items in backpack.
-     * This method is useless.
-     */
-    @Test
-    public void testUnqualifiedEquipPickup() throws Exception {
-        Equipment unqualifiedEquipment = new Equipment("", null, Player.ABILITY_STR, 4);
-        player.dropEquipment(equipment1);
-        player.pickUpEquipment(unqualifiedEquipment);
-        boolean containIt = player.equipmentsInBackpack().contains(unqualifiedEquipment);
-
-        Assert.assertEquals(false, containIt);
-    }
-
-    /*
      * This method tests if player can wear more than one item of the same category.
      */
     @Test
@@ -218,24 +188,5 @@ public class PlayerTest {
 
         Assert.assertEquals(pre, now - 5);
     }
-
-    /*
-     * This method tests if the player can wear something not in the backpack.
-     */
-    @Test
-    public void testWearing() throws Exception {
-        int pre = player.getTotalAbilityScore(Player.ABILITY_CHA);
-        player.equip(equipment23);
-        int now = player.getTotalAbilityScore(Player.ABILITY_CHA);
-
-        Assert.assertEquals(pre, now);
-    }
-
-    @Test
-    public void testFullBackpackFullBody() throws Exception{
-
-    }
-
-
 
 }

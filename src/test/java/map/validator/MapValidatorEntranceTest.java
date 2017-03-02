@@ -32,7 +32,7 @@ public class MapValidatorEntranceTest {
      * This method tests if the map have two entrances.
      */
     @Test
-    public void validateEntrance() throws Exception{
+    public void validateEntrance2() throws Exception{
         GameMap gameMap2 = Simulation.gameMap1();
         Point point = new Point(0, 0);
         Entrance entrance = new Entrance();
@@ -41,8 +41,20 @@ public class MapValidatorEntranceTest {
         MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
         mapValidatorEntrance.setGameMap(gameMap2);
 
-        Assert.assertEquals(false, mapValidatorEntrance);
+        Assert.assertEquals(false, mapValidatorEntrance.validate());
 
+    }
+
+    @Test
+    public void validateEntrance3() throws Exception{
+        Point point = new Point(3, 3);
+        GameMap gameMap2 = Simulation.gameMap1();
+        gameMap2.removeCell(point);
+
+        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
+        mapValidatorEntrance.setGameMap(gameMap2);
+
+        Assert.assertEquals(false, mapValidatorEntrance.validate());
     }
 
 }

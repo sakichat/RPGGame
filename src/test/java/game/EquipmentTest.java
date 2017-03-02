@@ -71,8 +71,8 @@ public class EquipmentTest {
     public void validateBoots() throws Exception{
         Equipment equipment;
 
-        equipment = new Equipment("", Equipment.BOOTS, Player.ABILITY_DEX, -1);
-        Assert.assertEquals(false, equipment.validate());
+        equipment = new Equipment("", Equipment.BOOTS, Player.ABILITY_DEX, 1);
+        Assert.assertEquals(true, equipment.validate());
     }
 
 
