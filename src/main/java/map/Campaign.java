@@ -30,8 +30,7 @@ public class Campaign {
     }
 
     public MapConnection getConnection(int id){
-        MapConnection connection = connections.get(id - 1);
-        return connection;
+        return connections.get(id - 1);
     }
 
     public boolean validate(){
@@ -47,11 +46,11 @@ public class Campaign {
         pendingIds.addLast(1);
 
         while (pendingIds.size() > 0) {
-            int id = pendingIds.removeFirst();
+            int id = pendingIds.getFirst();
             int targetId = getConnection(id).getTargetId();
 
             //  if id out of range
-            if (targetId < 0 || targetId >= connections.size()) {
+            if (targetId < 0 || targetId > connections.size()) {
                 return false;
             }
 
@@ -60,6 +59,7 @@ public class Campaign {
                 return false;
             }
 
+            pendingIds.removeFirst();
             visitedIds.addLast(id);
 
             if (targetId == 0) {
