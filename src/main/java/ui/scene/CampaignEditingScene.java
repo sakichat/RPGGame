@@ -1,11 +1,10 @@
 package ui.scene;
 
+import map.Campaign;
 import map.GameMap;
-import persistence.MapFileManager;
-import ui.panel.MapConnection;
+import ui.panel.MapConnectionPanel;
 import ui.panel.MapDelegate;
 import ui.panel.MapSelectorPanel;
-import ui.panel.Panel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +14,16 @@ import java.awt.event.ActionListener;
  * Created by Penelope on 17/2/28.
  */
 public class CampaignEditingScene extends Scene implements MapDelegate {
-    private JButton button;
+
+    private Campaign campaign;
+
+    public Campaign getCampaign() {
+        return campaign;
+    }
+
+    public void setCampaign(Campaign campaign) {
+        this.campaign = campaign;
+    }
 
     @Override
     protected void init() {
@@ -31,7 +39,7 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
         mapSelectorPanel.setLocation(0,0);
         contentView.add(mapSelectorPanel);
 
-        MapConnection mapConnection = new MapConnection();
+        MapConnectionPanel mapConnection = new MapConnectionPanel();
         mapConnection.setLocation(330, 20);
         contentView.add(mapConnection);
 
