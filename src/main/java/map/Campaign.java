@@ -27,7 +27,17 @@ public class Campaign {
     }
 
     public boolean mapValidatorConnection(){
+        LinkedList<Integer> visited = new LinkedList<>();
+        for (MapConnection connection : connections) {
+            if (!visited.contains(connection.getTargetId())){
+                visited.add(connection.getTargetId());
+            }
+        }
 
-        return true;
+        if (visited.size() == connections.size() && visited.getLast() != 1){
+            return true;
+        }
+
+        return false;
     }
 }
