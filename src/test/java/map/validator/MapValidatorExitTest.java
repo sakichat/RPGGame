@@ -20,7 +20,7 @@ public class MapValidatorExitTest {
     @Test
     public void validateExit() throws Exception {
         MapValidatorExit mapValidatorExit = new MapValidatorExit();
-        mapValidatorExit.gameMap = Simulation.gameMap1();
+        mapValidatorExit.setGameMap(Simulation.gameMap1());
 
         Assert.assertEquals(true, mapValidatorExit.validate());
     }

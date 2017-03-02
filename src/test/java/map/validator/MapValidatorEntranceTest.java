@@ -23,7 +23,7 @@ public class MapValidatorEntranceTest {
     @Test
     public void validateEnrance() throws Exception{
         MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
-        mapValidatorEntrance.gameMap = Simulation.gameMap1();
+        mapValidatorEntrance.setGameMap(Simulation.gameMap1());
 
         Assert.assertEquals(true, mapValidatorEntrance.validate());
     }
@@ -39,7 +39,7 @@ public class MapValidatorEntranceTest {
         gameMap2.addCell(entrance, point);
 
         MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
-        mapValidatorEntrance.gameMap = gameMap2;
+        mapValidatorEntrance.setGameMap(gameMap2);
 
         Assert.assertEquals(false, mapValidatorEntrance);
 
