@@ -8,6 +8,6 @@ import map.MapValidator;
 public class MapValidatorInterConnection extends MapValidator{
     @Override
     public boolean validate() {
-        return super.validate();
+        return true;
     }
 }

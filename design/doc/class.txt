@@ -172,6 +172,10 @@ map.Campaign
 
 
 
+ui.view.ImageView : View
+-   name:String
+*   paint()
+
 
 
 
