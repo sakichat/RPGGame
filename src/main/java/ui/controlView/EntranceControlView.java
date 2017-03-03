@@ -13,11 +13,17 @@ import java.awt.event.ActionListener;
  */
 public class EntranceControlView extends ControlView {
 
+    /**
+     * constructor of the View.
+     */
     public EntranceControlView() {
         this.setSize(180,560);
         initSubviews();
     }
 
+    /**
+     * layout
+     */
     public void initSubviews() {
 
         JLabel topicLabel = new JLabel();
