@@ -385,7 +385,7 @@ public class ItemEditingScene extends Scene {
         strButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setType(Player.ABILITY_STR);
+                equipment.setEnhancedAttribute(Player.ABILITY_STR);
                 enhanceOnLabel.setText("Str");
             }
         });
@@ -393,7 +393,7 @@ public class ItemEditingScene extends Scene {
         dexButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setType(Player.ABILITY_DEX);
+                equipment.setEnhancedAttribute(Player.ABILITY_DEX);
                 enhanceOnLabel.setText("Dex");
             }
         });
@@ -401,7 +401,7 @@ public class ItemEditingScene extends Scene {
         conButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setType(Player.ABILITY_CON);
+                equipment.setEnhancedAttribute(Player.ABILITY_CON);
                 enhanceOnLabel.setText("Con");
             }
         });
@@ -409,7 +409,7 @@ public class ItemEditingScene extends Scene {
         intButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setType(Player.ABILITY_INT);
+                equipment.setEnhancedAttribute(Player.ABILITY_INT);
                 enhanceOnLabel.setText("Int");
             }
         });
@@ -417,7 +417,7 @@ public class ItemEditingScene extends Scene {
         wisButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setType(Player.ABILITY_WIS);
+                equipment.setEnhancedAttribute(Player.ABILITY_WIS);
                 enhanceOnLabel.setText("Wis");
             }
         });
@@ -425,7 +425,7 @@ public class ItemEditingScene extends Scene {
         chaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setType(Player.ABILITY_CHA);
+                equipment.setEnhancedAttribute(Player.ABILITY_CHA);
                 enhanceOnLabel.setText("Cha");
             }
         });
@@ -458,6 +458,9 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedValue(Integer.valueOf(textField.getText()));
+
+                System.out.println(equipment);
+
                 if(equipment.validate()){
                     saveButton.setEnabled(true);
                     validateResultLabel.setText("Success!");
@@ -465,6 +468,8 @@ public class ItemEditingScene extends Scene {
                     saveButton.setEnabled(false);
                     validateResultLabel.setText("Failure!");
                 }
+
+                ItemEditingScene.this.repaint();
             }
         });
 

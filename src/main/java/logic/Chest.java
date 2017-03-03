@@ -34,7 +34,6 @@ public class Chest extends Cell{
     /**
      * this method is set the name of image
      */
-
     public Chest() {
         imageName = "chest.png";
     }

@@ -1,1 +1,41 @@
-{"abilityScores":{"STR":8,"WIS":4,"CON":20,"DEX":4,"CHA":16,"INT":16},"backpack":[{"name":"Alythess Pyrogenics","type":"Ring","enhancedAttribute":"CON","enhancedValue":3}],"equipments":{"Ring":{"name":"Alythess Pyrogenics","type":"Ring","enhancedAttribute":"CON","enhancedValue":3},"Armor":{"name":"Arming Coat","type":"Armor","enhancedAttribute":"AC","enhancedValue":5},"Weapon":{"name":"Ashbringer","type":"Weapon","enhancedAttribute":"AB","enhancedValue":5}},"level":1,"name":"asd","hp":100}
+{
+  "abilityScores": {
+    "STR": 8,
+    "WIS": 4,
+    "CON": 20,
+    "DEX": 4,
+    "CHA": 16,
+    "INT": 16
+  },
+  "backpack": [
+    {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    }
+  ],
+  "equipments": {
+    "Ring": {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    },
+    "Armor": {
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+    },
+    "Weapon": {
+      "name": "Ashbringer",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 5
+    }
+  },
+  "level": 1,
+  "name": "asd",
+  "hp": 100
+}

@@ -1,0 +1,147 @@
+{
+  "name": "test",
+  "size": 4,
+  "cells": [
+    [
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 1,
+            "y": 0
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Exit",
+        "_object": {
+          "location": {
+            "x": 2,
+            "y": 0
+          },
+          "imageName": "exit.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "_class": "Player",
+        "_object": {
+          "abilityScores": {
+            "STR": 8,
+            "WIS": 8,
+            "CON": 4,
+            "DEX": 16,
+            "CHA": 12,
+            "INT": 20
+          },
+          "backpack": [
+            {
+              "name": "Bloodhoof Runespear",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          ],
+          "equipments": {
+            "Helmet": {
+              "name": "Coif of Delusions",
+              "type": "Helmet",
+              "enhancedAttribute": "WIS",
+              "enhancedValue": 5
+            },
+            "Ring": {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            "Armor": {
+              "name": "Arming Coat",
+              "type": "Armor",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 5
+            },
+            "Weapon": {
+              "name": "Ashbringer",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            }
+          },
+          "level": 1,
+          "name": "DarkNage",
+          "hp": 100,
+          "location": {
+            "x": 0,
+            "y": 2
+          },
+          "imageName": "player_1.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Entrance",
+        "_object": {
+          "location": {
+            "x": 1,
+            "y": 2
+          },
+          "imageName": "entrance.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 3,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      }
+    ],
+    [
+      null,
+      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipment": {
+            "name": "Alythess Pyrogenics",
+            "type": "Ring",
+            "enhancedAttribute": "CON",
+            "enhancedValue": 3
+          },
+          "location": {
+            "x": 2,
+            "y": 3
+          },
+          "imageName": "chest.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null
+    ]
+  ]
+}
