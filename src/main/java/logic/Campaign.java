@@ -7,8 +7,8 @@ import java.util.List;
  * Created by Saki on 2017/3/1.
  */
 public class Campaign {
+
     private String name;
-    private LinkedList<MapConnection> connections = new LinkedList<>();
 
     public String getName() {
         return name;
@@ -18,72 +18,75 @@ public class Campaign {
         this.name = name;
     }
 
-    public void addConnection(String name){
-        MapConnection connection = new MapConnection();
-        connection.setMapName(name);
-        connections.add(connection);
+    private List<String> mapNames = new LinkedList<>();
 
-        connection.setId(connections.size());
+    public List<String> getMapNames() {
+        return mapNames;
     }
 
-    public void removeConnection(int id){
-        connections.remove(id - 1);
+    public String getMapName(int index) {
+        return mapNames.get(index);
     }
 
-    public MapConnection getConnection(int id){
-        return connections.get(id - 1);
+    public void addMapName(String mapName) {
+        mapNames.add(mapName);
     }
 
-    public List<MapConnection> getConnections() {
-        return connections;
+    public void removeMapName(int index) {
+        mapNames.remove(index);
     }
 
     public final static String VALIDATION_SUCCESS = "Valid";
     public final static String VALIDATION_ERROR_NO_MAP = "No map";
-    public final static String VALIDATION_ERROR_ID_OUT_OF_RANGE = "A map is linked to no where";
-    public final static String VALIDATION_ERROR_CYCLE = "Cycle is not allowed in the map";
-    public final static String VALIDATION_ERROR_USELESS_MAP = "Some map is not used in this campaign";
 
     public String validate(){
-        // if no connection
-        if (connections.size() == 0) {
-            return VALIDATION_ERROR_NO_MAP;
-        }
-
-        LinkedList<Integer> pendingIds = new LinkedList<>();
-        LinkedList<Integer> visitedIds = new LinkedList<>();
-
-        pendingIds.addLast(1);
-
-        while (pendingIds.size() > 0) {
-            int id = pendingIds.removeFirst();
-            visitedIds.addLast(id);
-
-            int targetId = getConnection(id).getTargetId();
-
-            //  if id out of range
-            if (targetId < 0 || targetId > connections.size()) {
-                return VALIDATION_ERROR_ID_OUT_OF_RANGE;
-            }
-
-            //  if pending or visited, cycle detected
-            if (pendingIds.contains(targetId) || visitedIds.contains(targetId)){
-                return VALIDATION_ERROR_CYCLE;
-            }
-
-
-            if (targetId == 0) {
-                break;
-            }
-
-            pendingIds.addLast(targetId);
-        }
-
-        //  if ends early, some maps are not reached
-        if (visitedIds.size() != connections.size()) {
-            return VALIDATION_ERROR_USELESS_MAP;
-        }
-
-        return VALIDATION_SUCCESS;
+        return mapNames.size() > 0 ? VALIDATION_SUCCESS : VALIDATION_ERROR_NO_MAP;
     }
+
+//    public final static String VALIDATION_ERROR_ID_OUT_OF_RANGE = "A map is linked to no where";
+//    public final static String VALIDATION_ERROR_CYCLE = "Cycle is not allowed in the map";
+//    public final static String VALIDATION_ERROR_USELESS_MAP = "Some map is not used in this campaign";
+
+//    public String validate(){
+//        // if no connection
+//        if (connections.size() == 0) {
+//            return VALIDATION_ERROR_NO_MAP;
+//        }
+//
+//        LinkedList<Integer> pendingIds = new LinkedList<>();
+//        LinkedList<Integer> visitedIds = new LinkedList<>();
+//
+//        pendingIds.addLast(1);
+//
+//        while (pendingIds.size() > 0) {
+//            int id = pendingIds.removeFirst();
+//            visitedIds.addLast(id);
+//
+//            int targetId = getConnection(id).getTargetId();
+//
+//            //  if id out of range
+//            if (targetId < 0 || targetId > connections.size()) {
+//                return VALIDATION_ERROR_ID_OUT_OF_RANGE;
+//            }
+//
+//            //  if pending or visited, cycle detected
+//            if (pendingIds.contains(targetId) || visitedIds.contains(targetId)){
+//                return VALIDATION_ERROR_CYCLE;
+//            }
+//
+//
+//            if (targetId == 0) {
+//                break;
+//            }
+//
+//            pendingIds.addLast(targetId);
+//        }
+//
+//        //  if ends early, some maps are not reached
+//        if (visitedIds.size() != connections.size()) {
+//            return VALIDATION_ERROR_USELESS_MAP;
+//        }
+//
+//        return VALIDATION_SUCCESS;
+//    }
 }
