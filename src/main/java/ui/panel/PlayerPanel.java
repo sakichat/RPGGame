@@ -387,28 +387,28 @@ public class PlayerPanel extends Panel implements Observer {
         nameValueLabel.setText(player.getName());
         levelValueLabel.setText(player.getLevel() + "");
 
-        strAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_STR) + "");
-        strAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_STR) + "");
+        strAbilityView.scoreLabel.setText(player.getTotalAbilityScore(Player.ABILITY_STR) + "");
+        strAbilityView.modifierLabel.setText(player.getTotalAbilityModifier(Player.ABILITY_STR) + "");
 
-        intAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_INT) + "");
-        intAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_INT) + "");
+        intAbilityView.scoreLabel.setText(player.getTotalAbilityScore(Player.ABILITY_INT) + "");
+        intAbilityView.modifierLabel.setText(player.getTotalAbilityModifier(Player.ABILITY_INT) + "");
 
-        dexAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_DEX) + "");
-        dexAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_DEX) + "");
+        dexAbilityView.scoreLabel.setText(player.getTotalAbilityScore(Player.ABILITY_DEX) + "");
+        dexAbilityView.modifierLabel.setText(player.getTotalAbilityModifier(Player.ABILITY_DEX) + "");
 
-        wisAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_WIS) + "");
-        wisAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_WIS) + "");
+        wisAbilityView.scoreLabel.setText(player.getTotalAbilityScore(Player.ABILITY_WIS) + "");
+        wisAbilityView.modifierLabel.setText(player.getTotalAbilityModifier(Player.ABILITY_WIS) + "");
 
-        conAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_CON) + "");
-        conAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_CON) + "");
+        conAbilityView.scoreLabel.setText(player.getTotalAbilityScore(Player.ABILITY_CON) + "");
+        conAbilityView.modifierLabel.setText(player.getTotalAbilityModifier(Player.ABILITY_CON) + "");
 
-        chaAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_CHA) + "");
-        chaAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_CHA) + "");
+        chaAbilityView.scoreLabel.setText(player.getTotalAbilityScore(Player.ABILITY_CHA) + "");
+        chaAbilityView.modifierLabel.setText(player.getTotalAbilityModifier(Player.ABILITY_CHA) + "");
 
         hpValueLabel.setText(player.getHp() + "");
-        abValueLabel.setText(player.getAttackBonus() + "");
-        acValueLabel.setText(player.getArmorClass() + "");
-        dbValueLabel.setText(player.getDamageBonus() + "");
+        abValueLabel.setText(player.getTotalAttackBonus() + "");
+        acValueLabel.setText(player.getTotalArmorClass() + "");
+        dbValueLabel.setText(player.getTotalDamageBonus() + "");
 
         Equipment weapon = player.getEquipment(Equipment.WEAPON);
         if (weapon != null) {

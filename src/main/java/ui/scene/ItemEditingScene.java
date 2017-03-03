@@ -458,6 +458,9 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedValue(Integer.valueOf(textField.getText()));
+
+                System.out.println(equipment);
+
                 if(equipment.validate()){
                     saveButton.setEnabled(true);
                     validateResultLabel.setText("Success!");
@@ -465,6 +468,8 @@ public class ItemEditingScene extends Scene {
                     saveButton.setEnabled(false);
                     validateResultLabel.setText("Failure!");
                 }
+
+                ItemEditingScene.this.repaint();
             }
         });
 

@@ -74,6 +74,22 @@ public class Player extends Cell{
     }
 
     /**
+     * This method is used to get the total ability modifiers of object after enhanced by equipments.
+     * @param name String
+     * @return Integer
+     */
+    public Integer getTotalAbilityModifier(String name) {
+        Integer ability = getTotalAbilityScore(name);
+        if (ability != null) {
+            return (int) (Math.floor(ability / 2.0 - 5));
+        } else  {
+            return 0;
+        }
+    }
+
+
+
+    /**
      * This method is used to calculate the ability scores based on the D20 formulas.
      */
     public void generateAbilities() {
@@ -309,7 +325,7 @@ public class Player extends Cell{
      */
     public void generateHp() {
 
-        hp = 100;
+        hp = 0;
 
         for (int i = 0; i < level - 1; i++) {
             int hitDie = Dice.rool(10);
@@ -331,8 +347,7 @@ public class Player extends Cell{
      */
     public int getArmorClass() {
         int dexModifier = getAbilityModifier(ABILITY_DEX);
-        int wornArmor = enhancedValueOnEquipments(ATTRIBUTE_ARMOR_CLASS);
-        return 10 + wornArmor + dexModifier;
+        return 10 + dexModifier;
     }
 
     /**
@@ -367,8 +382,7 @@ public class Player extends Cell{
      */
     public int getDamageBonus() {
         int dexModifier = getAbilityModifier(ABILITY_DEX);
-        int equipmentBonus = enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
-        return 10 + dexModifier + equipmentBonus;
+        return 10 + dexModifier;
     }
 
     /**

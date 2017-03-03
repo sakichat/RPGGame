@@ -38,7 +38,7 @@ character
 +   attack bonus [W]
     =   level | strength modi | dexterity modi,
     A character’s attack bonus with a melee weapon is:
-    Base attack bonus + Strength modifier +/ size modifier
+    Base attack bonus + Strength modifier +/ size modifier + weapon attack bonus
 
 +   damage bonus [W]
     =   strength modi of melee weapon (Ref > Combat > Strength Bonus)
