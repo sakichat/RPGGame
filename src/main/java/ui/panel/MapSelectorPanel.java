@@ -73,7 +73,7 @@ public class MapSelectorPanel extends Panel  {
         textField.setLocation(10,30);
         add(textField);
 
-        searchButton = new JButton();
+        searchButton = new JButton("Search");
         searchButton.setLayout(null);
         searchButton.setSize(100,40);
         searchButton.setLocation(180,30);

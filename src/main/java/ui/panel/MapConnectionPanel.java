@@ -23,13 +23,14 @@ public class MapConnectionPanel extends Panel {
 
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
+        dataToView();
     }
 
     /**
      * Layout
      */
 
-    JPanel mapSequencePanel;
+    Panel mapSequencePanel;
 
     @Override
     protected void init() {
@@ -38,7 +39,8 @@ public class MapConnectionPanel extends Panel {
         setSize(640, 500);
         title = "Map Connection";
 
-        dataToView();
+        initSubviews();
+
     }
 
     protected void initSubviews() {
@@ -50,7 +52,7 @@ public class MapConnectionPanel extends Panel {
         label.setLocation(140, 30);
         add(label);
 
-        mapSequencePanel = new JPanel();
+        mapSequencePanel = new Panel();
         mapSequencePanel.setLayout(null);
         mapSequencePanel.setSize(640, 420);
         mapSequencePanel.setLocation(0, 80);

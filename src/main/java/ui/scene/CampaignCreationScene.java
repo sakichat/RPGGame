@@ -59,6 +59,9 @@ public class CampaignCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CampaignEditingScene campaignEditingScene = new CampaignEditingScene();
+                Campaign campaign = new Campaign();
+                campaign.setName(nameField.getText());
+                campaignEditingScene.setCampaign(campaign);
                 CampaignCreationScene.this.navigationView.push(campaignEditingScene);
             }
         });
