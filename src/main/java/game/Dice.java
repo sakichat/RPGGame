@@ -3,7 +3,7 @@ package game;
 /**
  *
  * @author Kai QI
- * @version V 1.0
+ * @version 0.1
  *
  */
 public class Dice {

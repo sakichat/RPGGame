@@ -1,11 +1,13 @@
 package game;
 
+import map.Cell;
+
 /**
  * this class is the game.Chest in the game
  * @author Li Zhen
- * @version 1.0
+ * @version 0.1
  */
-public class Chest {
+public class Chest extends Cell{
     private Equipment equipment;
 
     /**
@@ -25,5 +27,9 @@ public class Chest {
 
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
+    }
+
+    public Chest() {
+        imageName = "chest.png";
     }
 }

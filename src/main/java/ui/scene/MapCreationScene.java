@@ -1,198 +1,113 @@
 package ui.scene;
 
-import ui.view.View;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 /**
- * Created by Penelope on 17/2/24.
- *
  * @author Siyu Chen
+ * @version 0.1
  */
-public class MapCreationScene extends View {
-    public MapCreationScene() {
-        setLayout(null);
-        setSize(1000, 600);
+public class MapCreationScene extends Scene {
 
-        initSubviews();
+    @Override
+    protected void init() {
+        super.init();
+
+        title = "Create Map";
+        backButtonEnabled = true;
+        saveButtonEnabled = false;
     }
 
-    private void initSubviews() {
-        JPanel title = new JPanel();
-        title.setSize(1000, 40);
-        title.setLocation(0, 0);
-        add(title);
-        title.setBackground(new Color(0xf4f4f4));
+    protected void initSubviews() {
 
-        JButton back = new JButton("Back");
-        back.setSize(60, 20);
-        back.setLocation(10, 10);
-        title.add(back);
+        JLabel label;
+        JButton button;
 
-        JLabel createMapLabel = new JLabel("Create Map", JLabel.CENTER);
-        createMapLabel.setSize(1000, 40);
-        title.add(createMapLabel);
-
-        JPanel desktop = new JPanel();
-        desktop.setSize(1000, 540);
-        desktop.setLocation(0, 40);
-        add(desktop);
-
-        JLabel nameLabel = new JLabel("Name", JLabel.RIGHT);
-        nameLabel.setSize(120, 40);
-        nameLabel.setLocation(20, 20);
-        desktop.add(nameLabel);
+        label = new JLabel("Name", JLabel.RIGHT);
+        label.setSize(120, 40);
+        label.setLocation(20, 20);
+        contentView.add(label);
 
         JTextField nameField = new JTextField();
         nameField.setSize(160, 40);
         nameField.setLocation(150, 20);
-        desktop.add(nameField);
+        contentView.add(nameField);
 
-        JLabel sizeLabel = new JLabel("Size", JLabel.RIGHT);
-        sizeLabel.setSize(120, 40);
-        sizeLabel.setLocation(20, 70);
-        desktop.add(sizeLabel);
+        label = new JLabel("Size", JLabel.RIGHT);
+        label.setSize(120, 40);
+        label.setLocation(20, 70);
+        contentView.add(label);
 
-        JLabel sizeSet = new JLabel();
-        sizeSet.setSize(200, 40);
-        sizeSet.setLocation(150, 70);
-        sizeSet.setText("4 x 4");
-        desktop.add(sizeSet);
+        label = new JLabel();
+        label.setSize(200, 40);
+        label.setLocation(150, 70);
+        label.setText("4 x 4");
+        contentView.add(label);
+        JLabel sizeLabel = label;
 
-        JButton smallSize = new JButton();
-        smallSize.setSize(100, 40);
-        smallSize.setLocation(150, 120);
-        desktop.add(smallSize);
-        smallSize.setText("4 x 4");
-        smallSize.addMouseListener(new MouseListener() {
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(150, 120);
+        contentView.add(button);
+        button.setText("4 x 4");
+        JButton smallSize = button;
+
+        smallSize.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                sizeSet.setText(smallSize.getText());
-                desktop.repaint();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
+            public void actionPerformed(ActionEvent e) {
+                sizeLabel.setText(smallSize.getText());
+                repaint();
             }
         });
 
-//        smallSize.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                sizeSet.setText(smallSize.getText());
-//            }
-//        });
+        button = new JButton("8 x 8");
+        button.setSize(100, 40);
+        button.setLocation(260, 120);
+        contentView.add(button);
+        JButton mediumSize = button;
 
-        JButton mediumSize = new JButton("8 x 8");
-        mediumSize.setSize(100, 40);
-        mediumSize.setLocation(260, 120);
-        desktop.add(mediumSize);
-        mediumSize.addMouseListener(new MouseListener() {
+        mediumSize.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                sizeSet.setText(mediumSize.getText());
-                desktop.repaint();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
+            public void actionPerformed(ActionEvent e) {
+                sizeLabel.setText(mediumSize.getText());
+                repaint();
             }
         });
 
-//        mediumSize.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                sizeSet.setText(mediumSize.getText());
-//            }
-//        });
 
-        JButton largeSize = new JButton("12 x 12");
-        largeSize.setSize(100, 40);
-        largeSize.setLocation(370, 120);
-        desktop.add(largeSize);
-        largeSize.addMouseListener(new MouseListener() {
+        button = new JButton("12 x 12");
+        button.setSize(100, 40);
+        button.setLocation(370, 120);
+        contentView.add(button);
+        JButton largeSize = button;
+
+        largeSize.addActionListener(new ActionListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                sizeSet.setText(largeSize.getText());
-                desktop.repaint();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
+            public void actionPerformed(ActionEvent e) {
+                sizeLabel.setText(largeSize.getText());
             }
         });
 
-//        largeSize.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                sizeSet.setText(largeSize.getText());
-//            }
-//        });
-
-        JButton create = new JButton("Create");
-        create.setSize(160, 40);
-        create.setLocation(150, 190);
-        desktop.add(create);
+        JButton createButton = new JButton("Create");
+        createButton.setSize(160, 40);
+        createButton.setLocation(150, 190);
+        contentView.add(createButton);
 
         repaint();
 
-        back.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MapCreationScene.this.viewFlow.pop();
+                MapCreationScene.this.navigationView.pop();
+            }
+        });
+
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MapEditingScene mapEditingScene = new MapEditingScene();
+                MapCreationScene.this.navigationView.push(mapEditingScene);
             }
         });
     }

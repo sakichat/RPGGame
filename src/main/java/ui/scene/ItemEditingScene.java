@@ -2,7 +2,8 @@ package ui.scene;
 
 import game.Equipment;
 import game.Player;
-import ui.view.View;
+import persistence.EquipmentFileManager;
+import ui.panel.EquipmentDelegate;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,11 +11,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
  * @version 1.0.1
  */
-public class ItemEditingScene extends View {
+public class ItemEditingScene extends Scene {
     private Equipment equipment;
 
     public Equipment getEquipment() {
@@ -23,14 +23,26 @@ public class ItemEditingScene extends View {
 
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
+        if(equipment.getType() == null){
+            equipment.setType(Equipment.WEAPON);
+        }
+        if(equipment.getEnhancedAttribute() == null){
+            equipment.setEnhancedAttribute(Player.ABILITY_STR);
+        }
+//        if(equipment.getEnhancedValue() == 0){
+//            equipment.setEnhancedValue(1);
+//        }
+        dataToView();
     }
+
+
 
     private JLabel nameLabel;
     private JLabel typeLabel;
     private JLabel enhanceOnLabel;
     private TextField valueTextField;
 
-    private JButton saveButton;
+    private JLabel validateResultLabel;
 
     private JButton weaponButton;
     private JButton shieldButton;
@@ -52,14 +64,16 @@ public class ItemEditingScene extends View {
 
     private JButton validateButton;
 
-    public ItemEditingScene() {
-        setLayout(null);
-        setSize(1000, 600);
-
-        initSubviews();
+    @Override
+    protected void init() {
+        super.init();
+        
+        title = "Edit Item";
+        backButtonEnabled = true;
+        saveButtonEnabled = true;
     }
 
-    private void initSubviews(){
+    protected void initSubviews(){
 
         /*
          * First Line
@@ -69,42 +83,12 @@ public class ItemEditingScene extends View {
         JButton button;
         TextField textField;
 
-        label = new JLabel();
-        label.setSize(1000, 40);
-        label.setLocation(0, 0);
-        label.setText("Edit Item");
-        label.setHorizontalAlignment(JLabel.CENTER);
-        label.setBackground(new Color(0x92A99C));
-        label.setOpaque(true);
-        this.add(label);
-
-        button = new JButton();
-        button.setSize(60, 20);
-        button.setLocation(10, 10);
-        button.setText("Back");
-        label.add(button);
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ItemEditingScene.this.viewFlow.pop();
-            }
-        });
-
-        button = new JButton();
-        button.setSize(60, 20);
-        button.setLocation(930, 10);
-        button.setText("Save");
-        button.setEnabled(false);
-        saveButton = button;
-        label.add(button);
-
         /*
          * 4 Stable Label
          */
 
         label = new JLabel();
         label.setSize(120, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.RIGHT);
         label.setLocation(20, 60);
         label.setText("Name");
@@ -112,8 +96,6 @@ public class ItemEditingScene extends View {
 
         label = new JLabel();
         label.setSize(120, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.RIGHT);
         label.setLocation(20, 110);
         label.setText("Type");
@@ -121,8 +103,6 @@ public class ItemEditingScene extends View {
 
         label = new JLabel();
         label.setSize(120, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.RIGHT);
         label.setLocation(20, 210);
         label.setText("Enhance On");
@@ -130,8 +110,6 @@ public class ItemEditingScene extends View {
 
         label = new JLabel();
         label.setSize(120, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.RIGHT);
         label.setLocation(20, 360);
         label.setText("Value");
@@ -143,8 +121,6 @@ public class ItemEditingScene extends View {
 
         label = new JLabel();
         label.setSize(200, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 60);
         nameLabel = label;
@@ -152,8 +128,6 @@ public class ItemEditingScene extends View {
 
         label = new JLabel();
         label.setSize(200, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 110);
         typeLabel = label;
@@ -161,8 +135,6 @@ public class ItemEditingScene extends View {
 
         label = new JLabel();
         label.setSize(200, 40);
-        label.setOpaque(true);
-        label.setBackground(new Color(0xAED6F1));
         label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(150, 210);
         enhanceOnLabel = label;
@@ -313,21 +285,36 @@ public class ItemEditingScene extends View {
         validateButton = button;
         add(button);
 
-        repaint();
-    }
+        label = new JLabel();
+        label.setSize(200, 40);
+        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setLocation(350, 440);
+        validateResultLabel = label;
+        add(label);
 
-    public void dataToView(){
-        nameLabel.setText(equipment.getName());
-        typeLabel.setText(equipment.getType());
-        enhanceOnLabel.setText(equipment.getEnhancedAttribute());
 
-    }
+        /*
+         * add Listener
+         */
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ItemEditingScene.this.navigationView.popTo(EditorScene.class);
+            }
+        });
 
-    public void ViewToData(){
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                save();
+                ItemEditingScene.this.navigationView.popTo(EditorScene.class);
+            }
+        });
+
         weaponButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.WEAPON);
+                typeLabel.setText(Equipment.WEAPON);
             }
         });
 
@@ -335,6 +322,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.SHIELD);
+                typeLabel.setText(Equipment.SHIELD);
             }
         });
 
@@ -342,6 +330,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.ARMOR);
+                typeLabel.setText(Equipment.ARMOR);
             }
         });
 
@@ -349,6 +338,8 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.HELMET);
+                typeLabel.setText(Equipment.HELMET);
+
             }
         });
 
@@ -356,6 +347,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.RING);
+                typeLabel.setText(Equipment.RING);
             }
         });
 
@@ -363,6 +355,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.BELT);
+                typeLabel.setText(Equipment.BELT);
             }
         });
 
@@ -370,48 +363,55 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.BOOTS);
+                typeLabel.setText(Equipment.BOOTS);
             }
         });
 
         strButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_STR);
+                equipment.setType(Player.ABILITY_STR);
+                enhanceOnLabel.setText("Str");
             }
         });
 
         dexButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_DEX);
+                equipment.setType(Player.ABILITY_DEX);
+                enhanceOnLabel.setText("Dex");
             }
         });
 
         conButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_CON);
+                equipment.setType(Player.ABILITY_CON);
+                enhanceOnLabel.setText("Con");
             }
         });
 
         intButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_INT);
+                equipment.setType(Player.ABILITY_INT);
+                enhanceOnLabel.setText("Int");
             }
         });
 
         wisButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_WIS);
+                equipment.setType(Player.ABILITY_WIS);
+                enhanceOnLabel.setText("Wis");
             }
         });
 
         chaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_CHA);
+                equipment.setType(Player.ABILITY_CHA);
+                enhanceOnLabel.setText("Cha");
             }
         });
 
@@ -419,6 +419,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
+                enhanceOnLabel.setText("Armor Class");
             }
         });
 
@@ -426,6 +427,7 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
+                enhanceOnLabel.setText("Attck Bonus");
             }
         });
 
@@ -433,27 +435,41 @@ public class ItemEditingScene extends View {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
-            }
-        });
-
-        valueTextField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedValue(Integer.valueOf(valueTextField.getText()));
+                enhanceOnLabel.setText("Damage Bonus");
             }
         });
 
         validateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                equipment.setEnhancedValue(Integer.valueOf(textField.getText()));
                 if(equipment.validate()){
                     saveButton.setEnabled(true);
+                    validateResultLabel.setText("Success!");
                 }else{
                     saveButton.setEnabled(false);
+                    validateResultLabel.setText("Failure!");
                 }
             }
         });
+
+        repaint();
     }
+
+    public void save(){
+        EquipmentFileManager.save(equipment);
+        navigationView.popTo(EditorScene.class);
+    }
+
+    public void dataToView(){
+        nameLabel.setText(equipment.getName());
+        typeLabel.setText(equipment.getType());
+        enhanceOnLabel.setText(equipment.getEnhancedAttribute());
+        valueTextField.setText(equipment.getEnhancedValue() + "");
+
+    }
+
+
 }
 
 

@@ -1,140 +1,193 @@
 package ui.scene;
 
-import ui.view.View;
+import game.Equipment;
+import game.Player;
+import ui.panel.EquipmentDelegate;
+import ui.panel.EquipmentSelectorPanel;
+import ui.panel.PlayerDelegate;
+import ui.panel.PlayerSelectorPanel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Penelope on 17/2/24.
- *
  * @author Siyu Chen
+ * @version 0.1
  */
-public class EditorScene extends View {
-    public EditorScene() {
-        setLayout(null);
-        setSize(1000, 600);
+public class EditorScene extends Scene implements EquipmentDelegate, PlayerDelegate {
+    private JLabel label;
+    private JButton button;
+    private JPanel itemSelectLabel;
 
-        initSubviews();
+    @Override
+    protected void init() {
+        super.init();
+
+        title = "Editor";
+        backButtonEnabled = true;
+        saveButtonEnabled = false;
     }
+    protected void initSubviews() {
+        label = new JLabel("Item");
+        label.setSize(160, 40);
+        label.setLocation(20, 20);
+        contentView.add(label);
 
-
-    private void initSubviews() {
-        JPanel title = new JPanel();
-        title.setSize(1000, 40);
-        title.setLocation(0, 0);
-        add(title);
-        title.setBackground(new Color(0xf4f4f4));
-
-
-        JButton back = new JButton("Back");
-        back.setSize(60, 20);
-        back.setLocation(10, 10);
-        title.add(back);
-
-        JLabel editorLabel = new JLabel("Editor", JLabel.CENTER);
-        editorLabel.setSize(1000, 40);
-        editorLabel.setLocation(0, 0);
-        title.add(editorLabel);
-
-        JPanel desktop = new JPanel();
-        desktop.setSize(1000, 540);
-        desktop.setLocation(0, 40);
-        add(desktop);
-
-        JLabel itemLabel = new JLabel("Item");
-        itemLabel.setSize(160, 40);
-        itemLabel.setLocation(20, 20);
-        desktop.add(itemLabel);
-
-        JLabel charaLabel = new JLabel("Player");
-        charaLabel.setSize(160, 40);
-        charaLabel.setLocation(210, 20);
-        desktop.add(charaLabel);
+        label = new JLabel("Player");
+        label.setSize(160, 40);
+        label.setLocation(210, 20);
+        contentView.add(label);
 
         JLabel mapLabel = new JLabel("Map");
         mapLabel.setSize(160, 40);
         mapLabel.setLocation(400, 20);
-        desktop.add(mapLabel);
+        contentView.add(mapLabel);
 
-        JLabel campLabel = new JLabel("Campaign");
-        campLabel.setSize(160, 40);
-        campLabel.setLocation(590, 20);
-        desktop.add(campLabel);
+        label = new JLabel("Campaign");
+        label.setSize(160, 40);
+        label.setLocation(590, 20);
+        contentView.add(label);
 
-        JButton itemCreate = new JButton("Create");
-        itemCreate.setSize(160, 40);
-        itemCreate.setLocation(20, 70);
-        desktop.add(itemCreate);
+        button = new JButton("Create");
+        button.setSize(160, 40);
+        button.setLocation(20, 70);
+        contentView.add(button);
+        JButton itemCreateButton = button;
 
-        JButton charaCreate = new JButton("Create");
-        charaCreate.setSize(160, 40);
-        charaCreate.setLocation(210, 70);
-        desktop.add(charaCreate);
+        button = new JButton("Create");
+        button.setSize(160, 40);
+        button.setLocation(210, 70);
+        contentView.add(button);
+        JButton playerCreateButton = button;
 
-        JButton mapCreate = new JButton("Create");
-        mapCreate.setSize(160, 40);
-        mapCreate.setLocation(400, 70);
-        desktop.add(mapCreate);
+        button = new JButton("Create");
+        button.setSize(160, 40);
+        button.setLocation(400, 70);
+        contentView.add(button);
+        JButton mapCreateButton = button;
 
-        JButton campCreate = new JButton("Create");
-        campCreate.setSize(160, 40);
-        campCreate.setLocation(590, 70);
-        desktop.add(campCreate);
+        button = new JButton("Create");
+        button.setSize(160, 40);
+        button.setLocation(590, 70);
+        contentView.add(button);
+        JButton campaignCreateButton = button;
 
-        JButton itemEdit = new JButton("Edit");
-        itemEdit.setSize(160, 40);
-        itemEdit.setLocation(20, 150);
-        desktop.add(itemEdit);
+        button = new JButton("Edit");
+        button.setSize(160, 40);
+        button.setLocation(20, 150);
+        contentView.add(button);
+        JButton itemEditButton = button;
 
-        JButton charaEdit = new JButton("Edit");
-        charaEdit.setSize(160, 40);
-        charaEdit.setLocation(210, 150);
-        desktop.add(charaEdit);
+        button = new JButton("Edit");
+        button.setSize(160, 40);
+        button.setLocation(210, 150);
+        contentView.add(button);
+        JButton playerEditButton = button;
 
-        JButton mapEdit = new JButton("Edit");
-        mapEdit.setSize(160, 40);
-        mapEdit.setLocation(400, 150);
-        desktop.add(mapEdit);
+        button = new JButton("Edit");
+        button.setSize(160, 40);
+        button.setLocation(400, 150);
+        contentView.add(button);
+        JButton mapEditButton = button;
 
-        JButton campEdit = new JButton("Edit");
-        campEdit.setSize(160, 40);
-        campEdit.setLocation(590, 150);
-        desktop.add(campEdit);
+        button = new JButton("Edit");
+        button.setSize(160, 40);
+        button.setLocation(590, 150);
+        contentView.add(button);
+        JButton campaignEditButton = button;
 
         repaint();
 
-        back.addActionListener(new ActionListener() {
+        backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                EditorScene.this.viewFlow.pop();
+                EditorScene.this.navigationView.pop();
             }
         });
 
-        itemCreate.addActionListener(new ActionListener() {
+        itemCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ItemCreationScene itemCreationScene = new ItemCreationScene();
-                EditorScene.this.viewFlow.push(itemCreationScene);
+                EditorScene.this.navigationView.push(itemCreationScene);
             }
         });
 
-        charaCreate.addActionListener(new ActionListener() {
+        itemEditButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                itemEdit();
+            }
+        });
+
+        playerCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerCreationScene playerCreationScene = new PlayerCreationScene();
-                EditorScene.this.viewFlow.push(playerCreationScene);
+                EditorScene.this.navigationView.push(playerCreationScene);
             }
         });
 
-        mapCreate.addActionListener(new ActionListener() {
+        playerEditButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerEdit();
+
+            }
+        });
+
+        mapCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 MapCreationScene mapCreationScene = new MapCreationScene();
-                EditorScene.this.viewFlow.push(mapCreationScene);
+                EditorScene.this.navigationView.push(mapCreationScene);
             }
         });
+
+        campaignCreateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CampaignCreationScene campaignCreationScene = new CampaignCreationScene();
+                EditorScene.this.navigationView.push(campaignCreationScene);
+            }
+        });
+    }
+    private void itemEdit(){
+
+        EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
+        equipmentSelectorPanel.setLocation(20,260);
+        equipmentSelectorPanel.setButtonText("Edit");
+        equipmentSelectorPanel.setEquipmentDelegate(this);
+        add(equipmentSelectorPanel);
+    }
+
+    @Override
+    public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
+        remove(selectorPanel);
+
+        ItemEditingScene itemEditingScene = new ItemEditingScene();
+        itemEditingScene.setEquipment(equipment);
+        navigationView.push(itemEditingScene);
+    }
+
+    private void playerEdit(){
+        PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
+        playerSelectorPanel.setLocation(420,260);
+        playerSelectorPanel.setButtonText("Edit");
+        playerSelectorPanel.setPlayerDelegate(this);
+        add(playerSelectorPanel);
+
+    }
+
+    @Override
+    public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
+        remove(playerSelectorPanel);
+
+        PlayerEditingScene playerEditingScene = new PlayerEditingScene();
+        playerEditingScene.setPlayer(player);
+        navigationView.push(playerEditingScene);
+
+
     }
 }

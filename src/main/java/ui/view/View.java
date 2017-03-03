@@ -4,15 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by Penelope on 17/2/24.
- *
  * @author Siyu Chen
+ * @version 0.1
  */
 public class View extends JPanel {
+
+    /**
+     * This is a constructor
+     */
     public View() {
         super();
         this.setLayout(null);
-//        this.setSize(1000, 600);
     }
 
     protected void viewDidDisplay() {
@@ -32,13 +34,16 @@ public class View extends JPanel {
         this.repaint();
     }
 
-    protected ViewFlow viewFlow;
+    /**
+     * This is a parameter for NavigationView class
+     */
+    protected NavigationView navigationView;
 
-    public ViewFlow getViewFlow() {
-        return viewFlow;
+    public NavigationView getNavigationView() {
+        return navigationView;
     }
 
-    public void setViewFlow(ViewFlow viewFlow) {
-        this.viewFlow = viewFlow;
+    public void setNavigationView(NavigationView navigationView) {
+        this.navigationView = navigationView;
     }
 }

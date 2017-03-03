@@ -4,20 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by Penelope on 17/2/24.
- *
  * @author Siyu Chen
+ * @version 0.1
  */
 public class Window extends JFrame{
     private View contentView;
 
+    /**
+     * This is a constructor. It assigns parameters for the frame.
+     * @param contentView
+     */
     public Window(View contentView) {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.contentView = contentView;
 
         this.setResizable(false);
-        this.setSize(1000, 600);
+        this.setSize(1000, 640);
         this.setLocationRelativeTo(null);
         this.setLayout(null);
 

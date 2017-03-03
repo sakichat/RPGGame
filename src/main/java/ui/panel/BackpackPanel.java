@@ -2,10 +2,10 @@ package ui.panel;
 
 import game.Equipment;
 import game.Player;
-import game.Simulation;
 import ui.view.EquipmentView;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -13,14 +13,26 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
+ * This is a view class extends Panel, and implements Observer
  * @author Qi Xia
+ * @version 0.1
  */
-public class BackpackPanel extends JPanel implements Observer{
+public class BackpackPanel extends Panel implements Observer{
+
+    /**
+     * Player attribute and getter & setter
+     */
+
     private Player player;
 
     public Player getPlayer() {
         return player;
     }
+
+    /**
+     * @param player Player
+     * call dataToView and addOberserver
+     */
 
     public void setPlayer(Player player) {
         this.player = player;
@@ -30,25 +42,32 @@ public class BackpackPanel extends JPanel implements Observer{
 
     private JPanel equipmentsPanel;
 
-    public BackpackPanel(){
-        this.setLayout(null);
-        this.setSize(460, 330);
+    @Override
+    protected void init() {
+        super.init();
 
-        initSubviews();
+        setSize(460, 330);
+        title = "Backpack";
     }
 
-    private void initSubviews(){
-        JLabel label = new JLabel("Backpack", JLabel.CENTER);
-        label.setSize(460, 20);
-        label.setLocation(0, 0);
-        this.add(label);
+    /**
+     * This is a method makes initialized
+     */
 
+    protected void initSubviews(){
         equipmentsPanel = new JPanel();
         equipmentsPanel.setLayout(null);
         equipmentsPanel.setSize(460, 310);
         equipmentsPanel.setLocation(0, 20);
         add(equipmentsPanel);
     }
+
+    /**
+     *
+     * @param observer Observable
+     * @param x Object
+     * Observer method, update change
+     */
 
     @Override
     public void update(Observable observer, Object x) {
@@ -60,6 +79,10 @@ public class BackpackPanel extends JPanel implements Observer{
             dataToView();
         }
     }
+
+    /**
+     * This is a method makes data transfer to view
+     */
 
     public void dataToView(){
         equipmentsPanel.removeAll();

@@ -16,7 +16,7 @@ import java.util.Observer;
  * @author Kai QI
  * @version 1.0
  */
-public class PlayerPanel extends JPanel implements Observer {
+public class PlayerPanel extends Panel implements Observer {
 
     /**
      * The attribute player and Getter & Setter.
@@ -51,15 +51,12 @@ public class PlayerPanel extends JPanel implements Observer {
         }
     }
 
-    /**
-     * Constructor.
-     */
+    @Override
+    protected void init() {
+        super.init();
 
-    public PlayerPanel() {
-        this.setLayout(null);
-        this.setSize(400, 420);
-
-        initSubviews();
+        setSize(400, 420);
+        title = "Player";
     }
 
     /**
@@ -97,21 +94,12 @@ public class PlayerPanel extends JPanel implements Observer {
     Button unequipBeltBotton;
     Button unequipBootsBotton;
 
-    private void initSubviews(){
+    protected void initSubviews(){
 
         JLabel label;
         AbilityView abilityView;
         EquipmentView equipmentView = new EquipmentView();
         Button button;
-
-        label = new JLabel("", JLabel.CENTER);
-        label.setSize(400, 20);
-        label.setLocation(0, 0);
-        add(label);
-        label.setText("Player");
-        label.setBackground(new Color(200, 200, 200));
-        JLabel titleBackground = new JLabel();
-        titleBackground = label;
 
         label = new JLabel("", JLabel.RIGHT);
         label.setSize(60, 20);
@@ -324,76 +312,6 @@ public class PlayerPanel extends JPanel implements Observer {
         unequipBootsBotton = new Button();
         unequipBootsBotton = button;
 
-
-    }
-
-    public void dataToView() {
-
-        nameValueLabel.setText(player.getName());
-        levelValueLabel.setText(player.getLevel() + "");
-
-        strAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_STR) + "");
-        strAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_STR) + "");
-
-        intAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_INT) + "");
-        intAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_INT) + "");
-
-        dexAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_DEX) + "");
-        dexAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_DEX) + "");
-
-        wisAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_WIS) + "");
-        wisAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_WIS) + "");
-
-        conAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_CON) + "");
-        conAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_CON) + "");
-
-        chaAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_CHA) + "");
-        chaAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_CHA) + "");
-
-        hpValueLabel.setText(player.getHp() + "");
-        abValueLabel.setText(player.getAttackBonus() + "");
-        acValueLabel.setText(player.getArmorClass() + "");
-        dbValueLabel.setText(player.getDamageBonus() + "");
-
-        Equipment weapon = player.getEquipment(Equipment.WEAPON);
-        if (weapon != null) {
-            weaponEquipmentView.setEquipment(weapon);
-        }
-
-        Equipment shield = player.getEquipment(Equipment.SHIELD);
-        if (shield != null) {
-            shieldEquipmentView.setEquipment(shield);
-        }
-
-        Equipment armor = player.getEquipment(Equipment.ARMOR);
-        if (armor != null) {
-            armorEquipmentView.setEquipment(armor);
-        }
-
-        Equipment helmet = player.getEquipment(Equipment.HELMET);
-        if (helmet != null) {
-            helmetEquipmentView.setEquipment(helmet);
-        }
-
-        Equipment ring = player.getEquipment(Equipment.RING);
-        if (ring != null) {
-            ringEquipmentView.setEquipment(ring);
-        }
-
-        Equipment belt = player.getEquipment(Equipment.BELT);
-        if (belt != null) {
-            beltEquipmentView.setEquipment(belt);
-        }
-
-        Equipment boots = player.getEquipment(Equipment.BOOTS);
-        if (boots != null) {
-            bootsEquipmentView.setEquipment(boots);
-        }
-
-    }
-
-    public void viewToDate() {
-
         unequipWeaponBotton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -463,6 +381,96 @@ public class PlayerPanel extends JPanel implements Observer {
                 }
             }
         });
+
     }
+
+    public void dataToView() {
+
+        nameValueLabel.setText(player.getName());
+        levelValueLabel.setText(player.getLevel() + "");
+
+        strAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_STR) + "");
+        strAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_STR) + "");
+
+        intAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_INT) + "");
+        intAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_INT) + "");
+
+        dexAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_DEX) + "");
+        dexAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_DEX) + "");
+
+        wisAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_WIS) + "");
+        wisAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_WIS) + "");
+
+        conAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_CON) + "");
+        conAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_CON) + "");
+
+        chaAbilityView.scoreLabel.setText(player.getAbilityScore(Player.ABILITY_CHA) + "");
+        chaAbilityView.modifierLabel.setText(player.getAbilityModifier(Player.ABILITY_CHA) + "");
+
+        hpValueLabel.setText(player.getHp() + "");
+        abValueLabel.setText(player.getAttackBonus() + "");
+        acValueLabel.setText(player.getArmorClass() + "");
+        dbValueLabel.setText(player.getDamageBonus() + "");
+
+        Equipment weapon = player.getEquipment(Equipment.WEAPON);
+        if (weapon != null) {
+            weaponEquipmentView.setEquipment(weapon);
+        } else {
+            weaponEquipmentView.nameLabel.setText("");
+            weaponEquipmentView.enhanceLabel.setText("");
+        }
+
+        Equipment shield = player.getEquipment(Equipment.SHIELD);
+        if (shield != null) {
+            shieldEquipmentView.setEquipment(shield);
+        } else {
+            shieldEquipmentView.nameLabel.setText("");
+            shieldEquipmentView.enhanceLabel.setText("");
+        }
+
+        Equipment armor = player.getEquipment(Equipment.ARMOR);
+        if (armor != null) {
+            armorEquipmentView.setEquipment(armor);
+        } else {
+            armorEquipmentView.nameLabel.setText("");
+            armorEquipmentView.enhanceLabel.setText("");
+        }
+
+        Equipment helmet = player.getEquipment(Equipment.HELMET);
+        if (helmet != null) {
+            helmetEquipmentView.setEquipment(helmet);
+        } else {
+            helmetEquipmentView.nameLabel.setText("");
+            helmetEquipmentView.enhanceLabel.setText("");
+        }
+
+        Equipment ring = player.getEquipment(Equipment.RING);
+        if (ring != null) {
+            ringEquipmentView.setEquipment(ring);
+        } else {
+            ringEquipmentView.nameLabel.setText("");
+            ringEquipmentView.enhanceLabel.setText("");
+        }
+
+        Equipment belt = player.getEquipment(Equipment.BELT);
+        if (belt != null) {
+            beltEquipmentView.setEquipment(belt);
+        } else {
+            beltEquipmentView.nameLabel.setText("");
+            beltEquipmentView.enhanceLabel.setText("");
+        }
+
+        Equipment boots = player.getEquipment(Equipment.BOOTS);
+        if (boots != null) {
+            bootsEquipmentView.setEquipment(boots);
+        } else {
+            bootsEquipmentView.nameLabel.setText("");
+            bootsEquipmentView.enhanceLabel.setText("");
+        }
+
+        repaint();
+
+    }
+
     
 }

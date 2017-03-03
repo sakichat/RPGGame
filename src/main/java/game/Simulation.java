@@ -1,11 +1,13 @@
 package game;
 
-import java.util.Collections;
+import map.*;
+
 import java.util.LinkedList;
 import java.util.List;
 
 /**
  * @author Qi Xia
+ * no doc
  */
 public class Simulation {
     public static Player newPlayer(){
@@ -94,13 +96,13 @@ public class Simulation {
         equipment = new Equipment("Bloodhoof Runespear",Equipment.WEAPON,Player.ATTRIBUTE_DAMAGE_BONUS,5);
         equipments.add(equipment);
 
-        equipment = new Equipment("Phyrix's Embrace",Equipment.RING,Player.ATTRIBUTE_ARMOR_CLASS,2);
+        equipment = new Equipment("Phyrix Embrace",Equipment.RING,Player.ATTRIBUTE_ARMOR_CLASS,2);
         equipments.add(equipment);
 
-        equipment = new Equipment("Sephuz's Secret",Equipment.RING,Player.ABILITY_STR,2);
+        equipment = new Equipment("Sephuz Secret",Equipment.RING,Player.ABILITY_STR,2);
         equipments.add(equipment);
 
-        equipment = new Equipment("Alythess's Pyrogenics",Equipment.RING,Player.ABILITY_CON,3);
+        equipment = new Equipment("Alythess Pyrogenics",Equipment.RING,Player.ABILITY_CON,3);
         equipments.add(equipment);
 
         equipment = new Equipment("Chatoyant Signet",Equipment.RING,Player.ABILITY_WIS,5);
@@ -127,4 +129,38 @@ public class Simulation {
         return filteredEquipments;
     }
 
+    public static GameMap gameMap1(){
+        GameMap gameMap = new GameMap();
+        gameMap.setSize(4);
+        Exit exit1 = new Exit();
+        Entrance entrance = new Entrance();
+
+        Point point1 = new Point(1, 1);
+        Point point2 = new Point(3, 3);
+
+        gameMap.addCell(exit1, point1);
+        gameMap.addCell(entrance, point2);
+
+        return gameMap;
+    }
+
+    public static Campaign campaign1(){
+        Campaign campaign = new Campaign();
+
+        String gameMap1 = "Howling Abeiase";
+        String gameMap2 = "Summoner's Rift";
+        String gameMap3 = "Salty Lake";
+        String gameMap4 = "Crystal Land";
+
+        campaign.addConnection(gameMap1);
+        campaign.getConnection(1).setTargetId(2);
+        campaign.addConnection(gameMap2);
+        campaign.getConnection(2).setTargetId(3);
+        campaign.addConnection(gameMap3);
+        campaign.getConnection(3).setTargetId(4);
+        campaign.addConnection(gameMap4);
+        campaign.getConnection(4).setTargetId(0);
+
+        return campaign;
+    }
 }

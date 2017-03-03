@@ -1,5 +1,8 @@
 package game;
 
+import com.google.gson.annotations.Expose;
+import map.Cell;
+
 import java.util.*;
 
 /**
@@ -7,10 +10,10 @@ import java.util.*;
  * This Class is character, which includes users and NPCs.
  *
  * @author Kai QI
- * @version 1.2
+ * @version 0.1
  *
  */
-public class Player extends Observable{
+public class Player extends Cell{
 
     public final static String ABILITY_STR = "STR";
     public final static String ABILITY_DEX = "DEX";
@@ -34,6 +37,7 @@ public class Player extends Observable{
      * Abilities and methods.
      */
 
+    @Expose
     private Map<String, Integer> abilityScores = new HashMap<>();
 
     /**
@@ -42,7 +46,9 @@ public class Player extends Observable{
      * @return Integer
      */
     public Integer getAbilityScore(String name) {
-        return abilityScores.get(name);
+
+        Integer score = abilityScores.get(name);
+        return score != null ? score : 0;
     }
 
     /**
@@ -51,7 +57,7 @@ public class Player extends Observable{
      * @return Integer
      */
     public Integer getTotalAbilityScore(String name){
-        return abilityScores.get(name) + enhancedValueOnEquipments(name);
+        return getAbilityScore(name) + enhancedValueOnEquipments(name);
     }
 
     /**
@@ -60,8 +66,12 @@ public class Player extends Observable{
      * @return Integer
      */
     public Integer getAbilityModifier(String name) {
-        int ability = getAbilityScore(name);
-        return (int)(Math.floor(ability / 2.0 - 5));
+        Integer ability = getAbilityScore(name);
+        if (ability != null) {
+            return (int) (Math.floor(ability / 2.0 - 5));
+        } else  {
+            return 0;
+        }
     }
 
     /**
@@ -84,6 +94,7 @@ public class Player extends Observable{
      * Backpack and methods.
      */
 
+    @Expose
     private List<Equipment> backpack = new LinkedList<>();
 
     /**
@@ -134,6 +145,7 @@ public class Player extends Observable{
      * Equipments and methods.
      */
 
+    @Expose
     private Map<String, Equipment> equipments = new HashMap<>();
 
     /**
@@ -205,7 +217,11 @@ public class Player extends Observable{
     /**
      * Level, name and Getter & Setter & constructor.
      */
+
+    @Expose
     private int level;
+
+    @Expose
     private String name;
 
     /**
@@ -242,6 +258,9 @@ public class Player extends Observable{
         this.name = name;
     }
 
+    {
+        imageName = "player_1.png";
+    }
 
     /**
      * Constructor without parameters.
@@ -264,6 +283,7 @@ public class Player extends Observable{
      * Hp and methods.
      */
 
+    @Expose
     private int hp;
 
     /**
@@ -288,9 +308,15 @@ public class Player extends Observable{
      * This method is used to calculate the hp value based on the D20 rules.
      */
     public void generateHp() {
-        int hitDie = Dice.rool(10);
-        int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
-        hp += levelAdvances > 1 ? levelAdvances : 1;
+
+        hp = 100;
+
+        for (int i = 0; i < level - 1; i++) {
+            int hitDie = Dice.rool(10);
+            int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
+            hp += levelAdvances > 1 ? levelAdvances : 1;
+        }
+
         setChanged();
         notifyObservers(HP_CHANGE);
     }
@@ -310,12 +336,25 @@ public class Player extends Observable{
     }
 
     /**
+     * This method is used to get the total armor class of object after enhanced by equipments.
+     * @return
+     */
+    public int getTotalArmorClass() {
+        return getArmorClass() + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
+    }
+
+
+    /**
      * This method is used to calculate the attack bonus value based on the D20 rules.
      * @return
      */
     public int getAttackBonus() {
         int strModifier = getAbilityModifier(ABILITY_STR);
         return level + strModifier;
+    }
+
+    public int getTotalAttackBonus() {
+        return getAttackBonus() + enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS);
     }
 
     /**
@@ -326,5 +365,9 @@ public class Player extends Observable{
         int dexModifier = getAbilityModifier(ABILITY_DEX);
         int equipmentBonus = enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
         return 10 + dexModifier + equipmentBonus;
+    }
+
+    public int getTotalDamageBonus() {
+        return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
     }
 }

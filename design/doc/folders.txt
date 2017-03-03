@@ -1,0 +1,9 @@
+/data   用于存储运行时数据文件
+
+    /equipments 用于存储所有的装备
+        xxx_xxx.eqp.json
+
+    /players    用于存储所有的角色
+        xxx_xxx.cha.json
+
+/file   用于存储Demo测试使用的文件

@@ -14,7 +14,6 @@ public class EquipmentSelectorDemo {
         EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
         equipmentSelectorPanel.setLocation(0,0);
         jFrame.add(equipmentSelectorPanel);
-
     }
 
 }

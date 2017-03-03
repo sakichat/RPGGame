@@ -35,6 +35,7 @@ public class GsonDemo {
         //  +   Memory[String] -> Memory[Object]
         User userIn = new Gson().fromJson(contentIn, User.class);
 
+
         System.out.println(userIn);
     }
 }

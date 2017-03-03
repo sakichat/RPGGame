@@ -6,8 +6,13 @@ import javax.swing.*;
 
 /**
  * @author Qi Xia
+ * @version 0.1
  */
-public class EquipmentView extends JPanel {
+public class EquipmentView extends View {
+
+    /**
+     * The Equipment attribute and getter & setter
+     */
 
     private Equipment equipment;
 
@@ -20,16 +25,27 @@ public class EquipmentView extends JPanel {
         dataToView();
     }
 
+    /**
+     * The JLabel attribute
+     */
+
     public JLabel typeLabel;
     public JLabel nameLabel;
     public JLabel enhanceLabel;
 
+    /**
+     * Constructor
+     */
+
     public EquipmentView(){
-        this.setLayout(null);
         this.setSize(300, 20);
 
         initSubviews();
     }
+
+    /**
+     * This is a method to make initialization
+     */
 
     private void initSubviews(){
 
@@ -54,7 +70,11 @@ public class EquipmentView extends JPanel {
         enhanceLabel = label;
     }
 
+    /**
+     * This is a method to get data and transfer to view
+     */
     private void dataToView(){
+
         typeLabel.setText(equipment.getType());
         nameLabel.setText(equipment.getName());
 
