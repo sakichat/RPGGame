@@ -31,6 +31,7 @@ public class MapCreationScene extends Scene {
         label.setSize(120, 40);
         label.setLocation(20, 20);
         contentView.add(label);
+        JLabel mapName = label;
 
         JTextField nameField = new JTextField();
         nameField.setSize(160, 40);
@@ -121,6 +122,7 @@ public class MapCreationScene extends Scene {
                 gameMap.setSize(size);
                 MapEditingScene mapEditingScene = new MapEditingScene();
                 mapEditingScene.setGameMap(gameMap);
+                mapEditingScene.title = mapName.getText();
                 MapCreationScene.this.navigationView.push(mapEditingScene);
             }
         });

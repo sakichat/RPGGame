@@ -56,4 +56,10 @@ public class GameMapLayerView extends View {
         return cells[y][x];
     }
 
+    public void moveCell(Point from, Point to) {
+        View cell = getCell(from);
+        removeCell(from);
+        addCell(cell, to);
+    }
+
 }

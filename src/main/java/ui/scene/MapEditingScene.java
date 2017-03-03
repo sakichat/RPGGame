@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 public class MapEditingScene extends Scene {
     private GameMap gameMap;
     private GameMapView gameMapView;
+    private JLabel mapName;
 
     public GameMap getGameMap() {
         return gameMap;
@@ -41,7 +42,7 @@ public class MapEditingScene extends Scene {
 
 
 
-        title = "The Lake of Death";
+        title = mapName.getText();
         backButtonEnabled = true;
         saveButtonEnabled = true;
     }
