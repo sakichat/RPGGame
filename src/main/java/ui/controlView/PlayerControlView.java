@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
  */
 public class PlayerControlView extends ControlView {
 
+    /**
+     * Declaration of the property, and getter & setter
+     */
     private JLabel playerNameLabel;
 
     private Player player;
@@ -27,11 +30,17 @@ public class PlayerControlView extends ControlView {
         dataToView();
     }
 
+    /**
+     * constructor of the View.
+     */
     public PlayerControlView() {
         this.setSize(180, 560);
         initSubviews();
     }
 
+    /**
+     * layout
+     */
     public void initSubviews() {
 
         JLabel label;
@@ -96,6 +105,9 @@ public class PlayerControlView extends ControlView {
         });
     }
 
+    /**
+     * data to view method
+     */
     private void dataToView(){
         playerNameLabel.setText(player.getName());
     }
