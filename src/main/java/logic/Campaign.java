@@ -18,7 +18,7 @@ public class Campaign {
 
     /**
      * this method is to get name
-     * @return name
+     * @return String
      */
     public String getName() {
         return name;
