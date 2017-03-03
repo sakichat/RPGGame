@@ -62,4 +62,16 @@ public class GameMapLayerView extends View {
         addCell(cell, to);
     }
 
+    public void removeAllCells(){
+        for (int y = 0; y < gridSize; y++) {
+            for (int x = 0; x < gridSize; x++) {
+                Point point = new Point(x, y);
+                View cell = getCell(point);
+                if (cell != null) {
+                    removeCell(point);
+                }
+            }
+        }
+    }
+
 }

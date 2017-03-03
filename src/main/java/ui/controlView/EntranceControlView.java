@@ -39,7 +39,7 @@ public class EntranceControlView extends ControlView {
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                mapEditingScene.destroy();
             }
         });
 

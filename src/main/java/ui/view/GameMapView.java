@@ -81,22 +81,15 @@ public class GameMapView extends View {
 
     private void initContentLayer(){
         newLayer();
-        GameMapLayerView layerView = layers.get(_LAYER_CONTENT);
-        int size = gameMap.getSize();
-        for (int y = 0; y < size; y++) {
-            for (int x = 0; x < size; x++) {
-                Point location = new Point(x, y);
-                Cell cell = gameMap.getCell(location);
-                if (cell != null) {
-                    ImageView imageView = new ImageView();
-                    imageView.setName(cell.getImageName());
-                    layerView.addCell(imageView, location);
-                }
-            }
-        }
+        refreshContent();
     }
 
     private Point selectedLocation;
+
+    public Point getSelectedLocation() {
+        return selectedLocation;
+    }
+
     private ImageView selectionView;
 
     private void initHighlightLayer(){
@@ -157,5 +150,25 @@ public class GameMapView extends View {
         repaint();
 
         delegate.gameMapViewSelect(this, location);
+    }
+
+    public void refreshContent(){
+        GameMapLayerView layerView = layers.get(_LAYER_CONTENT);
+        layerView.removeAllCells();
+
+        int size = gameMap.getSize();
+        for (int y = 0; y < size; y++) {
+            for (int x = 0; x < size; x++) {
+                Point location = new Point(x, y);
+                Cell cell = gameMap.getCell(location);
+                if (cell != null) {
+                    ImageView imageView = new ImageView();
+                    imageView.setName(cell.getImageName());
+                    layerView.addCell(imageView, location);
+                }
+            }
+        }
+
+        repaint();
     }
 }

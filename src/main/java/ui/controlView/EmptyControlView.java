@@ -1,5 +1,6 @@
 package ui.controlView;
 
+import logic.*;
 import ui.scene.MapEditingScene;
 import ui.view.View;
 
@@ -25,80 +26,78 @@ public class EmptyControlView extends ControlView{
         topicLabel.setLocation(10, 10);
         add(topicLabel);
 
-        JButton jButton;
+        JButton button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 60);
-        add(jButton);
-        jButton.setText("Wall");
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 60);
+        add(button);
+        button.setText("Wall");
         JButton wallButton = new JButton();
-        wallButton = jButton;
+        wallButton = button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 110);
-        add(jButton);
-        jButton.setText("Entrance");
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 110);
+        add(button);
+        button.setText("Entrance");
         JButton entranceButton = new JButton();
-        entranceButton = jButton;
+        entranceButton = button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 160);
-        add(jButton);
-        jButton.setText("Exit");
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 160);
+        add(button);
+        button.setText("Exit");
         JButton exitButton = new JButton();
-        exitButton = jButton;
+        exitButton = button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 210);
-        add(jButton);
-        jButton.setText("Chest");
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 210);
+        add(button);
+        button.setText("Chest");
         JButton chestButton = new JButton();
-        chestButton = jButton;
+        chestButton = button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 260);
-        add(jButton);
-        jButton.setText("Player");
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 260);
+        add(button);
+        button.setText("Player");
         JButton playerButton = new JButton();
-        playerButton = jButton;
+        playerButton = button;
 
         wallButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                mapEditingScene.build(new Obstacle());
             }
         });
 
         entranceButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                mapEditingScene.build(new Entrance());
             }
         });
 
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                mapEditingScene.build(new Exit());
+            }
+        });
 
+        playerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
             }
         });
 
         chestButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        chestButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
             }
         });
     }

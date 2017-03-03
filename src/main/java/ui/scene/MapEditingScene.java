@@ -24,10 +24,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate{
     }
 
     public void setGameMap(GameMap gameMap) {
-        this.gameMap = Simulation.gameMap2();
-//        this.gameMap = gameMap;
-        titleLabel.setText(this.gameMap.getName());
-        gameMapView.setGameMap(this.gameMap);
+        this.gameMap = gameMap;
+        titleLabel.setText(gameMap.getName());
+        gameMapView.setGameMap(gameMap);
     }
 
 
@@ -81,6 +80,11 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate{
 
     @Override
     public void gameMapViewSelect(GameMapView gameMapView, Point location) {
+        refreshControlView();
+    }
+
+    private void refreshControlView(){
+        Point location = gameMapView.getSelectedLocation();
         Cell cell = gameMap.getCell(location);
         View view = generateControlView(cell);
         controlViewContainerView.removeAll();
@@ -89,31 +93,50 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate{
 
 
     private ControlView generateControlView(Cell cell){
+        ControlView controlView = null;
         if (cell == null) {
-            return new EmptyControlView();
+            controlView = new EmptyControlView();
 
         } else if (cell instanceof Entrance){
-            return new EntranceControlView();
+            controlView = new EntranceControlView();
 
         } else if (cell instanceof Exit) {
-            return new ExitControlView();
+            controlView = new ExitControlView();
 
         } else if (cell instanceof Obstacle) {
-            return new ObstacleControlView();
+            controlView = new ObstacleControlView();
 
         } else if (cell instanceof Player) {
             Player player = (Player) cell;
             PlayerControlView playerControlView = new PlayerControlView();
             playerControlView.setPlayer(player);
-            return playerControlView;
+            controlView = playerControlView;
 
         } else if (cell instanceof Chest) {
             Chest chest = (Chest) cell;
             ChestControlView chestControlView = new ChestControlView();
             chestControlView.setChest(chest);
-            return chestControlView;
+            controlView = chestControlView;
         }
 
-        return null;
+        controlView.setMapEditingScene(this);
+
+        return controlView;
+    }
+
+    public void build(Cell cell) {
+        Point location = gameMapView.getSelectedLocation();
+        gameMap.addCell(cell, location);
+
+        gameMapView.refreshContent();
+        refreshControlView();
+    }
+
+    public void destroy() {
+        Point location = gameMapView.getSelectedLocation();
+        gameMap.removeCell(location);
+
+        gameMapView.refreshContent();
+        refreshControlView();
     }
 }
