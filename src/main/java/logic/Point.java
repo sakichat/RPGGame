@@ -6,7 +6,8 @@ import com.google.gson.annotations.Expose;
 import java.util.LinkedList;
 
 /**
- * Created by Saki on 2017/2/20.
+ * @author Qi Xia
+ * @version 0.1
  * this class is the Point
  */
 public class Point {
