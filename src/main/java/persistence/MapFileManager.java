@@ -2,6 +2,7 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import logic.Cell;
 import logic.GameMap;
 
 import java.io.File;
@@ -35,7 +36,6 @@ public class MapFileManager {
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/maps/" + newName + ".map.json";
-        System.out.println(newName);
         return new File(newName);
 
     }
@@ -49,8 +49,10 @@ public class MapFileManager {
     public static GameMap read(String name){
         File file = MapFileManager.path(name);
         String mapName = FileManager.fileToString(file);
-        System.out.println(mapName);
-        GameMap gameMap = new Gson().fromJson(mapName,GameMap.class);
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Cell.class, new CellSerialization())
+                .create();
+        GameMap gameMap = gson.fromJson(mapName,GameMap.class);
         return gameMap;
 
     }
@@ -62,7 +64,11 @@ public class MapFileManager {
     public static void save(GameMap gameMap){
         String name = gameMap.getName();
         File file = path(name);
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .registerTypeAdapter(Cell.class, new CellSerialization())
+                .setPrettyPrinting()
+                .create();
         String content = gson.toJson(gameMap);
         FileManager.stringToFile(content,file);
 

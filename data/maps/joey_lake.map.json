@@ -1,1 +1,0 @@
-{"name":"joey lake","size":4,"cells":[[null,null,null,null],[{"location":{"x":0,"y":1},"imageName":"wall.png"},null,{"location":{"x":2,"y":1},"imageName":"exit.png"},null],[{"location":{"x":0,"y":2},"imageName":"wall.png"},null,{"location":{"x":2,"y":2},"imageName":"entrance.png"},null],[null,null,null,null]]}
