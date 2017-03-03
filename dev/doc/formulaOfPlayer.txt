@@ -1,0 +1,28 @@
+
+- Ability score
+    +  STR
+    +  DEX
+    +  CON
+    +  INT
+    +  WIS
+    +  CHA
+    =  4D6
+
+- Ability Modifier
+    = [round result down] ((abilityScore/2) - 5)
+
+- HP
+    level = 1   ->   hp = 100
+    level > 1   ->   hp = formerLevelHp + levelAdvances
+                     levelAdvances = hitDie + CONModifier;
+                     hitDie = 1D10
+                     if (hitDie + CONModifier) < 1, levelAdvances = 1
+
+- AC (Armor Class)
+    =  10 + DEXModifier + wornAC
+
+- AB (Attack Bonus)
+    =  level + STRModifier
+
+- DB (Damage Bonus)
+    =  10 + DEXModifier + wornDB
