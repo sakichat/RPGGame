@@ -40,6 +40,9 @@ public class NavigationView extends View {
 
     }
 
+    /**
+     * This is a method for scenes to back to the former class
+     */
     public void pop() {
         if (contentViews.size() > 0) {
             View view = contentViews.getLast();
@@ -54,6 +57,10 @@ public class NavigationView extends View {
         }
     }
 
+    /**
+     * This is a method for editing scenes to back to a specific class
+     * @param viewClass
+     */
     public void popTo(Class<?> viewClass){
         while (contentViews.size() > 1 && contentViews.getLast().getClass() != viewClass){
             pop();

@@ -74,6 +74,7 @@ public class EmptyControlView extends ControlView{
         JButton playerButton = new JButton();
         playerButton = button;
 
+
         wallButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -10,14 +10,25 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Penelope on 17/3/2.
+ * This GameMapView class extends View class, and it can build map views.
+ * It contains four map layers: Background Layer for the basic map cells; Content Layer for adding items on map;
+ * Highlight Layer for showing the selected cell; Event Layer for triggering the event on cell.
+ * These four map layers are saved in a List<> for getting it easily.
+ * @author Siyu Chen
+ * @version 0.1
  */
 public class GameMapView extends View {
 
+    /**
+     * It is a implements for Delegate
+     */
     public interface Delegate {
         void gameMapViewSelect(GameMapView gameMapView, Point location);
     }
 
+    /**
+     * This is a property for delegate
+     */
     private Delegate delegate;
 
     public Delegate getDelegate() {
@@ -28,17 +39,28 @@ public class GameMapView extends View {
         this.delegate = delegate;
     }
 
+    /**
+     * This is a property for GameMap
+     */
     private GameMap gameMap;
 
     public GameMap getGameMap() {
         return gameMap;
     }
 
+
+    /**
+     * This is a method to set GameMap property, and it calls setup() method.
+     * @param gameMap
+     */
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
         setup();
     }
 
+    /**
+     * This method is to set the size of this GameMapView, and to call initLayers() method.
+     */
     private void setup(){
         this.setSize(gameMap.getSize() * GameMapLayerView.UNIT_SIZE, gameMap.getSize() * GameMapLayerView.UNIT_SIZE);
         initLayers();
@@ -49,8 +71,16 @@ public class GameMapView extends View {
     private final static int _LAYER_HIGHLIGHT   = 2;
     private final static int _LAYER_EVENT       = 3;
 
+
+    /**
+     * This List<GameMapLayerView> is to save the four layers in a LinkedList<>
+     */
     private List<GameMapLayerView> layers = new LinkedList<>();
 
+
+    /**
+     * This method is to call the methods for the four layers.
+     */
     private void initLayers() {
         initBackgroundLayer();
         initContentLayer();
@@ -58,6 +88,9 @@ public class GameMapView extends View {
         initEventLayer();
     }
 
+    /**
+     * This method is to create a new GameMapLayerView for each layer.
+     */
     private void newLayer(){
         GameMapLayerView gameMapLayerView = new GameMapLayerView();
         gameMapLayerView.setLocation(0, 0);
@@ -66,6 +99,10 @@ public class GameMapView extends View {
         layers.add(gameMapLayerView);
     }
 
+
+    /**
+     * This method is to create the Background Layer, and calls ImageView to draw the background on the map.
+     */
     private void initBackgroundLayer() {
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_BACKGROUND);
@@ -79,13 +116,25 @@ public class GameMapView extends View {
         }
     }
 
+    /**
+     * This method is to create the Content Layer,
+     * and calls refreshContent() method to paint the layer for placing items.
+     */
     private void initContentLayer(){
         newLayer();
         refreshContent();
     }
 
+    /**
+     * The selectedLocation property is for location of the cell which has been chosen.
+     */
     private Point selectedLocation;
 
+
+    /**
+     * This method is for classes to get the location of the selected cell
+     * @return selectedLocation
+     */
     public Point getSelectedLocation() {
         return selectedLocation;
     }
