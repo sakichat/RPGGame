@@ -19,6 +19,9 @@ public class MapConnection extends Panel {
 
     private JLabel label;
 
+    /**
+     * This is a init method
+     */
     protected void initSubviews() {
         label = new JLabel("ID", JLabel.RIGHT);
         label.setSize(40, 40);
@@ -36,6 +39,9 @@ public class MapConnection extends Panel {
         add(label);
     }
 
+    /**
+     * Give the data
+     */
     public void dataToView() {
         int x = 10;
         int y = 80;

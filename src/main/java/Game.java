@@ -3,7 +3,7 @@ import ui.view.NavigationView;
 import ui.view.Window;
 
 /**
- * @author qi xia
+ * @author Qi Xia
  * @version 0.1
  * This is the main program
  */

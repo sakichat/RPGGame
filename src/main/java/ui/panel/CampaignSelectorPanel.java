@@ -2,7 +2,6 @@ package ui.panel;
 
 import logic.Campaign;
 import persistence.CampaignFileManager;
-import persistence.MapFileManager;
 import ui.view.View;
 
 import javax.swing.*;
@@ -11,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
+ * @author Li Zhen
+ * @version 0.1
  * this class is the panel of campaignSelector
  */
 public class CampaignSelectorPanel extends Panel{

@@ -3,7 +3,8 @@ package ui.panel;
 import logic.Equipment;
 
 /**
- * Created by thereaghostflash on 2017-02-27.
+ * @author Li Zhen
+ * @version 0.1
  * this is the EquipmentDelegate implements
  */
 public interface EquipmentDelegate {

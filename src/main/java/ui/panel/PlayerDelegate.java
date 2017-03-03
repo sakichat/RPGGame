@@ -3,7 +3,8 @@ package ui.panel;
 import logic.Player;
 
 /**
- * Created by thereaghostflash on 2017-02-28.
+ * @author Li Zhen
+ * @version 0.1
  * this is the PlayerDelegate implements
  */
 public interface PlayerDelegate {
