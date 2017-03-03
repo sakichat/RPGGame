@@ -40,7 +40,7 @@ public class CampaignFileManager {
     /**
      * this method is to read files of Campaign
      * @param name String
-     * @return
+     * @return Campaign
      */
 
     public static Campaign read(String name){

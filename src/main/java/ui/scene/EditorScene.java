@@ -20,6 +20,9 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
     private JButton button;
     private JPanel itemSelectLabel;
 
+    /**
+     * Constructor
+     */
     @Override
     protected void init() {
         super.init();
@@ -28,6 +31,10 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         backButtonEnabled = true;
         saveButtonEnabled = false;
     }
+
+    /**
+     * set layout
+     */
     protected void initSubviews() {
         label = new JLabel("Item");
         label.setSize(160, 40);
@@ -170,6 +177,10 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
             }
         });
     }
+
+    /**
+     * This method is used to edit the item.
+     */
     private void itemEdit(){
 
         EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
@@ -179,6 +190,11 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         add(equipmentSelectorPanel);
     }
 
+    /**
+     * override the method in delegate interface.
+     * @param selectorPanel EquipmentSelectorPanel
+     * @param equipment Equipment
+     */
     @Override
     public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
         remove(selectorPanel);
@@ -188,6 +204,9 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         navigationView.push(itemEditingScene);
     }
 
+    /**
+     * This method is used to edit the player.
+     */
     private void playerEdit(){
         PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
         playerSelectorPanel.setLocation(20,260);
@@ -197,6 +216,11 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
 
     }
 
+    /**
+     * override the method in delegate interface.
+     * @param playerSelectorPanel PlayerSelectorPanel
+     * @param player Player
+     */
     @Override
     public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
         remove(playerSelectorPanel);
@@ -207,6 +231,9 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
 
     }
 
+    /**
+     * This method is used to edit the map.
+     */
     private void mapEdit(){
         MapSelectorPanel panel = new MapSelectorPanel();
         panel.setLocation(20,260);
@@ -215,6 +242,11 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         add(panel);
     }
 
+    /**
+     * override the method in delegate interface.
+     * @param mapSelectorPanel MapSelectorPanel
+     * @param gameMap GameMap
+     */
     @Override
     public void mapSelectorPerformAction(MapSelectorPanel mapSelectorPanel, GameMap gameMap) {
         remove(mapSelectorPanel);
@@ -224,6 +256,9 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         navigationView.push(scene);
     }
 
+    /**
+     * This method is used to edit the map.
+     */
     private void campaignEdit(){
         CampaignSelectorPanel panel = new CampaignSelectorPanel();
         panel.setLocation(20,260);
@@ -232,6 +267,11 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         add(panel);
     }
 
+    /**
+     * override the method in delegate interface.
+     * @param campaignSelectorPanel CampaignSelectorPanel
+     * @param campaign Campaign
+     */
     @Override
     public void campaignSelectorPerformAction(CampaignSelectorPanel campaignSelectorPanel, Campaign campaign) {
         remove(campaignSelectorPanel);

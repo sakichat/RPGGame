@@ -1,8 +1,6 @@
 package ui.controlView;
 
 import logic.Player;
-import ui.scene.MapEditingScene;
-import ui.view.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +9,8 @@ import java.awt.event.ActionListener;
 /**
  * @author Kai QI
  * @version 0.1
+ *
+ * This class is for PlayerControlView.
  */
 public class PlayerControlView extends ControlView {
 
@@ -21,10 +21,18 @@ public class PlayerControlView extends ControlView {
 
     private Player player;
 
+    /**
+     * This method is the player getter.
+     * @return
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * This method is the player setter.
+     * @param player
+     */
     public void setPlayer(Player player) {
         this.player = player;
         dataToView();
@@ -63,7 +71,7 @@ public class PlayerControlView extends ControlView {
         button.setSize(160, 40);
         button.setLocation(10, 110);
         add(button);
-        button.setText("View Attributes");
+        button.setText("Attributes");
         JButton viewAttributesButton = new JButton();
         viewAttributesButton = button;
 
@@ -71,7 +79,7 @@ public class PlayerControlView extends ControlView {
         button.setSize(160, 40);
         button.setLocation(10, 160);
         add(button);
-        button.setText("View Backpack");
+        button.setText("Backpack");
         JButton viewBackpackButton = new JButton();
         viewBackpackButton = button;
 
@@ -84,16 +92,30 @@ public class PlayerControlView extends ControlView {
         removeButton = button;
 
         viewAttributesButton.addActionListener(new ActionListener() {
+            private boolean opened;
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (opened) {
+                    mapEditingScene.hideAttributePanel();
+                } else {
+                    mapEditingScene.showAttributePanel(player);
+                }
 
+                opened = !opened;
             }
         });
 
         viewBackpackButton.addActionListener(new ActionListener() {
+            private boolean opened;
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (opened) {
+                    mapEditingScene.hideBackpackPanel();
+                } else {
+                    mapEditingScene.showBackpackPanel(player);
+                }
 
+                opened = !opened;
             }
         });
 

@@ -74,6 +74,22 @@ public class Player extends Cell{
     }
 
     /**
+     * This method is used to get the total ability modifiers of object after enhanced by equipments.
+     * @param name String
+     * @return Integer
+     */
+    public Integer getTotalAbilityModifier(String name) {
+        Integer ability = getTotalAbilityScore(name);
+        if (ability != null) {
+            return (int) (Math.floor(ability / 2.0 - 5));
+        } else  {
+            return 0;
+        }
+    }
+
+
+
+    /**
      * This method is used to calculate the ability scores based on the D20 formulas.
      */
     public void generateAbilities() {
@@ -225,7 +241,7 @@ public class Player extends Cell{
 
     /**
      * Getter for the level.
-     * @return
+     * @return int
      */
     public int getLevel() {
         return level;
@@ -233,7 +249,6 @@ public class Player extends Cell{
 
     /**
      * Setter for the level.
-     * @return
      */
     public void setLevel(int level) {
         this.level = level;
@@ -243,7 +258,7 @@ public class Player extends Cell{
 
     /**
      * Getter for the name.
-     * @return
+     * @return String
      */
     public String getName() {
         return name;
@@ -251,7 +266,7 @@ public class Player extends Cell{
 
     /**
      * Setter for the name.
-     * @param name
+     * @param name String
      */
     public void setName(String name) {
         this.name = name;
@@ -272,7 +287,7 @@ public class Player extends Cell{
 
     /**
      * Constructor with parameters, level and name.
-     * @param name
+     * @param name String
      */
     public Player(String name) {
         this.name = name;
@@ -288,7 +303,7 @@ public class Player extends Cell{
 
     /**
      * Getter for hp.
-     * @return
+     * @return Integer
      */
     public int getHp() {
         return hp;
@@ -296,7 +311,7 @@ public class Player extends Cell{
 
     /**
      * Setter for hp.
-     * @return
+     * @param hp int
      */
     public void setHp(int hp) {
         this.hp = hp;
@@ -309,7 +324,7 @@ public class Player extends Cell{
      */
     public void generateHp() {
 
-        hp = 100;
+        hp = 0;
 
         for (int i = 0; i < level - 1; i++) {
             int hitDie = Dice.rool(10);
@@ -327,17 +342,16 @@ public class Player extends Cell{
 
     /**
      * This method is used to calculate the armor class value based on the D20 rules.
-     * @return
+     * @return Integer
      */
     public int getArmorClass() {
         int dexModifier = getAbilityModifier(ABILITY_DEX);
-        int wornArmor = enhancedValueOnEquipments(ATTRIBUTE_ARMOR_CLASS);
-        return 10 + wornArmor + dexModifier;
+        return 10 + dexModifier;
     }
 
     /**
      * This method is used to get the total armor class of object after enhanced by equipments.
-     * @return
+     * @return Integer
      */
     public int getTotalArmorClass() {
         return getArmorClass() + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
@@ -346,7 +360,7 @@ public class Player extends Cell{
 
     /**
      * This method is used to calculate the attack bonus value based on the D20 rules.
-     * @return
+     * @return Integer
      */
     public int getAttackBonus() {
         int strModifier = getAbilityModifier(ABILITY_STR);
@@ -355,7 +369,7 @@ public class Player extends Cell{
 
     /**
      * This method is used to calculate the total attack bonus value enhanced by equipments.
-     * @return int
+     * @return Integer
      */
     public int getTotalAttackBonus() {
         return getAttackBonus() + enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS);
@@ -363,17 +377,16 @@ public class Player extends Cell{
 
     /**
      * This method is used to calculate the damage bonus value based on the D20 rules.
-     * @return int
+     * @return Integer
      */
     public int getDamageBonus() {
         int dexModifier = getAbilityModifier(ABILITY_DEX);
-        int equipmentBonus = enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
-        return 10 + dexModifier + equipmentBonus;
+        return 10 + dexModifier;
     }
 
     /**
      * This method is used to calculate the total damage bonus value enhanced by equipments.
-     * @return int
+     * @return Integer
      */
     public int getTotalDamageBonus() {
         return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);

@@ -6,7 +6,8 @@ import com.google.gson.annotations.Expose;
 import java.util.LinkedList;
 
 /**
- * Created by Saki on 2017/2/20.
+ * @author Qi Xia
+ * @version 0.1
  * this class is the Point
  */
 public class Point {
@@ -73,7 +74,7 @@ public class Point {
 
     /**
      * this method is to get X
-     * @return int
+     * @return Integer
      */
 
     public int getX() {
@@ -89,7 +90,7 @@ public class Point {
     }
     /**
      * this method is to get Y
-     * @return int
+     * @return Integer
      */
 
 
@@ -117,6 +118,12 @@ public class Point {
                 '}';
     }
 
+    /**
+     * this method is to compare the object
+     * @param o Object
+     * @return Boolean
+     */
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -128,6 +135,11 @@ public class Point {
         return y == point.y;
 
     }
+
+    /**
+     * this is generated automatically
+     * @return int
+     */
 
     @Override
     public int hashCode() {

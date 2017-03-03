@@ -12,7 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Penelope on 17/2/28.
+ * This class is a subclass of Scene and implements the interface MapDelegate.
+ * @author Siyu Chen
+ * @version 0.1
  */
 public class CampaignEditingScene extends Scene implements MapDelegate {
 
@@ -21,10 +23,18 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
      */
     private Campaign campaign;
 
+    /**
+     * this is a getter method
+     * @return Campaign
+     */
     public Campaign getCampaign() {
         return campaign;
     }
 
+    /**
+     * this is a setter method
+     * @param campaign
+     */
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
         mapConnectionPanel.setCampaign(campaign);
@@ -43,12 +53,11 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
         saveButtonEnabled = true;
     }
 
+    private MapConnectionPanel mapConnectionPanel;
+
     /**
      * Set layout
      */
-
-    private MapConnectionPanel mapConnectionPanel;
-
     protected void initSubviews() {
 
         MapSelectorPanel mapSelectorPanel = new MapSelectorPanel();
@@ -81,11 +90,19 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
 
     }
 
+    /**
+     * The save method, used to save the object to file.
+     */
     public void save() {
         CampaignFileManager.save(campaign);
         navigationView.popTo(EditorScene.class);
     }
 
+    /**
+     * Implements the method in delegtion method.
+     * @param mapSelectorPanel MapSelectorPanel
+     * @param gameMap GameMap
+     */
     @Override
     public void mapSelectorPerformAction(MapSelectorPanel mapSelectorPanel, GameMap gameMap) {
         campaign.addMapName(gameMap.getName());

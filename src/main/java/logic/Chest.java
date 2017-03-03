@@ -31,6 +31,9 @@ public class Chest extends Cell{
         this.equipment = equipment;
     }
 
+    /**
+     * this method is set the name of image
+     */
     public Chest() {
         imageName = "chest.png";
     }

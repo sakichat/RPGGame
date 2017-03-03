@@ -3,7 +3,8 @@ package ui.panel;
 import logic.GameMap;
 
 /**
- * Created by thereaghostflash on 2017-03-02.
+ * @author Li Zhen
+ * @version 0.1
  * this is the MapDelegate implements
  */
 public interface MapDelegate {

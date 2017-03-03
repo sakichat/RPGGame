@@ -6,11 +6,16 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/*
+/**
+ * This is a PlayerCreationScene to show the scene for creating player name which extends Scene class
  * @author Siyu Chen
  * @version 0.1
  */
 public class PlayerCreationScene extends Scene {
+
+    /**
+     * This init() method overrides that in superclass to set up own properties for this subclass
+     */
     @Override
     protected void init() {
         super.init();
@@ -20,6 +25,10 @@ public class PlayerCreationScene extends Scene {
         saveButtonEnabled = false;
     }
 
+    /**
+     * This method creates components on the main scene
+     * And adds events on backButton and createButton
+     */
     protected void initSubviews() {
         JLabel nameLabel = new JLabel("Name", JLabel.RIGHT);
         nameLabel.setSize(120, 40);

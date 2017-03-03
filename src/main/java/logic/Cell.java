@@ -5,13 +5,15 @@ import com.google.gson.annotations.Expose;
 import java.util.Observable;
 
 /**
- * Created by Saki on 2017/2/23.
  * @author Qi Xia
  * @version 0.1
  *
  * this is the cell class
  */
 public abstract class Cell extends Observable{
+    /**
+     * this is the constructor
+     */
 
     public Cell() {
 

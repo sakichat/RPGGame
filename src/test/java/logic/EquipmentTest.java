@@ -15,6 +15,7 @@ public class EquipmentTest {
 
     /**
      * this method is to test if the weapon can be correctly created.
+     * @throws Exception
      */
     @Test
     public void validateWeapon() throws Exception {
@@ -31,6 +32,7 @@ public class EquipmentTest {
 
     /**
      * this method is to test if the shield can be correctly created.
+     * @throws Exception
      */
     @Test
     public void validateShield() throws Exception {
@@ -46,6 +48,7 @@ public class EquipmentTest {
 
     /**
      * This case test the ordinary equipment-creation.
+     * @throws Exception
      */
     @Test
     public void validateBoots() throws Exception{

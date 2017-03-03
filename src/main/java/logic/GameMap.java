@@ -6,7 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Saki on 2017/2/20.
+ * @author Qi Xia
+ * @version 0.1
  * this class is the map
  */
 public class GameMap {
@@ -22,7 +23,7 @@ public class GameMap {
 
     /**
      * this method is to get size of map
-     * @return int
+     * @return Integer
      */
     public int getSize() {
         return size;

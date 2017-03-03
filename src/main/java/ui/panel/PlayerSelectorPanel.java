@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
+ * @author Li Zhen
+ * @version 0.1
  * this class is the panel of playerSelector
  */
 public class PlayerSelectorPanel extends Panel {

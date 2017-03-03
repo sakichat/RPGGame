@@ -10,6 +10,8 @@ import java.util.List;
 /**
  * @author Kai QI
  * @version 0.1
+ *
+ * This class isfo MapConnectionPanel purpose.
  */
 public class MapConnectionPanel extends Panel {
 
@@ -19,21 +21,28 @@ public class MapConnectionPanel extends Panel {
     private Campaign campaign;
     private JLabel messageLabel;
 
+    /**
+     * This method is the campaign getter.
+     * @return
+     */
     public Campaign getCampaign() {
         return campaign;
     }
 
+    /**
+     * This method is the campaign setter.
+     * @param campaign
+     */
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
         dataToView();
     }
 
-    /**
-     * Layout
-     */
-
     Panel mapSequencePanel;
 
+    /**
+     * Constructor
+     */
     @Override
     protected void init() {
         super.init();
@@ -45,6 +54,9 @@ public class MapConnectionPanel extends Panel {
 
     }
 
+    /**
+     * Layout
+     */
     protected void initSubviews() {
 
         JLabel label;
@@ -84,16 +96,14 @@ public class MapConnectionPanel extends Panel {
             button.setSize(100, 40);
             button.setLocation(20, y);
             mapSequencePanel.add(button);
-            JButton removeButton = new JButton();
-            removeButton = button;
+            JButton removeButton = button;
 
             label = new JLabel("", JLabel.LEFT);
             label.setSize(180, 40);
             label.setLocation(140, y);
             mapSequencePanel.add(label);
             label.setText(s);
-            JLabel mapNameLabel = new JLabel();
-            mapNameLabel = label;
+            JLabel mapNameLabel = label;
 
             y += 50;
 
@@ -111,8 +121,7 @@ public class MapConnectionPanel extends Panel {
         label.setSize(100, 40);
         label.setLocation(140, y);
         mapSequencePanel.add(label);
-        JLabel endNameLabel = new JLabel();
-        endNameLabel = label;
+        JLabel endNameLabel = label;
         y += 50;
 
         button = new JButton("Validate");
@@ -137,6 +146,9 @@ public class MapConnectionPanel extends Panel {
 
     }
 
+    /**
+     * this method is used to validate the campaign
+     */
     private void validateCampaign(){
         String result = campaign.validate();
         messageLabel.setText(result);

@@ -5,12 +5,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This is the Main Scene class extends Scene class
  * @author Siyu Chen
  * @version 0.1
  */
 public class MainScene extends Scene {
 
 
+    /**
+     * This init() method overrides that in superclass to set up own properties for this subclass
+     */
     @Override
     public void init() {
         super.init();
@@ -20,6 +24,9 @@ public class MainScene extends Scene {
         saveButtonEnabled = false;
     }
 
+    /**
+     * This method creates components on the main scene
+     */
     protected void initSubviews() {
         JButton playButton = new JButton("Play");
         playButton.setSize(160, 40);
@@ -38,7 +45,6 @@ public class MainScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 EditorScene editorScene = new EditorScene();
                 MainScene.this.navigationView.push(editorScene);
-//                MainScene.this.add(editorScene);
             }
         });
     }

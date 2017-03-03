@@ -4,6 +4,7 @@ import ui.scene.MapEditingScene;
 import ui.view.View;
 
 /**
+ * This ControlView sets a template of other control views which extends View class
  * @author Siyu Chen
  * @version 0.1
  */

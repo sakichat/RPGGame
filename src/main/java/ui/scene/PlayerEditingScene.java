@@ -21,19 +21,23 @@ import java.awt.event.ActionListener;
  */
 public class PlayerEditingScene extends Scene implements EquipmentDelegate{
 
+    /**
+     * Declaration of the property player and getter & setter
+     */
     private Player player;
 
-    private PlayerPanel playerPanel;
-    private BackpackPanel backpackPanel;
-
-    JTextField levelField;
-    JButton setButton;
-    JButton geneButton;
-
+    /**
+     * getter
+     * @return Player
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * setter
+     * @param player
+     */
     public void setPlayer(Player player) {
         this.player = player;
         playerPanel.setPlayer(player);
@@ -42,6 +46,17 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         backpackPanel.dataToView();
     }
 
+
+    private PlayerPanel playerPanel;
+    private BackpackPanel backpackPanel;
+
+    JTextField levelField;
+    JButton setButton;
+    JButton geneButton;
+
+    /**
+     * This init() method overrides that in superclass to set up own properties for this subclass
+     */
     @Override
     protected void init() {
         super.init();
@@ -51,6 +66,10 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         saveButtonEnabled = true;
     }
 
+    /**
+     * This method creates components on the main scene
+     * And adds events on buttons
+     */
     protected void initSubviews() {
         JLabel level = new JLabel("Level", JLabel.RIGHT);
         level.setSize(120, 40);
@@ -132,11 +151,19 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
 
     }
 
+    /**
+     * this method is used to save the object player to a file.
+     */
     private void save(){
         PlayerFileManager.save(player);
         navigationView.popTo(EditorScene.class);
     }
 
+    /**
+     * override the method of the delegate interface
+     * @param selectorPanel EquipmentSelectorPanel
+     * @param equipment Equipment
+     */
     @Override
     public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
         player.pickUpEquipment(equipment);

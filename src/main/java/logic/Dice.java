@@ -4,7 +4,7 @@ package logic;
  *
  * @author Kai QI
  * @version 0.1
- *
+ *this class is the dice
  */
 public class Dice {
 
