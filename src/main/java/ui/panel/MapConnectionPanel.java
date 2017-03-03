@@ -1,11 +1,8 @@
 package ui.panel;
 
 import logic.Campaign;
-//import logic.MapConnection;
-import ui.view.ExitsConnectionView;
 
 import javax.swing.*;
-import java.util.List;
 
 /**
  * @author Kai QI
