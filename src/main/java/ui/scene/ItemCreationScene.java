@@ -9,8 +9,14 @@ import java.awt.event.ActionListener;
 /**
  * @author Siyu Chen
  * @version 0.1
+ *
+ * This scene is corresponding with the item creation.
  */
 public class ItemCreationScene extends Scene {
+
+    /**
+     * This method is for initialization.
+     */
     @Override
     protected void init() {
         super.init();
@@ -20,6 +26,9 @@ public class ItemCreationScene extends Scene {
         saveButtonEnabled = false;
     }
 
+    /**
+     * This method is for setting the buttons.
+     */
     protected void initSubviews() {
         JLabel nameLabel = new JLabel("Name", JLabel.RIGHT);
         nameLabel.setSize(120, 40);

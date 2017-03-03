@@ -12,14 +12,24 @@ import java.awt.event.ActionListener;
 /**
  * @author GU_HAN
  * @version 0.1
+ *
+ * This scene is for editing the equipments.
  */
 public class ItemEditingScene extends Scene {
     private Equipment equipment;
 
+    /**
+     * This method is for get the equipment.
+     * @return equipment.
+     */
     public Equipment getEquipment() {
         return equipment;
     }
 
+    /**
+     * This method is for set up the equipment.
+     * @param equipment
+     */
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
         if(equipment.getType() == null){
@@ -63,6 +73,9 @@ public class ItemEditingScene extends Scene {
 
     private JButton validateButton;
 
+    /**
+     * This method is for initialization.
+     */
     @Override
     protected void init() {
         super.init();
@@ -72,6 +85,9 @@ public class ItemEditingScene extends Scene {
         saveButtonEnabled = true;
     }
 
+    /**
+     * This method is the details of the initialization.
+     */
     protected void initSubviews(){
 
         /*
@@ -455,11 +471,17 @@ public class ItemEditingScene extends Scene {
         repaint();
     }
 
+    /**
+     * This method is for saving purpose.
+     */
     public void save(){
         EquipmentFileManager.save(equipment);
         navigationView.popTo(EditorScene.class);
     }
 
+    /**
+     * This method updates the view from the model.
+     */
     public void dataToView(){
         nameLabel.setText(equipment.getName());
         typeLabel.setText(equipment.getType());
