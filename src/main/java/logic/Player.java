@@ -257,6 +257,9 @@ public class Player extends Cell{
         this.name = name;
     }
 
+    /**
+     * initialization block
+     */
     {
         imageName = "player_1.png";
     }
@@ -264,7 +267,6 @@ public class Player extends Cell{
     /**
      * Constructor without parameters.
      */
-
     public Player() {
     }
 
@@ -272,7 +274,6 @@ public class Player extends Cell{
      * Constructor with parameters, level and name.
      * @param name
      */
-
     public Player(String name) {
         this.name = name;
     }
@@ -352,13 +353,17 @@ public class Player extends Cell{
         return level + strModifier;
     }
 
+    /**
+     * This method is used to calculate the total attack bonus value enhanced by equipments.
+     * @return int
+     */
     public int getTotalAttackBonus() {
         return getAttackBonus() + enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS);
     }
 
     /**
      * This method is used to calculate the damage bonus value based on the D20 rules.
-     * @return
+     * @return int
      */
     public int getDamageBonus() {
         int dexModifier = getAbilityModifier(ABILITY_DEX);
@@ -366,6 +371,10 @@ public class Player extends Cell{
         return 10 + dexModifier + equipmentBonus;
     }
 
+    /**
+     * This method is used to calculate the total damage bonus value enhanced by equipments.
+     * @return int
+     */
     public int getTotalDamageBonus() {
         return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
     }
