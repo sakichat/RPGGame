@@ -53,9 +53,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         gameMapView.setDelegate(this);
 
         JButton validateButton = new JButton("Validate");
-        validateButton.setLocation(550, 40);
+        validateButton.setLocation(550, 80);
         validateButton.setSize(160, 40);
-        contentView.add(validateButton);
+        add(validateButton);
 
         validationMessageLabel = new JLabel();
         validationMessageLabel.setLocation(40, 0);

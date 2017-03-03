@@ -139,8 +139,14 @@ public class GameMapView extends View {
         return selectedLocation;
     }
 
+    /**
+     * This property is for a new ImageView
+     */
     private ImageView selectionView;
 
+    /**
+     * This method is to show the selected cell on this layer
+     */
     private void initHighlightLayer(){
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
@@ -152,6 +158,9 @@ public class GameMapView extends View {
 
     }
 
+    /**
+     * This method adds an event if a cell is pressed and to get the location of this cell
+     */
     private void initEventLayer(){
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_EVENT);
@@ -192,6 +201,11 @@ public class GameMapView extends View {
         }
     }
 
+    /**
+     * This method gets location from the Event layer and pass the parameter to Highlight layer.
+     * So that it can draw the selected cell on Highlight layer.
+     * @param location
+     */
     private void cellPressed(Point location){
         GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
         layerView.moveCell(selectedLocation, location);
@@ -201,6 +215,10 @@ public class GameMapView extends View {
         delegate.gameMapViewSelect(this, location);
     }
 
+    /**
+     * This method refreshes the Content layer when it occurs some event on that,
+     * for example, add a new cell view, remove a cell view, or move a cell view, etc.
+     */
     public void refreshContent(){
         GameMapLayerView layerView = layers.get(_LAYER_CONTENT);
         layerView.removeAllCells();
