@@ -12,17 +12,7 @@ import java.awt.event.ActionListener;
  * @author Kai QI
  * @version 0.1
  */
-public class ChestControlView extends View {
-
-    private MapEditingScene mapEditingScene;
-
-    public MapEditingScene getMapEditingScene() {
-        return mapEditingScene;
-    }
-
-    public void setMapEditingScene(MapEditingScene mapEditingScene) {
-        this.mapEditingScene = mapEditingScene;
-    }
+public class ChestControlView extends ControlView {
 
     private Chest chest;
 
@@ -47,7 +37,7 @@ public class ChestControlView extends View {
         jLabel.setSize(160, 40);
         jLabel.setLocation(10, 10);
         add(jLabel);
-        jLabel.setText(MainControlView.CHEST);
+        jLabel.setText("Chest");
         JLabel topicLabel = new JLabel();
         topicLabel = jLabel;
 
@@ -65,7 +55,7 @@ public class ChestControlView extends View {
         jButton.setSize(160, 40);
         jButton.setLocation(10, 110);
         add(jButton);
-        jButton.setText(MainControlView.REMOVE);
+        jButton.setText("Remove");
         JButton removeButton = new JButton();
         removeButton = jButton;
 

@@ -210,8 +210,10 @@ public class Simulation {
         Obstacle obstacle8 = new Obstacle();
         Obstacle obstacle9 = new Obstacle();
 
-        Player characteur1 = PlayerFileManager.read("data/players/zyra.ply.json");
-        Player characteur2 = PlayerFileManager.read("data/players/pegasus.ply.json");
+        Player characteur1 = newPlayer();
+        characteur1.setName("Joey");
+        Player characteur2 = newPlayer();
+        characteur2.setName("Monster");
 
         Point point1 = new Point(1, 1);
         Point point2 = new Point(2, 1);

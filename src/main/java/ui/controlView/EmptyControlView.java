@@ -11,25 +11,9 @@ import java.awt.event.ActionListener;
  * @author Kai QI
  * @version 0.1
  */
-public class MainControlView extends View{
-    private MapEditingScene mapEditingScene;
+public class EmptyControlView extends ControlView{
 
-    public MapEditingScene getMapEditingScene() {
-        return mapEditingScene;
-    }
-
-    public void setMapEditingScene(MapEditingScene mapEditingScene) {
-        this.mapEditingScene = mapEditingScene;
-    }
-
-    public final static String WALL = "Wall";
-    public final static String ENTRANCE = "Entrance";
-    public final static String EXIT = "Exit";
-    public final static String CHEST = "Chest";
-    public final static String PLAYER = "Player";
-    public final static String REMOVE = "Remove";
-
-    public MainControlView() {
+    public EmptyControlView() {
         this.setSize(180,560);
         initSubviews();
     }
@@ -47,7 +31,7 @@ public class MainControlView extends View{
         jButton.setSize(160, 40);
         jButton.setLocation(10, 60);
         add(jButton);
-        jButton.setText(WALL);
+        jButton.setText("Wall");
         JButton wallButton = new JButton();
         wallButton = jButton;
 
@@ -55,7 +39,7 @@ public class MainControlView extends View{
         jButton.setSize(160, 40);
         jButton.setLocation(10, 110);
         add(jButton);
-        jButton.setText(ENTRANCE);
+        jButton.setText("Entrance");
         JButton entranceButton = new JButton();
         entranceButton = jButton;
 
@@ -63,7 +47,7 @@ public class MainControlView extends View{
         jButton.setSize(160, 40);
         jButton.setLocation(10, 160);
         add(jButton);
-        jButton.setText(EXIT);
+        jButton.setText("Exit");
         JButton exitButton = new JButton();
         exitButton = jButton;
 
@@ -71,7 +55,7 @@ public class MainControlView extends View{
         jButton.setSize(160, 40);
         jButton.setLocation(10, 210);
         add(jButton);
-        jButton.setText(CHEST);
+        jButton.setText("Chest");
         JButton chestButton = new JButton();
         chestButton = jButton;
 
@@ -79,7 +63,7 @@ public class MainControlView extends View{
         jButton.setSize(160, 40);
         jButton.setLocation(10, 260);
         add(jButton);
-        jButton.setText(PLAYER);
+        jButton.setText("Player");
         JButton playerButton = new JButton();
         playerButton = jButton;
 

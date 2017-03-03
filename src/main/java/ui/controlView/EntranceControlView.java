@@ -11,17 +11,7 @@ import java.awt.event.ActionListener;
  * @author Kai QI
  * @version 0.1
  */
-public class EntranceControlView extends View {
-
-    private MapEditingScene mapEditingScene;
-
-    public MapEditingScene getMapEditingScene() {
-        return mapEditingScene;
-    }
-
-    public void setMapEditingScene(MapEditingScene mapEditingScene) {
-        this.mapEditingScene = mapEditingScene;
-    }
+public class EntranceControlView extends ControlView {
 
     public EntranceControlView() {
         this.setSize(180,560);
@@ -34,7 +24,7 @@ public class EntranceControlView extends View {
         topicLabel.setSize(160, 40);
         topicLabel.setLocation(10, 10);
         add(topicLabel);
-        topicLabel.setText(MainControlView.ENTRANCE);
+        topicLabel.setText("Entrance");
 
         JButton jButton;
 
@@ -42,7 +32,7 @@ public class EntranceControlView extends View {
         jButton.setSize(160, 40);
         jButton.setLocation(10, 60);
         add(jButton);
-        jButton.setText(MainControlView.REMOVE);
+        jButton.setText("Remove");
         JButton removeButton = new JButton();
         removeButton = jButton;
 

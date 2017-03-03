@@ -13,6 +13,21 @@ import java.util.List;
  * Created by Penelope on 17/3/2.
  */
 public class GameMapView extends View {
+
+    public interface Delegate {
+        void gameMapViewSelect(GameMapView gameMapView, Point location);
+    }
+
+    private Delegate delegate;
+
+    public Delegate getDelegate() {
+        return delegate;
+    }
+
+    public void setDelegate(Delegate delegate) {
+        this.delegate = delegate;
+    }
+
     private GameMap gameMap;
 
     public GameMap getGameMap() {
@@ -140,5 +155,7 @@ public class GameMapView extends View {
         layerView.moveCell(selectedLocation, location);
         selectedLocation = location;
         repaint();
+
+        delegate.gameMapViewSelect(this, location);
     }
 }

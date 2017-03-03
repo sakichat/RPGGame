@@ -11,18 +11,9 @@ import java.awt.event.ActionListener;
  * @author Kai QI
  * @version 0.1
  */
-public class WallControlView extends View {
-    private MapEditingScene mapEditingScene;
+public class ObstacleControlView extends ControlView {
 
-    public MapEditingScene getMapEditingScene() {
-        return mapEditingScene;
-    }
-
-    public void setMapEditingScene(MapEditingScene mapEditingScene) {
-        this.mapEditingScene = mapEditingScene;
-    }
-
-    public WallControlView() {
+    public ObstacleControlView() {
         this.setSize(180,560);
         initSubviews();
     }
@@ -33,7 +24,7 @@ public class WallControlView extends View {
         topicLabel.setSize(160, 40);
         topicLabel.setLocation(10, 10);
         add(topicLabel);
-        topicLabel.setText(MainControlView.WALL);
+        topicLabel.setText("Wall");
 
         JButton jButton;
 
@@ -41,7 +32,7 @@ public class WallControlView extends View {
         jButton.setSize(160, 40);
         jButton.setLocation(10, 60);
         add(jButton);
-        jButton.setText(MainControlView.REMOVE);
+        jButton.setText("Remove");
         JButton removeButton = new JButton();
         removeButton = jButton;
 

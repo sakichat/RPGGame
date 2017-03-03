@@ -23,8 +23,6 @@ public class ImageView extends View {
 
     @Override
     public void paint(Graphics g) {
-        System.out.println("paint " + name);
-
         ImageIcon image = new ImageIcon("data/images/" + name);
         g.drawImage(image.getImage(), 0, 0, null);
     }
