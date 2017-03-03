@@ -7,13 +7,9 @@ import logic.*;
 import java.lang.reflect.Type;
 
 /**
-<<<<<<< Updated upstream
- * @author Siyu Chen
+ * @author Li Zhen
  * @version 0.1
-=======
- * Created by Penelope on 17/3/3.
  * this class is to manage the cell
->>>>>>> Stashed changes
  */
 public class CellSerialization implements JsonSerializer<Cell>, JsonDeserializer<Cell> {
     /**
