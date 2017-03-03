@@ -1,0 +1,356 @@
+{
+  "name": "Eanulf Holy Church",
+  "size": 12,
+  "cells": [
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 10,
+            "y": 1
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null
+    ],
+    [
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 2,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      {
+        "_class": "Exit",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 2
+          },
+          "imageName": "exit.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 3
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 3
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 7,
+            "y": 3
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 8,
+            "y": 3
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 4
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Entrance",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 5
+          },
+          "imageName": "entrance.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 5
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 2,
+            "y": 6
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 6
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 7
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipment": {
+            "name": "Alythess Pyrogenics",
+            "type": "Ring",
+            "enhancedAttribute": "CON",
+            "enhancedValue": 3
+          },
+          "location": {
+            "x": 8,
+            "y": 7
+          },
+          "imageName": "chest.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 8
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 9
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "name": "Summonners\u0027 Rift",
+  "size": 4,
+  "cells": [
+    [
+      {
+        "_class": "Exit",
+        "_object": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "imageName": "exit.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      {
+        "_class": "Player",
+        "_object": {
+          "abilityScores": {
+            "STR": 20,
+            "WIS": 4,
+            "CON": 12,
+            "DEX": 16,
+            "CHA": 20,
+            "INT": 16
+          },
+          "backpack": [
+            {
+              "name": "Bloodhoof Runespear",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            {
+              "name": "Axe of Cenarius",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Bronze Warboots",
+              "type": "Boots",
+              "enhancedAttribute": "DEX",
+              "enhancedValue": 4
+            }
+          ],
+          "equipments": {
+            "Helmet": {
+              "name": "Coif of Delusions",
+              "type": "Helmet",
+              "enhancedAttribute": "WIS",
+              "enhancedValue": 5
+            },
+            "Ring": {
+              "name": "Phyrix Embrace",
+              "type": "Ring",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 2
+            },
+            "Boots": {
+              "name": "Bone Stompers",
+              "type": "Boots",
+              "enhancedAttribute": "DEX",
+              "enhancedValue": 5
+            },
+            "Weapon": {
+              "name": "Axe of Cenarius",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          },
+          "level": 1,
+          "name": "Pegasus",
+          "hp": 100,
+          "location": {
+            "x": 3,
+            "y": 0
+          },
+          "imageName": "player_1.png",
+          "changed": false,
+          "obs": []
+        }
+      }
+    ],
+    [
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 2,
+            "y": 1
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null
+    ],
+    [
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 2,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null
+    ],
+    [
+      {
+        "_class": "Entrance",
+        "_object": {
+          "location": {
+            "x": 0,
+            "y": 3
+          },
+          "imageName": "entrance.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipment": {
+            "name": "Alythess Pyrogenics",
+            "type": "Ring",
+            "enhancedAttribute": "CON",
+            "enhancedValue": 3
+          },
+          "location": {
+            "x": 3,
+            "y": 3
+          },
+          "imageName": "chest.png",
+          "changed": false,
+          "obs": []
+        }
+      }
+    ]
+  ]
+}
