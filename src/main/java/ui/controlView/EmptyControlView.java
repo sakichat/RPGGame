@@ -92,12 +92,14 @@ public class EmptyControlView extends ControlView{
         playerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                mapEditingScene.addPlayer();
             }
         });
 
         chestButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                mapEditingScene.addChest();
             }
         });
     }

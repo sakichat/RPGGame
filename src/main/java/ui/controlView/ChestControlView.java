@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 public class ChestControlView extends ControlView {
 
     private Chest chest;
+    private JLabel chestNameLabel;
 
     public Chest getChest() {
         return chest;
@@ -22,6 +23,7 @@ public class ChestControlView extends ControlView {
 
     public void setChest(Chest chest) {
         this.chest = chest;
+        dataToView();
     }
 
     public ChestControlView() {
@@ -31,33 +33,28 @@ public class ChestControlView extends ControlView {
 
     public void initSubviews() {
 
-        JLabel jLabel;
+        JLabel label;
 
-        jLabel = new JLabel();
-        jLabel.setSize(160, 40);
-        jLabel.setLocation(10, 10);
-        add(jLabel);
-        jLabel.setText("Chest");
-        JLabel topicLabel = new JLabel();
-        topicLabel = jLabel;
+        label = new JLabel();
+        label.setSize(160, 40);
+        label.setLocation(10, 10);
+        add(label);
+        label.setText("Chest");
 
-        jLabel = new JLabel();
-        jLabel.setSize(160, 40);
-        jLabel.setLocation(10, 60);
-        add(jLabel);
-        jLabel.setText(chest.getEquipment().getName());
-        JLabel chestNameLabel = new JLabel();
-        chestNameLabel = jLabel;
+        label = new JLabel();
+        label.setSize(160, 40);
+        label.setLocation(10, 60);
+        add(label);
+        chestNameLabel = label;
 
-        JButton jButton;
+        JButton button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 110);
-        add(jButton);
-        jButton.setText("Remove");
-        JButton removeButton = new JButton();
-        removeButton = jButton;
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 110);
+        add(button);
+        button.setText("Remove");
+        JButton removeButton = button;
 
         removeButton.addActionListener(new ActionListener() {
             @Override
@@ -66,5 +63,9 @@ public class ChestControlView extends ControlView {
             }
         });
 
+    }
+
+    private void dataToView(){
+        chestNameLabel.setText(chest.getEquipment().getName());
     }
 }

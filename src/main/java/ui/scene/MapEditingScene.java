@@ -4,6 +4,10 @@ import com.sun.org.apache.regexp.internal.RE;
 import logic.*;
 import org.omg.CORBA.PRIVATE_MEMBER;
 import ui.controlView.*;
+import ui.panel.EquipmentDelegate;
+import ui.panel.EquipmentSelectorPanel;
+import ui.panel.PlayerDelegate;
+import ui.panel.PlayerSelectorPanel;
 import ui.view.GameMapView;
 import ui.view.View;
 
@@ -14,7 +18,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Kai QI on 2017/2/28.
  */
-public class MapEditingScene extends Scene implements GameMapView.Delegate{
+public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate{
 
     private GameMap gameMap;
     private GameMapView gameMapView;
@@ -138,5 +142,43 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate{
 
         gameMapView.refreshContent();
         refreshControlView();
+    }
+
+    PlayerSelectorPanel playerSelectorPanel;
+
+    public void addPlayer(){
+        playerSelectorPanel = new PlayerSelectorPanel();
+        playerSelectorPanel.setLocation(520, 50);
+        playerSelectorPanel.setButtonText("Add");
+        add(playerSelectorPanel);
+
+        playerSelectorPanel.setPlayerDelegate(this);
+    }
+
+    @Override
+    public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
+        remove(playerSelectorPanel);
+        build(player);
+    }
+
+
+    EquipmentSelectorPanel equipmentSelectorPanel;
+
+    public void addChest(){
+        equipmentSelectorPanel = new EquipmentSelectorPanel();
+        equipmentSelectorPanel.setLocation(420, 50);
+        equipmentSelectorPanel.setButtonText("Add");
+        add(equipmentSelectorPanel);
+
+        equipmentSelectorPanel.setEquipmentDelegate(this);
+
+    }
+
+    @Override
+    public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
+        remove(equipmentSelectorPanel);
+        Chest chest = new Chest();
+        chest.setEquipment(equipment);
+        build(chest);
     }
 }
