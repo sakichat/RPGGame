@@ -1,6 +1,5 @@
 package logic;
 
-import logic.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -79,6 +78,23 @@ public class MapValidatorEntranceTest {
         gameMap5.addCell(obstacle2, point2);
 
         Assert.assertEquals(GameMap.VALIDATION_SUCCESS, gameMap5.validate());
+    }
+
+    /*
+     * This case tests if the map cannot be reached to the exit.
+     */
+    @Test
+    public void testNotConnection() throws Exception{
+        GameMap gameMap6 = Simulation.gameMap1();
+        Obstacle obstacle1 = new Obstacle();
+        Obstacle obstacle2 = new Obstacle();
+        Point point1 = new Point(2, 3);
+        Point point2 = new Point(3, 2);
+
+        gameMap6.addCell(obstacle1, point1);
+        gameMap6.addCell(obstacle2, point2);
+
+        Assert.assertEquals(GameMap.VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE, gameMap6.validate());
     }
 
 

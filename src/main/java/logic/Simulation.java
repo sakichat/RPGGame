@@ -1,5 +1,7 @@
 package logic;
 
+import persistence.PlayerFileManager;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -161,4 +163,5 @@ public class Simulation {
 
         return campaign;
     }
+
 }
