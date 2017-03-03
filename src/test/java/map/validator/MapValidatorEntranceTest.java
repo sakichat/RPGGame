@@ -1,7 +1,6 @@
 package map.validator;
 
 import game.Simulation;
-import map.Entrance;
 import map.GameMap;
 import map.Point;
 import org.junit.Assert;
@@ -18,46 +17,61 @@ public class MapValidatorEntranceTest {
     }
 
     /*
-     * This method tests if the map has only one entrance.
+     * This method tests if the map has no entrance.
      */
     @Test
-    public void validateEnrance() throws Exception{
-        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
-        mapValidatorEntrance.setGameMap(Simulation.gameMap1());
-
-        Assert.assertEquals(true, mapValidatorEntrance.validate());
-    }
-
-    /*
-     * This method tests if the map have two entrances.
-     */
-    @Test
-    public void validateEntrance2() throws Exception{
-        GameMap gameMap2 = Simulation.gameMap1();
-        Point point = new Point(0, 0);
-        Entrance entrance = new Entrance();
-        gameMap2.addCell(entrance, point);
-
-        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
-        mapValidatorEntrance.setGameMap(gameMap2);
-
-        Assert.assertEquals(false, mapValidatorEntrance.validate());
-
-    }
-
-    /*
-     * This case test if the campaign can have no entrance.
-     */
-    @Test
-    public void validateEntrance3() throws Exception{
+    public void testNoEntrance() throws Exception{
         Point point = new Point(3, 3);
         GameMap gameMap2 = Simulation.gameMap1();
         gameMap2.removeCell(point);
 
-        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
-        mapValidatorEntrance.setGameMap(gameMap2);
+//        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
+//        mapValidatorEntrance.setGameMap(gameMap2);
 
-        Assert.assertEquals(false, mapValidatorEntrance.validate());
+        Assert.assertEquals(false, gameMap2.validate());
     }
+
+    /*
+     * This method tests if the map has only one entrance.
+     */
+//    @Test
+//    public void validateEnrance() throws Exception{
+//        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
+//        mapValidatorEntrance.setGameMap(Simulation.gameMap1());
+//
+//        Assert.assertEquals(true, mapValidatorEntrance.validate());
+//    }
+//
+//    /*
+//     * This method tests if the map have two entrances.
+//     */
+//    @Test
+//    public void validateEntrance2() throws Exception{
+//        GameMap gameMap2 = Simulation.gameMap1();
+//        Point point = new Point(0, 0);
+//        Entrance entrance = new Entrance();
+//        gameMap2.addCell(entrance, point);
+//
+//        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
+//        mapValidatorEntrance.setGameMap(gameMap2);
+//
+//        Assert.assertEquals(false, mapValidatorEntrance.validate());
+//
+//    }
+//
+//    /*
+//     * This case test if the campaign can have no entrance.
+//     */
+//    @Test
+//    public void validateEntrance3() throws Exception{
+//        Point point = new Point(3, 3);
+//        GameMap gameMap2 = Simulation.gameMap1();
+//        gameMap2.removeCell(point);
+//
+//        MapValidatorEntrance mapValidatorEntrance = new MapValidatorEntrance();
+//        mapValidatorEntrance.setGameMap(gameMap2);
+//
+//        Assert.assertEquals(false, mapValidatorEntrance.validate());
+//    }
 
 }
