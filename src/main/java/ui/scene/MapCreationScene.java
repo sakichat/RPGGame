@@ -1,5 +1,7 @@
 package ui.scene;
 
+import map.GameMap;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +11,8 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class MapCreationScene extends Scene {
+    private GameMap gameMap;
+    private int size;
 
     @Override
     protected void init() {
@@ -57,6 +61,8 @@ public class MapCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sizeLabel.setText(smallSize.getText());
+                size = 4;
+
                 repaint();
             }
         });
@@ -71,6 +77,8 @@ public class MapCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sizeLabel.setText(mediumSize.getText());
+                size = 8;
+
                 repaint();
             }
         });
@@ -86,6 +94,9 @@ public class MapCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 sizeLabel.setText(largeSize.getText());
+                size = 12;
+
+                repaint();
             }
         });
 
@@ -106,8 +117,10 @@ public class MapCreationScene extends Scene {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                gameMap.setSize(size);
                 MapEditingScene mapEditingScene = new MapEditingScene();
                 MapCreationScene.this.navigationView.push(mapEditingScene);
+                mapEditingScene.setGameMap(gameMap);
             }
         });
     }
