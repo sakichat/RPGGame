@@ -15,6 +15,8 @@ import java.util.Observer;
 /**
  * @author Kai QI
  * @version 0.1
+ *
+ * This class if for PlayerPanel.
  */
 public class PlayerPanel extends Panel implements Observer {
 
@@ -23,10 +25,18 @@ public class PlayerPanel extends Panel implements Observer {
      */
     private Player player;
 
+    /**
+     * This method is the Player getter.
+     * @return
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * This method is the Player setter.
+     * @param player
+     */
     public void setPlayer(Player player) {
         this.player = player;
         dataToView();

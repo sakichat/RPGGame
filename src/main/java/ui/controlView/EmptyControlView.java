@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 /**
  * @author Kai QI
  * @version 0.1
+ *
+ * This class is for emptyControlView.
  */
 public class EmptyControlView extends ControlView{
 

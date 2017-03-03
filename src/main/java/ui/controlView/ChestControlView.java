@@ -1,8 +1,6 @@
 package ui.controlView;
 
 import logic.Chest;
-import ui.scene.MapEditingScene;
-import ui.view.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +9,8 @@ import java.awt.event.ActionListener;
 /**
  * @author Kai QI
  * @version 0.1
+ *
+ * This class is chestControlView.
  */
 public class ChestControlView extends ControlView {
 
@@ -20,10 +20,18 @@ public class ChestControlView extends ControlView {
     private Chest chest;
     private JLabel chestNameLabel;
 
+    /**
+     * This is the chest getter.
+     * @return
+     */
     public Chest getChest() {
         return chest;
     }
 
+    /**
+     * This is the chest setter.
+     * @param chest
+     */
     public void setChest(Chest chest) {
         this.chest = chest;
         dataToView();

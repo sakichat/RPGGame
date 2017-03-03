@@ -1,8 +1,6 @@
 package ui.controlView;
 
 import logic.Player;
-import ui.scene.MapEditingScene;
-import ui.view.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -11,6 +9,8 @@ import java.awt.event.ActionListener;
 /**
  * @author Kai QI
  * @version 0.1
+ *
+ * This class is for PlayerControlView.
  */
 public class PlayerControlView extends ControlView {
 
@@ -21,10 +21,18 @@ public class PlayerControlView extends ControlView {
 
     private Player player;
 
+    /**
+     * This method is the player getter.
+     * @return
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * This method is the player setter.
+     * @param player
+     */
     public void setPlayer(Player player) {
         this.player = player;
         dataToView();

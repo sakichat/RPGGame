@@ -5,6 +5,8 @@ import javax.swing.*;
 /**
  * @author Kai QI
  * @version 0.1
+ *
+ * This class is for MapConnection purpose.
  */
 public class MapConnection extends Panel {
     @Override

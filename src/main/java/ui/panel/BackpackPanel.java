@@ -24,6 +24,10 @@ public class BackpackPanel extends Panel implements Observer{
 
     private Player player;
 
+    /**
+     * This method is the Player getter.
+     * @return
+     */
     public Player getPlayer() {
         return player;
     }
@@ -41,6 +45,9 @@ public class BackpackPanel extends Panel implements Observer{
 
     private JPanel equipmentsPanel;
 
+    /**
+     * This method is init method.
+     */
     @Override
     protected void init() {
         super.init();
@@ -50,7 +57,7 @@ public class BackpackPanel extends Panel implements Observer{
     }
 
     /**
-     * This is a method makes initialized
+     * This is a method makes initialized.
      */
 
     protected void initSubviews(){

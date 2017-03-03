@@ -10,6 +10,8 @@ import java.util.List;
 /**
  * @author Kai QI
  * @version 0.1
+ *
+ * This class isfo MapConnectionPanel purpose.
  */
 public class MapConnectionPanel extends Panel {
 
@@ -19,10 +21,18 @@ public class MapConnectionPanel extends Panel {
     private Campaign campaign;
     private JLabel messageLabel;
 
+    /**
+     * This method is the campaign getter.
+     * @return
+     */
     public Campaign getCampaign() {
         return campaign;
     }
 
+    /**
+     * This method is the campaign setter.
+     * @param campaign
+     */
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
         dataToView();
