@@ -53,6 +53,7 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
 
         MapSelectorPanel mapSelectorPanel = new MapSelectorPanel();
         mapSelectorPanel.setLocation(20,20);
+        mapSelectorPanel.setButtonText("Add");
         contentView.add(mapSelectorPanel);
 
         mapConnectionPanel = new MapConnectionPanel();

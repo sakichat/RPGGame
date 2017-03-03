@@ -5,6 +5,7 @@ import logic.Campaign;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * @author Kai QI
@@ -16,6 +17,7 @@ public class MapConnectionPanel extends Panel {
      * property campaign and getter & setter
      */
     private Campaign campaign;
+    private JLabel messageLabel;
 
     public Campaign getCampaign() {
         return campaign;
@@ -67,62 +69,78 @@ public class MapConnectionPanel extends Panel {
 
         mapSequencePanel.removeAll();
 
-        JButton jButton;
-        JLabel jLabel;
+        JButton button;
+        JLabel label;
 
         int y = 0;
 
-        for (String s : campaign.getMapNames()) {
+        List<String> names = campaign.getMapNames();
 
-            jButton = new JButton("Remove");
-            jButton.setSize(100, 40);
-            jButton.setLocation(20, y);
-            mapSequencePanel.add(jButton);
+        for (int i = 0; i < names.size(); i++) {
+            final int index = i;
+            String s = names.get(i);
+
+            button = new JButton("Remove");
+            button.setSize(100, 40);
+            button.setLocation(20, y);
+            mapSequencePanel.add(button);
             JButton removeButton = new JButton();
-            removeButton = jButton;
+            removeButton = button;
 
-            jLabel = new JLabel("", JLabel.LEFT);
-            jLabel.setSize(180, 40);
-            jLabel.setLocation(140, y);
-            mapSequencePanel.add(jLabel);
-            jLabel.setText(s);
+            label = new JLabel("", JLabel.LEFT);
+            label.setSize(180, 40);
+            label.setLocation(140, y);
+            mapSequencePanel.add(label);
+            label.setText(s);
             JLabel mapNameLabel = new JLabel();
-            mapNameLabel = jLabel;
+            mapNameLabel = label;
 
             y += 50;
 
             removeButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    campaign.addMapName(s);
+                    campaign.removeMapName(index);
+                    dataToView();
                 }
             });
 
         }
 
-        jLabel = new JLabel("End", JLabel.LEFT);
-        jLabel.setSize(100, 40);
-        jLabel.setLocation(140, y);
-        mapSequencePanel.add(jLabel);
+        label = new JLabel("End", JLabel.LEFT);
+        label.setSize(100, 40);
+        label.setLocation(140, y);
+        mapSequencePanel.add(label);
         JLabel endNameLabel = new JLabel();
-        endNameLabel = jLabel;
+        endNameLabel = label;
         y += 50;
 
-        jButton = new JButton("Validate");
-        jButton.setSize(160, 40);
-        jButton.setLocation(140, y);
-        mapSequencePanel.add(jButton);
+        button = new JButton("Validate");
+        button.setSize(160, 40);
+        button.setLocation(140, y);
+        mapSequencePanel.add(button);
         JButton validateButton = new JButton();
-        validateButton = jButton;
+        validateButton = button;
         y += 50;
 
         validateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                campaign.validate();
+                validateCampaign();
             }
         });
 
+        label = new JLabel();
+        label.setSize(200, 40);
+        label.setLocation(140, y);
+        add(label);
+        messageLabel = label;
 
+    }
+
+    private void validateCampaign(){
+        String result = campaign.validate();
+        boolean success = result == Campaign.VALIDATION_SUCCESS;
+        messageLabel.setText(result);
     }
 }
