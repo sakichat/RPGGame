@@ -7,12 +7,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This is a MapCreationScene to show the scene for creating map name which extends Scene class
  * @author Siyu Chen
  * @version 0.1
  */
 public class MapCreationScene extends Scene {
     private int size;
 
+    /**
+     * This init() method overrides that in superclass to set up own properties for this subclass
+     */
     @Override
     protected void init() {
         super.init();
@@ -22,6 +26,10 @@ public class MapCreationScene extends Scene {
         saveButtonEnabled = false;
     }
 
+    /**
+     * This method creates components on the main scene
+     * And adds events on backButton and createButton
+     */
     protected void initSubviews() {
 
         JLabel label;
