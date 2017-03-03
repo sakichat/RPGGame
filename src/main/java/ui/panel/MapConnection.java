@@ -3,7 +3,8 @@ package ui.panel;
 import javax.swing.*;
 
 /**
- * Created by Penelope on 17/2/28.
+ * @author Kai QI
+ * @version 0.1
  */
 public class MapConnection extends Panel {
     @Override
