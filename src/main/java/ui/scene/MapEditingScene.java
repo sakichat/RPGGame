@@ -3,6 +3,7 @@ package ui.scene;
 import com.sun.org.apache.regexp.internal.RE;
 import logic.*;
 import org.omg.CORBA.PRIVATE_MEMBER;
+import persistence.MapFileManager;
 import ui.controlView.*;
 import ui.panel.EquipmentDelegate;
 import ui.panel.EquipmentSelectorPanel;
@@ -22,6 +23,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
     private GameMap gameMap;
     private GameMapView gameMapView;
+    private JLabel validationMessageLabel;
 
     public GameMap getGameMap() {
         return gameMap;
@@ -55,6 +57,11 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         validateButton.setSize(160, 40);
         contentView.add(validateButton);
 
+        validationMessageLabel = new JLabel();
+        validationMessageLabel.setLocation(40, 0);
+        validationMessageLabel.setSize(320, 40);
+        contentView.add(validationMessageLabel);
+
         controlViewContainerView = new View();
         controlViewContainerView.setLocation(820, 40);
         controlViewContainerView.setSize(180, 560);
@@ -69,6 +76,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
             }
         });
 
+        saveButton.setEnabled(false);
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -76,10 +84,25 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
                 MapEditingScene.this.navigationView.popTo(EditorScene.class);
             }
         });
+
+        validateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                validateMap();
+            }
+        });
     }
 
-    public void save() {
+    private void validateMap(){
+        String result = gameMap.validate();
+        boolean success = result == GameMap.VALIDATION_SUCCESS;
+        saveButton.setEnabled(success);
 
+        validationMessageLabel.setText(result);
+    }
+
+    private void save() {
+        MapFileManager.save(gameMap);
     }
 
     @Override

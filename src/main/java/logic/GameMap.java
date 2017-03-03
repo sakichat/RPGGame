@@ -1,5 +1,7 @@
 package logic;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,8 +10,14 @@ import java.util.List;
  * this class is the map
  */
 public class GameMap {
+
+    @Expose
     private String name;
+
+    @Expose
     private int size;
+
+    @Expose
     private Cell[][] cells;
 
     /**

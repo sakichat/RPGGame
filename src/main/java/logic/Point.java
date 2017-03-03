@@ -1,6 +1,8 @@
 package logic;
 
 
+import com.google.gson.annotations.Expose;
+
 import java.util.LinkedList;
 
 /**
@@ -8,9 +10,12 @@ import java.util.LinkedList;
  * this class is the Point
  */
 public class Point {
+
+    @Expose
     private int x;
+
+    @Expose
     private int y;
-    private int visited;
 
     /**
      * this is the constructor
@@ -110,5 +115,24 @@ public class Point {
                 "x=" + x +
                 ", y=" + y +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Point point = (Point) o;
+
+        if (x != point.x) return false;
+        return y == point.y;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = x;
+        result = 31 * result + y;
+        return result;
     }
 }

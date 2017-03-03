@@ -1,11 +1,15 @@
 package logic;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * this class is the logic.Chest in the game
  * @author Li Zhen
  * @version 0.1
  */
 public class Chest extends Cell{
+
+    @Expose
     private Equipment equipment;
 
     /**

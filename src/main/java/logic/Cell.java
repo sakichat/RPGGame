@@ -1,5 +1,7 @@
 package logic;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.Observable;
 
 /**
@@ -7,6 +9,8 @@ import java.util.Observable;
  * this is the cell class
  */
 public abstract class Cell extends Observable{
+
+    @Expose
     protected Point location;
 
     /**
@@ -26,6 +30,7 @@ public abstract class Cell extends Observable{
         this.location = location;
     }
 
+    @Expose
     protected String imageName;
 
     /**
