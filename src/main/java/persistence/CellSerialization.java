@@ -7,7 +7,8 @@ import logic.*;
 import java.lang.reflect.Type;
 
 /**
- * Created by Penelope on 17/3/3.
+ * @author Siyu Chen
+ * @version 0.1
  */
 public class CellSerialization implements JsonSerializer<Cell>, JsonDeserializer<Cell> {
 
