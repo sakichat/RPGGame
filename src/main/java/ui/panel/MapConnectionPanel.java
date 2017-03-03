@@ -84,16 +84,14 @@ public class MapConnectionPanel extends Panel {
             button.setSize(100, 40);
             button.setLocation(20, y);
             mapSequencePanel.add(button);
-            JButton removeButton = new JButton();
-            removeButton = button;
+            JButton removeButton = button;
 
             label = new JLabel("", JLabel.LEFT);
             label.setSize(180, 40);
             label.setLocation(140, y);
             mapSequencePanel.add(label);
             label.setText(s);
-            JLabel mapNameLabel = new JLabel();
-            mapNameLabel = label;
+            JLabel mapNameLabel = label;
 
             y += 50;
 
@@ -111,8 +109,7 @@ public class MapConnectionPanel extends Panel {
         label.setSize(100, 40);
         label.setLocation(140, y);
         mapSequencePanel.add(label);
-        JLabel endNameLabel = new JLabel();
-        endNameLabel = label;
+        JLabel endNameLabel = label;
         y += 50;
 
         button = new JButton("Validate");
@@ -137,6 +134,9 @@ public class MapConnectionPanel extends Panel {
 
     }
 
+    /**
+     * this method is used to validate the campaign
+     */
     private void validateCampaign(){
         String result = campaign.validate();
         messageLabel.setText(result);
