@@ -14,6 +14,9 @@ import java.awt.event.ActionListener;
  */
 public class ChestControlView extends ControlView {
 
+    /**
+     * Declaration of the property, and getter & setter
+     */
     private Chest chest;
     private JLabel chestNameLabel;
 
@@ -26,11 +29,17 @@ public class ChestControlView extends ControlView {
         dataToView();
     }
 
+    /**
+     * constructor of the View.
+     */
     public ChestControlView() {
         this.setSize(180,560);
         initSubviews();
     }
 
+    /**
+     * layout
+     */
     public void initSubviews() {
 
         JLabel label;
