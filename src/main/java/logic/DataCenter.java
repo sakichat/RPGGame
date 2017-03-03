@@ -2,6 +2,7 @@ package logic;
 
 /**
  * @author qi xia
+ * @version 0.1
  * this is the data class
  */
 

@@ -1,7 +1,5 @@
 package logic;
 
-import logic.Equipment;
-import logic.Player;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +35,7 @@ public class PlayerTest {
     private Equipment equipment22;
     private Equipment equipment23;
 
-    /*
+    /**
      * This method set up first few steps before the actual tests.
      */
     @Before
@@ -103,7 +101,7 @@ public class PlayerTest {
         player.pickUpEquipment(equipment10);
     }
 
-    /*
+    /**
      * This method test if it is empty in the backpack.
      */
     @Test
@@ -122,7 +120,7 @@ public class PlayerTest {
         Assert.assertEquals(true, player.equipmentsInBackpack().isEmpty());
     }
 
-    /*
+    /**
      * This method test if it is already empty in the backpack, can we still drop items.
      */
     @Test
@@ -142,7 +140,7 @@ public class PlayerTest {
         Assert.assertEquals(0, player.equipmentsInBackpack().size());
     }
 
-    /*
+    /**
      * This method tests if the item worn in player can change the attribute.
      */
     @Test
@@ -154,7 +152,7 @@ public class PlayerTest {
         Assert.assertEquals(pre, now - equipment4.getEnhancedValue());
     }
 
-    /*
+    /**
      * This method tests if player can drop unexisting items.
      */
     @Test
@@ -164,7 +162,7 @@ public class PlayerTest {
         Assert.assertEquals(9, player.equipmentsInBackpack().size());
     }
 
-    /*
+    /**
      * This method tests if player can still pick up items when backpack is full.
      */
     @Test
@@ -177,7 +175,7 @@ public class PlayerTest {
         Assert.assertEquals(false, nowBackpack);
     }
 
-    /*
+    /**
      * This method tests if player can wear more than one item of the same category.
      */
     @Test

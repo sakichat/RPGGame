@@ -1,19 +1,16 @@
 package logic;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by GU_HAN on 2017-03-02.
+ * @author GU_HAN
+ * @version 0.1
  */
+
 public class CampaignTest {
-    @Before
-    public void setUp() throws Exception {
-
-    }
-
-    /*
+    /**
      * This case tests a correct campaign.
      */
     @Test
@@ -21,7 +18,7 @@ public class CampaignTest {
         Assert.assertEquals(Campaign.VALIDATION_SUCCESS, Simulation.campaign1().validate());
     }
 
-    /*
+    /**
      * This case tests a wrong campaign.
      */
     @Test

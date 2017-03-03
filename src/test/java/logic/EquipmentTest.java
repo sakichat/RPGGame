@@ -1,27 +1,19 @@
 package logic;
 
-import logic.Equipment;
-import logic.Player;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
- * @version 1.0.1
+ * @version 0.1
  */
-    /*
+    /**
      * this class is to test the method of boolean validate() in Equipment.
      */
 public class EquipmentTest {
 
-    @Before
-    public void beforeEachTest(){
-    }
-
-
-    /*
+    /**
      * this method is to test if the weapon can be correctly created.
      */
     @Test
@@ -37,7 +29,7 @@ public class EquipmentTest {
 
     }
 
-    /*
+    /**
      * this method is to test if the shield can be correctly created.
      */
     @Test
@@ -52,7 +44,7 @@ public class EquipmentTest {
 
     }
 
-    /*
+    /**
      * This case test the ordinary equipment-creation.
      */
     @Test

@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author GU_HAN
- * @version 1.0.1
+ * @version 0.1
  */
 public class ItemEditingScene extends Scene {
     private Equipment equipment;
