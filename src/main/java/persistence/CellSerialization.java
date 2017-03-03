@@ -7,10 +7,22 @@ import logic.*;
 import java.lang.reflect.Type;
 
 /**
+<<<<<<< Updated upstream
  * @author Siyu Chen
  * @version 0.1
+=======
+ * Created by Penelope on 17/3/3.
+ * this class is to manage the cell
+>>>>>>> Stashed changes
  */
 public class CellSerialization implements JsonSerializer<Cell>, JsonDeserializer<Cell> {
+    /**
+     * this method is to serialize the cell
+     * @param cell Cell
+     * @param type String
+     * @param jsonSerializationContext JsonSerializationContext
+     * @return JsonElement
+     */
 
     @Override
     public JsonElement serialize(Cell cell, Type type, JsonSerializationContext jsonSerializationContext) {
@@ -21,6 +33,15 @@ public class CellSerialization implements JsonSerializer<Cell>, JsonDeserializer
         jsonObject.add("_object", element);
         return jsonObject;
     }
+
+    /**
+     *
+     * @param jsonElement JsonElement
+     * @param type Type
+     * @param jsonDeserializationContext JsonDeserializationContext
+     * @return Cell
+     * @throws JsonParseException
+     */
 
     @Override
     public Cell deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
