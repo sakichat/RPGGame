@@ -33,11 +33,18 @@ public class Campaign {
         return connections.get(id - 1);
     }
 
-    public boolean validate(){
+
+    public final static String VALIDATION_SUCCESS = "Valid";
+    public final static String VALIDATION_ERROR_NO_MAP = "No map";
+    public final static String VALIDATION_ERROR_ID_OUT_OF_RANGE = "A map is linked to no where";
+    public final static String VALIDATION_ERROR_CYCLE = "Cycle is not allowed in the map";
+    public final static String VALIDATION_ERROR_USELESS_MAP = "Some map is not used in this campaign";
+
+    public String validate(){
 
         // if no connection
         if (connections.size() == 0) {
-            return false;
+            return VALIDATION_ERROR_NO_MAP;
         }
 
         LinkedList<Integer> pendingIds = new LinkedList<>();
@@ -46,21 +53,21 @@ public class Campaign {
         pendingIds.addLast(1);
 
         while (pendingIds.size() > 0) {
-            int id = pendingIds.getFirst();
+            int id = pendingIds.removeFirst();
+            visitedIds.addLast(id);
+
             int targetId = getConnection(id).getTargetId();
 
             //  if id out of range
             if (targetId < 0 || targetId > connections.size()) {
-                return false;
+                return VALIDATION_ERROR_ID_OUT_OF_RANGE;
             }
 
             //  if pending or visited, cycle detected
             if (pendingIds.contains(targetId) || visitedIds.contains(targetId)){
-                return false;
+                return VALIDATION_ERROR_CYCLE;
             }
 
-            pendingIds.removeFirst();
-            visitedIds.addLast(id);
 
             if (targetId == 0) {
                 break;
@@ -71,9 +78,9 @@ public class Campaign {
 
         //  if ends early, some maps are not reached
         if (visitedIds.size() != connections.size()) {
-            return false;
+            return VALIDATION_ERROR_USELESS_MAP;
         }
 
-        return true;
+        return VALIDATION_SUCCESS;
     }
 }
