@@ -1,7 +1,7 @@
 package ui.panel;
 
 import logic.Campaign;
-import logic.MapConnection;
+//import logic.MapConnection;
 import ui.view.ExitsConnectionView;
 
 import javax.swing.*;
@@ -27,27 +27,11 @@ public class MapConnectionPanel extends Panel {
     }
 
     /**
-     * property selectedMap and getter & setter
-     */
-    private List<String> selectedMap;
-
-    public List<String> getSelectedMap() {
-        return selectedMap;
-    }
-
-    public void setSelectedMap(List<String> selectedMap) {
-        this.selectedMap = selectedMap;
-    }
-
-    /**
      * Layout
      */
 
     JPanel exitsConnetionPanel;
 
-    /**
-     * Title and size of the main panel
-     */
     @Override
     protected void init() {
         super.init();
@@ -98,35 +82,35 @@ public class MapConnectionPanel extends Panel {
         int y = 0;
         int id = 1;
 
-        if (campaign.getConnections() != null) {
-            for (MapConnection mapConnection : campaign.getConnections()) {
-
-                JButton removeButton = new JButton("Remove");
-                removeButton.setSize(80, 40);
-                removeButton.setLocation(10, y);
-                exitsConnetionPanel.add(removeButton);
-
-
-            }
-        }
-
-        for (String s : selectedMap) {
-
-            JButton removeButton = new JButton("Remove");
-            removeButton.setSize(80, 40);
-            removeButton.setLocation(10, y);
-            exitsConnetionPanel.add(removeButton);
-
-            ExitsConnectionView exitsConnectionView = new ExitsConnectionView();
-            exitsConnectionView.setLocation(100, y);
-            exitsConnetionPanel.add(exitsConnectionView);
-//            exitsConnectionView.
-
-
-
-//            y += 50;
-
-        }
+//        if (campaign.getConnections() != null) {
+//            for (MapConnection mapConnection : campaign.getConnections()) {
+//
+//                JButton removeButton = new JButton("Remove");
+//                removeButton.setSize(80, 40);
+//                removeButton.setLocation(10, y);
+//                exitsConnetionPanel.add(removeButton);
+//
+//
+//            }
+//        }
+//
+//        for (String s : selectedMap) {
+//
+//            JButton removeButton = new JButton("Remove");
+//            removeButton.setSize(80, 40);
+//            removeButton.setLocation(10, y);
+//            exitsConnetionPanel.add(removeButton);
+//
+//            ExitsConnectionView exitsConnectionView = new ExitsConnectionView();
+//            exitsConnectionView.setLocation(100, y);
+//            exitsConnetionPanel.add(exitsConnectionView);
+////            exitsConnectionView.
+//
+//
+//
+////            y += 50;
+//
+//        }
 
 
 

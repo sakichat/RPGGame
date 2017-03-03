@@ -118,7 +118,7 @@ public class MapSelectorPanel extends Panel  {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        mapDelegate.mapSelectorPerformAction(MapSelectorPanel.this,gameMap);
+                        mapDelegate.mapSelectorPerformAction(MapSelectorPanel.this, gameMap);
 
                     }
                 });
