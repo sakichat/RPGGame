@@ -1,6 +1,6 @@
 package ui.scene;
 
-import map.GameMap;
+import logic.GameMap;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

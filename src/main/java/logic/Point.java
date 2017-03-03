@@ -1,4 +1,4 @@
-package map;
+package logic;
 
 
 import java.util.LinkedList;

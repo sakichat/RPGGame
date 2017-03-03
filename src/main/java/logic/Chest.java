@@ -1,9 +1,7 @@
-package game;
-
-import map.Cell;
+package logic;
 
 /**
- * this class is the game.Chest in the game
+ * this class is the logic.Chest in the game
  * @author Li Zhen
  * @version 0.1
  */
@@ -12,7 +10,7 @@ public class Chest extends Cell{
 
     /**
      * this method is to get equipment in the chest
-     * @return equipment game.Equipment
+     * @return equipment logic.Equipment
      */
 
     public Equipment getEquipment() {
@@ -21,7 +19,7 @@ public class Chest extends Cell{
 
     /**
      * this method is to set equipment in the chest
-     * @param equipment game.Equipment
+     * @param equipment logic.Equipment
      */
 
 

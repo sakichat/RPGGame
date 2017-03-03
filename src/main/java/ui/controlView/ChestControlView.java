@@ -1,6 +1,6 @@
 package ui.controlView;
 
-import game.Chest;
+import logic.Chest;
 import ui.scene.MapEditingScene;
 import ui.view.View;
 

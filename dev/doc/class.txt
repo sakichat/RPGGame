@@ -1,9 +1,9 @@
-game.Dice[QK, ZL, XQ, GB, SY]
+logic.Dice[QK, ZL, XQ, GB, SY]
 +   roll(face:int) -> int sta
 +   roll(face:int, modifier:int) -> int sta
 +   roll(times:int, face:int, modifier:int) -> int sta
 
-game.Player:Cell
+logic.Player:Cell
 +   ABILITY_STR:String sta
 +   ABILITY_DEX:String sta
 +   ABILITY_CON:String sta
@@ -20,16 +20,16 @@ game.Player:Cell
 +   getAbilityModifier(name:String):Integer
 +   genrateAbilities()
 
--   backpack:[game.Equipment]
-+   equipmentsInBackpack() -> [game.Equipment]
+-   backpack:[logic.Equipment]
++   equipmentsInBackpack() -> [logic.Equipment]
 +   isBackpackFull() -> boolean
-+   pickUpEquipment(equipment:game.Equipment)
-+   dropEquipment(equipment:game.Equipment)
++   pickUpEquipment(equipment:logic.Equipment)
++   dropEquipment(equipment:logic.Equipment)
 
--   equipments:[String:game.Equipment]
-+   getEquipment(type:String) -> game.Equipment
-+   equip(equipment:game.Equipment)
-+   unequip(equipment:game.Equipment)
+-   equipments:[String:logic.Equipment]
++   getEquipment(type:String) -> logic.Equipment
++   equip(equipment:logic.Equipment)
++   unequip(equipment:logic.Equipment)
 -   enhancedValueOnEquipments(attribute:String) -> int
 
 -   level:int get set
@@ -44,7 +44,7 @@ game.Player:Cell
 +   getAttackBonus() -> int
 +   getDamageBonus() -> int
 
-game.Equipment
+logic.Equipment
 +   HELMET:String sta
 +   ARMOR:String sta
 +   SHIELD:String sta
@@ -62,9 +62,9 @@ game.Equipment
 +   validate() -> boolean
     //  enhancedAttribute type
 
-game.Simulation
+logic.Simulation
 +   newPlayer() -> Player sta
-+   equipments21() -> [game.Equipment] sta
++   equipments21() -> [logic.Equipment] sta
 
 
 ui.view.AbilityView : JPanel
@@ -73,7 +73,7 @@ ui.view.AbilityView : JPanel
 +   modifierLabel: JLabel
 
 ui.view.EquipmentView : JPanel
--   equipment:game.Equipment get set
+-   equipment:logic.Equipment get set
 +   typeLabel:JLabel
 +   nameLabel:JLabel
 +   enhanceLabel:JLabel
@@ -96,29 +96,29 @@ EquipmentFileManager
 
 
 
-map.Point
+logic.Point
 -   x:int get set
 -   y:int get set
 +   add(delta:Point) -> g
 +   directions() -> [Point] sta
 
-map.Cell : Observable
+logic.Cell : Observable
 +   location:Point
 
-map.Obstacle : Cell
+logic.Obstacle : Cell
 
-map.Entrance : Cell
+logic.Entrance : Cell
 
-map.Exit : Cell
+logic.Exit : Cell
 
-game.Chest : Cell
--   equipment:game.Equipment get set
+logic.Chest : Cell
+-   equipment:logic.Equipment get set
 
-game.Player : Cell
+logic.Player : Cell
 Refer
 
 
-map.GameMap
+logic.GameMap
 -   name:String get set
 -   size:int get set
 -   cells:[[Cell]]
@@ -142,13 +142,13 @@ map.validate.MapValidatorExit : MapValidator
 map.validate.MapValidatorInterConnection : MapValidator
 
 
-map.MapConnection
+logic.MapConnection
 -   id:int get set
 -   map:GameMap get set
 -   targetId:int get set
 
 
-map.Campaign
+logic.Campaign
 -   name:String get set
 -   connections:[MapConnection]
 

@@ -1,7 +1,7 @@
 package demo.ui;
 
-import game.Equipment;
-import game.Player;
+import logic.Equipment;
+import logic.Player;
 import ui.view.EquipmentView;
 
 import javax.swing.*;

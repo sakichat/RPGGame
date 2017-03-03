@@ -1,7 +1,6 @@
-package game;
+package logic;
 
 import com.google.gson.annotations.Expose;
-import map.Cell;
 
 import java.util.*;
 
@@ -151,7 +150,7 @@ public class Player extends Cell{
     /**
      * This method is used to get the equipment worn by the character based on the given type(slot).
      * @param type also the equipment slot
-     * @return game.Equipment
+     * @return logic.Equipment
      */
     public Equipment getEquipment(String type) {
         return equipments.get(type);

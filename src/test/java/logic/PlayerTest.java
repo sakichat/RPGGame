@@ -1,5 +1,7 @@
-package game;
+package logic;
 
+import logic.Equipment;
+import logic.Player;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -87,7 +89,7 @@ public class PlayerTest {
 
         equipment22 = new Equipment("Chatoyant Signet",Equipment.RING,Player.ABILITY_WIS,5);
 
-        equipment23 = new Equipment("Dual Determination",Equipment.RING,Player.ABILITY_CHA,5);
+        equipment23 = new Equipment("Dual Determination",Equipment.RING, Player.ABILITY_CHA,5);
 
         player.pickUpEquipment(equipment1);
         player.pickUpEquipment(equipment2);

@@ -1,16 +1,13 @@
 package ui.panel;
 
-import game.Player;
-import map.GameMap;
+import logic.GameMap;
 import persistence.MapFileManager;
-import persistence.PlayerFileManager;
 import ui.view.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Map;
 
 /**
  * this class is the panel of mapSelector

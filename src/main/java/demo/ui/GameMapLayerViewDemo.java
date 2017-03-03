@@ -1,6 +1,6 @@
 package demo.ui;
 
-import map.Point;
+import logic.Point;
 import ui.view.GameMapLayerView;
 import ui.view.ImageView;
 

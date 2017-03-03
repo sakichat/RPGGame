@@ -2,8 +2,7 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import map.Campaign;
-import map.GameMap;
+import logic.Campaign;
 
 import java.io.File;
 import java.io.FilenameFilter;

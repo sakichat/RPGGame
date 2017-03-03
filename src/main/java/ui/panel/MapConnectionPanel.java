@@ -1,12 +1,10 @@
 package ui.panel;
 
-import map.*;
-import map.MapConnection;
-import ui.controlView.ExitControlView;
+import logic.Campaign;
+import logic.MapConnection;
 import ui.view.ExitsConnectionView;
 
 import javax.swing.*;
-import java.util.LinkedList;
 import java.util.List;
 
 /**

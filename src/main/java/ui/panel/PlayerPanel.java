@@ -1,7 +1,7 @@
 package ui.panel;
 
-import game.Equipment;
-import game.Player;
+import logic.Equipment;
+import logic.Player;
 import ui.view.AbilityView;
 import ui.view.EquipmentView;
 

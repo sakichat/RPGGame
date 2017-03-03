@@ -1,6 +1,6 @@
 package ui.scene;
 
-import map.GameMap;
+import logic.GameMap;
 import ui.controlView.*;
 import ui.view.GameMapView;
 import ui.view.View;

@@ -1,7 +1,7 @@
 package demo.ui;
 
-import game.Simulation;
-import map.GameMap;
+import logic.Simulation;
+import logic.GameMap;
 import ui.view.GameMapView;
 
 import javax.swing.*;

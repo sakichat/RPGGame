@@ -1,7 +1,5 @@
 package ui.scene;
 
-import game.Player;
-import ui.panel.PlayerDelegate;
 import ui.view.View;
 
 import javax.swing.*;

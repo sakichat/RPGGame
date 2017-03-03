@@ -1,12 +1,11 @@
 package ui.scene;
 
-import map.Campaign;
-import map.GameMap;
+import logic.Campaign;
+import logic.GameMap;
 import ui.panel.MapConnectionPanel;
 import ui.panel.MapDelegate;
 import ui.panel.MapSelectorPanel;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

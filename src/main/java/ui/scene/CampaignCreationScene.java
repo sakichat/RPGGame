@@ -1,6 +1,6 @@
 package ui.scene;
 
-import map.Campaign;
+import logic.Campaign;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

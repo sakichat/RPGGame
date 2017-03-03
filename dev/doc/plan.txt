@@ -1,7 +1,7 @@
 --------
 7 下午
 QK ZL
-Charactor / game.Equipment / game.Chest  代码 注释
+Charactor / logic.Equipment / logic.Chest  代码 注释
 
 QK
 文件路径确定

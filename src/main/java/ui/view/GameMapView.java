@@ -1,6 +1,8 @@
 package ui.view;
 
-import map.*;
+import logic.Cell;
+import logic.GameMap;
+import logic.Point;
 
 import java.util.LinkedList;
 import java.util.List;

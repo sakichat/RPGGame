@@ -1,6 +1,6 @@
 package ui.view;
 
-import game.Equipment;
+import logic.Equipment;
 
 import javax.swing.*;
 

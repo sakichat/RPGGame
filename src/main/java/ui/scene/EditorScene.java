@@ -1,7 +1,7 @@
 package ui.scene;
 
-import game.Equipment;
-import game.Player;
+import logic.Equipment;
+import logic.Player;
 import ui.panel.EquipmentDelegate;
 import ui.panel.EquipmentSelectorPanel;
 import ui.panel.PlayerDelegate;

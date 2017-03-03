@@ -1,6 +1,7 @@
-package map;
+package logic;
 
-import game.Simulation;
+import logic.Campaign;
+import logic.Simulation;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

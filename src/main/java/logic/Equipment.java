@@ -1,4 +1,4 @@
-package game;
+package logic;
 
 import com.google.gson.annotations.Expose;
 
@@ -32,7 +32,7 @@ public class Equipment {
     }
 
     /**
-     * This is the construtor of game.Equipment
+     * This is the construtor of logic.Equipment
      * @param name String
      * @param type String
      * @param enhancedAttribute String
@@ -49,7 +49,7 @@ public class Equipment {
     }
 
     /**
-     * This method is to validate whether the attribute can be improve according to  the game.Equipment
+     * This method is to validate whether the attribute can be improve according to  the logic.Equipment
      * @return isValidate boolean
      */
 
@@ -123,7 +123,7 @@ public class Equipment {
     }
 
     /**
-     * this method is to get name of game.Equipment
+     * this method is to get name of logic.Equipment
      * @return name String
      */
 
@@ -132,7 +132,7 @@ public class Equipment {
     }
 
     /**
-     * this method is to set name of game.Equipment
+     * this method is to set name of logic.Equipment
      * @param name String
      */
 
@@ -141,7 +141,7 @@ public class Equipment {
     }
 
     /**
-     * this method is to get type of game.Equipment
+     * this method is to get type of logic.Equipment
      * @return type String
      */
 
@@ -150,7 +150,7 @@ public class Equipment {
     }
 
     /**
-     * this method is to set type of game.Equipment
+     * this method is to set type of logic.Equipment
      * @param type String
      */
 

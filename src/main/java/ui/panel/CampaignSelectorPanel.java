@@ -1,6 +1,6 @@
 package ui.panel;
 
-import map.Campaign;
+import logic.Campaign;
 import persistence.CampaignFileManager;
 import persistence.MapFileManager;
 import ui.view.View;

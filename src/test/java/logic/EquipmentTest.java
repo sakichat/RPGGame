@@ -1,5 +1,7 @@
-package game;
+package logic;
 
+import logic.Equipment;
+import logic.Player;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

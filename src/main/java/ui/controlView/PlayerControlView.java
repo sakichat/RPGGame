@@ -1,6 +1,6 @@
 package ui.controlView;
 
-import game.Player;
+import logic.Player;
 import ui.scene.MapEditingScene;
 import ui.view.View;
 

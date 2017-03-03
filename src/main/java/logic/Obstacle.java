@@ -1,4 +1,4 @@
-package map;
+package logic;
 
 /**
  * Created by Saki on 2017/2/28.

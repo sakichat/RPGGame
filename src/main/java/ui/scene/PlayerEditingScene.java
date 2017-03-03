@@ -1,7 +1,7 @@
 package ui.scene;
 
-import game.Equipment;
-import game.Player;
+import logic.Equipment;
+import logic.Player;
 import persistence.PlayerFileManager;
 import ui.panel.BackpackPanel;
 import ui.panel.EquipmentDelegate;

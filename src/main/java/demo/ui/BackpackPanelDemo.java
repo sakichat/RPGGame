@@ -1,6 +1,6 @@
 package demo.ui;
 
-import game.Simulation;
+import logic.Simulation;
 import ui.panel.BackpackPanel;
 
 import javax.swing.*;

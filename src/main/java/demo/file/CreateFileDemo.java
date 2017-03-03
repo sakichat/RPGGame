@@ -1,9 +1,8 @@
 package demo.file;
 
-import game.Equipment;
-import game.Simulation;
+import logic.Equipment;
+import logic.Simulation;
 import persistence.EquipmentFileManager;
-import persistence.FileManager;
 
 import java.util.List;
 

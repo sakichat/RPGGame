@@ -1,7 +1,6 @@
-package map.validator;
+package logic;
 
-import game.Simulation;
-import map.*;
+import logic.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
