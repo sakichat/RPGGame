@@ -16,6 +16,7 @@ public class ImageView extends View {
     private String name;
 
     /**
+     * getter
      * @return name
      */
     @Override

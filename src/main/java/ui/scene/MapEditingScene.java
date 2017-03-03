@@ -23,10 +23,18 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     private GameMapView gameMapView;
     private JLabel validationMessageLabel;
 
+    /**
+     * getter
+     * @return GameMap
+     */
     public GameMap getGameMap() {
         return gameMap;
     }
 
+    /**
+     * setter
+     * @param gameMap
+     */
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
         titleLabel.setText(gameMap.getName());
@@ -264,6 +272,10 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
     private PlayerPanel playerPanel;
 
+    /**
+     * Method showAttributePanel
+     * @param player
+     */
     public void showAttributePanel(Player player){
         playerPanel = new PlayerPanel();
         playerPanel.setPlayer(player);
@@ -272,6 +284,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         repaint();
     }
 
+    /**
+     * Method hideAttributePanel
+     */
     public void hideAttributePanel(){
         contentView.remove(playerPanel);
         repaint();
@@ -280,6 +295,10 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
     private BackpackPanel backpackPanel;
 
+    /**
+     * Method showBackpackPanel
+     * @param player
+     */
     public void showBackpackPanel(Player player){
         backpackPanel = new BackpackPanel();
         backpackPanel.setPlayer(player);
@@ -288,6 +307,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         repaint();
     }
 
+    /**
+     * Method hideBackpackPanel
+     */
     public void hideBackpackPanel(){
         contentView.remove(backpackPanel);
         repaint();

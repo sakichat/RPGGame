@@ -52,10 +52,18 @@ public class View extends JPanel {
      */
     protected NavigationView navigationView;
 
+    /**
+     * getter
+     * @return NavigationView
+     */
     public NavigationView getNavigationView() {
         return navigationView;
     }
 
+    /**
+     * setter
+     * @param navigationView
+     */
     public void setNavigationView(NavigationView navigationView) {
         this.navigationView = navigationView;
     }

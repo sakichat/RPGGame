@@ -26,10 +26,18 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
      */
     private Player player;
 
+    /**
+     * getter
+     * @return Player
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * setter
+     * @param player
+     */
     public void setPlayer(Player player) {
         this.player = player;
         playerPanel.setPlayer(player);

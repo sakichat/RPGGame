@@ -31,10 +31,18 @@ public class GameMapView extends View {
      */
     private Delegate delegate;
 
+    /**
+     * getter
+     * @return Delegate
+     */
     public Delegate getDelegate() {
         return delegate;
     }
 
+    /**
+     * setter
+     * @param delegate
+     */
     public void setDelegate(Delegate delegate) {
         this.delegate = delegate;
     }
@@ -44,6 +52,10 @@ public class GameMapView extends View {
      */
     private GameMap gameMap;
 
+    /**
+     * getter
+     * @return GameMap
+     */
     public GameMap getGameMap() {
         return gameMap;
     }

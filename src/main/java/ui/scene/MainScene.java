@@ -45,7 +45,6 @@ public class MainScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 EditorScene editorScene = new EditorScene();
                 MainScene.this.navigationView.push(editorScene);
-//                MainScene.this.add(editorScene);
             }
         });
     }

@@ -38,9 +38,6 @@ public class ItemEditingScene extends Scene {
         if(equipment.getEnhancedAttribute() == null){
             equipment.setEnhancedAttribute(Player.ABILITY_STR);
         }
-//        if(equipment.getEnhancedValue() == 0){
-//            equipment.setEnhancedValue(1);
-//        }
         dataToView();
     }
 

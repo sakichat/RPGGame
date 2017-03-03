@@ -29,12 +29,21 @@ public class Window extends JFrame{
         this.setVisible(true);
     }
 
+    /**
+     * Override JFrame setSize
+     * @param d
+     */
     @Override
     public void setSize(Dimension d) {
         super.setSize(d);
         contentView.setSize(d);
     }
 
+    /**
+     * Override JFrame setSize
+     * @param width
+     * @param height
+     */
     @Override
     public void setSize(int width, int height) {
         super.setSize(width, height);

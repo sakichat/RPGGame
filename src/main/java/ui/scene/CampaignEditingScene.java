@@ -23,10 +23,18 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
      */
     private Campaign campaign;
 
+    /**
+     * this is a getter method
+     * @return Campaign
+     */
     public Campaign getCampaign() {
         return campaign;
     }
 
+    /**
+     * this is a setter method
+     * @param campaign
+     */
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
         mapConnectionPanel.setCampaign(campaign);
@@ -45,12 +53,11 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
         saveButtonEnabled = true;
     }
 
+    private MapConnectionPanel mapConnectionPanel;
 
     /**
      * Set layout
      */
-    private MapConnectionPanel mapConnectionPanel;
-
     protected void initSubviews() {
 
         MapSelectorPanel mapSelectorPanel = new MapSelectorPanel();
