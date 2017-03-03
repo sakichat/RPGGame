@@ -1,8 +1,6 @@
 package ui.controlView;
 
 import logic.*;
-import ui.scene.MapEditingScene;
-import ui.view.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

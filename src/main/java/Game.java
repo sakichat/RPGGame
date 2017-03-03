@@ -3,7 +3,9 @@ import ui.view.NavigationView;
 import ui.view.Window;
 
 /**
- * Created by Saki on 2017/3/2.
+ * @author qi xia
+ * @version 0.1
+ * This is the main program
  */
 public class Game {
     public static void main(String[] args) {

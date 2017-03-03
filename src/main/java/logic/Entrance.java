@@ -1,7 +1,6 @@
 package logic;
 
 /**
- * Created by Saki on 2017/2/28.
  * @author Qi Xia
  * @version 0.1
  * this class is the entrance
