@@ -13,11 +13,17 @@ import java.awt.event.ActionListener;
  */
 public class ObstacleControlView extends ControlView {
 
+    /**
+     * constructor of the View.
+     */
     public ObstacleControlView() {
         this.setSize(180,560);
         initSubviews();
     }
 
+    /**
+     * layout
+     */
     public void initSubviews() {
 
         JLabel topicLabel = new JLabel();
