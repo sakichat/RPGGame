@@ -14,11 +14,17 @@ import java.awt.event.ActionListener;
  */
 public class EmptyControlView extends ControlView{
 
+    /**
+     * constructor of the View.
+     */
     public EmptyControlView() {
         this.setSize(180,560);
         initSubviews();
     }
 
+    /**
+     * layout
+     */
     public void initSubviews() {
 
         JLabel topicLabel = new JLabel();
