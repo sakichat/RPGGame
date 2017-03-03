@@ -3,7 +3,7 @@ package ui.view;
 import javax.swing.*;
 
 /**
- * This
+ * This class is to set the lay out of ability view.
  * @author Kai QI
  * @version 0.1
  */
@@ -13,12 +13,19 @@ public class AbilityView extends View {
     public JLabel scoreLabel;
     public JLabel modifierLabel;
 
+
+    /**
+     * Constructor
+     */
     public AbilityView() {
         this.setSize(160, 20);
 
         initSubviews();
     }
 
+    /**
+     * Layout
+     */
     private void initSubviews(){
 
         JLabel label;
@@ -40,8 +47,5 @@ public class AbilityView extends View {
         label.setLocation(120, 0);
         add(label);
         modifierLabel = label;
-
-
-
     }
 }
