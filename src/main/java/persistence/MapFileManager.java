@@ -49,6 +49,7 @@ public class MapFileManager {
     public static GameMap read(String name){
         File file = MapFileManager.path(name);
         String mapName = FileManager.fileToString(file);
+        System.out.println(mapName);
         GameMap gameMap = new Gson().fromJson(mapName,GameMap.class);
         return gameMap;
 

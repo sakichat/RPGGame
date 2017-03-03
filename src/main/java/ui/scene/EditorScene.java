@@ -1,11 +1,10 @@
 package ui.scene;
 
+import logic.Campaign;
 import logic.Equipment;
+import logic.GameMap;
 import logic.Player;
-import ui.panel.EquipmentDelegate;
-import ui.panel.EquipmentSelectorPanel;
-import ui.panel.PlayerDelegate;
-import ui.panel.PlayerSelectorPanel;
+import ui.panel.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +14,8 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.1
  */
-public class EditorScene extends Scene implements EquipmentDelegate, PlayerDelegate {
+public class EditorScene extends Scene implements EquipmentDelegate, PlayerDelegate, MapDelegate, CampaignDelegate {
+
     private JLabel label;
     private JButton button;
     private JPanel itemSelectLabel;
@@ -145,11 +145,28 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
             }
         });
 
+        mapEditButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mapEdit();
+
+            }
+        });
+
+
         campaignCreateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CampaignCreationScene campaignCreationScene = new CampaignCreationScene();
                 EditorScene.this.navigationView.push(campaignCreationScene);
+            }
+        });
+
+        campaignEditButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                campaignEdit();
+
             }
         });
     }
@@ -173,7 +190,7 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
 
     private void playerEdit(){
         PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
-        playerSelectorPanel.setLocation(420,260);
+        playerSelectorPanel.setLocation(20,260);
         playerSelectorPanel.setButtonText("Edit");
         playerSelectorPanel.setPlayerDelegate(this);
         add(playerSelectorPanel);
@@ -188,6 +205,39 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         playerEditingScene.setPlayer(player);
         navigationView.push(playerEditingScene);
 
+    }
 
+    private void mapEdit(){
+        MapSelectorPanel panel = new MapSelectorPanel();
+        panel.setLocation(20,260);
+        panel.setButtonText("Edit");
+        panel.setMapDelegate(this);
+        add(panel);
+    }
+
+    @Override
+    public void mapSelectorPerformAction(MapSelectorPanel mapSelectorPanel, GameMap gameMap) {
+        remove(mapSelectorPanel);
+
+        MapEditingScene scene = new MapEditingScene();
+        scene.setGameMap(gameMap);
+        navigationView.push(scene);
+    }
+
+    private void campaignEdit(){
+        CampaignSelectorPanel panel = new CampaignSelectorPanel();
+        panel.setLocation(20,260);
+        panel.setButtonText("Edit");
+        panel.setCampaignDelegate(this);
+        add(panel);
+    }
+
+    @Override
+    public void campaignSelectorPerformAction(CampaignSelectorPanel campaignSelectorPanel, Campaign campaign) {
+        remove(campaignSelectorPanel);
+
+        CampaignCreationScene scene = new CampaignCreationScene();
+        scene.setCampaign(campaign);
+        navigationView.push(scene);
     }
 }

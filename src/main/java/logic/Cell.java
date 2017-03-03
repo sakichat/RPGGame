@@ -10,6 +10,10 @@ import java.util.Observable;
  */
 public abstract class Cell extends Observable{
 
+    public Cell() {
+
+    }
+
     @Expose
     protected Point location;
 
