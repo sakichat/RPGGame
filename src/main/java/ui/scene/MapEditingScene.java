@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
  */
 public class MapEditingScene extends Scene {
     private GameMap gameMap;
+    private GameMapView gameMapView;
 
     public GameMap getGameMap() {
         return gameMap;
@@ -21,6 +22,8 @@ public class MapEditingScene extends Scene {
 
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
+
+        gameMapView.setGameMap(gameMap);
     }
 
     private MainControlView mainControlView;
@@ -36,13 +39,15 @@ public class MapEditingScene extends Scene {
     protected void init() {
         super.init();
 
+
+
         title = "The Lake of Death";
         backButtonEnabled = true;
         saveButtonEnabled = true;
     }
 
     protected void initSubviews() {
-        GameMapView gameMapView = new GameMapView();
+        gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);
         contentView.add(gameMapView);
 

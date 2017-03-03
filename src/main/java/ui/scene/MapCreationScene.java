@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class MapCreationScene extends Scene {
-    private GameMap gameMap;
     private int size;
 
     @Override
@@ -49,6 +48,7 @@ public class MapCreationScene extends Scene {
         label.setText("4 x 4");
         contentView.add(label);
         JLabel sizeLabel = label;
+        size = 4;
 
         button = new JButton();
         button.setSize(100, 40);
@@ -117,10 +117,11 @@ public class MapCreationScene extends Scene {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                GameMap gameMap = new GameMap();
                 gameMap.setSize(size);
                 MapEditingScene mapEditingScene = new MapEditingScene();
-                MapCreationScene.this.navigationView.push(mapEditingScene);
                 mapEditingScene.setGameMap(gameMap);
+                MapCreationScene.this.navigationView.push(mapEditingScene);
             }
         });
     }
