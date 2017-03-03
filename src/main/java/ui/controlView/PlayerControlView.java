@@ -63,7 +63,7 @@ public class PlayerControlView extends ControlView {
         button.setSize(160, 40);
         button.setLocation(10, 110);
         add(button);
-        button.setText("View Attributes");
+        button.setText("Attributes");
         JButton viewAttributesButton = new JButton();
         viewAttributesButton = button;
 
@@ -71,7 +71,7 @@ public class PlayerControlView extends ControlView {
         button.setSize(160, 40);
         button.setLocation(10, 160);
         add(button);
-        button.setText("View Backpack");
+        button.setText("Backpack");
         JButton viewBackpackButton = new JButton();
         viewBackpackButton = button;
 
@@ -84,16 +84,30 @@ public class PlayerControlView extends ControlView {
         removeButton = button;
 
         viewAttributesButton.addActionListener(new ActionListener() {
+            private boolean opened;
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (opened) {
+                    mapEditingScene.hideAttributePanel();
+                } else {
+                    mapEditingScene.showAttributePanel(player);
+                }
 
+                opened = !opened;
             }
         });
 
         viewBackpackButton.addActionListener(new ActionListener() {
+            private boolean opened;
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (opened) {
+                    mapEditingScene.hideBackpackPanel();
+                } else {
+                    mapEditingScene.showBackpackPanel(player);
+                }
 
+                opened = !opened;
             }
         });
 

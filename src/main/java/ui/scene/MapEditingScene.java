@@ -3,10 +3,7 @@ package ui.scene;
 import logic.*;
 import persistence.MapFileManager;
 import ui.controlView.*;
-import ui.panel.EquipmentDelegate;
-import ui.panel.EquipmentSelectorPanel;
-import ui.panel.PlayerDelegate;
-import ui.panel.PlayerSelectorPanel;
+import ui.panel.*;
 import ui.view.GameMapView;
 import ui.view.View;
 
@@ -263,4 +260,37 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         chest.setEquipment(equipment);
         build(chest);
     }
+
+
+    private PlayerPanel playerPanel;
+
+    public void showAttributePanel(Player player){
+        playerPanel = new PlayerPanel();
+        playerPanel.setPlayer(player);
+        playerPanel.setLocation(10, 10);
+        contentView.add(playerPanel);
+        repaint();
+    }
+
+    public void hideAttributePanel(){
+        contentView.remove(playerPanel);
+        repaint();
+    }
+
+
+    private BackpackPanel backpackPanel;
+
+    public void showBackpackPanel(Player player){
+        backpackPanel = new BackpackPanel();
+        backpackPanel.setPlayer(player);
+        backpackPanel.setLocation(10, 10);
+        contentView.add(backpackPanel);
+        repaint();
+    }
+
+    public void hideBackpackPanel(){
+        contentView.remove(backpackPanel);
+        repaint();
+    }
+
 }
