@@ -189,6 +189,11 @@ public class Simulation {
         return campaign;
     }
 
+    /**
+     * this method is to create the  player,entrance, exit and obstacle on the map
+     * @return GameMap
+     */
+
     public static GameMap gameMap2(){
         GameMap gameMap = new GameMap();
         gameMap.setSize(8);
