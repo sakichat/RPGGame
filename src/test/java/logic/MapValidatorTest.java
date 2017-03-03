@@ -1,19 +1,16 @@
 package logic;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by GU_HAN on 2017-03-01.
+ * @author GU_HAN
+ * @version 0.1
  */
 public class MapValidatorTest {
-    @Before
-    public void setUp() throws Exception {
 
-    }
-
-    /*
+    /**
      * This method tests if the map has no entrance.
      */
     @Test
@@ -25,7 +22,7 @@ public class MapValidatorTest {
         Assert.assertEquals(GameMap.VALIDATION_ERROR_NO_ENTRANCE, gameMap1.validate());
     }
 
-    /*
+    /**
      * This case tests if the map can have more than one entrance.
      */
     @Test
@@ -38,7 +35,7 @@ public class MapValidatorTest {
         Assert.assertEquals(GameMap.VALIDATION_ERROR_TOO_MUCH_ENTRANCE, gameMap2.validate());
     }
 
-    /*
+    /**
      * This case tests if the map has no exits.
      */
     @Test
@@ -50,7 +47,7 @@ public class MapValidatorTest {
         Assert.assertEquals(GameMap.VALIDATION_ERROR_NO_EXIT, gameMap3.validate());
     }
 
-    /*
+    /**
      * This case tests if the map has too much exits.
      */
     @Test
@@ -63,7 +60,7 @@ public class MapValidatorTest {
         Assert.assertEquals(GameMap.VALIDATION_ERROR_TOO_MUCH_EXIT, gameMap4.validate());
     }
 
-    /*
+    /**
      * This case tests if the map can be reached to the exit.
      */
     @Test
@@ -80,7 +77,7 @@ public class MapValidatorTest {
         Assert.assertEquals(GameMap.VALIDATION_SUCCESS, gameMap5.validate());
     }
 
-    /*
+    /**
      * This case tests if the map cannot be reached to the exit.
      */
     @Test
