@@ -74,7 +74,11 @@ public class ChestControlView extends ControlView {
 
     }
 
+    /**
+     * data to view method
+     */
     private void dataToView(){
         chestNameLabel.setText(chest.getEquipment().getName());
     }
+
 }
