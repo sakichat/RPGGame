@@ -10,11 +10,17 @@ import java.awt.event.ActionListener;
  * This is a ItemCreationScene to show the scene for creating item name which extends Scene class
  * @author Siyu Chen
  * @version 0.1
+ *
+ * This scene is corresponding with the item creation.
  */
 public class ItemCreationScene extends Scene {
 
     /**
+<<<<<<< HEAD
      * This init() method overrides that in superclass to set up own properties for this subclass
+=======
+     * This method is for initialization.
+>>>>>>> origin/develop
      */
     @Override
     protected void init() {
@@ -26,8 +32,12 @@ public class ItemCreationScene extends Scene {
     }
 
     /**
+<<<<<<< HEAD
      * This method creates components on the main scene
      * And adds events on backButton and createButton
+=======
+     * This method is for setting the buttons.
+>>>>>>> origin/develop
      */
     protected void initSubviews() {
         JLabel nameLabel = new JLabel("Name", JLabel.RIGHT);

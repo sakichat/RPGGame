@@ -8,6 +8,8 @@ import org.junit.Test;
  * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
  * @version 1.0.0
+ *
+ * This class is basically for player's tests.
  */
 public class PlayerTest {
     private Player player;
@@ -37,6 +39,7 @@ public class PlayerTest {
 
     /**
      * This method set up first few steps before the actual tests.
+     * @throws Exception
      */
     @Before
     public void setUp() throws Exception {
@@ -103,6 +106,7 @@ public class PlayerTest {
 
     /**
      * This method test if it is empty in the backpack.
+     * @throws Exception
      */
     @Test
     public void testEmptyBackpack() throws Exception {
@@ -122,6 +126,7 @@ public class PlayerTest {
 
     /**
      * This method test if it is already empty in the backpack, can we still drop items.
+     * @throws Exception
      */
     @Test
     public void testEmptyBackpack2() throws Exception {
@@ -141,7 +146,8 @@ public class PlayerTest {
     }
 
     /**
-     * This method tests if the item worn in player can change the attribute.
+     * This case tests if the wearing items can change the attributes.
+     * @throws Exception
      */
     @Test
     public void testItemReflectAbilities() throws Exception {
@@ -154,6 +160,7 @@ public class PlayerTest {
 
     /**
      * This method tests if player can drop unexisting items.
+     * @throws Exception
      */
     @Test
     public void testUnexistingEquipmentDrop() throws Exception {
@@ -164,6 +171,7 @@ public class PlayerTest {
 
     /**
      * This method tests if player can still pick up items when backpack is full.
+     * @throws Exception
      */
     @Test
     public void testFullBackPack() throws Exception {
@@ -177,6 +185,7 @@ public class PlayerTest {
 
     /**
      * This method tests if player can wear more than one item of the same category.
+     * @throws Exception
      */
     @Test
     public void testOneItemOfEachKind() throws Exception {

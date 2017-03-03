@@ -7,11 +7,14 @@ import org.junit.Test;
  * Created by GU_HAN on 2017-03-01.
  * @author GU_HAN
  * @version 0.1
+ *
+ * This class is for testing the map.
  */
 public class MapValidatorTest {
 
     /**
      * This method tests if the map has no entrance.
+     * @throws Exception
      */
     @Test
     public void testNoEntrance() throws Exception{
@@ -24,6 +27,7 @@ public class MapValidatorTest {
 
     /**
      * This case tests if the map can have more than one entrance.
+     * @throws Exception
      */
     @Test
     public void testTooMuchEntrance() throws Exception{
@@ -37,6 +41,7 @@ public class MapValidatorTest {
 
     /**
      * This case tests if the map has no exits.
+     * @throws Exception
      */
     @Test
     public void testNoExits() throws Exception{
@@ -49,6 +54,7 @@ public class MapValidatorTest {
 
     /**
      * This case tests if the map has too much exits.
+     * @throws Exception
      */
     @Test
     public void testTooMuchExits() throws Exception{
@@ -62,6 +68,7 @@ public class MapValidatorTest {
 
     /**
      * This case tests if the map can be reached to the exit.
+     * @throws Exception
      */
     @Test
     public void testConnection() throws Exception{
@@ -79,6 +86,7 @@ public class MapValidatorTest {
 
     /**
      * This case tests if the map cannot be reached to the exit.
+     * @throws Exception
      */
     @Test
     public void testNotConnection() throws Exception{
