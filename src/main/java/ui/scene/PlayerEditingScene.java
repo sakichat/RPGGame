@@ -21,14 +21,10 @@ import java.awt.event.ActionListener;
  */
 public class PlayerEditingScene extends Scene implements EquipmentDelegate{
 
+    /**
+     * Declaration of the property player and getter & setter
+     */
     private Player player;
-
-    private PlayerPanel playerPanel;
-    private BackpackPanel backpackPanel;
-
-    JTextField levelField;
-    JButton setButton;
-    JButton geneButton;
 
     public Player getPlayer() {
         return player;
@@ -41,6 +37,14 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         backpackPanel.setPlayer(player);
         backpackPanel.dataToView();
     }
+
+
+    private PlayerPanel playerPanel;
+    private BackpackPanel backpackPanel;
+
+    JTextField levelField;
+    JButton setButton;
+    JButton geneButton;
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -139,11 +143,19 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
 
     }
 
+    /**
+     * this method is used to save the object player to a file.
+     */
     private void save(){
         PlayerFileManager.save(player);
         navigationView.popTo(EditorScene.class);
     }
 
+    /**
+     * override the method of the delegate interface
+     * @param selectorPanel EquipmentSelectorPanel
+     * @param equipment Equipment
+     */
     @Override
     public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
         player.pickUpEquipment(equipment);
