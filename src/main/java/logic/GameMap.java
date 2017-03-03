@@ -23,7 +23,7 @@ public class GameMap {
 
     /**
      * this method is to get size of map
-     * @return int
+     * @return Integer
      */
     public int getSize() {
         return size;
