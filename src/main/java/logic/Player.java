@@ -225,7 +225,7 @@ public class Player extends Cell{
 
     /**
      * Getter for the level.
-     * @return
+     * @return int
      */
     public int getLevel() {
         return level;
@@ -233,7 +233,6 @@ public class Player extends Cell{
 
     /**
      * Setter for the level.
-     * @return
      */
     public void setLevel(int level) {
         this.level = level;
@@ -243,7 +242,7 @@ public class Player extends Cell{
 
     /**
      * Getter for the name.
-     * @return
+     * @return String
      */
     public String getName() {
         return name;
@@ -251,7 +250,7 @@ public class Player extends Cell{
 
     /**
      * Setter for the name.
-     * @param name
+     * @param name String
      */
     public void setName(String name) {
         this.name = name;

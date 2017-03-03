@@ -118,6 +118,12 @@ public class Point {
                 '}';
     }
 
+    /**
+     * this method is to compare the object
+     * @param o Object
+     * @return Boolean
+     */
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -129,6 +135,11 @@ public class Point {
         return y == point.y;
 
     }
+
+    /**
+     * this is generated automatically
+     * @return int
+     */
 
     @Override
     public int hashCode() {

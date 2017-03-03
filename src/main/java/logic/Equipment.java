@@ -27,6 +27,11 @@ public class Equipment {
     @Expose
     private int enhancedValue = 0;
 
+    /**
+     * this is the constructor to send the name
+     * @param name String
+     */
+
     public Equipment(String name) {
         this.name = name;
     }
