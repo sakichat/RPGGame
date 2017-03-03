@@ -29,7 +29,7 @@ public class CampaignTest {
     public void testWrongCampaign() throws Exception{
         Campaign campaign = new Campaign();
 
-        Assert.assertEquals(Campaign.VALIDATION_ERROR_NO_MAP, Simulation.campaign1().validate());
+        Assert.assertEquals(Campaign.VALIDATION_ERROR_NO_MAP, campaign.validate());
     }
 
 
