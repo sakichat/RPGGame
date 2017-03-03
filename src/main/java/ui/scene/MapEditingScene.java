@@ -122,7 +122,8 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     }
 
     /**
-     * This method
+     * This method gets parameters from game map view layer and pass the cell location to MapEditingScene
+     * Then calls the refreshControlView() method to set up controlViewContainerView
      * @param gameMapView
      * @param location
      */
@@ -131,6 +132,10 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         refreshControlView();
     }
 
+    /**
+     * This method gets cell and its location
+     * And then call generateControlView() method to add a correct controlView to controlViewContainerView
+     */
     private void refreshControlView(){
         Point location = gameMapView.getSelectedLocation();
         Cell cell = gameMap.getCell(location);
@@ -140,6 +145,11 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     }
 
 
+    /**
+     * This method checks which control view should show in controlViewContainerView
+     * @param cell
+     * @return ControlView
+     */
     private ControlView generateControlView(Cell cell){
         ControlView controlView = null;
         if (cell == null) {
@@ -172,6 +182,12 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         return controlView;
     }
 
+    /**
+     * This method gets a cell location from triggered events and refresh the Content View Layer
+     * with add a new cell on that.
+     * After that, it calls refreshControlView() method to reset controlViewContainerView.
+     * @param cell
+     */
     public void build(Cell cell) {
         Point location = gameMapView.getSelectedLocation();
         gameMap.addCell(cell, location);
@@ -180,6 +196,11 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         refreshControlView();
     }
 
+    /**
+     * This method gets a cell location from triggered events and refresh the Content View Layer
+     * with remove that cell on a layer view.
+     * After that, it calls refreshControlView() method to reset controlViewContainerView.
+     */
     public void destroy() {
         Point location = gameMapView.getSelectedLocation();
         gameMap.removeCell(location);
@@ -190,6 +211,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
     PlayerSelectorPanel playerSelectorPanel;
 
+    /**
+     * This method set playerSelectorPanel on the Scene when the event is triggered
+     */
     public void addPlayer(){
         playerSelectorPanel = new PlayerSelectorPanel();
         playerSelectorPanel.setLocation(520, 50);
@@ -199,6 +223,11 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         playerSelectorPanel.setPlayerDelegate(this);
     }
 
+    /**
+     * This method is to paint a player on the specific cell view and remove the selector panel
+     * @param playerSelectorPanel PlayerSelectorPanel
+     * @param player              Player
+     */
     @Override
     public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
         remove(playerSelectorPanel);
@@ -208,6 +237,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
     EquipmentSelectorPanel equipmentSelectorPanel;
 
+    /**
+     * This method set equipmentSelectorPanel on the Scene when the event is triggered
+     */
     public void addChest(){
         equipmentSelectorPanel = new EquipmentSelectorPanel();
         equipmentSelectorPanel.setLocation(420, 50);
@@ -218,6 +250,12 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
     }
 
+    /**
+     * This method is to paint a chest contains a selected equipment on the specific cell view
+     * And remove the selector panel.
+     * @param selectorPanel EquipmentSelectorPanel
+     * @param equipment     Equipment
+     */
     @Override
     public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
         remove(equipmentSelectorPanel);
