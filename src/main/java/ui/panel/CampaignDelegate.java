@@ -1,6 +1,6 @@
 package ui.panel;
 
-import map.Campaign;
+import logic.Campaign;
 
 /**
  * Created by thereaghostflash on 2017-03-02.

@@ -1,0 +1,775 @@
+{
+  "name": "Jamath Chain Land",
+  "size": 12,
+  "cells": [
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 0
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 1
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "_class": "Exit",
+        "_object": {
+          "location": {
+            "x": 0,
+            "y": 2
+          },
+          "imageName": "exit.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 3,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 4,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Entrance",
+        "_object": {
+          "location": {
+            "x": 11,
+            "y": 2
+          },
+          "imageName": "entrance.png",
+          "changed": false,
+          "obs": []
+        }
+      }
+    ],
+    [
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 3,
+            "y": 3
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 4,
+            "y": 3
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 3
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 3
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 11,
+            "y": 3
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      }
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Player",
+        "_object": {
+          "abilityScores": {
+            "STR": 20,
+            "WIS": 4,
+            "CON": 12,
+            "DEX": 16,
+            "CHA": 20,
+            "INT": 16
+          },
+          "backpack": [
+            {
+              "name": "Bloodhoof Runespear",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            {
+              "name": "Axe of Cenarius",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Bronze Warboots",
+              "type": "Boots",
+              "enhancedAttribute": "DEX",
+              "enhancedValue": 4
+            }
+          ],
+          "equipments": {
+            "Helmet": {
+              "name": "Coif of Delusions",
+              "type": "Helmet",
+              "enhancedAttribute": "WIS",
+              "enhancedValue": 5
+            },
+            "Ring": {
+              "name": "Phyrix Embrace",
+              "type": "Ring",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 2
+            },
+            "Boots": {
+              "name": "Bone Stompers",
+              "type": "Boots",
+              "enhancedAttribute": "DEX",
+              "enhancedValue": 5
+            },
+            "Weapon": {
+              "name": "Axe of Cenarius",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          },
+          "level": 1,
+          "name": "Pegasus",
+          "hp": 100,
+          "location": {
+            "x": 5,
+            "y": 4
+          },
+          "imageName": "player_1.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 4
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipment": {
+            "name": "Alythess Pyrogenics",
+            "type": "Ring",
+            "enhancedAttribute": "CON",
+            "enhancedValue": 3
+          },
+          "location": {
+            "x": 11,
+            "y": 4
+          },
+          "imageName": "chest.png",
+          "changed": false,
+          "obs": []
+        }
+      }
+    ],
+    [
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 3,
+            "y": 5
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 4,
+            "y": 5
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 5
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 5
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 7,
+            "y": 5
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 8,
+            "y": 5
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 6
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Player",
+        "_object": {
+          "abilityScores": {
+            "STR": 24,
+            "WIS": 8,
+            "CON": 16,
+            "DEX": 20,
+            "CHA": 8,
+            "INT": 24
+          },
+          "backpack": [
+            {
+              "name": "Axe of Cenarius",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Axe of Cenarius",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          ],
+          "equipments": {
+            "Helmet": {
+              "name": "Coif of Delusions",
+              "type": "Helmet",
+              "enhancedAttribute": "WIS",
+              "enhancedValue": 5
+            },
+            "Belt": {
+              "name": "Cord of Beginnings",
+              "type": "Belt",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 5
+            },
+            "Ring": {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            "Armor": {
+              "name": "Arming Coat",
+              "type": "Armor",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 5
+            },
+            "Boots": {
+              "name": "Bone Stompers",
+              "type": "Boots",
+              "enhancedAttribute": "DEX",
+              "enhancedValue": 5
+            },
+            "Weapon": {
+              "name": "Ashbringer",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            }
+          },
+          "level": 0,
+          "name": "Ashley",
+          "hp": 100,
+          "location": {
+            "x": 6,
+            "y": 6
+          },
+          "imageName": "player_1.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 8,
+            "y": 6
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipment": {
+            "name": "Arming Coat",
+            "type": "Armor",
+            "enhancedAttribute": "AC",
+            "enhancedValue": 5
+          },
+          "location": {
+            "x": 0,
+            "y": 7
+          },
+          "imageName": "chest.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 7
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipment": {
+            "name": "Axe of Cenarius",
+            "type": "Weapon",
+            "enhancedAttribute": "DB",
+            "enhancedValue": 5
+          },
+          "location": {
+            "x": 6,
+            "y": 7
+          },
+          "imageName": "chest.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 8,
+            "y": 7
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 0,
+            "y": 8
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 2,
+            "y": 8
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 3,
+            "y": 8
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 4,
+            "y": 8
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 8
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 8
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 0,
+            "y": 9
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipment": {
+            "name": "Dawn of Insanity",
+            "type": "Helmet",
+            "enhancedAttribute": "AC",
+            "enhancedValue": 2
+          },
+          "location": {
+            "x": 4,
+            "y": 9
+          },
+          "imageName": "chest.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 9
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 9
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 10
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 6,
+            "y": 10
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}

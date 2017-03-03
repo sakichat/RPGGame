@@ -1,6 +1,6 @@
 package ui.scene;
 
-import game.Equipment;
+import logic.Equipment;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

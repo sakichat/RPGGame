@@ -11,30 +11,27 @@ import java.awt.event.ActionListener;
  * @author Kai QI
  * @version 0.1
  */
-public class ExitControlView extends View {
+public class ExitControlView extends ControlView {
 
-    private MapEditingScene mapEditingScene;
 
-    public MapEditingScene getMapEditingScene() {
-        return mapEditingScene;
-    }
-
-    public void setMapEditingScene(MapEditingScene mapEditingScene) {
-        this.mapEditingScene = mapEditingScene;
-    }
-
+    /**
+     * constructor of the View.
+     */
     public ExitControlView() {
         this.setSize(180,560);
         initSubviews();
     }
 
+    /**
+     * layout
+     */
     public void initSubviews() {
 
         JLabel topicLabel = new JLabel();
         topicLabel.setSize(160, 40);
         topicLabel.setLocation(10, 10);
         add(topicLabel);
-        topicLabel.setText(MainControlView.EXIT);
+        topicLabel.setText("Exit");
 
         JButton jButton;
 
@@ -42,16 +39,15 @@ public class ExitControlView extends View {
         jButton.setSize(160, 40);
         jButton.setLocation(10, 60);
         add(jButton);
-        jButton.setText(MainControlView.REMOVE);
+        jButton.setText("Remove");
         JButton removeButton = new JButton();
         removeButton = jButton;
 
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                mapEditingScene.destroy();
             }
         });
-
     }
 }

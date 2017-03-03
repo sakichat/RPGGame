@@ -1,9 +1,8 @@
 package ui.scene;
 
-import game.Equipment;
-import game.Player;
+import logic.Equipment;
+import logic.Player;
 import persistence.EquipmentFileManager;
-import ui.panel.EquipmentDelegate;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +11,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author GU_HAN
- * @version 1.0.1
+ * @version 0.1
  */
 public class ItemEditingScene extends Scene {
     private Equipment equipment;

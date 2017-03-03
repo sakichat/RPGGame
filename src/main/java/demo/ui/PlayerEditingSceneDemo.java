@@ -1,12 +1,8 @@
 package demo.ui;
 
-import game.Player;
-import game.Simulation;
+import logic.Simulation;
 import ui.scene.PlayerEditingScene;
-import ui.view.View;
 import ui.view.Window;
-
-import javax.swing.*;
 
 /**
  * Created by Kai QI on 2017/2/25.

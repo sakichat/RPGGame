@@ -8,7 +8,7 @@ import java.io.File;
 public class GsonDemo {
     public static void main(String[] args) {
 
-        File file = new File("file/gson.txt");
+        File file = new File("src/main/java/demo/file/gson.txt");
 
         //  Write
         //  +   Object

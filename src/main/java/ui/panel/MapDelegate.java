@@ -1,8 +1,6 @@
 package ui.panel;
 
-import game.Equipment;
-import game.Player;
-import map.GameMap;
+import logic.GameMap;
 
 /**
  * Created by thereaghostflash on 2017-03-02.

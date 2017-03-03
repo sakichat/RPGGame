@@ -1,6 +1,6 @@
 package ui.scene;
 
-import map.Campaign;
+import logic.Campaign;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -59,6 +59,9 @@ public class CampaignCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CampaignEditingScene campaignEditingScene = new CampaignEditingScene();
+                Campaign campaign = new Campaign();
+                campaign.setName(nameField.getText());
+                campaignEditingScene.setCampaign(campaign);
                 CampaignCreationScene.this.navigationView.push(campaignEditingScene);
             }
         });

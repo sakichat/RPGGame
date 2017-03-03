@@ -1,7 +1,6 @@
 package ui.scene;
 
-import game.Player;
-import game.Simulation;
+import logic.Player;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

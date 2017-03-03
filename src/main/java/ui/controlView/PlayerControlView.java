@@ -1,6 +1,6 @@
 package ui.controlView;
 
-import game.Player;
+import logic.Player;
 import ui.scene.MapEditingScene;
 import ui.view.View;
 
@@ -12,16 +12,12 @@ import java.awt.event.ActionListener;
  * @author Kai QI
  * @version 0.1
  */
-public class PlayerControlView extends View {
-    private MapEditingScene mapEditingScene;
+public class PlayerControlView extends ControlView {
 
-    public MapEditingScene getMapEditingScene() {
-        return mapEditingScene;
-    }
-
-    public void setMapEditingScene(MapEditingScene mapEditingScene) {
-        this.mapEditingScene = mapEditingScene;
-    }
+    /**
+     * Declaration of the property, and getter & setter
+     */
+    private JLabel playerNameLabel;
 
     private Player player;
 
@@ -31,58 +27,61 @@ public class PlayerControlView extends View {
 
     public void setPlayer(Player player) {
         this.player = player;
+        dataToView();
     }
 
+    /**
+     * constructor of the View.
+     */
     public PlayerControlView() {
         this.setSize(180, 560);
         initSubviews();
     }
 
+    /**
+     * layout
+     */
     public void initSubviews() {
 
-        JLabel jLabel;
+        JLabel label;
 
-        jLabel = new JLabel();
-        jLabel.setSize(160, 40);
-        jLabel.setLocation(10, 10);
-        add(jLabel);
-        jLabel.setText(MainControlView.PLAYER);
-        JLabel topicLabel = new JLabel();
-        topicLabel = jLabel;
+        label = new JLabel();
+        label.setSize(160, 40);
+        label.setLocation(10, 10);
+        add(label);
+        label.setText("Player");
 
-        jLabel = new JLabel();
-        jLabel.setSize(160, 40);
-        jLabel.setLocation(10, 60);
-        add(jLabel);
-        jLabel.setText(player.getName());
-        JLabel playerNameLabel = new JLabel();
-        playerNameLabel = jLabel;
+        label = new JLabel();
+        label.setSize(160, 40);
+        label.setLocation(10, 60);
+        add(label);
+        playerNameLabel = label;
 
-        JButton jButton;
+        JButton button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 110);
-        add(jButton);
-        jButton.setText("View Attributes");
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 110);
+        add(button);
+        button.setText("View Attributes");
         JButton viewAttributesButton = new JButton();
-        viewAttributesButton = jButton;
+        viewAttributesButton = button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 160);
-        add(jButton);
-        jButton.setText("View Backpack");
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 160);
+        add(button);
+        button.setText("View Backpack");
         JButton viewBackpackButton = new JButton();
-        viewBackpackButton = jButton;
+        viewBackpackButton = button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 210);
-        add(jButton);
-        jButton.setText(MainControlView.REMOVE);
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 210);
+        add(button);
+        button.setText("Remove");
         JButton removeButton = new JButton();
-        removeButton = jButton;
+        removeButton = button;
 
         viewAttributesButton.addActionListener(new ActionListener() {
             @Override
@@ -101,11 +100,17 @@ public class PlayerControlView extends View {
         removeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                mapEditingScene.destroy();
             }
         });
     }
 
+    /**
+     * data to view method
+     */
+    private void dataToView(){
+        playerNameLabel.setText(player.getName());
+    }
 
 
 }

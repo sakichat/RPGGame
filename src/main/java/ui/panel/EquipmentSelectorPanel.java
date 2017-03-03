@@ -1,6 +1,6 @@
 package ui.panel;
 
-import game.Equipment;
+import logic.Equipment;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,8 +8,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import persistence.EquipmentFileManager;
-import ui.scene.EditorScene;
-import ui.scene.PlayerEditingScene;
 import ui.view.*;
 
 /**

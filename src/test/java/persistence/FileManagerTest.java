@@ -1,19 +1,14 @@
 package persistence;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by GU_HAN on 2017-02-27.
  */
 public class FileManagerTest {
-    @Before
-    public void setUp() throws Exception {
 
-    }
-
-    /*
+    /**
      * This case tests the nameToFileName() method.
      */
     @Test
@@ -25,7 +20,7 @@ public class FileManagerTest {
         Assert.assertEquals(shouldBe, after);
     }
 
-    /*
+    /**
      * This case tests the fileNameToName() method.
      */
     @Test

@@ -1,6 +1,6 @@
 package demo.map;
 
-import map.Point;
+import logic.Point;
 
 import java.util.LinkedList;
 

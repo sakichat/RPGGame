@@ -1,6 +1,6 @@
 package ui.view;
 
-import map.Point;
+import logic.Point;
 
 import java.awt.*;
 
@@ -54,6 +54,24 @@ public class GameMapLayerView extends View {
         int y = location.getY();
 
         return cells[y][x];
+    }
+
+    public void moveCell(Point from, Point to) {
+        View cell = getCell(from);
+        removeCell(from);
+        addCell(cell, to);
+    }
+
+    public void removeAllCells(){
+        for (int y = 0; y < gridSize; y++) {
+            for (int x = 0; x < gridSize; x++) {
+                Point point = new Point(x, y);
+                View cell = getCell(point);
+                if (cell != null) {
+                    removeCell(point);
+                }
+            }
+        }
     }
 
 }

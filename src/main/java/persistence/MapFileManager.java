@@ -2,13 +2,13 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import map.GameMap;
+import logic.Cell;
+import logic.GameMap;
 
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Li Zhen
@@ -36,7 +36,6 @@ public class MapFileManager {
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/maps/" + newName + ".map.json";
-        System.out.println(newName);
         return new File(newName);
 
     }
@@ -50,7 +49,10 @@ public class MapFileManager {
     public static GameMap read(String name){
         File file = MapFileManager.path(name);
         String mapName = FileManager.fileToString(file);
-        GameMap gameMap = new Gson().fromJson(mapName,GameMap.class);
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Cell.class, new CellSerialization())
+                .create();
+        GameMap gameMap = gson.fromJson(mapName,GameMap.class);
         return gameMap;
 
     }
@@ -62,7 +64,11 @@ public class MapFileManager {
     public static void save(GameMap gameMap){
         String name = gameMap.getName();
         File file = path(name);
-        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .registerTypeAdapter(Cell.class, new CellSerialization())
+                .setPrettyPrinting()
+                .create();
         String content = gson.toJson(gameMap);
         FileManager.stringToFile(content,file);
 

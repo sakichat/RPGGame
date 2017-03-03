@@ -1,12 +1,10 @@
 package ui.panel;
 
-import map.*;
-import map.MapConnection;
-import ui.controlView.ExitControlView;
-import ui.view.ExitsConnectionView;
+import logic.Campaign;
 
 import javax.swing.*;
-import java.util.LinkedList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
@@ -19,6 +17,7 @@ public class MapConnectionPanel extends Panel {
      * property campaign and getter & setter
      */
     private Campaign campaign;
+    private JLabel messageLabel;
 
     public Campaign getCampaign() {
         return campaign;
@@ -26,30 +25,15 @@ public class MapConnectionPanel extends Panel {
 
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
-    }
-
-    /**
-     * property selectedMap and getter & setter
-     */
-    private List<String> selectedMap;
-
-    public List<String> getSelectedMap() {
-        return selectedMap;
-    }
-
-    public void setSelectedMap(List<String> selectedMap) {
-        this.selectedMap = selectedMap;
+        dataToView();
     }
 
     /**
      * Layout
      */
 
-    JPanel exitsConnetionPanel;
+    Panel mapSequencePanel;
 
-    /**
-     * Title and size of the main panel
-     */
     @Override
     protected void init() {
         super.init();
@@ -57,33 +41,24 @@ public class MapConnectionPanel extends Panel {
         setSize(640, 500);
         title = "Map Connection";
 
-        dataToView();
+        initSubviews();
+
     }
 
     protected void initSubviews() {
 
         JLabel label;
 
-        label = new JLabel("ID", JLabel.RIGHT);
-        label.setSize(40, 40);
-        label.setLocation(100, 30);
+        label = new JLabel("Start", JLabel.LEFT);
+        label.setSize(100, 40);
+        label.setLocation(140, 30);
         add(label);
 
-        label = new JLabel("Map Name", JLabel.LEFT);
-        label.setSize(160, 40);
-        label.setLocation(150, 30);
-        add(label);
-
-        label = new JLabel("Exit Connection", JLabel.LEFT);
-        label.setSize(160, 40);
-        label.setLocation(320, 30);
-        add(label);
-
-        exitsConnetionPanel = new JPanel();
-        exitsConnetionPanel.setLayout(null);
-        exitsConnetionPanel.setSize(480, 440);
-        exitsConnetionPanel.setLocation(0, 80);
-        add(exitsConnetionPanel);
+        mapSequencePanel = new Panel();
+        mapSequencePanel.setLayout(null);
+        mapSequencePanel.setSize(640, 420);
+        mapSequencePanel.setLocation(0, 80);
+        add(mapSequencePanel);
 
     }
 
@@ -92,47 +67,78 @@ public class MapConnectionPanel extends Panel {
      */
     public void dataToView() {
 
-        exitsConnetionPanel.removeAll();
+        mapSequencePanel.removeAll();
 
-        //for 添加“remove按钮 +ExitsConnectionView”组合
-        //添加validate按钮
+        JButton button;
+        JLabel label;
 
         int y = 0;
-        int id = 1;
 
-        if (campaign.getConnections() != null) {
-            for (MapConnection mapConnection : campaign.getConnections()) {
+        List<String> names = campaign.getMapNames();
 
-                JButton removeButton = new JButton("Remove");
-                removeButton.setSize(80, 40);
-                removeButton.setLocation(10, y);
-                exitsConnetionPanel.add(removeButton);
+        for (int i = 0; i < names.size(); i++) {
+            final int index = i;
+            String s = names.get(i);
 
+            button = new JButton("Remove");
+            button.setSize(100, 40);
+            button.setLocation(20, y);
+            mapSequencePanel.add(button);
+            JButton removeButton = new JButton();
+            removeButton = button;
 
+            label = new JLabel("", JLabel.LEFT);
+            label.setSize(180, 40);
+            label.setLocation(140, y);
+            mapSequencePanel.add(label);
+            label.setText(s);
+            JLabel mapNameLabel = new JLabel();
+            mapNameLabel = label;
+
+            y += 50;
+
+            removeButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    campaign.removeMapName(index);
+                    dataToView();
+                }
+            });
+
+        }
+
+        label = new JLabel("End", JLabel.LEFT);
+        label.setSize(100, 40);
+        label.setLocation(140, y);
+        mapSequencePanel.add(label);
+        JLabel endNameLabel = new JLabel();
+        endNameLabel = label;
+        y += 50;
+
+        button = new JButton("Validate");
+        button.setSize(160, 40);
+        button.setLocation(140, y);
+        mapSequencePanel.add(button);
+        JButton validateButton = button;
+        y += 50;
+
+        validateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                validateCampaign();
             }
-        }
+        });
 
-        for (String s : selectedMap) {
+        label = new JLabel();
+        label.setSize(200, 40);
+        label.setLocation(140, y);
+        mapSequencePanel.add(label);
+        messageLabel = label;
 
-            JButton removeButton = new JButton("Remove");
-            removeButton.setSize(80, 40);
-            removeButton.setLocation(10, y);
-            exitsConnetionPanel.add(removeButton);
+    }
 
-            ExitsConnectionView exitsConnectionView = new ExitsConnectionView();
-            exitsConnectionView.setLocation(100, y);
-            exitsConnetionPanel.add(exitsConnectionView);
-//            exitsConnectionView.
-
-
-
-//            y += 50;
-
-        }
-
-
-
-
-
+    private void validateCampaign(){
+        String result = campaign.validate();
+        messageLabel.setText(result);
     }
 }

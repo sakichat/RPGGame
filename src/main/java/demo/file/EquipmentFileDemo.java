@@ -1,7 +1,7 @@
 package demo.file;
 
-import game.Equipment;
-import game.Player;
+import logic.Equipment;
+import logic.Player;
 import persistence.EquipmentFileManager;
 
 /**

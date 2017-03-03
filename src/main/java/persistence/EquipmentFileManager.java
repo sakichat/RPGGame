@@ -1,12 +1,11 @@
 package persistence;
 
 import com.google.gson.Gson;
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
-import game.Equipment;
+import com.google.gson.GsonBuilder;
+import logic.Equipment;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -58,7 +57,9 @@ public class EquipmentFileManager {
     public static void save(Equipment equipment){
         String name = equipment.getName();
         File file = path(name);
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
         String content = gson.toJson(equipment);
         FileManager.stringToFile(content,file);
 

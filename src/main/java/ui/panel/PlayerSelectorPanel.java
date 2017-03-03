@@ -1,10 +1,7 @@
 package ui.panel;
 
-import game.Equipment;
-import game.Player;
-import persistence.EquipmentFileManager;
+import logic.Player;
 import persistence.PlayerFileManager;
-import ui.view.EquipmentView;
 import ui.view.View;
 
 import javax.swing.*;

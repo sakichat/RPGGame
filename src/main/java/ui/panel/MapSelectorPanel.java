@@ -1,16 +1,13 @@
 package ui.panel;
 
-import game.Player;
-import map.GameMap;
+import logic.GameMap;
 import persistence.MapFileManager;
-import persistence.PlayerFileManager;
 import ui.view.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Map;
 
 /**
  * this class is the panel of mapSelector
@@ -76,7 +73,7 @@ public class MapSelectorPanel extends Panel  {
         textField.setLocation(10,30);
         add(textField);
 
-        searchButton = new JButton();
+        searchButton = new JButton("Search");
         searchButton.setLayout(null);
         searchButton.setSize(100,40);
         searchButton.setLocation(180,30);
@@ -121,7 +118,7 @@ public class MapSelectorPanel extends Panel  {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        mapDelegate.mapSelectorPerformAction(MapSelectorPanel.this,gameMap);
+                        mapDelegate.mapSelectorPerformAction(MapSelectorPanel.this, gameMap);
 
                     }
                 });
