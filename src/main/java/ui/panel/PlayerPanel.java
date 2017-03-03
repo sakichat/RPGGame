@@ -14,7 +14,7 @@ import java.util.Observer;
 
 /**
  * @author Kai QI
- * @version 1.0
+ * @version 0.1
  */
 public class PlayerPanel extends Panel implements Observer {
 

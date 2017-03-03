@@ -74,7 +74,7 @@ public class Point {
 
     /**
      * this method is to get X
-     * @return int
+     * @return Integer
      */
 
     public int getX() {
@@ -90,7 +90,7 @@ public class Point {
     }
     /**
      * this method is to get Y
-     * @return int
+     * @return Integer
      */
 
 
