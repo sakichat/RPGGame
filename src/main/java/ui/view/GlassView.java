@@ -3,6 +3,7 @@ package ui.view;
 import java.awt.*;
 
 /**
+ * This GlassView is a class that sets background color as transparent which extends View
  * @author Siyu Chen
  * @version 0.1
  */

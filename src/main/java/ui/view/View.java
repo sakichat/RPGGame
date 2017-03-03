@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class is a template of all other view classes which extends JPanel class
  * @author Siyu Chen
  * @version 0.1
  */
@@ -17,10 +18,18 @@ public class View extends JPanel {
         this.setLayout(null);
     }
 
+    /**
+     * This method is for the subclass to call displayed views
+     */
     protected void viewDidDisplay() {
 
     }
 
+    /**
+     * This method overrides the add() method in JPanel class
+     * @param comp
+     * @return result
+     */
     @Override
     public Component add(Component comp) {
         Component result = super.add(comp, 0);
@@ -28,6 +37,10 @@ public class View extends JPanel {
         return result;
     }
 
+    /**
+     * This method overrides the remove() method in JPanel class
+     * @param comp
+     */
     @Override
     public void remove(Component comp) {
         super.remove(comp);

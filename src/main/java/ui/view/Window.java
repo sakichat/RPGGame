@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This Window class extends JFrame class and is to create a frame in the application
  * @author Siyu Chen
  * @version 0.1
  */
