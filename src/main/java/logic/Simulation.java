@@ -34,8 +34,9 @@ public class Simulation {
         return player;
     }
 
-
-
+    /**
+     * static initialization block
+     */
     static {
         initEquipments();
     }
