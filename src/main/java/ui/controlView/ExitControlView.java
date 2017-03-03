@@ -14,11 +14,17 @@ import java.awt.event.ActionListener;
 public class ExitControlView extends ControlView {
 
 
+    /**
+     * constructor of the View.
+     */
     public ExitControlView() {
         this.setSize(180,560);
         initSubviews();
     }
 
+    /**
+     * layout
+     */
     public void initSubviews() {
 
         JLabel topicLabel = new JLabel();
@@ -43,6 +49,5 @@ public class ExitControlView extends ControlView {
                 mapEditingScene.destroy();
             }
         });
-
     }
 }
