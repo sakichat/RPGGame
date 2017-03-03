@@ -81,9 +81,17 @@ public class GameMapView extends View {
         }
     }
 
+    private Point selectedLocation;
+    private ImageView selectionView;
+
     private void initHighlightLayer(){
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
+
+        selectedLocation = new Point(0, 0);
+        selectionView = new ImageView();
+        selectionView.setName("selected.png");
+        layerView.addCell(selectionView, selectedLocation);
 
     }
 
@@ -105,7 +113,7 @@ public class GameMapView extends View {
 
                     @Override
                     public void mousePressed(MouseEvent e) {
-                        cellPressed();
+                        cellPressed(location);
                     }
 
                     @Override
@@ -127,7 +135,10 @@ public class GameMapView extends View {
         }
     }
 
-    private void cellPressed(){
-        System.out.println("cell pressed");
+    private void cellPressed(Point location){
+        GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
+        layerView.moveCell(selectedLocation, location);
+        selectedLocation = location;
+        repaint();
     }
 }

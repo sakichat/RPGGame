@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 public class MapEditingScene extends Scene {
     private GameMap gameMap;
     private GameMapView gameMapView;
-    private JLabel mapName;
 
     public GameMap getGameMap() {
         return gameMap;
@@ -23,7 +22,7 @@ public class MapEditingScene extends Scene {
 
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
-
+        titleLabel.setText(gameMap.getName());
         gameMapView.setGameMap(gameMap);
     }
 
@@ -40,9 +39,6 @@ public class MapEditingScene extends Scene {
     protected void init() {
         super.init();
 
-
-
-        title = mapName.getText();
         backButtonEnabled = true;
         saveButtonEnabled = true;
     }

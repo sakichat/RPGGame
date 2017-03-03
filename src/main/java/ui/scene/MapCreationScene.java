@@ -119,10 +119,10 @@ public class MapCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GameMap gameMap = new GameMap();
+                gameMap.setName(nameField.getText());
                 gameMap.setSize(size);
                 MapEditingScene mapEditingScene = new MapEditingScene();
                 mapEditingScene.setGameMap(gameMap);
-                mapEditingScene.title = mapName.getText();
                 MapCreationScene.this.navigationView.push(mapEditingScene);
             }
         });
