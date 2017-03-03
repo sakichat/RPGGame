@@ -1,8 +1,6 @@
 package ui.scene;
 
-import com.sun.org.apache.regexp.internal.RE;
 import logic.*;
-import org.omg.CORBA.PRIVATE_MEMBER;
 import persistence.MapFileManager;
 import ui.controlView.*;
 import ui.panel.EquipmentDelegate;
@@ -17,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This MapEditingScene class is for editing game map view which extends Scene class
+ * And implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate
  * @author Siyu Chen
  * @version 0.1
  */
@@ -36,7 +36,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         gameMapView.setGameMap(gameMap);
     }
 
-
+    /**
+     * This init() method overrides that in superclass to set up own properties for this subclass
+     */
     @Override
     protected void init() {
         super.init();
@@ -45,8 +47,15 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         saveButtonEnabled = true;
     }
 
+    /**
+     * This property is for the view contains ControlView
+     */
     private View controlViewContainerView;
 
+    /**
+     * This method creates components on the main scene
+     * And adds events on buttons
+     */
     protected void initSubviews() {
         gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);
@@ -94,6 +103,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         });
     }
 
+    /**
+     * This method validates whether the map is valid
+     */
     private void validateMap(){
         String result = gameMap.validate();
         boolean success = result == GameMap.VALIDATION_SUCCESS;
@@ -102,10 +114,18 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         validationMessageLabel.setText(result);
     }
 
+    /**
+     * This method is to save a game map to a json file
+     */
     private void save() {
         MapFileManager.save(gameMap);
     }
 
+    /**
+     * This method
+     * @param gameMapView
+     * @param location
+     */
     @Override
     public void gameMapViewSelect(GameMapView gameMapView, Point location) {
         refreshControlView();

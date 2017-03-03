@@ -42,6 +42,9 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         backpackPanel.dataToView();
     }
 
+    /**
+     * This init() method overrides that in superclass to set up own properties for this subclass
+     */
     @Override
     protected void init() {
         super.init();
@@ -51,6 +54,10 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         saveButtonEnabled = true;
     }
 
+    /**
+     * This method creates components on the main scene
+     * And adds events on buttons
+     */
     protected void initSubviews() {
         JLabel level = new JLabel("Level", JLabel.RIGHT);
         level.setSize(120, 40);
