@@ -119,8 +119,7 @@ public class MapConnectionPanel extends Panel {
         button.setSize(160, 40);
         button.setLocation(140, y);
         mapSequencePanel.add(button);
-        JButton validateButton = new JButton();
-        validateButton = button;
+        JButton validateButton = button;
         y += 50;
 
         validateButton.addActionListener(new ActionListener() {
@@ -133,14 +132,13 @@ public class MapConnectionPanel extends Panel {
         label = new JLabel();
         label.setSize(200, 40);
         label.setLocation(140, y);
-        add(label);
+        mapSequencePanel.add(label);
         messageLabel = label;
 
     }
 
     private void validateCampaign(){
         String result = campaign.validate();
-        boolean success = result == Campaign.VALIDATION_SUCCESS;
         messageLabel.setText(result);
     }
 }

@@ -1,6 +1,7 @@
 package persistence;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import logic.Equipment;
 
 import java.io.File;
@@ -56,7 +57,9 @@ public class EquipmentFileManager {
     public static void save(Equipment equipment){
         String name = equipment.getName();
         File file = path(name);
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
         String content = gson.toJson(equipment);
         FileManager.stringToFile(content,file);
 

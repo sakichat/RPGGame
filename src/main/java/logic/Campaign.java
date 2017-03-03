@@ -1,5 +1,7 @@
 package logic;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  */
 public class Campaign {
 
+    @Expose
     private String name;
 
     /**
@@ -31,6 +34,7 @@ public class Campaign {
         this.name = name;
     }
 
+    @Expose
     private List<String> mapNames = new LinkedList<>();
 
     /**

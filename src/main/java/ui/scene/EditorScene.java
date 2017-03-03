@@ -236,7 +236,7 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
     public void campaignSelectorPerformAction(CampaignSelectorPanel campaignSelectorPanel, Campaign campaign) {
         remove(campaignSelectorPanel);
 
-        CampaignCreationScene scene = new CampaignCreationScene();
+        CampaignEditingScene scene = new CampaignEditingScene();
         scene.setCampaign(campaign);
         navigationView.push(scene);
     }
