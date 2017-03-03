@@ -37,6 +37,12 @@ public class PlayerPanel extends Panel implements Observer {
      * Observer
      */
 
+    /**
+     * Override the update method.
+     * Check if the data related to this panel are updated or not.
+     * @param O Observable
+     * @param x Object
+     */
     @Override
     public void update(Observable O, Object x) {
 
@@ -51,6 +57,9 @@ public class PlayerPanel extends Panel implements Observer {
         }
     }
 
+    /**
+     * Constructor
+     */
     @Override
     protected void init() {
         super.init();
@@ -58,10 +67,6 @@ public class PlayerPanel extends Panel implements Observer {
         setSize(400, 420);
         title = "Player";
     }
-
-    /**
-     * Layout
-     */
 
     private JLabel nameValueLabel;
     private JLabel levelValueLabel;
@@ -94,11 +99,14 @@ public class PlayerPanel extends Panel implements Observer {
     Button unequipBeltBotton;
     Button unequipBootsBotton;
 
+    /**
+     * Layout
+     */
     protected void initSubviews(){
 
         JLabel label;
         AbilityView abilityView;
-        EquipmentView equipmentView = new EquipmentView();
+        EquipmentView equipmentView;
         Button button;
 
         label = new JLabel("", JLabel.RIGHT);
@@ -106,8 +114,7 @@ public class PlayerPanel extends Panel implements Observer {
         label.setLocation(10, 30);
         add(label);
         label.setText("Name");
-        JLabel nameLabel = new JLabel();
-        nameLabel = label;
+        JLabel nameLabel = label;
 
         label = new JLabel();
         label.setSize(90, 20);
@@ -120,8 +127,7 @@ public class PlayerPanel extends Panel implements Observer {
         label.setLocation(190, 30);
         add(label);
         label.setText("Level");
-        JLabel levelLabel = new JLabel();
-        levelLabel = label;
+        JLabel levelLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);
@@ -170,8 +176,7 @@ public class PlayerPanel extends Panel implements Observer {
         label.setLocation(10, 150);
         add(label);
         label.setText("Hit Point");
-        JLabel hpLabel = new JLabel();
-        hpLabel = label;
+        JLabel hpLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);
@@ -184,8 +189,7 @@ public class PlayerPanel extends Panel implements Observer {
         label.setLocation(190, 150);
         add(label);
         label.setText("Attack Bonus");
-        JLabel abLabel = new JLabel();
-        abLabel = label;
+        JLabel abLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);
@@ -198,8 +202,7 @@ public class PlayerPanel extends Panel implements Observer {
         label.setLocation(10, 180);
         add(label);
         label.setText("Armor Class");
-        JLabel acLabel = new JLabel();
-        acLabel = label;
+        JLabel acLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);
@@ -212,8 +215,7 @@ public class PlayerPanel extends Panel implements Observer {
         label.setLocation(190, 180);
         add(label);
         label.setText("Damage Bonus");
-        JLabel dbLabel = new JLabel();
-        dbLabel = label;
+        JLabel dbLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);
@@ -231,7 +233,6 @@ public class PlayerPanel extends Panel implements Observer {
         button.setSize(60, 20);
         button.setLocation(320, 210);
         add(button);
-        unequipWeaponBotton = new Button();
         unequipWeaponBotton = button;
 
         equipmentView = new EquipmentView();
@@ -244,7 +245,6 @@ public class PlayerPanel extends Panel implements Observer {
         button.setSize(60, 20);
         button.setLocation(320, 240);
         add(button);
-        unequipShieldBotton = new Button();
         unequipShieldBotton = button;
 
         equipmentView = new EquipmentView();
@@ -257,7 +257,6 @@ public class PlayerPanel extends Panel implements Observer {
         button.setSize(60, 20);
         button.setLocation(320, 270);
         add(button);
-        unequipArmorBotton = new Button();
         unequipArmorBotton = button;
 
         equipmentView = new EquipmentView();
@@ -270,7 +269,6 @@ public class PlayerPanel extends Panel implements Observer {
         button.setSize(60, 20);
         button.setLocation(320, 300);
         add(button);
-        unequipHelmetBotton = new Button();
         unequipHelmetBotton = button;
 
         equipmentView = new EquipmentView();
@@ -283,7 +281,6 @@ public class PlayerPanel extends Panel implements Observer {
         button.setSize(60, 20);
         button.setLocation(320, 330);
         add(button);
-        unequipRingBotton = new Button();
         unequipRingBotton = button;
 
         equipmentView = new EquipmentView();
@@ -296,7 +293,6 @@ public class PlayerPanel extends Panel implements Observer {
         button.setSize(60, 20);
         button.setLocation(320, 360);
         add(button);
-        unequipBeltBotton = new Button();
         unequipBeltBotton = button;
 
         equipmentView = new EquipmentView();
@@ -309,7 +305,6 @@ public class PlayerPanel extends Panel implements Observer {
         button.setSize(60, 20);
         button.setLocation(320, 390);
         add(button);
-        unequipBootsBotton = new Button();
         unequipBootsBotton = button;
 
         unequipWeaponBotton.addActionListener(new ActionListener() {
@@ -384,6 +379,9 @@ public class PlayerPanel extends Panel implements Observer {
 
     }
 
+    /**
+     * This is a method makes data transfer to view
+     */
     public void dataToView() {
 
         nameValueLabel.setText(player.getName());

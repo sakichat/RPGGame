@@ -7,10 +7,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Penelope on 17/2/28.
+ * This class is used to layout the campaign creation scene.
+ * @author Siyu Chen
+ * @version 0.1
  */
 public class CampaignCreationScene extends Scene {
 
+    /**
+     * property campaign and getter & setter
+     */
     private Campaign campaign;
 
     public Campaign getCampaign() {
@@ -21,6 +26,9 @@ public class CampaignCreationScene extends Scene {
         this.campaign = campaign;
     }
 
+    /**
+     * Constructor
+     */
     @Override
     protected void init() {
         super.init();
@@ -30,6 +38,9 @@ public class CampaignCreationScene extends Scene {
         saveButtonEnabled = false;
     }
 
+    /**
+     * Layout
+     */
     protected void initSubviews() {
         JLabel nameLabel = new JLabel("Name", JLabel.RIGHT);
         nameLabel.setSize(120, 40);

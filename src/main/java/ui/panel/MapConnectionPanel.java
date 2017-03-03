@@ -28,12 +28,11 @@ public class MapConnectionPanel extends Panel {
         dataToView();
     }
 
-    /**
-     * Layout
-     */
-
     Panel mapSequencePanel;
 
+    /**
+     * Constructor
+     */
     @Override
     protected void init() {
         super.init();
@@ -45,6 +44,9 @@ public class MapConnectionPanel extends Panel {
 
     }
 
+    /**
+     * Layout
+     */
     protected void initSubviews() {
 
         JLabel label;
