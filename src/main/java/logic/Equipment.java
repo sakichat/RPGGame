@@ -194,6 +194,11 @@ public class Equipment {
         this.enhancedValue = enhancedValue;
     }
 
+    /**
+     * this method is to show the Equipment
+     * @return String
+     */
+
     @Override
     public String toString() {
         return "Equipment{" +

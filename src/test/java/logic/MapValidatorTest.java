@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by GU_HAN on 2017-03-01.
  */
-public class MapValidatorEntranceTest {
+public class MapValidatorTest {
     @Before
     public void setUp() throws Exception {
 

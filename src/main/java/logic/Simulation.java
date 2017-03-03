@@ -7,9 +7,13 @@ import java.util.List;
 
 /**
  * @author Qi Xia
- * no doc
+ * this class is the simulation
  */
 public class Simulation {
+    /**
+     * this method is to create new Player
+     * @return Player
+     */
     public static Player newPlayer(){
         Player player = new Player("playerDemo");
         player.setLevel(2);
@@ -31,12 +35,16 @@ public class Simulation {
     }
 
 
+
     static {
         initEquipments();
     }
 
     private static List<Equipment> equipments;
 
+    /**
+     * this method is to initial the equipment
+     */
     private static void initEquipments(){
         equipments = new LinkedList<>();
 
@@ -113,9 +121,20 @@ public class Simulation {
 
     }
 
+    /**
+     * this method is to get all the equipments
+     * @return List<Equipment>
+     */
+
     public static List<Equipment> getEquipments(){
         return equipments;
     }
+
+    /**
+     * this method is to get Equipment
+     * @param position String
+     * @return List<Equipment>
+     */
 
     public static List<Equipment> getEquipments(String position) {
         List<Equipment> filteredEquipments = new LinkedList<>();
@@ -128,6 +147,11 @@ public class Simulation {
 
         return filteredEquipments;
     }
+
+    /**
+     * this method is to create map
+     * @return GameMap
+     */
 
     public static GameMap gameMap1(){
         GameMap gameMap = new GameMap();
@@ -144,6 +168,11 @@ public class Simulation {
         return gameMap;
     }
 
+    /**
+     * this method is to create Campaign
+     * @return Campaign
+     */
+
     public static Campaign campaign1(){
         Campaign campaign = new Campaign();
 
@@ -152,16 +181,68 @@ public class Simulation {
         String gameMap3 = "Salty Lake";
         String gameMap4 = "Crystal Land";
 
-        campaign.addConnection(gameMap1);
-        campaign.getConnection(1).setTargetId(2);
-        campaign.addConnection(gameMap2);
-        campaign.getConnection(2).setTargetId(3);
-        campaign.addConnection(gameMap3);
-        campaign.getConnection(3).setTargetId(4);
-        campaign.addConnection(gameMap4);
-        campaign.getConnection(4).setTargetId(0);
+        campaign.addMapName(gameMap1);
+        campaign.addMapName(gameMap2);
+        campaign.addMapName(gameMap3);
+        campaign.addMapName(gameMap4);
 
         return campaign;
     }
 
+    /**
+     * this method is to create the  player,entrance, exit and obstacle on the map
+     * @return GameMap
+     */
+
+    public static GameMap gameMap2(){
+        GameMap gameMap = new GameMap();
+        gameMap.setSize(8);
+
+        Exit exit = new Exit();
+        Entrance entrance = new Entrance();
+        Obstacle obstacle1 = new Obstacle();
+        Obstacle obstacle2 = new Obstacle();
+        Obstacle obstacle3 = new Obstacle();
+        Obstacle obstacle4 = new Obstacle();
+        Obstacle obstacle5 = new Obstacle();
+        Obstacle obstacle6 = new Obstacle();
+        Obstacle obstacle7 = new Obstacle();
+        Obstacle obstacle8 = new Obstacle();
+        Obstacle obstacle9 = new Obstacle();
+
+        Player characteur1 = newPlayer();
+        characteur1.setName("Joey");
+        Player characteur2 = newPlayer();
+        characteur2.setName("Monster");
+
+        Point point1 = new Point(1, 1);
+        Point point2 = new Point(2, 1);
+        Point point3 = new Point(3, 1);
+        Point point4 = new Point(3, 2);
+        Point point5 = new Point(3, 3);
+        Point point6 = new Point(4, 5);
+        Point point7 = new Point(5, 5);
+        Point point8 = new Point(4, 6);
+        Point point9 = new Point(4, 7);
+        Point pointExit = new Point(7, 7);
+        Point pointEntrance = new Point(0, 0);
+        Point pointCharacteur1 = new Point(1, 5);
+        Point pointCharacteur2 = new Point(2, 7);
+
+        gameMap.addCell(obstacle1, point1);
+        gameMap.addCell(obstacle2, point2);
+        gameMap.addCell(obstacle3, point3);
+        gameMap.addCell(obstacle4, point4);
+        gameMap.addCell(obstacle5, point5);
+        gameMap.addCell(obstacle6, point6);
+        gameMap.addCell(obstacle7, point7);
+        gameMap.addCell(obstacle8, point8);
+        gameMap.addCell(obstacle9, point9);
+        gameMap.addCell(entrance, pointEntrance);
+        gameMap.addCell(exit, pointExit);
+        gameMap.addCell(characteur1, pointCharacteur1);
+        gameMap.addCell(characteur2, pointCharacteur2);
+
+        return gameMap;
+    }
 }

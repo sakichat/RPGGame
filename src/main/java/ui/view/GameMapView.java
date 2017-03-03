@@ -4,6 +4,8 @@ import logic.Cell;
 import logic.GameMap;
 import logic.Point;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,6 +13,21 @@ import java.util.List;
  * Created by Penelope on 17/3/2.
  */
 public class GameMapView extends View {
+
+    public interface Delegate {
+        void gameMapViewSelect(GameMapView gameMapView, Point location);
+    }
+
+    private Delegate delegate;
+
+    public Delegate getDelegate() {
+        return delegate;
+    }
+
+    public void setDelegate(Delegate delegate) {
+        this.delegate = delegate;
+    }
+
     private GameMap gameMap;
 
     public GameMap getGameMap() {
@@ -27,14 +44,18 @@ public class GameMapView extends View {
         initLayers();
     }
 
-    private final static int _LAYER_BACKGROUND = 0;
-    private final static int _LAYER_CONTENT = 1;
+    private final static int _LAYER_BACKGROUND  = 0;
+    private final static int _LAYER_CONTENT     = 1;
+    private final static int _LAYER_HIGHLIGHT   = 2;
+    private final static int _LAYER_EVENT       = 3;
 
     private List<GameMapLayerView> layers = new LinkedList<>();
 
     private void initLayers() {
         initBackgroundLayer();
         initContentLayer();
+        initHighlightLayer();
+        initEventLayer();
     }
 
     private void newLayer(){
@@ -75,5 +96,66 @@ public class GameMapView extends View {
         }
     }
 
+    private Point selectedLocation;
+    private ImageView selectionView;
 
+    private void initHighlightLayer(){
+        newLayer();
+        GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
+
+        selectedLocation = new Point(0, 0);
+        selectionView = new ImageView();
+        selectionView.setName("selected.png");
+        layerView.addCell(selectionView, selectedLocation);
+
+    }
+
+    private void initEventLayer(){
+        newLayer();
+        GameMapLayerView layerView = layers.get(_LAYER_EVENT);
+        int size = gameMap.getSize();
+        for (int y = 0; y < size; y++) {
+            for (int x = 0; x < size; x++) {
+                Point location = new Point(x, y);
+                GlassView glassView = new GlassView();
+                layerView.addCell(glassView, location);
+
+                glassView.addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mousePressed(MouseEvent e) {
+                        cellPressed(location);
+                    }
+
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseEntered(MouseEvent e) {
+
+                    }
+
+                    @Override
+                    public void mouseExited(MouseEvent e) {
+
+                    }
+                });
+            }
+        }
+    }
+
+    private void cellPressed(Point location){
+        GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
+        layerView.moveCell(selectedLocation, location);
+        selectedLocation = location;
+        repaint();
+
+        delegate.gameMapViewSelect(this, location);
+    }
 }
