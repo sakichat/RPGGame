@@ -3,7 +3,8 @@ package ui.view;
 import java.awt.*;
 
 /**
- * Created by Penelope on 17/3/2.
+ * @author Siyu Chen
+ * @version 0.1
  */
 public class GlassView extends View {
     public GlassView() {

@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
+ * This class is a superclass for other scenes class.
  * @author Siyu Chen
  * @version 0.1
  */
@@ -18,6 +19,9 @@ public class Scene extends View{
     public boolean backButtonEnabled;
     public boolean saveButtonEnabled;
 
+    /**
+     * This is a constructor to init the calling sequence for these methods
+     */
     public Scene() {
         init();
         initHeader();
@@ -27,12 +31,19 @@ public class Scene extends View{
         initSubviews();
     }
 
+    /**
+     * This init() method init the basic properties for Scene
+     */
     protected void init(){
         setLayout(null);
 
         this.setSize(1000, 600);
     }
 
+    /**
+     * This initHeader() method init the navigation title bar for Scene.
+     * And it sets a property called title in order to add specific title name on different scenes
+     */
     protected void initHeader() {
 
         View header = new View();
@@ -47,6 +58,9 @@ public class Scene extends View{
         header.add(titleLabel);
     }
 
+    /**
+     * This initWindows() method init the main content view in the Scene class
+     */
     protected void initWindows() {
         contentView = new View();
         contentView.setSize(1000, 560);
@@ -55,6 +69,10 @@ public class Scene extends View{
         contentView.setBackground(new Color(0xFFFFFF));
     }
 
+    /**
+     * This initBack() method init the backButton on scenes.
+     * There is a boolean property backButtonEnabled to make sure whether a scene needs this button.
+     */
     protected void initBack() {
         if (backButtonEnabled == true) {
             backButton = new JButton("Back");
@@ -64,6 +82,10 @@ public class Scene extends View{
         }
     }
 
+    /**
+     * This initSave() method init the saveButton on scenes.
+     * There is a boolean property saveButtonEnabled to make sure whether a scene needs this button.
+     */
     protected void initSave() {
         if (saveButtonEnabled == true) {
             saveButton = new JButton("Save");
@@ -73,6 +95,9 @@ public class Scene extends View{
         }
     }
 
+    /**
+     * This initSubviews() method is to call the method in subclasses
+     */
     protected void initSubviews(){
 
     }

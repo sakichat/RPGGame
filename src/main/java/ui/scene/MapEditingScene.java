@@ -17,7 +17,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Kai QI on 2017/2/28.
+ * @author Siyu Chen
+ * @version 0.1
  */
 public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate{
 

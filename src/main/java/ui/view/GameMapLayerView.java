@@ -7,6 +7,7 @@ import java.awt.*;
 /**
  * This class is for building a layer on game map which extends View.
  * @author Siyu Chen
+ * @version 0.1
  */
 public class GameMapLayerView extends View {
 
@@ -47,7 +48,7 @@ public class GameMapLayerView extends View {
     }
 
     /**
-     *
+     * This method is to add a cell on GameMapView
      * @param cell
      * @param location
      */
@@ -60,6 +61,10 @@ public class GameMapLayerView extends View {
         this.add(cell);
     }
 
+    /**
+     * This method is to remove a cell from GameMapView
+     * @param location
+     */
     public void removeCell(Point location) {
         int x = location.getX();
         int y = location.getY();
@@ -68,6 +73,11 @@ public class GameMapLayerView extends View {
         cells[y][x] = null;
     }
 
+    /**
+     * This method is to get a location of a specific cell
+     * @param location
+     * @return cells[y][x]
+     */
     public View getCell(Point location) {
         int x = location.getX();
         int y = location.getY();
@@ -75,12 +85,20 @@ public class GameMapLayerView extends View {
         return cells[y][x];
     }
 
+    /**
+     * This method is to move a cell from a specific location to another one
+     * @param from
+     * @param to
+     */
     public void moveCell(Point from, Point to) {
         View cell = getCell(from);
         removeCell(from);
         addCell(cell, to);
     }
 
+    /**
+     * This function is to clear the whole GameMapViewLayer in order to add new items on that
+     */
     public void removeAllCells(){
         for (int y = 0; y < gridSize; y++) {
             for (int x = 0; x < gridSize; x++) {
