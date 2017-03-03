@@ -1,6 +1,7 @@
 package map;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Saki on 2017/3/1.
@@ -31,6 +32,10 @@ public class Campaign {
 
     public MapConnection getConnection(int id){
         return connections.get(id - 1);
+    }
+
+    public List<MapConnection> getConnections() {
+        return connections;
     }
 
     public boolean validate(){

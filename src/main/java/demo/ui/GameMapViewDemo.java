@@ -22,5 +22,7 @@ public class GameMapViewDemo extends JFrame {
         GameMap gameMap = Simulation.gameMap1();
         gameMapView.setGameMap(gameMap);
         add(gameMapView);
+
+        repaint();
     }
 }

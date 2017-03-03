@@ -2,12 +2,18 @@ package ui.view;
 
 import map.Point;
 
+import java.awt.*;
+
 /**
  * Created by Penelope on 17/3/1.
  */
 public class GameMapLayerView extends View {
 
     public final static int UNIT_SIZE = 40;
+
+    public GameMapLayerView(){
+        setBackground(new Color(0, 0, 0, Color.TRANSLUCENT));
+    }
 
     private int gridSize;
     private View[][] cells;
@@ -23,6 +29,8 @@ public class GameMapLayerView extends View {
         cells = new View[gridSize][gridSize];
         setSize(gridSize * UNIT_SIZE, gridSize * UNIT_SIZE);
     }
+
+
 
     public void addCell(View cell, Point location) {
         int x = location.getX();
@@ -47,4 +55,5 @@ public class GameMapLayerView extends View {
 
         return cells[y][x];
     }
+
 }
