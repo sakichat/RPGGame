@@ -7,9 +7,13 @@ import java.util.List;
 
 /**
  * @author Qi Xia
- * no doc
+ * this class is the simulation
  */
 public class Simulation {
+    /**
+     * this method is to create new Player
+     * @return Player
+     */
     public static Player newPlayer(){
         Player player = new Player("playerDemo");
         player.setLevel(2);
@@ -31,12 +35,16 @@ public class Simulation {
     }
 
 
+
     static {
         initEquipments();
     }
 
     private static List<Equipment> equipments;
 
+    /**
+     * this method is to initial the equipment
+     */
     private static void initEquipments(){
         equipments = new LinkedList<>();
 
@@ -113,9 +121,20 @@ public class Simulation {
 
     }
 
+    /**
+     * this method is to get all the equipments
+     * @return List<Equipment>
+     */
+
     public static List<Equipment> getEquipments(){
         return equipments;
     }
+
+    /**
+     * this method is to get Equipment
+     * @param position String
+     * @return List<Equipment>
+     */
 
     public static List<Equipment> getEquipments(String position) {
         List<Equipment> filteredEquipments = new LinkedList<>();
@@ -128,6 +147,11 @@ public class Simulation {
 
         return filteredEquipments;
     }
+
+    /**
+     * this method is to create map
+     * @return GameMap
+     */
 
     public static GameMap gameMap1(){
         GameMap gameMap = new GameMap();
@@ -143,6 +167,11 @@ public class Simulation {
 
         return gameMap;
     }
+
+    /**
+     * this method is to create Campaign
+     * @return Campaign
+     */
 
     public static Campaign campaign1(){
         Campaign campaign = new Campaign();

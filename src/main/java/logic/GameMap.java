@@ -5,28 +5,54 @@ import java.util.List;
 
 /**
  * Created by Saki on 2017/2/20.
+ * this class is the map
  */
 public class GameMap {
     private String name;
     private int size;
     private Cell[][] cells;
 
+    /**
+     * this method is to get size of map
+     * @return int
+     */
     public int getSize() {
         return size;
     }
+
+    /**
+     * this method is to set Size
+     * @param size int
+     */
 
     public void setSize(int size) {
         this.size = size;
         cells = new Cell[size][size];
     }
 
+    /**
+     * this method is to set name of map
+     * @param name String
+     */
+
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * this method is to get name of map
+     * @return String
+     */
+
     public String getName() {
         return name;
     }
+
+    /**
+     * this method is to add cell
+     * @param cell Cell
+     * @param location Point
+     */
 
     public void addCell(Cell cell, Point location){
         int x = location.getX();
@@ -36,11 +62,22 @@ public class GameMap {
         cell.location = location;
     }
 
+    /**
+     * this method is to remove cell
+     * @param location Point
+     */
+
     public void removeCell(Point location){
         int x = location.getX();
         int y = location.getY();
         cells[y][x] = null;
     }
+
+    /**
+     * this method is to get cell
+     * @param location Point
+     * @return Cell
+     */
 
     public Cell getCell(Point location){
         int x = location.getX();
@@ -48,9 +85,21 @@ public class GameMap {
         return cells[y][x];
     }
 
+    /**
+     * this method is to judge if there is a cell
+     * @param location Point
+     * @return Boolean
+     */
+
     public boolean hasCell(Point location){
         return getCell(location) != null;
     }
+
+    /**
+     * this method is to move cell
+     * @param startPoint Point
+     * @param endPoint Point
+     */
 
     public void moveCell(Point startPoint, Point endPoint){
 
@@ -63,6 +112,11 @@ public class GameMap {
         cells[startY][startX] = null;
         cells[endY][endX] = cell;
     }
+
+    /**
+     * this method is to get  all entrances
+     * @return List<Entreance>
+     */
 
     public List<Entrance> getEntrances(){
         LinkedList<Entrance> entrances = new LinkedList<>();
@@ -78,6 +132,11 @@ public class GameMap {
 
         return entrances;
     }
+
+    /**
+     * this method is to get all Exists
+     * @return List<Exit>
+     */
 
     public List<Exit> getExits() {
         LinkedList<Exit> exits = new LinkedList<>();
@@ -100,7 +159,10 @@ public class GameMap {
     public final static String VALIDATION_ERROR_TOO_MUCH_EXIT = "Should be only one exit";
     public final static String VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE = "The exit is not reachable";
 
-
+    /**
+     * this method is to validate the map
+     * @return String
+     */
     public String validate(){
 
         List<Entrance> entrances = getEntrances();
@@ -167,6 +229,12 @@ public class GameMap {
         //  mean exit is not reachable
         return VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE;
     }
+
+    /**
+     * this method is to if the cell is out of bounds
+     * @param location Point
+     * @return Boolean
+     */
 
     private boolean inMap(Point location) {
         int x = location.getX();
