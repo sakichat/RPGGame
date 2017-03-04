@@ -40,6 +40,9 @@ character
     A character’s attack bonus with a melee weapon is:
     Base attack bonus + Strength modifier +/ size modifier + weapon attack bonus
 
+    =   (level) + str mod + dex mod + worn ab
+
+
 +   damage bonus [W]
     =   strength modi of melee weapon (Ref > Combat > Strength Bonus)
 

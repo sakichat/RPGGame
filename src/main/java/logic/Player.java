@@ -324,7 +324,7 @@ public class Player extends Cell{
      */
     public void generateHp() {
 
-        hp = 0;
+        hp = Dice.rool(10);
 
         for (int i = 0; i < level - 1; i++) {
             int hitDie = Dice.rool(10);
@@ -380,8 +380,7 @@ public class Player extends Cell{
      * @return Integer
      */
     public int getDamageBonus() {
-        int dexModifier = getAbilityModifier(ABILITY_DEX);
-        return 10 + dexModifier;
+        return getAbilityModifier(ABILITY_STR);
     }
 
     /**
