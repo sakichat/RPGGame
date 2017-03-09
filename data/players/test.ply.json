@@ -1,5 +1,6 @@
 {
   "abilityScores": {
+<<<<<<< Updated upstream
     "STR": 16,
     "WIS": 16,
     "CON": 16,
@@ -17,20 +18,50 @@
   ],
   "equipments": {
     "Ring": {
+=======
+    "STR": 24,
+    "WIS": 16,
+    "CON": 12,
+    "DEX": 24,
+    "CHA": 20,
+    "INT": 8
+  },
+  "backpack": [
+    {
+>>>>>>> Stashed changes
       "name": "Alythess Pyrogenics",
       "type": "Ring",
       "enhancedAttribute": "CON",
       "enhancedValue": 3
+<<<<<<< Updated upstream
     },
+=======
+    }
+  ],
+  "equipments": {
+>>>>>>> Stashed changes
     "Weapon": {
       "name": "Ashbringer",
       "type": "Weapon",
       "enhancedAttribute": "AB",
       "enhancedValue": 5
+<<<<<<< Updated upstream
+=======
+    },
+    "Armor": {
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+>>>>>>> Stashed changes
     }
   },
   "level": 3,
   "name": "test",
+<<<<<<< Updated upstream
   "hp": 22,
+=======
+  "hp": 20,
+>>>>>>> Stashed changes
   "imageName": "player_1.png"
 }

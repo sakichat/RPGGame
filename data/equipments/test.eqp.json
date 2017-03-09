@@ -1,6 +1,12 @@
 {
   "name": "test",
+<<<<<<< Updated upstream
   "type": "Weapon",
   "enhancedAttribute": "AB",
   "enhancedValue": 2
+=======
+  "type": "Boots",
+  "enhancedAttribute": "AC",
+  "enhancedValue": 1
+>>>>>>> Stashed changes
 }

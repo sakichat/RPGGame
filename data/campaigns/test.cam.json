@@ -1,4 +1,10 @@
 {
   "name": "test",
+<<<<<<< Updated upstream
   "mapNames": []
+=======
+  "mapNames": [
+    "le lac de joey"
+  ]
+>>>>>>> Stashed changes
 }

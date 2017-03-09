@@ -1,6 +1,6 @@
 {
-  "name": "test",
-  "size": 8,
+  "name": "hi",
+  "size": 12,
   "cells": [
     [
       null,
@@ -9,61 +9,18 @@
       null,
       null,
       null,
-<<<<<<< Updated upstream
       null,
-=======
->>>>>>> Stashed changes
-      {
-        "_class": "Entrance",
-        "_object": {
-          "location": {
-<<<<<<< Updated upstream
-            "x": 7,
-=======
-            "x": 6,
->>>>>>> Stashed changes
-            "y": 0
-          },
-          "imageName": "entrance.png",
-          "changed": false,
-          "obs": []
-        }
-      }
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     [
       null,
       null,
       null,
       null,
-      null,
-      null,
-      {
-        "_class": "Obstacle",
-        "_object": {
-          "location": {
-            "x": 6,
-            "y": 1
-          },
-          "imageName": "wall.png",
-          "changed": false,
-          "obs": []
-        }
-      },
-      {
-<<<<<<< Updated upstream
-        "_class": "Obstacle",
-        "_object": {
-          "location": {
-            "x": 7,
-            "y": 1
-          },
-          "imageName": "wall.png",
-          "changed": false,
-          "obs": []
-        }
-      }
-    ],
-    [
       null,
       null,
       null,
@@ -79,27 +36,52 @@
       null,
       null,
       null,
+      null,
+      null,
+      null,
+      null,
       {
-        "_class": "Exit",
+        "_class": "Obstacle",
         "_object": {
           "location": {
-            "x": 5,
+            "x": 9,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Entrance",
+        "_object": {
+          "location": {
+            "x": 4,
             "y": 3
-=======
-        "_class": "Entrance",
-        "_object": {
-          "location": {
-            "x": 7,
-            "y": 0
->>>>>>> Stashed changes
           },
           "imageName": "entrance.png",
           "changed": false,
           "obs": []
         }
-      }
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
     ],
     [
+      null,
       null,
       null,
       null,
@@ -110,30 +92,25 @@
         "_class": "Obstacle",
         "_object": {
           "location": {
-            "x": 6,
-            "y": 1
+            "x": 7,
+            "y": 4
           },
           "imageName": "wall.png",
           "changed": false,
           "obs": []
         }
       },
-      null,
-      null
-    ],
-    [
-      null,
       {
         "_class": "Chest",
         "_object": {
           "equipment": {
-            "name": "Alythess Pyrogenics",
-            "type": "Ring",
-            "enhancedAttribute": "CON",
-            "enhancedValue": 3
+            "name": "Ashbringer",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 5
           },
           "location": {
-            "x": 1,
+            "x": 8,
             "y": 4
           },
           "imageName": "chest.png",
@@ -143,6 +120,13 @@
       },
       null,
       null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null,
@@ -156,27 +140,6 @@
       null,
       null,
       null,
-<<<<<<< Updated upstream
-=======
-      {
-        "_class": "Exit",
-        "_object": {
-          "location": {
-            "x": 3,
-            "y": 3
-          },
-          "imageName": "exit.png",
-          "changed": false,
-          "obs": []
-        }
-      },
-      null,
-      null,
-      null,
-      null
-    ],
-    [
->>>>>>> Stashed changes
       null,
       {
         "_class": "Player",
@@ -245,27 +208,31 @@
           "name": "Ashley",
           "hp": 100,
           "location": {
-<<<<<<< Updated upstream
             "x": 4,
-            "y": 5
-=======
-            "x": 1,
-            "y": 4
->>>>>>> Stashed changes
+            "y": 6
           },
           "imageName": "player_1.png",
           "changed": false,
           "obs": []
         }
       },
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 6
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
       null,
       null,
-<<<<<<< Updated upstream
-=======
       null,
       null,
       null,
->>>>>>> Stashed changes
       null
     ],
     [
@@ -274,8 +241,27 @@
       null,
       null,
       null,
-<<<<<<< Updated upstream
-=======
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Exit",
+        "_object": {
+          "location": {
+            "x": 10,
+            "y": 7
+          },
+          "imageName": "exit.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null
+    ],
+    [
+      null,
       {
         "_class": "Chest",
         "_object": {
@@ -286,8 +272,8 @@
             "enhancedValue": 5
           },
           "location": {
-            "x": 5,
-            "y": 5
+            "x": 1,
+            "y": 8
           },
           "imageName": "chest.png",
           "changed": false,
@@ -295,6 +281,14 @@
         }
       },
       null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
       null
     ],
     [
@@ -303,12 +297,89 @@
       null,
       null,
       null,
->>>>>>> Stashed changes
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null
     ],
     [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Player",
+        "_object": {
+          "abilityScores": {
+            "STR": 8,
+            "WIS": 8,
+            "CON": 4,
+            "DEX": 16,
+            "CHA": 12,
+            "INT": 20
+          },
+          "backpack": [
+            {
+              "name": "Bloodhoof Runespear",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          ],
+          "equipments": {
+            "Helmet": {
+              "name": "Coif of Delusions",
+              "type": "Helmet",
+              "enhancedAttribute": "WIS",
+              "enhancedValue": 5
+            },
+            "Ring": {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            "Armor": {
+              "name": "Arming Coat",
+              "type": "Armor",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 5
+            },
+            "Weapon": {
+              "name": "Ashbringer",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            }
+          },
+          "level": 1,
+          "name": "DarkNage",
+          "hp": 100,
+          "location": {
+            "x": 5,
+            "y": 10
+          },
+          "imageName": "player_1.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
       null,
       null,
       null,
