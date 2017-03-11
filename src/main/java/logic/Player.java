@@ -211,7 +211,7 @@ public class Player extends Cell{
     }
 
     /**
-     * This method is ussed to calculate the total enhanced value by all equipments based on the attribute name.
+     * This method is used to calculate the total enhanced value by all equipments based on the attribute name.
      * @param attribute the attribute which is needed.
      * @return int, the total enhanced value of the equipments.
      */
