@@ -47,8 +47,8 @@ public class PlayerFileManager {
 
     public static Player read(String name){
         File file = PlayerFileManager.path(name);
-        String playerName = FileManager.fileToString(file);
-        Player player = new Gson().fromJson(playerName,Player.class);
+        String content = FileManager.fileToString(file);
+        Player player = new Gson().fromJson(content,Player.class);
         return player;
 
     }
