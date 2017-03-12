@@ -11,7 +11,7 @@ import java.util.List;
  * @author Kai QI
  * @version 0.1
  *
- * This class isfo MapConnectionPanel purpose.
+ * This class is for MapConnectionPanel purpose.
  */
 public class MapConnectionPanel extends Panel {
 
