@@ -3,7 +3,6 @@ package ui.scene;
 import logic.Campaign;
 import logic.GameMap;
 import persistence.CampaignFileManager;
-import ui.panel.MapConnection;
 import ui.panel.MapConnectionPanel;
 import ui.panel.MapDelegate;
 import ui.panel.MapSelectorPanel;
