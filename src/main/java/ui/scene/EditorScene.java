@@ -18,7 +18,6 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
 
     private JLabel label;
     private JButton button;
-    private JPanel itemSelectLabel;
 
     /**
      * Constructor
