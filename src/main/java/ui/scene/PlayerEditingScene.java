@@ -71,10 +71,10 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
      * And adds events on buttons
      */
     protected void initSubviews() {
-        JLabel level = new JLabel("Level", JLabel.RIGHT);
-        level.setSize(120, 40);
-        level.setLocation(20, 20);
-        contentView.add(level);
+        JLabel levelLabel = new JLabel("Level", JLabel.RIGHT);
+        levelLabel.setSize(120, 40);
+        levelLabel.setLocation(20, 20);
+        contentView.add(levelLabel);
 
         levelField = new JTextField();
         levelField.setSize(160,40);
@@ -128,7 +128,6 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
             @Override
             public void actionPerformed(ActionEvent e) {
                 save();
-                PlayerEditingScene.this.navigationView.popTo(EditorScene.class);
             }
         });
 
