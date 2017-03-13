@@ -5,6 +5,8 @@ import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Siyu Chen
@@ -82,6 +84,15 @@ public class PlayScene extends Scene {
         button.setSize(40, 40);
         downDirection = button;
         add(button);
+
         repaint();
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PlayScene.this.navigationView.popTo(EditorScene.class);
+            }
+        });
+        
     }
 }
