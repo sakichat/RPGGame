@@ -83,7 +83,6 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
             @Override
             public void actionPerformed(ActionEvent e) {
                 save();
-                CampaignEditingScene.this.navigationView.popTo(EditorScene.class);
             }
         });
 
