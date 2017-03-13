@@ -159,49 +159,49 @@ public class ItemEditingScene extends Scene {
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(150, 160);
-        button.setText("Weapon");
+        button.setText(Equipment.WEAPON);
         weaponButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(260, 160);
-        button.setText("Shield");
+        button.setText(Equipment.SHIELD);
         shieldButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(370, 160);
-        button.setText("Armor");
+        button.setText(Equipment.ARMOR);
         armorButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(480, 160);
-        button.setText("Helmet");
+        button.setText(Equipment.HELMET);
         helmetButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(590, 160);
-        button.setText("Ring");
+        button.setText(Equipment.RING);
         ringButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(700, 160);
-        button.setText("Belt");
+        button.setText(Equipment.BELT);
         beltButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(810, 160);
-        button.setText("Boots");
+        button.setText(Equipment.BOOTS);
         bootsButton = button;
         add(button);
 
@@ -212,42 +212,42 @@ public class ItemEditingScene extends Scene {
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(150, 260);
-        button.setText("Str");
+        button.setText(Player.ABILITY_STR);
         strButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(260, 260);
-        button.setText("Dex");
+        button.setText(Player.ABILITY_DEX);
         dexButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(370, 260);
-        button.setText("Con");
+        button.setText(Player.ABILITY_CON);
         conButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(480, 260);
-        button.setText("Int");
+        button.setText(Player.ABILITY_INT);
         intButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(590, 260);
-        button.setText("Wis");
+        button.setText(Player.ABILITY_WIS);
         wisButton = button;
         add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(700, 260);
-        button.setText("Cha");
+        button.setText(Player.ABILITY_CHA);
         chaButton = button;
         add(button);
 
