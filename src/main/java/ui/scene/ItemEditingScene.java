@@ -383,7 +383,7 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ABILITY_STR);
-                enhanceOnLabel.setText("Str");
+                enhanceOnLabel.setText(Player.ABILITY_STR);
             }
         });
 
@@ -391,7 +391,7 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ABILITY_DEX);
-                enhanceOnLabel.setText("Dex");
+                enhanceOnLabel.setText(Player.ABILITY_DEX);
             }
         });
 
@@ -399,7 +399,7 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ABILITY_CON);
-                enhanceOnLabel.setText("Con");
+                enhanceOnLabel.setText(Player.ABILITY_CON);
             }
         });
 
@@ -407,7 +407,7 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ABILITY_INT);
-                enhanceOnLabel.setText("Int");
+                enhanceOnLabel.setText(Player.ABILITY_INT);
             }
         });
 
@@ -415,7 +415,7 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ABILITY_WIS);
-                enhanceOnLabel.setText("Wis");
+                enhanceOnLabel.setText(Player.ABILITY_WIS);
             }
         });
 
@@ -423,7 +423,7 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ABILITY_CHA);
-                enhanceOnLabel.setText("Cha");
+                enhanceOnLabel.setText(Player.ABILITY_CHA);
             }
         });
 
@@ -439,7 +439,7 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
-                enhanceOnLabel.setText("Attck Bonus");
+                enhanceOnLabel.setText("Attack Bonus");
             }
         });
 
