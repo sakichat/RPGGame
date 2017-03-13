@@ -80,13 +80,14 @@ public class ItemEditingScene extends Scene {
         title = "Edit Item";
         backButtonEnabled = true;
         saveButtonEnabled = true;
+
     }
 
     /**
      * This method is the details of the initialization.
      */
     protected void initSubviews(){
-
+        saveButton.setEnabled(false);
         /*
          * First Line
          */
@@ -318,7 +319,6 @@ public class ItemEditingScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 save();
-                ItemEditingScene.this.navigationView.popTo(EditorScene.class);
             }
         });
 
