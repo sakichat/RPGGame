@@ -2,7 +2,6 @@ package ui.panel;
 
 import logic.Chest;
 import logic.Equipment;
-import logic.Player;
 import ui.view.EquipmentView;
 
 import javax.swing.*;
@@ -43,31 +42,6 @@ public class EquipmentPanel extends Panel implements Observer{
         chest.addObserver(this);
     }
 
-    /**
-     * Player attribute and getter & setter
-     */
-
-    private Player player;
-
-    /**
-     * This method is the Player getter.
-     * @return
-     */
-    public Player getPlayer() {
-        return player;
-    }
-
-    /**
-     * @param player Player
-     * call dataToView and addOberserver
-     */
-
-    public void setPlayer(Player player) {
-        this.player = player;
-        dataToView();
-        player.addObserver(this);
-    }
-
     private JPanel equipmentsPanel;
 
     /**
@@ -104,7 +78,7 @@ public class EquipmentPanel extends Panel implements Observer{
     public void update(Observable observer, Object x) {
 
         boolean change = false;
-        change = change || (x == Player.BACKPACK_CHANGE);
+        change = change || (x == Chest.CHEST_CHANGE);
 
         if (change) {
             dataToView();
@@ -122,10 +96,10 @@ public class EquipmentPanel extends Panel implements Observer{
         int x = 10;
         int y = 10;
 
-        List<Equipment> backpack;
-        backpack = player.equipmentsInBackpack();
+        List<Equipment> chestContent;
+        chestContent = chest.getEquipments();
 
-        for (Equipment equipment : backpack) {
+        for (Equipment equipment : chestContent) {
             EquipmentView equipmentView = new EquipmentView();
             equipmentView.setLocation(x, y);
             equipmentsPanel.add(equipmentView);
@@ -139,7 +113,7 @@ public class EquipmentPanel extends Panel implements Observer{
             dropButtton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    player.dropEquipment(equipment);
+                    chest.dropEquipment(equipment);
                 }
             });
 
