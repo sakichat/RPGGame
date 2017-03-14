@@ -20,14 +20,14 @@ public class GameMapLayerViewDemo extends JFrame{
         setLayout(null);
 
         GameMapLayerView gameMapLayerView = new GameMapLayerView();
-        gameMapLayerView.setGridSize(16);
+        gameMapLayerView.setGridSize(10, 8);
         gameMapLayerView.setLocation(0, 0);
         this.add(gameMapLayerView);
 
 
 
-        for (int i = 0; i < gameMapLayerView.getGridSize(); i++) {
-            for (int j = 0; j < gameMapLayerView.getGridSize(); j++) {
+        for (int i = 0; i < gameMapLayerView.getHeight(); i++) {
+            for (int j = 0; j < gameMapLayerView.getWidth(); j++) {
 
                 ImageView imageView = new ImageView();
                 imageView.setName("grass_background.png");

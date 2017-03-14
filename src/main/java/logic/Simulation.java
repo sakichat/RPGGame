@@ -159,7 +159,8 @@ public class Simulation {
 
     public static GameMap gameMap1(){
         GameMap gameMap = new GameMap();
-        gameMap.setSize(4);
+        gameMap.setWidth(4);
+        gameMap.setHeight(6);
         Exit exit1 = new Exit();
         Entrance entrance = new Entrance();
 
@@ -200,7 +201,8 @@ public class Simulation {
 
     public static GameMap gameMap2(){
         GameMap gameMap = new GameMap();
-        gameMap.setSize(8);
+        gameMap.setWidth(8);
+        gameMap.setHeight(12);
 
         Exit exit = new Exit();
         Entrance entrance = new Entrance();
