@@ -111,6 +111,55 @@ public class Player extends Cell{
         notifyObservers(ABILITY_CHANGE);
     }
 
+    public void generateAbilities(String playerType) {
+
+        List<Integer> diceResults = new LinkedList<>();
+        for (int i = 0; i < 6; i++) {
+            diceResults.add(Dice.rool(4, 6, 0));
+        }
+
+        diceResults.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1 >= o2) {
+                    return o1;
+                }
+                return o2;
+            }
+        });
+
+        List<String> abilities = new LinkedList<>();
+        if (playerType == PLAYER_TYPE_BULLY) {
+            abilities.add(ABILITY_STR);
+            abilities.add(ABILITY_CON);
+            abilities.add(ABILITY_DEX);
+            abilities.add(ABILITY_INT);
+            abilities.add(ABILITY_CHA);
+            abilities.add(ABILITY_WIS);
+        } else if (playerType == PLAYER_TYPE_NIMBLE) {
+            abilities.add(ABILITY_DEX);
+            abilities.add(ABILITY_CON);
+            abilities.add(ABILITY_STR);
+            abilities.add(ABILITY_INT);
+            abilities.add(ABILITY_CHA);
+            abilities.add(ABILITY_WIS);
+        } else if (playerType == PLAYER_TYPE_TANK) {
+            abilities.add(ABILITY_CON);
+            abilities.add(ABILITY_DEX);
+            abilities.add(ABILITY_STR);
+            abilities.add(ABILITY_INT);
+            abilities.add(ABILITY_CHA);
+            abilities.add(ABILITY_WIS);
+        }
+
+        for (int i = 0; i < 6; i++) {
+            abilityScores.put(abilities.get(i), diceResults.get(i));
+        }
+
+        setChanged();
+        notifyObservers(ABILITY_CHANGE);
+    }
+
 
 
     /**
