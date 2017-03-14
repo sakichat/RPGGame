@@ -9,8 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
+import java.util.List;
 
 /**
  * @author Kai QI
@@ -39,6 +39,27 @@ public class InventoryPanel extends Panel implements Observer {
         dataToView();
         player.addObserver(this);
     }
+    /**
+     * The attribute buttonEnabled and getter&setter.
+     */
+    private boolean buttonEnabled;
+
+    /**
+     * Getter for buttonEnabled
+     * @return
+     */
+    public boolean isButtonEnabled() {
+        return buttonEnabled;
+    }
+
+    /**
+     * Setter for buttonEnabled
+     * @param buttonEnabled
+     */
+    public void setButtonEnabled(boolean buttonEnabled) {
+        this.buttonEnabled = buttonEnabled;
+        dataToView();
+    }
 
     /**
      * Observer
@@ -61,6 +82,16 @@ public class InventoryPanel extends Panel implements Observer {
             dataToView();
         }
     }
+    /**
+     * Constructor
+     */
+    @Override
+    protected void init() {
+        super.init();
+
+        setSize(480, 540);
+        title = "Inventory";
+    }
 
     private EquipmentView weaponEquipmentView;
     private EquipmentView shieldEquipmentView;
@@ -71,136 +102,14 @@ public class InventoryPanel extends Panel implements Observer {
     private EquipmentView bootsEquipmentView;
 
     private JButton unequipWeaponBotton;
-    private boolean unequipWeaponBottonEnabled;
     private JButton unequipShieldBotton;
-    private boolean unequipShieldBottonEnabled;
     private JButton unequipArmorBotton;
-    private boolean unequipArmorBottonEnabled;
     private JButton unequipHelmetBotton;
-    private boolean unequipHelmetBottonEnabled;
     private JButton unequipRingBotton;
-    private boolean unequipRingBottonEnabled;
     private JButton unequipBeltBotton;
-    private boolean unequipBeltBottonEnabled;
     private JButton unequipBootsBotton;
-    private boolean unequipBootsBottonEnabled;
 
-    /**
-     * Getter & setter for all the buttonEnabled boolean properties.
-     * @return
-     */
-
-    /**
-     * Getter for unequipWeaponBottonEnabled;
-     * @return
-     */
-    public boolean getUnequipWeaponBottonEnabled() {
-        return unequipWeaponBottonEnabled;
-    }
-
-    /**
-     * Setter for unequipWeaponBottonEnabled;
-     * @param unequipWeaponBottonEnabled
-     */
-    public void setUnequipWeaponBottonEnabled(boolean unequipWeaponBottonEnabled) {
-        this.unequipWeaponBottonEnabled = unequipWeaponBottonEnabled;
-    }
-
-    /**
-     * Getter for unequipShieldBottonEnabled;
-     * @return
-     */
-    public boolean getUnequipShieldBottonEnabled() {
-        return unequipShieldBottonEnabled;
-    }
-
-    /**
-     * Setter for unequipShieldBottonEnabled;
-     * @param unequipShieldBottonEnabled
-     */
-    public void setUnequipShieldBottonEnabled(boolean unequipShieldBottonEnabled) {
-        this.unequipShieldBottonEnabled = unequipShieldBottonEnabled;
-    }
-
-    /**
-     * Getter for unequipArmorBottonEnabled;
-     * @return
-     */
-    public boolean getUnequipArmorBottonEnabled() {
-        return unequipArmorBottonEnabled;
-    }
-
-    /**
-     * Setter for unequipArmorBottonEnabled;
-     * @param unequipArmorBottonEnabled
-     */
-    public void setUnequipArmorBottonEnabled(boolean unequipArmorBottonEnabled) {
-        this.unequipArmorBottonEnabled = unequipArmorBottonEnabled;
-    }
-
-    /**
-     * Getter for unequipHelmetBottonEnabled;
-     * @return
-     */
-    public boolean getUnequipHelmetBottonEnabled() {
-        return unequipHelmetBottonEnabled;
-    }
-
-    /**
-     * Setter for unequipHelmetBottonEnabled;
-     * @param unequipHelmetBottonEnabled
-     */
-    public void setUnequipHelmetBottonEnabled(boolean unequipHelmetBottonEnabled) {
-        this.unequipHelmetBottonEnabled = unequipHelmetBottonEnabled;
-    }
-
-    /**
-     * Getter for unequipRingBottonEnabled;
-     * @return
-     */
-    public boolean getUnequipRingBottonEnabled() {
-        return unequipRingBottonEnabled;
-    }
-
-    /**
-     * Setter for unequipRingBottonEnabled;
-     * @param unequipRingBottonEnabled
-     */
-    public void setUnequipRingBottonEnabled(boolean unequipRingBottonEnabled) {
-        this.unequipRingBottonEnabled = unequipRingBottonEnabled;
-    }
-
-    /**
-     * Getter for unequipBeltBottonEnabled;
-     * @return
-     */
-    public boolean getUnequipBeltBottonEnabled() {
-        return unequipBeltBottonEnabled;
-    }
-
-    /**
-     * Setter for unequipBeltBottonEnabled;
-     * @param unequipBeltBottonEnabled
-     */
-    public void setUnequipBeltBottonEnabled(boolean unequipBeltBottonEnabled) {
-        this.unequipBeltBottonEnabled = unequipBeltBottonEnabled;
-    }
-
-    /**
-     * Getter for unequipBootsBottonEnabled;
-     * @return
-     */
-    public boolean getUnequipBootsBottonEnabled() {
-        return unequipBootsBottonEnabled;
-    }
-
-    /**
-     * Setter for unequipBootsBottonEnabled;
-     * @param unequipBootsBottonEnabled
-     */
-    public void setUnequipBootsBottonEnabled(boolean unequipBootsBottonEnabled) {
-        this.unequipBootsBottonEnabled = unequipBootsBottonEnabled;
-    }
+    private JPanel backpackSubPanel;
 
     /**
      * Layout
@@ -209,90 +118,104 @@ public class InventoryPanel extends Panel implements Observer {
 
         EquipmentView equipmentView;
         JButton button;
+        JLabel label;
 
         equipmentView = new EquipmentView();
-        equipmentView.setLocation(10, 210);
+        equipmentView.setLocation(30, 30);
         add(equipmentView);
         equipmentView.typeLabel.setText(Equipment.WEAPON);
         weaponEquipmentView = equipmentView;
 
         button = new JButton("unequip");
         button.setSize(60, 20);
-        button.setLocation(320, 210);
-        add(button);
+        button.setLocation(340, 30);
         unequipWeaponBotton = button;
 
         equipmentView = new EquipmentView();
-        equipmentView.setLocation(10, 240);
+        equipmentView.setLocation(30, 60);
         add(equipmentView);
         equipmentView.typeLabel.setText(Equipment.SHIELD);
         shieldEquipmentView = equipmentView;
 
         button = new JButton("unequip");
         button.setSize(60, 20);
-        button.setLocation(320, 240);
-        add(button);
+        button.setLocation(340, 60);
         unequipShieldBotton = button;
 
         equipmentView = new EquipmentView();
-        equipmentView.setLocation(10, 270);
+        equipmentView.setLocation(30, 90);
         add(equipmentView);
         equipmentView.typeLabel.setText(Equipment.ARMOR);
         armorEquipmentView = equipmentView;
 
         button = new JButton("unequip");
         button.setSize(60, 20);
-        button.setLocation(320, 270);
-        add(button);
+        button.setLocation(340, 90);
         unequipArmorBotton = button;
 
         equipmentView = new EquipmentView();
-        equipmentView.setLocation(10, 300);
+        equipmentView.setLocation(30, 120);
         add(equipmentView);
         equipmentView.typeLabel.setText(Equipment.HELMET);
         helmetEquipmentView = equipmentView;
 
         button = new JButton("unequip");
         button.setSize(60, 20);
-        button.setLocation(320, 300);
-        add(button);
+        button.setLocation(340, 120);
         unequipHelmetBotton = button;
 
         equipmentView = new EquipmentView();
-        equipmentView.setLocation(10, 330);
+        equipmentView.setLocation(30, 150);
         add(equipmentView);
         equipmentView.typeLabel.setText(Equipment.RING);
         ringEquipmentView = equipmentView;
 
         button = new JButton("unequip");
         button.setSize(60, 20);
-        button.setLocation(320, 330);
-        add(button);
+        button.setLocation(340, 150);
         unequipRingBotton = button;
 
         equipmentView = new EquipmentView();
-        equipmentView.setLocation(10, 360);
+        equipmentView.setLocation(30, 180);
         add(equipmentView);
         equipmentView.typeLabel.setText(Equipment.BELT);
         beltEquipmentView = equipmentView;
 
         button = new JButton("unequip");
         button.setSize(60, 20);
-        button.setLocation(320, 360);
-        add(button);
+        button.setLocation(340, 180);
         unequipBeltBotton = button;
 
+        label = new JLabel("", JLabel.RIGHT);
+        label.setSize(20, 20);
+        label.setLocation(10, 210);
+        add(label);
+        label.setText("W");
+        JLabel weaponLabel = label;
+
         equipmentView = new EquipmentView();
-        equipmentView.setLocation(10, 390);
+        equipmentView.setLocation(30, 210);
         add(equipmentView);
         equipmentView.typeLabel.setText(Equipment.BOOTS);
         bootsEquipmentView = equipmentView;
 
         button = new JButton("unequip");
         button.setSize(60, 20);
-        button.setLocation(320, 390);
-        add(button);
+        button.setLocation(340, 210);
         unequipBootsBotton = button;
+
+        label = new JLabel("", JLabel.RIGHT);
+        label.setSize(20, 20);
+        label.setLocation(10, 240);
+        add(label);
+        label.setText("W");
+        JLabel backpackLabel = label;
+
+        backpackSubPanel = new JPanel();
+        backpackSubPanel.setLayout(null);
+        backpackSubPanel.setSize(450, 310);
+        backpackSubPanel.setLocation(30, 240);
+        add(backpackSubPanel);
 
         unequipWeaponBotton.addActionListener(new ActionListener() {
             @Override
@@ -369,6 +292,16 @@ public class InventoryPanel extends Panel implements Observer {
 
     public void dataToView() {
 
+        if (buttonEnabled) {
+            add(unequipWeaponBotton);
+            add(unequipShieldBotton);
+            add(unequipArmorBotton);
+            add(unequipHelmetBotton);
+            add(unequipRingBotton);
+            add(unequipBeltBotton);
+            add(unequipBootsBotton);
+        }
+
         Equipment weapon = player.getEquipment(Equipment.WEAPON);
         if (weapon != null) {
             weaponEquipmentView.setEquipment(weapon);
@@ -423,6 +356,48 @@ public class InventoryPanel extends Panel implements Observer {
         } else {
             bootsEquipmentView.nameLabel.setText("");
             bootsEquipmentView.enhanceLabel.setText("");
+        }
+
+        backpackSubPanel.removeAll();
+        int x = 0;
+        int y = 0;
+
+        List<Equipment> backpackContents = player.equipmentsInBackpack();
+
+        for (Equipment equipment : backpackContents) {
+
+            EquipmentView equipmentView = new EquipmentView();
+            equipmentView.setLocation(x, y);
+            backpackSubPanel.add(equipmentView);
+            equipmentView.setEquipment(equipment);
+
+            JButton equipButton = new JButton("equip");
+            equipButton.setSize(60, 20);
+            equipButton.setLocation(310, y);
+            if (buttonEnabled) {
+                backpackSubPanel.add(equipButton);
+            }
+            equipButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    player.equip(equipment);
+                }
+            });
+
+            JButton dropButton = new JButton("drop");
+            dropButton.setSize(60, 20);
+            dropButton.setLocation(380, y);
+            if (buttonEnabled) {
+                backpackSubPanel.add(dropButton);
+            }
+            dropButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    player.dropEquipment(equipment);
+                }
+            });
+
+            y += 30;
         }
 
         repaint();
