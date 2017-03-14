@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class MapCreationScene extends Scene {
-    private int width;
-    private int height;
+    private int gridWidth;
+    private int gridHeight;
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -56,9 +56,9 @@ public class MapCreationScene extends Scene {
         textField.setSize(120, 40);
         textField.setLocation(150, 70);
         contentView.add(textField);
-        JTextField widthField = textField;
+        JTextField gridWidthField = textField;
 
-        width = Integer.parseInt(widthField.getText());
+        gridWidth = Integer.parseInt(gridWidthField.getText());
 
         label = new JLabel("Height", JLabel.RIGHT);
         label.setSize(120, 40);
@@ -69,9 +69,9 @@ public class MapCreationScene extends Scene {
         textField.setSize(120, 40);
         textField.setLocation(150, 120);
         contentView.add(textField);
-        JTextField heightField = textField;
+        JTextField gridHeightField = textField;
 
-        height = Integer.parseInt(heightField.getText());
+        gridHeight = Integer.parseInt(gridHeightField.getText());
 
         JButton createButton = new JButton("Create");
         createButton.setSize(160, 40);
@@ -92,8 +92,8 @@ public class MapCreationScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 GameMap gameMap = new GameMap();
                 gameMap.setName(nameField.getText());
-                gameMap.setWidth(width);
-                gameMap.setHeight(height);
+                gameMap.setWidth(gridWidth);
+                gameMap.setHeight(gridHeight);
                 MapEditingScene mapEditingScene = new MapEditingScene();
                 mapEditingScene.setGameMap(gameMap);
                 MapCreationScene.this.navigationView.push(mapEditingScene);

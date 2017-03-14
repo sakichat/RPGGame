@@ -74,7 +74,7 @@ public class GameMapView extends View {
      * This method is to set the size of this GameMapView, and to call initLayers() method.
      */
     private void setup(){
-        this.setSize(gameMap.getSize() * GameMapLayerView.UNIT_SIZE, gameMap.getSize() * GameMapLayerView.UNIT_SIZE);
+        this.setSize(gameMap.getWidth() * GameMapLayerView.UNIT_SIZE, gameMap.getHeight() * GameMapLayerView.UNIT_SIZE);
         initLayers();
     }
 
@@ -106,7 +106,7 @@ public class GameMapView extends View {
     private void newLayer(){
         GameMapLayerView gameMapLayerView = new GameMapLayerView();
         gameMapLayerView.setLocation(0, 0);
-        gameMapLayerView.setGridSize(gameMap.getSize());
+        gameMapLayerView.setGridSize(gameMap.getWidth(), gameMap.getHeight());
         add(gameMapLayerView);
         layers.add(gameMapLayerView);
     }
@@ -119,8 +119,8 @@ public class GameMapView extends View {
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_BACKGROUND);
 
-        for (int i = 0; i < gameMap.getSize(); i++) {
-            for (int j = 0; j < gameMap.getSize(); j++) {
+        for (int i = 0; i < gameMap.getHeight(); i++) {
+            for (int j = 0; j < gameMap.getWidth(); j++) {
                 ImageView backgroundView = new ImageView();
                 backgroundView.setName("grass_background.png");
                 layerView.addCell(backgroundView, new Point(j, i));
@@ -176,9 +176,12 @@ public class GameMapView extends View {
     private void initEventLayer(){
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_EVENT);
-        int size = gameMap.getSize();
-        for (int y = 0; y < size; y++) {
-            for (int x = 0; x < size; x++) {
+
+        int gridWidth = gameMap.getWidth();
+        int gridHeight = gameMap.getHeight();
+
+        for (int y = 0; y < gridHeight; y++) {
+            for (int x = 0; x < gridWidth; x++) {
                 Point location = new Point(x, y);
                 GlassView glassView = new GlassView();
                 layerView.addCell(glassView, location);
@@ -235,9 +238,11 @@ public class GameMapView extends View {
         GameMapLayerView layerView = layers.get(_LAYER_CONTENT);
         layerView.removeAllCells();
 
-        int size = gameMap.getSize();
-        for (int y = 0; y < size; y++) {
-            for (int x = 0; x < size; x++) {
+        int gridWidth = gameMap.getWidth();
+        int gridHeight = gameMap.getHeight();
+
+        for (int y = 0; y < gridHeight; y++) {
+            for (int x = 0; x < gridWidth; x++) {
                 Point location = new Point(x, y);
                 Cell cell = gameMap.getCell(location);
                 if (cell != null) {
