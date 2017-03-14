@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class MapCreationScene extends Scene {
+
     private int gridWidth;
     private int gridHeight;
 
@@ -58,6 +59,12 @@ public class MapCreationScene extends Scene {
         contentView.add(textField);
         JTextField gridWidthField = textField;
 
+        label = new JLabel("", JLabel.LEFT);
+        label.setSize(200, 40);
+        label.setLocation(330, 70);
+        contentView.add(label);
+        JLabel widthCheckLabel = label;
+
         label = new JLabel("Height", JLabel.RIGHT);
         label.setSize(120, 40);
         label.setLocation(20, 120);
@@ -68,6 +75,12 @@ public class MapCreationScene extends Scene {
         textField.setLocation(150, 120);
         contentView.add(textField);
         JTextField gridHeightField = textField;
+
+        label = new JLabel("", JLabel.LEFT);
+        label.setSize(200, 40);
+        label.setLocation(330, 120);
+        contentView.add(label);
+        JLabel heightCheckLabel = label;
 
         JButton createButton = new JButton("Create");
         createButton.setSize(160, 40);
@@ -86,18 +99,34 @@ public class MapCreationScene extends Scene {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GameMap gameMap = new GameMap();
 
                 gridWidth = Integer.parseInt(gridWidthField.getText());
                 gridHeight = Integer.parseInt(gridHeightField.getText());
 
-                gameMap.setName(nameField.getText());
-                gameMap.setWidth(gridWidth);
-                gameMap.setHeight(gridHeight);
+                if (gridWidth > 12) {
+                    widthCheckLabel.setText("Maximum size is 12.");
+                } else {
+                    widthCheckLabel.setText("");
+                }
 
-                MapEditingScene mapEditingScene = new MapEditingScene();
-                mapEditingScene.setGameMap(gameMap);
-                MapCreationScene.this.navigationView.push(mapEditingScene);
+                if (gridHeight > 12) {
+                    heightCheckLabel.setText("Maximum size is 12.");
+                } else {
+                    heightCheckLabel.setText("");
+                }
+
+                if (gridWidth <= 12 && gridHeight <= 12) {
+
+                    GameMap gameMap = new GameMap();
+
+                    gameMap.setName(nameField.getText());
+                    gameMap.setWidth(gridWidth);
+                    gameMap.setHeight(gridHeight);
+
+                    MapEditingScene mapEditingScene = new MapEditingScene();
+                    mapEditingScene.setGameMap(gameMap);
+                    MapCreationScene.this.navigationView.push(mapEditingScene);
+                }
             }
         });
     }
