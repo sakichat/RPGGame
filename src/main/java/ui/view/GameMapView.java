@@ -106,7 +106,8 @@ public class GameMapView extends View {
     private void newLayer(){
         GameMapLayerView gameMapLayerView = new GameMapLayerView();
         gameMapLayerView.setLocation(0, 0);
-        gameMapLayerView.setGridSize(gameMap.getWidth(), gameMap.getHeight());
+        gameMapLayerView.setGridWidth(gameMap.getWidth());
+        gameMapLayerView.setGridHeight(gameMap.getHeight());
         add(gameMapLayerView);
         layers.add(gameMapLayerView);
     }
@@ -119,8 +120,8 @@ public class GameMapView extends View {
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_BACKGROUND);
 
-        for (int i = 0; i < gameMap.getHeight(); i++) {
-            for (int j = 0; j < gameMap.getWidth(); j++) {
+        for (int i = 0; i < gameMap.getWidth(); i++) {
+            for (int j = 0; j < gameMap.getHeight(); j++) {
                 ImageView backgroundView = new ImageView();
                 backgroundView.setName("grass_background.png");
                 layerView.addCell(backgroundView, new Point(j, i));
@@ -180,8 +181,8 @@ public class GameMapView extends View {
         int gridWidth = gameMap.getWidth();
         int gridHeight = gameMap.getHeight();
 
-        for (int y = 0; y < gridHeight; y++) {
-            for (int x = 0; x < gridWidth; x++) {
+        for (int y = 0; y < gridWidth; y++) {
+            for (int x = 0; x < gridHeight; x++) {
                 Point location = new Point(x, y);
                 GlassView glassView = new GlassView();
                 layerView.addCell(glassView, location);
@@ -241,8 +242,8 @@ public class GameMapView extends View {
         int gridWidth = gameMap.getWidth();
         int gridHeight = gameMap.getHeight();
 
-        for (int y = 0; y < gridHeight; y++) {
-            for (int x = 0; x < gridWidth; x++) {
+        for (int y = 0; y < gridWidth; y++) {
+            for (int x = 0; x < gridHeight; x++) {
                 Point location = new Point(x, y);
                 Cell cell = gameMap.getCell(location);
                 if (cell != null) {

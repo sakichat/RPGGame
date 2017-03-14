@@ -12,6 +12,9 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class MapCreationScene extends Scene {
+    private int gridWidth;
+    private int gridHeight;
+
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
      */
@@ -85,9 +88,12 @@ public class MapCreationScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 GameMap gameMap = new GameMap();
 
+                gridWidth = Integer.parseInt(gridWidthField.getText());
+                gridHeight = Integer.parseInt(gridHeightField.getText());
+
                 gameMap.setName(nameField.getText());
-                gameMap.setWidth(Integer.parseInt(gridWidthField.getText()));
-                gameMap.setHeight(Integer.parseInt(gridHeightField.getText()));
+                gameMap.setWidth(gridWidth);
+                gameMap.setHeight(gridHeight);
 
                 MapEditingScene mapEditingScene = new MapEditingScene();
                 mapEditingScene.setGameMap(gameMap);

@@ -20,7 +20,8 @@ public class GameMapLayerViewDemo extends JFrame{
         setLayout(null);
 
         GameMapLayerView gameMapLayerView = new GameMapLayerView();
-        gameMapLayerView.setGridSize(10, 8);
+        gameMapLayerView.setGridWidth(10);
+        gameMapLayerView.setGridHeight(8);
         gameMapLayerView.setLocation(0, 0);
         this.add(gameMapLayerView);
 
