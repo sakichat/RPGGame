@@ -71,19 +71,19 @@ public class InventoryPanel extends Panel implements Observer {
     private EquipmentView bootsEquipmentView;
 
     private JButton unequipWeaponBotton;
-    private Boolean unequipWeaponBottonEnabled;
+    private boolean unequipWeaponBottonEnabled;
     private JButton unequipShieldBotton;
-    private Boolean unequipShieldBottonEnabled;
+    private boolean unequipShieldBottonEnabled;
     private JButton unequipArmorBotton;
-    private Boolean unequipArmorBottonEnabled;
+    private boolean unequipArmorBottonEnabled;
     private JButton unequipHelmetBotton;
-    private Boolean unequipHelmetBottonEnabled;
+    private boolean unequipHelmetBottonEnabled;
     private JButton unequipRingBotton;
-    private Boolean unequipRingBottonEnabled;
+    private boolean unequipRingBottonEnabled;
     private JButton unequipBeltBotton;
-    private Boolean unequipBeltBottonEnabled;
+    private boolean unequipBeltBottonEnabled;
     private JButton unequipBootsBotton;
-    private Boolean unequipBootsBottonEnabled;
+    private boolean unequipBootsBottonEnabled;
 
     /**
      * Getter & setter for all the buttonEnabled boolean properties.
@@ -94,7 +94,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Getter for unequipWeaponBottonEnabled;
      * @return
      */
-    public Boolean getUnequipWeaponBottonEnabled() {
+    public boolean getUnequipWeaponBottonEnabled() {
         return unequipWeaponBottonEnabled;
     }
 
@@ -102,7 +102,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Setter for unequipWeaponBottonEnabled;
      * @param unequipWeaponBottonEnabled
      */
-    public void setUnequipWeaponBottonEnabled(Boolean unequipWeaponBottonEnabled) {
+    public void setUnequipWeaponBottonEnabled(boolean unequipWeaponBottonEnabled) {
         this.unequipWeaponBottonEnabled = unequipWeaponBottonEnabled;
     }
 
@@ -110,7 +110,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Getter for unequipShieldBottonEnabled;
      * @return
      */
-    public Boolean getUnequipShieldBottonEnabled() {
+    public boolean getUnequipShieldBottonEnabled() {
         return unequipShieldBottonEnabled;
     }
 
@@ -118,7 +118,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Setter for unequipShieldBottonEnabled;
      * @param unequipShieldBottonEnabled
      */
-    public void setUnequipShieldBottonEnabled(Boolean unequipShieldBottonEnabled) {
+    public void setUnequipShieldBottonEnabled(boolean unequipShieldBottonEnabled) {
         this.unequipShieldBottonEnabled = unequipShieldBottonEnabled;
     }
 
@@ -126,7 +126,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Getter for unequipArmorBottonEnabled;
      * @return
      */
-    public Boolean getUnequipArmorBottonEnabled() {
+    public boolean getUnequipArmorBottonEnabled() {
         return unequipArmorBottonEnabled;
     }
 
@@ -134,7 +134,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Setter for unequipArmorBottonEnabled;
      * @param unequipArmorBottonEnabled
      */
-    public void setUnequipArmorBottonEnabled(Boolean unequipArmorBottonEnabled) {
+    public void setUnequipArmorBottonEnabled(boolean unequipArmorBottonEnabled) {
         this.unequipArmorBottonEnabled = unequipArmorBottonEnabled;
     }
 
@@ -142,7 +142,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Getter for unequipHelmetBottonEnabled;
      * @return
      */
-    public Boolean getUnequipHelmetBottonEnabled() {
+    public boolean getUnequipHelmetBottonEnabled() {
         return unequipHelmetBottonEnabled;
     }
 
@@ -150,7 +150,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Setter for unequipHelmetBottonEnabled;
      * @param unequipHelmetBottonEnabled
      */
-    public void setUnequipHelmetBottonEnabled(Boolean unequipHelmetBottonEnabled) {
+    public void setUnequipHelmetBottonEnabled(boolean unequipHelmetBottonEnabled) {
         this.unequipHelmetBottonEnabled = unequipHelmetBottonEnabled;
     }
 
@@ -158,7 +158,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Getter for unequipRingBottonEnabled;
      * @return
      */
-    public Boolean getUnequipRingBottonEnabled() {
+    public boolean getUnequipRingBottonEnabled() {
         return unequipRingBottonEnabled;
     }
 
@@ -166,7 +166,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Setter for unequipRingBottonEnabled;
      * @param unequipRingBottonEnabled
      */
-    public void setUnequipRingBottonEnabled(Boolean unequipRingBottonEnabled) {
+    public void setUnequipRingBottonEnabled(boolean unequipRingBottonEnabled) {
         this.unequipRingBottonEnabled = unequipRingBottonEnabled;
     }
 
@@ -174,7 +174,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Getter for unequipBeltBottonEnabled;
      * @return
      */
-    public Boolean getUnequipBeltBottonEnabled() {
+    public boolean getUnequipBeltBottonEnabled() {
         return unequipBeltBottonEnabled;
     }
 
@@ -182,7 +182,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Setter for unequipBeltBottonEnabled;
      * @param unequipBeltBottonEnabled
      */
-    public void setUnequipBeltBottonEnabled(Boolean unequipBeltBottonEnabled) {
+    public void setUnequipBeltBottonEnabled(boolean unequipBeltBottonEnabled) {
         this.unequipBeltBottonEnabled = unequipBeltBottonEnabled;
     }
 
@@ -190,7 +190,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Getter for unequipBootsBottonEnabled;
      * @return
      */
-    public Boolean getUnequipBootsBottonEnabled() {
+    public boolean getUnequipBootsBottonEnabled() {
         return unequipBootsBottonEnabled;
     }
 
@@ -198,7 +198,7 @@ public class InventoryPanel extends Panel implements Observer {
      * Setter for unequipBootsBottonEnabled;
      * @param unequipBootsBottonEnabled
      */
-    public void setUnequipBootsBottonEnabled(Boolean unequipBootsBottonEnabled) {
+    public void setUnequipBootsBottonEnabled(boolean unequipBootsBottonEnabled) {
         this.unequipBootsBottonEnabled = unequipBootsBottonEnabled;
     }
 

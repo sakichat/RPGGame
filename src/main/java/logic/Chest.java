@@ -40,12 +40,32 @@ public class Chest extends Cell{
         imageName = "chest.png";
     }
 
+    /**
+     * This method is used to check if the chest is full or not.
+     * @return
+     */
+    private boolean isChestFull() {
+        if (equipments.size() >= 10) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static final String CHEST_CHANGE = "Chest change";
+
     public void addEquipment(Equipment e) {
-        equipments.add(e);
+        if (!isChestFull()) {
+            equipments.add(e);
+            setChanged();
+            notifyObservers(CHEST_CHANGE);
+        }
     }
 
     public void dropEquipment(Equipment e) {
         equipments.remove(e);
+        setChanged();
+        notifyObservers(CHEST_CHANGE);
     }
 
 }
