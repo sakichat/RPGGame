@@ -59,31 +59,31 @@ public class PlayScene extends Scene {
         button.setLocation(700, 30);
         button.setSize(40, 40);
         upDirection = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton(new ImageIcon("data/images/left_button.png"));
         button.setLocation(650, 80);
         button.setSize(40, 40);
         leftDirection = button;
-        add(button);
+        contentView.add(button);
 
-        button = new JButton(new ImageIcon("data/image/center_button.png"));
+        button = new JButton(new ImageIcon("data/images/center_button.png"));
         button.setLocation(700, 80);
         button.setSize(40, 40);
         middleDirection = button;
-        add(button);
+        contentView.add(button);
 
-        button = new JButton(new ImageIcon("data/image/right_button.png"));
+        button = new JButton(new ImageIcon("data/images/right_button.png"));
         button.setLocation(750, 80);
         button.setSize(40, 40);
         rightDirection = button;
-        add(button);
+        contentView.add(button);
 
-        button = new JButton(new ImageIcon("data/image/down_button.png"));
+        button = new JButton(new ImageIcon("data/images/down_button.png"));
         button.setLocation(700, 130);
         button.setSize(40, 40);
         downDirection = button;
-        add(button);
+        contentView.add(button);
 
         repaint();
 
