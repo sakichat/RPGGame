@@ -55,31 +55,31 @@ public class PlayScene extends Scene {
 
         JButton button;
 
-        button = new JButton("Up");
+        button = new JButton(new ImageIcon("data/images/up_button.png"));
         button.setLocation(700, 30);
         button.setSize(40, 40);
         upDirection = button;
         add(button);
 
-        button = new JButton("Left");
+        button = new JButton(new ImageIcon("data/images/left_button.png"));
         button.setLocation(650, 80);
         button.setSize(40, 40);
         leftDirection = button;
         add(button);
 
-        button = new JButton("Middle");
+        button = new JButton(new ImageIcon("data/image/center_button.png"));
         button.setLocation(700, 80);
         button.setSize(40, 40);
         middleDirection = button;
         add(button);
 
-        button = new JButton("Right");
+        button = new JButton(new ImageIcon("data/image/right_button.png"));
         button.setLocation(750, 80);
         button.setSize(40, 40);
         rightDirection = button;
         add(button);
 
-        button = new JButton("Down");
+        button = new JButton(new ImageIcon("data/image/down_button.png"));
         button.setLocation(700, 130);
         button.setSize(40, 40);
         downDirection = button;
@@ -93,6 +93,8 @@ public class PlayScene extends Scene {
                 PlayScene.this.navigationView.popTo(EditorScene.class);
             }
         });
-        
+
+
+
     }
 }
