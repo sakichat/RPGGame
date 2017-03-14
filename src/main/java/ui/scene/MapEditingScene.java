@@ -315,4 +315,12 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         repaint();
     }
 
+    public void chestViewInside(Chest chest) {
+
+    }
+
+    public void hideChestViewInside() {
+
+    }
+
 }
