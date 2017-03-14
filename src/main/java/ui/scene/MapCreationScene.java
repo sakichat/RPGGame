@@ -58,6 +58,8 @@ public class MapCreationScene extends Scene {
         contentView.add(textField);
         JTextField widthField = textField;
 
+        width = Integer.parseInt(widthField.getText());
+
         label = new JLabel("Height", JLabel.RIGHT);
         label.setSize(120, 40);
         label.setLocation(20, 120);
@@ -68,6 +70,8 @@ public class MapCreationScene extends Scene {
         textField.setLocation(150, 120);
         contentView.add(textField);
         JTextField heightField = textField;
+
+        height = Integer.parseInt(heightField.getText());
 
         JButton createButton = new JButton("Create");
         createButton.setSize(160, 40);
@@ -88,8 +92,8 @@ public class MapCreationScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 GameMap gameMap = new GameMap();
                 gameMap.setName(nameField.getText());
-//                gameMap.setWidth(widthField.getText());
-//                gameMap.setHeight(heightField.getText());
+                gameMap.setWidth(width);
+                gameMap.setHeight(height);
                 MapEditingScene mapEditingScene = new MapEditingScene();
                 mapEditingScene.setGameMap(gameMap);
                 MapCreationScene.this.navigationView.push(mapEditingScene);
