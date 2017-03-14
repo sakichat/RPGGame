@@ -2,6 +2,8 @@ package ui.scene;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * @author Siyu Chen
@@ -24,10 +26,25 @@ public class ReadyScene extends Scene {
         textField.setLocation(20, 20);
         contentView.add(textField);
 
-        JButton editorButton = new JButton("New");
-        editorButton.setSize(160, 40);
-        editorButton.setLocation(20, 60);
-        contentView.add(editorButton);
+        JButton newGameButton = new JButton("New");
+        newGameButton.setSize(160, 40);
+        newGameButton.setLocation(20, 60);
+        contentView.add(newGameButton);
+
+        newGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PlayScene playScene = new PlayScene();
+                ReadyScene.this.navigationView.push(playScene);
+            }
+        });
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ReadyScene.this.navigationView.pop();
+            }
+        });
 
         repaint();
     }
