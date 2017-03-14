@@ -51,7 +51,7 @@ public class EquipmentPanel extends Panel implements Observer{
     protected void init() {
         super.init();
 
-        setSize(460, 330);
+        setSize(390, 330);
         title = "Equipments";
     }
 
@@ -62,7 +62,7 @@ public class EquipmentPanel extends Panel implements Observer{
     protected void initSubviews(){
         equipmentsPanel = new JPanel();
         equipmentsPanel.setLayout(null);
-        equipmentsPanel.setSize(460, 310);
+        equipmentsPanel.setSize(390, 310);
         equipmentsPanel.setLocation(0, 20);
         add(equipmentsPanel);
     }
@@ -108,7 +108,7 @@ public class EquipmentPanel extends Panel implements Observer{
             JButton dropButtton = new JButton("drop");
 
             dropButtton.setSize(60, 20);
-            dropButtton.setLocation(380, y);
+            dropButtton.setLocation(320, y);
             equipmentsPanel.add(dropButtton);
             dropButtton.addActionListener(new ActionListener() {
                 @Override
