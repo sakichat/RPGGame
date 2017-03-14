@@ -276,7 +276,7 @@ public class Player extends Cell{
      * initialization block
      */
     {
-        imageName = "player_1.png";
+        imageName = "bully.png";
     }
 
     /**
