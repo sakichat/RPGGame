@@ -293,17 +293,17 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     }
 
 
-    private BackpackPanel backpackPanel;
+    private EquipmentPanel equipmentPanel;
 
     /**
      * Method showBackpackPanel
      * @param player
      */
     public void showBackpackPanel(Player player){
-        backpackPanel = new BackpackPanel();
-        backpackPanel.setPlayer(player);
-        backpackPanel.setLocation(10, 10);
-        contentView.add(backpackPanel);
+        equipmentPanel = new EquipmentPanel();
+        equipmentPanel.setPlayer(player);
+        equipmentPanel.setLocation(10, 10);
+        contentView.add(equipmentPanel);
         repaint();
     }
 
@@ -311,7 +311,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      * Method hideBackpackPanel
      */
     public void hideBackpackPanel(){
-        contentView.remove(backpackPanel);
+        contentView.remove(equipmentPanel);
         repaint();
     }
 

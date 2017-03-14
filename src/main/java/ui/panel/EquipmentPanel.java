@@ -1,5 +1,6 @@
 package ui.panel;
 
+import logic.Chest;
 import logic.Equipment;
 import logic.Player;
 import ui.view.EquipmentView;
@@ -14,9 +15,33 @@ import java.util.Observer;
 /**
  * This is a view class extends Panel, and implements Observer
  * @author Qi Xia
- * @version 0.1
+ * @version 0.2
  */
-public class BackpackPanel extends Panel implements Observer{
+public class EquipmentPanel extends Panel implements Observer{
+
+    /**
+     * Chest attribute
+     */
+    private Chest chest;
+
+    /**
+     * This method is the chest getter
+     * @return Chest
+     */
+    public Chest getChest() {
+        return chest;
+    }
+
+    /**
+     * This method is the chest setter
+     * call dataToView and addObserver
+     * @param chest
+     */
+    public void setChest(Chest chest) {
+        this.chest = chest;
+        dataToView();
+        chest.addObserver(this);
+    }
 
     /**
      * Player attribute and getter & setter
@@ -53,7 +78,7 @@ public class BackpackPanel extends Panel implements Observer{
         super.init();
 
         setSize(460, 330);
-        title = "Backpack";
+        title = "Equipments";
     }
 
     /**
@@ -106,18 +131,7 @@ public class BackpackPanel extends Panel implements Observer{
             equipmentsPanel.add(equipmentView);
             equipmentView.setEquipment(equipment);
 
-            JButton equipButton = new JButton("equip");
             JButton dropButtton = new JButton("drop");
-
-            equipButton.setSize(60, 20);
-            equipButton.setLocation(310, y);
-            equipmentsPanel.add(equipButton);
-            equipButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    player.equip(equipment);
-                }
-            });
 
             dropButtton.setSize(60, 20);
             dropButtton.setLocation(380, y);

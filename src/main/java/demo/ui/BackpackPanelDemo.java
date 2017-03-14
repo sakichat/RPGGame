@@ -1,7 +1,7 @@
 package demo.ui;
 
 import logic.Simulation;
-import ui.panel.BackpackPanel;
+import ui.panel.EquipmentPanel;
 
 import javax.swing.*;
 
@@ -17,9 +17,9 @@ public class BackpackPanelDemo extends JFrame{
     }
 
     public BackpackPanelDemo(){
-        BackpackPanel backpackPanel = new BackpackPanel();
-        backpackPanel.setPlayer(Simulation.newPlayer());
-        backpackPanel.setLocation(0, 0);
-        this.add(backpackPanel);
+        EquipmentPanel equipmentPanel = new EquipmentPanel();
+        equipmentPanel.setPlayer(Simulation.newPlayer());
+        equipmentPanel.setLocation(0, 0);
+        this.add(equipmentPanel);
     }
 }

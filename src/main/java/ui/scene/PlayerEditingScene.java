@@ -3,7 +3,7 @@ package ui.scene;
 import logic.Equipment;
 import logic.Player;
 import persistence.PlayerFileManager;
-import ui.panel.BackpackPanel;
+import ui.panel.EquipmentPanel;
 import ui.panel.EquipmentDelegate;
 import ui.panel.EquipmentSelectorPanel;
 import ui.panel.PlayerPanel;
@@ -42,13 +42,13 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         this.player = player;
         playerPanel.setPlayer(player);
         playerPanel.dataToView();
-        backpackPanel.setPlayer(player);
-        backpackPanel.dataToView();
+        equipmentPanel.setPlayer(player);
+        equipmentPanel.dataToView();
     }
 
 
     private PlayerPanel playerPanel;
-    private BackpackPanel backpackPanel;
+    private EquipmentPanel equipmentPanel;
 
     JTextField levelField;
     JButton setButton;
@@ -101,9 +101,9 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         /**
          * Backpack Panel
          */
-        backpackPanel = new BackpackPanel();
-        backpackPanel.setLocation(440, 200);
-        contentView.add(backpackPanel);
+        equipmentPanel = new EquipmentPanel();
+        equipmentPanel.setLocation(440, 200);
+        contentView.add(equipmentPanel);
 
         /**
          * Equipment Selector Panel
