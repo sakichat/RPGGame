@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.1
  */
-public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate {
+public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate{
 
     private GameMap gameMap;
     private GameMapView gameMapView;
@@ -239,20 +239,41 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         build(player);
     }
 
-
+    /**
+     * Properties and methods about chest editing.
+     */
     EquipmentSelectorPanel equipmentSelectorPanel;
+    EquipmentPanel equipmentPanel;
 
     /**
      * This method set equipmentSelectorPanel on the Scene when the event is triggered
      */
     public void addChest(){
+        Chest chest = new Chest();
+        build(chest);
+    }
+
+    public void showChestViewInside(Chest chest) {
+
         equipmentSelectorPanel = new EquipmentSelectorPanel();
-        equipmentSelectorPanel.setLocation(420, 50);
+        equipmentSelectorPanel.setLocation(410, 20);
         equipmentSelectorPanel.setButtonText("Add");
-        add(equipmentSelectorPanel);
+        contentView.add(equipmentSelectorPanel);
+        equipmentSelectorPanel.setEquipmentDelegate(this);
 
-//        equipmentSelectorPanel.setEquipmentDelegate(this);
+        equipmentPanel = new EquipmentPanel();
+        equipmentPanel.setLocation(410, 210);
+        equipmentPanel.setChest(chest);
+        contentView.add(equipmentPanel);
 
+        repaint();
+    }
+
+    public void hideChestViewInside() {
+        contentView.remove(equipmentSelectorPanel);
+        contentView.remove(equipmentPanel);
+
+        repaint();
     }
 
     /**
@@ -261,13 +282,14 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      * @param selectorPanel EquipmentSelectorPanel
      * @param equipment     Equipment
      */
-//    @Override
-//    public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
-//        remove(equipmentSelectorPanel);
-//        Chest chest = new Chest();
-//        chest.setEquipment(equipment);
-//        build(chest);
-//    }
+    @Override
+    public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
+
+        Chest chest = equipmentPanel.getChest();
+        chest.addEquipment(equipment);
+        build(chest);
+
+    }
 
 
     private PlayerPanel playerPanel;
@@ -293,14 +315,13 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     }
 
 
-    private EquipmentPanel equipmentPanel;
-
+    InventoryPanel inventoryPanel;
     /**
      * Method showBackpackPanel
      * @param player
      */
-    public void showBackpackPanel(Player player){
-        InventoryPanel inventoryPanel = new InventoryPanel();
+    public void showInventoryPanel(Player player){
+        inventoryPanel = new InventoryPanel();
         inventoryPanel.setPlayer(player);
         inventoryPanel.setLocation(10, 10);
         contentView.add(inventoryPanel);
@@ -311,17 +332,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     /**
      * Method hideBackpackPanel
      */
-    public void hideBackpackPanel(){
-        contentView.remove(equipmentPanel);
+    public void hideInventoryPanel(){
+        contentView.remove(inventoryPanel);
         repaint();
-    }
-
-    public void chestViewInside(Chest chest) {
-
-    }
-
-    public void hideChestViewInside() {
-
     }
 
 }

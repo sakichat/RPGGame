@@ -1,6 +1,8 @@
 package ui.controlView;
 
+import logic.Cell;
 import logic.Chest;
+import logic.Point;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -79,10 +81,11 @@ public class ChestControlView extends ControlView {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 if (opened) {
                     mapEditingScene.hideChestViewInside();
                 } else {
-                    mapEditingScene.chestViewInside(chest);
+                    mapEditingScene.showChestViewInside(chest);
                 }
 
                 opened = !opened;
