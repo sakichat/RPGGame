@@ -36,6 +36,7 @@ public class Player extends Cell{
     public final static String PLAYER_TYPE_BULLY = "Bully";
     public final static String PLAYER_TYPE_NIMBLE = "Nimble";
     public final static String PLAYER_TYPE_TANK = "Tank";
+    public final static String PLAYER_TYPE_NOT_DEFINED = "Not Defined";
 
     public final static String PLAYER_PARTY_FRIENDLY = "Friendly";
     public final static String PLAYER_PARTY_HOSTILE = "Hostile";
@@ -300,7 +301,7 @@ public class Player extends Cell{
     private String playerType;
 
     @Expose
-    private String playerParty;
+    private String playerParty = PLAYER_TYPE_NOT_DEFINED;
 
     /**
      * Getter for the level.
