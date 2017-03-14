@@ -16,27 +16,46 @@ public class GameMap {
     private String name;
 
     @Expose
-    private int size;
+    private int width;
+
+    @Expose
+    private int height;
 
     @Expose
     private Cell[][] cells;
 
     /**
-     * this method is to get size of map
+     * this method is to get width
      * @return Integer
      */
-    public int getSize() {
-        return size;
+    public int getWidth() {
+        return width;
     }
 
     /**
-     * this method is to set Size
-     * @param size int
+     * this method is to set width
+     * @param width
      */
+    public void setWidth(int width) {
+        this.width = width;
+        cells = new Cell[width][height];
+    }
 
-    public void setSize(int size) {
-        this.size = size;
-        cells = new Cell[size][size];
+    /**
+     * this method is to get height
+     * @return Integer
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * this method is to set height
+     * @param height
+     */
+    public void setHeight(int height) {
+        this.height = height;
+        cells = new Cell[width][height];
     }
 
     /**
@@ -129,8 +148,8 @@ public class GameMap {
 
     public List<Entrance> getEntrances(){
         LinkedList<Entrance> entrances = new LinkedList<>();
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 if (cells[i][j] instanceof Entrance){
                     Cell cell = cells[i][j];
                     Entrance entrance = (Entrance) cell;
@@ -149,8 +168,8 @@ public class GameMap {
 
     public List<Exit> getExits() {
         LinkedList<Exit> exits = new LinkedList<>();
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 if (cells[i][j] instanceof Exit){
                     Cell cell = cells[i][j];
                     Exit exit = (Exit) cell;
@@ -247,12 +266,12 @@ public class GameMap {
 
     private boolean inMap(Point location) {
         int x = location.getX();
-        if (x < 0 || x >= size) {
+        if (x < 0 || x >= width) {
             return false;
         }
 
         int y = location.getY();
-        if (y < 0 || y >= size) {
+        if (y < 0 || y >= height) {
             return false;
         }
 
