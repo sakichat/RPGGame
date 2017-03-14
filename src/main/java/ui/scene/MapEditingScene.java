@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.1
  */
-public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate{
+public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate {
 
     private GameMap gameMap;
     private GameMapView gameMapView;
@@ -251,7 +251,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         equipmentSelectorPanel.setButtonText("Add");
         add(equipmentSelectorPanel);
 
-        equipmentSelectorPanel.setEquipmentDelegate(this);
+//        equipmentSelectorPanel.setEquipmentDelegate(this);
 
     }
 
@@ -261,13 +261,13 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      * @param selectorPanel EquipmentSelectorPanel
      * @param equipment     Equipment
      */
-    @Override
-    public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
-        remove(equipmentSelectorPanel);
-        Chest chest = new Chest();
-        chest.setEquipment(equipment);
-        build(chest);
-    }
+//    @Override
+//    public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
+//        remove(equipmentSelectorPanel);
+//        Chest chest = new Chest();
+//        chest.setEquipment(equipment);
+//        build(chest);
+//    }
 
 
     private PlayerPanel playerPanel;
@@ -300,10 +300,11 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      * @param player
      */
     public void showBackpackPanel(Player player){
-        equipmentPanel = new EquipmentPanel();
-        equipmentPanel.setPlayer(player);
-        equipmentPanel.setLocation(10, 10);
-        contentView.add(equipmentPanel);
+        InventoryPanel inventoryPanel = new InventoryPanel();
+        inventoryPanel.setPlayer(player);
+        inventoryPanel.setLocation(10, 10);
+        contentView.add(inventoryPanel);
+
         repaint();
     }
 
