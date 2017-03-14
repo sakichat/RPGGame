@@ -110,9 +110,9 @@ public class PlayerControlView extends ControlView {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (opened) {
-                    mapEditingScene.hideBackpackPanel();
+                    mapEditingScene.hideInventoryPanel();
                 } else {
-                    mapEditingScene.showBackpackPanel(player);
+                    mapEditingScene.showInventoryPanel(player);
                 }
 
                 opened = !opened;
