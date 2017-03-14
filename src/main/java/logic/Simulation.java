@@ -18,6 +18,8 @@ public class Simulation {
     public static Player newPlayer(){
         Player player = new Player("playerDemo");
         player.setLevel(2);
+        player.setPlayerType(Player.PLAYER_TYPE_BULLY);
+        player.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
         player.generateAbilities();
         player.generateHp();
 

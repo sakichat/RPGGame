@@ -26,11 +26,19 @@ public class Player extends Cell{
     public final static String ATTRIBUTE_DAMAGE_BONUS = "DB";
 
     public final static String LEVEL_CHANGE = "level change";
+    public final static String PLAYER_TYPE_CHANGE = "playerType change";
+    public final static String PLAYER_PARTY_CHANGE = "playerParty change";
     public final static String ABILITY_CHANGE = "ability change";
     public final static String HP_CHANGE = "hp change";
     public final static String BACKPACK_CHANGE = "backpack change";
     public final static String EQUIPMENT_CHANGE = "equipment change";
 
+    public final static String PLAYER_TYPE_BULLY = "Bully";
+    public final static String PLAYER_TYPE_NIMBLE = "Nimble";
+    public final static String PLAYER_TYPE_TANK = "Tank";
+
+    public final static String PLAYER_PARTY_FRIENDLY = "Friendly";
+    public final static String PLAYER_PARTY_HOSTILE = "Hostile";
 
     /**
      * Abilities and methods.
@@ -230,7 +238,7 @@ public class Player extends Cell{
 
 
     /**
-     * Level, name and Getter & Setter & constructor.
+     * Level, name, playerType, playerParty and Getter & Setter & constructor.
      */
 
     @Expose
@@ -238,6 +246,12 @@ public class Player extends Cell{
 
     @Expose
     private String name;
+
+    @Expose
+    private String playerType;
+
+    @Expose
+    private String playerParty;
 
     /**
      * Getter for the level.
@@ -270,6 +284,40 @@ public class Player extends Cell{
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    /**
+     * Getter for the playerType.
+     * @return
+     */
+    public String getPlayerType() {
+        return playerType;
+    }
+
+    /**
+     * Setter for the playerType.
+     * @param playerType
+     */
+    public void setPlayerType(String playerType) {
+        this.playerType = playerType;
+        notifyObservers(PLAYER_TYPE_CHANGE);
+    }
+
+    /**
+     * Getter for the playerParty.
+     * @return
+     */
+    public String getPlayerParty() {
+        return playerParty;
+    }
+
+    /**
+     * Setter for the playerParty.
+     * @param playerParty
+     */
+    public void setPlayerParty(String playerParty) {
+        this.playerParty = playerParty;
+        notifyObservers(PLAYER_PARTY_CHANGE);
     }
 
     /**
