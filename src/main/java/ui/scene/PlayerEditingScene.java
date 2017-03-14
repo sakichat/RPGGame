@@ -3,10 +3,7 @@ package ui.scene;
 import logic.Equipment;
 import logic.Player;
 import persistence.PlayerFileManager;
-import ui.panel.EquipmentPanel;
-import ui.panel.EquipmentDelegate;
-import ui.panel.EquipmentSelectorPanel;
-import ui.panel.PlayerPanel;
+import ui.panel.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,8 +13,8 @@ import java.awt.event.ActionListener;
  * This is a class for players to create or edit the details of their characters.
  * It concludes four different functions of creating or editing details of the player.
  *
- * @author Siyu Chen
- * @version 0.1
+ * @author Kai QI
+ * @version 0.2
  */
 public class PlayerEditingScene extends Scene implements EquipmentDelegate{
 
@@ -42,17 +39,21 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         this.player = player;
         playerPanel.setPlayer(player);
         playerPanel.dataToView();
-        equipmentPanel.setPlayer(player);
-        equipmentPanel.dataToView();
+        inventoryPanel.setPlayer(player);
+        inventoryPanel.setButtonEnabled(true);
+        inventoryPanel.dataToView();
     }
 
 
     private PlayerPanel playerPanel;
-    private EquipmentPanel equipmentPanel;
+    private EquipmentSelectorPanel equipmentSelectorPanel;
+    private InventoryPanel inventoryPanel;
 
-    JTextField levelField;
-    JButton setButton;
-    JButton geneButton;
+    private JTextField levelField;
+    private JButton setButton;
+    private JButton bullyButton;
+    private JButton nimbleButton;
+    private JButton tankButton;
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
