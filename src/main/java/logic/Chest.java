@@ -52,8 +52,15 @@ public class Chest extends Cell{
         }
     }
 
+    /**
+     * Static final variable which is used to notify observers.
+     */
     public static final String CHEST_CHANGE = "Chest change";
 
+    /**
+     * This method is used to add equipments to chest.
+     * @param e
+     */
     public void addEquipment(Equipment e) {
         if (!isChestFull()) {
             equipments.add(e);
@@ -62,6 +69,10 @@ public class Chest extends Cell{
         }
     }
 
+    /**
+     * This method is used to drop equipments from chest.
+     * @param e
+     */
     public void dropEquipment(Equipment e) {
         equipments.remove(e);
         setChanged();
