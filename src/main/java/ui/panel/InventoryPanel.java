@@ -1,5 +1,6 @@
 package ui.panel;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import logic.Equipment;
 import logic.Player;
 import ui.view.EquipmentView;
@@ -69,13 +70,137 @@ public class InventoryPanel extends Panel implements Observer {
     private EquipmentView beltEquipmentView;
     private EquipmentView bootsEquipmentView;
 
-    JButton unequipWeaponBotton;
-    JButton unequipShieldBotton;
-    JButton unequipArmorBotton;
-    JButton unequipHelmetBotton;
-    JButton unequipRingBotton;
-    JButton unequipBeltBotton;
-    JButton unequipBootsBotton;
+    private JButton unequipWeaponBotton;
+    private Boolean unequipWeaponBottonEnabled;
+    private JButton unequipShieldBotton;
+    private Boolean unequipShieldBottonEnabled;
+    private JButton unequipArmorBotton;
+    private Boolean unequipArmorBottonEnabled;
+    private JButton unequipHelmetBotton;
+    private Boolean unequipHelmetBottonEnabled;
+    private JButton unequipRingBotton;
+    private Boolean unequipRingBottonEnabled;
+    private JButton unequipBeltBotton;
+    private Boolean unequipBeltBottonEnabled;
+    private JButton unequipBootsBotton;
+    private Boolean unequipBootsBottonEnabled;
+
+    /**
+     * Getter & setter for all the buttonEnabled boolean properties.
+     * @return
+     */
+
+    /**
+     * Getter for unequipWeaponBottonEnabled;
+     * @return
+     */
+    public Boolean getUnequipWeaponBottonEnabled() {
+        return unequipWeaponBottonEnabled;
+    }
+
+    /**
+     * Setter for unequipWeaponBottonEnabled;
+     * @param unequipWeaponBottonEnabled
+     */
+    public void setUnequipWeaponBottonEnabled(Boolean unequipWeaponBottonEnabled) {
+        this.unequipWeaponBottonEnabled = unequipWeaponBottonEnabled;
+    }
+
+    /**
+     * Getter for unequipShieldBottonEnabled;
+     * @return
+     */
+    public Boolean getUnequipShieldBottonEnabled() {
+        return unequipShieldBottonEnabled;
+    }
+
+    /**
+     * Setter for unequipShieldBottonEnabled;
+     * @param unequipShieldBottonEnabled
+     */
+    public void setUnequipShieldBottonEnabled(Boolean unequipShieldBottonEnabled) {
+        this.unequipShieldBottonEnabled = unequipShieldBottonEnabled;
+    }
+
+    /**
+     * Getter for unequipArmorBottonEnabled;
+     * @return
+     */
+    public Boolean getUnequipArmorBottonEnabled() {
+        return unequipArmorBottonEnabled;
+    }
+
+    /**
+     * Setter for unequipArmorBottonEnabled;
+     * @param unequipArmorBottonEnabled
+     */
+    public void setUnequipArmorBottonEnabled(Boolean unequipArmorBottonEnabled) {
+        this.unequipArmorBottonEnabled = unequipArmorBottonEnabled;
+    }
+
+    /**
+     * Getter for unequipHelmetBottonEnabled;
+     * @return
+     */
+    public Boolean getUnequipHelmetBottonEnabled() {
+        return unequipHelmetBottonEnabled;
+    }
+
+    /**
+     * Setter for unequipHelmetBottonEnabled;
+     * @param unequipHelmetBottonEnabled
+     */
+    public void setUnequipHelmetBottonEnabled(Boolean unequipHelmetBottonEnabled) {
+        this.unequipHelmetBottonEnabled = unequipHelmetBottonEnabled;
+    }
+
+    /**
+     * Getter for unequipRingBottonEnabled;
+     * @return
+     */
+    public Boolean getUnequipRingBottonEnabled() {
+        return unequipRingBottonEnabled;
+    }
+
+    /**
+     * Setter for unequipRingBottonEnabled;
+     * @param unequipRingBottonEnabled
+     */
+    public void setUnequipRingBottonEnabled(Boolean unequipRingBottonEnabled) {
+        this.unequipRingBottonEnabled = unequipRingBottonEnabled;
+    }
+
+    /**
+     * Getter for unequipBeltBottonEnabled;
+     * @return
+     */
+    public Boolean getUnequipBeltBottonEnabled() {
+        return unequipBeltBottonEnabled;
+    }
+
+    /**
+     * Setter for unequipBeltBottonEnabled;
+     * @param unequipBeltBottonEnabled
+     */
+    public void setUnequipBeltBottonEnabled(Boolean unequipBeltBottonEnabled) {
+        this.unequipBeltBottonEnabled = unequipBeltBottonEnabled;
+    }
+
+    /**
+     * Getter for unequipBootsBottonEnabled;
+     * @return
+     */
+    public Boolean getUnequipBootsBottonEnabled() {
+        return unequipBootsBottonEnabled;
+    }
+
+    /**
+     * Setter for unequipBootsBottonEnabled;
+     * @param unequipBootsBottonEnabled
+     */
+    public void setUnequipBootsBottonEnabled(Boolean unequipBootsBottonEnabled) {
+        this.unequipBootsBottonEnabled = unequipBootsBottonEnabled;
+    }
 
     /**
      * Layout

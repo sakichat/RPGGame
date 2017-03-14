@@ -2,6 +2,9 @@ package logic;
 
 import com.google.gson.annotations.Expose;
 
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * this class is the logic.Chest in the game
  * @author Li Zhen
@@ -10,25 +13,24 @@ import com.google.gson.annotations.Expose;
 public class Chest extends Cell{
 
     @Expose
-    private Equipment equipment;
+    private List<Equipment> equipments = new LinkedList<>();
 
     /**
-     * this method is to get equipment in the chest
+     * this method is to get equipments in the chest
      * @return equipment logic.Equipment
      */
 
-    public Equipment getEquipment() {
-        return equipment;
+    public List<Equipment> getEquipments() {
+        return equipments;
     }
 
     /**
      * this method is to set equipment in the chest
-     * @param equipment logic.Equipment
+     * @param equipments logic.Equipment
      */
 
-
-    public void setEquipment(Equipment equipment) {
-        this.equipment = equipment;
+    public void setEquipments(List<Equipment> equipments) {
+        this.equipments = equipments;
     }
 
     /**
@@ -37,4 +39,13 @@ public class Chest extends Cell{
     public Chest() {
         imageName = "chest.png";
     }
+
+    public void addEquipment(Equipment e) {
+        equipments.add(e);
+    }
+
+    public void dropEquipment(Equipment e) {
+        equipments.remove(e);
+    }
+
 }
