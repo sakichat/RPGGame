@@ -90,7 +90,7 @@ public class PlayScene extends Scene {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PlayScene.this.navigationView.popTo(EditorScene.class);
+                PlayScene.this.navigationView.popTo(MainScene.class);
             }
         });
 

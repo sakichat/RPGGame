@@ -68,9 +68,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         gameMapView.setDelegate(this);
 
         JButton validateButton = new JButton("Validate");
-        validateButton.setLocation(550, 80);
+        validateButton.setLocation(550, 40);
         validateButton.setSize(160, 40);
-        add(validateButton);
+        contentView.add(validateButton);
 
         validationMessageLabel = new JLabel();
         validationMessageLabel.setLocation(40, 0);
@@ -319,7 +319,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
     InventoryPanel inventoryPanel;
     /**
-     * Method showBackpackPanel
+     * Method showInventoryPanel
      * @param player
      */
     public void showInventoryPanel(Player player){
