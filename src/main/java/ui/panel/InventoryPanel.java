@@ -208,7 +208,7 @@ public class InventoryPanel extends Panel implements Observer {
         label.setSize(20, 20);
         label.setLocation(10, 240);
         add(label);
-        label.setText("W");
+        label.setText("B");
         JLabel backpackLabel = label;
 
         backpackSubPanel = new JPanel();
