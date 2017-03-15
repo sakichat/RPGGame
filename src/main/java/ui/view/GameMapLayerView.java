@@ -48,19 +48,7 @@ public class GameMapLayerView extends View {
         cells = new View[gridWidth][gridHeight];
     }
 
-    /**
-     * This method is to set gridSize which presents the number of cells on each side of the game map.
-     * And using gridSize to set the size of this game map view.
-     * @param gridWidth
-     * @param gridHeight
-     */
-//    public void setGridSize(int gridWidth, int gridHeight) {
-//        this.gridWidth = gridWidth;
-//        this.gridHeight = gridHeight;
-//
-//        cells = new View[gridWidth][gridHeight];
-//        setSize(gridWidth * UNIT_SIZE, gridHeight * UNIT_SIZE);
-//    }
+
 
     /**
      * This method is to add a cell on GameMapView

@@ -127,6 +127,7 @@ public class GameMapView extends View {
                 layerView.addCell(backgroundView, new Point(j, i));
             }
         }
+
     }
 
     /**
@@ -168,7 +169,6 @@ public class GameMapView extends View {
         selectionView = new ImageView();
         selectionView.setName("selected.png");
         layerView.addCell(selectionView, selectedLocation);
-
     }
 
     /**
