@@ -148,8 +148,8 @@ public class GameMap {
 
     public List<Entrance> getEntrances(){
         LinkedList<Entrance> entrances = new LinkedList<>();
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 if (cells[i][j] instanceof Entrance){
                     Cell cell = cells[i][j];
                     Entrance entrance = (Entrance) cell;
@@ -168,8 +168,8 @@ public class GameMap {
 
     public List<Exit> getExits() {
         LinkedList<Exit> exits = new LinkedList<>();
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 if (cells[i][j] instanceof Exit){
                     Cell cell = cells[i][j];
                     Exit exit = (Exit) cell;
