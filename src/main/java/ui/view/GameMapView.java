@@ -80,6 +80,10 @@ public class GameMapView extends View {
     }
 
 
+    /**
+     * This getPreferredSize() function sets size for maps and map layers.
+     * @return Dimension
+     */
     public Dimension getPreferredSize(){
         return new Dimension(
                 gameMap.getWidth() * GameMapLayerView.UNIT_SIZE,
@@ -133,7 +137,6 @@ public class GameMapView extends View {
             for (int j = 0; j < gameMap.getHeight(); j++) {
                 ImageView backgroundView = new ImageView();
                 backgroundView.setName("grass_background.png");
-                backgroundView.setBackground(Color.BLUE);
                 layerView.addCell(backgroundView, new Point(i, j));
             }
         }

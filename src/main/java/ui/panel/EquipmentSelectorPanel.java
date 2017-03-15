@@ -80,9 +80,6 @@ public class EquipmentSelectorPanel extends Panel {
         equipmentPanel.setLocation(10,80);
         add(equipmentPanel);
 
-
-
-
         textField = new JTextField();
         textField.setLocation(10,30);
         textField.setSize(160,40);
@@ -93,8 +90,6 @@ public class EquipmentSelectorPanel extends Panel {
         searchButton.setLocation(180,30);
         searchButton.setSize(100,40);
         add(searchButton);
-
-
 
         searchButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

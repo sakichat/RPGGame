@@ -137,6 +137,7 @@ public class Player extends Cell{
             abilities.add(ABILITY_INT);
             abilities.add(ABILITY_CHA);
             abilities.add(ABILITY_WIS);
+
         } else if (playerType == PLAYER_TYPE_NIMBLE) {
             abilities.add(ABILITY_DEX);
             abilities.add(ABILITY_CON);
@@ -144,6 +145,7 @@ public class Player extends Cell{
             abilities.add(ABILITY_INT);
             abilities.add(ABILITY_CHA);
             abilities.add(ABILITY_WIS);
+
         } else if (playerType == PLAYER_TYPE_TANK) {
             abilities.add(ABILITY_CON);
             abilities.add(ABILITY_DEX);
@@ -151,6 +153,7 @@ public class Player extends Cell{
             abilities.add(ABILITY_INT);
             abilities.add(ABILITY_CHA);
             abilities.add(ABILITY_WIS);
+
         }
 
         for (int i = 0; i < 6; i++) {
