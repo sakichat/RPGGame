@@ -38,7 +38,7 @@ public class GameMap {
      */
     public void setWidth(int width) {
         this.width = width;
-        cells = new Cell[width][height];
+        cells = new Cell[height][width];
     }
 
     /**
@@ -55,7 +55,7 @@ public class GameMap {
      */
     public void setHeight(int height) {
         this.height = height;
-        cells = new Cell[width][height];
+        cells = new Cell[height][width];
     }
 
     /**

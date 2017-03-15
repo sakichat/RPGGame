@@ -35,7 +35,7 @@ public class GameMapLayerView extends View {
     public void setGridWidth(int gridWidth) {
         this.gridWidth = gridWidth;
 
-        cells = new View[gridWidth][gridHeight];
+        cells = new View[gridHeight][gridWidth];
     }
 
     public int getGridHeight() {
@@ -45,9 +45,8 @@ public class GameMapLayerView extends View {
     public void setGridHeight(int gridHeight) {
         this.gridHeight = gridHeight;
 
-        cells = new View[gridWidth][gridHeight];
+        cells = new View[gridHeight][gridWidth];
     }
-
 
 
     /**
@@ -103,8 +102,8 @@ public class GameMapLayerView extends View {
      * This function is to clear the whole GameMapViewLayer in order to add new items on that
      */
     public void removeAllCells(){
-        for (int y = 0; y < gridWidth; y++) {
-            for (int x = 0; x < gridHeight; x++) {
+        for (int y = 0; y < gridHeight; y++) {
+            for (int x = 0; x < gridWidth; x++) {
                 Point point = new Point(x, y);
                 View cell = getCell(point);
                 if (cell != null) {
