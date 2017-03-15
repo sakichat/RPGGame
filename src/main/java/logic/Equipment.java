@@ -199,6 +199,10 @@ public class Equipment {
         this.enhancedValue = enhancedValue;
     }
 
+    public void levelRefresh(int level) {
+        //甄理填代码
+    }
+
     /**
      * this method is to show the Equipment
      * @return String
