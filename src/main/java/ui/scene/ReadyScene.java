@@ -21,15 +21,18 @@ public class ReadyScene extends Scene {
     }
 
     protected void initSubviews() {
-        TextField textField = new TextField("Play");
-        textField.setSize(160, 40);
-        textField.setLocation(20, 20);
-        contentView.add(textField);
 
-        JButton newGameButton = new JButton("New");
-        newGameButton.setSize(160, 40);
-        newGameButton.setLocation(20, 60);
-        contentView.add(newGameButton);
+        JLabel label = new JLabel("Play");
+        label.setSize(160, 40);
+        label.setLocation(20, 20);
+        contentView.add(label);
+        JLabel playNameLabel = label;
+
+        JButton button = new JButton("New");
+        button.setSize(160, 40);
+        button.setLocation(20, 70);
+        contentView.add(button);
+        JButton newGameButton = button;
 
         newGameButton.addActionListener(new ActionListener() {
             @Override
