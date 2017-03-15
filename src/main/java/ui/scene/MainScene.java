@@ -35,7 +35,7 @@ public class MainScene extends Scene {
 
         JButton editorButton = new JButton("Editor");
         editorButton.setSize(160, 40);
-        editorButton.setLocation(20, 60);
+        editorButton.setLocation(20, 70);
         contentView.add(editorButton);
 
         repaint();
