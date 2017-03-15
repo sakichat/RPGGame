@@ -17,7 +17,6 @@ public class PlayerControlView extends ControlView {
     /**
      * Declaration of the property, and getter & setter
      */
-    private JLabel playerNameLabel;
 
     private Player player;
 
@@ -46,6 +45,9 @@ public class PlayerControlView extends ControlView {
         initSubviews();
     }
 
+    private JLabel playerNameLabel;
+    private JLabel playerPartyLabel;
+
     /**
      * layout
      */
@@ -53,43 +55,76 @@ public class PlayerControlView extends ControlView {
 
         JLabel label;
 
-        label = new JLabel();
+        label = new JLabel("", JLabel.LEFT);
         label.setSize(160, 40);
         label.setLocation(10, 10);
         add(label);
         label.setText("Player");
 
-        label = new JLabel();
+        label = new JLabel("", JLabel.LEFT);
         label.setSize(160, 40);
         label.setLocation(10, 60);
         add(label);
         playerNameLabel = label;
 
-        JButton button;
+        label = new JLabel("", JLabel.LEFT);
+        label.setSize(160, 40);
+        label.setLocation(10, 110);
+        add(label);
+        playerPartyLabel = label;
 
-        button = new JButton();
-        button.setSize(160, 40);
-        button.setLocation(10, 110);
-        add(button);
-        button.setText("Attributes");
-        JButton viewAttributesButton = new JButton();
-        viewAttributesButton = button;
+        JButton button;
 
         button = new JButton();
         button.setSize(160, 40);
         button.setLocation(10, 160);
         add(button);
-        button.setText("Backpack");
-        JButton viewBackpackButton = new JButton();
-        viewBackpackButton = button;
+        button.setText("Become Friendly");
+        JButton becomeFriendlyButton = button;
 
         button = new JButton();
         button.setSize(160, 40);
         button.setLocation(10, 210);
         add(button);
+        button.setText("Become Hostile");
+        JButton becomeHostileButton = button;
+
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 260);
+        add(button);
+        button.setText("View Attribute");
+        JButton viewAttributesButton = button;
+
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 310);
+        add(button);
+        button.setText("View Inventory");
+        JButton viewInventoryButton = button;
+
+        button = new JButton();
+        button.setSize(160, 40);
+        button.setLocation(10, 360);
+        add(button);
         button.setText("Remove");
-        JButton removeButton = new JButton();
-        removeButton = button;
+        JButton removeButton = button;
+
+        becomeFriendlyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                player.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
+                dataToView();
+            }
+        });
+
+        becomeHostileButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                player.setPlayerParty(Player.PLAYER_PARTY_HOSTILE);
+                dataToView();
+            }
+        });
 
         viewAttributesButton.addActionListener(new ActionListener() {
             private boolean opened;
@@ -105,7 +140,7 @@ public class PlayerControlView extends ControlView {
             }
         });
 
-        viewBackpackButton.addActionListener(new ActionListener() {
+        viewInventoryButton.addActionListener(new ActionListener() {
             private boolean opened;
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -132,6 +167,7 @@ public class PlayerControlView extends ControlView {
      */
     private void dataToView(){
         playerNameLabel.setText(player.getName());
+        playerPartyLabel.setText(player.getPlayerParty());
     }
 
 

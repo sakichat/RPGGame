@@ -291,7 +291,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
     }
 
-
+    /**
+     * Properties and methods about player setting.
+     */
     private PlayerPanel playerPanel;
 
     /**
@@ -301,7 +303,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     public void showAttributePanel(Player player){
         playerPanel = new PlayerPanel();
         playerPanel.setPlayer(player);
-        playerPanel.setLocation(10, 10);
+        playerPanel.setLocation(450, 10);
         contentView.add(playerPanel);
         repaint();
     }
@@ -323,7 +325,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     public void showInventoryPanel(Player player){
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setPlayer(player);
-        inventoryPanel.setLocation(10, 10);
+        inventoryPanel.setLocation(330, 10);
         contentView.add(inventoryPanel);
 
         repaint();
