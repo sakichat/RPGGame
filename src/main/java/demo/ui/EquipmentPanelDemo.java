@@ -19,7 +19,7 @@ public class EquipmentPanelDemo extends JFrame{
 
     public EquipmentPanelDemo(){
         EquipmentPanel equipmentPanel = new EquipmentPanel();
-        equipmentPanel.setChest(Simulation.chest);
+//        equipmentPanel.setChest(Simulation.chest);
         equipmentPanel.setLocation(0,0);
         this.add(equipmentPanel);
     }
