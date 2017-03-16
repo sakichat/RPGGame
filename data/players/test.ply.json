@@ -1,67 +1,44 @@
 {
   "abilityScores": {
-<<<<<<< Updated upstream
-    "STR": 16,
-    "WIS": 16,
-    "CON": 16,
-    "DEX": 16,
-    "CHA": 20,
-    "INT": 4
-  },
-  "backpack": [
-    {
-      "name": "Axe of Cenarius",
-      "type": "Weapon",
-      "enhancedAttribute": "DB",
-      "enhancedValue": 5
-    }
-  ],
-  "equipments": {
-    "Ring": {
-=======
-    "STR": 24,
-    "WIS": 16,
-    "CON": 12,
+    "STR": 8,
+    "WIS": 12,
+    "CON": 4,
     "DEX": 24,
-    "CHA": 20,
-    "INT": 8
+    "CHA": 4,
+    "INT": 20
   },
   "backpack": [
     {
->>>>>>> Stashed changes
-      "name": "Alythess Pyrogenics",
-      "type": "Ring",
-      "enhancedAttribute": "CON",
-      "enhancedValue": 3
-<<<<<<< Updated upstream
-    },
-=======
-    }
-  ],
-  "equipments": {
->>>>>>> Stashed changes
-    "Weapon": {
       "name": "Ashbringer",
       "type": "Weapon",
       "enhancedAttribute": "AB",
       "enhancedValue": 5
-<<<<<<< Updated upstream
-=======
-    },
+    }
+  ],
+  "equipments": {
     "Armor": {
       "name": "Arming Coat",
       "type": "Armor",
       "enhancedAttribute": "AC",
       "enhancedValue": 5
->>>>>>> Stashed changes
+    },
+    "Ring": {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    },
+    "Weapon": {
+      "name": "Axe of Cenarius",
+      "type": "Weapon",
+      "enhancedAttribute": "DB",
+      "enhancedValue": 5
     }
   },
-  "level": 3,
+  "level": 4,
   "name": "test",
-<<<<<<< Updated upstream
-  "hp": 22,
-=======
-  "hp": 20,
->>>>>>> Stashed changes
-  "imageName": "player_1.png"
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 16
 }

@@ -416,12 +416,11 @@ public class Player extends Cell{
         notifyObservers(DEAD_CHANGE);
     }
 
-    /**
-     * initialization block
-     */
-    {
-        imageName = "bully.png";
-    }
+//    /**
+//     * initialization block
+//     */
+//    {
+//    }
 
     /**
      * Constructor without parameters.
@@ -461,6 +460,44 @@ public class Player extends Cell{
         this.hp = hp;
         setChanged();
         notifyObservers(HP_CHANGE);
+    }
+
+    public void setPlayerImageName(String playerType, String playerParty) {
+
+        if (playerType == PLAYER_TYPE_BULLY) {
+            if (playerParty == PLAYER_PARTY_PLAYER){
+                imageName = "player_bully.png";
+
+            } else if (playerParty == PLAYER_PARTY_FRIENDLY) {
+                imageName = "friendly_bully.png";
+
+            } else if (playerParty == PLAYER_PARTY_HOSTILE) {
+                imageName = "hostile_bully.png";
+
+            }
+        } else if (playerType == PLAYER_TYPE_NIMBLE) {
+            if (playerParty == PLAYER_PARTY_PLAYER){
+                imageName = "player_nimble.png";
+
+            } else if (playerParty == PLAYER_PARTY_FRIENDLY) {
+                imageName = "friendly_nimble.png";
+
+            } else if (playerParty == PLAYER_PARTY_HOSTILE) {
+                imageName = "hostile_nimble.png";
+
+            }
+        } else if (playerType == PLAYER_TYPE_TANK) {
+            if (playerParty == PLAYER_PARTY_PLAYER){
+                imageName = "player_tank.png";
+
+            } else if (playerParty == PLAYER_PARTY_FRIENDLY) {
+                imageName = "friendly_tank.png";
+
+            } else if (playerParty == PLAYER_PARTY_HOSTILE) {
+                imageName = "hostile_tank.png";
+
+            }
+        }
     }
 
     /**
@@ -542,7 +579,8 @@ public class Player extends Cell{
     public void dead() {
         setDead(true);
     }
-    
+
+
     /**
      * this method is to refresh the value of equipment accoding to the level of player
      */

@@ -3,6 +3,7 @@ package ui.panel;
 import logic.Equipment;
 import logic.Player;
 import ui.view.AbilityView;
+import ui.view.ImageView;
 import ui.view.TextDisplay;
 
 import javax.swing.*;
@@ -39,6 +40,12 @@ public class PlayerPanel extends Panel implements Observer {
         this.player = player;
         dataToView();
         player.addObserver(this);
+        
+        player.setPlayerImageName(
+                playerTypeValueLabel.getText(),
+                playerPartyValueLabel.getText()
+        );
+
     }
 
     /**
