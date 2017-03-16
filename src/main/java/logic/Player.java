@@ -462,7 +462,8 @@ public class Player extends Cell{
         notifyObservers(HP_CHANGE);
     }
 
-    public String getPlayerImageName(String playerType, String playerParty) {
+    public String playerImageName(String playerType, String playerParty) {
+
         if (isDead) {
             return "rip.png";
         }

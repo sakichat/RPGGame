@@ -118,9 +118,9 @@ public class PlayerControlView extends ControlView {
                 mapEditingScene.playerPanel.dataToView();
 
                 player.setImageName(
-                        player.getPlayerImageName(
+                        player.playerImageName(
                                 player.getPlayerType(),
-                                playerPartyLabel.getText())
+                                player.getPlayerParty())
                 );
             }
         });
@@ -133,9 +133,9 @@ public class PlayerControlView extends ControlView {
                 mapEditingScene.playerPanel.dataToView();
 
                 player.setImageName(
-                        player.getPlayerImageName(
+                        player.playerImageName(
                                 player.getPlayerType(),
-                                playerPartyLabel.getText())
+                                player.getPlayerParty())
                 );
             }
         });
