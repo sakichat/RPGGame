@@ -183,7 +183,7 @@ public class GameMap {
 
     /**
      * this method is to get all entrances
-     * @return List<Entreance>
+     * @return List<Entrance>
      */
 
     public List<Entrance> getEntrances(){
