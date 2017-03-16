@@ -151,6 +151,8 @@ public class GameMap {
         Point targetPoint = point.add(upPoint);
         if (!hasCell(targetPoint)){
             moveCell(point, targetPoint);
+        }else if (getCell(targetPoint) instanceof Exit){
+            exitFromMap();
         }
     }
 
@@ -164,6 +166,8 @@ public class GameMap {
         Point targetPoint = point.add(downPoint);
         if (!hasCell(targetPoint)){
             moveCell(point, targetPoint);
+        }else if (getCell(targetPoint) instanceof Exit){
+            exitFromMap();
         }
     }
 
@@ -176,6 +180,8 @@ public class GameMap {
         Point targetPoint = point.add(leftPoint);
         if (!hasCell(targetPoint)){
             moveCell(point, targetPoint);
+        }else if (getCell(targetPoint) instanceof Exit){
+            exitFromMap();
         }
     }
 
@@ -188,6 +194,8 @@ public class GameMap {
         Point targetPoint = point.add(rightPoint);
         if (!hasCell(targetPoint)){
             moveCell(point, targetPoint);
+        }else if (getCell(targetPoint) instanceof Exit){
+            exitFromMap();
         }
     }
 
@@ -212,34 +220,13 @@ public class GameMap {
         return enterPoint;
     }
 
-//    public int exitchoices(Exit exit, Point currentPoint){
-//        Point pointUp = new Point(0,1);
-//        Point pointDown = new Point(0,-1);
-//        Point pointLeft = new Point(-1,0);
-//        Point pointRight = new Point(1,0);
-//
-//        if (currentPoint == exit.getLocation().add(pointUp)){
-//
-//        }
-//        return 0;
-//    }
-//
-//    /**
-//     * This is a method makes player exit from the map.
-//     * @param exit
-//     * @return Point
-//     */
-//    public void exitFromMap(Exit exit, Point currentPoint){
-//        Point exitPoint = new Point();
-//
-//
-//        if (currentPoint == exit.getLocation().add(pointUp)){
-//
-//        }
-//
-//
-//
-//    }
+    /**
+     * This is a method makes player exit from the map.
+     */
+    public void exitFromMap(){
+
+
+    }
 
 
     /**
