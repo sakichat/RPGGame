@@ -289,7 +289,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     /**
      * Properties and methods about player setting.
      */
-    public PlayerPanel playerPanel;
+    private PlayerPanel playerPanel;
 
     /**
      * Method showAttributePanel
