@@ -541,6 +541,52 @@ public class Player extends Cell{
      */
     public void dead() {
         setDead(true);
-
     }
+    
+    /**
+     * this method is to refresh the value of equipment accoding to the level of player
+     */
+
+    public void refreshEquipment(int level){
+        if(!equipments.isEmpty()){
+            for (String equipment : equipments.keySet()){
+                equipments.get(equipment).levelRefresh(level);
+            }
+        }
+        if (!backpack.isEmpty()){
+            for (Equipment equipment : backpack){
+                equipment.levelRefresh(level);
+            }
+        }
+    }
+
+    /**
+     * this method is to interact with the chest
+     * @param outEquipment Equipment
+     * @param inEquipment Equipment
+     */
+    public void exchangeEquipment(Equipment outEquipment, Equipment inEquipment){
+        boolean onBody = false;
+        boolean onBackpack = false;
+        for (String equipment : equipments.keySet()){
+            if (outEquipment.getName().equals(equipments.get(equipment).getName())){
+                onBody = true;
+            }
+        }
+        if (!onBody){
+            for (Equipment equipment : backpack){
+                if (outEquipment.getName().equals(equipment.getName())){
+                    onBackpack = true;
+                }
+            }
+        }
+        if (onBody){
+            this.unequip(outEquipment);
+        }else if (onBackpack){
+            this.dropEquipment(outEquipment);
+        }
+        this.pickUpEquipment(inEquipment);
+    }
+
+
 }
