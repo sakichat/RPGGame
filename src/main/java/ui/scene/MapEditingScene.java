@@ -228,6 +228,12 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         playerSelectorPanel.setPlayerDelegate(this);
     }
 
+    public void hidePlayerSelectorPanel() {
+        remove(playerSelectorPanel);
+
+        repaint();
+    }
+
     /**
      * This method is to paint a player on the specific cell view and remove the selector panel
      * @param playerSelectorPanel PlayerSelectorPanel

@@ -123,7 +123,7 @@ public class PlayerSelectorPanel extends Panel {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        playerDelegate.playerSelectorPerformAction(PlayerSelectorPanel.this,player);
+                        playerDelegate.playerSelectorPerformAction(PlayerSelectorPanel.this, player);
                     }
                 });
 
