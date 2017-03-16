@@ -1,5 +1,7 @@
 package logic;
 
+import persistence.MapFileManager;
+
 import java.util.LinkedList;
 
 /**
@@ -20,17 +22,29 @@ public class Play {
     private int currentMapIndex;
     private GameMap currentMap;
 
+    /**
+     * This is the method for get currentMap,
+     * and add player into the map(enter).
+     */
     private void resolveMap(){
-//        currentMap = ...
+        currentMap = MapFileManager.read(campaign.getMapName(currentMapIndex));
         Point enterPoint = enterIntoMap();
         currentMap.addCell(player, enterPoint);
     }
 
+    /**
+     * This is the method for exit from currentMap,
+     * move into next map.
+     */
     public void moveToNextMap(){
         currentMapIndex++;
         resolveMap();
     }
 
+    /**
+     * This is get method for currentMap.
+     * @return GameMap
+     */
     public GameMap getCurrentMap() {
         return currentMap;
     }
