@@ -32,6 +32,7 @@ public class Player extends Cell{
     public final static String HP_CHANGE = "hp change";
     public final static String BACKPACK_CHANGE = "backpack change";
     public final static String EQUIPMENT_CHANGE = "equipment change";
+    public final static String DEAD_CHANGE = "dead change";
 
     public final static String PLAYER_TYPE_BULLY = "Bully";
     public final static String PLAYER_TYPE_NIMBLE = "Nimble";
@@ -40,6 +41,7 @@ public class Player extends Cell{
     public final static String PLAYER_PARTY_NOT_DEFINED = "Not Defined";
     public final static String PLAYER_PARTY_FRIENDLY = "Friendly";
     public final static String PLAYER_PARTY_HOSTILE = "Hostile";
+    public final static String PLAYER_PARTY_PLAYER = "Player";
 
     /**
      * Abilities and methods.
@@ -215,6 +217,10 @@ public class Player extends Cell{
         notifyObservers(BACKPACK_CHANGE);
     }
 
+    public void backpackLevelRefresh(int level) {
+        //甄理
+    }
+
 
 
     /**
@@ -289,9 +295,27 @@ public class Player extends Cell{
         return result;
     }
 
+    /**
+     * The method is used to refresh the equipments worn by a player when its level goes up.
+     * @param level
+     */
+    public void equipmentsLevelRefresh(int level) {
+        for (Equipment equipment : equipments.values()) {
+            equipment.levelRefresh(level);
+        }
+    }
 
     /**
-     * Level, name, playerType, playerParty and Getter & Setter & constructor.
+     * Inventory operations.
+     */
+
+    private List<Equipment> getInventories() {
+        return new LinkedList<Equipment>();
+    }
+
+
+    /**
+     * Level, name, playerType, playerParty, isDead and Getter & Setter & constructor.
      */
 
     @Expose
@@ -305,6 +329,9 @@ public class Player extends Cell{
 
     @Expose
     private String playerParty = PLAYER_PARTY_NOT_DEFINED;
+
+    @Expose
+    private boolean isDead;
 
     /**
      * Getter for the level.
@@ -371,6 +398,22 @@ public class Player extends Cell{
     public void setPlayerParty(String playerParty) {
         this.playerParty = playerParty;
         notifyObservers(PLAYER_PARTY_CHANGE);
+    }
+
+    /**
+     * getter foe isDead.
+     */
+    public boolean isDead() {
+        return isDead;
+    }
+
+    /**
+     * Setter for isDead
+     * @param dead
+     */
+    public void setDead(boolean dead) {
+        isDead = dead;
+        notifyObservers(DEAD_CHANGE);
     }
 
     /**
@@ -490,5 +533,14 @@ public class Player extends Cell{
      */
     public int getTotalDamageBonus() {
         return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
+    }
+
+    /**
+     * The method is to
+     * @return
+     */
+    public void dead() {
+        setDead(true);
+
     }
 }
