@@ -79,4 +79,27 @@ public class Chest extends Cell{
         notifyObservers(CHEST_CHANGE);
     }
 
+    /**
+     * this method is to refresh the value of equipment accoding to the level of player
+     * @param level int
+     */
+
+    public void refreshChest(int level){
+        if (equipments != null){
+            for (Equipment equipment : equipments){
+                equipment.levelRefresh(level);
+            }
+        }
+    }
+
+    /**
+     * this method is to return a equipment randomly
+     * @return
+     */
+
+    public Equipment randomEquipment(){
+        int number = (int)(Math.random() * equipments.size());
+        return equipments.get(number);
+    }
+
 }
