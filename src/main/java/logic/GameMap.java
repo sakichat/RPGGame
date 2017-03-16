@@ -145,20 +145,26 @@ public class GameMap {
      * This method makes player go up.
      * @param point
      */
+
     public void goUp(Point point){
         Point upPoint = new Point(0,1);
         Point targetPoint = point.add(upPoint);
-        moveCell(point, targetPoint);
+        if (!hasCell(targetPoint)){
+            moveCell(point, targetPoint);
+        }
     }
 
     /**
      * This method makes player can go down.
      * @param point
      */
+
     public void goDown(Point point){
         Point downPoint = new Point(0,-1);
         Point targetPoint = point.add(downPoint);
-        moveCell(point, targetPoint);
+        if (!hasCell(targetPoint)){
+            moveCell(point, targetPoint);
+        }
     }
 
     /**
@@ -168,7 +174,9 @@ public class GameMap {
     public void goLeft(Point point){
         Point leftPoint = new Point(-1,0);
         Point targetPoint = point.add(leftPoint);
-        moveCell(point, targetPoint);
+        if (!hasCell(targetPoint)){
+            moveCell(point, targetPoint);
+        }
     }
 
     /**
@@ -178,14 +186,66 @@ public class GameMap {
     public void goRight(Point point){
         Point rightPoint = new Point(1,0);
         Point targetPoint = point.add(rightPoint);
-        moveCell(point, targetPoint);
+        if (!hasCell(targetPoint)){
+            moveCell(point, targetPoint);
+        }
     }
+
+    /**
+     * This is a method makes player enter into the map.
+     * @param entrance
+     * @return Point
+     */
+
+    public Point enterIntoMap(Entrance entrance){
+        Point enterPoint = new Point();
+        LinkedList<Point> enterPointChoices = new LinkedList<>();
+
+        enterPointChoices = entrance.getLocation().directions();
+        for (Point enterPointChoice : enterPointChoices) {
+            if (enterPointChoice == null){
+                enterPoint = enterPointChoice;
+                break;
+            }
+        }
+
+        return enterPoint;
+    }
+
+//    public int exitchoices(Exit exit, Point currentPoint){
+//        Point pointUp = new Point(0,1);
+//        Point pointDown = new Point(0,-1);
+//        Point pointLeft = new Point(-1,0);
+//        Point pointRight = new Point(1,0);
+//
+//        if (currentPoint == exit.getLocation().add(pointUp)){
+//
+//        }
+//        return 0;
+//    }
+//
+//    /**
+//     * This is a method makes player exit from the map.
+//     * @param exit
+//     * @return Point
+//     */
+//    public void exitFromMap(Exit exit, Point currentPoint){
+//        Point exitPoint = new Point();
+//
+//
+//        if (currentPoint == exit.getLocation().add(pointUp)){
+//
+//        }
+//
+//
+//
+//    }
+
 
     /**
      * this method is to get all entrances
      * @return List<Entrance>
      */
-
     public List<Entrance> getEntrances(){
         LinkedList<Entrance> entrances = new LinkedList<>();
         for (int i = 0; i < height; i++) {
