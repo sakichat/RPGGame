@@ -10,7 +10,8 @@ import java.util.LinkedList;
 
 /**
  * interact method
- *
+ * remove chest if == null
+ * remove player if inventory == null
  */
 public class Play {
     private Campaign campaign;
@@ -34,6 +35,10 @@ public class Play {
         return currentMap;
     }
 
+    /**
+     * This is the method to make player move.
+     * @param direction
+     */
     public void move(Point direction){
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
