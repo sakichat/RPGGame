@@ -1,39 +1,39 @@
 {
   "abilityScores": {
     "STR": 24,
-    "WIS": 8,
+    "WIS": 12,
     "CON": 16,
     "DEX": 20,
-    "CHA": 8,
-    "INT": 24
+    "CHA": 12,
+    "INT": 16
   },
   "backpack": [
     {
-      "name": "Axe of Cenarius",
+      "name": "Ashbringer",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 5
+    },
+    {
+      "name": "Bloodhoof Runespear",
       "type": "Weapon",
       "enhancedAttribute": "DB",
       "enhancedValue": 5
     },
     {
-      "name": "Axe of Cenarius",
-      "type": "Weapon",
-      "enhancedAttribute": "DB",
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+    },
+    {
+      "name": "Dual Determination",
+      "type": "Ring",
+      "enhancedAttribute": "CHA",
       "enhancedValue": 5
     }
   ],
   "equipments": {
-    "Helmet": {
-      "name": "Coif of Delusions",
-      "type": "Helmet",
-      "enhancedAttribute": "WIS",
-      "enhancedValue": 5
-    },
-    "Belt": {
-      "name": "Cord of Beginnings",
-      "type": "Belt",
-      "enhancedAttribute": "CON",
-      "enhancedValue": 5
-    },
     "Ring": {
       "name": "Alythess Pyrogenics",
       "type": "Ring",
@@ -53,13 +53,16 @@
       "enhancedValue": 5
     },
     "Weapon": {
-      "name": "Ashbringer",
+      "name": "bi",
       "type": "Weapon",
       "enhancedAttribute": "AB",
-      "enhancedValue": 5
+      "enhancedValue": 3
     }
   },
   "level": 0,
-  "name": "Ashley",
-  "hp": 100
+  "name": "testA",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "hp": 3,
+  "imageName": "bully.png"
 }
