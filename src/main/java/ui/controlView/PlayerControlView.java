@@ -115,13 +115,8 @@ public class PlayerControlView extends ControlView {
             public void actionPerformed(ActionEvent e) {
                 player.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
                 dataToView();
-                mapEditingScene.playerPanel.dataToView();
+                mapEditingScene.refreshMapView();
 
-                player.setImageName(
-                        player.playerImageName(
-                                player.getPlayerType(),
-                                player.getPlayerParty())
-                );
             }
         });
 
@@ -130,41 +125,22 @@ public class PlayerControlView extends ControlView {
             public void actionPerformed(ActionEvent e) {
                 player.setPlayerParty(Player.PLAYER_PARTY_HOSTILE);
                 dataToView();
-                mapEditingScene.playerPanel.dataToView();
-
-                player.setImageName(
-                        player.playerImageName(
-                                player.getPlayerType(),
-                                player.getPlayerParty())
-                );
+                mapEditingScene.refreshMapView();
             }
         });
 
         viewAttributesButton.addActionListener(new ActionListener() {
-            private boolean opened;
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (opened) {
-                    mapEditingScene.hideAttributePanel();
-                } else {
-                    mapEditingScene.showAttributePanel(player);
-                }
-
-                opened = !opened;
+                mapEditingScene.showAttributePanel(player);
             }
         });
 
         viewInventoryButton.addActionListener(new ActionListener() {
-            private boolean opened;
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (opened) {
-                    mapEditingScene.hideInventoryPanel();
-                } else {
-                    mapEditingScene.showInventoryPanel(player);
-                }
+                mapEditingScene.showInventoryPanel(player);
 
-                opened = !opened;
             }
         });
 

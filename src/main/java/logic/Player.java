@@ -462,48 +462,28 @@ public class Player extends Cell{
         notifyObservers(HP_CHANGE);
     }
 
-    public String playerImageName(String playerType, String playerParty) {
+
+    @Override
+    public String getImageName() {
+        String imageName;
 
         if (isDead) {
-            return "rip.png";
+            imageName = "rip.png";
+            return imageName;
         }
 
-        if (playerType == PLAYER_TYPE_BULLY) {
-            if (playerParty == PLAYER_PARTY_PLAYER){
-                imageName = "player_bully.png";
+        HashMap<String, String> partyNames = new HashMap<>();
+        partyNames.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
+        partyNames.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
+        partyNames.put(Player.PLAYER_PARTY_PLAYER, "player");
 
-            } else if (playerParty == PLAYER_PARTY_FRIENDLY) {
-                imageName = "friendly_bully.png";
+        HashMap<String, String> typeNames = new HashMap<>();
+        typeNames.put(PLAYER_TYPE_BULLY, "bully");
+        typeNames.put(PLAYER_TYPE_TANK, "tank");
+        typeNames.put(PLAYER_TYPE_NIMBLE, "nimble");
 
-            } else if (playerParty == PLAYER_PARTY_HOSTILE) {
-                imageName = "hostile_bully.png";
+        return partyNames.get(playerParty) + "_" + typeNames.get(playerType) + ".png";
 
-            }
-        } else if (playerType == PLAYER_TYPE_NIMBLE) {
-            if (playerParty == PLAYER_PARTY_PLAYER){
-                imageName = "player_nimble.png";
-
-            } else if (playerParty == PLAYER_PARTY_FRIENDLY) {
-                imageName = "friendly_nimble.png";
-
-            } else if (playerParty == PLAYER_PARTY_HOSTILE) {
-                imageName = "hostile_nimble.png";
-
-            }
-        } else if (playerType == PLAYER_TYPE_TANK) {
-            if (playerParty == PLAYER_PARTY_PLAYER){
-                imageName = "player_tank.png";
-
-            } else if (playerParty == PLAYER_PARTY_FRIENDLY) {
-                imageName = "friendly_tank.png";
-
-            } else if (playerParty == PLAYER_PARTY_HOSTILE) {
-                imageName = "hostile_tank.png";
-
-            }
-        }
-
-        return imageName;
     }
 
     /**

@@ -97,17 +97,9 @@ public class EmptyControlView extends ControlView{
         });
 
         playerButton.addActionListener(new ActionListener() {
-            private boolean opened;
-
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (opened) {
-                    mapEditingScene.hidePlayerSelectorPanel();
-                } else {
-                    mapEditingScene.addPlayer();
-                }
-
-                opened = !opened;
+                mapEditingScene.addPlayer();
             }
         });
 

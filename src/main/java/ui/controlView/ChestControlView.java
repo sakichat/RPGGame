@@ -76,19 +76,9 @@ public class ChestControlView extends ControlView {
         JButton removeButton = button;
 
         viewInsideButton.addActionListener(new ActionListener() {
-
-            private boolean opened;
-
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                if (opened) {
-                    mapEditingScene.hideChestViewInside();
-                } else {
-                    mapEditingScene.showChestViewInside(chest);
-                }
-
-                opened = !opened;
+                mapEditingScene.showChestViewInside(chest);
             }
         });
 

@@ -152,7 +152,6 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         controlViewContainerView.add(view);
     }
 
-
     /**
      * This method checks which control view should show in controlViewContainerView
      * @param cell
@@ -231,12 +230,6 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         playerSelectorPanel.setPlayerDelegate(this);
     }
 
-    public void hidePlayerSelectorPanel() {
-        remove(playerSelectorPanel);
-
-        repaint();
-    }
-
     /**
      * This method is to paint a player on the specific cell view and remove the selector panel
      * @param playerSelectorPanel PlayerSelectorPanel
@@ -278,13 +271,6 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         repaint();
     }
 
-    public void hideChestViewInside() {
-        contentView.remove(equipmentSelectorPanel);
-        contentView.remove(equipmentPanel);
-
-        repaint();
-    }
-
     /**
      * This method is to paint a chest contains a selected equipment on the specific cell view
      * And remove the selector panel.
@@ -317,15 +303,6 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         repaint();
     }
 
-    /**
-     * Method hideAttributePanel
-     */
-    public void hideAttributePanel(){
-        contentView.remove(playerPanel);
-        repaint();
-    }
-
-
     InventoryPanel inventoryPanel;
     /**
      * Method showInventoryPanel
@@ -340,12 +317,8 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         repaint();
     }
 
-    /**
-     * Method hideBackpackPanel
-     */
-    public void hideInventoryPanel(){
-        contentView.remove(inventoryPanel);
-        repaint();
+    public void refreshMapView(){
+        gameMapView.refreshContent();
     }
 
 }

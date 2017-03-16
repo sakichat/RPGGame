@@ -6,6 +6,7 @@ import ui.view.View;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 /**
@@ -48,17 +49,81 @@ public class Panel extends View {
         add(headerView);
         setBackground(new Color(0xF4F4F4));
 
+        ImageIcon closeButton = new ImageIcon("data/images/close_button.png");
 
-        headerView.addMouseMotionListener(new MouseMotionListener() {
+        JButton closePanelButton = new JButton(closeButton);
+        closePanelButton.setSize(20, 20);
+        closePanelButton.setBorderPainted(false);
+        closePanelButton.setLocation(getWidth() - 20, 0);
+        headerView.add(closePanelButton);
+
+        closePanelButton.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Container parent = Panel.this.getParent();
+                parent.remove(Panel.this);
+                parent.repaint();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        class DragHandle implements MouseListener, MouseMotionListener{
+            int x;
+            int y;
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                x = e.getX();
+                y = e.getY();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
             @Override
             public void mouseDragged(MouseEvent e) {
-                Point point = new Point();
-                point.setLocation(
-                        e.getX() + Panel.this.getX(),
-                        e.getY() + Panel.this.getY()
-                );
+                int dx = e.getX() - x;
+                int dy = e.getY() - y;
 
-                Panel.this.setLocation(point);
+                Point location = Panel.this.getLocation();
+                location.translate(dx, dy);
+                Panel.this.setLocation(location);
 
             }
 
@@ -66,7 +131,13 @@ public class Panel extends View {
             public void mouseMoved(MouseEvent e) {
 
             }
-        });
+        }
+
+        DragHandle dragHandle = new DragHandle();
+
+        headerView.addMouseMotionListener(dragHandle);
+        headerView.addMouseListener(dragHandle);
+
 
 
         titleLabel = new JLabel(title, JLabel.CENTER);
