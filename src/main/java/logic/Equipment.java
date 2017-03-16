@@ -199,8 +199,23 @@ public class Equipment {
         this.enhancedValue = enhancedValue;
     }
 
+    /**
+     * this method is to refresh the value of equipment accoding to the level of player
+     * @param level int
+     */
+
     public void levelRefresh(int level) {
-        //甄理填代码
+        if (level >= 1 && level <= 4){
+            this.setEnhancedValue(1);
+        }else if (level >= 5 && level <= 8){
+            this.setEnhancedValue(2);
+        }else if (level >= 9 && level <= 12){
+            this.setEnhancedValue(3);
+        }else if (level >= 13 && level <= 16){
+            this.setEnhancedValue(4);
+        }else if (level >= 17){
+            this.setEnhancedValue(5);
+        }
     }
 
     /**
