@@ -1,9 +1,12 @@
 package ui.panel;
 
+import javafx.scene.layout.Pane;
 import ui.view.View;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 
 /**
  * This Panel class sets a template for other panels which extends View calss
@@ -44,6 +47,27 @@ public class Panel extends View {
         headerView.setLocation(0, 0);
         add(headerView);
         setBackground(new Color(0xF4F4F4));
+
+
+        headerView.addMouseMotionListener(new MouseMotionListener() {
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                Point point = new Point();
+                point.setLocation(
+                        e.getX() + Panel.this.getX(),
+                        e.getY() + Panel.this.getY()
+                );
+
+                Panel.this.setLocation(point);
+
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+
+            }
+        });
+
 
         titleLabel = new JLabel(title, JLabel.CENTER);
         titleLabel.setSize(getWidth(), 20);

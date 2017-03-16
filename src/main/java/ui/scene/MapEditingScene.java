@@ -62,6 +62,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      * And adds events on buttons
      */
     protected void initSubviews() {
+        /**
+         * Add a GameMapView on MapEditing Scene, and set delegate to this scene.
+         */
         gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);
         contentView.add(gameMapView);
@@ -78,9 +81,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         contentView.add(validationMessageLabel);
 
         controlViewContainerView = new View();
-        controlViewContainerView.setLocation(820, 40);
+        controlViewContainerView.setLocation(820, 0);
         controlViewContainerView.setSize(180, 560);
-        add(controlViewContainerView);
+        contentView.add(controlViewContainerView);
 
         repaint();
 
