@@ -40,11 +40,6 @@ public class PlayerPanel extends Panel implements Observer {
         this.player = player;
         dataToView();
         player.addObserver(this);
-        
-        player.setPlayerImageName(
-                playerTypeValueLabel.getText(),
-                playerPartyValueLabel.getText()
-        );
 
     }
 

@@ -462,7 +462,10 @@ public class Player extends Cell{
         notifyObservers(HP_CHANGE);
     }
 
-    public void setPlayerImageName(String playerType, String playerParty) {
+    public String getPlayerImageName(String playerType, String playerParty) {
+        if (isDead) {
+            return "rip.png";
+        }
 
         if (playerType == PLAYER_TYPE_BULLY) {
             if (playerParty == PLAYER_PARTY_PLAYER){
@@ -498,6 +501,8 @@ public class Player extends Cell{
 
             }
         }
+
+        return imageName;
     }
 
     /**

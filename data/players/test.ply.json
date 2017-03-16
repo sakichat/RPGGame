@@ -1,0 +1,38 @@
+{
+  "abilityScores": {
+    "STR": 8,
+    "WIS": 4,
+    "CON": 24,
+    "DEX": 8,
+    "CHA": 20,
+    "INT": 16
+  },
+  "backpack": [
+    {
+      "name": "Axe of Cenarius",
+      "type": "Weapon",
+      "enhancedAttribute": "DB",
+      "enhancedValue": 5
+    }
+  ],
+  "equipments": {
+    "Ring": {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    },
+    "Weapon": {
+      "name": "Ashbringer",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 5
+    }
+  },
+  "level": 4,
+  "name": "test",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 7
+}

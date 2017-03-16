@@ -116,6 +116,12 @@ public class PlayerControlView extends ControlView {
                 player.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
                 dataToView();
                 mapEditingScene.playerPanel.dataToView();
+
+                player.setImageName(
+                        player.getPlayerImageName(
+                                player.getPlayerType(),
+                                playerPartyLabel.getText())
+                );
             }
         });
 
@@ -125,6 +131,12 @@ public class PlayerControlView extends ControlView {
                 player.setPlayerParty(Player.PLAYER_PARTY_HOSTILE);
                 dataToView();
                 mapEditingScene.playerPanel.dataToView();
+
+                player.setImageName(
+                        player.getPlayerImageName(
+                                player.getPlayerType(),
+                                playerPartyLabel.getText())
+                );
             }
         });
 
