@@ -79,4 +79,8 @@ public class Play {
 
         return enterPoint;
     }
+
+    public void removeChest(){
+        
+    }
 }
