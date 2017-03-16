@@ -22,6 +22,8 @@ public class Play {
     private int currentMapIndex;
     private GameMap currentMap;
 
+    private Point direction;
+
     /**
      * This is the method for get currentMap,
      * and add player into the map(enter).
@@ -51,9 +53,8 @@ public class Play {
 
     /**
      * This is the method to make player move.
-     * @param direction
      */
-    public void move(Point direction){
+    public void move(){
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
 
@@ -81,6 +82,6 @@ public class Play {
     }
 
     public void removeChest(){
-        
+
     }
 }
