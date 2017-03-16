@@ -380,6 +380,7 @@ public class Player extends Cell{
      */
     public void setPlayerType(String playerType) {
         this.playerType = playerType;
+        setChanged();
         notifyObservers(PLAYER_TYPE_CHANGE);
     }
 
@@ -397,6 +398,7 @@ public class Player extends Cell{
      */
     public void setPlayerParty(String playerParty) {
         this.playerParty = playerParty;
+        setChanged();
         notifyObservers(PLAYER_PARTY_CHANGE);
     }
 
@@ -413,14 +415,9 @@ public class Player extends Cell{
      */
     public void setDead(boolean dead) {
         isDead = dead;
+        setChanged();
         notifyObservers(DEAD_CHANGE);
     }
-
-//    /**
-//     * initialization block
-//     */
-//    {
-//    }
 
     /**
      * Constructor without parameters.
@@ -434,6 +431,33 @@ public class Player extends Cell{
      */
     public Player(String name) {
         this.name = name;
+    }
+
+    /**
+     * Override the getter for the ImageName
+     * @return
+     */
+    @Override
+    public String getImageName() {
+        String imageName;
+
+        if (isDead) {
+            imageName = "rip.png";
+            return imageName;
+        }
+
+        HashMap<String, String> partyNames = new HashMap<>();
+        partyNames.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
+        partyNames.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
+        partyNames.put(Player.PLAYER_PARTY_PLAYER, "player");
+
+        HashMap<String, String> typeNames = new HashMap<>();
+        typeNames.put(PLAYER_TYPE_BULLY, "bully");
+        typeNames.put(PLAYER_TYPE_TANK, "tank");
+        typeNames.put(PLAYER_TYPE_NIMBLE, "nimble");
+
+        return partyNames.get(playerParty) + "_" + typeNames.get(playerType) + ".png";
+
     }
 
 
@@ -457,33 +481,16 @@ public class Player extends Cell{
      * @param hp int
      */
     public void setHp(int hp) {
+        if (hp < 0) {
+            hp = 0;
+        }
+        if (hp == 0) {
+            dead();
+        }
         this.hp = hp;
+
         setChanged();
         notifyObservers(HP_CHANGE);
-    }
-
-
-    @Override
-    public String getImageName() {
-        String imageName;
-
-        if (isDead) {
-            imageName = "rip.png";
-            return imageName;
-        }
-
-        HashMap<String, String> partyNames = new HashMap<>();
-        partyNames.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
-        partyNames.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
-        partyNames.put(Player.PLAYER_PARTY_PLAYER, "player");
-
-        HashMap<String, String> typeNames = new HashMap<>();
-        typeNames.put(PLAYER_TYPE_BULLY, "bully");
-        typeNames.put(PLAYER_TYPE_TANK, "tank");
-        typeNames.put(PLAYER_TYPE_NIMBLE, "nimble");
-
-        return partyNames.get(playerParty) + "_" + typeNames.get(playerType) + ".png";
-
     }
 
     /**
@@ -559,16 +566,15 @@ public class Player extends Cell{
     }
 
     /**
-     * The method is to
+     * The method is to describe the dead status;
      * @return
      */
     public void dead() {
         setDead(true);
     }
 
-
     /**
-     * this method is to refresh the value of equipment accoding to the level of player
+     * this method is to refresh the value of equipment according to the level of player
      */
 
     public void refreshEquipment(int level){
@@ -611,6 +617,5 @@ public class Player extends Cell{
         }
         this.pickUpEquipment(inEquipment);
     }
-
 
 }
