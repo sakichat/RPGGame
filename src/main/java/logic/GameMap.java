@@ -120,6 +120,10 @@ public class GameMap {
      */
 
     public boolean hasCell(Point location){
+        if (!inMap(location)){
+            return false;
+        }
+
         return getCell(location) != null;
     }
 
@@ -140,94 +144,6 @@ public class GameMap {
         cells[startY][startX] = null;
         cells[endY][endX] = cell;
     }
-
-    /**
-     * This method makes player go up.
-     * @param point
-     */
-
-    public void goUp(Point point){
-        Point upPoint = new Point(0,1);
-        Point targetPoint = point.add(upPoint);
-        if (!hasCell(targetPoint)){
-            moveCell(point, targetPoint);
-        }else if (getCell(targetPoint) instanceof Exit){
-            exitFromMap();
-        }
-    }
-
-    /**
-     * This method makes player can go down.
-     * @param point
-     */
-
-    public void goDown(Point point){
-        Point downPoint = new Point(0,-1);
-        Point targetPoint = point.add(downPoint);
-        if (!hasCell(targetPoint)){
-            moveCell(point, targetPoint);
-        }else if (getCell(targetPoint) instanceof Exit){
-            exitFromMap();
-        }
-    }
-
-    /**
-     * This method makes player can go left.
-     * @param point
-     */
-    public void goLeft(Point point){
-        Point leftPoint = new Point(-1,0);
-        Point targetPoint = point.add(leftPoint);
-        if (!hasCell(targetPoint)){
-            moveCell(point, targetPoint);
-        }else if (getCell(targetPoint) instanceof Exit){
-            exitFromMap();
-        }
-    }
-
-    /**
-     * This method makes player can go right.
-     * @param point
-     */
-    public void goRight(Point point){
-        Point rightPoint = new Point(1,0);
-        Point targetPoint = point.add(rightPoint);
-        if (!hasCell(targetPoint)){
-            moveCell(point, targetPoint);
-        }else if (getCell(targetPoint) instanceof Exit){
-            exitFromMap();
-        }
-    }
-
-    /**
-     * This is a method makes player enter into the map.
-     * @param entrance
-     * @return Point
-     */
-
-    public Point enterIntoMap(Entrance entrance){
-        Point enterPoint = new Point();
-        LinkedList<Point> enterPointChoices = new LinkedList<>();
-
-        enterPointChoices = entrance.getLocation().directions();
-        for (Point enterPointChoice : enterPointChoices) {
-            if (enterPointChoice == null){
-                enterPoint = enterPointChoice;
-                break;
-            }
-        }
-
-        return enterPoint;
-    }
-
-    /**
-     * This is a method makes player exit from the map.
-     */
-    public void exitFromMap(){
-
-
-    }
-
 
     /**
      * this method is to get all entrances

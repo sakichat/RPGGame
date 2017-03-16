@@ -54,11 +54,12 @@ public class Point {
      * @return LinkedList<Point>
      */
 
+    public final static Point DIRECTION_UP = new Point(0, -1);
+
     public static LinkedList<Point> directions(){
         LinkedList<Point> points = new LinkedList<>();
 
-        Point pointUp = new Point(0,1);
-        points.add(pointUp);
+        points.add(DIRECTION_UP);
 
         Point pointRight = new Point(1,0);
         points.add(pointRight);
