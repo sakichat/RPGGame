@@ -142,7 +142,47 @@ public class GameMap {
     }
 
     /**
-     * this method is to get  all entrances
+     * This method makes player go up.
+     * @param point
+     */
+    public void goUp(Point point){
+        Point upPoint = new Point(0,1);
+        Point targetPoint = point.add(upPoint);
+        moveCell(point, targetPoint);
+    }
+
+    /**
+     * This method makes player can go down.
+     * @param point
+     */
+    public void goDown(Point point){
+        Point downPoint = new Point(0,-1);
+        Point targetPoint = point.add(downPoint);
+        moveCell(point, targetPoint);
+    }
+
+    /**
+     * This method makes player can go left.
+     * @param point
+     */
+    public void goLeft(Point point){
+        Point leftPoint = new Point(-1,0);
+        Point targetPoint = point.add(leftPoint);
+        moveCell(point, targetPoint);
+    }
+
+    /**
+     * This method makes player can go right.
+     * @param point
+     */
+    public void goRight(Point point){
+        Point rightPoint = new Point(1,0);
+        Point targetPoint = point.add(rightPoint);
+        moveCell(point, targetPoint);
+    }
+
+    /**
+     * this method is to get all entrances
      * @return List<Entreance>
      */
 
