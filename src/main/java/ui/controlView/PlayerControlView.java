@@ -115,6 +115,7 @@ public class PlayerControlView extends ControlView {
             public void actionPerformed(ActionEvent e) {
                 player.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
                 dataToView();
+                mapEditingScene.playerPanel.dataToView();
             }
         });
 
@@ -123,6 +124,7 @@ public class PlayerControlView extends ControlView {
             public void actionPerformed(ActionEvent e) {
                 player.setPlayerParty(Player.PLAYER_PARTY_HOSTILE);
                 dataToView();
+                mapEditingScene.playerPanel.dataToView();
             }
         });
 
