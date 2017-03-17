@@ -56,7 +56,7 @@ public class Chest extends Cell{
      * This method is used to check if the chest is empty or not.
      * @return
      */
-    private boolean isChestEmpty(){
+    public boolean isChestEmpty(){
         if (equipments.isEmpty()) {
             return true;
         } else {

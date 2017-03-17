@@ -82,6 +82,13 @@ public class Play {
     }
 
     public void removeChest(){
+        Point location = player.getLocation();
+        Point chestPoint = location.add(direction);
+
+        Chest chest = (Chest) currentMap.getCell(chestPoint);
+        if (!chest.isChestEmpty()){
+
+        }
 
     }
 }
