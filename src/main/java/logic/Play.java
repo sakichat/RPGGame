@@ -81,7 +81,19 @@ public class Play {
         return enterPoint;
     }
 
-    public void removeChest(){
 
+    /**
+     * This is the method for remove empty chest.
+     */
+    public void removeChest(){
+        Point location = player.getLocation();
+        Point chestPoint = location.add(direction);
+
+        if (currentMap.getCell(chestPoint) instanceof Chest){
+            Chest chest = (Chest) currentMap.getCell(chestPoint);
+            if (!chest.isChestEmpty()){
+                currentMap.removeCell(chestPoint);
+            }
+        }
     }
 }
