@@ -41,6 +41,7 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         playerPanel.dataToView();
         inventoryPanel.setPlayer(player);
         inventoryPanel.setButtonEnabled(true);
+        inventoryPanel.setButtonText("Drop");
         inventoryPanel.dataToView();
     }
 

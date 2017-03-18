@@ -62,6 +62,27 @@ public class InventoryPanel extends Panel implements Observer {
     }
 
     /**
+     * property buttonText and Getter & Setter.
+     */
+    private String buttonText;
+
+    /**
+     * Getter for buttonText;
+     * @return
+     */
+    public String getButtonText() {
+        return buttonText;
+    }
+
+    /**
+     * Setter for buttonText.
+     * @param buttonText
+     */
+    public void setButtonText(String buttonText) {
+        this.buttonText = buttonText;
+    }
+
+    /**
      * Observer
      */
 
@@ -292,6 +313,8 @@ public class InventoryPanel extends Panel implements Observer {
 
     public void dataToView() {
 
+//        title = "Inventory - " + player.getName();
+
         if (buttonEnabled) {
             add(unequipWeaponBotton);
             add(unequipShieldBotton);
@@ -384,7 +407,7 @@ public class InventoryPanel extends Panel implements Observer {
                 }
             });
 
-            JButton dropButton = new JButton("drop");
+            JButton dropButton = new JButton(buttonText);
             dropButton.setSize(60, 20);
             dropButton.setLocation(380, y);
             if (buttonEnabled) {
