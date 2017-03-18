@@ -217,14 +217,10 @@ public class Player extends Cell{
         notifyObservers(BACKPACK_CHANGE);
     }
 
-    public void backpackLevelRefresh(int level) {
-        //甄理
-    }
-
-
 
     /**
      * Equipments and methods.
+     * The property of equipments here is means the worn equipments on the player
      */
 
     @Expose
@@ -306,11 +302,167 @@ public class Player extends Cell{
     }
 
     /**
-     * Inventory operations.
+     * The following methods are used to manage inventories.
      */
 
-    private List<Equipment> getInventories() {
-        return new LinkedList<Equipment>();
+    /**
+     * The method is used to get all inventories the player owned.
+     * @return
+     */
+    public List<Equipment> getInventories() {
+        List<Equipment> inventory = new LinkedList<>();
+
+        for (Equipment equipment : equipments.values()) {
+            inventory.add(equipment);
+        }
+
+        for (Equipment equipment : backpack) {
+            inventory.add(equipment);
+        }
+
+        return inventory;
+    }
+
+    /**
+     * The method is used to drop an inventory.
+     * @param dropEquipment
+     */
+    public void dropInventories(Equipment dropEquipment) {
+
+        boolean worn = false;
+
+        String type = dropEquipment.getType();
+        if (equipments.get(type) != null) {
+            worn = equipments.get(type).getName().equals(dropEquipment.getName());
+        }
+
+        if (worn) {
+            equipments.remove(type);
+        } else {
+            dropEquipment(dropEquipment);
+        }
+    }
+
+    /**
+     * Interaction methods.
+     * NPCs refresh their inventories according to the player level;
+     * Friendly players hand out random equipments to complete exchange;
+     * Hostile players dead;
+     * Loot the chest;
+     * Loot the dead NPCs.
+     */
+
+    /**
+     * This method is used by NPCs to refresh the value of inventories.
+     * according to the level of player.
+     */
+    public void inventoryLevelRefresh(){
+
+        List<Equipment> inventories = getInventories();
+        if (!inventories.isEmpty()) {
+            for (Equipment equipment : inventories) {
+                equipment.levelRefresh(level);
+            }
+        }
+//        if(!equipments.isEmpty()){
+//            for (Equipment equipment : equipments.values()) {
+//                equipment.levelRefresh(level);
+//            }
+//        }
+//        if (!backpack.isEmpty()){
+//            for (Equipment equipment : backpack){
+//                equipment.levelRefresh(level);
+//            }
+//        }
+    }
+
+
+    /**
+     * The method will be called by a NPC.
+     * The NPC will random pick an equipment from their inventory.
+     * @param gotEquipment
+     * @return The return value will be the equipment random picked up.
+     */
+    public Equipment randomExchange(Equipment gotEquipment) {
+
+        List<Equipment> inventories = getInventories();
+        int randomIndex = (int)(Math.random() * inventories.size());
+        Equipment handOutEquipment = inventories.get(randomIndex);
+
+        dropInventories(handOutEquipment);
+        pickUpEquipment(gotEquipment);
+        return handOutEquipment;
+    }
+
+//    /**
+//     * This method is used by a friendly NPC to hand out an equipment
+//     * @param outEquipment Equipment
+//     * @param inEquipment Equipment
+//     */
+//    public void exchangeEquipment(Equipment outEquipment, Equipment inEquipment){
+//        boolean onBody = false;
+//        boolean onBackpack = false;
+//        for (String equipment : equipments.keySet()){
+//            if (outEquipment.getName().equals(equipments.get(equipment).getName())){
+//                onBody = true;
+//            }
+//        }
+//        if (!onBody){
+//            for (Equipment equipment : backpack){
+//                if (outEquipment.getName().equals(equipment.getName())){
+//                    onBackpack = true;
+//                }
+//            }
+//        }
+//        if (onBody){
+//            this.unequip(outEquipment);
+//        }else if (onBackpack){
+//            this.dropEquipment(outEquipment);
+//        }
+//        this.pickUpEquipment(inEquipment);
+//    }
+
+    /**
+     * The method is used to attack a hostilePlayer.
+     * @param hostilePlayer
+     */
+    public void attack(Player hostilePlayer) {
+        hostilePlayer.setHp(0);
+    }
+
+    /**
+     * The method is used by a player to loot a chest.
+     * @param chest
+     */
+    public void lootChest(Chest chest) {
+
+        int backpackEmptySize = 10 - backpack.size();
+        int chestSize = chest.getEquipments().size();
+        int lootSize = Math.min(backpackEmptySize, chestSize);
+
+        for (int i = 0; i < lootSize; i++) {
+            pickUpEquipment(chest.getEquipments().get(0));
+        }
+
+    }
+
+    /**
+     * The method is used by a player to loot a deadNPC.
+     * @param deadNPC
+     */
+    public void lootDeadNPC(Player deadNPC) {
+
+        List<Equipment> inventories = getInventories();
+
+        int backpackEmptySize = 10 - backpack.size();
+        int inventoriesSize = inventories.size();
+        int lootSize = Math.min(backpackEmptySize, inventoriesSize);
+
+        for (int i = 0; i < lootSize; i++) {
+            Equipment lootEquipment = inventories.get(0);
+            pickUpEquipment(lootEquipment);
+            deadNPC.dropInventories(lootEquipment);
+        }
     }
 
 
@@ -494,6 +646,14 @@ public class Player extends Cell{
     }
 
     /**
+     * The method is to describe the dead status;
+     * @return
+     */
+    public void dead() {
+        setDead(true);
+    }
+
+    /**
      * This method is used to calculate the hp value based on the D20 rules.
      */
     public void generateHp() {
@@ -563,59 +723,6 @@ public class Player extends Cell{
      */
     public int getTotalDamageBonus() {
         return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
-    }
-
-    /**
-     * The method is to describe the dead status;
-     * @return
-     */
-    public void dead() {
-        setDead(true);
-    }
-
-    /**
-     * this method is to refresh the value of equipment according to the level of player
-     */
-
-    public void refreshEquipment(int level){
-        if(!equipments.isEmpty()){
-            for (String equipment : equipments.keySet()){
-                equipments.get(equipment).levelRefresh(level);
-            }
-        }
-        if (!backpack.isEmpty()){
-            for (Equipment equipment : backpack){
-                equipment.levelRefresh(level);
-            }
-        }
-    }
-
-    /**
-     * this method is to interact with the chest
-     * @param outEquipment Equipment
-     * @param inEquipment Equipment
-     */
-    public void exchangeEquipment(Equipment outEquipment, Equipment inEquipment){
-        boolean onBody = false;
-        boolean onBackpack = false;
-        for (String equipment : equipments.keySet()){
-            if (outEquipment.getName().equals(equipments.get(equipment).getName())){
-                onBody = true;
-            }
-        }
-        if (!onBody){
-            for (Equipment equipment : backpack){
-                if (outEquipment.getName().equals(equipment.getName())){
-                    onBackpack = true;
-                }
-            }
-        }
-        if (onBody){
-            this.unequip(outEquipment);
-        }else if (onBackpack){
-            this.dropEquipment(outEquipment);
-        }
-        this.pickUpEquipment(inEquipment);
     }
 
 }
