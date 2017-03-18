@@ -36,6 +36,7 @@ public class InventoryPanel extends Panel implements Observer {
      */
     public void setPlayer(Player player) {
         this.player = player;
+        titleLabel.setText("Inventory - " + player.getName());
         dataToView();
         player.addObserver(this);
     }
@@ -109,9 +110,7 @@ public class InventoryPanel extends Panel implements Observer {
     @Override
     protected void init() {
         super.init();
-
         setSize(480, 540);
-        title = "Inventory";
     }
 
     private EquipmentView weaponEquipmentView;
@@ -313,8 +312,6 @@ public class InventoryPanel extends Panel implements Observer {
 
     public void dataToView() {
 
-//        title = "Inventory - " + player.getName();
-
         if (buttonEnabled) {
             add(unequipWeaponBotton);
             add(unequipShieldBotton);
@@ -407,16 +404,20 @@ public class InventoryPanel extends Panel implements Observer {
                 }
             });
 
-            JButton dropButton = new JButton(buttonText);
-            dropButton.setSize(60, 20);
-            dropButton.setLocation(380, y);
+            JButton operationButton = new JButton(buttonText);
+            operationButton.setSize(60, 20);
+            operationButton.setLocation(380, y);
             if (buttonEnabled) {
-                backpackSubPanel.add(dropButton);
+                backpackSubPanel.add(operationButton);
             }
-            dropButton.addActionListener(new ActionListener() {
+            operationButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    player.dropEquipment(equipment);
+                    if (buttonText == "Drop") {
+                        player.dropEquipment(equipment);
+                    } else if (buttonText == "Exchange") {
+                        //delegate  + player dropInventroy
+                    }
                 }
             });
 
