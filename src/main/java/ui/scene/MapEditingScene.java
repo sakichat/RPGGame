@@ -255,6 +255,10 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         build(chest);
     }
 
+    /**
+     * The method is used to showChestViewInside.
+     * @param chest
+     */
     public void showChestViewInside(Chest chest) {
 
         equipmentSelectorPanel = new EquipmentSelectorPanel();
@@ -272,8 +276,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     }
 
     /**
-     * This method is to paint a chest contains a selected equipment on the specific cell view
-     * And remove the selector panel.
+     * This method is to add equipment into a chest.
      * @param selectorPanel EquipmentSelectorPanel
      * @param equipment     Equipment
      */
@@ -282,8 +285,6 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
         Chest chest = equipmentPanel.getChest();
         chest.addEquipment(equipment);
-//        build(chest);
-
     }
 
     /**
