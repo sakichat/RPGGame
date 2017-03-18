@@ -96,7 +96,7 @@ public class Chest extends Cell{
      * @param level int
      */
 
-    public void refreshChest(int level){
+    public void chestLevelRefresh(int level){
         if (equipments != null){
             for (Equipment equipment : equipments){
                 equipment.levelRefresh(level);
