@@ -1,6 +1,10 @@
 package ui.scene;
 
 import logic.GameMap;
+import logic.Play;
+import logic.Player;
+import ui.panel.InventoryPanel;
+import ui.panel.PlayerPanel;
 import ui.view.GameMapView;
 import ui.view.View;
 
@@ -93,8 +97,51 @@ public class PlayScene extends Scene {
                 PlayScene.this.navigationView.popTo(MainScene.class);
             }
         });
-
-
-
     }
+
+    /**
+     * Relative methods about view player
+     */
+
+    PlayerPanel playerPanel;
+    InventoryPanel inventoryPanel;
+
+    public void viewAttribute(Player player) {
+        playerPanel = new PlayerPanel();
+        playerPanel.setPlayer(player);
+        playerPanel.setLocation(450, 10);
+        contentView.add(playerPanel);
+
+        repaint();
+    }
+
+    public void viewInventory(Player player) {
+        inventoryPanel = new InventoryPanel();
+        inventoryPanel.setPlayer(player);
+        if (player.getPlayerType() == Player.PLAYER_PARTY_PLAYER) {
+            inventoryPanel.setButtonEnabled(true);
+            inventoryPanel.setButtonText("Drop");
+        }
+        inventoryPanel.setLocation(330, 10);
+        contentView.add(inventoryPanel);
+
+        repaint();
+    }
+
+    /**
+     * This method is used to show the InventoryPanel when player exchange equipment with friendly NPC
+     * This method should be called by the ActionListener of middleDirection button.
+     * @param player
+     */
+    private void showInventoryToExchange(Player player) {
+        inventoryPanel = new InventoryPanel();
+        inventoryPanel.setPlayer(player);
+        inventoryPanel.setButtonEnabled(true);
+        inventoryPanel.setButtonText("Exchange");
+        inventoryPanel.setLocation(330, 10);
+        contentView.add(inventoryPanel);
+
+        repaint();
+    }
+
 }
