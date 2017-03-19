@@ -82,13 +82,13 @@ public class PlayingControlView extends View {
         label.setSize(160, 40);
         label.setLocation(10, 10);
         add(label);
-        playerNameLabel = label;
+        playerPartyLabel = label;
 
         label = new JLabel("", JLabel.LEFT);
         label.setSize(160, 40);
         label.setLocation(10, 60);
         add(label);
-        playerPartyLabel = label;
+        playerNameLabel = label;
 
         JButton button;
 
