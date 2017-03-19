@@ -13,7 +13,25 @@ import java.awt.event.ActionListener;
  * @version 0.2
  */
 public class ReadyScene extends Scene {
+
     private Play play;
+
+    /**
+     * Getter for play.
+     * @return
+     */
+    public Play getPlay() {
+        return play;
+    }
+
+    /**
+     * Setter for play.
+     * @param play
+     */
+    public void setPlay(Play play) {
+        this.play = play;
+        dataToView();
+    }
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -28,6 +46,8 @@ public class ReadyScene extends Scene {
 
     }
 
+    JLabel playNameLabel;
+
     /**
      * This method creates components on this scene
      * And adds events on buttons
@@ -38,7 +58,7 @@ public class ReadyScene extends Scene {
         label.setSize(160, 40);
         label.setLocation(20, 20);
         contentView.add(label);
-        JLabel playNameLabel = label;
+        playNameLabel = label;
 
         JButton button = new JButton("New");
         button.setSize(160, 40);
@@ -63,5 +83,9 @@ public class ReadyScene extends Scene {
         });
 
         repaint();
+    }
+
+    public void dataToView() {
+        playNameLabel.setText(play.getName());
     }
 }
