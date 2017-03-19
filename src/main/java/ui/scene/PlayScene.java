@@ -35,7 +35,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         titleLabel.setText(play.getCurrentMap().getName());
         gameMapView.setGameMap(play.getCurrentMap());
 
-        play.resolveMap();
+//        play.resolveMap();
     }
 
     /**
@@ -110,7 +110,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         playingControlView.setLocation(820, 40);
         add(playingControlView);
 
-        gameMapView.setSelectedLocation(play.enterIntoMap());
+//        gameMapView.setSelectedLocation(play.enterIntoMap());
 
         repaint();
 
