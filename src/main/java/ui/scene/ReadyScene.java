@@ -12,18 +12,6 @@ import java.awt.event.ActionListener;
  * @version 0.2
  */
 public class ReadyScene extends Scene {
-    private Campaign campaign;
-
-    public Campaign getCampaign() {
-        return campaign;
-    }
-
-    public void setCampaign(Campaign campaign) {
-        this.campaign = campaign;
-
-        titleLabel.setText(campaign.getMapName(0));
-    }
-
     @Override
     protected void init() {
         super.init();

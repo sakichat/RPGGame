@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
  */
 public class PlayScene extends Scene {
 
+    private Play play;
     private GameMap gameMap;
     private GameMapView gameMapView;
 
@@ -29,6 +30,14 @@ public class PlayScene extends Scene {
         this.gameMap = gameMap;
         titleLabel.setText(gameMap.getName());
         gameMapView.setGameMap(gameMap);
+    }
+
+    public Play getPlay() {
+        return play;
+    }
+
+    public void setPlay(Play play) {
+        this.play = play;
     }
 
     @Override
