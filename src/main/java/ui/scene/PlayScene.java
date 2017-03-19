@@ -2,7 +2,9 @@ package ui.scene;
 
 import logic.Play;
 import logic.Player;
+import logic.Point;
 import ui.panel.InventoryPanel;
+import ui.panel.MapDelegate;
 import ui.panel.PlayerPanel;
 import ui.view.GameMapView;
 import ui.view.View;
@@ -16,7 +18,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class PlayScene extends Scene {
+public class PlayScene extends Scene implements GameMapView.Delegate{
 
     /**
      * These parameters set play on this scene and create gameMapView.
@@ -61,6 +63,7 @@ public class PlayScene extends Scene {
         gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);
         contentView.add(gameMapView);
+        gameMapView.setDelegate(this);
 
         controlViewContainerView = new View();
         controlViewContainerView.setLocation(820, 40);
@@ -154,4 +157,8 @@ public class PlayScene extends Scene {
         repaint();
     }
 
+    @Override
+    public void gameMapViewSelect(GameMapView gameMapView, Point location) {
+
+    }
 }
