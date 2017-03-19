@@ -1,0 +1,49 @@
+{
+  "abilityScores": {
+    "STR": 12,
+    "WIS": 16,
+    "CON": 8,
+    "DEX": 24,
+    "CHA": 24,
+    "INT": 12
+  },
+  "backpack": [],
+  "equipments": {
+    "Shield": {
+      "name": "Ghostwalker",
+      "type": "Shield",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 4
+    },
+    "Ring": {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    },
+    "Armor": {
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+    },
+    "Boots": {
+      "name": "Bone Stompers",
+      "type": "Boots",
+      "enhancedAttribute": "DEX",
+      "enhancedValue": 5
+    },
+    "Weapon": {
+      "name": "Ashbringer",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 5
+    }
+  },
+  "level": 1,
+  "name": "tiotio",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 9
+}
