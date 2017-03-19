@@ -64,12 +64,7 @@ public class MapFileManager {
     public static void save(GameMap gameMap){
         String name = gameMap.getName();
         File file = path(name);
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeAdapter(Cell.class, new CellSerialization())
-                .setPrettyPrinting()
-                .create();
-        String content = gson.toJson(gameMap);
+        String content = FileManager.defaultGson().toJson(gameMap);
         FileManager.stringToFile(content,file);
 
     }
