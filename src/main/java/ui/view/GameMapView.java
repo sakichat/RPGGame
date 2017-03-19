@@ -166,6 +166,10 @@ public class GameMapView extends View {
         return selectedLocation;
     }
 
+    public void setSelectedLocation(Point selectedLocation) {
+        this.selectedLocation = selectedLocation;
+    }
+
     /**
      * This property is for a new ImageView
      */

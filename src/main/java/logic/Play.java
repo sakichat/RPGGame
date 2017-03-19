@@ -80,7 +80,7 @@ public class Play {
      * This is the method for get currentMap,
      * and add player into the map(enter).
      */
-    private void resolveMap(){
+    public void resolveMap(){
         Point enterPoint = enterIntoMap();
         currentMap.addCell(player, enterPoint);
     }
