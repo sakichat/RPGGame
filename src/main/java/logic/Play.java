@@ -56,6 +56,8 @@ public class Play {
      */
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
+
+        currentMap = MapFileManager.read(campaign.getMapName(currentMapIndex));
     }
 
     /**
@@ -79,7 +81,6 @@ public class Play {
      * and add player into the map(enter).
      */
     private void resolveMap(){
-        currentMap = MapFileManager.read(campaign.getMapName(currentMapIndex));
         Point enterPoint = enterIntoMap();
         currentMap.addCell(player, enterPoint);
     }

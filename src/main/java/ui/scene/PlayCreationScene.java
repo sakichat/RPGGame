@@ -133,7 +133,7 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         playerSelectorPanel.setLocation(460, 80);
         playerSelectorPanel.setButtonText("Select");
         playerSelectorPanel.setPlayerDelegate(this);
-        add(playerSelectorPanel);
+        contentView.add(playerSelectorPanel);
     }
 
     @Override
@@ -149,7 +149,7 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         campaignSelectorPanel.setLocation(460, 130);
         campaignSelectorPanel.setButtonText("Select");
         campaignSelectorPanel.setCampaignDelegate(this);
-        add(campaignSelectorPanel);
+        contentView.add(campaignSelectorPanel);
     }
 
     @Override
