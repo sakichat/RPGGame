@@ -121,20 +121,16 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
             @Override
             public void actionPerformed(ActionEvent e) {
                 ReadyScene readyScene = new ReadyScene();
+                play.setName(playNameTextField.getText());
                 readyScene.setPlay(play);
                 PlayCreationScene.this.navigationView.push(readyScene);
             }
         });
     }
 
-    public void dataToView() {
-        playerNameLabel.setText(play.getPlayer().getName());
-        campaignNameLabel.setText(play.getCampaign().getName());
-    }
-
     private void selectPlayer() {
         PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
-        playerSelectorPanel.setLocation(340, 80);
+        playerSelectorPanel.setLocation(460, 80);
         playerSelectorPanel.setButtonText("Select");
         playerSelectorPanel.setPlayerDelegate(this);
         add(playerSelectorPanel);
@@ -145,12 +141,12 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         remove(playerSelectorPanel);
 
         play.setPlayer(player);
-        dataToView();
+        playerNameLabel.setText(player.getName());
     }
 
     private void selectCampaign() {
         CampaignSelectorPanel campaignSelectorPanel = new CampaignSelectorPanel();
-        campaignSelectorPanel.setLocation(340, 130);
+        campaignSelectorPanel.setLocation(460, 130);
         campaignSelectorPanel.setButtonText("Select");
         campaignSelectorPanel.setCampaignDelegate(this);
         add(campaignSelectorPanel);
@@ -161,7 +157,7 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         remove(campaignSelectorPanel);
 
         play.setCampaign(campaign);
-        dataToView();
+        campaignNameLabel.setText(campaign.getName());
     }
 
 
