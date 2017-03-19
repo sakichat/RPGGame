@@ -43,6 +43,38 @@ public class Play {
     }
 
     /**
+     * Getter for campaign
+     * @return
+     */
+    public Campaign getCampaign() {
+        return campaign;
+    }
+
+    /**
+     * Setter for campaign
+     * @param campaign
+     */
+    public void setCampaign(Campaign campaign) {
+        this.campaign = campaign;
+    }
+
+    /**
+     * Getter for player
+     * @return
+     */
+    public Player getPlayer() {
+        return player;
+    }
+
+    /**
+     * Setter for player
+     * @param player
+     */
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    /**
      * This is the method for get currentMap,
      * and add player into the map(enter).
      */

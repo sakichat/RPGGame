@@ -1,5 +1,13 @@
 package ui.scene;
 
+import logic.Campaign;
+import logic.Play;
+import logic.Player;
+import ui.panel.CampaignDelegate;
+import ui.panel.CampaignSelectorPanel;
+import ui.panel.PlayerDelegate;
+import ui.panel.PlayerSelectorPanel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,7 +17,10 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class PlayCreationScene extends Scene{
+public class PlayCreationScene extends Scene implements PlayerDelegate, CampaignDelegate {
+
+    Play play = new Play();
+
     @Override
     protected void init() {
         super.init();
@@ -19,10 +30,16 @@ public class PlayCreationScene extends Scene{
         saveButtonEnabled = false;
     }
 
-    private JLabel label;
-    private JButton button;
+
+    JLabel playerNameLabel;
+    JLabel campaignNameLabel;
+
 
     public void initSubviews() {
+
+        JLabel label;
+        JButton button;
+
         label = new JLabel("Play", JLabel.RIGHT);
         label.setSize(120, 40);
         label.setLocation(20, 20);
@@ -44,7 +61,7 @@ public class PlayCreationScene extends Scene{
         contentView.add(label);
         label.setOpaque(true);
         label.setBackground(new Color(0xf4f4f4));
-        JLabel playerNameLabel = label;
+        playerNameLabel = label;
 
         button = new JButton("Select");
         button.setSize(120, 40);
@@ -63,7 +80,7 @@ public class PlayCreationScene extends Scene{
         contentView.add(label);
         label.setOpaque(true);
         label.setBackground(new Color(0xf4f4f4));
-        JLabel campaignNameLabel = label;
+        campaignNameLabel = label;
 
         button = new JButton("Select");
         button.setSize(120, 40);
@@ -86,12 +103,67 @@ public class PlayCreationScene extends Scene{
             }
         });
 
+        playerSelectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectPlayer();
+            }
+        });
+
+        campaignSelectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectCampaign();
+            }
+        });
+
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ReadyScene readyScene = new ReadyScene();
+                readyScene.setPlay(play);
                 PlayCreationScene.this.navigationView.push(readyScene);
             }
         });
     }
+
+    public void dataToView() {
+        playerNameLabel.setText(play.getPlayer().getName());
+        campaignNameLabel.setText(play.getCampaign().getName());
+    }
+
+    private void selectPlayer() {
+        PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
+        playerSelectorPanel.setLocation(340, 80);
+        playerSelectorPanel.setButtonText("Select");
+        playerSelectorPanel.setPlayerDelegate(this);
+        add(playerSelectorPanel);
+    }
+
+    @Override
+    public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
+        remove(playerSelectorPanel);
+
+        play.setPlayer(player);
+        dataToView();
+    }
+
+    private void selectCampaign() {
+        CampaignSelectorPanel campaignSelectorPanel = new CampaignSelectorPanel();
+        campaignSelectorPanel.setLocation(340, 130);
+        campaignSelectorPanel.setButtonText("Select");
+        campaignSelectorPanel.setCampaignDelegate(this);
+        add(campaignSelectorPanel);
+    }
+
+    @Override
+    public void campaignSelectorPerformAction(CampaignSelectorPanel campaignSelectorPanel, Campaign campaign) {
+        remove(campaignSelectorPanel);
+
+        play.setCampaign(campaign);
+        dataToView();
+    }
+
+
+
 }
