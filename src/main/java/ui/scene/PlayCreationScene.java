@@ -141,6 +141,7 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         remove(playerSelectorPanel);
 
         play.setPlayer(player);
+        player.setPlayerParty(Player.PLAYER_PARTY_PLAYER);
         playerNameLabel.setText(player.getName());
     }
 
