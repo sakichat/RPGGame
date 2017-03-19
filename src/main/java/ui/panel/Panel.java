@@ -6,10 +6,7 @@ import ui.view.View;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
-<<<<<<< Updated upstream
 import java.awt.event.MouseListener;
-=======
->>>>>>> Stashed changes
 import java.awt.event.MouseMotionListener;
 
 /**
@@ -52,7 +49,6 @@ public class Panel extends View {
         add(headerView);
         setBackground(new Color(0xF4F4F4));
 
-<<<<<<< Updated upstream
         ImageIcon closeButton = new ImageIcon("data/images/close_button.png");
 
         JButton closePanelButton = new JButton(closeButton);
@@ -128,19 +124,6 @@ public class Panel extends View {
                 Point location = Panel.this.getLocation();
                 location.translate(dx, dy);
                 Panel.this.setLocation(location);
-=======
-
-        headerView.addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                Point point = new Point();
-                point.setLocation(
-                        e.getX() + Panel.this.getX(),
-                        e.getY() + Panel.this.getY()
-                );
-
-                Panel.this.setLocation(point);
->>>>>>> Stashed changes
 
             }
 
@@ -148,7 +131,6 @@ public class Panel extends View {
             public void mouseMoved(MouseEvent e) {
 
             }
-<<<<<<< Updated upstream
         }
 
         DragHandle dragHandle = new DragHandle();
@@ -156,9 +138,6 @@ public class Panel extends View {
         headerView.addMouseMotionListener(dragHandle);
         headerView.addMouseListener(dragHandle);
 
-=======
-        });
->>>>>>> Stashed changes
 
 
         titleLabel = new JLabel(title, JLabel.CENTER);
