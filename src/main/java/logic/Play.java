@@ -134,9 +134,9 @@ public class Play {
 
 
     /**
-     * This is the method for remove empty chest.
+     * If chest is empty, remove it.
      */
-    public void removeChest(){
+    public void refreshChest(){
         Point location = player.getLocation();
         Point chestPoint = location.add(direction);
 
