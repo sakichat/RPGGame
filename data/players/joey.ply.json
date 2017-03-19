@@ -1,0 +1,50 @@
+{
+  "abilityScores": {
+    "STR": 24,
+    "WIS": 4,
+    "CON": 8,
+    "DEX": 16,
+    "CHA": 8,
+    "INT": 4
+  },
+  "backpack": [
+    {
+      "name": "Ashbringer",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 5
+    }
+  ],
+  "equipments": {
+    "Helmet": {
+      "name": "Coif of Delusions",
+      "type": "Helmet",
+      "enhancedAttribute": "WIS",
+      "enhancedValue": 5
+    },
+    "Armor": {
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+    },
+    "Ring": {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    },
+    "Weapon": {
+      "name": "Axe of Cenarius",
+      "type": "Weapon",
+      "enhancedAttribute": "DB",
+      "enhancedValue": 5
+    }
+  },
+  "level": 3,
+  "name": "Joey",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 10
+}
