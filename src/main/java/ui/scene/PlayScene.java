@@ -68,9 +68,9 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         gameMapView.setDelegate(this);
 
         controlViewContainerView = new View();
-        controlViewContainerView.setLocation(820, 40);
+        controlViewContainerView.setLocation(820, 0);
         controlViewContainerView.setSize(180, 560);
-        add(controlViewContainerView);
+        contentView.add(controlViewContainerView);
 
         JButton button;
 

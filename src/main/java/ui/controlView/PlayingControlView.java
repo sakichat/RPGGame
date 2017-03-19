@@ -71,12 +71,6 @@ public class PlayingControlView extends View {
     public void initSubviews() {
 
         JLabel label;
-//
-//        label = new JLabel("", JLabel.LEFT);
-//        label.setSize(160, 40);
-//        label.setLocation(10, 10);
-//        add(label);
-//        label.setText("Player");
 
         label = new JLabel("", JLabel.LEFT);
         label.setSize(160, 40);
