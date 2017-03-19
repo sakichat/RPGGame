@@ -56,7 +56,6 @@ public class Play {
      */
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
-
         currentMap = MapFileManager.read(campaign.getMapName(currentMapIndex));
     }
 
@@ -123,7 +122,7 @@ public class Play {
         Entrance entrance = currentMap.getEntrances().get(0);
         LinkedList<Point> enterPointChoices = entrance.getLocation().directions();
         for (Point enterPointChoice : enterPointChoices) {
-            if (enterPointChoice == null){
+            if (currentMap.getCell(enterPointChoice) == null){
                 enterPoint = enterPointChoice;
                 break;
             }
@@ -149,7 +148,7 @@ public class Play {
     }
 
     public void removePlayer(){
-        
+
     }
 
 }
