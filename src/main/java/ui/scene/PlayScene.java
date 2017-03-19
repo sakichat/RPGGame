@@ -24,7 +24,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
      */
     private Play play;
     private GameMapView gameMapView;
-    private GameMap gameMap;
 
     public Play getPlay() {
         return play;
@@ -175,6 +174,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
      */
     private void refreshControlView(){
         Point location = gameMapView.getSelectedLocation();
+        GameMap gameMap = gameMapView.getGameMap();
         Cell cell = gameMap.getCell(location);
 
         if (cell instanceof Player) {
@@ -184,6 +184,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
             playingControlView.setPlayer(play.getPlayer());
 
         }
+
+        playingControlView.setPlayScene(this);
+        playingControlView.repaint();
+
     }
 
 
