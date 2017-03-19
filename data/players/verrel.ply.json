@@ -1,0 +1,50 @@
+{
+  "abilityScores": {
+    "STR": 20,
+    "WIS": 12,
+    "CON": 20,
+    "DEX": 8,
+    "CHA": 16,
+    "INT": 4
+  },
+  "backpack": [
+    {
+      "name": "Bloodhoof Runespear",
+      "type": "Weapon",
+      "enhancedAttribute": "DB",
+      "enhancedValue": 5
+    },
+    {
+      "name": "Ghostwalker",
+      "type": "Shield",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 4
+    },
+    {
+      "name": "Dawn of Insanity",
+      "type": "Helmet",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 2
+    }
+  ],
+  "equipments": {
+    "Helmet": {
+      "name": "Coif of Delusions",
+      "type": "Helmet",
+      "enhancedAttribute": "WIS",
+      "enhancedValue": 5
+    },
+    "Weapon": {
+      "name": "Axe of Cenarius",
+      "type": "Weapon",
+      "enhancedAttribute": "DB",
+      "enhancedValue": 5
+    }
+  },
+  "level": 3,
+  "name": "verrel",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 7
+}

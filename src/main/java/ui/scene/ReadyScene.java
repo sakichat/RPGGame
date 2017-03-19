@@ -1,5 +1,7 @@
 package ui.scene;
 
+import logic.Campaign;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

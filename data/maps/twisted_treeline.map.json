@@ -1,0 +1,242 @@
+{
+  "name": "twisted treeline",
+  "width": 10,
+  "height": 4,
+  "cells": [
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "Exit",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 0
+          },
+          "imageName": "exit.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 2,
+            "y": 1
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Player",
+        "_object": {
+          "abilityScores": {
+            "STR": 4,
+            "WIS": 20,
+            "CON": 12,
+            "DEX": 16,
+            "CHA": 4,
+            "INT": 20
+          },
+          "backpack": [
+            {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            {
+              "name": "Axe of Cenarius",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          ],
+          "equipments": {
+            "Armor": {
+              "name": "Arming Coat",
+              "type": "Armor",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 5
+            },
+            "Boots": {
+              "name": "Bone Stompers",
+              "type": "Boots",
+              "enhancedAttribute": "DEX",
+              "enhancedValue": 5
+            }
+          },
+          "level": 14,
+          "name": "wendru",
+          "playerType": "Bully",
+          "playerParty": "Hostile",
+          "isDead": false,
+          "hp": 7,
+          "location": {
+            "x": 3,
+            "y": 1
+          },
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 7,
+            "y": 1
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null
+    ],
+    [
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 1,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Player",
+        "_object": {
+          "abilityScores": {
+            "STR": 20,
+            "WIS": 20,
+            "CON": 20,
+            "DEX": 12,
+            "CHA": 12,
+            "INT": 16
+          },
+          "backpack": [
+            {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            {
+              "name": "Ashbringer",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Bloodhoof Runespear",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "bi",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 3
+            }
+          ],
+          "equipments": {
+            "Weapon": {
+              "name": "Bloodhoof Runespear",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          },
+          "level": 2,
+          "name": "gilda",
+          "playerType": "Nimble",
+          "playerParty": "Friendly",
+          "isDead": false,
+          "hp": 4,
+          "location": {
+            "x": 2,
+            "y": 2
+          },
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 4,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      {
+        "_class": "Entrance",
+        "_object": {
+          "location": {
+            "x": 5,
+            "y": 2
+          },
+          "imageName": "entrance.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null,
+      null,
+      {
+        "_class": "Obstacle",
+        "_object": {
+          "location": {
+            "x": 8,
+            "y": 2
+          },
+          "imageName": "wall.png",
+          "changed": false,
+          "obs": []
+        }
+      },
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}

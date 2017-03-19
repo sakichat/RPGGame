@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
  */
 public class PlayScene extends Scene {
 
+    private Play play;
     private GameMap gameMap;
     private GameMapView gameMapView;
 
@@ -29,6 +30,14 @@ public class PlayScene extends Scene {
         this.gameMap = gameMap;
         titleLabel.setText(gameMap.getName());
         gameMapView.setGameMap(gameMap);
+    }
+
+    public Play getPlay() {
+        return play;
+    }
+
+    public void setPlay(Play play) {
+        this.play = play;
     }
 
     @Override
@@ -44,7 +53,7 @@ public class PlayScene extends Scene {
     private JButton downDirection;
     private JButton leftDirection;
     private JButton rightDirection;
-    private JButton middleDirection;
+    private JButton interactButton;
 
     @Override
     protected void initSubviews() {
@@ -74,7 +83,7 @@ public class PlayScene extends Scene {
         button = new JButton(new ImageIcon("data/images/center_button.png"));
         button.setLocation(700, 80);
         button.setSize(40, 40);
-        middleDirection = button;
+        interactButton = button;
         contentView.add(button);
 
         button = new JButton(new ImageIcon("data/images/right_button.png"));
@@ -130,7 +139,7 @@ public class PlayScene extends Scene {
 
     /**
      * This method is used to show the InventoryPanel when player exchange equipment with friendly NPC
-     * This method should be called by the ActionListener of middleDirection button.
+     * This method should be called by the ActionListener of interactButton button.
      * @param player
      */
     private void showInventoryToExchange(Player player) {
