@@ -55,32 +55,17 @@ public class Point {
      */
 
     public final static Point DIRECTION_UP = new Point(0, -1);
-<<<<<<< Updated upstream
     public final static Point DIRECTION_DOWN = new Point(0, 1);
     public final static Point DIRECTION_LEFT = new Point(-1, 0);
     public final static Point DIRECTION_RIGHT = new Point(1, 0);
-=======
->>>>>>> Stashed changes
 
     public static LinkedList<Point> directions(){
         LinkedList<Point> points = new LinkedList<>();
 
         points.add(DIRECTION_UP);
-<<<<<<< Updated upstream
         points.add(DIRECTION_DOWN);
         points.add(DIRECTION_LEFT);
         points.add(DIRECTION_RIGHT);
-=======
-
-        Point pointRight = new Point(1,0);
-        points.add(pointRight);
-
-        Point pointDown = new Point(0,-1);
-        points.add(pointDown);
-
-        Point pointLeft = new Point(-1,0);
-        points.add(pointLeft);
->>>>>>> Stashed changes
 
         return points;
     }

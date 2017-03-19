@@ -18,7 +18,6 @@ import java.util.LinkedList;
 public class Play {
 
     private String name;
-
     private Campaign campaign;
     private Player player;
 
@@ -81,13 +80,7 @@ public class Play {
      * This is the method for get currentMap,
      * and add player into the map(enter).
      */
-<<<<<<< Updated upstream
     public void resolveMap(){
-=======
-    private void resolveMap(){
-
-        currentMap = MapFileManager.read(campaign.getMapName(currentMapIndex));
->>>>>>> Stashed changes
         Point enterPoint = enterIntoMap();
         currentMap.addCell(player, enterPoint);
     }
@@ -111,15 +104,8 @@ public class Play {
 
     /**
      * This is the method to make player move.
-<<<<<<< Updated upstream
      */
     public void move(){
-
-    }
-    /**
-     * @param direction
-     */
-    public void move(Point direction){
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
 
@@ -148,19 +134,15 @@ public class Play {
 
 
     /**
-     * If chest is empty, remove it.
+     * This is the method for remove empty chest.
      */
-<<<<<<< HEAD
-    public void refreshChest(){
-=======
-    public void removeChest() {
->>>>>>> origin/develop
+    public void removeChest(){
         Point location = player.getLocation();
         Point chestPoint = location.add(direction);
 
-        if (currentMap.getCell(chestPoint) instanceof Chest) {
+        if (currentMap.getCell(chestPoint) instanceof Chest){
             Chest chest = (Chest) currentMap.getCell(chestPoint);
-            if (!chest.isChestEmpty()) {
+            if (!chest.isChestEmpty()){
                 currentMap.removeCell(chestPoint);
             }
         }
