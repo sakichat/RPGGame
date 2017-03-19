@@ -1,8 +1,7 @@
 package ui.scene;
 
-import logic.Play;
-import logic.Player;
-import logic.Point;
+import logic.*;
+import ui.controlView.*;
 import ui.panel.InventoryPanel;
 import ui.panel.MapDelegate;
 import ui.panel.PlayerPanel;
@@ -25,6 +24,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
      */
     private Play play;
     private GameMapView gameMapView;
+    private GameMap gameMap;
 
     public Play getPlay() {
         return play;
@@ -54,6 +54,9 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
     private JButton leftDirection;
     private JButton rightDirection;
     private JButton interactButton;
+
+
+    PlayingControlView playingControlView;
 
     /**
      * This method creates components on this scene
@@ -101,6 +104,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         button.setSize(40, 40);
         downDirection = button;
         contentView.add(button);
+
+        playingControlView = new PlayingControlView();
+        playingControlView.setLocation(820, 40);
+        add(playingControlView);
 
         repaint();
 
@@ -159,6 +166,25 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
 
     @Override
     public void gameMapViewSelect(GameMapView gameMapView, Point location) {
-
+        refreshControlView();
     }
+
+    /**
+     * This method gets cell and its location
+     * And then call generateControlView() method to add a correct controlView to controlViewContainerView
+     */
+    private void refreshControlView(){
+        Point location = gameMapView.getSelectedLocation();
+        Cell cell = gameMap.getCell(location);
+
+        if (cell instanceof Player) {
+            playingControlView.setPlayer((Player)cell);
+
+        } else {
+            playingControlView.setPlayer(play.getPlayer());
+
+        }
+    }
+
+
 }
