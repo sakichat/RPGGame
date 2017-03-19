@@ -1,6 +1,5 @@
 package ui.scene;
 
-import logic.GameMap;
 import logic.Play;
 import logic.Player;
 import ui.panel.InventoryPanel;
@@ -19,18 +18,7 @@ import java.awt.event.ActionListener;
 public class PlayScene extends Scene {
 
     private Play play;
-    private GameMap gameMap;
     private GameMapView gameMapView;
-
-    public GameMap getGameMap() {
-        return gameMap;
-    }
-
-    public void setGameMap(GameMap gameMap) {
-        this.gameMap = gameMap;
-        titleLabel.setText(gameMap.getName());
-        gameMapView.setGameMap(gameMap);
-    }
 
     public Play getPlay() {
         return play;
@@ -38,6 +26,9 @@ public class PlayScene extends Scene {
 
     public void setPlay(Play play) {
         this.play = play;
+
+        titleLabel.setText(play.getCurrentMap().getName());
+        gameMapView.setGameMap(play.getCurrentMap());
     }
 
     @Override

@@ -1,6 +1,8 @@
 package ui.scene;
 
 import logic.Campaign;
+import logic.Play;
+import sun.tools.jconsole.Plotter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +14,8 @@ import java.awt.event.ActionListener;
  * @version 0.2
  */
 public class ReadyScene extends Scene {
+    private Play play;
+
     @Override
     protected void init() {
         super.init();
@@ -40,6 +44,7 @@ public class ReadyScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayScene playScene = new PlayScene();
+                playScene.setPlay(play);
                 ReadyScene.this.navigationView.push(playScene);
             }
         });

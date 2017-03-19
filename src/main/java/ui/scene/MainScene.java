@@ -43,8 +43,8 @@ public class MainScene extends Scene {
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReadyScene readyScene = new ReadyScene();
-                MainScene.this.navigationView.push(readyScene);
+                PlayCreationScene playCreationScene = new PlayCreationScene();
+                MainScene.this.navigationView.push(playCreationScene);
             }
         });
 
