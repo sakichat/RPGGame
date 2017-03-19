@@ -12,11 +12,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This is a PlayScene for player to play on created maps.
  * @author Siyu Chen
  * @version 0.2
  */
 public class PlayScene extends Scene {
 
+    /**
+     * These parameters set play on this scene and create gameMapView.
+     */
     private Play play;
     private GameMapView gameMapView;
 
@@ -31,6 +35,9 @@ public class PlayScene extends Scene {
         gameMapView.setGameMap(play.getCurrentMap());
     }
 
+    /**
+     * This init() method overrides that in superclass to set up own properties for this subclass
+     */
     @Override
     protected void init() {
         super.init();
@@ -46,7 +53,10 @@ public class PlayScene extends Scene {
     private JButton rightDirection;
     private JButton interactButton;
 
-    @Override
+    /**
+     * This method creates components on this scene
+     * And adds events on buttons
+     */
     protected void initSubviews() {
         gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);

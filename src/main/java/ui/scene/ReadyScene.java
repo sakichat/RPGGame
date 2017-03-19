@@ -1,8 +1,6 @@
 package ui.scene;
 
-import logic.Campaign;
 import logic.Play;
-import sun.tools.jconsole.Plotter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,12 +8,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This ReadyScene means players have already created a play within player and campaign.
  * @author Siyu Chen
  * @version 0.2
  */
 public class ReadyScene extends Scene {
     private Play play;
 
+    /**
+     * This init() method overrides that in superclass to set up own properties for this subclass
+     */
     @Override
     protected void init() {
         super.init();
@@ -26,6 +28,10 @@ public class ReadyScene extends Scene {
 
     }
 
+    /**
+     * This method creates components on this scene
+     * And adds events on buttons
+     */
     protected void initSubviews() {
 
         JLabel label = new JLabel("Play");
