@@ -285,6 +285,11 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
         Chest chest = equipmentPanel.getChest();
         chest.addEquipment(equipment);
+<<<<<<< Updated upstream
+=======
+//        build(chest);
+
+>>>>>>> Stashed changes
     }
 
     /**

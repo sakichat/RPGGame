@@ -442,6 +442,7 @@ public class Player extends Cell{
 
         for (int i = 0; i < lootSize; i++) {
             pickUpEquipment(chest.getEquipments().get(0));
+            chest.getEquipments().remove(0);
         }
 
     }
@@ -724,5 +725,81 @@ public class Player extends Cell{
     public int getTotalDamageBonus() {
         return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
     }
+
+
+    /**
+     * this method is to refresh the value of equipment accoding to the level of player
+     */
+
+    public void refreshEquipment(int level){
+        if(!equipments.isEmpty()){
+            for (String equipment : equipments.keySet()){
+                equipments.get(equipment).levelRefresh(level);
+            }
+        }
+        if (!backpack.isEmpty()){
+            for (Equipment equipment : backpack){
+                equipment.levelRefresh(level);
+            }
+        }
+    }
+
+    /**
+     * this method is to interact with the chest
+     * @param outEquipment Equipment
+     * @param inEquipment Equipment
+     */
+    public void exchangeEquipment(Equipment outEquipment, Equipment inEquipment){
+        boolean onBody = false;
+        boolean onBackpack = false;
+        for (String equipment : equipments.keySet()){
+            if (outEquipment.getName().equals(equipments.get(equipment).getName())){
+                onBody = true;
+            }
+        }
+        if (!onBody){
+            for (Equipment equipment : backpack){
+                if (outEquipment.getName().equals(equipment.getName())){
+                    onBackpack = true;
+                }
+            }
+        }
+        if (onBody){
+            this.unequip(outEquipment);
+        }else if (onBackpack){
+            this.dropEquipment(outEquipment);
+        }
+        this.pickUpEquipment(inEquipment);
+    }
+
+    /**
+     * this method is to return all the equipments from the player
+     * @return List<Equipment>
+     */
+
+    public List<Equipment> inventory(){
+        List<Equipment> inventoryList = new LinkedList<>();
+        for (String equipment : equipments.keySet()){
+            Equipment inventoryEquipment = new Equipment();
+            inventoryEquipment.setName(equipments.get(equipment).getName());
+            inventoryEquipment.setType(equipments.get(equipment).getType());
+            inventoryEquipment.setEnhancedValue(equipments.get(equipment).getEnhancedValue());
+            inventoryEquipment.setEnhancedAttribute(equipments.get(equipment).getEnhancedAttribute());
+            this.unequip(equipments.get(equipment));
+            inventoryList.add(inventoryEquipment);
+        }
+        for (Equipment equipmentIn : backpack){
+            Equipment inventoryEquipment = new Equipment();
+            inventoryEquipment.setName(equipmentIn.getName());
+            inventoryEquipment.setType(equipmentIn.getType());
+            inventoryEquipment.setEnhancedAttribute(equipmentIn.getEnhancedAttribute());
+            inventoryEquipment.setEnhancedValue(equipmentIn.getEnhancedValue());
+            this.dropEquipment(equipmentIn);
+            inventoryList.add(equipmentIn);
+        }
+        return inventoryList;
+    }
+
+
 
 }
