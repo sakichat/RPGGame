@@ -292,16 +292,6 @@ public class Player extends Cell{
     }
 
     /**
-     * The method is used to refresh the equipments worn by a player when its level goes up.
-     * @param level
-     */
-    public void equipmentsLevelRefresh(int level) {
-        for (Equipment equipment : equipments.values()) {
-            equipment.levelRefresh(level);
-        }
-    }
-
-    /**
      * The following methods are used to manage inventories.
      */
 
