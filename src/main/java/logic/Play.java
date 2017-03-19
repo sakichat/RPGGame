@@ -16,6 +16,8 @@ import java.util.LinkedList;
  * remove player if inventory == null
  */
 public class Play {
+
+    private String name;
     private Campaign campaign;
     private Player player;
 
@@ -23,6 +25,22 @@ public class Play {
     private GameMap currentMap;
 
     private Point direction;
+
+    /**
+     * Getter for name.
+     * @return
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Setter for name.
+     * @param name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * This is the method for get currentMap,
