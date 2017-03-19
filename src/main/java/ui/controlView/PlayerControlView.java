@@ -115,8 +115,18 @@ public class PlayerControlView extends ControlView {
             public void actionPerformed(ActionEvent e) {
                 player.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
                 dataToView();
+<<<<<<< Updated upstream
                 mapEditingScene.refreshMapView();
 
+=======
+                mapEditingScene.playerPanel.dataToView();
+
+                player.setImageName(
+                        player.playerImageName(
+                                player.getPlayerType(),
+                                player.getPlayerParty())
+                );
+>>>>>>> Stashed changes
             }
         });
 
@@ -125,7 +135,17 @@ public class PlayerControlView extends ControlView {
             public void actionPerformed(ActionEvent e) {
                 player.setPlayerParty(Player.PLAYER_PARTY_HOSTILE);
                 dataToView();
+<<<<<<< Updated upstream
                 mapEditingScene.refreshMapView();
+=======
+                mapEditingScene.playerPanel.dataToView();
+
+                player.setImageName(
+                        player.playerImageName(
+                                player.getPlayerType(),
+                                player.getPlayerParty())
+                );
+>>>>>>> Stashed changes
             }
         });
 
