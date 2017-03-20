@@ -204,14 +204,29 @@ public class PlayerTest {
     public void testLooting() throws Exception {
         Player testPlayer = PlayerFileManager.read("asheley");
         Equipment a = testPlayer.equipmentsInBackpack().get(0);
-//        Equipment b = testPlayer.equipmentsInBackpack().get(1);
+        int previousSize = testPlayer.equipmentsInBackpack().size();
 
         Chest testChest = (Chest)(MapFileManager.read("saege bay").getCell(new Point(1, 5)));
         Equipment a1 = testChest.getEquipments().get(0);
-//        Equipment b1 = testChest.getEquipments().get(1);
+
         testPlayer.lootChest(testChest);
 
-//        Assert.assertEquals(a1, testPlayer.equipmentsInBackpack().get(0));
-//        Assert.assertEquals(b, testPlayer.equipmentsInBackpack().get(0));
+        Assert.assertEquals(a1, testPlayer.equipmentsInBackpack().get(previousSize));
+
+    }
+
+    @Test
+    public void testNotLooting() throws Exception {
+        Player testPlayer = player;
+        int previousSize = testPlayer.equipmentsInBackpack().size();
+        Equipment a = testPlayer.equipmentsInBackpack().get(previousSize - 1);
+
+        Chest testChest = (Chest)(MapFileManager.read("saege bay").getCell(new Point(1, 5)));
+        Equipment a1 = testChest.getEquipments().get(0);
+
+        testPlayer.lootChest(testChest);
+
+        Assert.assertEquals(false, a1 == testPlayer.equipmentsInBackpack().get(previousSize - 1));
+
     }
 }
