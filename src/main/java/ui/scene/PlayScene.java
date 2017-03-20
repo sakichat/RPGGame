@@ -265,18 +265,22 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
      */
     private void showInventoryToExchange(Player player) {
         inventoryPanel = new InventoryPanel();
+        inventoryPanel.setLocation(330, 10);
         inventoryPanel.setPlayer(player);
         inventoryPanel.setButtonEnabled(true);
         inventoryPanel.setButtonText("Exchange");
         inventoryPanel.dataToView();
-        inventoryPanel.setLocation(330, 10);
         contentView.add(inventoryPanel);
+        inventoryPanel.setInventoryDelegate(this);
 
         repaint();
     }
 
     @Override
     public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
-            play.getPlayer().dropInventories(equipment);
+        play.getPlayer().dropInventories(equipment);
+        Player targetPlayer = (Player) gameMap.getCell(play.getTargetLocation());
+        Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
+        play.getPlayer().pickUpEquipment(exchangeEquipmentRandom);
     }
 }
