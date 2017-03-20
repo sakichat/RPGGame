@@ -114,11 +114,11 @@ public class Play {
      */
     public void move(){
         Point location = player.getLocation();
-        Point targetLocation = location.add(direction);
+        targetLocation = location.add(direction);
 
         if (!currentMap.hasCell(targetLocation)){
-            currentMap.moveCell(location, targetLocation);
             player.setLocation(targetLocation);
+            currentMap.moveCell(location, targetLocation);
         }
     }
 
