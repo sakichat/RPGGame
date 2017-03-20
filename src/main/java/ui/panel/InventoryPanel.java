@@ -52,7 +52,6 @@ public class InventoryPanel extends Panel implements Observer {
     public boolean isButtonEnabled() {
         return buttonEnabled;
     }
-
     /**
      * Setter for buttonEnabled
      * @param buttonEnabled
@@ -81,6 +80,20 @@ public class InventoryPanel extends Panel implements Observer {
      */
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
+    }
+
+    /**
+     * Delegate
+     */
+
+    private InventoryDelegate inventoryDelegate;
+
+    public InventoryDelegate getInventoryDelegate() {
+        return inventoryDelegate;
+    }
+
+    public void setInventoryDelegate(InventoryDelegate inventoryDelegate) {
+        this.inventoryDelegate = inventoryDelegate;
     }
 
     /**
@@ -416,7 +429,7 @@ public class InventoryPanel extends Panel implements Observer {
                     if (buttonText == "Drop") {
                         player.dropEquipment(equipment);
                     } else if (buttonText == "Exchange") {
-                        //delegate  + player dropInventroy
+//                        inventoryDelegate.inventoryExchangePerformAction(this, equipment);
                     }
                 }
             });

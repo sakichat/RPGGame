@@ -2,6 +2,7 @@ package ui.scene;
 
 import logic.*;
 import ui.controlView.*;
+import ui.panel.InventoryDelegate;
 import ui.panel.InventoryPanel;
 import ui.panel.PlayerPanel;
 import ui.view.GameMapView;
@@ -16,7 +17,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class PlayScene extends Scene implements GameMapView.Delegate{
+public class PlayScene extends Scene implements GameMapView.Delegate, InventoryDelegate{
 
     /**
      * These parameters set play on this scene and create gameMapView.
@@ -136,8 +137,8 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         interactButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
                 Cell targetCell = gameMap.getCell(play.getTargetLocation());
+                interactWith(targetCell);
             }
         });
 
@@ -176,22 +177,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
     }
 
     /**
-     * This method is used to show the InventoryPanel when player exchange equipment with friendly NPC
-     * This method should be called by the ActionListener of interactButton button.
-     * @param player
-     */
-    private void showInventoryToExchange(Player player) {
-        inventoryPanel = new InventoryPanel();
-        inventoryPanel.setPlayer(player);
-        inventoryPanel.setButtonEnabled(true);
-        inventoryPanel.setButtonText("Exchange");
-        inventoryPanel.setLocation(330, 10);
-        contentView.add(inventoryPanel);
-
-        repaint();
-    }
-
-    /**
      * This method implements MapDelegation and refresh controlViewContainerView.
      * @param gameMapView
      * @param location
@@ -223,21 +208,75 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
 
     }
 
-    private void interactWithFriendlyNPC() {
+    private void interactWith(Cell targetCell) {
+
+        if (targetCell instanceof Player) {
+
+            Player targetPlayer = (Player) targetCell;
+
+            if (targetPlayer.isDead()) {
+                interactWithDeadNPC(targetPlayer);
+
+            } else {
+                if (targetPlayer.getPlayerParty() == Player.PLAYER_PARTY_FRIENDLY) {
+                    interactWithFriendlyNPC(targetPlayer);
+
+                } else if (targetPlayer.getPlayerParty() == Player.PLAYER_PARTY_HOSTILE) {
+                    interactWithHostileNPC(targetPlayer);
+
+                }
+            }
+
+        } else if (targetCell instanceof Chest) {
+            Chest chest = (Chest) targetCell;
+            interactWithChest(chest);
+
+        } else if (targetCell instanceof Exit) {
+            int currentLevel = play.getPlayer().getLevel();
+            play.getPlayer().setLevel(currentLevel + 1);
+            //出地图
+            //check是不是最后一张地图
+            //等等。。。
+        }
+    }
+
+    private void interactWithDeadNPC(Player targetPlayer) {
+        play.getPlayer().lootDeadNPC(targetPlayer);
+    }
+
+    private void interactWithFriendlyNPC(Player targetPlayer) {
+
+        showInventoryToExchange(play.getPlayer());
 
     }
 
-    private void interactWithHostileNPC() {
-
+    private void interactWithHostileNPC(Player targetPlayer) {
+        play.getPlayer().attack(targetPlayer);
     }
 
-    private void interactWithDeadNPC() {
-
+    private void interactWithChest(Chest chest) {
+        play.getPlayer().lootChest(chest);
     }
 
-    private void interactWithChest() {
+    /**
+     * This method is used to show the InventoryPanel when player exchange equipment with friendly NPC
+     * This method should be called by the ActionListener of interactButton button.
+     * @param player
+     */
+    private void showInventoryToExchange(Player player) {
+        inventoryPanel = new InventoryPanel();
+        inventoryPanel.setPlayer(player);
+        inventoryPanel.setButtonEnabled(true);
+        inventoryPanel.setButtonText("Exchange");
+        inventoryPanel.dataToView();
+        inventoryPanel.setLocation(330, 10);
+        contentView.add(inventoryPanel);
 
+        repaint();
     }
 
-
+    @Override
+    public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
+            play.getPlayer().dropInventories(equipment);
+    }
 }
