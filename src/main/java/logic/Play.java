@@ -10,12 +10,6 @@ import java.util.List;
  * @version 0.2
  * This is the class for play.
  */
-
-/**
- * interact method
- * remove chest if == null
- * remove player if inventory == null
- */
 public class Play {
 
     private String name;
