@@ -209,7 +209,7 @@ public class GameMap {
         LinkedList<Chest> chests = new LinkedList<>();
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if (cells[i][j] instanceof Exit){
+                if (cells[i][j] instanceof Chest){
                     Cell cell = cells[i][j];
                     Chest chest = (Chest) cell;
                     chests.add(chest);
