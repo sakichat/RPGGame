@@ -137,7 +137,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                Cell targetCell = gameMap.getCell()
+                Cell targetCell = gameMap.getCell(play.getTargetLocation());
             }
         });
 
