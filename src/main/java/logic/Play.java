@@ -74,12 +74,28 @@ public class Play {
         this.player = player;
     }
 
+    /**
+     * Getter for direction
+     * @return direction
+     */
     public Point getDirection() {
         return direction;
     }
 
+    /**
+     * Setter for direction
+     * @param direction
+     */
     public void setDirection(Point direction) {
         this.direction = direction;
+    }
+
+    /**
+     * Getter for currentMap.
+     * @return GameMap
+     */
+    public GameMap getCurrentMap() {
+        return currentMap;
     }
 
     /**
@@ -102,11 +118,16 @@ public class Play {
     }
 
     /**
-     * This is get method for currentMap.
-     * @return GameMap
+     * This is the method for judging
+     * whether currentMap is the last map in campaign.
+     * @return Boolean
      */
-    public GameMap getCurrentMap() {
-        return currentMap;
+    public boolean isLastMap(){
+        int campaignSize = campaign.getMapNames().size();
+        if (currentMapIndex == (campaignSize - 1)) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -142,17 +163,6 @@ public class Play {
         }
     }
 
-    /**
-     * This is the method for get target cell in direction
-     * @return
-     */
-    public Cell getTartget(){
-        Point location = player.getLocation();
-        Point targetLocation = location.add(direction);
-        Cell cell = currentMap.getCell(targetLocation);
-        return cell;
-    }
-
     List<Chest> chests = currentMap.getChests();
     List<Player> players = currentMap.getPlayers();
 
@@ -174,6 +184,17 @@ public class Play {
             chest.chestLevelRefresh(level);
         }
 
+    }
+
+    /**
+     * This is the method for get target cell in direction
+     * @return
+     */
+    public Cell getTartget(){
+        Point location = player.getLocation();
+        Point targetLocation = location.add(direction);
+        Cell cell = currentMap.getCell(targetLocation);
+        return cell;
     }
 
     /**
