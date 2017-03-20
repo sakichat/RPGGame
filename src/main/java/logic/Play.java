@@ -147,16 +147,19 @@ public class Play {
      * @return
      */
     public Cell getTartget(){
-        return null;
+        Point location = player.getLocation();
+        Point targetLocation = location.add(direction);
+        Cell cell = currentMap.getCell(targetLocation);
+        return cell;
     }
+
+    List<Chest> chests = currentMap.getChests();
+    List<Player> players = currentMap.getPlayers();
 
     /**
      * This method is to refresh level of all the characters and chests on the map.
      */
-    private void mapLevelRefresh(){
-
-        List<Chest> chests = currentMap.getChests();
-        List<Player> players = currentMap.getPlayers();
+    private void mapLevelRefresh() {
 
         int level = player.getLevel();
 
@@ -176,20 +179,27 @@ public class Play {
     /**
      * This method is used for removing chest when it is empty.
      */
-    public void refreshChest(){
+    public void refreshChest() {
         Point location = player.getLocation();
         Point chestPoint = location.add(direction);
 
-        if (currentMap.getCell(chestPoint) instanceof Chest){
-            Chest chest = (Chest) currentMap.getCell(chestPoint);
-            if (!chest.isChestEmpty()){
-                currentMap.removeCell(chestPoint);
-            }
+        Chest chest = (Chest) currentMap.getCell(chestPoint);
+        if (!chest.isChestEmpty()) {
+            currentMap.removeCell(chestPoint);
         }
     }
 
-    public void removePlayer(){
+    /**
+     * This method is used for removing dead player when his inventory is empty.
+     */
+    public void refreshPlayer( ) {
+        Point location = player.getLocation();
+        Point playerPoint = location.add(direction);
 
+        int size = player.getInventories().size();
+        if (size == 0) {
+            currentMap.removeCell(playerPoint);
+        }
     }
 
 }
