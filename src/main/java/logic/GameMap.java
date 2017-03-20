@@ -141,8 +141,8 @@ public class GameMap {
         int endY = endPoint.getY();
 
         Cell cell = cells[startY][startX];
-        cells[startY][startX] = null;
         cells[endY][endX] = cell;
+        cells[startY][startX] = null;
     }
 
     /**

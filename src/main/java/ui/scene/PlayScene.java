@@ -1,5 +1,6 @@
 package ui.scene;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import logic.*;
 import ui.controlView.*;
 import ui.panel.InventoryDelegate;
@@ -124,15 +125,16 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         upDirectionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                play.setDirection(point.DIRECTION_UP);
+                play.setDirection(Point.DIRECTION_UP);
                 play.move();
+
                 gameMapView.refreshContent();
 
-                System.out.println(play.getPlayer().getLocation());
-                System.out.println(play.getDirection());
-//                System.out.println(play.getTargetLocation());
+//                System.out.println(cellExisted());
+
             }
         });
+
 
         interactButton.addActionListener(new ActionListener() {
             @Override
@@ -144,6 +146,13 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
     }
 
+//
+//    private Boolean cellExisted() {
+//        if (gameMap.getCell(new Point(4, 1)) != null)
+//            return true;
+//        else
+//            return false;
+//    }
 
 
     /**
