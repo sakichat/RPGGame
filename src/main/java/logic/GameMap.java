@@ -189,6 +189,7 @@ public class GameMap {
     public final static String VALIDATION_ERROR_NO_EXIT = "No exit";
     public final static String VALIDATION_ERROR_TOO_MUCH_EXIT = "Should be only one exit";
     public final static String VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE = "The exit is not reachable";
+    public final static String VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED = "The player party is not defined";
 
     /**
      * this method is to validate the map
@@ -198,6 +199,7 @@ public class GameMap {
 
         List<Entrance> entrances = getEntrances();
         List<Exit> exits = getExits();
+
 
         //  if no entrance or more than 1 entrance
         if (entrances.size() != 1){
@@ -213,6 +215,17 @@ public class GameMap {
                     VALIDATION_ERROR_TOO_MUCH_EXIT;
         }
 
+        // if player party is not defined
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (cells[i][j] instanceof Player){
+                    Player player = (Player) cells[i][j];
+                    if (player.getPlayerParty() == Player.PLAYER_PARTY_NOT_DEFINED){
+                        return VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED;
+                    }
+                }
+            }
+        }
 
         LinkedList<Point> visitedLocations = new LinkedList<>();
         LinkedList<Point> pendingLocations = new LinkedList<>();

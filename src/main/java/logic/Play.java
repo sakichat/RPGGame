@@ -122,9 +122,13 @@ public class Play {
         Entrance entrance = currentMap.getEntrances().get(0);
         LinkedList<Point> enterPointChoices = entrance.getLocation().directions();
         for (Point enterPointChoice : enterPointChoices) {
-            if (currentMap.getCell(enterPointChoice) == null){
-                enterPoint = enterPointChoice;
-                break;
+            Boolean boundTest = (enterPointChoice.getX() >= currentMap.getWidth()) ||
+                                (enterPointChoice.getY() >= currentMap.getHeight());
+            if (!boundTest){
+                if (currentMap.getCell(enterPointChoice) == null){
+                    enterPoint = enterPointChoice;
+                    break;
+                }
             }
         }
 
@@ -133,7 +137,7 @@ public class Play {
 
 
     /**
-     * This is the method for remove empty chest.
+     * This method is used for removing chest when it is empty.
      */
     public void refreshChest(){
         Point location = player.getLocation();
