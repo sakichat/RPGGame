@@ -133,6 +133,14 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
             }
         });
 
+        interactButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                Cell targetCell = gameMap.getCell()
+            }
+        });
+
     }
 
 
@@ -212,6 +220,22 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
 
         playingControlView.setPlayScene(this);
         playingControlView.repaint();
+
+    }
+
+    private void interactWithFriendlyNPC() {
+
+    }
+
+    private void interactWithHostileNPC() {
+
+    }
+
+    private void interactWithDeadNPC() {
+
+    }
+
+    private void interactWithChest() {
 
     }
 
