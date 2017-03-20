@@ -104,14 +104,5 @@ public class Chest extends Cell{
         }
     }
 
-    /**
-     * this method is to return a equipment randomly
-     * @return
-     */
-
-    public Equipment randomEquipment(){
-        int number = (int)(Math.random() * equipments.size());
-        return equipments.get(number);
-    }
 
 }
