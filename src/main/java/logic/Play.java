@@ -118,6 +118,7 @@ public class Play {
 
         if (!currentMap.hasCell(targetLocation)){
             currentMap.moveCell(location, targetLocation);
+            player.setLocation(targetLocation);
         }
     }
 
