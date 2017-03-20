@@ -163,13 +163,14 @@ public class Play {
         }
     }
 
-    List<Chest> chests = currentMap.getChests();
-    List<Player> players = currentMap.getPlayers();
 
     /**
      * This method is to refresh level of all the characters and chests on the map.
      */
     private void mapLevelRefresh() {
+
+        List<Chest> chests = currentMap.getChests();
+        List<Player> players = currentMap.getPlayers();
 
         int level = player.getLevel();
 
