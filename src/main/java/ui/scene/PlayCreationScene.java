@@ -120,11 +120,11 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReadyScene readyScene = new ReadyScene();
+                PlayScene playScene = new PlayScene();
                 play.setName(playNameTextField.getText());
                 play.resolveMap();
-                readyScene.setPlay(play);
-                PlayCreationScene.this.navigationView.push(readyScene);
+                playScene.setPlay(play);
+                PlayCreationScene.this.navigationView.push(playScene);
             }
         });
     }
