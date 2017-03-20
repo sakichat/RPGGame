@@ -183,6 +183,20 @@ public class GameMap {
         return exits;
     }
 
+    public List<Player> getPlayers(){
+        LinkedList<Player> players = new LinkedList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (cells[i][j] instanceof Player){
+                    Cell cell = cells[i][j];
+                    Player player = (Player) cell;
+                    players.add(player);
+                }
+            }
+        }
+        return players;
+    }
+
     public final static String VALIDATION_SUCCESS = "Valid";
     public final static String VALIDATION_ERROR_NO_ENTRANCE = "No entrance";
     public final static String VALIDATION_ERROR_TOO_MUCH_ENTRANCE = "Should be only one entrance";
@@ -200,7 +214,6 @@ public class GameMap {
         List<Entrance> entrances = getEntrances();
         List<Exit> exits = getExits();
 
-
         //  if no entrance or more than 1 entrance
         if (entrances.size() != 1){
             return entrances.size() < 1 ?
@@ -215,15 +228,12 @@ public class GameMap {
                     VALIDATION_ERROR_TOO_MUCH_EXIT;
         }
 
+        List<Player> players = getPlayers();
+
         // if player party is not defined
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (cells[i][j] instanceof Player){
-                    Player player = (Player) cells[i][j];
-                    if (player.getPlayerParty() == Player.PLAYER_PARTY_NOT_DEFINED){
-                        return VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED;
-                    }
-                }
+        for (Player player: players) {
+            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_NOT_DEFINED)){
+                return VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED;
             }
         }
 
@@ -280,7 +290,7 @@ public class GameMap {
      * @return Boolean
      */
 
-    private boolean inMap(Point location) {
+    public boolean inMap(Point location) {
         int x = location.getX();
         if (x < 0 || x >= width) {
             return false;

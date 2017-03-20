@@ -122,6 +122,7 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
             public void actionPerformed(ActionEvent e) {
                 ReadyScene readyScene = new ReadyScene();
                 play.setName(playNameTextField.getText());
+                play.resolveMap();
                 readyScene.setPlay(play);
                 PlayCreationScene.this.navigationView.push(readyScene);
             }
@@ -140,8 +141,8 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
     public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
         remove(playerSelectorPanel);
 
-        play.setPlayer(player);
         player.setPlayerParty(Player.PLAYER_PARTY_PLAYER);
+        play.setPlayer(player);
         playerNameLabel.setText(player.getName());
     }
 

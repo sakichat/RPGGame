@@ -559,6 +559,7 @@ public class Player extends Cell{
         partyNames.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
         partyNames.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
         partyNames.put(Player.PLAYER_PARTY_PLAYER, "player");
+        partyNames.put(Player.PLAYER_PARTY_NOT_DEFINED, "nd");
 
         HashMap<String, String> typeNames = new HashMap<>();
         typeNames.put(PLAYER_TYPE_BULLY, "bully");

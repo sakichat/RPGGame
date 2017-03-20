@@ -56,7 +56,6 @@ public class Play {
      */
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
-        currentMap = MapFileManager.read(campaign.getMapName(currentMapIndex));
     }
 
     /**
@@ -80,8 +79,9 @@ public class Play {
      * and add player into the map(enter).
      */
     public void resolveMap(){
-        Point enterPoint = enterIntoMap();
-        currentMap.addCell(player, enterPoint);
+        String mapName = campaign.getMapName(currentMapIndex);
+        currentMap = MapFileManager.read(mapName);
+        enterIntoMap();
     }
 
     /**
@@ -117,22 +117,19 @@ public class Play {
      * This is a method makes player enter into the map.
      * @return Point
      */
-    public Point enterIntoMap(){
-        Point enterPoint = null;
-        Entrance entrance = currentMap.getEntrances().get(0);
-        LinkedList<Point> enterPointChoices = entrance.getLocation().directions();
-        for (Point enterPointChoice : enterPointChoices) {
-            Boolean boundTest = (enterPointChoice.getX() >= currentMap.getWidth()) ||
-                                (enterPointChoice.getY() >= currentMap.getHeight());
-            if (!boundTest){
-                if (currentMap.getCell(enterPointChoice) == null){
-                    enterPoint = enterPointChoice;
-                    break;
-                }
+    public void enterIntoMap(){
+        Point entrance = currentMap.getEntrances().get(0).getLocation();
+
+        LinkedList<Point> directions = Point.directions();
+        for (Point direction : directions) {
+            Point enter = entrance.add(direction);
+
+            if (currentMap.inMap(enter) && !currentMap.hasCell(enter)){
+                currentMap.addCell(player, enter);
+                this.direction = direction;
+                break;
             }
         }
-
-        return enterPoint;
     }
 
 
