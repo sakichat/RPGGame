@@ -120,7 +120,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         });
     }
 
-    
+
 
     /**
      * Relative methods about view player

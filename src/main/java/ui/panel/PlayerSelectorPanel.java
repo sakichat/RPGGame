@@ -2,6 +2,7 @@ package ui.panel;
 
 import logic.Player;
 import persistence.PlayerFileManager;
+import ui.view.ImageView;
 import ui.view.View;
 
 import javax.swing.*;
@@ -131,6 +132,7 @@ public class PlayerSelectorPanel extends Panel {
                 yOfView += 30;
             }
         }
+
         repaint();
     }
 }
