@@ -2,11 +2,13 @@ package ui.view;
 
 import logic.Cell;
 import logic.GameMap;
+import logic.Play;
 import logic.Point;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.management.PlatformLoggingMXBean;
 import java.util.LinkedList;
 import java.util.List;
 
