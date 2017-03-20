@@ -3,7 +3,6 @@ package ui.scene;
 import logic.*;
 import ui.controlView.*;
 import ui.panel.InventoryPanel;
-import ui.panel.MapDelegate;
 import ui.panel.PlayerPanel;
 import ui.view.GameMapView;
 import ui.view.View;
@@ -23,6 +22,8 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
      * These parameters set play on this scene and create gameMapView.
      */
     private Play play;
+    private GameMap gameMap;
+    private Point point;
     private GameMapView gameMapView;
 
     public Play getPlay() {
@@ -50,10 +51,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
     }
 
     private View controlViewContainerView;
-    private JButton upDirection;
-    private JButton downDirection;
-    private JButton leftDirection;
-    private JButton rightDirection;
+    private JButton upDirectionButton;
+    private JButton downDirectionButton;
+    private JButton leftDirectionButton;
+    private JButton rightDirectionButton;
     private JButton interactButton;
 
 
@@ -79,13 +80,13 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         button = new JButton(new ImageIcon("data/images/up_button.png"));
         button.setLocation(700, 30);
         button.setSize(40, 40);
-        upDirection = button;
+        upDirectionButton = button;
         contentView.add(button);
 
         button = new JButton(new ImageIcon("data/images/left_button.png"));
         button.setLocation(650, 80);
         button.setSize(40, 40);
-        leftDirection = button;
+        leftDirectionButton = button;
         contentView.add(button);
 
         button = new JButton(new ImageIcon("data/images/center_button.png"));
@@ -97,13 +98,13 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         button = new JButton(new ImageIcon("data/images/right_button.png"));
         button.setLocation(750, 80);
         button.setSize(40, 40);
-        rightDirection = button;
+        rightDirectionButton = button;
         contentView.add(button);
 
         button = new JButton(new ImageIcon("data/images/down_button.png"));
         button.setLocation(700, 130);
         button.setSize(40, 40);
-        downDirection = button;
+        downDirectionButton = button;
         contentView.add(button);
 
         playingControlView = new PlayingControlView();
@@ -118,6 +119,20 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
                 PlayScene.this.navigationView.popTo(MainScene.class);
             }
         });
+
+        upDirectionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                play.setDirection(point.DIRECTION_UP);
+                play.move();
+                gameMapView.refreshContent();
+
+                System.out.println(play.getPlayer().getLocation());
+                System.out.println(play.getDirection());
+//                System.out.println(play.getTargetLocation());
+            }
+        });
+
     }
 
 
@@ -141,7 +156,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
     public void viewInventory(Player player) {
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setPlayer(player);
-        if (player.getPlayerType() == Player.PLAYER_PARTY_PLAYER) {
+        if (player.getPlayerParty() == Player.PLAYER_PARTY_PLAYER) {
             inventoryPanel.setButtonEnabled(true);
             inventoryPanel.setButtonText("Drop");
         }
@@ -167,6 +182,11 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         repaint();
     }
 
+    /**
+     * This method implements MapDelegation and refresh controlViewContainerView.
+     * @param gameMapView
+     * @param location
+     */
     @Override
     public void gameMapViewSelect(GameMapView gameMapView, Point location) {
         refreshControlView();

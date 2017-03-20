@@ -27,6 +27,13 @@ public class Play {
 
     private Point direction;
 
+//    To test if targetLocation has set already
+//    private Point targetLocation;
+//
+//    public Point getTargetLocation() {
+//        return targetLocation;
+//    }
+
     /**
      * Getter for name.
      * @return
@@ -75,6 +82,14 @@ public class Play {
         this.player = player;
     }
 
+    public Point getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Point direction) {
+        this.direction = direction;
+    }
+
     /**
      * This is the method for get currentMap,
      * and add player into the map(enter).
@@ -110,7 +125,7 @@ public class Play {
         Point targetLocation = location.add(direction);
 
         if (!currentMap.hasCell(targetLocation)){
-            currentMap.moveCell(location, location.add(direction));
+            currentMap.moveCell(location, targetLocation);
         }
     }
 
