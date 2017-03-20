@@ -20,13 +20,11 @@ public class Play {
     private GameMap currentMap;
 
     private Point direction;
+    private Point targetLocation;
 
-//    To test if targetLocation has set already
-//    private Point targetLocation;
-//
-//    public Point getTargetLocation() {
-//        return targetLocation;
-//    }
+    public Point getTargetLocation() {
+        return targetLocation;
+    }
 
     /**
      * Getter for name.

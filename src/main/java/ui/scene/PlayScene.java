@@ -159,6 +159,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate{
         if (player.getPlayerParty() == Player.PLAYER_PARTY_PLAYER) {
             inventoryPanel.setButtonEnabled(true);
             inventoryPanel.setButtonText("Drop");
+            inventoryPanel.dataToView();
         }
         inventoryPanel.setLocation(330, 10);
         contentView.add(inventoryPanel);
