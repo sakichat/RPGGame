@@ -3,6 +3,8 @@ package logic;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import persistence.MapFileManager;
+import persistence.PlayerFileManager;
 
 /**
  * Created by GU_HAN on 2017-02-26.
@@ -198,4 +200,18 @@ public class PlayerTest {
         Assert.assertEquals(pre, now - equipment12.getEnhancedValue());
     }
 
+    @Test
+    public void testLooting() throws Exception {
+        Player testPlayer = PlayerFileManager.read("asheley");
+        Equipment a = testPlayer.equipmentsInBackpack().get(0);
+//        Equipment b = testPlayer.equipmentsInBackpack().get(1);
+
+        Chest testChest = (Chest)(MapFileManager.read("saege bay").getCell(new Point(1, 5)));
+        Equipment a1 = testChest.getEquipments().get(0);
+//        Equipment b1 = testChest.getEquipments().get(1);
+        testPlayer.lootChest(testChest);
+
+//        Assert.assertEquals(a1, testPlayer.equipmentsInBackpack().get(0));
+//        Assert.assertEquals(b, testPlayer.equipmentsInBackpack().get(0));
+    }
 }
