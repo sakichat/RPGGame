@@ -143,6 +143,14 @@ public class Play {
     }
 
     /**
+     * This is the method for get target cell in direction
+     * @return
+     */
+    public Cell getTartget(){
+        return null;
+    }
+
+    /**
      * This method is to refresh level of all the characters and chests on the map.
      */
     private void mapLevelRefresh(){
