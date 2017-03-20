@@ -3,6 +3,7 @@ package logic;
 import persistence.MapFileManager;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Qi Xia
@@ -127,11 +128,34 @@ public class Play {
             if (currentMap.inMap(enter) && !currentMap.hasCell(enter)){
                 currentMap.addCell(player, enter);
                 this.direction = direction;
+                mapLevelRefresh();
                 break;
             }
         }
     }
 
+    /**
+     * This method is to refresh level of all the characters and chests on the map.
+     */
+    private void mapLevelRefresh(){
+
+        List<Chest> chests = currentMap.getChests();
+        List<Player> players = currentMap.getPlayers();
+
+        int level = player.getLevel();
+
+        for (Player character : players) {
+            if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
+                character.setLevel(level);
+                character.inventoryLevelRefresh();
+            }
+        }
+
+        for (Chest chest : chests) {
+            chest.chestLevelRefresh(level);
+        }
+
+    }
 
     /**
      * This method is used for removing chest when it is empty.

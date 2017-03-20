@@ -183,6 +183,10 @@ public class GameMap {
         return exits;
     }
 
+    /**
+     * this method is to get all players on the map
+     * @return List<Player>
+     */
     public List<Player> getPlayers(){
         LinkedList<Player> players = new LinkedList<>();
         for (int i = 0; i < height; i++) {
@@ -195,6 +199,24 @@ public class GameMap {
             }
         }
         return players;
+    }
+
+    /**
+     * this method is to get all chests on the map
+     * @return List<Chest>
+     */
+    public List<Chest> getChests(){
+        LinkedList<Chest> chests = new LinkedList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (cells[i][j] instanceof Exit){
+                    Cell cell = cells[i][j];
+                    Chest chest = (Chest) cell;
+                    chests.add(chest);
+                }
+            }
+        }
+        return chests;
     }
 
     public final static String VALIDATION_SUCCESS = "Valid";
@@ -303,4 +325,5 @@ public class GameMap {
 
         return true;
     }
+
 }
