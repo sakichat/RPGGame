@@ -139,7 +139,7 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
 
     @Override
     public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
-        remove(playerSelectorPanel);
+        contentView.remove(playerSelectorPanel);
 
         player.setPlayerParty(Player.PLAYER_PARTY_PLAYER);
         play.setPlayer(player);
@@ -156,7 +156,7 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
 
     @Override
     public void campaignSelectorPerformAction(CampaignSelectorPanel campaignSelectorPanel, Campaign campaign) {
-        remove(campaignSelectorPanel);
+        contentView.remove(campaignSelectorPanel);
 
         play.setCampaign(campaign);
         campaignNameLabel.setText(campaign.getName());
