@@ -13,6 +13,16 @@ import java.awt.event.ActionListener;
  */
 public class PlayerCreationScene extends Scene {
 
+    private Player player;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
      */
@@ -25,25 +35,74 @@ public class PlayerCreationScene extends Scene {
         saveButtonEnabled = false;
     }
 
+    private JLabel label;
+    private JTextField textField;
+    private JButton button;
+
+    private JTextField nameField;
+    private JTextField levelField;
+    private JButton createButton;
+    private JButton setButton;
+    private JButton bullyButton;
+    private JButton nimbleButton;
+    private JButton tankButton;
+
     /**
      * This method creates components on the main scene
      * And adds events on backButton and createButton
      */
     protected void initSubviews() {
-        JLabel nameLabel = new JLabel("Name", JLabel.RIGHT);
-        nameLabel.setSize(120, 40);
-        nameLabel.setLocation(20, 20);
-        contentView.add(nameLabel);
+        label = new JLabel("Name", JLabel.RIGHT);
+        label.setSize(120, 40);
+        label.setLocation(20, 20);
+        contentView.add(label);
 
-        JTextField nameField = new JTextField();
-        nameField.setSize(160,40);
-        nameField.setLocation(150, 20);
-        contentView.add(nameField);
+        textField = new JTextField();
+        textField.setSize(160,40);
+        textField.setLocation(150, 20);
+        contentView.add(textField);
+        nameField = textField;
 
-        JButton createButton = new JButton("Create");
-        createButton.setSize(160, 40);
-        createButton.setLocation(150, 90);
-        contentView.add(createButton);
+        label = new JLabel("Level", JLabel.RIGHT);
+        label.setSize(120, 40);
+        label.setLocation(20, 70);
+        contentView.add(label);
+
+        textField = new JTextField();
+        textField.setSize(160, 40);
+        textField.setLocation(150, 70);
+        contentView.add(textField);
+        levelField = textField;
+
+        button = new JButton("Set");
+        button.setSize(160, 40);
+        button.setLocation(320, 70);
+        contentView.add(button);
+        setButton = button;
+
+        button = new JButton(Player.PLAYER_TYPE_BULLY);
+        button.setSize(160, 40);
+        button.setLocation(150, 130);
+        contentView.add(button);
+        bullyButton = button;
+
+        button = new JButton(Player.PLAYER_TYPE_NIMBLE);
+        button.setSize(160, 40);
+        button.setLocation(320, 130);
+        contentView.add(button);
+        nimbleButton = button;
+
+        button = new JButton(Player.PLAYER_TYPE_TANK);
+        button.setSize(160, 40);
+        button.setLocation(490, 130);
+        contentView.add(button);
+        bullyButton = button;
+
+        button = new JButton("Create");
+        button.setSize(160, 40);
+        button.setLocation(150, 190);
+        contentView.add(button);
+        createButton = button;
 
         repaint();
 
@@ -58,7 +117,7 @@ public class PlayerCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerEditingScene playerEditingScene = new PlayerEditingScene();
-                Player player = new Player();
+//                Player player = new Player();
                 player.setName(nameField.getText());
                 playerEditingScene.setPlayer(player);
                 PlayerCreationScene.this.navigationView.push(playerEditingScene);
