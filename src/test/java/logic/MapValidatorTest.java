@@ -120,6 +120,10 @@ public class MapValidatorTest {
         Assert.assertEquals(GameMap.VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE, gameMapTest.validate());
     }
 
+    /**
+     * This method tests if the map can be saved when player is not defined its party.
+     * @throws Exception
+     */
     @Test
     public void testPlayerNotDefined() throws Exception {
         GameMap gameMap = MapFileManager.read("libeng");

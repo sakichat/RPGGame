@@ -15,6 +15,11 @@ import org.junit.Test;
 public class CampaignTest {
 
     private Campaign campaignTest;
+
+    /**
+     * This method is for setting up.
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         Campaign campaign = new Campaign();
