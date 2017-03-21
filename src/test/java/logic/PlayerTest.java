@@ -3,6 +3,7 @@ package logic;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import persistence.CampaignFileManager;
 import persistence.MapFileManager;
 import persistence.PlayerFileManager;
 
@@ -245,15 +246,32 @@ public class PlayerTest {
     @Test
     public void testAfterLooting() throws Exception {
         Player testPlayer = player;
-        int previousSize = testPlayer.equipmentsInBackpack().size();
-        Equipment a = testPlayer.equipmentsInBackpack().get(previousSize - 1);
 
-        Chest testChest = (Chest)(MapFileManager.read("saege bay").getCell(new Point(1, 5)));
-        Equipment a1 = testChest.getEquipments().get(0);
+        testPlayer.dropEquipment(equipment1);
+        testPlayer.dropEquipment(equipment2);
+        testPlayer.dropEquipment(equipment3);
+        testPlayer.dropEquipment(equipment4);
+        testPlayer.dropEquipment(equipment5);
+        testPlayer.dropEquipment(equipment6);
+        testPlayer.dropEquipment(equipment7);
+        testPlayer.dropEquipment(equipment8);
+        testPlayer.dropEquipment(equipment9);
+        testPlayer.dropEquipment(equipment10);
 
-        testPlayer.lootChest(testChest);
+        Campaign campaign = CampaignFileManager.read("testcampaign");
 
-        Assert.assertEquals(false, a1 == testPlayer.equipmentsInBackpack().get(previousSize - 1));
+        Play play = new Play();
+        play.setCampaign(campaign);
+        play.setPlayer(testPlayer);
+        play.resolveMap();
+
+        play.move();
+        play.move();
+        play.setDirection(Point.DIRECTION_RIGHT);
+        play.getPlayer().lootChest((Chest)(play.getTartget()));
+
+
+        Assert.assertEquals(null, play.getCurrentMap().getCell(new Point(1, 5)));
 
     }
 }
