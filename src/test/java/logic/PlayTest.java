@@ -12,11 +12,33 @@ import persistence.PlayerFileManager;
  */
 public class PlayTest {
     /**
+     * This method tests if the player as an arttribute can be changed after moving.
+     * @throws Exception
+     */
+    @Test
+    public void moveToNextCell() throws Exception {
+    Campaign campaign = CampaignFileManager.read("caribean_sea");
+    Player player = PlayerFileManager.read("asheley");
+    Play play = new Play();
+    play.setCampaign(campaign);
+    play.setPlayer(player);
+    play.resolveMap();
+    play.setDirection(Point.DIRECTION_LEFT);
+    System.out.println(play.getPlayer().getLocation());
+
+    play.move();
+    play.move();
+
+    System.out.println(play.getPlayer().getLocation());
+
+    Assert.assertEquals(new Point(0, 3), play.getPlayer().getLocation());
+}
+    /**
      * This method is to test if the player will move out of border.
      * @throws Exception
      */
     @Test
-    public void moveTest() throws Exception {
+    public void moveBorderTest() throws Exception {
         Campaign campaign = CampaignFileManager.read("caribean_sea");
         Player player = PlayerFileManager.read("asheley");
         Play play = new Play();
@@ -60,9 +82,5 @@ public class PlayTest {
         Assert.assertEquals(new Point(0, 3), play.getPlayer().getLocation());
     }
 
-    @Test
-    public void moveToNextCell() throws Exception {
-        
 
-    }
 }
