@@ -28,17 +28,6 @@ public class PlayerTest {
     private Equipment equipment10;
     private Equipment equipment11;
     private Equipment equipment12;
-    private Equipment equipment13;
-    private Equipment equipment14;
-    private Equipment equipment15;
-    private Equipment equipment16;
-    private Equipment equipment17;
-    private Equipment equipment18;
-    private Equipment equipment19;
-    private Equipment equipment20;
-    private Equipment equipment21;
-    private Equipment equipment22;
-    private Equipment equipment23;
 
     /**
      * This method set up first few steps before the actual tests.
@@ -72,28 +61,6 @@ public class PlayerTest {
         equipment11 = new Equipment("Loyal Wool Sash",Equipment.BELT,Player.ABILITY_STR,4);
 
         equipment12 = new Equipment("Cord of Beginnings",Equipment.BELT,Player.ABILITY_CON,5);
-
-        equipment13 = new Equipment("Steel Walkers",Equipment.BOOTS,Player.ATTRIBUTE_ARMOR_CLASS,3);
-
-        equipment14 = new Equipment("Bronze Warboots",Equipment.BOOTS,Player.ABILITY_DEX,4);
-
-        equipment15 = new Equipment("Bone Stompers",Equipment.BOOTS,Player.ABILITY_DEX,5);
-
-        equipment16 = new Equipment("Ashbringer",Equipment.WEAPON,Player.ATTRIBUTE_ATTACK_BONUS,5);
-
-        equipment17 = new Equipment("Axe of Cenarius",Equipment.WEAPON,Player.ATTRIBUTE_DAMAGE_BONUS,5);
-
-        equipment18 = new Equipment("Bloodhoof Runespear",Equipment.WEAPON,Player.ATTRIBUTE_DAMAGE_BONUS,5);
-
-        equipment19 = new Equipment("Phyrix's Embrace",Equipment.RING,Player.ATTRIBUTE_ARMOR_CLASS,2);
-
-        equipment20 = new Equipment("Sephuz's Secret",Equipment.RING,Player.ABILITY_STR,2);
-
-        equipment21 = new Equipment("Alythess's Pyrogenics",Equipment.RING,Player.ABILITY_CON,3);
-
-        equipment22 = new Equipment("Chatoyant Signet",Equipment.RING,Player.ABILITY_WIS,5);
-
-        equipment23 = new Equipment("Dual Determination",Equipment.RING, Player.ABILITY_CHA,5);
 
         player.pickUpEquipment(equipment1);
         player.pickUpEquipment(equipment2);
