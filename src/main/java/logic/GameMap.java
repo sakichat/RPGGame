@@ -133,9 +133,7 @@ public class GameMap {
      */
     public boolean canPlace(Point location){
         if (inMap(location)) {
-            if (!hasCell(location)) {
-                return true;
-            }
+            return !hasCell(location);
         }
 
         return false;
