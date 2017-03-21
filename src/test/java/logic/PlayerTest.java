@@ -237,4 +237,5 @@ public class PlayerTest {
         Assert.assertEquals(false, a1 == testPlayer.equipmentsInBackpack().get(previousSize - 1));
 
     }
+
 }
