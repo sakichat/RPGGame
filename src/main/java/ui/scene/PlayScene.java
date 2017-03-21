@@ -2,9 +2,7 @@ package ui.scene;
 
 import logic.*;
 import ui.controlView.*;
-import ui.panel.InventoryDelegate;
-import ui.panel.InventoryPanel;
-import ui.panel.PlayerPanel;
+import ui.panel.*;
 import ui.view.GameMapView;
 import ui.view.View;
 
@@ -24,6 +22,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
      */
     private Play play;
     private GameMapView gameMapView;
+    private EquipmentPanel equipmentPanel;
 
     public Play getPlay() {
         return play;
@@ -54,7 +53,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     private JButton leftDirectionButton;
     private JButton rightDirectionButton;
     private JButton interactButton;
-
 
     PlayingControlView playingControlView;
 
@@ -235,6 +233,32 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         playingControlView.repaint();
 
     }
+
+    private ControlView generateControlView(Cell cell) {
+        ControlView controlView = null;
+
+        if (cell instanceof Chest) {
+            controlView = new ChestViewControlView();
+        } else {
+            controlView = new PlayingControlView();
+        }
+
+        return controlView;
+    }
+
+    /**
+     * The method is used to showChestViewInside.
+     * @param chest
+     */
+    public void showChestViewInside(Chest chest) {
+        equipmentPanel = new EquipmentPanel();
+        equipmentPanel.setLocation(410, 210);
+        equipmentPanel.setChest(chest);
+        contentView.add(equipmentPanel);
+
+        repaint();
+    }
+
 
     private void interactWith(Cell targetCell) {
 

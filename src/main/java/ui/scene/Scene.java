@@ -35,8 +35,6 @@ public class Scene extends View{
      * This init() method init the basic properties for Scene
      */
     protected void init(){
-        setLayout(null);
-
         this.setSize(1000, 600);
     }
 

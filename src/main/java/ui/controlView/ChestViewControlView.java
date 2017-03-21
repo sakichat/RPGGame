@@ -7,13 +7,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * @author Kai QI
+ * @author Siyu Chen
  * @version 0.2
- *
- * This class is chestControlView.
  */
-public class ChestControlView extends ControlView {
-
+public class ChestViewControlView extends ControlView {
     /**
      * Declaration of the properties, and getter & setter
      */
@@ -38,7 +35,7 @@ public class ChestControlView extends ControlView {
     /**
      * constructor of the View.
      */
-    public ChestControlView() {
+    public ChestViewControlView() {
         this.setSize(180,560);
         initSubviews();
     }
@@ -65,25 +62,10 @@ public class ChestControlView extends ControlView {
         button.setText("View Inside");
         JButton viewInsideButton = button;
 
-
-        button = new JButton();
-        button.setSize(160, 40);
-        button.setLocation(10, 110);
-        add(button);
-        button.setText("Remove");
-        JButton removeButton = button;
-
         viewInsideButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mapEditingScene.showChestViewInside(chest);
-            }
-        });
-
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.destroy();
+                playScene.showChestViewInside(chest);
             }
         });
 

@@ -1,6 +1,8 @@
 package ui.controlView;
 
+import logic.Play;
 import ui.scene.MapEditingScene;
+import ui.scene.PlayScene;
 import ui.view.View;
 
 /**
@@ -28,5 +30,15 @@ public class ControlView extends View {
      */
     public void setMapEditingScene(MapEditingScene mapEditingScene) {
         this.mapEditingScene = mapEditingScene;
+    }
+
+    protected PlayScene playScene;
+
+    public PlayScene getPlayScene() {
+        return playScene;
+    }
+
+    public void setPlayScene(PlayScene playScene) {
+        this.playScene = playScene;
     }
 }

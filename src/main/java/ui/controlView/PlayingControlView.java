@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by Kai QI on 2017/3/18.
  */
-public class PlayingControlView extends View {
+public class PlayingControlView extends ControlView {
 
     /**
      * Declaration of the properties, and getter & setter
