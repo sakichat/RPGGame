@@ -66,7 +66,13 @@ public class PlayTest {
         play.setCampaign(campaign);
         play.setPlayer(player);
         play.resolveMap();
-        play.setDirection(Point.DIRECTION_LEFT);
+//        play.setDirection(Point.D);
+
+        play.move();
+        play.move();
+        play.setDirection(Point.DIRECTION_RIGHT);
+//        play.
+
 
     }
 }
