@@ -35,6 +35,16 @@ public class ChestControlView extends ControlView {
         this.chest = chest;
     }
 
+    boolean removeButtonEnabled = true;
+
+    public boolean isRemoveButtonEnabled() {
+        return removeButtonEnabled;
+    }
+
+    public void setRemoveButtonEnabled(boolean removeButtonEnabled) {
+        this.removeButtonEnabled = removeButtonEnabled;
+    }
+
     /**
      * constructor of the View.
      */
@@ -69,9 +79,12 @@ public class ChestControlView extends ControlView {
         button = new JButton();
         button.setSize(160, 40);
         button.setLocation(10, 110);
-        add(button);
         button.setText("Remove");
         JButton removeButton = button;
+
+        if (removeButtonEnabled == true) {
+            this.add(removeButton);
+        }
 
         viewInsideButton.addActionListener(new ActionListener() {
             @Override
@@ -86,6 +99,8 @@ public class ChestControlView extends ControlView {
                 mapEditingScene.destroy();
             }
         });
+
+        repaint();
 
     }
 

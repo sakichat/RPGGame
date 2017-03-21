@@ -119,9 +119,11 @@ public class EquipmentPanel extends Panel implements Observer{
 
             dropButton.setSize(60, 20);
             dropButton.setLocation(320, y);
+
             if (buttonEnabled) {
                 equipmentsPanel.add(dropButton);
             }
+
             dropButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
