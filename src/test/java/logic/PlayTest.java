@@ -63,8 +63,8 @@ public class PlayTest {
         Campaign campaign = CampaignFileManager.read("test campaign");
         Player player = PlayerFileManager.read("test player");
         Play play = new Play();
-//        play.setCampaign(campaign);
-//        play.setPlayer(player);
+        play.setCampaign(campaign);
+        play.setPlayer(player);
         play.resolveMap();
         play.setDirection(Point.DIRECTION_LEFT);
 
