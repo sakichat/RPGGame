@@ -24,12 +24,6 @@ public class GameMap {
     @Expose
     private Cell[][] cells;
 
-
-    public boolean canPlace(Point location){
-
-        return false;
-    }
-
     /**
      * this method is to get width
      * @return Integer
@@ -124,7 +118,6 @@ public class GameMap {
      * @param location Point
      * @return Boolean
      */
-
     public boolean hasCell(Point location){
         if (!inMap(location)){
             return false;
@@ -134,11 +127,25 @@ public class GameMap {
     }
 
     /**
+     * this method is to judge if this location can place cell
+     * @param location
+     * @return Boolean
+     */
+    public boolean canPlace(Point location){
+        if (inMap(location)) {
+            if (!hasCell(location)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * this method is to move cell
      * @param startPoint Point
      * @param endPoint Point
      */
-
     public void moveCell(Point startPoint, Point endPoint){
 
         int startX = startPoint.getX();
@@ -175,7 +182,6 @@ public class GameMap {
      * this method is to get all Exists
      * @return List<Exit>
      */
-
     public List<Exit> getExits() {
         LinkedList<Exit> exits = new LinkedList<>();
         for (int i = 0; i < height; i++) {
@@ -319,7 +325,7 @@ public class GameMap {
      * @return Boolean
      */
 
-    public boolean inMap(Point location) {
+    private boolean inMap(Point location) {
         int x = location.getX();
         if (x < 0 || x >= width) {
             return false;

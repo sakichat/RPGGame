@@ -148,7 +148,7 @@ public class Play {
         for (Point direction : directions) {
             Point enter = entrance.add(direction);
 
-            if (currentMap.inMap(enter) && !currentMap.hasCell(enter)){
+            if (currentMap.canPlace(enter)){
                 currentMap.addCell(player, enter);
                 this.direction = direction;
                 mapLevelRefresh();
