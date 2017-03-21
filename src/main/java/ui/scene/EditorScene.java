@@ -18,7 +18,6 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
 
     private JLabel label;
     private JButton button;
-    private JPanel itemSelectLabel;
 
     /**
      * Constructor
@@ -251,9 +250,9 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
     public void mapSelectorPerformAction(MapSelectorPanel mapSelectorPanel, GameMap gameMap) {
         remove(mapSelectorPanel);
 
-        MapEditingScene scene = new MapEditingScene();
-        scene.setGameMap(gameMap);
-        navigationView.push(scene);
+        MapEditingScene mapEditingScene = new MapEditingScene();
+        mapEditingScene.setGameMap(gameMap);
+        navigationView.push(mapEditingScene);
     }
 
     /**
@@ -276,8 +275,8 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
     public void campaignSelectorPerformAction(CampaignSelectorPanel campaignSelectorPanel, Campaign campaign) {
         remove(campaignSelectorPanel);
 
-        CampaignEditingScene scene = new CampaignEditingScene();
-        scene.setCampaign(campaign);
-        navigationView.push(scene);
+        CampaignEditingScene campaignEditingScene = new CampaignEditingScene();
+        campaignEditingScene.setCampaign(campaign);
+        navigationView.push(campaignEditingScene);
     }
 }

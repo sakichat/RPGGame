@@ -2,10 +2,13 @@ package ui.view;
 
 import logic.Cell;
 import logic.GameMap;
+import logic.Play;
 import logic.Point;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.management.PlatformLoggingMXBean;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -74,8 +77,19 @@ public class GameMapView extends View {
      * This method is to set the size of this GameMapView, and to call initLayers() method.
      */
     private void setup(){
-        this.setSize(gameMap.getSize() * GameMapLayerView.UNIT_SIZE, gameMap.getSize() * GameMapLayerView.UNIT_SIZE);
+        this.setSize(getPreferredSize());
         initLayers();
+    }
+
+
+    /**
+     * This getPreferredSize() function sets size for maps and map layers.
+     * @return Dimension
+     */
+    public Dimension getPreferredSize(){
+        return new Dimension(
+                gameMap.getWidth() * GameMapLayerView.UNIT_SIZE,
+                gameMap.getHeight() * GameMapLayerView.UNIT_SIZE);
     }
 
     private final static int _LAYER_BACKGROUND  = 0;
@@ -106,7 +120,9 @@ public class GameMapView extends View {
     private void newLayer(){
         GameMapLayerView gameMapLayerView = new GameMapLayerView();
         gameMapLayerView.setLocation(0, 0);
-        gameMapLayerView.setGridSize(gameMap.getSize());
+        gameMapLayerView.setGridWidth(gameMap.getWidth());
+        gameMapLayerView.setGridHeight(gameMap.getHeight());
+        gameMapLayerView.setSize(getPreferredSize());
         add(gameMapLayerView);
         layers.add(gameMapLayerView);
     }
@@ -119,13 +135,14 @@ public class GameMapView extends View {
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_BACKGROUND);
 
-        for (int i = 0; i < gameMap.getSize(); i++) {
-            for (int j = 0; j < gameMap.getSize(); j++) {
+        for (int i = 0; i < gameMap.getWidth(); i++) {
+            for (int j = 0; j < gameMap.getHeight(); j++) {
                 ImageView backgroundView = new ImageView();
                 backgroundView.setName("grass_background.png");
-                layerView.addCell(backgroundView, new Point(j, i));
+                layerView.addCell(backgroundView, new Point(i, j));
             }
         }
+
     }
 
     /**
@@ -151,6 +168,10 @@ public class GameMapView extends View {
         return selectedLocation;
     }
 
+    public void setSelectedLocation(Point selectedLocation) {
+        this.selectedLocation = selectedLocation;
+    }
+
     /**
      * This property is for a new ImageView
      */
@@ -167,7 +188,6 @@ public class GameMapView extends View {
         selectionView = new ImageView();
         selectionView.setName("selected.png");
         layerView.addCell(selectionView, selectedLocation);
-
     }
 
     /**
@@ -176,9 +196,12 @@ public class GameMapView extends View {
     private void initEventLayer(){
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_EVENT);
-        int size = gameMap.getSize();
-        for (int y = 0; y < size; y++) {
-            for (int x = 0; x < size; x++) {
+
+        int gridWidth = gameMap.getWidth();
+        int gridHeight = gameMap.getHeight();
+
+        for (int y = 0; y < gridHeight; y++) {
+            for (int x = 0; x < gridWidth; x++) {
                 Point location = new Point(x, y);
                 GlassView glassView = new GlassView();
                 layerView.addCell(glassView, location);
@@ -235,15 +258,21 @@ public class GameMapView extends View {
         GameMapLayerView layerView = layers.get(_LAYER_CONTENT);
         layerView.removeAllCells();
 
-        int size = gameMap.getSize();
-        for (int y = 0; y < size; y++) {
-            for (int x = 0; x < size; x++) {
+        int gridWidth = gameMap.getWidth();
+        int gridHeight = gameMap.getHeight();
+
+        for (int y = 0; y < gridHeight; y++) {
+            for (int x = 0; x < gridWidth; x++) {
                 Point location = new Point(x, y);
-                Cell cell = gameMap.getCell(location);
-                if (cell != null) {
-                    ImageView imageView = new ImageView();
-                    imageView.setName(cell.getImageName());
-                    layerView.addCell(imageView, location);
+                try {
+                    Cell cell = gameMap.getCell(location);
+                    if (cell != null) {
+                        ImageView imageView = new ImageView();
+                        imageView.setName(cell.getImageName());
+                        layerView.addCell(imageView, location);
+                    }
+                }catch (Exception e) {
+                    System.out.println();
                 }
             }
         }

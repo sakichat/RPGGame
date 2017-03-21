@@ -11,7 +11,7 @@ import java.util.List;
  * @author Kai QI
  * @version 0.1
  *
- * This class isfo MapConnectionPanel purpose.
+ * This class is for MapConnectionPanel purpose.
  */
 public class MapConnectionPanel extends Panel {
 
@@ -134,7 +134,7 @@ public class MapConnectionPanel extends Panel {
         validateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                validateCampaign();
+                messageLabel.setText(campaign.validate());
             }
         });
 
@@ -144,13 +144,5 @@ public class MapConnectionPanel extends Panel {
         mapSequencePanel.add(label);
         messageLabel = label;
 
-    }
-
-    /**
-     * this method is used to validate the campaign
-     */
-    private void validateCampaign(){
-        String result = campaign.validate();
-        messageLabel.setText(result);
     }
 }

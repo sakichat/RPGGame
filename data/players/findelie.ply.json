@@ -1,0 +1,44 @@
+{
+  "abilityScores": {
+    "STR": 24,
+    "WIS": 8,
+    "CON": 16,
+    "DEX": 24,
+    "CHA": 12,
+    "INT": 4
+  },
+  "backpack": [
+    {
+      "name": "Axe of Cenarius",
+      "type": "Weapon",
+      "enhancedAttribute": "DB",
+      "enhancedValue": 5
+    },
+    {
+      "name": "Quilted Leather",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 3
+    }
+  ],
+  "equipments": {
+    "Armor": {
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+    },
+    "Ring": {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    }
+  },
+  "level": 3,
+  "name": "findelie",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 7
+}

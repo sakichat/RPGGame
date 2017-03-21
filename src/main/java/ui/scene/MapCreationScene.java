@@ -12,7 +12,9 @@ import java.awt.event.ActionListener;
  * @version 0.1
  */
 public class MapCreationScene extends Scene {
-    private int size;
+
+    private int gridWidth;
+    private int gridHeight;
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -33,81 +35,52 @@ public class MapCreationScene extends Scene {
     protected void initSubviews() {
 
         JLabel label;
-        JButton button;
+        JTextField textField;
 
         label = new JLabel("Name", JLabel.RIGHT);
         label.setSize(120, 40);
         label.setLocation(20, 20);
         contentView.add(label);
-        JLabel mapName = label;
 
-        JTextField nameField = new JTextField();
-        nameField.setSize(160, 40);
-        nameField.setLocation(150, 20);
-        contentView.add(nameField);
+        textField = new JTextField();
+        textField.setSize(160, 40);
+        textField.setLocation(150, 20);
+        contentView.add(textField);
+        JTextField nameField = textField;
 
-        label = new JLabel("Size", JLabel.RIGHT);
+        label = new JLabel("Width", JLabel.RIGHT);
         label.setSize(120, 40);
         label.setLocation(20, 70);
         contentView.add(label);
 
-        label = new JLabel();
+        textField = new JTextField();
+        textField.setSize(160, 40);
+        textField.setLocation(150, 70);
+        contentView.add(textField);
+        JTextField gridWidthField = textField;
+
+        label = new JLabel("", JLabel.LEFT);
         label.setSize(200, 40);
-        label.setLocation(150, 70);
-        label.setText("4 x 4");
+        label.setLocation(330, 70);
         contentView.add(label);
-        JLabel sizeLabel = label;
-        size = 4;
+        JLabel widthCheckLabel = label;
 
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(150, 120);
-        contentView.add(button);
-        button.setText("4 x 4");
-        JButton smallSize = button;
+        label = new JLabel("Height", JLabel.RIGHT);
+        label.setSize(120, 40);
+        label.setLocation(20, 120);
+        contentView.add(label);
 
-        smallSize.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sizeLabel.setText(smallSize.getText());
-                size = 4;
+        textField = new JTextField();
+        textField.setSize(160, 40);
+        textField.setLocation(150, 120);
+        contentView.add(textField);
+        JTextField gridHeightField = textField;
 
-                repaint();
-            }
-        });
-
-        button = new JButton("8 x 8");
-        button.setSize(100, 40);
-        button.setLocation(260, 120);
-        contentView.add(button);
-        JButton mediumSize = button;
-
-        mediumSize.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sizeLabel.setText(mediumSize.getText());
-                size = 8;
-
-                repaint();
-            }
-        });
-
-
-        button = new JButton("12 x 12");
-        button.setSize(100, 40);
-        button.setLocation(370, 120);
-        contentView.add(button);
-        JButton largeSize = button;
-
-        largeSize.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sizeLabel.setText(largeSize.getText());
-                size = 12;
-
-                repaint();
-            }
-        });
+        label = new JLabel("", JLabel.LEFT);
+        label.setSize(200, 40);
+        label.setLocation(330, 120);
+        contentView.add(label);
+        JLabel heightCheckLabel = label;
 
         JButton createButton = new JButton("Create");
         createButton.setSize(160, 40);
@@ -126,12 +99,34 @@ public class MapCreationScene extends Scene {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GameMap gameMap = new GameMap();
-                gameMap.setName(nameField.getText());
-                gameMap.setSize(size);
-                MapEditingScene mapEditingScene = new MapEditingScene();
-                mapEditingScene.setGameMap(gameMap);
-                MapCreationScene.this.navigationView.push(mapEditingScene);
+
+                gridWidth = Integer.parseInt(gridWidthField.getText());
+                gridHeight = Integer.parseInt(gridHeightField.getText());
+
+                if (gridWidth > 12) {
+                    widthCheckLabel.setText("Maximum size is 12.");
+                } else {
+                    widthCheckLabel.setText("");
+                }
+
+                if (gridHeight > 12) {
+                    heightCheckLabel.setText("Maximum size is 12.");
+                } else {
+                    heightCheckLabel.setText("");
+                }
+
+                if (gridWidth <= 12 && gridHeight <= 12) {
+
+                    GameMap gameMap = new GameMap();
+
+                    gameMap.setName(nameField.getText());
+                    gameMap.setWidth(gridWidth);
+                    gameMap.setHeight(gridHeight);
+
+                    MapEditingScene mapEditingScene = new MapEditingScene();
+                    mapEditingScene.setGameMap(gameMap);
+                    MapCreationScene.this.navigationView.push(mapEditingScene);
+                }
             }
         });
     }

@@ -48,11 +48,11 @@ public class MapFileManager {
 
     public static GameMap read(String name){
         File file = MapFileManager.path(name);
-        String mapName = FileManager.fileToString(file);
+        String content = FileManager.fileToString(file);
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Cell.class, new CellSerialization())
                 .create();
-        GameMap gameMap = gson.fromJson(mapName,GameMap.class);
+        GameMap gameMap = gson.fromJson(content,GameMap.class);
         return gameMap;
 
     }
@@ -64,12 +64,7 @@ public class MapFileManager {
     public static void save(GameMap gameMap){
         String name = gameMap.getName();
         File file = path(name);
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeAdapter(Cell.class, new CellSerialization())
-                .setPrettyPrinting()
-                .create();
-        String content = gson.toJson(gameMap);
+        String content = FileManager.defaultGson().toJson(gameMap);
         FileManager.stringToFile(content,file);
 
     }

@@ -3,10 +3,7 @@ package ui.scene;
 import logic.Equipment;
 import logic.Player;
 import persistence.PlayerFileManager;
-import ui.panel.BackpackPanel;
-import ui.panel.EquipmentDelegate;
-import ui.panel.EquipmentSelectorPanel;
-import ui.panel.PlayerPanel;
+import ui.panel.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,8 +13,8 @@ import java.awt.event.ActionListener;
  * This is a class for players to create or edit the details of their characters.
  * It concludes four different functions of creating or editing details of the player.
  *
- * @author Siyu Chen
- * @version 0.1
+ * @author Kai QI
+ * @version 0.2
  */
 public class PlayerEditingScene extends Scene implements EquipmentDelegate{
 
@@ -42,17 +39,22 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         this.player = player;
         playerPanel.setPlayer(player);
         playerPanel.dataToView();
-        backpackPanel.setPlayer(player);
-        backpackPanel.dataToView();
+        inventoryPanel.setPlayer(player);
+        inventoryPanel.setButtonEnabled(true);
+        inventoryPanel.setButtonText("Drop");
+        inventoryPanel.dataToView();
     }
 
 
     private PlayerPanel playerPanel;
-    private BackpackPanel backpackPanel;
+    private EquipmentSelectorPanel equipmentSelectorPanel;
+    private InventoryPanel inventoryPanel;
 
-    JTextField levelField;
-    JButton setButton;
-    JButton geneButton;
+    private JTextField levelField;
+    private JButton setButton;
+    private JButton bullyButton;
+    private JButton nimbleButton;
+    private JButton tankButton;
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -71,49 +73,66 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
      * And adds events on buttons
      */
     protected void initSubviews() {
-        JLabel level = new JLabel("Level", JLabel.RIGHT);
-        level.setSize(120, 40);
-        level.setLocation(20, 20);
-        contentView.add(level);
+
+        JButton button;
+
+        JLabel levelLabel = new JLabel("Level", JLabel.RIGHT);
+        levelLabel.setSize(120, 40);
+        levelLabel.setLocation(10, 10);
+        contentView.add(levelLabel);
 
         levelField = new JTextField();
         levelField.setSize(160,40);
-        levelField.setLocation(150, 20);
+        levelField.setLocation(140, 10);
         contentView.add(levelField);
 
-        setButton = new JButton("Set");
-        setButton.setSize(100, 40);
-        setButton.setLocation(320, 20);
-        contentView.add(setButton);
+        button = new JButton("Set");
+        button.setSize(100, 40);
+        button.setLocation(300, 10);
+        contentView.add(button);
+        setButton = button;
 
-        geneButton = new JButton("Generate Ability Scores");
-        geneButton.setSize(270, 40);
-        geneButton.setLocation(150, 70);
-        contentView.add(geneButton);
+        button = new JButton(Player.PLAYER_TYPE_BULLY);
+        button.setSize(100, 40);
+        button.setLocation(140, 60);
+        contentView.add(button);
+        bullyButton = button;
 
-        /**
+        button = new JButton(Player.PLAYER_TYPE_NIMBLE);
+        button.setSize(100, 40);
+        button.setLocation(250, 60);
+        contentView.add(button);
+        nimbleButton = button;
+
+        button = new JButton(Player.PLAYER_TYPE_TANK);
+        button.setSize(100, 40);
+        button.setLocation(360, 60);
+        contentView.add(button);
+        tankButton = button;
+
+        /*
          * Player Panel
          */
         playerPanel = new PlayerPanel();
-        playerPanel.setLocation(20, 120);
+        playerPanel.setLocation(140, 110);
         contentView.add(playerPanel);
 
-        /**
-         * Backpack Panel
-         */
-        backpackPanel = new BackpackPanel();
-        backpackPanel.setLocation(440, 200);
-        contentView.add(backpackPanel);
-
-        /**
+        /*
          * Equipment Selector Panel
          */
         EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
-        equipmentSelectorPanel.setLocation(440, 20);
+        equipmentSelectorPanel.setLocation(110, 380);
         equipmentSelectorPanel.setButtonText("Add");
         contentView.add(equipmentSelectorPanel);
 
         equipmentSelectorPanel.setEquipmentDelegate(this);
+
+        /*
+         * Inventory Panel
+         */
+        inventoryPanel = new InventoryPanel();
+        inventoryPanel.setLocation(510, 10);
+        contentView.add(inventoryPanel);
 
         repaint();
 
@@ -128,7 +147,6 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
             @Override
             public void actionPerformed(ActionEvent e) {
                 save();
-                PlayerEditingScene.this.navigationView.popTo(EditorScene.class);
             }
         });
 
@@ -136,19 +154,39 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
             @Override
             public void actionPerformed(ActionEvent e) {
                 player.setLevel(Integer.valueOf(levelField.getText()));
-                player.generateHp();
                 playerPanel.dataToView();
             }
         });
 
-        geneButton.addActionListener(new ActionListener() {
+        bullyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                player.generateAbilities();
+                player.setPlayerType(Player.PLAYER_TYPE_BULLY);
+                player.generateHp();
+                player.generateAbilities(Player.PLAYER_TYPE_BULLY);
                 playerPanel.dataToView();
             }
         });
 
+        nimbleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                player.setPlayerType(Player.PLAYER_TYPE_NIMBLE);
+                player.generateHp();
+                player.generateAbilities(Player.PLAYER_TYPE_NIMBLE);
+                playerPanel.dataToView();
+            }
+        });
+
+        tankButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                player.setPlayerType(Player.PLAYER_TYPE_TANK);
+                player.generateHp();
+                player.generateAbilities(Player.PLAYER_TYPE_TANK);
+                playerPanel.dataToView();
+            }
+        });
     }
 
     /**

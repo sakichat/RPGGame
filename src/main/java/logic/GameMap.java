@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author Qi Xia
- * @version 0.1
+ * @version 0.2
  * this class is the map
  */
 public class GameMap {
@@ -16,27 +16,46 @@ public class GameMap {
     private String name;
 
     @Expose
-    private int size;
+    private int width;
+
+    @Expose
+    private int height;
 
     @Expose
     private Cell[][] cells;
 
     /**
-     * this method is to get size of map
+     * this method is to get width
      * @return Integer
      */
-    public int getSize() {
-        return size;
+    public int getWidth() {
+        return width;
     }
 
     /**
-     * this method is to set Size
-     * @param size int
+     * this method is to set width
+     * @param width
      */
+    public void setWidth(int width) {
+        this.width = width;
+        cells = new Cell[height][width];
+    }
 
-    public void setSize(int size) {
-        this.size = size;
-        cells = new Cell[size][size];
+    /**
+     * this method is to get height
+     * @return Integer
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * this method is to set height
+     * @param height
+     */
+    public void setHeight(int height) {
+        this.height = height;
+        cells = new Cell[height][width];
     }
 
     /**
@@ -99,9 +118,27 @@ public class GameMap {
      * @param location Point
      * @return Boolean
      */
-
     public boolean hasCell(Point location){
+        if (!inMap(location)){
+            return false;
+        }
+
         return getCell(location) != null;
+    }
+
+    /**
+     * this method is to judge if this location can place cell
+     * @param location
+     * @return Boolean
+     */
+    public boolean canPlace(Point location){
+        if (inMap(location)) {
+            if (!hasCell(location)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -109,7 +146,6 @@ public class GameMap {
      * @param startPoint Point
      * @param endPoint Point
      */
-
     public void moveCell(Point startPoint, Point endPoint){
 
         int startX = startPoint.getX();
@@ -117,20 +153,20 @@ public class GameMap {
         int endX = endPoint.getX();
         int endY = endPoint.getY();
 
-        Cell cell = cells[startX][startY];
-        cells[startY][startX] = null;
+        Cell cell = cells[startY][startX];
         cells[endY][endX] = cell;
+        cells[startY][startX] = null;
+        cell.setLocation(endPoint);
     }
 
     /**
-     * this method is to get  all entrances
-     * @return List<Entreance>
+     * this method is to get all entrances
+     * @return List<Entrance>
      */
-
     public List<Entrance> getEntrances(){
         LinkedList<Entrance> entrances = new LinkedList<>();
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 if (cells[i][j] instanceof Entrance){
                     Cell cell = cells[i][j];
                     Entrance entrance = (Entrance) cell;
@@ -146,11 +182,10 @@ public class GameMap {
      * this method is to get all Exists
      * @return List<Exit>
      */
-
     public List<Exit> getExits() {
         LinkedList<Exit> exits = new LinkedList<>();
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
                 if (cells[i][j] instanceof Exit){
                     Cell cell = cells[i][j];
                     Exit exit = (Exit) cell;
@@ -161,12 +196,49 @@ public class GameMap {
         return exits;
     }
 
+    /**
+     * this method is to get all players on the map
+     * @return List<Player>
+     */
+    public List<Player> getPlayers(){
+        LinkedList<Player> players = new LinkedList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (cells[i][j] instanceof Player){
+                    Cell cell = cells[i][j];
+                    Player player = (Player) cell;
+                    players.add(player);
+                }
+            }
+        }
+        return players;
+    }
+
+    /**
+     * this method is to get all chests on the map
+     * @return List<Chest>
+     */
+    public List<Chest> getChests(){
+        LinkedList<Chest> chests = new LinkedList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (cells[i][j] instanceof Chest){
+                    Cell cell = cells[i][j];
+                    Chest chest = (Chest) cell;
+                    chests.add(chest);
+                }
+            }
+        }
+        return chests;
+    }
+
     public final static String VALIDATION_SUCCESS = "Valid";
     public final static String VALIDATION_ERROR_NO_ENTRANCE = "No entrance";
     public final static String VALIDATION_ERROR_TOO_MUCH_ENTRANCE = "Should be only one entrance";
     public final static String VALIDATION_ERROR_NO_EXIT = "No exit";
     public final static String VALIDATION_ERROR_TOO_MUCH_EXIT = "Should be only one exit";
     public final static String VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE = "The exit is not reachable";
+    public final static String VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED = "The player party is not defined";
 
     /**
      * this method is to validate the map
@@ -191,6 +263,14 @@ public class GameMap {
                     VALIDATION_ERROR_TOO_MUCH_EXIT;
         }
 
+        List<Player> players = getPlayers();
+
+        // if player party is not defined
+        for (Player player: players) {
+            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_NOT_DEFINED)){
+                return VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED;
+            }
+        }
 
         LinkedList<Point> visitedLocations = new LinkedList<>();
         LinkedList<Point> pendingLocations = new LinkedList<>();
@@ -247,15 +327,16 @@ public class GameMap {
 
     private boolean inMap(Point location) {
         int x = location.getX();
-        if (x < 0 || x >= size) {
+        if (x < 0 || x >= width) {
             return false;
         }
 
         int y = location.getY();
-        if (y < 0 || y >= size) {
+        if (y < 0 || y >= height) {
             return false;
         }
 
         return true;
     }
+
 }

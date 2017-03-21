@@ -3,7 +3,6 @@ package ui.scene;
 import logic.Campaign;
 import logic.GameMap;
 import persistence.CampaignFileManager;
-import ui.panel.MapConnection;
 import ui.panel.MapConnectionPanel;
 import ui.panel.MapDelegate;
 import ui.panel.MapSelectorPanel;
@@ -84,7 +83,6 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
             @Override
             public void actionPerformed(ActionEvent e) {
                 save();
-                CampaignEditingScene.this.navigationView.popTo(EditorScene.class);
             }
         });
 

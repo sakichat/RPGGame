@@ -22,7 +22,8 @@ public class CellSerialization implements JsonSerializer<Cell>, JsonDeserializer
 
     @Override
     public JsonElement serialize(Cell cell, Type type, JsonSerializationContext jsonSerializationContext) {
-        JsonElement element = new Gson().toJsonTree(cell);
+
+        JsonElement element = FileManager.defaultGson().toJsonTree(cell);
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("_class", cell.getClass().getSimpleName());
@@ -46,7 +47,7 @@ public class CellSerialization implements JsonSerializer<Cell>, JsonDeserializer
         String className = jsonObject.get("_class").getAsString();
         JsonElement object = jsonObject.get("_object");
 
-        Gson gson = new Gson();
+        Gson gson = FileManager.defaultGson();
 
         if (className.equals(Entrance.class.getSimpleName())) {
             return gson.fromJson(object, Entrance.class);

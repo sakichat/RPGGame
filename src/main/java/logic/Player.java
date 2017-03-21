@@ -26,11 +26,22 @@ public class Player extends Cell{
     public final static String ATTRIBUTE_DAMAGE_BONUS = "DB";
 
     public final static String LEVEL_CHANGE = "level change";
+    public final static String PLAYER_TYPE_CHANGE = "playerType change";
+    public final static String PLAYER_PARTY_CHANGE = "playerParty change";
     public final static String ABILITY_CHANGE = "ability change";
     public final static String HP_CHANGE = "hp change";
     public final static String BACKPACK_CHANGE = "backpack change";
     public final static String EQUIPMENT_CHANGE = "equipment change";
+    public final static String DEAD_CHANGE = "dead change";
 
+    public final static String PLAYER_TYPE_BULLY = "Bully";
+    public final static String PLAYER_TYPE_NIMBLE = "Nimble";
+    public final static String PLAYER_TYPE_TANK = "Tank";
+
+    public final static String PLAYER_PARTY_NOT_DEFINED = "Not Defined";
+    public final static String PLAYER_PARTY_FRIENDLY = "Friendly";
+    public final static String PLAYER_PARTY_HOSTILE = "Hostile";
+    public final static String PLAYER_PARTY_PLAYER = "Player";
 
     /**
      * Abilities and methods.
@@ -103,6 +114,58 @@ public class Player extends Cell{
         notifyObservers(ABILITY_CHANGE);
     }
 
+    public void generateAbilities(String playerType) {
+
+        List<Integer> diceResults = new LinkedList<>();
+        for (int i = 0; i < 6; i++) {
+            diceResults.add(Dice.rool(4, 6, 0));
+        }
+
+        diceResults.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1 >= o2) {
+                    return o1;
+                }
+                return o2;
+            }
+        });
+
+        List<String> abilities = new LinkedList<>();
+        if (playerType == PLAYER_TYPE_BULLY) {
+            abilities.add(ABILITY_STR);
+            abilities.add(ABILITY_CON);
+            abilities.add(ABILITY_DEX);
+            abilities.add(ABILITY_INT);
+            abilities.add(ABILITY_CHA);
+            abilities.add(ABILITY_WIS);
+
+        } else if (playerType == PLAYER_TYPE_NIMBLE) {
+            abilities.add(ABILITY_DEX);
+            abilities.add(ABILITY_CON);
+            abilities.add(ABILITY_STR);
+            abilities.add(ABILITY_INT);
+            abilities.add(ABILITY_CHA);
+            abilities.add(ABILITY_WIS);
+
+        } else if (playerType == PLAYER_TYPE_TANK) {
+            abilities.add(ABILITY_CON);
+            abilities.add(ABILITY_DEX);
+            abilities.add(ABILITY_STR);
+            abilities.add(ABILITY_INT);
+            abilities.add(ABILITY_CHA);
+            abilities.add(ABILITY_WIS);
+
+        }
+
+        for (int i = 0; i < 6; i++) {
+            abilityScores.put(abilities.get(i), diceResults.get(i));
+        }
+
+        setChanged();
+        notifyObservers(ABILITY_CHANGE);
+    }
+
 
 
     /**
@@ -155,9 +218,9 @@ public class Player extends Cell{
     }
 
 
-
     /**
      * Equipments and methods.
+     * The property of equipments here is means the worn equipments on the player
      */
 
     @Expose
@@ -203,6 +266,7 @@ public class Player extends Cell{
         backpack.add(e);
         String type = e.getType();
         equipments.remove(type);
+
         setChanged();
         notifyObservers(EQUIPMENT_CHANGE);
 
@@ -211,7 +275,7 @@ public class Player extends Cell{
     }
 
     /**
-     * This method is ussed to calculate the total enhanced value by all equipments based on the attribute name.
+     * This method is used to calculate the total enhanced value by all equipments based on the attribute name.
      * @param attribute the attribute which is needed.
      * @return int, the total enhanced value of the equipments.
      */
@@ -228,16 +292,155 @@ public class Player extends Cell{
         return result;
     }
 
+    /**
+     * The following methods are used to manage inventories.
+     */
 
     /**
-     * Level, name and Getter & Setter & constructor.
+     * The method is used to get all inventories the player owned.
+     * @return
+     */
+    public List<Equipment> getInventories() {
+        List<Equipment> inventory = new LinkedList<>();
+
+        for (Equipment equipment : equipments.values()) {
+            inventory.add(equipment);
+        }
+
+        for (Equipment equipment : backpack) {
+            inventory.add(equipment);
+        }
+
+        return inventory;
+    }
+
+    /**
+     * The method is used to drop an inventory.
+     * @param dropEquipment
+     */
+    public void dropInventories(Equipment dropEquipment) {
+
+        boolean worn = false;
+
+        String type = dropEquipment.getType();
+        if (equipments.get(type) != null) {
+            worn = equipments.get(type).getName().equals(dropEquipment.getName());
+        }
+
+        if (worn) {
+            unequip(dropEquipment);
+        }
+
+        dropEquipment(dropEquipment);
+
+    }
+
+    /**
+     * Interaction methods.
+     * NPCs refresh their inventories according to the player level;
+     * Friendly players hand out random equipments to complete exchange;
+     * Hostile players dead;
+     * Loot the chest;
+     * Loot the dead NPCs.
+     */
+
+    /**
+     * This method is used by NPCs to refresh the value of inventories.
+     * according to the level of player.
+     */
+    public void inventoryLevelRefresh(){
+
+        List<Equipment> inventories = getInventories();
+        if (!inventories.isEmpty()) {
+            for (Equipment equipment : inventories) {
+                equipment.levelRefresh(level);
+            }
+        }
+    }
+
+
+    /**
+     * The method will be called by a NPC.
+     * The NPC will random pick an equipment from their inventory.
+     * @param gotEquipment
+     * @return The return value will be the equipment random picked up.
+     */
+    public Equipment randomExchange(Equipment gotEquipment) {
+
+        List<Equipment> inventories = getInventories();
+        int randomIndex = (int)(Math.random() * inventories.size());
+        Equipment handOutEquipment = inventories.get(randomIndex);
+
+        dropInventories(handOutEquipment);
+        pickUpEquipment(gotEquipment);
+        return handOutEquipment;
+    }
+
+    /**
+     * The method is used to attack a hostilePlayer.
+     * @param hostilePlayer
+     */
+    public void attack(Player hostilePlayer) {
+        hostilePlayer.setHp(0);
+    }
+
+    /**
+     * The method is used by a player to loot a chest.
+     * @param chest
+     */
+    public void lootChest(Chest chest) {
+
+        int backpackEmptySize = 10 - backpack.size();
+        int chestSize = chest.getEquipments().size();
+        int lootSize = Math.min(backpackEmptySize, chestSize);
+
+        for (int i = 0; i < lootSize; i++) {
+            Equipment lootEquipment = chest.getEquipments().get(0);
+            pickUpEquipment(lootEquipment);
+            chest.dropEquipment(lootEquipment);
+        }
+
+    }
+
+    /**
+     * The method is used by a player to loot a deadNPC.
+     * @param deadNPC
+     */
+    public void lootDeadNPC(Player deadNPC) {
+
+        List<Equipment> inventories = getInventories();
+
+        int backpackEmptySize = 10 - backpack.size();
+        int inventoriesSize = inventories.size();
+        int lootSize = Math.min(backpackEmptySize, inventoriesSize);
+
+        for (int i = 0; i < lootSize; i++) {
+            Equipment lootEquipment = inventories.get(0);
+            pickUpEquipment(lootEquipment);
+            deadNPC.dropInventories(lootEquipment);
+        }
+
+    }
+
+
+    /**
+     * Level, name, playerType, playerParty, isDead and Getter & Setter & constructor.
      */
 
     @Expose
-    private int level;
+    private int level = 1;
 
     @Expose
     private String name;
+
+    @Expose
+    private String playerType;
+
+    @Expose
+    private String playerParty = PLAYER_PARTY_NOT_DEFINED;
+
+    @Expose
+    private boolean isDead;
 
     /**
      * Getter for the level.
@@ -273,10 +476,56 @@ public class Player extends Cell{
     }
 
     /**
-     * initialization block
+     * Getter for the playerType.
+     * @return
      */
-    {
-        imageName = "player_1.png";
+    public String getPlayerType() {
+        return playerType;
+    }
+
+    /**
+     * Setter for the playerType.
+     * @param playerType
+     */
+    public void setPlayerType(String playerType) {
+        this.playerType = playerType;
+        setChanged();
+        notifyObservers(PLAYER_TYPE_CHANGE);
+    }
+
+    /**
+     * Getter for the playerParty.
+     * @return
+     */
+    public String getPlayerParty() {
+        return playerParty;
+    }
+
+    /**
+     * Setter for the playerParty.
+     * @param playerParty
+     */
+    public void setPlayerParty(String playerParty) {
+        this.playerParty = playerParty;
+        setChanged();
+        notifyObservers(PLAYER_PARTY_CHANGE);
+    }
+
+    /**
+     * getter for isDead.
+     */
+    public boolean isDead() {
+        return isDead;
+    }
+
+    /**
+     * Setter for isDead
+     * @param dead
+     */
+    public void setDead(boolean dead) {
+        isDead = dead;
+        setChanged();
+        notifyObservers(DEAD_CHANGE);
     }
 
     /**
@@ -291,6 +540,34 @@ public class Player extends Cell{
      */
     public Player(String name) {
         this.name = name;
+    }
+
+    /**
+     * Override the getter for the ImageName
+     * @return
+     */
+    @Override
+    public String getImageName() {
+        String imageName;
+
+        if (isDead) {
+            imageName = "rip.png";
+            return imageName;
+        }
+
+        HashMap<String, String> partyNames = new HashMap<>();
+        partyNames.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
+        partyNames.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
+        partyNames.put(Player.PLAYER_PARTY_PLAYER, "player");
+        partyNames.put(Player.PLAYER_PARTY_NOT_DEFINED, "nd");
+
+        HashMap<String, String> typeNames = new HashMap<>();
+        typeNames.put(PLAYER_TYPE_BULLY, "bully");
+        typeNames.put(PLAYER_TYPE_TANK, "tank");
+        typeNames.put(PLAYER_TYPE_NIMBLE, "nimble");
+
+        return partyNames.get(playerParty) + "_" + typeNames.get(playerType) + ".png";
+
     }
 
 
@@ -314,9 +591,25 @@ public class Player extends Cell{
      * @param hp int
      */
     public void setHp(int hp) {
+        if (hp < 0) {
+            hp = 0;
+        }
+        if (hp == 0) {
+            dead();
+        }
         this.hp = hp;
+
         setChanged();
         notifyObservers(HP_CHANGE);
+    }
+
+    /**
+     * The method is to describe the dead status;
+     * @return
+     */
+    public void dead() {
+        setDead(true);
+        setImageName(getImageName());
     }
 
     /**
@@ -390,4 +683,5 @@ public class Player extends Cell{
     public int getTotalDamageBonus() {
         return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
     }
+
 }

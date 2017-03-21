@@ -44,8 +44,8 @@ public class EquipmentFileManager {
      */
     public static Equipment read(String name){
         File file = EquipmentFileManager.path(name);
-        String equipmentName = FileManager.fileToString(file);
-        Equipment equipment = new Gson().fromJson(equipmentName,Equipment.class);
+        String content = FileManager.fileToString(file);
+        Equipment equipment = new Gson().fromJson(content,Equipment.class);
         return equipment;
 
     }

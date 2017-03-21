@@ -1,5 +1,8 @@
 package persistence;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import logic.Cell;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -65,4 +68,12 @@ public class FileManager {
         return content;
     }
 
+    public static Gson defaultGson(){
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .registerTypeAdapter(Cell.class, new CellSerialization())
+                .setPrettyPrinting()
+                .create();
+        return gson;
+    }
 }

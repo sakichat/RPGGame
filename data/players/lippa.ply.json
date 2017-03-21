@@ -1,0 +1,38 @@
+{
+  "abilityScores": {
+    "STR": 4,
+    "WIS": 12,
+    "CON": 12,
+    "DEX": 8,
+    "CHA": 4,
+    "INT": 20
+  },
+  "backpack": [
+    {
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+    },
+    {
+      "name": "Dual Determination",
+      "type": "Ring",
+      "enhancedAttribute": "CHA",
+      "enhancedValue": 5
+    }
+  ],
+  "equipments": {
+    "Boots": {
+      "name": "Bone Stompers",
+      "type": "Boots",
+      "enhancedAttribute": "DEX",
+      "enhancedValue": 5
+    }
+  },
+  "level": 10,
+  "name": "lippa",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 2
+}

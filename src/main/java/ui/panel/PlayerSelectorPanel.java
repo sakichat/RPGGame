@@ -2,6 +2,7 @@ package ui.panel;
 
 import logic.Player;
 import persistence.PlayerFileManager;
+import ui.view.ImageView;
 import ui.view.View;
 
 import javax.swing.*;
@@ -123,7 +124,7 @@ public class PlayerSelectorPanel extends Panel {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        playerDelegate.playerSelectorPerformAction(PlayerSelectorPanel.this,player);
+                        playerDelegate.playerSelectorPerformAction(PlayerSelectorPanel.this, player);
                     }
                 });
 
@@ -131,6 +132,7 @@ public class PlayerSelectorPanel extends Panel {
                 yOfView += 30;
             }
         }
+
         repaint();
     }
 }

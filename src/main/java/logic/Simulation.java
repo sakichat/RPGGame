@@ -1,7 +1,5 @@
 package logic;
 
-import persistence.PlayerFileManager;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,6 +16,8 @@ public class Simulation {
     public static Player newPlayer(){
         Player player = new Player("playerDemo");
         player.setLevel(2);
+        player.setPlayerType(Player.PLAYER_TYPE_BULLY);
+        player.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
         player.generateAbilities();
         player.generateHp();
 
@@ -157,7 +157,8 @@ public class Simulation {
 
     public static GameMap gameMap1(){
         GameMap gameMap = new GameMap();
-        gameMap.setSize(4);
+        gameMap.setWidth(4);
+        gameMap.setHeight(6);
         Exit exit1 = new Exit();
         Entrance entrance = new Entrance();
 
@@ -198,7 +199,8 @@ public class Simulation {
 
     public static GameMap gameMap2(){
         GameMap gameMap = new GameMap();
-        gameMap.setSize(8);
+        gameMap.setWidth(8);
+        gameMap.setHeight(12);
 
         Exit exit = new Exit();
         Entrance entrance = new Entrance();
@@ -246,5 +248,16 @@ public class Simulation {
         gameMap.addCell(characteur2, pointCharacteur2);
 
         return gameMap;
+    }
+
+    public static Play play1(){
+
+        Player player = new Player();
+        Campaign campaign = new Campaign();
+
+        GameMap gameMap = new GameMap();
+
+        gameMap.addCell(new Entrance(), new Point());
+        return null;
     }
 }

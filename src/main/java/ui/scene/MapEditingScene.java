@@ -62,15 +62,18 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      * And adds events on buttons
      */
     protected void initSubviews() {
+        /**
+         * Add a GameMapView on MapEditing Scene, and set delegate to this scene.
+         */
         gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);
         contentView.add(gameMapView);
         gameMapView.setDelegate(this);
 
         JButton validateButton = new JButton("Validate");
-        validateButton.setLocation(550, 80);
+        validateButton.setLocation(550, 40);
         validateButton.setSize(160, 40);
-        add(validateButton);
+        contentView.add(validateButton);
 
         validationMessageLabel = new JLabel();
         validationMessageLabel.setLocation(40, 0);
@@ -78,9 +81,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         contentView.add(validationMessageLabel);
 
         controlViewContainerView = new View();
-        controlViewContainerView.setLocation(820, 40);
+        controlViewContainerView.setLocation(820, 0);
         controlViewContainerView.setSize(180, 560);
-        add(controlViewContainerView);
+        contentView.add(controlViewContainerView);
 
         repaint();
 
@@ -148,7 +151,6 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         controlViewContainerView.removeAll();
         controlViewContainerView.add(view);
     }
-
 
     /**
      * This method checks which control view should show in controlViewContainerView
@@ -239,37 +241,55 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         build(player);
     }
 
-
+    /**
+     * Properties and methods about chest editing.
+     */
     EquipmentSelectorPanel equipmentSelectorPanel;
+    EquipmentPanel equipmentPanel;
 
     /**
      * This method set equipmentSelectorPanel on the Scene when the event is triggered
      */
     public void addChest(){
-        equipmentSelectorPanel = new EquipmentSelectorPanel();
-        equipmentSelectorPanel.setLocation(420, 50);
-        equipmentSelectorPanel.setButtonText("Add");
-        add(equipmentSelectorPanel);
-
-        equipmentSelectorPanel.setEquipmentDelegate(this);
-
+        Chest chest = new Chest();
+        build(chest);
     }
 
     /**
-     * This method is to paint a chest contains a selected equipment on the specific cell view
-     * And remove the selector panel.
+     * The method is used to showChestViewInside.
+     * @param chest
+     */
+    public void showChestViewInside(Chest chest) {
+
+        equipmentSelectorPanel = new EquipmentSelectorPanel();
+        equipmentSelectorPanel.setLocation(410, 20);
+        equipmentSelectorPanel.setButtonText("Add");
+        contentView.add(equipmentSelectorPanel);
+        equipmentSelectorPanel.setEquipmentDelegate(this);
+
+        equipmentPanel = new EquipmentPanel();
+        equipmentPanel.setLocation(410, 210);
+        equipmentPanel.setChest(chest);
+        contentView.add(equipmentPanel);
+
+        repaint();
+    }
+
+    /**
+     * This method is to add equipment into a chest.
      * @param selectorPanel EquipmentSelectorPanel
      * @param equipment     Equipment
      */
     @Override
     public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
-        remove(equipmentSelectorPanel);
-        Chest chest = new Chest();
-        chest.setEquipment(equipment);
-        build(chest);
+
+        Chest chest = equipmentPanel.getChest();
+        chest.addEquipment(equipment);
     }
 
-
+    /**
+     * Properties and methods about player setting.
+     */
     private PlayerPanel playerPanel;
 
     /**
@@ -279,40 +299,27 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     public void showAttributePanel(Player player){
         playerPanel = new PlayerPanel();
         playerPanel.setPlayer(player);
-        playerPanel.setLocation(10, 10);
+        playerPanel.setLocation(450, 10);
         contentView.add(playerPanel);
         repaint();
     }
 
+    InventoryPanel inventoryPanel;
     /**
-     * Method hideAttributePanel
-     */
-    public void hideAttributePanel(){
-        contentView.remove(playerPanel);
-        repaint();
-    }
-
-
-    private BackpackPanel backpackPanel;
-
-    /**
-     * Method showBackpackPanel
+     * Method showInventoryPanel
      * @param player
      */
-    public void showBackpackPanel(Player player){
-        backpackPanel = new BackpackPanel();
-        backpackPanel.setPlayer(player);
-        backpackPanel.setLocation(10, 10);
-        contentView.add(backpackPanel);
+    public void showInventoryPanel(Player player){
+        inventoryPanel = new InventoryPanel();
+        inventoryPanel.setPlayer(player);
+        inventoryPanel.setLocation(330, 10);
+        contentView.add(inventoryPanel);
+
         repaint();
     }
 
-    /**
-     * Method hideBackpackPanel
-     */
-    public void hideBackpackPanel(){
-        contentView.remove(backpackPanel);
-        repaint();
+    public void refreshMapView(){
+        gameMapView.refreshContent();
     }
 
 }

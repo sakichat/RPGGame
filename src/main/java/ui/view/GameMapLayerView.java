@@ -24,28 +24,30 @@ public class GameMapLayerView extends View {
     /**
      * These two parameters are the size of a game map and a double dimension array to save cell views respectively.
      */
-    private int gridSize;
+    private int gridWidth;
+    private int gridHeight;
     private View[][] cells;
 
-
-    /**
-     * @return gridSize
-     */
-    public int getGridSize() {
-        return gridSize;
+    public int getGridWidth() {
+        return gridWidth;
     }
 
-    /**
-     * This method is to set gridSize which presents the number of cells on each side of the game map.
-     * And using gridSize to set the size of this game map view.
-     * @param gridSize
-     */
-    public void setGridSize(int gridSize) {
-        this.gridSize = gridSize;
+    public void setGridWidth(int gridWidth) {
+        this.gridWidth = gridWidth;
 
-        cells = new View[gridSize][gridSize];
-        setSize(gridSize * UNIT_SIZE, gridSize * UNIT_SIZE);
+        cells = new View[gridHeight][gridWidth];
     }
+
+    public int getGridHeight() {
+        return gridHeight;
+    }
+
+    public void setGridHeight(int gridHeight) {
+        this.gridHeight = gridHeight;
+
+        cells = new View[gridHeight][gridWidth];
+    }
+
 
     /**
      * This method is to add a cell on GameMapView
@@ -100,8 +102,8 @@ public class GameMapLayerView extends View {
      * This function is to clear the whole GameMapViewLayer in order to add new items on that
      */
     public void removeAllCells(){
-        for (int y = 0; y < gridSize; y++) {
-            for (int x = 0; x < gridSize; x++) {
+        for (int y = 0; y < gridHeight; y++) {
+            for (int x = 0; x < gridWidth; x++) {
                 Point point = new Point(x, y);
                 View cell = getCell(point);
                 if (cell != null) {
