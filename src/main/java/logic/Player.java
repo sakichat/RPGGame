@@ -428,7 +428,7 @@ public class Player extends Cell{
      */
 
     @Expose
-    private int level;
+    private int level = 1;
 
     @Expose
     private String name;
