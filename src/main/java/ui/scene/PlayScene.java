@@ -1,6 +1,5 @@
 package ui.scene;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import logic.*;
 import ui.controlView.*;
 import ui.panel.InventoryDelegate;
@@ -241,22 +240,28 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
             interactWithChest(chest);
 
         } else if (targetCell instanceof Exit) {
+
             int currentLevel = play.getPlayer().getLevel();
             play.getPlayer().setLevel(currentLevel + 1);
-            //出地图
-            //check是不是最后一张地图
-            //等等。。。
+
+
+            if (play.isLastMap()) {
+                //跳回什么界面？
+            } else {
+                play.moveToNextMap();
+                //push新地图
+            }
+
         }
     }
 
     private void interactWithDeadNPC(Player targetPlayer) {
         play.getPlayer().lootDeadNPC(targetPlayer);
+        play.refreshPlayer();
     }
 
     private void interactWithFriendlyNPC(Player targetPlayer) {
-
-        showInventoryToExchange(play.getPlayer());
-
+        showInventoryPanelToExchange(play.getPlayer());
     }
 
     private void interactWithHostileNPC(Player targetPlayer) {
@@ -265,6 +270,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
     private void interactWithChest(Chest chest) {
         play.getPlayer().lootChest(chest);
+        play.refreshChest();
     }
 
     /**
@@ -272,7 +278,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
      * This method should be called by the ActionListener of interactButton button.
      * @param player
      */
-    private void showInventoryToExchange(Player player) {
+    private void showInventoryPanelToExchange(Player player) {
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setLocation(330, 10);
         inventoryPanel.setPlayer(player);
