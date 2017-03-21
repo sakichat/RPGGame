@@ -60,27 +60,27 @@ public class PlayTest {
         Assert.assertEquals(new Point(0, 3), play.getPlayer().getLocation());
     }
 
-    @Test
-    public void lootingWithDead() throws Exception {
-        Campaign campaign = CampaignFileManager.read("caribean_sea");
-        Player player = PlayerFileManager.read("asheley");
-        Play play = new Play();
-        play.setCampaign(campaign);
-        play.setPlayer(player);
-        play.resolveMap();
-        play.setDirection(Point.DIRECTION_LEFT);
-        System.out.println(play.getPlayer().getLocation());
-
-        play.move();
-        play.move();
-        play.setDirection(Point.DIRECTION_UP);
-        play.move();
-
-        System.out.println(play.getPlayer().getLocation());
-
-        Assert.assertEquals(new Point(0, 3), play.getPlayer().getLocation());
-
-    }
+//    @Test
+//    public void lootingWithDead() throws Exception {
+//        Campaign campaign = CampaignFileManager.read("caribean_sea");
+//        Player player = PlayerFileManager.read("asheley");
+//        Play play = new Play();
+//        play.setCampaign(campaign);
+//        play.setPlayer(player);
+//        play.resolveMap();
+//        play.setDirection(Point.DIRECTION_LEFT);
+//        System.out.println(play.getPlayer().getLocation());
+//
+//        play.move();
+//        play.move();
+//        play.setDirection(Point.DIRECTION_UP);
+//        play.move();
+//
+//        System.out.println(play.getPlayer().getLocation());
+//
+//        Assert.assertEquals(new Point(0, 3), play.getPlayer().getLocation());
+//
+//    }
 
     @Test
     public void lootingWithFri() throws Exception {
