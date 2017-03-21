@@ -1,8 +1,10 @@
 package ui.scene;
 
+import logic.Play;
 import logic.Player;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -41,6 +43,7 @@ public class PlayerCreationScene extends Scene {
 
     private JTextField nameField;
     private JTextField levelField;
+    private JLabel typeLabel;
     private JButton createButton;
     private JButton setButton;
     private JButton bullyButton;
@@ -80,27 +83,40 @@ public class PlayerCreationScene extends Scene {
         contentView.add(button);
         setButton = button;
 
+        label = new JLabel("Fighter Type", JLabel.RIGHT);
+        label.setSize(120, 40);
+        label.setLocation(20, 130);
+        contentView.add(label);
+
+        label = new JLabel("");
+        label.setSize(160, 40);
+        label.setLocation(150, 130);
+        label.setOpaque(true);
+        label.setBackground(new Color(0xf4f4f4));
+        contentView.add(label);
+        typeLabel = label;
+
         button = new JButton(Player.PLAYER_TYPE_BULLY);
         button.setSize(160, 40);
-        button.setLocation(150, 130);
+        button.setLocation(150, 180);
         contentView.add(button);
         bullyButton = button;
 
         button = new JButton(Player.PLAYER_TYPE_NIMBLE);
         button.setSize(160, 40);
-        button.setLocation(320, 130);
+        button.setLocation(320, 180);
         contentView.add(button);
         nimbleButton = button;
 
         button = new JButton(Player.PLAYER_TYPE_TANK);
         button.setSize(160, 40);
-        button.setLocation(490, 130);
+        button.setLocation(490, 180);
         contentView.add(button);
-        bullyButton = button;
+        tankButton = button;
 
         button = new JButton("Create");
         button.setSize(160, 40);
-        button.setLocation(150, 190);
+        button.setLocation(150, 240);
         contentView.add(button);
         createButton = button;
 
@@ -110,6 +126,27 @@ public class PlayerCreationScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayerCreationScene.this.navigationView.pop();
+            }
+        });
+
+        bullyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                typeLabel.setText(Player.PLAYER_TYPE_BULLY);
+            }
+        });
+
+        nimbleButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                typeLabel.setText(Player.PLAYER_TYPE_NIMBLE);
+            }
+        });
+
+        tankButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                typeLabel.setText(Player.PLAYER_TYPE_TANK);
             }
         });
 
