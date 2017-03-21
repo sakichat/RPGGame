@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author Kai QI
- * @version 0.1
+ * @version 0.2
  *
  * This class is for MapConnectionPanel purpose.
  */
