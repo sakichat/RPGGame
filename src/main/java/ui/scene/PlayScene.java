@@ -1,7 +1,6 @@
 package ui.scene;
 
 import logic.*;
-import sun.applet.Main;
 import ui.controlView.*;
 import ui.panel.*;
 import ui.view.GameMapView;
@@ -55,8 +54,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     private JButton rightDirectionButton;
     private JButton interactButton;
 
-//    PlayingControlView playingControlView;
-
     /**
      * This method creates components on this scene
      * And adds events on buttons
@@ -103,10 +100,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         button.setSize(40, 40);
         downDirectionButton = button;
         contentView.add(button);
-
-//        playingControlView = new PlayingControlView();
-//        playingControlView.setLocation(820, 40);
-//        add(playingControlView);
 
         repaint();
 
@@ -304,7 +297,8 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
                 play.moveToNextMap();
                 gameMapView.setGameMap(play.getCurrentMap());
 
-                gameMapView.repaint();
+                gameMapView.refreshContent();
+                gameMapView.refreshHighlight();
             }
 
         }

@@ -279,4 +279,12 @@ public class GameMapView extends View {
 
         repaint();
     }
+
+    public void refreshHighlight() {
+        GameMapLayerView highlightLayerView = layers.get(_LAYER_HIGHLIGHT);
+        highlightLayerView.removeAllCells();
+        this.initHighlightLayer();
+
+        repaint();
+    }
 }
