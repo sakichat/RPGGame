@@ -60,4 +60,9 @@ public class PlayTest {
         Assert.assertEquals(new Point(0, 3), play.getPlayer().getLocation());
     }
 
+    @Test
+    public void lootingWithDead() throws Exception {
+        
+
+    }
 }
