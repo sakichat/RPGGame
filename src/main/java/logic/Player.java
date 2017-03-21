@@ -404,12 +404,13 @@ public class Player extends Cell{
                     hostilePlayer.setHp(0);
                 }
             } else if (multipleAttacks.get(hostilePlayer.getName()) == 2) {
-                if (hostilePlayer.getHp() - damage > 0) {
+                if (hostilePlayer.getHp() - (damage - 2) > 0) {
                     if (damage - 2 <= 0){
                         hostilePlayer.setHp(0);
                     }else
-                    hostilePlayer.setHp(hostilePlayer.getHp() - damage + 2);
+                    hostilePlayer.setHp(hostilePlayer.getHp() - (damage - 2));
                 } else {
+                    hostilePlayer.setHp(0);
 
                 }
             } else if (multipleAttacks.get(hostilePlayer.getName()) == 1) {
