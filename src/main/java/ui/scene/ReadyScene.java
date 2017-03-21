@@ -14,24 +14,24 @@ import java.awt.event.ActionListener;
  */
 public class ReadyScene extends Scene {
 
-    private Play play;
-
-    /**
-     * Getter for play.
-     * @return
-     */
-    public Play getPlay() {
-        return play;
-    }
-
-    /**
-     * Setter for play.
-     * @param play
-     */
-    public void setPlay(Play play) {
-        this.play = play;
-        dataToView();
-    }
+//    private Play play;
+//
+//    /**
+//     * Getter for play.
+//     * @return
+//     */
+//    public Play getPlay() {
+//        return play;
+//    }
+//
+//    /**
+//     * Setter for play.
+//     * @param play
+//     */
+//    public void setPlay(Play play) {
+//        this.play = play;
+//        dataToView();
+//    }
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -69,9 +69,9 @@ public class ReadyScene extends Scene {
         newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PlayScene playScene = new PlayScene();
-                playScene.setPlay(play);
-                ReadyScene.this.navigationView.push(playScene);
+                PlayCreationScene playCreationScene = new PlayCreationScene();
+//                playScene.setPlay(play);
+                ReadyScene.this.navigationView.push(playCreationScene);
             }
         });
 
@@ -85,7 +85,7 @@ public class ReadyScene extends Scene {
         repaint();
     }
 
-    public void dataToView() {
-        playNameLabel.setText(play.getName());
-    }
+//    public void dataToView() {
+//        playNameLabel.setText(play.getName());
+//    }
 }
