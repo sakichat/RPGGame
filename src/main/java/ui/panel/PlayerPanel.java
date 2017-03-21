@@ -1,13 +1,10 @@
 package ui.panel;
 
-import logic.Equipment;
 import logic.Player;
 import ui.view.AbilityView;
-import ui.view.ImageView;
 import ui.view.TextDisplay;
 
 import javax.swing.*;
-import javax.xml.soap.Text;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -38,9 +35,10 @@ public class PlayerPanel extends Panel implements Observer {
      */
     public void setPlayer(Player player) {
         this.player = player;
+        titleLabel.setText(player.getPlayerParty() + " - " + player.getName());
+
         dataToView();
         player.addObserver(this);
-
     }
 
     /**
@@ -76,7 +74,6 @@ public class PlayerPanel extends Panel implements Observer {
         super.init();
 
         setSize(360, 240);
-        title = "Player";
     }
 
     private JLabel nameValueLabel;
