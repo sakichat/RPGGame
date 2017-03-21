@@ -9,7 +9,7 @@ import persistence.PlayerFileManager;
 /**
  * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
- * @version 1.0.0
+ * @version 0.2
  *
  * This class is basically for player's tests.
  */
