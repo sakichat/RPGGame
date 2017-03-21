@@ -12,6 +12,7 @@ import persistence.MapFileManagerTest;
                     EquipmentTest.class ,
                     MapValidatorTest.class,
                     PlayerTest.class,
+                    PlayTest.class,
                     FileManagerTest.class,
                     MapFileManagerTest.class})
 public class TestSuite {
