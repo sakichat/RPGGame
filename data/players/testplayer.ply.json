@@ -1,0 +1,56 @@
+{
+  "abilityScores": {
+    "STR": 12,
+    "WIS": 20,
+    "CON": 8,
+    "DEX": 20,
+    "CHA": 8,
+    "INT": 8
+  },
+  "backpack": [
+    {
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+    },
+    {
+      "name": "Coif of Delusions",
+      "type": "Helmet",
+      "enhancedAttribute": "WIS",
+      "enhancedValue": 5
+    },
+    {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    },
+    {
+      "name": "Ashbringer",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 5
+    }
+  ],
+  "equipments": {
+    "Ring": {
+      "name": "Alythess Pyrogenics",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    },
+    "Weapon": {
+      "name": "Ashbringer",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 5
+    }
+  },
+  "level": 3,
+  "name": "testPlayer",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 7
+}
