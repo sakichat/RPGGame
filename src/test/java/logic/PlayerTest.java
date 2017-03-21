@@ -11,7 +11,7 @@ import persistence.PlayerFileManager;
  * @author GU_HAN
  * @version 0.2
  *
- * This class is basically for player's tests.
+ * This class is basically for class of player's tests.
  */
 public class PlayerTest {
     private Player player;
