@@ -8,9 +8,9 @@ import persistence.MapFileManager;
 /**
  * Created by GU_HAN on 2017-03-01.
  * @author GU_HAN
- * @version 0.1
+ * @version 0.2
  *
- * This class is for testing the map.
+ * This class is for testing the class of GameMap.
  */
 public class MapValidatorTest {
 
