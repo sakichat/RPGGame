@@ -24,6 +24,12 @@ public class GameMap {
     @Expose
     private Cell[][] cells;
 
+
+    public boolean canPlace(Point location){
+
+        return false;
+    }
+
     /**
      * this method is to get width
      * @return Integer
@@ -143,6 +149,7 @@ public class GameMap {
         Cell cell = cells[startY][startX];
         cells[endY][endX] = cell;
         cells[startY][startX] = null;
+        cell.setLocation(endPoint);
     }
 
     /**

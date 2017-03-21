@@ -133,7 +133,6 @@ public class Play {
         Point targetLocation = location.add(direction);
 
         if (!currentMap.hasCell(targetLocation)){
-            player.setLocation(targetLocation);
             currentMap.moveCell(location, targetLocation);
         }
     }

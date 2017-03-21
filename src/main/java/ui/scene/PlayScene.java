@@ -37,7 +37,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         titleLabel.setText(play.getCurrentMap().getName());
         gameMapView.setGameMap(play.getCurrentMap());
 
-        play.resolveMap();
     }
 
     /**
