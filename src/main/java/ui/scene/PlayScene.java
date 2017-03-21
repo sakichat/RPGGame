@@ -191,17 +191,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
         controlViewContainerView.repaint();
 
-//        if (cell instanceof Player) {
-//            playingControlView.setPlayer((Player)cell);
-//
-//        } else {
-//            playingControlView.setPlayer(play.getPlayer());
-//
-//        }
-
-//        playingControlView.setPlayScene(this);
-//        playingControlView.repaint();
-
     }
 
     private ControlView generateControlView(Cell cell) {
