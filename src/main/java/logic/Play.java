@@ -20,11 +20,6 @@ public class Play {
     private GameMap currentMap;
 
     private Point direction;
-    private Point targetLocation;
-
-    public Point getTargetLocation() {
-        return targetLocation;
-    }
 
     /**
      * Getter for name.
@@ -135,7 +130,7 @@ public class Play {
      */
     public void move(){
         Point location = player.getLocation();
-        targetLocation = location.add(direction);
+        Point targetLocation = location.add(direction);
 
         if (!currentMap.hasCell(targetLocation)){
             player.setLocation(targetLocation);
