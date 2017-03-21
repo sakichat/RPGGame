@@ -68,8 +68,8 @@ public class PlayTest {
         play.resolveMap();
 //        play.setDirection(Point.D);
 
-        play.move();
-        play.move();
+//        play.move();
+//        play.move();
         play.setDirection(Point.DIRECTION_RIGHT);
 //        play.
 
