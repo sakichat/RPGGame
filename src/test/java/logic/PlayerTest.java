@@ -107,7 +107,7 @@ public class PlayerTest {
     }
 
     /**
-     * This method test if it is empty in the backpack.
+     * This method test if it is empty in the backpack after dropping all the items.
      * @throws Exception
      */
     @Test
