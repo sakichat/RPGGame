@@ -154,7 +154,8 @@ public class PlayerTest {
     }
 
     /**
-     * This method tests if player can wear more than one item of the same category.
+     * This method tests if player can wear more than one item of the same category, wihch means
+     * if the player will drop previous item if wearing the same category.
      * @throws Exception
      */
     @Test
