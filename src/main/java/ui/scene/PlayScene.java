@@ -302,6 +302,9 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
                 this.navigationView.popTo(MainScene.class);
             } else {
                 play.moveToNextMap();
+                gameMapView.setGameMap(play.getCurrentMap());
+
+                gameMapView.repaint();
                 //push新地图
             }
 
