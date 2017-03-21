@@ -91,15 +91,9 @@ public class PlayerCreationScene extends Scene {
         contentView.add(textField);
         levelField = textField;
 
-        button = new JButton("Set");
-        button.setSize(160, 40);
-        button.setLocation(320, 70);
-        contentView.add(button);
-        setButton = button;
-
         label = new JLabel("");
         label.setSize(300, 40);
-        label.setLocation(490, 70);
+        label.setLocation(320, 70);
         contentView.add(label);
         checkLevelLabel = label;
 
@@ -177,8 +171,10 @@ public class PlayerCreationScene extends Scene {
 
                 if (level < 1) {
                     checkLevelLabel.setText("Level CANNOT less than 1!");
+
                 } else if (level > 20) {
                     checkLevelLabel.setText("Level CANNOT larger than 20!");
+
                 } else {
                     // Builder
                     PlayerExplorer playerExplorer;
@@ -195,14 +191,10 @@ public class PlayerCreationScene extends Scene {
                         playerBuilder = new TankBuilder();
                     }
 
-
-
-
                     playerExplorer = new PlayerExplorer();
                     playerExplorer.setPlayerBuilder(playerBuilder);
                     playerExplorer.constructPlyar(name,level);
                     player = playerExplorer.getPlayer();
-
 
                     PlayerEditingScene playerEditingScene = new PlayerEditingScene();
                     playerEditingScene.setPlayer(player);
