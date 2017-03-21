@@ -127,7 +127,7 @@ public class PlayerTest {
     }
 
     /**
-     * This method test if it is already empty in the backpack, can we still drop items.
+     * This method test if it is already empty in the backpack, can the player still drop items.
      * @throws Exception
      */
     @Test
