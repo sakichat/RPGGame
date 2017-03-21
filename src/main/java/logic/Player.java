@@ -375,7 +375,7 @@ public class Player extends Cell{
         pickUpEquipment(gotEquipment);
         return handOutEquipment;
     }
-
+    @Expose
     private Map<String,Integer> multipleAttacks = new HashMap<>();
 
     /**
