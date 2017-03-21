@@ -55,7 +55,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     private JButton rightDirectionButton;
     private JButton interactButton;
 
-    PlayingControlView playingControlView;
+//    PlayingControlView playingControlView;
 
     /**
      * This method creates components on this scene
@@ -104,9 +104,9 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         downDirectionButton = button;
         contentView.add(button);
 
-        playingControlView = new PlayingControlView();
-        playingControlView.setLocation(820, 40);
-        add(playingControlView);
+//        playingControlView = new PlayingControlView();
+//        playingControlView.setLocation(820, 40);
+//        add(playingControlView);
 
         repaint();
 
@@ -167,6 +167,69 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     }
 
     /**
+     * This method implements MapDelegation and refresh controlViewContainerView.
+     * @param gameMapView
+     * @param location
+     */
+    @Override
+    public void gameMapViewSelect(GameMapView gameMapView, Point location) {
+        refreshControlView();
+    }
+
+    /**
+     * This method gets cell and its location
+     * And then call generateControlView() method to add a correct controlView to controlViewContainerView
+     */
+    private void refreshControlView(){
+        Point location = gameMapView.getSelectedLocation();
+        GameMap gameMap = gameMapView.getGameMap();
+        Cell cell = gameMap.getCell(location);
+        View view = generateControlView(cell);
+
+        controlViewContainerView.removeAll();
+        controlViewContainerView.add(view);
+
+        controlViewContainerView.repaint();
+
+//        if (cell instanceof Player) {
+//            playingControlView.setPlayer((Player)cell);
+//
+//        } else {
+//            playingControlView.setPlayer(play.getPlayer());
+//
+//        }
+
+//        playingControlView.setPlayScene(this);
+//        playingControlView.repaint();
+
+    }
+
+    private ControlView generateControlView(Cell cell) {
+        ControlView controlView = null;
+
+        if (cell instanceof Chest) {
+            ChestViewControlView chestViewControlView = new ChestViewControlView();
+            chestViewControlView.setChest((Chest) cell);
+            controlView = chestViewControlView;
+
+        } else if (cell instanceof Player) {
+            PlayingControlView playingControlView = new PlayingControlView();
+            playingControlView.setPlayer((Player)cell);
+            controlView = playingControlView;
+
+        } else {
+            PlayingControlView playingControlView = new PlayingControlView();
+            playingControlView.setPlayer(play.getPlayer());
+            controlView = playingControlView;
+
+        }
+
+        controlView.setPlayScene(this);
+
+        return controlView;
+    }
+
+    /**
      * Relative methods about view player
      */
     PlayerPanel playerPanel;
@@ -204,56 +267,12 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     }
 
     /**
-     * This method implements MapDelegation and refresh controlViewContainerView.
-     * @param gameMapView
-     * @param location
-     */
-    @Override
-    public void gameMapViewSelect(GameMapView gameMapView, Point location) {
-        refreshControlView();
-    }
-
-    /**
-     * This method gets cell and its location
-     * And then call generateControlView() method to add a correct controlView to controlViewContainerView
-     */
-    private void refreshControlView(){
-        Point location = gameMapView.getSelectedLocation();
-        GameMap gameMap = gameMapView.getGameMap();
-        Cell cell = gameMap.getCell(location);
-
-        if (cell instanceof Player) {
-            playingControlView.setPlayer((Player)cell);
-
-        } else {
-            playingControlView.setPlayer(play.getPlayer());
-
-        }
-
-        playingControlView.setPlayScene(this);
-        playingControlView.repaint();
-
-    }
-
-    private ControlView generateControlView(Cell cell) {
-        ControlView controlView = null;
-
-        if (cell instanceof Chest) {
-            controlView = new ChestViewControlView();
-        } else {
-            controlView = new PlayingControlView();
-        }
-
-        return controlView;
-    }
-
-    /**
      * The method is used to showChestViewInside.
      * @param chest
      */
     public void showChestViewInside(Chest chest) {
         equipmentPanel = new EquipmentPanel();
-        equipmentPanel.setLocation(410, 210);
+        equipmentPanel.setLocation(420, 10);
         equipmentPanel.setChest(chest);
         contentView.add(equipmentPanel);
 
