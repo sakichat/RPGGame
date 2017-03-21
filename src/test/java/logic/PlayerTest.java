@@ -27,17 +27,17 @@ public class PlayerTest {
     private Equipment equipment10;
     private Equipment equipment11;
     private Equipment equipment12;
-//    private Equipment equipment13;
-//    private Equipment equipment14;
-//    private Equipment equipment15;
-//    private Equipment equipment16;
-//    private Equipment equipment17;
-//    private Equipment equipment18;
-//    private Equipment equipment19;
-//    private Equipment equipment20;
-//    private Equipment equipment21;
-//    private Equipment equipment22;
-//    private Equipment equipment23;
+    private Equipment equipment13;
+    private Equipment equipment14;
+    private Equipment equipment15;
+    private Equipment equipment16;
+    private Equipment equipment17;
+    private Equipment equipment18;
+    private Equipment equipment19;
+    private Equipment equipment20;
+    private Equipment equipment21;
+    private Equipment equipment22;
+    private Equipment equipment23;
 
     /**
      * This method set up first few steps before the actual tests.
