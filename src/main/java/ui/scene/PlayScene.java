@@ -305,7 +305,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
                 gameMapView.setGameMap(play.getCurrentMap());
 
                 gameMapView.repaint();
-                //push新地图
             }
 
         }
