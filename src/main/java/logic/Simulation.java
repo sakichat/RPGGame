@@ -1,7 +1,5 @@
 package logic;
 
-import persistence.PlayerFileManager;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -250,5 +248,16 @@ public class Simulation {
         gameMap.addCell(characteur2, pointCharacteur2);
 
         return gameMap;
+    }
+
+    public static Play play1(){
+
+        Player player = new Player();
+        Campaign campaign = new Campaign();
+
+        GameMap gameMap = new GameMap();
+
+        gameMap.addCell(new Entrance(), new Point());
+        return null;
     }
 }
