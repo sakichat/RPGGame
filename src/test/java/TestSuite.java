@@ -6,6 +6,8 @@ import persistence.MapFileManagerTest;
 
 /**
  * Created by GU_HAN on 2017-03-19.
+ * @author GU_HAN
+ * @version 0.2
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({CampaignTest.class,

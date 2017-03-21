@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by GU_HAN on 2017-03-02.
  * @author GU_HAN
- * @version 0.1
+ * @version 0.2
  *
  * This class is for validate the campaign.
  */
