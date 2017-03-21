@@ -156,6 +156,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
     }
 
+    /**
+     * This method sets move actions for buttons.
+     * @param direction
+     */
     public void move(Point direction) {
         play.setDirection(direction);
         play.move();
