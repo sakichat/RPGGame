@@ -15,12 +15,23 @@ import java.awt.event.ActionListener;
  */
 public class PlayerCreationScene extends Scene {
 
+    /**
+     * This parameter sets a player in this Scene.
+     */
     private Player player;
 
+    /**
+     * This is a getter for player.
+     * @return player
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * This is a setter for player.
+     * @param player
+     */
     public void setPlayer(Player player) {
         this.player = player;
     }
@@ -37,6 +48,9 @@ public class PlayerCreationScene extends Scene {
         saveButtonEnabled = false;
     }
 
+    /**
+     * These parameters are specific for components on this scene.
+     */
     private JLabel label;
     private JTextField textField;
     private JButton button;

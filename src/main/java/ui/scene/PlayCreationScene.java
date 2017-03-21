@@ -14,13 +14,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class extends Scene and implements PlayerDelegate and CampaignDelegate.
+ * It is for creating a play with selected player and selected campaign.
  * @author Siyu Chen
  * @version 0.2
  */
 public class PlayCreationScene extends Scene implements PlayerDelegate, CampaignDelegate {
 
+    /**
+     * This parameter create a new Play().
+     */
     Play play = new Play();
 
+    /**
+     * This init() method overrides that in superclass to set up own properties for this subclass
+     */
     @Override
     protected void init() {
         super.init();
@@ -30,11 +38,16 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         saveButtonEnabled = false;
     }
 
-
+    /**
+     * These parameters are for JLabels.
+     */
     JLabel playerNameLabel;
     JLabel campaignNameLabel;
 
-
+    /**
+     * This method creates components on this scene
+     * And adds events on buttons
+     */
     public void initSubviews() {
 
         JLabel label;
@@ -129,6 +142,9 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         });
     }
 
+    /**
+     * This method sets a PlayerSelectorPanel on this scene.
+     */
     private void selectPlayer() {
         PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
         playerSelectorPanel.setLocation(460, 80);
@@ -137,6 +153,11 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         contentView.add(playerSelectorPanel);
     }
 
+    /**
+     * This method is for PlayerDelegate.
+     * @param playerSelectorPanel PlayerSelectorPanel
+     * @param player Player
+     */
     @Override
     public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
         contentView.remove(playerSelectorPanel);
@@ -146,6 +167,9 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         playerNameLabel.setText(player.getName());
     }
 
+    /**
+     * This method sets a CampaignSelectorPanel on this scene.
+     */
     private void selectCampaign() {
         CampaignSelectorPanel campaignSelectorPanel = new CampaignSelectorPanel();
         campaignSelectorPanel.setLocation(460, 130);
@@ -154,6 +178,11 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         contentView.add(campaignSelectorPanel);
     }
 
+    /**
+     * This method is for CampaignDelegate.
+     * @param campaignSelectorPanel CampaignSelectorPanel
+     * @param campaign Campaign
+     */
     @Override
     public void campaignSelectorPerformAction(CampaignSelectorPanel campaignSelectorPanel, Campaign campaign) {
         contentView.remove(campaignSelectorPanel);
@@ -161,7 +190,5 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         play.setCampaign(campaign);
         campaignNameLabel.setText(campaign.getName());
     }
-
-
 
 }

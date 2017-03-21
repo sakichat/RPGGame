@@ -168,10 +168,6 @@ public class GameMapView extends View {
         return selectedLocation;
     }
 
-    public void setSelectedLocation(Point selectedLocation) {
-        this.selectedLocation = selectedLocation;
-    }
-
     /**
      * This property is for a new ImageView
      */
@@ -280,6 +276,9 @@ public class GameMapView extends View {
         repaint();
     }
 
+    /**
+     * This method refreshes HighlightLayer.
+     */
     public void refreshHighlight() {
         GameMapLayerView highlightLayerView = layers.get(_LAYER_HIGHLIGHT);
         highlightLayerView.removeAllCells();

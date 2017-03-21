@@ -18,16 +18,16 @@ import java.awt.event.ActionListener;
 public class PlayScene extends Scene implements GameMapView.Delegate, InventoryDelegate{
 
     /**
-     * These parameters set play on this scene and create gameMapView.
+     * These parameters set play on this scene and create gameMapView and equipmentPanel.
      */
     private Play play;
     private GameMapView gameMapView;
     private EquipmentPanel equipmentPanel;
 
-    public Play getPlay() {
-        return play;
-    }
-
+    /**
+     * This is a setter for Play
+     * @param play
+     */
     public void setPlay(Play play) {
         this.play = play;
 
@@ -47,6 +47,9 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         saveButtonEnabled = false;
     }
 
+    /**
+     * These parameters are specific for view or buttons.
+     */
     private View controlViewContainerView;
     private JButton upDirectionButton;
     private JButton downDirectionButton;
@@ -186,6 +189,11 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
     }
 
+    /**
+     * This method generates what should be shown on controlViewContainerView.
+     * @param cell
+     * @return controlView
+     */
     private ControlView generateControlView(Cell cell) {
         ControlView controlView = null;
 
@@ -261,7 +269,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         repaint();
     }
 
-
+    /**
+     * This method judges what action should be done according to targetCell.
+     * @param targetCell
+     */
     private void interactWith(Cell targetCell) {
 
         if (targetCell instanceof Player) {
@@ -304,21 +315,37 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         }
     }
 
+    /**
+     * This method is for interacting with dead NPC.
+     * @param targetPlayer
+     */
     private void interactWithDeadNPC(Player targetPlayer) {
         play.getPlayer().lootDeadNPC(targetPlayer);
         play.refreshPlayer();
         gameMapView.refreshContent();
     }
 
+    /**
+     * This method is for interacting with friendly NPC.
+     * @param targetPlayer
+     */
     private void interactWithFriendlyNPC(Player targetPlayer) {
         showInventoryPanelToExchange(play.getPlayer());
     }
 
+    /**
+     * This method is for interacting with hostile NPC.
+     * @param targetPlayer
+     */
     private void interactWithHostileNPC(Player targetPlayer) {
         play.getPlayer().attack(targetPlayer);
         gameMapView.refreshContent();
     }
 
+    /**
+     * This method is for interacting with chest.
+     * @param chest
+     */
     private void interactWithChest(Chest chest) {
         play.getPlayer().lootChest(chest);
         play.refreshChest();
@@ -343,6 +370,11 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         repaint();
     }
 
+    /**
+     * This method is for equipment delegate.
+     * @param inventoryPanel
+     * @param equipment
+     */
     @Override
     public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
         play.getPlayer().dropInventories(equipment);

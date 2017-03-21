@@ -24,6 +24,9 @@ public class ReadyScene extends Scene {
 
     }
 
+    /**
+     * This parameter is for the label of playName.
+     */
     JLabel playNameLabel;
 
     /**
