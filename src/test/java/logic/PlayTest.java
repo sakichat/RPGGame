@@ -62,7 +62,13 @@ public class PlayTest {
 
     @Test
     public void lootingWithDead() throws Exception {
-        
+
+
+    }
+
+    @Test
+    public void lootingWithFri() throws Exception {
+
 
     }
 }
