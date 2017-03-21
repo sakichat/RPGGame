@@ -209,12 +209,15 @@ public class Play {
      * This method is used for removing dead player when his inventory is empty.
      */
     public void refreshPlayer( ) {
-        Point location = player.getLocation();
-        Point playerPoint = location.add(direction);
 
-        int size = player.getInventories().size();
+        Player targetPlayer = (Player)getTartget();
+
+        Point location = player.getLocation();
+        Point targetLocation = location.add(direction);
+
+        int size = targetPlayer.getInventories().size();
         if (size == 0) {
-            currentMap.removeCell(playerPoint);
+            currentMap.removeCell(targetLocation);
         }
     }
 

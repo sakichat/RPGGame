@@ -408,7 +408,7 @@ public class Player extends Cell{
      */
     public void lootDeadNPC(Player deadNPC) {
 
-        List<Equipment> inventories = getInventories();
+        List<Equipment> inventories = deadNPC.getInventories();
 
         int backpackEmptySize = 10 - backpack.size();
         int inventoriesSize = inventories.size();
@@ -418,6 +418,7 @@ public class Player extends Cell{
             Equipment lootEquipment = inventories.get(0);
             pickUpEquipment(lootEquipment);
             deadNPC.dropInventories(lootEquipment);
+            inventories.remove(0);
         }
 
     }
