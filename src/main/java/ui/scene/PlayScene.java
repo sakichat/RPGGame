@@ -23,8 +23,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
      * These parameters set play on this scene and create gameMapView.
      */
     private Play play;
-    private GameMap gameMap;
-    private Point point;
     private GameMapView gameMapView;
 
     public Play getPlay() {
@@ -123,16 +121,30 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         upDirectionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                play.setDirection(Point.DIRECTION_UP);
-                play.move();
-
-                gameMapView.refreshContent();
-
-//                System.out.println(cellExisted());
-
+                move(Point.DIRECTION_UP);
             }
         });
 
+        downDirectionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                move(Point.DIRECTION_DOWN);
+            }
+        });
+
+        leftDirectionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                move(Point.DIRECTION_LEFT);
+            }
+        });
+
+        rightDirectionButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                move(Point.DIRECTION_RIGHT);
+            }
+        });
 
         interactButton.addActionListener(new ActionListener() {
             @Override
@@ -144,22 +156,23 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
     }
 
-//
-//    private Boolean cellExisted() {
-//        if (gameMap.getCell(new Point(4, 1)) != null)
-//            return true;
-//        else
-//            return false;
-//    }
+    public void move(Point direction) {
+        play.setDirection(direction);
+        play.move();
 
+        gameMapView.refreshContent();
+    }
 
     /**
      * Relative methods about view player
      */
-
     PlayerPanel playerPanel;
     InventoryPanel inventoryPanel;
 
+    /**
+     * This method creates view Attribute action.
+     * @param player
+     */
     public void viewAttribute(Player player) {
         playerPanel = new PlayerPanel();
         playerPanel.setPlayer(player);
@@ -169,6 +182,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         repaint();
     }
 
+    /**
+     * This method creates view Inventory action.
+     * @param player
+     */
     public void viewInventory(Player player) {
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setPlayer(player);
