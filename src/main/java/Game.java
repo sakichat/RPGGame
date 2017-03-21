@@ -4,7 +4,7 @@ import ui.view.Window;
 
 /**
  * @author Qi Xia
- * @version 0.1
+ * @version 0.2
  * This is the main program
  */
 public class Game {
