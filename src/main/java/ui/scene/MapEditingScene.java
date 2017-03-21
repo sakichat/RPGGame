@@ -269,6 +269,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
         equipmentPanel = new EquipmentPanel();
         equipmentPanel.setLocation(410, 210);
+        equipmentPanel.setButtonEnabled(true);
         equipmentPanel.setChest(chest);
         contentView.add(equipmentPanel);
 

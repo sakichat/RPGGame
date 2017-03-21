@@ -274,7 +274,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         equipmentPanel = new EquipmentPanel();
         equipmentPanel.setLocation(420, 10);
         equipmentPanel.setChest(chest);
-//        equipmentPanel.setButtonEnabled(false);
         contentView.add(equipmentPanel);
 
         repaint();

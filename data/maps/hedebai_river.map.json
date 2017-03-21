@@ -239,7 +239,26 @@
       {
         "_class": "Chest",
         "_object": {
-          "equipments": [],
+          "equipments": [
+            {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            {
+              "name": "Ashbringer",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Arming Coat",
+              "type": "Armor",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 5
+            }
+          ],
           "location": {
             "x": 4,
             "y": 3

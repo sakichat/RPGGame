@@ -42,7 +42,7 @@ public class EquipmentPanel extends Panel implements Observer{
         chest.addObserver(this);
     }
 
-    boolean buttonEnabled = false;
+    boolean buttonEnabled;
 
     public boolean isButtonEnabled() {
         return buttonEnabled;
