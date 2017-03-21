@@ -43,6 +43,7 @@ public class PlayerCreationScene extends Scene {
 
     private JTextField nameField;
     private JTextField levelField;
+    private JLabel checkLevelLabel;
     private JLabel typeLabel;
     private JButton createButton;
     private JButton setButton;
@@ -82,6 +83,12 @@ public class PlayerCreationScene extends Scene {
         button.setLocation(320, 70);
         contentView.add(button);
         setButton = button;
+
+        label = new JLabel("");
+        label.setSize(300, 40);
+        label.setLocation(490, 70);
+        contentView.add(label);
+        checkLevelLabel = label;
 
         label = new JLabel("Fighter Type", JLabel.RIGHT);
         label.setSize(120, 40);
@@ -153,12 +160,21 @@ public class PlayerCreationScene extends Scene {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PlayerEditingScene playerEditingScene = new PlayerEditingScene();
-//                Player player = new Player();
-                player.setName(nameField.getText());
-                playerEditingScene.setPlayer(player);
-                PlayerCreationScene.this.navigationView.push(playerEditingScene);
+                int level = Integer.parseInt(levelField.getText());
 
+                if (level < 1) {
+                    checkLevelLabel.setText("Level CANNOT less than 1!");
+                } else if (level > 20) {
+                    checkLevelLabel.setText("Level CANNOT larger than 20!");
+                } else {
+                    // Builder
+
+                    PlayerEditingScene playerEditingScene = new PlayerEditingScene();
+                    player.setName(nameField.getText());
+                    player.setPlayerType(typeLabel.getText());
+                    playerEditingScene.setPlayer(player);
+                    PlayerCreationScene.this.navigationView.push(playerEditingScene);
+                }
 
             }
         });
