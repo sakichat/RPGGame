@@ -14,8 +14,13 @@ import persistence.MapFileManager;
  */
 public class MapValidatorTest {
 
+    
     private GameMap gameMapTest;
 
+    /**
+     * This method is for pre-defining the gameMap.
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         GameMap gameMap = new GameMap();
