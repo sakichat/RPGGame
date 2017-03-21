@@ -200,6 +200,10 @@ public class PlayerTest {
         Assert.assertEquals(pre, now - equipment12.getEnhancedValue());
     }
 
+    /**
+     * This method test if the player will correctly loot the chest.
+     * @throws Exception
+     */
     @Test
     public void testLooting() throws Exception {
         Player testPlayer = PlayerFileManager.read("asheley");
@@ -215,6 +219,10 @@ public class PlayerTest {
 
     }
 
+    /**
+     * This method is to test if the player will the loot the chest.
+     * @throws Exception
+     */
     @Test
     public void testNotLooting() throws Exception {
         Player testPlayer = player;

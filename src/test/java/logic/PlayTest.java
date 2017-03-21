@@ -33,6 +33,7 @@ public class PlayTest {
         play.setDirection(Point.DIRECTION_LEFT);
         play.setPlayer(player);
         play.resolveMap();
+        play.setDirection(Point.DIRECTION_LEFT);
         System.out.println(play.getPlayer().getLocation());
 
         play.move();
