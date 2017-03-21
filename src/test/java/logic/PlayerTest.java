@@ -238,4 +238,22 @@ public class PlayerTest {
 
     }
 
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testAfterLooting() throws Exception {
+        Player testPlayer = player;
+        int previousSize = testPlayer.equipmentsInBackpack().size();
+        Equipment a = testPlayer.equipmentsInBackpack().get(previousSize - 1);
+
+        Chest testChest = (Chest)(MapFileManager.read("saege bay").getCell(new Point(1, 5)));
+        Equipment a1 = testChest.getEquipments().get(0);
+
+        testPlayer.lootChest(testChest);
+
+        Assert.assertEquals(false, a1 == testPlayer.equipmentsInBackpack().get(previousSize - 1));
+
+    }
 }
