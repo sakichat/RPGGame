@@ -9,7 +9,7 @@ import ui.view.Window;
  */
 public class Game {
     public static void main(String[] args) {
-        NavigationView navigationView = new NavigationView();
+        NavigationView navigationView = new NavigationView();r
         new Window(navigationView);
         navigationView.push(new MainScene());
     }
