@@ -240,7 +240,7 @@ public class PlayerTest {
     }
 
     /**
-     *
+     * This method is for testing if the cell will become null after looting the chest to empty.
      * @throws Exception
      */
     @Test
