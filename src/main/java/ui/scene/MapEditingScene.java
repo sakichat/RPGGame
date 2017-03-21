@@ -244,8 +244,8 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     /**
      * Properties and methods about chest editing.
      */
-    EquipmentSelectorPanel equipmentSelectorPanel;
-    EquipmentPanel equipmentPanel;
+    private EquipmentSelectorPanel equipmentSelectorPanel;
+    private EquipmentPanel equipmentPanel;
 
     /**
      * This method set equipmentSelectorPanel on the Scene when the event is triggered
