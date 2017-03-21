@@ -1,6 +1,7 @@
 package ui.scene;
 
 import logic.*;
+import sun.applet.Main;
 import ui.controlView.*;
 import ui.panel.*;
 import ui.view.GameMapView;
@@ -290,7 +291,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
 
             if (play.isLastMap()) {
-                //跳回什么界面？
+                this.navigationView.popTo(MainScene.class);
             } else {
                 play.moveToNextMap();
                 //push新地图
