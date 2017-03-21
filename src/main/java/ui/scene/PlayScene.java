@@ -32,7 +32,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     public void setPlay(Play play) {
         this.play = play;
 
-        titleLabel.setText(play.getCurrentMap().getName());
+        titleLabel.setText(play.getName() + " - " + play.getCurrentMap().getName());
         gameMapView.setGameMap(play.getCurrentMap());
 
     }
