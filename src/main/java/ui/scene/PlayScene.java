@@ -331,6 +331,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
     private void interactWithHostileNPC(Player targetPlayer) {
         play.getPlayer().attack(targetPlayer);
+        gameMapView.refreshContent();
     }
 
     private void interactWithChest(Chest chest) {
