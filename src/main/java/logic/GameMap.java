@@ -108,6 +108,10 @@ public class GameMap {
      */
 
     public Cell getCell(Point location){
+        if (!inMap(location)) {
+            return null;
+        }
+
         int x = location.getX();
         int y = location.getY();
         return cells[y][x];
