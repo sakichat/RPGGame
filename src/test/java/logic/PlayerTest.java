@@ -220,7 +220,7 @@ public class PlayerTest {
     }
 
     /**
-     * This method is to test if the player will the loot the chest.
+     * This method is to test if the player will successfully loot the chest.
      * @throws Exception
      */
     @Test
