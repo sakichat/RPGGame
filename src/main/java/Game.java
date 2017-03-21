@@ -5,7 +5,7 @@ import ui.view.Window;
 /**
  * @author Qi Xia
  * @version 0.2
- * This is the main program
+ * This is the main program.
  */
 public class Game {
     public static void main(String[] args) {

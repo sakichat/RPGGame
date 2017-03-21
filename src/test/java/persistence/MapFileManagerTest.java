@@ -11,7 +11,8 @@ import org.junit.Test;
  */
 public class MapFileManagerTest {
     /**
-     * This method is for testing if the map can be got from a json file.
+     * This method is for testing if the map can be got from a json file,
+     * if yes, then the cell inside the map can be reached, too.
      * @throws Exception
      */
     @Test
