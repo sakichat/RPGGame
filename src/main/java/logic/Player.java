@@ -6,10 +6,10 @@ import java.util.*;
 
 /**
  *
- * This Class is character, which includes users and NPCs.
+ * This Class is player, which includes users and NPCs.
  *
  * @author Kai QI
- * @version 0.1
+ * @version 0.2
  *
  */
 public class Player extends Cell{
@@ -114,6 +114,11 @@ public class Player extends Cell{
         notifyObservers(ABILITY_CHANGE);
     }
 
+
+    /**
+     * The method is used to calculate the ability scores based on different fighter type.
+     * @param playerType
+     */
     public void generateAbilities(String playerType) {
 
         List<Integer> diceResults = new LinkedList<>();
@@ -339,7 +344,6 @@ public class Player extends Cell{
      * Interaction methods.
      * NPCs refresh their inventories according to the player level;
      * Friendly players hand out random equipments to complete exchange;
-     * Hostile players dead;
      * Loot the chest;
      * Loot the dead NPCs.
      */
@@ -361,7 +365,7 @@ public class Player extends Cell{
 
     /**
      * The method will be called by a NPC.
-     * The NPC will random pick an equipment from their inventory.
+     * The NPC will random pick an equipment from their inventory to hand out.
      * @param gotEquipment
      * @return The return value will be the equipment random picked up.
      */
@@ -375,11 +379,16 @@ public class Player extends Cell{
         pickUpEquipment(gotEquipment);
         return handOutEquipment;
     }
+
+    /**
+     * property of multipleAttacks
+     */
+
     @Expose
     private Map<String,Integer> multipleAttacks = new HashMap<>();
 
     /**
-     * The method is used to attack a hostilePlayer.
+     * The method is used to attack a hostilePlayer with multiple attack strategy and formula.
      * @param hostilePlayer
      */
     public void attack(Player hostilePlayer) {

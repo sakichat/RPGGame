@@ -3,8 +3,8 @@ package logic;
 /**
  *
  * @author Kai QI
- * @version 0.1
- *this class is the dice
+ * @version 0.2
+ * This class is the dice result calculator.
  */
 public class Dice {
 

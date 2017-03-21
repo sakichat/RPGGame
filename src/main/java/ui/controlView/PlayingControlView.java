@@ -9,8 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * Created by Kai QI on 2017/3/18.
+ * @author Kai QI
+ * @version 0.2
+ *
+ * This class is for PlayingControlView.
+ *
  */
+
 public class PlayingControlView extends ControlView {
 
     /**

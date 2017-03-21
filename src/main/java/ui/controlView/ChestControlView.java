@@ -35,16 +35,6 @@ public class ChestControlView extends ControlView {
         this.chest = chest;
     }
 
-    boolean removeButtonEnabled = true;
-
-    public boolean isRemoveButtonEnabled() {
-        return removeButtonEnabled;
-    }
-
-    public void setRemoveButtonEnabled(boolean removeButtonEnabled) {
-        this.removeButtonEnabled = removeButtonEnabled;
-    }
-
     /**
      * constructor of the View.
      */
@@ -82,9 +72,7 @@ public class ChestControlView extends ControlView {
         button.setText("Remove");
         JButton removeButton = button;
 
-        if (removeButtonEnabled == true) {
-            this.add(removeButton);
-        }
+        this.add(removeButton);
 
         viewInsideButton.addActionListener(new ActionListener() {
             @Override
