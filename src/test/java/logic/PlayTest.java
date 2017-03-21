@@ -36,7 +36,7 @@ public class PlayTest {
     }
 
     /**
-     * This method tests if the player will move into the wall.
+     * This method tests if the player will move into the obstacle.
      * @throws Exception
      */
     @Test
