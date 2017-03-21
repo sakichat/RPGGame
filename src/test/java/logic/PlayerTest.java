@@ -202,7 +202,8 @@ public class PlayerTest {
     }
 
     /**
-     * This method test if the player will correctly loot the chest.
+     * This method test if the player will correctly loot the chest, which means the player will get
+     * the item in the chest to his backpack.
      * @throws Exception
      */
     @Test
