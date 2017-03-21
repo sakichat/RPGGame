@@ -42,6 +42,16 @@ public class EquipmentPanel extends Panel implements Observer{
         chest.addObserver(this);
     }
 
+    boolean buttonEnabled = false;
+
+    public boolean isButtonEnabled() {
+        return buttonEnabled;
+    }
+
+    public void setButtonEnabled(boolean buttonEnabled) {
+        this.buttonEnabled = buttonEnabled;
+    }
+
     private JPanel equipmentsPanel;
 
     /**
@@ -105,12 +115,14 @@ public class EquipmentPanel extends Panel implements Observer{
             equipmentsPanel.add(equipmentView);
             equipmentView.setEquipment(equipment);
 
-            JButton dropButtton = new JButton("drop");
+            JButton dropButton = new JButton("drop");
 
-            dropButtton.setSize(60, 20);
-            dropButtton.setLocation(320, y);
-            equipmentsPanel.add(dropButtton);
-            dropButtton.addActionListener(new ActionListener() {
+            dropButton.setSize(60, 20);
+            dropButton.setLocation(320, y);
+            if (buttonEnabled) {
+                equipmentsPanel.add(dropButton);
+            }
+            dropButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     chest.dropEquipment(equipment);
