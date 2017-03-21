@@ -278,6 +278,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     private void interactWithDeadNPC(Player targetPlayer) {
         play.getPlayer().lootDeadNPC(targetPlayer);
         play.refreshPlayer();
+        gameMapView.refreshContent();
     }
 
     private void interactWithFriendlyNPC(Player targetPlayer) {
@@ -291,6 +292,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     private void interactWithChest(Chest chest) {
         play.getPlayer().lootChest(chest);
         play.refreshChest();
+        gameMapView.refreshContent();
     }
 
     /**

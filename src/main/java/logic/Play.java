@@ -200,7 +200,7 @@ public class Play {
         Point chestPoint = location.add(direction);
 
         Chest chest = (Chest) currentMap.getCell(chestPoint);
-        if (!chest.isChestEmpty()) {
+        if (chest.isChestEmpty()) {
             currentMap.removeCell(chestPoint);
         }
     }
