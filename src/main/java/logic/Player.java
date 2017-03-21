@@ -376,12 +376,52 @@ public class Player extends Cell{
         return handOutEquipment;
     }
 
+    private Map<String,Integer> multipleAttacks = new HashMap<>();
+
     /**
      * The method is used to attack a hostilePlayer.
      * @param hostilePlayer
      */
     public void attack(Player hostilePlayer) {
-        hostilePlayer.setHp(0);
+        boolean has = false;
+        int damage = getAttackBonus() + getAbilityModifier(ABILITY_STR);
+        System.out.println(damage);
+        for (String hostilePlayerName: multipleAttacks.keySet()){
+            if (hostilePlayerName.equals(hostilePlayer.getName())){
+               has = true;
+            }
+        }
+        if (!has){
+            multipleAttacks.put(hostilePlayer.getName(),3);
+        }
+        if (multipleAttacks.get(hostilePlayer.getName()) == 0) {
+            hostilePlayer.setHp(0);
+        }else {
+            if (multipleAttacks.get(hostilePlayer.getName()) == 3) {
+                if (hostilePlayer.getHp() - damage > 0) {
+                    hostilePlayer.setHp(hostilePlayer.getHp() - damage);
+                } else {
+                    hostilePlayer.setHp(0);
+                }
+            } else if (multipleAttacks.get(hostilePlayer.getName()) == 2) {
+                if (hostilePlayer.getHp() - damage > 0) {
+                    if (damage - 2 <= 0){
+                        hostilePlayer.setHp(0);
+                    }else
+                    hostilePlayer.setHp(hostilePlayer.getHp() - damage + 2);
+                } else {
+
+                }
+            } else if (multipleAttacks.get(hostilePlayer.getName()) == 1) {
+                hostilePlayer.setHp(0);
+            }
+            for (String name : multipleAttacks.keySet()) {
+                if (name.equals(hostilePlayer.getName())) {
+                    int times = multipleAttacks.get(name);
+                    multipleAttacks.put(name, times - 1);
+                }
+            }
+        }
     }
 
     /**
