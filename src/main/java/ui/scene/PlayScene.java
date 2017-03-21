@@ -246,10 +246,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
                 interactWithDeadNPC(targetPlayer);
 
             } else {
-                if (targetPlayer.getPlayerParty() == Player.PLAYER_PARTY_FRIENDLY) {
+                if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_FRIENDLY)) {
                     interactWithFriendlyNPC(targetPlayer);
 
-                } else if (targetPlayer.getPlayerParty() == Player.PLAYER_PARTY_HOSTILE) {
+                } else if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
                     interactWithHostileNPC(targetPlayer);
 
                 }
