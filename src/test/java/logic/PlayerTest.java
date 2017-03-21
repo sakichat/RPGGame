@@ -15,6 +15,9 @@ import persistence.PlayerFileManager;
  * This class is basically for class of player's tests.
  */
 public class PlayerTest {
+    /**
+     * These parameters is pre-defined attributes for every method in this test class to use.
+     */
     private Player player;
     private Equipment equipment1;
     private Equipment equipment2;
