@@ -13,7 +13,9 @@ import org.junit.Test;
  */
 
 public class CampaignTest {
-
+    /**
+     * This parameter is to define a campaign that can be used in every method here.
+     */
     private Campaign campaignTest;
 
     /**
