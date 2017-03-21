@@ -14,7 +14,10 @@ import persistence.MapFileManager;
  */
 public class MapValidatorTest {
 
-    
+
+    /**
+     * This parameter is to define a GameMap as an arttribute.
+     */
     private GameMap gameMapTest;
 
     /**
