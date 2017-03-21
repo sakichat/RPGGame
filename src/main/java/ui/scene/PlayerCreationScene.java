@@ -1,7 +1,6 @@
 package ui.scene;
 
-import logic.Play;
-import logic.Player;
+import logic.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -182,10 +181,30 @@ public class PlayerCreationScene extends Scene {
                     checkLevelLabel.setText("Level CANNOT larger than 20!");
                 } else {
                     // Builder
+                    PlayerExplorer playerExplorer;
+
+                    String name = nameField.getText();
+                    String type = typeLabel.getText();
+
+                    PlayerBuilder playerBuilder = null;
+                    if (type.equals(Player.PLAYER_TYPE_BULLY)){
+                        playerBuilder = new BullyBuilder();
+                    }else if (type.equals(Player.PLAYER_TYPE_NIMBLE)){
+                        playerBuilder = new NimbleBuilder();
+                    }else if(type.equals(Player.PLAYER_TYPE_TANK)){
+                        playerBuilder = new TankBuilder();
+                    }
+
+
+
+
+                    playerExplorer = new PlayerExplorer();
+                    playerExplorer.setPlayerBuilder(playerBuilder);
+                    playerExplorer.constructPlyar(name,level);
+                    player = playerExplorer.getPlayer();
+
 
                     PlayerEditingScene playerEditingScene = new PlayerEditingScene();
-                    player.setName(nameField.getText());
-                    player.setPlayerType(typeLabel.getText());
                     playerEditingScene.setPlayer(player);
                     PlayerCreationScene.this.navigationView.push(playerEditingScene);
                 }
