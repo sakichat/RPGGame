@@ -30,8 +30,8 @@ public class PlayTest {
         Player player = PlayerFileManager.read("asheley");
         Play play = new Play();
         play.setCampaign(campaign);
-        play.setPlayer(player);
         play.setDirection(Point.DIRECTION_LEFT);
+        play.setPlayer(player);
         play.resolveMap();
         System.out.println(play.getPlayer().getLocation());
 
