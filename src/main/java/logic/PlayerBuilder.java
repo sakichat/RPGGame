@@ -7,6 +7,10 @@ package logic;
 public abstract class PlayerBuilder {
     protected Player playerProduct;
 
+    /**
+     * 
+     * @return
+     */
     public Player getPlayerProduct() {
         return playerProduct;
     }
