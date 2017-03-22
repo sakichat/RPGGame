@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * This is a ItemCreationScene to show the scene for creating item name which extends Scene class
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class ItemCreationScene extends Scene {
 

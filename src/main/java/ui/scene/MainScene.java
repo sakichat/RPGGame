@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 /**
  * This is the Main Scene class extends Scene class
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class MainScene extends Scene {
 

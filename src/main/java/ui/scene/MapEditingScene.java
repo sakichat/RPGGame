@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  * This MapEditingScene class is for editing game map view which extends Scene class
  * And implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate{
 

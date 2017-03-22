@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author GU_HAN
- * @version 0.1
+ * @version 0.2
  *
  * This scene is for editing the equipments.
  */

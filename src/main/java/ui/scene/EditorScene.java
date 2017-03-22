@@ -11,8 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class for choosing editor and creation.
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class EditorScene extends Scene implements EquipmentDelegate, PlayerDelegate, MapDelegate, CampaignDelegate {
 
