@@ -30,7 +30,7 @@ public class PlayerExplorer {
     }
 
     /**
-     * this is the 
+     * this is the method 
      * @return
      */
 
