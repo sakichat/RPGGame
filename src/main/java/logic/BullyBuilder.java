@@ -1,7 +1,7 @@
 package logic;
 
 /**
- * Created by thereaghostflash on 2017-03-21.
+ * Created by lizhen on 2017-03-21.
  */
 public class BullyBuilder extends PlayerBuilder {
     @Override
