@@ -2,7 +2,7 @@ package logic;
 
 /**
  * Created by Li Zhen on 2017-03-21.
- * this is the ss
+ * this is the class
  */
 public class PlayerExplorer {
 
