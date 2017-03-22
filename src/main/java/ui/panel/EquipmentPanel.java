@@ -57,6 +57,7 @@ public class EquipmentPanel extends Panel implements Observer{
     /**
      * This method is init method.
      */
+
     @Override
     protected void init() {
         super.init();
@@ -68,7 +69,6 @@ public class EquipmentPanel extends Panel implements Observer{
     /**
      * This is a method makes initialized.
      */
-
     protected void initSubviews(){
         equipmentsPanel = new JPanel();
         equipmentsPanel.setLayout(null);
@@ -78,7 +78,6 @@ public class EquipmentPanel extends Panel implements Observer{
     }
 
     /**
-     *
      * @param observer Observable
      * @param x Object
      * Observer method, update change
@@ -98,7 +97,6 @@ public class EquipmentPanel extends Panel implements Observer{
     /**
      * This is a method makes data transfer to view
      */
-
     public void dataToView(){
         equipmentsPanel.removeAll();
 
@@ -125,6 +123,7 @@ public class EquipmentPanel extends Panel implements Observer{
             }
 
             dropButton.addActionListener(new ActionListener() {
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     chest.dropEquipment(equipment);
