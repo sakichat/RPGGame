@@ -6,7 +6,7 @@ package logic;
  */
 public class TankBuilder extends PlayerBuilder {
     /**
-     * this is the method that set type 
+     * this is the method that set type of 
      */
 
     @Override
