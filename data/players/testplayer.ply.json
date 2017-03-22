@@ -1,9 +1,9 @@
 {
   "abilityScores": {
-    "STR": 24,
-    "WIS": 4,
-    "CON": 24,
-    "DEX": 16,
+    "STR": 12,
+    "WIS": 16,
+    "CON": 8,
+    "DEX": 8,
     "CHA": 8,
     "INT": 8
   },
@@ -62,8 +62,8 @@
   "multipleAttacks": {},
   "level": 4,
   "name": "testPlayer",
-  "playerType": "Bully",
+  "playerType": "Nimble",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 18
+  "hp": 28
 }

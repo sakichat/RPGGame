@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
  * @author Kai QI
  * @version 0.2
  */
-public class PlayerEditingScene extends Scene implements EquipmentDelegate{
+public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.Delegate, InventoryPanel.Delegate{
 
     /**
      * Declaration of the property player and getter & setter
@@ -125,13 +125,14 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
         equipmentSelectorPanel.setButtonText("Add");
         contentView.add(equipmentSelectorPanel);
 
-        equipmentSelectorPanel.setEquipmentDelegate(this);
+        equipmentSelectorPanel.setDelegate(this);
 
         /*
          * Inventory Panel
          */
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setLocation(510, 10);
+        inventoryPanel.setDelegate(this);
         contentView.add(inventoryPanel);
 
         repaint();
@@ -205,6 +206,25 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate{
     @Override
     public void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment) {
         player.pickUpEquipment(equipment);
+    }
+
+    /**
+     * The method is used to refresh PlayerPanel.
+     * @param inventoryPanel
+     */
+    @Override
+    public void inventoryEnhancedPerformAction(InventoryPanel inventoryPanel) {
+        playerPanel.dataToView();
+    }
+
+    /**
+     * The method is an empty implemented method.
+     * @param inventoryPanel
+     * @param equipment
+     */
+    @Override
+    public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
+
     }
 }
 

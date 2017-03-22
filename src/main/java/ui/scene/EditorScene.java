@@ -15,7 +15,10 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class EditorScene extends Scene implements EquipmentDelegate, PlayerDelegate, MapDelegate, CampaignDelegate {
+public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegate,
+                                                  PlayerSelectorPanel.Delegate,
+                                                  MapSelectorPanel.Delegate,
+                                                  CampaignSelectorPanel.Delegate {
 
     private JLabel label;
     private JButton button;
@@ -186,7 +189,7 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
         equipmentSelectorPanel.setLocation(20,260);
         equipmentSelectorPanel.setButtonText("Edit");
-        equipmentSelectorPanel.setEquipmentDelegate(this);
+        equipmentSelectorPanel.setDelegate(this);
         add(equipmentSelectorPanel);
     }
 
@@ -211,7 +214,7 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
         playerSelectorPanel.setLocation(20,260);
         playerSelectorPanel.setButtonText("Edit");
-        playerSelectorPanel.setPlayerDelegate(this);
+        playerSelectorPanel.setDelegate(this);
         add(playerSelectorPanel);
 
     }
@@ -238,7 +241,7 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         MapSelectorPanel panel = new MapSelectorPanel();
         panel.setLocation(20,260);
         panel.setButtonText("Edit");
-        panel.setMapDelegate(this);
+        panel.setDelegate(this);
         add(panel);
     }
 
@@ -263,7 +266,7 @@ public class EditorScene extends Scene implements EquipmentDelegate, PlayerDeleg
         CampaignSelectorPanel panel = new CampaignSelectorPanel();
         panel.setLocation(20,260);
         panel.setButtonText("Edit");
-        panel.setCampaignDelegate(this);
+        panel.setDelegate(this);
         add(panel);
     }
 

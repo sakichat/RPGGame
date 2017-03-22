@@ -20,35 +20,57 @@ import ui.view.*;
  */
 public class EquipmentSelectorPanel extends Panel {
 
-    private EquipmentDelegate equipmentDelegate;
+    /**
+     * inner class of delegate.
+     */
+    public interface Delegate {
+        /**
+         * this method is to define the abstract method which is implemented by implemented class.
+         * @param selectorPanel EquipmentSelectorPanel
+         * @param equipment Equipment
+         */
+        void equipmentSelectorPerformAction(EquipmentSelectorPanel selectorPanel, Equipment equipment);
+
+    }
+
+    /**
+     * delegate
+     */
+    /**
+     * declaration of delegate
+     */
+    private Delegate delegate;
+
+    /**
+     * Getter for delegate
+     * @return
+     */
+    public Delegate getDelegate() {
+        return delegate;
+    }
+
+    /**
+     * Setter for delegate
+     * @param delegate
+     */
+    public void setDelegate(Delegate delegate) {
+        this.delegate = delegate;
+    }
+
+
     private View equipmentPanel;
     private String buttonText;
 
     /**
-     * this method is to set text of addButton
-     * @param buttonText String
+     *
+     * @return
      */
+    public String getButtonText() {
+        return buttonText;
+    }
 
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
-    }
-
-    /**
-     * this method is to get EquipmentDelegate
-     * @return EquipmentDelegate
-     */
-
-    public EquipmentDelegate getEquipmentDelegate() {
-        return equipmentDelegate;
-    }
-
-    /**
-     * this method is to set EquipmentDelegate
-     * @param equipmentDelegate EquipmentDelegate
-     */
-
-    public void setEquipmentDelegate(EquipmentDelegate equipmentDelegate) {
-        this.equipmentDelegate = equipmentDelegate;
     }
 
     private JTextField textField;
@@ -70,6 +92,7 @@ public class EquipmentSelectorPanel extends Panel {
 
     /**
      * this method is to create the  fixed view
+     * layout
      */
 
 
@@ -130,7 +153,7 @@ public class EquipmentSelectorPanel extends Panel {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        equipmentDelegate.equipmentSelectorPerformAction(EquipmentSelectorPanel.this, equipment);
+                        delegate.equipmentSelectorPerformAction(EquipmentSelectorPanel.this, equipment);
                     }
                 });
 
