@@ -13,6 +13,10 @@ public class NimbleBuilder extends PlayerBuilder {
         playerProduct.setPlayerType(Player.PLAYER_TYPE_NIMBLE);
     }
 
+    /**
+     * 
+     */
+
     @Override
     void generateAbilities() {
         playerProduct.generateAbilities(Player.PLAYER_TYPE_NIMBLE);
