@@ -181,6 +181,30 @@ public class Play {
 
     }
 
+    public Boolean isObjective() {
+        List<Player> players = currentMap.getPlayers();
+        List<Player> hostilePlayers = new LinkedList<Player>();
+        List<Player> deadPlayers = new LinkedList<Player>();
+
+        for (Player hostilePlayer : players) {
+            if (!hostilePlayer.equals(Player.PLAYER_PARTY_HOSTILE)) {
+                hostilePlayers.add(hostilePlayer);
+            }
+        }
+
+        for (Player deadPlayer : hostilePlayers) {
+            if (deadPlayer.isDead()) {
+                deadPlayers.add(deadPlayer);
+            }
+        }
+
+        if (hostilePlayers.size() == deadPlayers.size()) {
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * This is the method for get target cell in direction
      * @return Cell
