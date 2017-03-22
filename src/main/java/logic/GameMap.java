@@ -62,7 +62,6 @@ public class GameMap {
      * this method is to set name of map
      * @param name String
      */
-
     public void setName(String name) {
         this.name = name;
     }
@@ -71,7 +70,6 @@ public class GameMap {
      * this method is to get name of map
      * @return String
      */
-
     public String getName() {
         return name;
     }
@@ -81,7 +79,6 @@ public class GameMap {
      * @param cell Cell
      * @param location Point
      */
-
     public void addCell(Cell cell, Point location){
         int x = location.getX();
         int y = location.getY();
@@ -94,7 +91,6 @@ public class GameMap {
      * this method is to remove cell
      * @param location Point
      */
-
     public void removeCell(Point location){
         int x = location.getX();
         int y = location.getY();
@@ -106,7 +102,6 @@ public class GameMap {
      * @param location Point
      * @return Cell
      */
-
     public Cell getCell(Point location){
         if (!inMap(location)) {
             return null;
@@ -326,7 +321,6 @@ public class GameMap {
      * @param location Point
      * @return Boolean
      */
-
     private boolean inMap(Point location) {
         int x = location.getX();
         if (x < 0 || x >= width) {
