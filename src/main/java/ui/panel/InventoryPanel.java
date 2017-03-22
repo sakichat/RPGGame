@@ -1,12 +1,10 @@
 package ui.panel;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import logic.Equipment;
 import logic.Player;
 import ui.view.EquipmentView;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;

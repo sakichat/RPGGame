@@ -1,6 +1,5 @@
 package ui.panel;
 
-import javafx.scene.layout.Pane;
 import ui.view.View;
 
 import javax.swing.*;
@@ -12,7 +11,7 @@ import java.awt.event.MouseMotionListener;
 /**
  * This Panel class sets a template for other panels which extends View calss
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class Panel extends View {
 
