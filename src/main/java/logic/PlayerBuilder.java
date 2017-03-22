@@ -3,6 +3,7 @@ package logic;
 /**
  * Created by Li Zhen on 2017-03-21.
  * this class is a abstract class to build the player
+ * @version 0.2
  */
 public abstract class PlayerBuilder {
     protected Player playerProduct;

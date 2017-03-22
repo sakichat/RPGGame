@@ -2,6 +2,7 @@ package logic;
 
 /**
  * Created by lizhen on 2017-03-21.
+ *
  */
 public class BullyBuilder extends PlayerBuilder {
     @Override
