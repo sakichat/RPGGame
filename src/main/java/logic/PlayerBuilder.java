@@ -34,6 +34,9 @@ public abstract class PlayerBuilder {
         playerProduct.setLevel(playerProductlevel);
     }
 
+    /**
+     * 
+     */
     abstract void setPlayerType();
     abstract void generateAbilities();
 
