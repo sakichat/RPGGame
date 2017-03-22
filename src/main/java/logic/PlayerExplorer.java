@@ -16,6 +16,12 @@ public class PlayerExplorer {
         this.playerBuilder = playerBuilder;
     }
 
+    /**
+     * 
+     * @param playerName
+     * @param level
+     */
+
     public void constructPlyar(String playerName, int level){
         playerBuilder.createNewPlayer(playerName);
         playerBuilder.setPlayerProductlevel(level);
