@@ -188,7 +188,7 @@ public class Play {
     public Boolean isObjective() {
         List<Player> players = currentMap.getPlayers();
         List<Player> hostilePlayers = new LinkedList<Player>();
-        List<Player> deadPlayers = new LinkedList<Player>();
+        //List<Player> deadPlayers = new LinkedList<Player>();
 
         for (Player hostilePlayer : players) {
             if (hostilePlayer.equals(Player.PLAYER_PARTY_HOSTILE)) {
@@ -196,17 +196,27 @@ public class Play {
             }
         }
 
-        for (Player deadPlayer : hostilePlayers) {
-            if (deadPlayer.isDead()) {
-                deadPlayers.add(deadPlayer);
+        boolean objectiveFulfilled = true;
+
+        for (Player hostilePlayer : hostilePlayers) {
+            if (!hostilePlayer.isDead()) {
+                objectiveFulfilled = false;
             }
         }
 
-        if (hostilePlayers.size() == deadPlayers.size()) {
-            return true;
-        }
+        return objectiveFulfilled;
 
-        return false;
+//        for (Player deadPlayer : hostilePlayers) {
+//            if (deadPlayer.isDead()) {
+//                deadPlayers.add(deadPlayer);
+//            }
+//        }
+//
+//        if (hostilePlayers.size() == deadPlayers.size()) {
+//            return true;
+//        }
+//
+//        return false;
     }
 
     /**
