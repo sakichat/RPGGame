@@ -65,6 +65,7 @@
               "enhancedValue": 3
             }
           },
+          "multipleAttacks": {},
           "level": 3,
           "name": "findelie",
           "playerType": "Bully",
@@ -111,6 +112,7 @@
               "enhancedValue": 3
             }
           },
+          "multipleAttacks": {},
           "level": 4,
           "name": "nathye",
           "playerType": "Bully",
@@ -183,6 +185,7 @@
               "enhancedValue": 5
             }
           },
+          "multipleAttacks": {},
           "level": 0,
           "name": "kharkad",
           "playerType": "Tank",
@@ -355,6 +358,7 @@
               "enhancedValue": 5
             }
           },
+          "multipleAttacks": {},
           "level": 14,
           "name": "wendru",
           "playerType": "Bully",
@@ -413,6 +417,7 @@
               "enhancedValue": 5
             }
           },
+          "multipleAttacks": {},
           "level": 0,
           "name": "aseg",
           "playerType": "Tank",

@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * This class is used to layout the campaign creation scene.
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class CampaignCreationScene extends Scene {
 

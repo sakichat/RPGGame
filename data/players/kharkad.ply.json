@@ -41,7 +41,8 @@
       "enhancedValue": 5
     }
   },
-  "level": 0,
+  "multipleAttacks": {},
+  "level": 3,
   "name": "kharkad",
   "playerType": "Tank",
   "playerParty": "Not Defined",

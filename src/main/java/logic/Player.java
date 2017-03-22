@@ -6,10 +6,10 @@ import java.util.*;
 
 /**
  *
- * This Class is character, which includes users and NPCs.
+ * This Class is player, which includes users and NPCs.
  *
  * @author Kai QI
- * @version 0.1
+ * @version 0.2
  *
  */
 public class Player extends Cell{
@@ -114,6 +114,11 @@ public class Player extends Cell{
         notifyObservers(ABILITY_CHANGE);
     }
 
+
+    /**
+     * The method is used to calculate the ability scores based on different fighter type.
+     * @param playerType
+     */
     public void generateAbilities(String playerType) {
 
         List<Integer> diceResults = new LinkedList<>();
@@ -339,7 +344,6 @@ public class Player extends Cell{
      * Interaction methods.
      * NPCs refresh their inventories according to the player level;
      * Friendly players hand out random equipments to complete exchange;
-     * Hostile players dead;
      * Loot the chest;
      * Loot the dead NPCs.
      */
@@ -361,7 +365,7 @@ public class Player extends Cell{
 
     /**
      * The method will be called by a NPC.
-     * The NPC will random pick an equipment from their inventory.
+     * The NPC will random pick an equipment from their inventory to hand out.
      * @param gotEquipment
      * @return The return value will be the equipment random picked up.
      */
@@ -377,11 +381,57 @@ public class Player extends Cell{
     }
 
     /**
-     * The method is used to attack a hostilePlayer.
+     * property of multipleAttacks
+     */
+
+    @Expose
+    private Map<String,Integer> multipleAttacks = new HashMap<>();
+
+    /**
+     * The method is used to attack a hostilePlayer with multiple attack strategy and formula.
      * @param hostilePlayer
      */
     public void attack(Player hostilePlayer) {
-        hostilePlayer.setHp(0);
+        boolean has = false;
+        int damage = getAttackBonus() + getAbilityModifier(ABILITY_STR);
+        System.out.println(damage);
+        for (String hostilePlayerName: multipleAttacks.keySet()){
+            if (hostilePlayerName.equals(hostilePlayer.getName())){
+               has = true;
+            }
+        }
+        if (!has){
+            multipleAttacks.put(hostilePlayer.getName(),3);
+        }
+        if (multipleAttacks.get(hostilePlayer.getName()) == 0) {
+            hostilePlayer.setHp(0);
+        }else {
+            if (multipleAttacks.get(hostilePlayer.getName()) == 3) {
+                if (hostilePlayer.getHp() - damage > 0) {
+                    hostilePlayer.setHp(hostilePlayer.getHp() - damage);
+                } else {
+                    hostilePlayer.setHp(0);
+                }
+            } else if (multipleAttacks.get(hostilePlayer.getName()) == 2) {
+                if (hostilePlayer.getHp() - (damage - 2) > 0) {
+                    if (damage - 2 <= 0){
+                        hostilePlayer.setHp(0);
+                    }else
+                    hostilePlayer.setHp(hostilePlayer.getHp() - (damage - 2));
+                } else {
+                    hostilePlayer.setHp(0);
+
+                }
+            } else if (multipleAttacks.get(hostilePlayer.getName()) == 1) {
+                hostilePlayer.setHp(0);
+            }
+            for (String name : multipleAttacks.keySet()) {
+                if (name.equals(hostilePlayer.getName())) {
+                    int times = multipleAttacks.get(name);
+                    multipleAttacks.put(name, times - 1);
+                }
+            }
+        }
     }
 
     /**
@@ -408,7 +458,7 @@ public class Player extends Cell{
      */
     public void lootDeadNPC(Player deadNPC) {
 
-        List<Equipment> inventories = getInventories();
+        List<Equipment> inventories = deadNPC.getInventories();
 
         int backpackEmptySize = 10 - backpack.size();
         int inventoriesSize = inventories.size();
@@ -418,6 +468,7 @@ public class Player extends Cell{
             Equipment lootEquipment = inventories.get(0);
             pickUpEquipment(lootEquipment);
             deadNPC.dropInventories(lootEquipment);
+            inventories.remove(0);
         }
 
     }

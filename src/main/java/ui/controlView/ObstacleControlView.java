@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Kai QI
- * @version 0.1
+ * @version 0.2
  *
  * This class is for ObstableControlview.
  */

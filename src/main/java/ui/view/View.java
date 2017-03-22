@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * This class is a template of all other view classes which extends JPanel class
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class View extends JPanel {
 

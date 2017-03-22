@@ -42,11 +42,22 @@ public class EquipmentPanel extends Panel implements Observer{
         chest.addObserver(this);
     }
 
+    boolean buttonEnabled;
+
+    public boolean isButtonEnabled() {
+        return buttonEnabled;
+    }
+
+    public void setButtonEnabled(boolean buttonEnabled) {
+        this.buttonEnabled = buttonEnabled;
+    }
+
     private JPanel equipmentsPanel;
 
     /**
      * This method is init method.
      */
+
     @Override
     protected void init() {
         super.init();
@@ -58,7 +69,6 @@ public class EquipmentPanel extends Panel implements Observer{
     /**
      * This is a method makes initialized.
      */
-
     protected void initSubviews(){
         equipmentsPanel = new JPanel();
         equipmentsPanel.setLayout(null);
@@ -68,7 +78,6 @@ public class EquipmentPanel extends Panel implements Observer{
     }
 
     /**
-     *
      * @param observer Observable
      * @param x Object
      * Observer method, update change
@@ -88,7 +97,6 @@ public class EquipmentPanel extends Panel implements Observer{
     /**
      * This is a method makes data transfer to view
      */
-
     public void dataToView(){
         equipmentsPanel.removeAll();
 
@@ -105,12 +113,17 @@ public class EquipmentPanel extends Panel implements Observer{
             equipmentsPanel.add(equipmentView);
             equipmentView.setEquipment(equipment);
 
-            JButton dropButtton = new JButton("drop");
+            JButton dropButton = new JButton("drop");
 
-            dropButtton.setSize(60, 20);
-            dropButtton.setLocation(320, y);
-            equipmentsPanel.add(dropButtton);
-            dropButtton.addActionListener(new ActionListener() {
+            dropButton.setSize(60, 20);
+            dropButton.setLocation(320, y);
+
+            if (buttonEnabled) {
+                equipmentsPanel.add(dropButton);
+            }
+
+            dropButton.addActionListener(new ActionListener() {
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     chest.dropEquipment(equipment);

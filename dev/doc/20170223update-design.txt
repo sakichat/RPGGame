@@ -54,7 +54,9 @@ Attack
     A character’s Defense is equal to:
     10 + Dexterity modifier +/ class bonus + equipment bonus + size modifier
 
-
+Multiple Attacks
+    A character with a +7 BAB and +0 STR gets 3 attacks (+7/+5/+3)
+    A character with a +12 BAB and -4 STR gets 3 attacks (+8/+6/+4)
 
 
 

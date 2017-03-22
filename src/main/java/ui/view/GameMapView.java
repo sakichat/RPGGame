@@ -18,7 +18,7 @@ import java.util.List;
  * Highlight Layer for showing the selected cell; Event Layer for triggering the event on cell.
  * These four map layers are saved in a List<> for getting it easily.
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class GameMapView extends View {
 
@@ -168,10 +168,6 @@ public class GameMapView extends View {
         return selectedLocation;
     }
 
-    public void setSelectedLocation(Point selectedLocation) {
-        this.selectedLocation = selectedLocation;
-    }
-
     /**
      * This property is for a new ImageView
      */
@@ -276,6 +272,17 @@ public class GameMapView extends View {
                 }
             }
         }
+
+        repaint();
+    }
+
+    /**
+     * This method refreshes HighlightLayer.
+     */
+    public void refreshHighlight() {
+        GameMapLayerView highlightLayerView = layers.get(_LAYER_HIGHLIGHT);
+        highlightLayerView.removeAllCells();
+        this.initHighlightLayer();
 
         repaint();
     }

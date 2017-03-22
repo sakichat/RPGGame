@@ -3,18 +3,27 @@ package logic;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import persistence.MapFileManager;
 
 /**
  * Created by GU_HAN on 2017-03-01.
  * @author GU_HAN
- * @version 0.1
+ * @version 0.2
  *
- * This class is for testing the map.
+ * This class is for testing the class of GameMap.
  */
 public class MapValidatorTest {
 
+
+    /**
+     * This parameter is to define a GameMap as an arttribute.
+     */
     private GameMap gameMapTest;
 
+    /**
+     * This method is for pre-defining the gameMap.
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         GameMap gameMap = new GameMap();
@@ -119,5 +128,16 @@ public class MapValidatorTest {
         Assert.assertEquals(GameMap.VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE, gameMapTest.validate());
     }
 
+    /**
+     * This method tests if the map can be saved when player is not defined its party.
+     * @throws Exception
+     */
+    @Test
+    public void testPlayerNotDefined() throws Exception {
+        GameMap gameMap = MapFileManager.read("libeng");
+        Player player = new Player();
+        gameMap.addCell(player, new Point(3, 3));
 
+        Assert.assertEquals(GameMap.VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED, gameMap.validate());
+    }
 }

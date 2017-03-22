@@ -5,7 +5,7 @@ import logic.Equipment;
 /**
  * @author Li Zhen
  * @version 0.1
- * this is the EquipmentDelegate implements
+ * this is the EquipmentDelegate interface
  */
 public interface EquipmentDelegate {
     /**

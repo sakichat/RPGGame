@@ -1,12 +1,10 @@
 package ui.panel;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import logic.Equipment;
 import logic.Player;
 import ui.view.EquipmentView;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
@@ -86,12 +84,23 @@ public class InventoryPanel extends Panel implements Observer {
      * Delegate
      */
 
+    /**
+     * Declaration of the inventoryDelegate.
+     */
     private InventoryDelegate inventoryDelegate;
 
+    /**
+     * Getter for inventoryDelegate.
+     * @return
+     */
     public InventoryDelegate getInventoryDelegate() {
         return inventoryDelegate;
     }
 
+    /**
+     * Setter for the inventoryDelegate.
+     * @param inventoryDelegate
+     */
     public void setInventoryDelegate(InventoryDelegate inventoryDelegate) {
         this.inventoryDelegate = inventoryDelegate;
     }
@@ -117,6 +126,7 @@ public class InventoryPanel extends Panel implements Observer {
             dataToView();
         }
     }
+
     /**
      * Constructor
      */
@@ -321,8 +331,9 @@ public class InventoryPanel extends Panel implements Observer {
         });
     }
 
-
-
+    /**
+     * Data to view method.
+     */
     public void dataToView() {
 
         if (buttonEnabled) {
@@ -407,7 +418,7 @@ public class InventoryPanel extends Panel implements Observer {
             JButton equipButton = new JButton("equip");
             equipButton.setSize(60, 20);
             equipButton.setLocation(310, y);
-            if (buttonEnabled) {
+            if (isButtonEnabled()) {
                 backpackSubPanel.add(equipButton);
             }
             equipButton.addActionListener(new ActionListener() {
@@ -420,7 +431,7 @@ public class InventoryPanel extends Panel implements Observer {
             JButton operationButton = new JButton(buttonText);
             operationButton.setSize(60, 20);
             operationButton.setLocation(380, y);
-            if (buttonEnabled) {
+            if (isButtonEnabled()) {
                 backpackSubPanel.add(operationButton);
             }
             operationButton.addActionListener(new ActionListener() {
@@ -428,7 +439,7 @@ public class InventoryPanel extends Panel implements Observer {
                 public void actionPerformed(ActionEvent e) {
                     if (buttonText == "Drop") {
                         player.dropEquipment(equipment);
-                    } else if (buttonText == "Exchange") {
+                    } else if (buttonText == "Swap") {
                         inventoryDelegate.inventoryExchangePerformAction(InventoryPanel.this, equipment);
                     }
                 }

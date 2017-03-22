@@ -6,9 +6,9 @@ import org.junit.Test;
 /**
  * Created by GU_HAN on 2017-02-27.
  * @author GU_HAN
- * @version 0.1
+ * @version 0.2
  *
- * This class is for testing the fileManager method.
+ * This class is for testing the fileManager method, to see if it can success read file.
  */
 public class FileManagerTest {
 

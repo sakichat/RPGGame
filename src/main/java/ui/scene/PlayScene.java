@@ -18,16 +18,16 @@ import java.awt.event.ActionListener;
 public class PlayScene extends Scene implements GameMapView.Delegate, InventoryDelegate{
 
     /**
-     * These parameters set play on this scene and create gameMapView.
+     * These parameters set play on this scene and create gameMapView and equipmentPanel.
      */
     private Play play;
     private GameMapView gameMapView;
     private EquipmentPanel equipmentPanel;
 
-    public Play getPlay() {
-        return play;
-    }
-
+    /**
+     * This is a setter for Play
+     * @param play
+     */
     public void setPlay(Play play) {
         this.play = play;
 
@@ -47,14 +47,15 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         saveButtonEnabled = false;
     }
 
+    /**
+     * These parameters are specific for view or buttons.
+     */
     private View controlViewContainerView;
     private JButton upDirectionButton;
     private JButton downDirectionButton;
     private JButton leftDirectionButton;
     private JButton rightDirectionButton;
     private JButton interactButton;
-
-    PlayingControlView playingControlView;
 
     /**
      * This method creates components on this scene
@@ -102,10 +103,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         button.setSize(40, 40);
         downDirectionButton = button;
         contentView.add(button);
-
-        playingControlView = new PlayingControlView();
-        playingControlView.setLocation(820, 40);
-        add(playingControlView);
 
         repaint();
 
@@ -166,6 +163,63 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     }
 
     /**
+     * This method implements MapDelegation and refresh controlViewContainerView.
+     * @param gameMapView
+     * @param location
+     */
+    @Override
+    public void gameMapViewSelect(GameMapView gameMapView, Point location) {
+        refreshControlView();
+    }
+
+    /**
+     * This method gets cell and its location
+     * And then call generateControlView() method to add a correct controlView to controlViewContainerView
+     */
+    private void refreshControlView(){
+        Point location = gameMapView.getSelectedLocation();
+        GameMap gameMap = gameMapView.getGameMap();
+        Cell cell = gameMap.getCell(location);
+        View view = generateControlView(cell);
+
+        controlViewContainerView.removeAll();
+        controlViewContainerView.add(view);
+
+        controlViewContainerView.repaint();
+
+    }
+
+    /**
+     * This method generates what should be shown on controlViewContainerView.
+     * @param cell
+     * @return controlView
+     */
+    private ControlView generateControlView(Cell cell) {
+        ControlView controlView = null;
+
+        if (cell instanceof Chest) {
+            ChestViewControlView chestViewControlView = new ChestViewControlView();
+            chestViewControlView.setChest((Chest) cell);
+            controlView = chestViewControlView;
+
+        } else if (cell instanceof Player) {
+            PlayingControlView playingControlView = new PlayingControlView();
+            playingControlView.setPlayer((Player)cell);
+            controlView = playingControlView;
+
+        } else {
+            PlayingControlView playingControlView = new PlayingControlView();
+            playingControlView.setPlayer(play.getPlayer());
+            controlView = playingControlView;
+
+        }
+
+        controlView.setPlayScene(this);
+
+        return controlView;
+    }
+
+    /**
      * Relative methods about view player
      */
     PlayerPanel playerPanel;
@@ -203,63 +257,22 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
     }
 
     /**
-     * This method implements MapDelegation and refresh controlViewContainerView.
-     * @param gameMapView
-     * @param location
-     */
-    @Override
-    public void gameMapViewSelect(GameMapView gameMapView, Point location) {
-        refreshControlView();
-    }
-
-    /**
-     * This method gets cell and its location
-     * And then call generateControlView() method to add a correct controlView to controlViewContainerView
-     */
-    private void refreshControlView(){
-        Point location = gameMapView.getSelectedLocation();
-        GameMap gameMap = gameMapView.getGameMap();
-        Cell cell = gameMap.getCell(location);
-
-        if (cell instanceof Player) {
-            playingControlView.setPlayer((Player)cell);
-
-        } else {
-            playingControlView.setPlayer(play.getPlayer());
-
-        }
-
-        playingControlView.setPlayScene(this);
-        playingControlView.repaint();
-
-    }
-
-    private ControlView generateControlView(Cell cell) {
-        ControlView controlView = null;
-
-        if (cell instanceof Chest) {
-            controlView = new ChestViewControlView();
-        } else {
-            controlView = new PlayingControlView();
-        }
-
-        return controlView;
-    }
-
-    /**
      * The method is used to showChestViewInside.
      * @param chest
      */
     public void showChestViewInside(Chest chest) {
         equipmentPanel = new EquipmentPanel();
-        equipmentPanel.setLocation(410, 210);
+        equipmentPanel.setLocation(420, 10);
         equipmentPanel.setChest(chest);
         contentView.add(equipmentPanel);
 
         repaint();
     }
 
-
+    /**
+     * This method judges what action should be done according to targetCell.
+     * @param targetCell
+     */
     private void interactWith(Cell targetCell) {
 
         if (targetCell instanceof Player) {
@@ -285,38 +298,39 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
         } else if (targetCell instanceof Exit) {
 
-            int currentLevel = play.getPlayer().getLevel();
-            play.getPlayer().setLevel(currentLevel + 1);
+            Exit exit = (Exit) targetCell;
 
+            System.out.println(play.isObjective());
 
-            if (play.isLastMap()) {
-                //跳回什么界面？
-            } else {
-                play.moveToNextMap();
-                //push新地图
+            if (play.isObjective()) {
+                interactWithExit(exit);
+
             }
+
 
         }
     }
 
+    /**
+     * This method is for interacting with dead NPC.
+     * @param targetPlayer
+     */
     private void interactWithDeadNPC(Player targetPlayer) {
+
         play.getPlayer().lootDeadNPC(targetPlayer);
         play.refreshPlayer();
         gameMapView.refreshContent();
+
     }
 
+    /**
+     * This method is for interacting with friendly NPC.
+     * @param targetPlayer
+     */
     private void interactWithFriendlyNPC(Player targetPlayer) {
+
         showInventoryPanelToExchange(play.getPlayer());
-    }
 
-    private void interactWithHostileNPC(Player targetPlayer) {
-        play.getPlayer().attack(targetPlayer);
-    }
-
-    private void interactWithChest(Chest chest) {
-        play.getPlayer().lootChest(chest);
-        play.refreshChest();
-        gameMapView.refreshContent();
     }
 
     /**
@@ -325,6 +339,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
      * @param player
      */
     private void showInventoryPanelToExchange(Player player) {
+
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setLocation(330, 10);
         inventoryPanel.setPlayer(player);
@@ -337,11 +352,63 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         repaint();
     }
 
+    /**
+     * This method is for equipment delegate.
+     * @param inventoryPanel
+     * @param equipment
+     */
     @Override
     public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
+
         play.getPlayer().dropInventories(equipment);
         Player targetPlayer = (Player) play.getTartget();
         Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
         play.getPlayer().pickUpEquipment(exchangeEquipmentRandom);
+
     }
+
+    /**
+     * This method is for interacting with hostile NPC.
+     * @param targetPlayer
+     */
+    private void interactWithHostileNPC(Player targetPlayer) {
+
+        play.getPlayer().attack(targetPlayer);
+        gameMapView.refreshContent();
+
+    }
+
+    /**
+     * This method is for interacting with chest.
+     * @param chest
+     */
+    private void interactWithChest(Chest chest) {
+
+        play.getPlayer().lootChest(chest);
+        play.refreshChest();
+        gameMapView.refreshContent();
+
+    }
+
+    /**
+     * This method is for interact
+     */
+    private void interactWithExit(Exit exit) {
+
+        int currentLevel = play.getPlayer().getLevel();
+        play.getPlayer().setLevel(currentLevel + 1);
+
+
+        if (play.isLastMap()) {
+            FinishScene finishScene = new FinishScene();
+            PlayScene.this.navigationView.push(finishScene);
+        } else {
+            play.moveToNextMap();
+            gameMapView.setGameMap(play.getCurrentMap());
+
+            gameMapView.refreshContent();
+            gameMapView.refreshHighlight();
+        }
+    }
+
 }

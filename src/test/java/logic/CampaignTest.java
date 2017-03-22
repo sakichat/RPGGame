@@ -7,14 +7,21 @@ import org.junit.Test;
 /**
  * Created by GU_HAN on 2017-03-02.
  * @author GU_HAN
- * @version 0.1
+ * @version 0.2
  *
  * This class is for validate the campaign.
  */
 
 public class CampaignTest {
-
+    /**
+     * This parameter is to define a campaign that can be used in every method here.
+     */
     private Campaign campaignTest;
+
+    /**
+     * This method is for setting up.
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         Campaign campaign = new Campaign();

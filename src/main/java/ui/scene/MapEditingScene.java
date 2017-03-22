@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  * This MapEditingScene class is for editing game map view which extends Scene class
  * And implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate{
 
@@ -181,6 +181,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
             Chest chest = (Chest) cell;
             ChestControlView chestControlView = new ChestControlView();
             chestControlView.setChest(chest);
+//            chestControlView.setRemoveButtonEnabled(true);
             controlView = chestControlView;
         }
 
@@ -244,8 +245,8 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
     /**
      * Properties and methods about chest editing.
      */
-    EquipmentSelectorPanel equipmentSelectorPanel;
-    EquipmentPanel equipmentPanel;
+    private EquipmentSelectorPanel equipmentSelectorPanel;
+    private EquipmentPanel equipmentPanel;
 
     /**
      * This method set equipmentSelectorPanel on the Scene when the event is triggered
@@ -269,6 +270,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
         equipmentPanel = new EquipmentPanel();
         equipmentPanel.setLocation(410, 210);
+        equipmentPanel.setButtonEnabled(true);
         equipmentPanel.setChest(chest);
         contentView.add(equipmentPanel);
 

@@ -1,9 +1,6 @@
 package ui.scene;
 
-import logic.Play;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,25 +10,6 @@ import java.awt.event.ActionListener;
  * @version 0.2
  */
 public class ReadyScene extends Scene {
-
-//    private Play play;
-//
-//    /**
-//     * Getter for play.
-//     * @return
-//     */
-//    public Play getPlay() {
-//        return play;
-//    }
-//
-//    /**
-//     * Setter for play.
-//     * @param play
-//     */
-//    public void setPlay(Play play) {
-//        this.play = play;
-//        dataToView();
-//    }
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -46,6 +24,9 @@ public class ReadyScene extends Scene {
 
     }
 
+    /**
+     * This parameter is for the label of playName.
+     */
     JLabel playNameLabel;
 
     /**
@@ -70,7 +51,6 @@ public class ReadyScene extends Scene {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlayCreationScene playCreationScene = new PlayCreationScene();
-//                playScene.setPlay(play);
                 ReadyScene.this.navigationView.push(playCreationScene);
             }
         });
@@ -85,7 +65,4 @@ public class ReadyScene extends Scene {
         repaint();
     }
 
-//    public void dataToView() {
-//        playNameLabel.setText(play.getName());
-//    }
 }

@@ -55,7 +55,24 @@
       null,
       null,
       null,
-      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipments": [
+            {
+              "name": "Bloodhoof Runespear",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          ],
+          "location": {
+            "x": 3,
+            "y": 3
+          },
+          "imageName": "chest.png"
+        }
+      },
       null,
       {
         "_class": "Obstacle",
@@ -73,9 +90,43 @@
     [
       null,
       null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipments": [
+            {
+              "name": "Bloodhoof Runespear",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          ],
+          "location": {
+            "x": 2,
+            "y": 4
+          },
+          "imageName": "chest.png"
+        }
+      },
       null,
-      null,
-      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipments": [
+            {
+              "name": "Coif of Delusions",
+              "type": "Helmet",
+              "enhancedAttribute": "WIS",
+              "enhancedValue": 5
+            }
+          ],
+          "location": {
+            "x": 4,
+            "y": 4
+          },
+          "imageName": "chest.png"
+        }
+      },
       {
         "_class": "Obstacle",
         "_object": {
@@ -93,7 +144,24 @@
       null,
       null,
       null,
-      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipments": [
+            {
+              "name": "Bloodhoof Runespear",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          ],
+          "location": {
+            "x": 3,
+            "y": 5
+          },
+          "imageName": "chest.png"
+        }
+      },
       null,
       {
         "_class": "Player",
@@ -128,6 +196,7 @@
               "enhancedValue": 3
             }
           },
+          "multipleAttacks": {},
           "level": 4,
           "name": "nathye",
           "playerType": "Bully",

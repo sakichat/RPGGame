@@ -3,17 +3,21 @@ package logic;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import persistence.CampaignFileManager;
 import persistence.MapFileManager;
 import persistence.PlayerFileManager;
 
 /**
  * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
- * @version 1.0.0
+ * @version 0.2
  *
- * This class is basically for player's tests.
+ * This class is basically for class of player's tests.
  */
 public class PlayerTest {
+    /**
+     * These parameters is pre-defined attributes for every method in this test class to use.
+     */
     private Player player;
     private Equipment equipment1;
     private Equipment equipment2;
@@ -27,17 +31,6 @@ public class PlayerTest {
     private Equipment equipment10;
     private Equipment equipment11;
     private Equipment equipment12;
-    private Equipment equipment13;
-    private Equipment equipment14;
-    private Equipment equipment15;
-    private Equipment equipment16;
-    private Equipment equipment17;
-    private Equipment equipment18;
-    private Equipment equipment19;
-    private Equipment equipment20;
-    private Equipment equipment21;
-    private Equipment equipment22;
-    private Equipment equipment23;
 
     /**
      * This method set up first few steps before the actual tests.
@@ -72,28 +65,6 @@ public class PlayerTest {
 
         equipment12 = new Equipment("Cord of Beginnings",Equipment.BELT,Player.ABILITY_CON,5);
 
-        equipment13 = new Equipment("Steel Walkers",Equipment.BOOTS,Player.ATTRIBUTE_ARMOR_CLASS,3);
-
-        equipment14 = new Equipment("Bronze Warboots",Equipment.BOOTS,Player.ABILITY_DEX,4);
-
-        equipment15 = new Equipment("Bone Stompers",Equipment.BOOTS,Player.ABILITY_DEX,5);
-
-        equipment16 = new Equipment("Ashbringer",Equipment.WEAPON,Player.ATTRIBUTE_ATTACK_BONUS,5);
-
-        equipment17 = new Equipment("Axe of Cenarius",Equipment.WEAPON,Player.ATTRIBUTE_DAMAGE_BONUS,5);
-
-        equipment18 = new Equipment("Bloodhoof Runespear",Equipment.WEAPON,Player.ATTRIBUTE_DAMAGE_BONUS,5);
-
-        equipment19 = new Equipment("Phyrix's Embrace",Equipment.RING,Player.ATTRIBUTE_ARMOR_CLASS,2);
-
-        equipment20 = new Equipment("Sephuz's Secret",Equipment.RING,Player.ABILITY_STR,2);
-
-        equipment21 = new Equipment("Alythess's Pyrogenics",Equipment.RING,Player.ABILITY_CON,3);
-
-        equipment22 = new Equipment("Chatoyant Signet",Equipment.RING,Player.ABILITY_WIS,5);
-
-        equipment23 = new Equipment("Dual Determination",Equipment.RING, Player.ABILITY_CHA,5);
-
         player.pickUpEquipment(equipment1);
         player.pickUpEquipment(equipment2);
         player.pickUpEquipment(equipment3);
@@ -107,7 +78,7 @@ public class PlayerTest {
     }
 
     /**
-     * This method test if it is empty in the backpack.
+     * This method test if it is empty in the backpack after dropping all the items.
      * @throws Exception
      */
     @Test
@@ -127,7 +98,7 @@ public class PlayerTest {
     }
 
     /**
-     * This method test if it is already empty in the backpack, can we still drop items.
+     * This method test if it is already empty in the backpack, can the player still drop items.
      * @throws Exception
      */
     @Test
@@ -186,7 +157,8 @@ public class PlayerTest {
     }
 
     /**
-     * This method tests if player can wear more than one item of the same category.
+     * This method tests if player can wear more than one item of the same category, wihch means
+     * if the player will drop previous item if wearing the same category.
      * @throws Exception
      */
     @Test
@@ -200,6 +172,11 @@ public class PlayerTest {
         Assert.assertEquals(pre, now - equipment12.getEnhancedValue());
     }
 
+    /**
+     * This method test if the player will correctly loot the chest, which means the player will get
+     * the item in the chest to his backpack.
+     * @throws Exception
+     */
     @Test
     public void testLooting() throws Exception {
         Player testPlayer = PlayerFileManager.read("asheley");
@@ -215,6 +192,10 @@ public class PlayerTest {
 
     }
 
+    /**
+     * This method is to test if the player will successfully loot the chest.
+     * @throws Exception
+     */
     @Test
     public void testNotLooting() throws Exception {
         Player testPlayer = player;
@@ -227,6 +208,42 @@ public class PlayerTest {
         testPlayer.lootChest(testChest);
 
         Assert.assertEquals(false, a1 == testPlayer.equipmentsInBackpack().get(previousSize - 1));
+
+    }
+
+    /**
+     * This method is for testing if the cell will become null after looting the chest to empty.
+     * @throws Exception
+     */
+    @Test
+    public void testAfterLooting() throws Exception {
+        Player testPlayer = player;
+
+        testPlayer.dropEquipment(equipment1);
+        testPlayer.dropEquipment(equipment2);
+        testPlayer.dropEquipment(equipment3);
+        testPlayer.dropEquipment(equipment4);
+        testPlayer.dropEquipment(equipment5);
+        testPlayer.dropEquipment(equipment6);
+        testPlayer.dropEquipment(equipment7);
+        testPlayer.dropEquipment(equipment8);
+        testPlayer.dropEquipment(equipment9);
+        testPlayer.dropEquipment(equipment10);
+
+        Campaign campaign = CampaignFileManager.read("testcampaign");
+
+        Play play = new Play();
+        play.setCampaign(campaign);
+        play.setPlayer(testPlayer);
+        play.resolveMap();
+
+        play.move();
+        play.move();
+        play.setDirection(Point.DIRECTION_RIGHT);
+        play.getPlayer().lootChest((Chest)(play.getTartget()));
+
+
+        Assert.assertEquals(null, play.getCurrentMap().getCell(new Point(1, 5)));
 
     }
 }

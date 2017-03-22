@@ -4,8 +4,8 @@ import ui.view.Window;
 
 /**
  * @author Qi Xia
- * @version 0.1
- * This is the main program
+ * @version 0.2
+ * This is the main program.
  */
 public class Game {
     public static void main(String[] args) {

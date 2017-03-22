@@ -3,8 +3,9 @@ package ui.view;
 import java.util.LinkedList;
 
 /**
+ * This NavigationView implements changes of views.
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class NavigationView extends View {
 

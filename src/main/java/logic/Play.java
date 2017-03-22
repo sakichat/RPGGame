@@ -23,7 +23,7 @@ public class Play {
 
     /**
      * Getter for name.
-     * @return
+     * @return String
      */
     public String getName() {
         return name;
@@ -39,7 +39,7 @@ public class Play {
 
     /**
      * Getter for campaign
-     * @return
+     * @return Campaign
      */
     public Campaign getCampaign() {
         return campaign;
@@ -55,7 +55,7 @@ public class Play {
 
     /**
      * Getter for player
-     * @return
+     * @return Player
      */
     public Player getPlayer() {
         return player;
@@ -132,7 +132,7 @@ public class Play {
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
 
-        if (!currentMap.hasCell(targetLocation)){
+        if (currentMap.canPlace(targetLocation)){
             currentMap.moveCell(location, targetLocation);
         }
     }
@@ -141,7 +141,7 @@ public class Play {
      * This is a method makes player enter into the map.
      * @return Point
      */
-    public void enterIntoMap(){
+    private void enterIntoMap(){
         Point entrance = currentMap.getEntrances().get(0).getLocation();
 
         LinkedList<Point> directions = Point.directions();
@@ -182,8 +182,33 @@ public class Play {
     }
 
     /**
+     * This method is used for judge whether the objectives are fulfilled
+     * @return Boolean
+     */
+    public Boolean isObjective() {
+        List<Player> players = currentMap.getPlayers();
+        List<Player> hostilePlayers = new LinkedList<Player>();
+
+        for (Player hostilePlayer : players) {
+            if (hostilePlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
+                hostilePlayers.add(hostilePlayer);
+            }
+        }
+
+        boolean objectiveFulfilled = true;
+
+        for (Player hostilePlayer : hostilePlayers) {
+            if (!hostilePlayer.isDead()) {
+                objectiveFulfilled = false;
+            }
+        }
+
+        return objectiveFulfilled;
+    }
+
+    /**
      * This is the method for get target cell in direction
-     * @return
+     * @return Cell
      */
     public Cell getTartget(){
         Point location = player.getLocation();
@@ -209,12 +234,15 @@ public class Play {
      * This method is used for removing dead player when his inventory is empty.
      */
     public void refreshPlayer( ) {
-        Point location = player.getLocation();
-        Point playerPoint = location.add(direction);
 
-        int size = player.getInventories().size();
+        Player targetPlayer = (Player)getTartget();
+
+        Point location = player.getLocation();
+        Point targetLocation = location.add(direction);
+
+        int size = targetPlayer.getInventories().size();
         if (size == 0) {
-            currentMap.removeCell(playerPoint);
+            currentMap.removeCell(targetLocation);
         }
     }
 

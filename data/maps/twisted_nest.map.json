@@ -83,6 +83,7 @@
               "enhancedValue": 5
             }
           },
+          "multipleAttacks": {},
           "level": 14,
           "name": "wendru",
           "playerType": "Bully",
@@ -186,6 +187,7 @@
               "enhancedValue": 3
             }
           },
+          "multipleAttacks": {},
           "level": 4,
           "name": "nathye",
           "playerType": "Bully",

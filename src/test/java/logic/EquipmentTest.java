@@ -6,11 +6,11 @@ import org.junit.Test;
 /**
  * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
- * @version 0.1
+ * @version 0.2
+ *
+ * this class is to test the method of boolean validate() in class of Equipment.
  */
-    /**
-     * this class is to test the method of boolean validate() in Equipment.
-     */
+
 public class EquipmentTest {
 
     /**

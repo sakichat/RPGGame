@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 /**
  * This class is a subclass of Scene and implements the interface MapDelegate.
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class CampaignEditingScene extends Scene implements MapDelegate {
 

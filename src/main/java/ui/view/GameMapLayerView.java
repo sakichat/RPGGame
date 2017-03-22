@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * This class is for building a layer on game map which extends View.
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class GameMapLayerView extends View {
 

@@ -16,9 +16,7 @@
             "x": 5,
             "y": 0
           },
-          "imageName": "exit.png",
-          "changed": false,
-          "obs": []
+          "imageName": "exit.png"
         }
       },
       null,
@@ -36,9 +34,7 @@
             "x": 2,
             "y": 1
           },
-          "imageName": "wall.png",
-          "changed": false,
-          "obs": []
+          "imageName": "wall.png"
         }
       },
       {
@@ -80,6 +76,7 @@
               "enhancedValue": 5
             }
           },
+          "multipleAttacks": {},
           "level": 14,
           "name": "wendru",
           "playerType": "Bully",
@@ -89,9 +86,7 @@
           "location": {
             "x": 3,
             "y": 1
-          },
-          "changed": false,
-          "obs": []
+          }
         }
       },
       null,
@@ -104,9 +99,7 @@
             "x": 7,
             "y": 1
           },
-          "imageName": "wall.png",
-          "changed": false,
-          "obs": []
+          "imageName": "wall.png"
         }
       },
       null,
@@ -121,9 +114,7 @@
             "x": 1,
             "y": 2
           },
-          "imageName": "wall.png",
-          "changed": false,
-          "obs": []
+          "imageName": "wall.png"
         }
       },
       {
@@ -171,6 +162,7 @@
               "enhancedValue": 5
             }
           },
+          "multipleAttacks": {},
           "level": 2,
           "name": "gilda",
           "playerType": "Nimble",
@@ -180,9 +172,7 @@
           "location": {
             "x": 2,
             "y": 2
-          },
-          "changed": false,
-          "obs": []
+          }
         }
       },
       null,
@@ -193,9 +183,7 @@
             "x": 4,
             "y": 2
           },
-          "imageName": "wall.png",
-          "changed": false,
-          "obs": []
+          "imageName": "wall.png"
         }
       },
       {
@@ -205,12 +193,33 @@
             "x": 5,
             "y": 2
           },
-          "imageName": "entrance.png",
-          "changed": false,
-          "obs": []
+          "imageName": "entrance.png"
         }
       },
-      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipments": [
+            {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            {
+              "name": "Arming Coat",
+              "type": "Armor",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 5
+            }
+          ],
+          "location": {
+            "x": 6,
+            "y": 2
+          },
+          "imageName": "chest.png"
+        }
+      },
       null,
       {
         "_class": "Obstacle",
@@ -219,9 +228,7 @@
             "x": 8,
             "y": 2
           },
-          "imageName": "wall.png",
-          "changed": false,
-          "obs": []
+          "imageName": "wall.png"
         }
       },
       null

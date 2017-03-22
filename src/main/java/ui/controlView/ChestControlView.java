@@ -69,9 +69,10 @@ public class ChestControlView extends ControlView {
         button = new JButton();
         button.setSize(160, 40);
         button.setLocation(10, 110);
-        add(button);
         button.setText("Remove");
         JButton removeButton = button;
+
+        this.add(removeButton);
 
         viewInsideButton.addActionListener(new ActionListener() {
             @Override
@@ -86,6 +87,8 @@ public class ChestControlView extends ControlView {
                 mapEditingScene.destroy();
             }
         });
+
+        repaint();
 
     }
 
