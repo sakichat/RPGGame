@@ -13,7 +13,6 @@ public class EquipmentView extends View {
     /**
      * The Equipment attribute and getter & setter
      */
-
     private Equipment equipment;
 
     public Equipment getEquipment() {
@@ -28,7 +27,6 @@ public class EquipmentView extends View {
     /**
      * The JLabel attribute
      */
-
     public JLabel typeLabel;
     public JLabel nameLabel;
     public JLabel enhanceLabel;
@@ -36,7 +34,6 @@ public class EquipmentView extends View {
     /**
      * Constructor
      */
-
     public EquipmentView(){
         this.setSize(300, 20);
 
@@ -46,7 +43,6 @@ public class EquipmentView extends View {
     /**
      * This is a method to make initialization
      */
-
     private void initSubviews(){
 
         JLabel label;
