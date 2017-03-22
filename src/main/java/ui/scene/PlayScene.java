@@ -400,7 +400,8 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
 
         if (play.isLastMap()) {
-            this.navigationView.popTo(MainScene.class);
+            FinishScene finishScene = new FinishScene();
+            PlayScene.this.navigationView.push(finishScene);
         } else {
             play.moveToNextMap();
             gameMapView.setGameMap(play.getCurrentMap());
