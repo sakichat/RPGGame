@@ -1,7 +1,7 @@
 package logic;
 
 /**
- * Created by thereaghostflash on 2017-03-21.
+ * Created by Li on 2017-03-21.
  */
 public class TankBuilder extends PlayerBuilder {
 
