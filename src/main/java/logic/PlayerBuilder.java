@@ -40,7 +40,7 @@ public abstract class PlayerBuilder {
     abstract void setPlayerType();
 
     /**
-     * this is a abstract method 
+     * this is a abstract method to 
      */
     abstract void generateAbilities();
 
