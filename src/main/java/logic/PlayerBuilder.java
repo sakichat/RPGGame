@@ -18,7 +18,7 @@ public abstract class PlayerBuilder {
 
     /**
      * this method is to createPlayer
-     * @param playerName
+     * @param playerName String
      */
 
     public void createNewPlayer(String playerName){
