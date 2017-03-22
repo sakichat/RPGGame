@@ -183,7 +183,7 @@ public class Play {
 
     /**
      * This is the method for get target cell in direction
-     * @return
+     * @return Cell
      */
     public Cell getTartget(){
         Point location = player.getLocation();
