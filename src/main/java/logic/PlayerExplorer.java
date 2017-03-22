@@ -2,6 +2,7 @@ package logic;
 
 /**
  * Created by Li Zhen on 2017-03-21.
+ * this 
  */
 public class PlayerExplorer {
 
