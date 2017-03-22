@@ -10,7 +10,7 @@ public class PlayerExplorer {
 
     /**
      * this is the method that  set builder of player
-     * @param playerBuilder
+     * @param playerBuilder Player
      */
     public void setPlayerBuilder(PlayerBuilder playerBuilder) {
         this.playerBuilder = playerBuilder;
