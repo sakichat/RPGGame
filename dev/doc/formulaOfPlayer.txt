@@ -26,3 +26,7 @@
 
 - DB (Damage Bonus)
     =  10 + DEXModifier + wornDB
+
+-Multiple Attacks
+    = attack bonus + STRModifier - (2 * (n - 1))
+    n is the attack times and n <= 3

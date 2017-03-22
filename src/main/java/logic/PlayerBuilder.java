@@ -28,7 +28,7 @@ public abstract class PlayerBuilder {
 
     /**
      * this method is to set player level
-     * @param playerProductlevel
+     * @param playerProductlevel player product level
      */
 
     public void setPlayerProductlevel(int playerProductlevel){
