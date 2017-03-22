@@ -85,24 +85,46 @@ public class InventoryPanel extends Panel implements Observer {
      */
 
     /**
-     * Declaration of the inventoryDelegate.
+     * InnerClass to declaration of delegate
      */
-    private InventoryDelegate inventoryDelegate;
+    public interface Delegate {
 
-    /**
-     * Getter for inventoryDelegate.
-     * @return
-     */
-    public InventoryDelegate getInventoryDelegate() {
-        return inventoryDelegate;
+        /**
+         * The method is the abstract method needed to be implemented by the implemented class.
+         * The method is used to refresh playerPanel.
+         * @param inventoryPanel
+         */
+        void inventoryEnhancedPerformAction(InventoryPanel inventoryPanel);
+
+        /**
+         * The method is the abstract method needed to be implemented by the implemented class.
+         * The method is used in the inventory exchange.
+         * @param inventoryPanel
+         * @param equipment
+         */
+        void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment);
+
     }
 
     /**
-     * Setter for the inventoryDelegate.
-     * @param inventoryDelegate
+     * Property declaration.
      */
-    public void setInventoryDelegate(InventoryDelegate inventoryDelegate) {
-        this.inventoryDelegate = inventoryDelegate;
+    Delegate delegate;
+
+    /**
+     * Getter for enhancedDelegate
+     * @return
+     */
+    public Delegate getDelegate() {
+        return delegate;
+    }
+
+    /**
+     * Setter for enhancedDelegate
+     * @param delegate
+     */
+    public void setDelegate(Delegate delegate) {
+        this.delegate = delegate;
     }
 
     /**
@@ -267,6 +289,7 @@ public class InventoryPanel extends Panel implements Observer {
                 if (currentEquipment != null) {
                     player.unequip(currentEquipment);
                 }
+                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
             }
         });
 
@@ -277,6 +300,7 @@ public class InventoryPanel extends Panel implements Observer {
                 if (currentEquipment != null) {
                     player.unequip(currentEquipment);
                 }
+                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
             }
         });
 
@@ -287,6 +311,7 @@ public class InventoryPanel extends Panel implements Observer {
                 if (currentEquipment != null) {
                     player.unequip(currentEquipment);
                 }
+                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
             }
         });
 
@@ -297,6 +322,7 @@ public class InventoryPanel extends Panel implements Observer {
                 if (currentEquipment != null) {
                     player.unequip(currentEquipment);
                 }
+                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
             }
         });
 
@@ -307,6 +333,7 @@ public class InventoryPanel extends Panel implements Observer {
                 if (currentEquipment != null) {
                     player.unequip(currentEquipment);
                 }
+                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
             }
         });
 
@@ -317,6 +344,7 @@ public class InventoryPanel extends Panel implements Observer {
                 if (currentEquipment != null) {
                     player.unequip(currentEquipment);
                 }
+                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
             }
         });
 
@@ -327,6 +355,7 @@ public class InventoryPanel extends Panel implements Observer {
                 if (currentEquipment != null) {
                     player.unequip(currentEquipment);
                 }
+                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
             }
         });
     }
@@ -425,6 +454,7 @@ public class InventoryPanel extends Panel implements Observer {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     player.equip(equipment);
+                    delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
                 }
             });
 
@@ -440,7 +470,7 @@ public class InventoryPanel extends Panel implements Observer {
                     if (buttonText == "Drop") {
                         player.dropEquipment(equipment);
                     } else if (buttonText == "Swap") {
-                        inventoryDelegate.inventoryExchangePerformAction(InventoryPanel.this, equipment);
+                        delegate.inventoryExchangePerformAction(InventoryPanel.this, equipment);
                     }
                 }
             });

@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class PlayScene extends Scene implements GameMapView.Delegate, InventoryDelegate{
+public class PlayScene extends Scene implements GameMapView.Delegate, InventoryPanel.Delegate {
 
     /**
      * These parameters set play on this scene and create gameMapView and equipmentPanel.
@@ -251,6 +251,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
             inventoryPanel.dataToView();
         }
         inventoryPanel.setLocation(330, 10);
+        inventoryPanel.setDelegate(this);
         contentView.add(inventoryPanel);
 
         repaint();
@@ -309,8 +310,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
                 interactWithExit(exit);
 
             }
-
-
         }
     }
 
@@ -350,7 +349,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         inventoryPanel.setButtonText("Exchange");
         inventoryPanel.dataToView();
         contentView.add(inventoryPanel);
-        inventoryPanel.setInventoryDelegate(this);
+        inventoryPanel.setDelegate(this);
 
         repaint();
     }
@@ -414,4 +413,13 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
         }
     }
 
+
+    /**
+     * The implemented method of the delegate interface.
+     * @param inventoryPanel
+     */
+    @Override
+    public void inventoryEnhancedPerformAction(InventoryPanel inventoryPanel) {
+        playerPanel.dataToView();
+    }
 }

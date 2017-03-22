@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate{
+public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate {
 
     private GameMap gameMap;
     private GameMapView gameMapView;
@@ -319,6 +319,10 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
         repaint();
     }
+
+    /**
+     * The method is used to refresh MapView.
+     */
 
     public void refreshMapView(){
         gameMapView.refreshContent();
