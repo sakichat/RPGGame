@@ -14,7 +14,7 @@ public class NimbleBuilder extends PlayerBuilder {
     }
 
     /**
-     * this 
+     * this is 
      */
 
     @Override
