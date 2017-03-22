@@ -14,7 +14,7 @@ public class NimbleBuilder extends PlayerBuilder {
     }
 
     /**
-     * this is the method to set type
+     * this is the method to set type of 
      */
 
     @Override
