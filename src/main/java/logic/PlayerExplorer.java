@@ -8,6 +8,10 @@ public class PlayerExplorer {
 
     private PlayerBuilder playerBuilder;
 
+    /**
+     * 
+     * @param playerBuilder
+     */
     public void setPlayerBuilder(PlayerBuilder playerBuilder) {
         this.playerBuilder = playerBuilder;
     }
