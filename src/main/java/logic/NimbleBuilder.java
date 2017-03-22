@@ -2,7 +2,7 @@ package logic;
 
 /**
  * Created by Li Zhen on 2017-03-21.
- * this is class 
+ * this is class to
  */
 public class NimbleBuilder extends PlayerBuilder {
     @Override
