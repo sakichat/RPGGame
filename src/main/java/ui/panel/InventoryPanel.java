@@ -439,7 +439,7 @@ public class InventoryPanel extends Panel implements Observer {
                 public void actionPerformed(ActionEvent e) {
                     if (buttonText == "Drop") {
                         player.dropEquipment(equipment);
-                    } else if (buttonText == "Exchange") {
+                    } else if (buttonText == "Swap") {
                         inventoryDelegate.inventoryExchangePerformAction(InventoryPanel.this, equipment);
                     }
                 }
