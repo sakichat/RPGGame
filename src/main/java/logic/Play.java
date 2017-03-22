@@ -23,7 +23,7 @@ public class Play {
 
     /**
      * Getter for name.
-     * @return
+     * @return String
      */
     public String getName() {
         return name;
@@ -39,7 +39,7 @@ public class Play {
 
     /**
      * Getter for campaign
-     * @return
+     * @return Campaign
      */
     public Campaign getCampaign() {
         return campaign;
@@ -55,7 +55,7 @@ public class Play {
 
     /**
      * Getter for player
-     * @return
+     * @return Player
      */
     public Player getPlayer() {
         return player;
