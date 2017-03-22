@@ -346,7 +346,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         inventoryPanel.setLocation(330, 10);
         inventoryPanel.setPlayer(player);
         inventoryPanel.setButtonEnabled(true);
-        inventoryPanel.setButtonText("Exchange");
+        inventoryPanel.setButtonText("Swap");
         inventoryPanel.dataToView();
         contentView.add(inventoryPanel);
         inventoryPanel.setDelegate(this);
