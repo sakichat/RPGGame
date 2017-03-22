@@ -2,7 +2,7 @@ package logic;
 
 /**
  * Created by lizhen on 2017-03-21.
- * this is the class that build  type  of Bully
+ * this is the class that build  type  of Bully player
  *@version 0.2
  */
 public class BullyBuilder extends PlayerBuilder {
