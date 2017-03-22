@@ -3,6 +3,7 @@ package logic;
 /**
  * Created by Li Zhen on 2017-03-21.
  * this is the class to build typle of Nimble Player
+ * @version
  */
 public class NimbleBuilder extends PlayerBuilder {
     /**
