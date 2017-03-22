@@ -25,6 +25,11 @@ public abstract class PlayerBuilder {
         playerProduct = new Player(playerName);
     }
 
+    /**
+     * 
+     * @param playerProductlevel
+     */
+
     public void setPlayerProductlevel(int playerProductlevel){
         playerProduct.setLevel(playerProductlevel);
     }
