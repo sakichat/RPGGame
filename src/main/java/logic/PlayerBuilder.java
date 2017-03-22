@@ -8,7 +8,8 @@ public abstract class PlayerBuilder {
     protected Player playerProduct;
 
     /**
-     *this method is 
+     *this method is to get Player
+     *
      * @return
      */
     public Player getPlayerProduct() {
