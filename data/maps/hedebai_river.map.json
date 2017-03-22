@@ -189,6 +189,7 @@
               "enhancedValue": 5
             }
           },
+          "multipleAttacks": {},
           "level": 14,
           "name": "wendru",
           "playerType": "Bully",
@@ -218,7 +219,26 @@
       {
         "_class": "Chest",
         "_object": {
-          "equipments": [],
+          "equipments": [
+            {
+              "name": "Ashbringer",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Arming Coat",
+              "type": "Armor",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            }
+          ],
           "location": {
             "x": 2,
             "y": 3
@@ -321,6 +341,7 @@
               "enhancedValue": 5
             }
           },
+          "multipleAttacks": {},
           "level": 0,
           "name": "kharkad",
           "playerType": "Tank",

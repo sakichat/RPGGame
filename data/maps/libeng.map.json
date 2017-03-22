@@ -43,7 +43,36 @@
       null
     ],
     [
-      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipments": [
+            {
+              "name": "Bone Stompers",
+              "type": "Boots",
+              "enhancedAttribute": "DEX",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Arming Coat",
+              "type": "Armor",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            }
+          ],
+          "location": {
+            "x": 0,
+            "y": 3
+          },
+          "imageName": "chest.png"
+        }
+      },
       null,
       null,
       null,
@@ -95,6 +124,7 @@
               "enhancedValue": 5
             }
           },
+          "multipleAttacks": {},
           "level": 0,
           "name": "aseg",
           "playerType": "Tank",
@@ -136,7 +166,36 @@
       null
     ],
     [
-      null,
+      {
+        "_class": "Chest",
+        "_object": {
+          "equipments": [
+            {
+              "name": "Alythess Pyrogenics",
+              "type": "Ring",
+              "enhancedAttribute": "CON",
+              "enhancedValue": 3
+            },
+            {
+              "name": "Ashbringer",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            },
+            {
+              "name": "Arming Coat",
+              "type": "Armor",
+              "enhancedAttribute": "AC",
+              "enhancedValue": 5
+            }
+          ],
+          "location": {
+            "x": 0,
+            "y": 7
+          },
+          "imageName": "chest.png"
+        }
+      },
       null,
       null,
       null,
