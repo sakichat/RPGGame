@@ -31,7 +31,7 @@ public class PlayerExplorer {
 
     /**
      * this is the method that can get Player
-     * @return
+     * @return Player
      */
 
     public Player getPlayer(){
