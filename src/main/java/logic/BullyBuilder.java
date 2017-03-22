@@ -15,7 +15,7 @@ public class BullyBuilder extends PlayerBuilder {
     }
 
     /**
-     * this is the method to 
+     * this is the method to generate 
      */
 
     @Override
