@@ -35,7 +35,7 @@ public abstract class PlayerBuilder {
     }
 
     /**
-     * 
+     * this is a abstract method 
      */
     abstract void setPlayerType();
     abstract void generateAbilities();
