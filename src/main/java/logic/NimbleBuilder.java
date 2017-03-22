@@ -6,7 +6,7 @@ package logic;
  */
 public class NimbleBuilder extends PlayerBuilder {
     /**
-     * 
+     * this 
      */
     @Override
     void setPlayerType() {
