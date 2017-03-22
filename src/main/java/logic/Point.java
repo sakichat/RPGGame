@@ -100,7 +100,7 @@ public class Point {
      * this method is to show the Point
      * @return String
      */
-    
+
     @Override
     public String toString() {
         return "Point{" +
