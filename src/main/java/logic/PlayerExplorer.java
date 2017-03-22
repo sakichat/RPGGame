@@ -9,7 +9,7 @@ public class PlayerExplorer {
     private PlayerBuilder playerBuilder;
 
     /**
-     * this is the method that  set builder 
+     * this is the method that  set builder of 
      * @param playerBuilder
      */
     public void setPlayerBuilder(PlayerBuilder playerBuilder) {
