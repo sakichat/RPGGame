@@ -1,17 +1,29 @@
 {
   "abilityScores": {
-    "STR": 12,
-    "WIS": 20,
-    "CON": 8,
-    "DEX": 20,
+    "STR": 24,
+    "WIS": 4,
+    "CON": 24,
+    "DEX": 16,
     "CHA": 8,
     "INT": 8
   },
   "backpack": [
     {
-      "name": "Arming Coat",
-      "type": "Armor",
+      "name": "bi",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 3
+    },
+    {
+      "name": "Steel Walkers",
+      "type": "Boots",
       "enhancedAttribute": "AC",
+      "enhancedValue": 3
+    },
+    {
+      "name": "Dual Determination",
+      "type": "Ring",
+      "enhancedAttribute": "CHA",
       "enhancedValue": 5
     },
     {
@@ -21,15 +33,9 @@
       "enhancedValue": 5
     },
     {
-      "name": "Alythess Pyrogenics",
-      "type": "Ring",
-      "enhancedAttribute": "CON",
-      "enhancedValue": 3
-    },
-    {
-      "name": "Ashbringer",
-      "type": "Weapon",
-      "enhancedAttribute": "AB",
+      "name": "Arming Coat",
+      "type": "Armor",
+      "enhancedAttribute": "AC",
       "enhancedValue": 5
     }
   ],
@@ -45,12 +51,19 @@
       "type": "Weapon",
       "enhancedAttribute": "AB",
       "enhancedValue": 5
+    },
+    "Belt": {
+      "name": "Loyal Wool Sash",
+      "type": "Belt",
+      "enhancedAttribute": "STR",
+      "enhancedValue": 4
     }
   },
-  "level": 3,
+  "multipleAttacks": {},
+  "level": 4,
   "name": "testPlayer",
-  "playerType": "Nimble",
+  "playerType": "Bully",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 7
+  "hp": 18
 }
