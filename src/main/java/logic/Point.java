@@ -21,7 +21,6 @@ public class Point {
     /**
      * this is the constructor
      */
-
     public Point() {
     }
 
@@ -30,7 +29,6 @@ public class Point {
      * @param x int
      * @param y int
      */
-
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
@@ -41,7 +39,6 @@ public class Point {
      * @param delta Point
      * @return Point
      */
-
     public Point add(Point delta){
         Point point = new Point();
         point.x = x + delta.x;
@@ -53,7 +50,6 @@ public class Point {
      * This method is to get points from the directions.
      * @return LinkedList<Point>
      */
-
     public final static Point DIRECTION_UP = new Point(0, -1);
     public final static Point DIRECTION_DOWN = new Point(0, 1);
     public final static Point DIRECTION_LEFT = new Point(-1, 0);
@@ -74,31 +70,28 @@ public class Point {
      * this method is to get X
      * @return Integer
      */
-
     public int getX() {
         return x;
     }
+
     /**
      * this method is to set X
      */
-
-
     public void setX(int x) {
         this.x = x;
     }
+
     /**
      * this method is to get Y
      * @return Integer
      */
-
-
     public int getY() {
         return y;
     }
+
     /**
      * this method is to set Y
      */
-
     public void setY(int y) {
         this.y = y;
     }
@@ -107,7 +100,7 @@ public class Point {
      * this method is to show the Point
      * @return String
      */
-
+    
     @Override
     public String toString() {
         return "Point{" +
