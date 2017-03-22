@@ -205,18 +205,6 @@ public class Play {
         }
 
         return objectiveFulfilled;
-
-//        for (Player deadPlayer : hostilePlayers) {
-//            if (deadPlayer.isDead()) {
-//                deadPlayers.add(deadPlayer);
-//            }
-//        }
-//
-//        if (hostilePlayers.size() == deadPlayers.size()) {
-//            return true;
-//        }
-//
-//        return false;
     }
 
     /**
