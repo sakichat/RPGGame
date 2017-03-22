@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
  */
 public class MainScene extends Scene {
 
-
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
      */
