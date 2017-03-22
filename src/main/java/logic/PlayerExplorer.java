@@ -18,8 +18,8 @@ public class PlayerExplorer {
 
     /**
      * this is the method that construct the player via plyerName and level
-     * @param playerName String 
-     * @param level
+     * @param playerName String
+     * @param level int 
      */
 
     public void constructPlyar(String playerName, int level){
