@@ -6,7 +6,7 @@ import java.util.Observable;
 
 /**
  * @author Qi Xia
- * @version 0.1
+ * @version 0.2
  *
  * this is the cell class
  */
