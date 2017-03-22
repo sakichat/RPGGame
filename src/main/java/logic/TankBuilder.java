@@ -2,7 +2,7 @@ package logic;
 
 /**
  * Created by Li Zhen on 2017-03-21.
- * this is the class that build type
+ * this is the class that build type of 
  */
 public class TankBuilder extends PlayerBuilder {
 
