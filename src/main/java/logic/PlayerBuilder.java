@@ -10,7 +10,7 @@ public abstract class PlayerBuilder {
     /**
      *this method is to get Player
      *
-     * @return
+     * @return Player
      */
     public Player getPlayerProduct() {
         return playerProduct;
