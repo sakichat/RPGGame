@@ -6,7 +6,7 @@ package logic;
  */
 public class BullyBuilder extends PlayerBuilder {
     /**
-     * this
+     * this is
      */
     @Override
     void setPlayerType() {
