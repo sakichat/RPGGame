@@ -298,19 +298,15 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
 
         } else if (targetCell instanceof Exit) {
 
-            int currentLevel = play.getPlayer().getLevel();
-            play.getPlayer().setLevel(currentLevel + 1);
+            Exit exit = (Exit) targetCell;
 
+            System.out.println(play.isObjective());
 
-            if (play.isLastMap()) {
-                this.navigationView.popTo(MainScene.class);
-            } else {
-                play.moveToNextMap();
-                gameMapView.setGameMap(play.getCurrentMap());
+            if (play.isObjective()) {
+                interactWithExit(exit);
 
-                gameMapView.refreshContent();
-                gameMapView.refreshHighlight();
             }
+
 
         }
     }
@@ -320,9 +316,11 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
      * @param targetPlayer
      */
     private void interactWithDeadNPC(Player targetPlayer) {
+
         play.getPlayer().lootDeadNPC(targetPlayer);
         play.refreshPlayer();
         gameMapView.refreshContent();
+
     }
 
     /**
@@ -330,26 +328,9 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
      * @param targetPlayer
      */
     private void interactWithFriendlyNPC(Player targetPlayer) {
+
         showInventoryPanelToExchange(play.getPlayer());
-    }
 
-    /**
-     * This method is for interacting with hostile NPC.
-     * @param targetPlayer
-     */
-    private void interactWithHostileNPC(Player targetPlayer) {
-        play.getPlayer().attack(targetPlayer);
-        gameMapView.refreshContent();
-    }
-
-    /**
-     * This method is for interacting with chest.
-     * @param chest
-     */
-    private void interactWithChest(Chest chest) {
-        play.getPlayer().lootChest(chest);
-        play.refreshChest();
-        gameMapView.refreshContent();
     }
 
     /**
@@ -358,6 +339,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
      * @param player
      */
     private void showInventoryPanelToExchange(Player player) {
+
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setLocation(330, 10);
         inventoryPanel.setPlayer(player);
@@ -377,9 +359,55 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryD
      */
     @Override
     public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
+
         play.getPlayer().dropInventories(equipment);
         Player targetPlayer = (Player) play.getTartget();
         Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
         play.getPlayer().pickUpEquipment(exchangeEquipmentRandom);
+
     }
+
+    /**
+     * This method is for interacting with hostile NPC.
+     * @param targetPlayer
+     */
+    private void interactWithHostileNPC(Player targetPlayer) {
+
+        play.getPlayer().attack(targetPlayer);
+        gameMapView.refreshContent();
+
+    }
+
+    /**
+     * This method is for interacting with chest.
+     * @param chest
+     */
+    private void interactWithChest(Chest chest) {
+
+        play.getPlayer().lootChest(chest);
+        play.refreshChest();
+        gameMapView.refreshContent();
+
+    }
+
+    /**
+     * This method is for interact
+     */
+    private void interactWithExit(Exit exit) {
+
+        int currentLevel = play.getPlayer().getLevel();
+        play.getPlayer().setLevel(currentLevel + 1);
+
+
+        if (play.isLastMap()) {
+            this.navigationView.popTo(MainScene.class);
+        } else {
+            play.moveToNextMap();
+            gameMapView.setGameMap(play.getCurrentMap());
+
+            gameMapView.refreshContent();
+            gameMapView.refreshHighlight();
+        }
+    }
+
 }
