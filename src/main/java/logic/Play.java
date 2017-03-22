@@ -181,6 +181,10 @@ public class Play {
 
     }
 
+    /**
+     * This method is used for judge whether the objectives are fulfilled
+     * @return Boolean
+     */
     public Boolean isObjective() {
         List<Player> players = currentMap.getPlayers();
         List<Player> hostilePlayers = new LinkedList<Player>();
