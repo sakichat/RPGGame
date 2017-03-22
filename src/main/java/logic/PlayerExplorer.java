@@ -19,7 +19,7 @@ public class PlayerExplorer {
     /**
      * this is the method that construct the player via plyerName and level
      * @param playerName String
-     * @param level int 
+     * @param level int
      */
 
     public void constructPlyar(String playerName, int level){
@@ -28,6 +28,11 @@ public class PlayerExplorer {
         playerBuilder.setPlayerType();
         playerBuilder.generateAbilities();
     }
+
+    /**
+     * 
+     * @return
+     */
 
     public Player getPlayer(){
         return playerBuilder.getPlayerProduct();
