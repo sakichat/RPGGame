@@ -5,7 +5,6 @@ import logic.Play;
 import logic.Player;
 import ui.panel.CampaignDelegate;
 import ui.panel.CampaignSelectorPanel;
-import ui.panel.PlayerDelegate;
 import ui.panel.PlayerSelectorPanel;
 
 import javax.swing.*;
@@ -19,7 +18,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class PlayCreationScene extends Scene implements PlayerDelegate, CampaignDelegate {
+public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Delegate, CampaignDelegate {
 
     /**
      * This parameter create a new Play().
@@ -149,7 +148,7 @@ public class PlayCreationScene extends Scene implements PlayerDelegate, Campaign
         PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
         playerSelectorPanel.setLocation(460, 80);
         playerSelectorPanel.setButtonText("Select");
-        playerSelectorPanel.setPlayerDelegate(this);
+        playerSelectorPanel.setDelegate(this);
         contentView.add(playerSelectorPanel);
     }
 

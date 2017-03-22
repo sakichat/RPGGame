@@ -4,7 +4,6 @@ import logic.Campaign;
 import logic.GameMap;
 import persistence.CampaignFileManager;
 import ui.panel.MapConnectionPanel;
-import ui.panel.MapDelegate;
 import ui.panel.MapSelectorPanel;
 
 import java.awt.event.ActionEvent;
@@ -15,7 +14,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class CampaignEditingScene extends Scene implements MapDelegate {
+public class CampaignEditingScene extends Scene implements MapSelectorPanel.Delegate {
 
     /**
      * property campaign and getter & setter
@@ -68,7 +67,7 @@ public class CampaignEditingScene extends Scene implements MapDelegate {
         mapConnectionPanel.setLocation(330, 20);
         contentView.add(mapConnectionPanel);
 
-        mapSelectorPanel.setMapDelegate(this);
+        mapSelectorPanel.setDelegate(this);
 
         repaint();
 

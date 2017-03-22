@@ -16,10 +16,50 @@ import java.util.List;
  * this class is the panel of playerSelector
  */
 public class PlayerSelectorPanel extends Panel {
+
+    /**
+     * inner class of delegate.
+     */
+    public interface Delegate{
+        /**
+         * this method is to give the two parameters
+         * @param playerSelectorPanel PlayerSelectorPanel
+         * @param player Player
+         */
+        void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player);
+    }
+
+
+    /**
+     * delegate
+     */
+    /**
+     * declaration of delegate
+     */
+    private Delegate delegate;
+
+    /**
+     * Getter for delegate
+     * @return
+     */
+    public Delegate getDelegate() {
+        return delegate;
+    }
+
+    /**
+     * Setter for delegate
+     * @param delegate
+     */
+    public void setDelegate(Delegate delegate) {
+        this.delegate = delegate;
+    }
+
+
+
+
     private JTextField textField;
     private JButton searchButton;
     private View playerSelector;
-    private PlayerDelegate playerDelegate;
     private String buttonText;
 
     /**
@@ -29,24 +69,6 @@ public class PlayerSelectorPanel extends Panel {
 
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
-    }
-
-    /**
-     * this method is to get playerDelegate
-     * @return PlayerDelegate
-     */
-
-    public PlayerDelegate getPlayerDelegate() {
-        return playerDelegate;
-    }
-
-    /**
-     * this method is to set PlayerDelegate
-     * @param playerDelegate PlayerDelegate
-     */
-
-    public void setPlayerDelegate(PlayerDelegate playerDelegate) {
-        this.playerDelegate = playerDelegate;
     }
 
     /**
@@ -124,7 +146,7 @@ public class PlayerSelectorPanel extends Panel {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        playerDelegate.playerSelectorPerformAction(PlayerSelectorPanel.this, player);
+                        delegate.playerSelectorPerformAction(PlayerSelectorPanel.this, player);
                     }
                 });
 

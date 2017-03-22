@@ -15,10 +15,43 @@ import java.util.List;
  * this class is the panel of mapSelector
  */
 public class MapSelectorPanel extends Panel  {
+
+    public interface Delegate {
+        /**
+         * this method is to give the two patameters
+         * @param mapSelectorPanel MapSelectorPanel
+         * @param gameMap GameMap
+         */
+        void mapSelectorPerformAction(MapSelectorPanel mapSelectorPanel, GameMap gameMap);
+    }
+
+    /**
+     * delegate
+     */
+    /**
+     * declaration of delegate
+     */
+    private Delegate delegate;
+
+    /**
+     * Getter for delegate
+     * @return
+     */
+    public Delegate getDelegate() {
+        return delegate;
+    }
+
+    /**
+     * Setter for delegate
+     * @param delegate
+     */
+    public void setDelegate(Delegate delegate) {
+        this.delegate = delegate;
+    }
+
     private JTextField textField;
     private JButton searchButton;
     private View mapSelector;
-    private MapDelegate mapDelegate;
     private String buttonText;
 
     /**
@@ -30,22 +63,6 @@ public class MapSelectorPanel extends Panel  {
         this.buttonText = buttonText;
     }
 
-    /**
-     * this method is to
-     * @return MapDelegate
-     */
-    public MapDelegate getMapDelegate() {
-        return mapDelegate;
-    }
-
-    /**
-     * this method is to set MapDelegate
-     * @param mapDelegate MapDelegate
-     */
-
-    public void setMapDelegate(MapDelegate mapDelegate) {
-        this.mapDelegate = mapDelegate;
-    }
     /**
      * this method is to initial the view
      */
@@ -120,7 +137,7 @@ public class MapSelectorPanel extends Panel  {
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        mapDelegate.mapSelectorPerformAction(MapSelectorPanel.this, gameMap);
+                        delegate.mapSelectorPerformAction(MapSelectorPanel.this, gameMap);
 
                     }
                 });
