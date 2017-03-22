@@ -5,6 +5,9 @@ package logic;
  *@version 0.2
  */
 public class BullyBuilder extends PlayerBuilder {
+    /**
+     * 
+     */
     @Override
     void setPlayerType() {
         playerProduct.setPlayerType(Player.PLAYER_TYPE_BULLY);
