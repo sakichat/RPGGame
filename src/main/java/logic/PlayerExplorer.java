@@ -1,7 +1,7 @@
 package logic;
 
 /**
- * Created by Li on 2017-03-21.
+ * Created by Li Zhen on 2017-03-21.
  */
 public class PlayerExplorer {
 
