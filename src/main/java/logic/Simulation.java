@@ -9,6 +9,7 @@ import java.util.List;
  * this class is the simulation
  */
 public class Simulation {
+
     /**
      * this method is to create new Player
      * @return Player
@@ -127,7 +128,6 @@ public class Simulation {
      * this method is to get all the equipments
      * @return List<Equipment>
      */
-
     public static List<Equipment> getEquipments(){
         return equipments;
     }
@@ -137,7 +137,6 @@ public class Simulation {
      * @param position String
      * @return List<Equipment>
      */
-
     public static List<Equipment> getEquipments(String position) {
         List<Equipment> filteredEquipments = new LinkedList<>();
 
@@ -154,7 +153,6 @@ public class Simulation {
      * this method is to create map
      * @return GameMap
      */
-
     public static GameMap gameMap1(){
         GameMap gameMap = new GameMap();
         gameMap.setWidth(4);
@@ -175,7 +173,6 @@ public class Simulation {
      * this method is to create Campaign
      * @return Campaign
      */
-
     public static Campaign campaign1(){
         Campaign campaign = new Campaign();
 
@@ -196,7 +193,6 @@ public class Simulation {
      * this method is to create the  player,entrance, exit and obstacle on the map
      * @return GameMap
      */
-
     public static GameMap gameMap2(){
         GameMap gameMap = new GameMap();
         gameMap.setWidth(8);
