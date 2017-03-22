@@ -2,7 +2,7 @@ package logic;
 
 /**
  * Created by Li Zhen on 2017-03-21.
- * this is the class that 
+ * this is the class that command
  */
 public class PlayerExplorer {
 
