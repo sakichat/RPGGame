@@ -14,6 +14,10 @@ public class BullyBuilder extends PlayerBuilder {
 
     }
 
+    /**
+     * 
+     */
+
     @Override
     void generateAbilities() {
         playerProduct.generateAbilities(Player.PLAYER_TYPE_BULLY);
