@@ -191,7 +191,7 @@ public class Play {
         //List<Player> deadPlayers = new LinkedList<Player>();
 
         for (Player hostilePlayer : players) {
-            if (hostilePlayer.equals(Player.PLAYER_PARTY_HOSTILE)) {
+            if (hostilePlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
                 hostilePlayers.add(hostilePlayer);
             }
         }
