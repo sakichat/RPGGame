@@ -5,6 +5,9 @@ package logic;
  * this is the class to build typle of Nimble Player
  */
 public class NimbleBuilder extends PlayerBuilder {
+    /**
+     * 
+     */
     @Override
     void setPlayerType() {
         playerProduct.setPlayerType(Player.PLAYER_TYPE_NIMBLE);
