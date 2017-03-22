@@ -15,10 +15,47 @@ import java.util.List;
  * this class is the panel of campaignSelector
  */
 public class CampaignSelectorPanel extends Panel{
+
+    /**
+     * inner class of delegate.
+     */
+    public interface Delegate {
+        /**
+         * this method is to give the two patameters
+         * @param campaignSelectorPanel CampaignSelectorPanel
+         * @param campaign Campaign
+         */
+        void campaignSelectorPerformAction(CampaignSelectorPanel campaignSelectorPanel, Campaign campaign);
+
+    }
+
+    /**
+     * delegate
+     */
+    /**
+     * declaration of delegate
+     */
+    private Delegate delegate;
+
+    /**
+     * Getter for delegate
+     * @return
+     */
+    public Delegate getDelegate() {
+        return delegate;
+    }
+
+    /**
+     * Setter for delegate
+     * @param delegate
+     */
+    public void setDelegate(Delegate delegate) {
+        this.delegate = delegate;
+    }
+
     private JTextField textField;
     private JButton searchButton;
     private View campaignSelector;
-    private CampaignDelegate campaignDelegate;
     private String buttonText;
 
     /**
@@ -30,23 +67,7 @@ public class CampaignSelectorPanel extends Panel{
         this.buttonText = buttonText;
     }
 
-    /**
-     * this method is to get CampaignDelegate
-     * @return CampaignDelegate
-     */
 
-    public CampaignDelegate getCampaignDelegate() {
-        return campaignDelegate;
-    }
-
-    /**
-     * this method is to set CampaignDelegate
-     * @param campaignDelegate CampaignDelegate
-     */
-
-    public void setCampaignDelegate(CampaignDelegate campaignDelegate) {
-        this.campaignDelegate = campaignDelegate;
-    }
 
     /**
      * this method is to initial the view
@@ -122,7 +143,7 @@ public class CampaignSelectorPanel extends Panel{
                 addButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        campaignDelegate.campaignSelectorPerformAction(CampaignSelectorPanel.this,campaign);
+                        delegate.campaignSelectorPerformAction(CampaignSelectorPanel.this,campaign);
 
                     }
                 });

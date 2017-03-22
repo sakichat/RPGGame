@@ -15,7 +15,10 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegate, PlayerSelectorPanel.Delegate, MapSelectorPanel.Delegate, CampaignDelegate {
+public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegate,
+                                                  PlayerSelectorPanel.Delegate,
+                                                  MapSelectorPanel.Delegate,
+                                                  CampaignSelectorPanel.Delegate {
 
     private JLabel label;
     private JButton button;
@@ -263,7 +266,7 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
         CampaignSelectorPanel panel = new CampaignSelectorPanel();
         panel.setLocation(20,260);
         panel.setButtonText("Edit");
-        panel.setCampaignDelegate(this);
+        panel.setDelegate(this);
         add(panel);
     }
 
