@@ -11,10 +11,10 @@ import java.util.Observable;
  * this is the cell class
  */
 public abstract class Cell extends Observable{
+
     /**
      * this is the constructor
      */
-
     public Cell() {
 
     }
@@ -34,7 +34,6 @@ public abstract class Cell extends Observable{
      * this method is to set Location
      * @param location Point
      */
-
     public void setLocation(Point location) {
         this.location = location;
     }
@@ -54,7 +53,6 @@ public abstract class Cell extends Observable{
      * this method is to set name of image
      * @param imageName String
      */
-
     public void setImageName(String imageName) {
         this.imageName = imageName;
     }
