@@ -17,7 +17,7 @@ public class PlayerExplorer {
     }
 
     /**
-     * this is the method that construct the 
+     * this is the method that construct the player
      * @param playerName
      * @param level
      */
