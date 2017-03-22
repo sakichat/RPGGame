@@ -2,7 +2,7 @@ package logic;
 
 /**
  * Created by Li Zhen on 2017-03-21.
- * this is the class to build typle of 
+ * this is the class to build typle of Nimble
  */
 public class NimbleBuilder extends PlayerBuilder {
     @Override
