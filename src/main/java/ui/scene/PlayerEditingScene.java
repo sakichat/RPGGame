@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
  * @author Kai QI
  * @version 0.2
  */
-public class PlayerEditingScene extends Scene implements EquipmentDelegate, InventoryPanel.Delegate{
+public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.Delegate, InventoryPanel.Delegate{
 
     /**
      * Declaration of the property player and getter & setter
@@ -125,7 +125,7 @@ public class PlayerEditingScene extends Scene implements EquipmentDelegate, Inve
         equipmentSelectorPanel.setButtonText("Add");
         contentView.add(equipmentSelectorPanel);
 
-        equipmentSelectorPanel.setEquipmentDelegate(this);
+        equipmentSelectorPanel.setDelegate(this);
 
         /*
          * Inventory Panel

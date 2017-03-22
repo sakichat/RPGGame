@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate {
+public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerDelegate, EquipmentSelectorPanel.Delegate {
 
     private GameMap gameMap;
     private GameMapView gameMapView;
@@ -266,7 +266,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
         equipmentSelectorPanel.setLocation(410, 20);
         equipmentSelectorPanel.setButtonText("Add");
         contentView.add(equipmentSelectorPanel);
-        equipmentSelectorPanel.setEquipmentDelegate(this);
+        equipmentSelectorPanel.setDelegate(this);
 
         equipmentPanel = new EquipmentPanel();
         equipmentPanel.setLocation(410, 210);
