@@ -1,6 +1,5 @@
 package ui.controlView;
 
-import logic.Play;
 import ui.scene.MapEditingScene;
 import ui.scene.PlayScene;
 import ui.view.View;
@@ -8,7 +7,7 @@ import ui.view.View;
 /**
  * This ControlView sets a template of other control views which extends View class
  * @author Siyu Chen
- * @version 0.1
+ * @version 0.2
  */
 public class ControlView extends View {
     /**

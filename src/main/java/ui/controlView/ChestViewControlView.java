@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
+ * This class for viewing chest inside during play
  * @author Siyu Chen
  * @version 0.2
  */
