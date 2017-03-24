@@ -193,7 +193,7 @@ public class PlayerCreationScene extends Scene {
 
                     playerExplorer = new PlayerExplorer();
                     playerExplorer.setPlayerBuilder(playerBuilder);
-                    playerExplorer.constructPlyar(name,level);
+                    playerExplorer.constructPlayer(name,level);
                     player = playerExplorer.getPlayer();
 
                     PlayerEditingScene playerEditingScene = new PlayerEditingScene();
