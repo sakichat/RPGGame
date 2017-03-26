@@ -23,9 +23,9 @@ public class MapFileManagerTest {
         Cell cell = testMap.getCell(new Point(3, 4));
         Chest testChest = (Chest) cell;
         Equipment weapon = testChest.getEquipments().get(0);
-        weapon.getEnhancedAttribute();
+        String enhancedAttribute = weapon.getEnhancedAttribute();
 
-        Assert.assertEquals(Player.ABILITY_WIS, weapon.getEnhancedAttribute());
+        Assert.assertEquals(Player.ABILITY_WIS, enhancedAttribute);
     }
 
 
