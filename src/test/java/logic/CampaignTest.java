@@ -16,7 +16,7 @@ public class CampaignTest {
     /**
      * This parameter is to define a campaign that can be used in every method here.
      */
-    private Campaign campaignTest;
+    private Campaign testCampaign;
 
     /**
      * This method is for setting up.
@@ -26,17 +26,17 @@ public class CampaignTest {
     public void setUp() throws Exception {
         Campaign campaign = new Campaign();
 
-        String gameMap1 = "Howling Abeiase";
-        String gameMap2 = "Summoner's Rift";
-        String gameMap3 = "Salty Lake";
-        String gameMap4 = "Crystal Land";
+        String gameMapName1 = "Howling Abeiase";
+        String gameMapName2 = "Summoner's Rift";
+        String gameMapName3 = "Salty Lake";
+        String gameMapName4 = "Crystal Land";
 
-        campaign.addMapName(gameMap1);
-        campaign.addMapName(gameMap2);
-        campaign.addMapName(gameMap3);
-        campaign.addMapName(gameMap4);
+        campaign.addMapName(gameMapName1);
+        campaign.addMapName(gameMapName2);
+        campaign.addMapName(gameMapName3);
+        campaign.addMapName(gameMapName4);
 
-        campaignTest = campaign;
+        testCampaign = campaign;
     }
 
     /**
@@ -46,7 +46,7 @@ public class CampaignTest {
 
     @Test
     public void testCorrectCampaign() throws Exception{
-        Assert.assertEquals(Campaign.VALIDATION_SUCCESS, campaignTest.validate());
+        Assert.assertEquals(Campaign.VALIDATION_SUCCESS, testCampaign.validate());
     }
 
     /**
