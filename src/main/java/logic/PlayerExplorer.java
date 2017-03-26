@@ -23,7 +23,7 @@ public class PlayerExplorer {
      * @param level int
      */
 
-    public void constructPlyar(String playerName, int level){
+    public void constructPlayer(String playerName, int level){
         playerBuilder.createNewPlayer(playerName);
         playerBuilder.setPlayerProductlevel(level);
         playerBuilder.setPlayerType();
