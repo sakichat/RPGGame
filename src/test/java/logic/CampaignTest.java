@@ -54,7 +54,7 @@ public class CampaignTest {
      * @throws Exception
      */
     @Test
-    public void testWrongCampaign() throws Exception{
+    public void testUnvalidCampaign() throws Exception{
         Campaign campaign = new Campaign();
 
         Assert.assertEquals(Campaign.VALIDATION_ERROR_NO_MAP, campaign.validate());

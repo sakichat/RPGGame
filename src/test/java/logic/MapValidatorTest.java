@@ -83,7 +83,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testTooMuchExits() throws Exception{
+    public void testTooManyExits() throws Exception{
         Point point = new Point(0, 1);
         Exit exit = new Exit();
         gameMapTest.addCell(exit, point);
@@ -96,7 +96,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testConnection() throws Exception{
+    public void testReachable() throws Exception{
         Obstacle obstacle1 = new Obstacle();
         Obstacle obstacle2 = new Obstacle();
         Point point1 = new Point(0, 0);
@@ -113,7 +113,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testNotConnection() throws Exception{
+    public void testUnreachable() throws Exception{
         Obstacle obstacle1 = new Obstacle();
         Obstacle obstacle2 = new Obstacle();
         Obstacle obstacle3 = new Obstacle();
