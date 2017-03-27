@@ -18,7 +18,7 @@ public class MapFileManagerTest {
      * @throws Exception
      */
     @Test
-    public void read() throws Exception {
+    public void readMapFromJson() throws Exception {
         GameMap testMap = MapFileManager.read("lava mountain");
         Cell cell = testMap.getCell(new Point(3, 4));
         Chest testChest = (Chest) cell;

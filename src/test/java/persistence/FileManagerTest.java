@@ -31,9 +31,9 @@ public class FileManagerTest {
      */
     @Test
     public void fileNameToName() throws Exception {
-        String testIt = "AB___CDE";
+        String testIt = "ab___cde";
         String after = FileManager.fileNameToName(testIt);
-        String shouldBe = "AB   CDE";
+        String shouldBe = "ab   cde";
 
         Assert.assertEquals(shouldBe, after);
     }

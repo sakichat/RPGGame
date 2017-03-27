@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import persistence.CampaignFileManager;
-import persistence.MapFileManager;
 import persistence.PlayerFileManager;
 
 /**
@@ -31,6 +30,11 @@ public class PlayerTest {
     private Equipment equipment10;
     private Equipment equipment11;
     private Equipment equipment12;
+    private Equipment equipment13;
+    private Equipment equipment14;
+    private Equipment equipment15;
+    private Chest testChest;
+
 
     /**
      * This method set up first few steps before the actual tests.
@@ -65,6 +69,12 @@ public class PlayerTest {
 
         equipment12 = new Equipment("Cord of Beginnings",Equipment.BELT,Player.ABILITY_CON,5);
 
+        equipment13 = new Equipment("Steel Walkers", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
+
+        equipment14 = new Equipment("Alythess Pyrogenics", Equipment.RING, Player.ABILITY_CON, 3);
+
+        equipment15 = new Equipment("Ashbringer", Equipment.WEAPON, Player.ATTRIBUTE_ATTACK_BONUS, 5);
+
         player.pickUpEquipment(equipment1);
         player.pickUpEquipment(equipment2);
         player.pickUpEquipment(equipment3);
@@ -75,6 +85,12 @@ public class PlayerTest {
         player.pickUpEquipment(equipment8);
         player.pickUpEquipment(equipment9);
         player.pickUpEquipment(equipment10);
+
+        testChest = new Chest();
+        testChest.addEquipment(equipment7);
+        testChest.addEquipment(equipment13);
+        testChest.addEquipment(equipment14);
+        testChest.addEquipment(equipment15);
     }
 
     /**
@@ -183,7 +199,10 @@ public class PlayerTest {
         Equipment a = testPlayer.equipmentsInBackpack().get(0);
         int previousSize = testPlayer.equipmentsInBackpack().size();
 
-        Chest testChest = (Chest)(MapFileManager.read("saege bay").getCell(new Point(1, 5)));
+        testChest.addEquipment(equipment7);
+        testChest.addEquipment(equipment13);
+        testChest.addEquipment(equipment14);
+        testChest.addEquipment(equipment15);
         Equipment a1 = testChest.getEquipments().get(0);
 
         testPlayer.lootChest(testChest);
@@ -202,7 +221,6 @@ public class PlayerTest {
         int previousSize = testPlayer.equipmentsInBackpack().size();
         Equipment a = testPlayer.equipmentsInBackpack().get(previousSize - 1);
 
-        Chest testChest = (Chest)(MapFileManager.read("saege bay").getCell(new Point(1, 5)));
         Equipment a1 = testChest.getEquipments().get(0);
 
         testPlayer.lootChest(testChest);
