@@ -87,7 +87,7 @@ public class EquipmentPanel extends Panel implements Observer{
     public void update(Observable observer, Object x) {
 
         boolean change = false;
-        change = change || (x == Chest.CHEST_CHANGE);
+        change = change || (x.equals(Chest.CHEST_CHANGE));
 
         if (change) {
             dataToView();
