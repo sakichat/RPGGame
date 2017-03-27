@@ -123,7 +123,7 @@ public class PlayerTest {
      * @throws Exception
      */
     @Test
-    public void testItemReflectAbilities() throws Exception {
+    public void testItemEnhancedAbilities() throws Exception {
         int pre = player.getTotalAbilityScore(Player.ABILITY_INT);
         player.equip(equipment4);
         int now = player.getTotalAbilityScore(Player.ABILITY_INT);
@@ -136,7 +136,7 @@ public class PlayerTest {
      * @throws Exception
      */
     @Test
-    public void testUnexistingEquipmentDrop() throws Exception {
+    public void testNonExistingEquipmentDrop() throws Exception {
         player.dropEquipment(equipment1);
         player.dropEquipment(equipment11);
         Assert.assertEquals(9, player.equipmentsInBackpack().size());

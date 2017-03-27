@@ -58,7 +58,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testTooMuchEntrance() throws Exception{
+    public void testTooManyEntrance() throws Exception{
         Point point = new Point(0, 0);
         Entrance entrance = new Entrance();
         gameMapTest.addCell(entrance, point);

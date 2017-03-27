@@ -17,21 +17,21 @@ public class PlayTest {
      */
     @Test
     public void moveToNextCell() throws Exception {
-    Campaign campaign = CampaignFileManager.read("testcampaign");
-    Player player = PlayerFileManager.read("asheley");
-    Play play = new Play();
-    play.setCampaign(campaign);
-    play.setPlayer(player);
-    play.resolveMap();
+        Campaign campaign = CampaignFileManager.read("testcampaign");
+        Player player = PlayerFileManager.read("asheley");
+        Play play = new Play();
+        play.setCampaign(campaign);
+        play.setPlayer(player);
+        play.resolveMap();
 
-    System.out.println(play.getPlayer().getLocation());
+        System.out.println(play.getPlayer().getLocation());
 
-    play.move();
-    play.move();
+        play.move();
+        play.move();
 
-    System.out.println(play.getPlayer().getLocation());
+        System.out.println(play.getPlayer().getLocation());
 
-    Assert.assertEquals(new Point(0, 3), play.getPlayer().getLocation());
+        Assert.assertEquals(new Point(0, 3), play.getPlayer().getLocation());
 }
     /**
      * This method is to test if the player will move out of border.

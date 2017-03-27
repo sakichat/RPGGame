@@ -45,7 +45,7 @@ public class CampaignTest {
      */
 
     @Test
-    public void testCorrectCampaign() throws Exception{
+    public void testValidCampaign() throws Exception{
         Assert.assertEquals(Campaign.VALIDATION_SUCCESS, testCampaign.validate());
     }
 
