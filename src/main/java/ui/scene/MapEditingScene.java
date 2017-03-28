@@ -116,7 +116,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      */
     private void validateMap(){
         String result = gameMap.validate();
-        boolean success = result == GameMap.VALIDATION_SUCCESS;
+        boolean success = result.equals(GameMap.VALIDATION_SUCCESS);
         saveButton.setEnabled(success);
 
         validationMessageLabel.setText(result);
