@@ -59,7 +59,6 @@ public class PlayerCreationScene extends Scene {
     private JLabel checkLevelLabel;
     private JLabel typeLabel;
     private JButton createButton;
-    private JButton setButton;
     private JButton bullyButton;
     private JButton nimbleButton;
     private JButton tankButton;

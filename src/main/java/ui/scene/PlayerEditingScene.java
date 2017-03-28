@@ -154,7 +154,10 @@ public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.
         setButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                player.setLevel(Integer.valueOf(levelField.getText()));
+                int level = Integer.valueOf(levelField.getText());
+                if (level > 0 && level <= 20) {
+                    player.setLevel(level);
+                }
                 playerPanel.dataToView();
             }
         });
