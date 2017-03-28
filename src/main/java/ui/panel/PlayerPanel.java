@@ -35,7 +35,7 @@ public class PlayerPanel extends Panel implements Observer {
      */
     public void setPlayer(Player player) {
         this.player = player;
-        titleLabel.setText(player.getPlayerParty() + " - " + player.getName());
+        titleLabel.setText("Attributes" + " - " + player.getName() + " - " + player.getPlayerParty());
 
         dataToView();
         player.addObserver(this);
