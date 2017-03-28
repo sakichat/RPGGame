@@ -21,7 +21,7 @@ public class CampaignSelectorPanel extends Panel{
      */
     public interface Delegate {
         /**
-         * this method is to give the two patameters
+         * this method is to give the two parameters
          * @param campaignSelectorPanel CampaignSelectorPanel
          * @param campaign Campaign
          */
