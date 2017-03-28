@@ -189,9 +189,9 @@ public class Play {
         List<Player> players = currentMap.getPlayers();
         List<Player> hostilePlayers = new LinkedList<Player>();
 
-        for (Player hostilePlayer : players) {
-            if (hostilePlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
-                hostilePlayers.add(hostilePlayer);
+        for (Player player : players) {
+            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
+                hostilePlayers.add(player);
             }
         }
 
