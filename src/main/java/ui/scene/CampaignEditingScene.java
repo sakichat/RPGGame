@@ -62,12 +62,12 @@ public class CampaignEditingScene extends Scene implements MapSelectorPanel.Dele
         mapSelectorPanel.setLocation(20,20);
         mapSelectorPanel.setButtonText("Add");
         contentView.add(mapSelectorPanel);
+        mapSelectorPanel.setDelegate(this);
 
         mapConnectionPanel = new MapConnectionPanel();
         mapConnectionPanel.setLocation(330, 20);
         contentView.add(mapConnectionPanel);
 
-        mapSelectorPanel.setDelegate(this);
 
         repaint();
 
