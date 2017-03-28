@@ -181,7 +181,6 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
             Chest chest = (Chest) cell;
             ChestControlView chestControlView = new ChestControlView();
             chestControlView.setChest(chest);
-//            chestControlView.setRemoveButtonEnabled(true);
             controlView = chestControlView;
         }
 
