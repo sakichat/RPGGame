@@ -24,6 +24,7 @@ public class PlayTest {
         play.setPlayer(player);
         play.resolveMap();
 
+        play.setDirection(Point.DIRECTION_DOWN);
         System.out.println(play.getPlayer().getLocation());
 
         play.move();
