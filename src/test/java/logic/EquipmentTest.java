@@ -10,7 +10,6 @@ import org.junit.Test;
  *
  * this class is to test the method of boolean validate() in class of Equipment.
  */
-
 public class EquipmentTest {
 
     /**
@@ -27,6 +26,8 @@ public class EquipmentTest {
         equipment = new Equipment("", Equipment.WEAPON, Player.ABILITY_STR, 6);
         Assert.assertEquals(false, equipment.validate());
 
+        equipment = new Equipment("", Equipment.WEAPON, Player.ATTRIBUTE_DAMAGE_BONUS, 2);
+        Assert.assertEquals(true, equipment.validate());
 
     }
 
@@ -38,11 +39,11 @@ public class EquipmentTest {
     public void validateShield() throws Exception {
         Equipment equipment;
 
-        equipment = new Equipment("", Equipment.SHIELD, Player.ATTRIBUTE_ARMOR_CLASS, 5);
-        Assert.assertEquals(true, equipment.validate());
-
         equipment = new Equipment("", Equipment.SHIELD, Player.ATTRIBUTE_ATTACK_BONUS, 5);
         Assert.assertEquals(false, equipment.validate());
+
+        equipment = new Equipment("", Equipment.SHIELD, Player.ATTRIBUTE_ARMOR_CLASS, 5);
+        Assert.assertEquals(true, equipment.validate());
 
     }
 
@@ -56,8 +57,7 @@ public class EquipmentTest {
 
         equipment = new Equipment("", Equipment.BOOTS, Player.ABILITY_DEX, 1);
         Assert.assertEquals(true, equipment.validate());
+
     }
-
-
 
 }
