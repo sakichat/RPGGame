@@ -3,7 +3,6 @@ package logic;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import persistence.MapFileManager;
 
 /**
  * Created by GU_HAN on 2017-03-01.
@@ -13,15 +12,13 @@ import persistence.MapFileManager;
  * This class is for testing the class of GameMap.
  */
 public class MapValidatorTest {
-
-
     /**
      * This parameter is to define a GameMap as an arttribute.
      */
     private GameMap gameMapTest;
 
     /**
-     * This method is for pre-defining the gameMap.
+     * This method is for initializing the gameMap.
      * @throws Exception
      */
     @Before
@@ -29,13 +26,13 @@ public class MapValidatorTest {
         GameMap gameMap = new GameMap();
         gameMap.setWidth(4);
         gameMap.setHeight(6);
-        Exit exit1 = new Exit();
+        Exit exit = new Exit();
         Entrance entrance = new Entrance();
 
         Point point1 = new Point(1, 1);
         Point point2 = new Point(3, 3);
 
-        gameMap.addCell(exit1, point1);
+        gameMap.addCell(exit, point1);
         gameMap.addCell(entrance, point2);
 
         gameMapTest = gameMap;
@@ -58,7 +55,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testTooManyEntrance() throws Exception{
+    public void testMultiEntrance() throws Exception{
         Point point = new Point(0, 0);
         Entrance entrance = new Entrance();
         gameMapTest.addCell(entrance, point);
@@ -134,10 +131,9 @@ public class MapValidatorTest {
      */
     @Test
     public void testPlayerNotDefined() throws Exception {
-        GameMap gameMap = MapFileManager.read("libeng");
         Player player = new Player();
-        gameMap.addCell(player, new Point(3, 3));
+        gameMapTest.addCell(player, new Point(3, 3));
 
-        Assert.assertEquals(GameMap.VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED, gameMap.validate());
+        Assert.assertEquals(GameMap.VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED, gameMapTest.validate());
     }
 }

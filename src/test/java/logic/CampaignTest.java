@@ -11,7 +11,6 @@ import org.junit.Test;
  *
  * This class is for validate the campaign.
  */
-
 public class CampaignTest {
     /**
      * This parameter is to define a campaign that can be used in every method here.
@@ -19,7 +18,7 @@ public class CampaignTest {
     private Campaign testCampaign;
 
     /**
-     * This method is for setting up.
+     * This method is for initializing.
      * @throws Exception
      */
     @Before
@@ -43,7 +42,6 @@ public class CampaignTest {
      * This case tests a valid campaign.
      * @throws Exception
      */
-
     @Test
     public void testValidCampaign() throws Exception{
         Assert.assertEquals(Campaign.VALIDATION_SUCCESS, testCampaign.validate());
@@ -59,6 +57,4 @@ public class CampaignTest {
 
         Assert.assertEquals(Campaign.VALIDATION_ERROR_NO_MAP, campaign.validate());
     }
-
-
 }

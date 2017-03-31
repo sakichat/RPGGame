@@ -11,9 +11,8 @@ import org.junit.Test;
  * this class is to test the method of boolean validate() in class of Equipment.
  */
 public class EquipmentTest {
-
     /**
-     * this method is to test if the weapon can be correctly created.
+     * this method is to test if a weapon can be correctly created.
      * @throws Exception
      */
     @Test
@@ -28,7 +27,6 @@ public class EquipmentTest {
 
         equipment = new Equipment("", Equipment.WEAPON, Player.ATTRIBUTE_DAMAGE_BONUS, 2);
         Assert.assertEquals(true, equipment.validate());
-
     }
 
     /**
@@ -44,11 +42,10 @@ public class EquipmentTest {
 
         equipment = new Equipment("", Equipment.SHIELD, Player.ATTRIBUTE_ARMOR_CLASS, 5);
         Assert.assertEquals(true, equipment.validate());
-
     }
 
     /**
-     * This case test the ordinary equipment-creation.
+     * This case test the normal equipment-creation.
      * @throws Exception
      */
     @Test
@@ -57,7 +54,5 @@ public class EquipmentTest {
 
         equipment = new Equipment("", Equipment.BOOTS, Player.ABILITY_DEX, 1);
         Assert.assertEquals(true, equipment.validate());
-
     }
-
 }
