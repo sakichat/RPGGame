@@ -40,7 +40,7 @@ public class CampaignTest {
     }
 
     /**
-     * This case tests a correct campaign.
+     * This case tests a valid campaign.
      * @throws Exception
      */
 
@@ -50,11 +50,11 @@ public class CampaignTest {
     }
 
     /**
-     * This case tests a wrong campaign.
+     * This case tests an invalid campaign.
      * @throws Exception
      */
     @Test
-    public void testUnvalidCampaign() throws Exception{
+    public void testInvalidCampaign() throws Exception{
         Campaign campaign = new Campaign();
 
         Assert.assertEquals(Campaign.VALIDATION_ERROR_NO_MAP, campaign.validate());
