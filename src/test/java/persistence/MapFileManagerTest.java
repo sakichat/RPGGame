@@ -9,11 +9,11 @@ import org.junit.Test;
  * @author GU_HAN
  * @version 0.2
  *
- * This class is for tesing the MapFileManager.
+ * This class tests map loading.
  */
 public class MapFileManagerTest {
     /**
-     * This method is for testing if the map can be got from a json file,
+     * This case tests if the map can be got from a json file,
      * if yes, then the cell inside the map can be reached, too.
      * @throws Exception
      */
@@ -27,6 +27,4 @@ public class MapFileManagerTest {
 
         Assert.assertEquals(Player.ABILITY_WIS, enhancedAttribute);
     }
-
-
 }

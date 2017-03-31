@@ -4,14 +4,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import persistence.CampaignFileManager;
-import persistence.PlayerFileManager;
 
 /**
  * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
  * @version 0.2
  *
- * This class is basically for class of player's tests.
+ * This class tests wearing items correctly influence the character's abilities, character cannot wear more than
+ * one item of each kind, and looting a chest.
  */
 public class PlayerTest {
     /**
@@ -33,11 +33,10 @@ public class PlayerTest {
     private Equipment equipment13;
     private Equipment equipment14;
     private Equipment equipment15;
-    private Chest testChest;
-
+    private Chest chest;
 
     /**
-     * This method set up first few steps before the actual tests.
+     * This method is for initializing.
      * @throws Exception
      */
     @Before
@@ -46,33 +45,19 @@ public class PlayerTest {
         player.generateAbilities();
 
         equipment1 = new Equipment("Light Leather",Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,1);
-
         equipment2 = new Equipment("Quilted Leather",Equipment.ARMOR,Player.ATTRIBUTE_ARMOR_CLASS,3);
-
         equipment3 = new Equipment("Arming Coat",Equipment.ARMOR,Player.ATTRIBUTE_ARMOR_CLASS,5);
-
         equipment4 = new Equipment("Might of Dread",Equipment.HELMET,Player.ABILITY_INT,3);
-
         equipment5 = new Equipment("Coif of Delusions",Equipment.HELMET,Player.ABILITY_WIS,5);
-
         equipment6 = new Equipment("Dawn of Insanity",Equipment.HELMET,Player.ATTRIBUTE_ARMOR_CLASS,2);
-
         equipment7 = new Equipment("Oathkeeper",Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,3);
-
         equipment8 = new Equipment("Ghostwalker",Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,4);
-
         equipment9 = new Equipment("Sierra",Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,5);
-
         equipment10 = new Equipment("Linen Sash",Equipment.BELT,Player.ABILITY_CON,3);
-
         equipment11 = new Equipment("Loyal Wool Sash",Equipment.BELT,Player.ABILITY_STR,4);
-
         equipment12 = new Equipment("Cord of Beginnings",Equipment.BELT,Player.ABILITY_CON,5);
-
         equipment13 = new Equipment("Steel Walkers", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
-
         equipment14 = new Equipment("Alythess Pyrogenics", Equipment.RING, Player.ABILITY_CON, 3);
-
         equipment15 = new Equipment("Ashbringer", Equipment.WEAPON, Player.ATTRIBUTE_ATTACK_BONUS, 5);
 
         player.pickUpEquipment(equipment1);
@@ -86,15 +71,15 @@ public class PlayerTest {
         player.pickUpEquipment(equipment9);
         player.pickUpEquipment(equipment10);
 
-        testChest = new Chest();
-        testChest.addEquipment(equipment7);
-        testChest.addEquipment(equipment13);
-        testChest.addEquipment(equipment14);
-        testChest.addEquipment(equipment15);
+        chest = new Chest();
+        chest.addEquipment(equipment7);
+        chest.addEquipment(equipment13);
+        chest.addEquipment(equipment14);
+        chest.addEquipment(equipment15);
     }
 
     /**
-     * This method test if it is empty in the backpack after dropping all the items.
+     * This case tests if it is empty in the backpack after dropping all the items.
      * @throws Exception
      */
     @Test
@@ -114,7 +99,7 @@ public class PlayerTest {
     }
 
     /**
-     * This method test if it is already empty in the backpack, can the player still drop items.
+     * This case tests if it is already empty in the backpack, can the player still drop items.
      * @throws Exception
      */
     @Test
@@ -131,11 +116,12 @@ public class PlayerTest {
         player.dropEquipment(equipment10);
 
         player.dropEquipment(equipment1);
+
         Assert.assertEquals(0, player.equipmentsInBackpack().size());
     }
 
     /**
-     * This case tests if the wearing items can change the attributes.
+     * This case tests if the wearing items can influence character's abilities.
      * @throws Exception
      */
     @Test
@@ -148,24 +134,23 @@ public class PlayerTest {
     }
 
     /**
-     * This method tests if player can drop unexisting items.
+     * This case tests if player can drop unexisting items.
      * @throws Exception
      */
     @Test
     public void testNonExistingEquipmentDrop() throws Exception {
         player.dropEquipment(equipment1);
         player.dropEquipment(equipment11);
+
         Assert.assertEquals(9, player.equipmentsInBackpack().size());
     }
 
     /**
-     * This method tests if player can still pick up items when backpack is full.
+     * This case tests if player can still pick up items when backpack is full.
      * @throws Exception
      */
     @Test
     public void testFullBackPack() throws Exception {
-
-
         player.pickUpEquipment(equipment11);
         boolean nowBackpack = player.equipmentsInBackpack().contains(equipment11);
 
@@ -173,8 +158,8 @@ public class PlayerTest {
     }
 
     /**
-     * This method tests if player can wear more than one item of the same category, wihch means
-     * if the player will drop previous item if wearing the same category.
+     * This case tests if player can wear more than one item of each kind, wihch means
+     * if the player will drop previous item if he already wears one of the same category.
      * @throws Exception
      */
     @Test
@@ -189,79 +174,81 @@ public class PlayerTest {
     }
 
     /**
-     * This method test if the player will correctly loot the chest, which means the player will get
+     * This case tests if the player will correctly loot the chest, which means the player will get
      * the item in the chest to his backpack.
      * @throws Exception
      */
     @Test
     public void testLooting() throws Exception {
-        Player testPlayer = PlayerFileManager.read("asheley");
-        Equipment a = testPlayer.equipmentsInBackpack().get(0);
-        int previousSize = testPlayer.equipmentsInBackpack().size();
+        player.dropEquipment(equipment1);
+        player.dropEquipment(equipment2);
+        player.dropEquipment(equipment3);
+        player.dropEquipment(equipment4);
+        player.dropEquipment(equipment5);
+        player.dropEquipment(equipment6);
+        player.dropEquipment(equipment7);
+        player.dropEquipment(equipment8);
 
-        testChest.addEquipment(equipment7);
-        testChest.addEquipment(equipment13);
-        testChest.addEquipment(equipment14);
-        testChest.addEquipment(equipment15);
-        Equipment a1 = testChest.getEquipments().get(0);
+        int chestSize = chest.getEquipments().size();
+        int previousSize = player.equipmentsInBackpack().size();
+        player.lootChest(chest);
+        int nowSize = player.equipmentsInBackpack().size();
+        boolean containItem = player.equipmentsInBackpack().contains(equipment13);
 
-        testPlayer.lootChest(testChest);
-
-        Assert.assertEquals(a1, testPlayer.equipmentsInBackpack().get(previousSize));
-
+        Assert.assertEquals(nowSize, previousSize + chestSize);
+        Assert.assertEquals(true, containItem);
     }
 
     /**
-     * This method is to test if the player will successfully loot the chest.
+     * This case tests if the player's operation of looting will make his backpack overloaded.
+     * Besides, the chest will keep the left items as well.
      * @throws Exception
      */
     @Test
-    public void testNotLooting() throws Exception {
-        Player testPlayer = player;
-        int previousSize = testPlayer.equipmentsInBackpack().size();
-        Equipment a = testPlayer.equipmentsInBackpack().get(previousSize - 1);
+    public void testFullLooting() throws Exception {
+        player.dropEquipment(equipment1);
+        player.dropEquipment(equipment2);
+        int previousChestSize = chest.getEquipments().size();
+        int previousPlayerBackpackSize = player.equipmentsInBackpack().size();
+        player.lootChest(chest);
+        int nowChestSize = chest.getEquipments().size();
 
-        Equipment a1 = testChest.getEquipments().get(0);
-
-        testPlayer.lootChest(testChest);
-
-        Assert.assertEquals(false, a1 == testPlayer.equipmentsInBackpack().get(previousSize - 1));
-
+        Assert.assertEquals(true, player.isBackpackFull());
+        Assert.assertEquals(nowChestSize, previousChestSize - (10 - previousPlayerBackpackSize));
     }
 
     /**
-     * This method is for testing if the cell will become null after looting the chest to empty.
+     * This case tests if the cell will become null after looting the chest to empty.
      * @throws Exception
      */
     @Test
     public void testAfterLooting() throws Exception {
-        Player testPlayer = player;
-
-        testPlayer.dropEquipment(equipment1);
-        testPlayer.dropEquipment(equipment2);
-        testPlayer.dropEquipment(equipment3);
-        testPlayer.dropEquipment(equipment4);
-        testPlayer.dropEquipment(equipment5);
-        testPlayer.dropEquipment(equipment6);
-        testPlayer.dropEquipment(equipment7);
-        testPlayer.dropEquipment(equipment8);
-        testPlayer.dropEquipment(equipment9);
-        testPlayer.dropEquipment(equipment10);
+        player.dropEquipment(equipment1);
+        player.dropEquipment(equipment2);
+        player.dropEquipment(equipment3);
+        player.dropEquipment(equipment4);
+        player.dropEquipment(equipment5);
+        player.dropEquipment(equipment6);
+        player.dropEquipment(equipment7);
+        player.dropEquipment(equipment8);
+        player.dropEquipment(equipment9);
+        player.dropEquipment(equipment10);
 
         Campaign campaign = CampaignFileManager.read("testcampaign");
 
         Play play = new Play();
         play.setCampaign(campaign);
-        play.setPlayer(testPlayer);
+        play.setPlayer(player);
         play.resolveMap();
-
+        play.setDirection(Point.DIRECTION_DOWN);
         play.move();
         play.move();
         play.setDirection(Point.DIRECTION_RIGHT);
+        Point chestLocation = play.getTartget().getLocation();
+
         play.getPlayer().lootChest((Chest)(play.getTartget()));
+        play.refreshChest();
 
-
-        Assert.assertEquals(null, play.getCurrentMap().getCell(new Point(1, 5)));
-
+        Assert.assertEquals(null, play.getCurrentMap().getCell(chestLocation));
     }
 }

@@ -9,7 +9,7 @@ import org.junit.Test;
  * @author GU_HAN
  * @version 0.2
  *
- * This class is for testing the class of GameMap.
+ * This class tests map validation.
  */
 public class MapValidatorTest {
     /**
@@ -39,7 +39,7 @@ public class MapValidatorTest {
     }
 
     /**
-     * This method tests if the map has no entrance.
+     * This case tests if the map has no entrance.
      * @throws Exception
      */
     @Test
@@ -68,7 +68,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testNoExits() throws Exception{
+    public void testNoExit() throws Exception{
         Point point = new Point(1, 1);
         gameMapTest.removeCell(point);
 
@@ -80,7 +80,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testTooManyExits() throws Exception{
+    public void testTooMultiExit() throws Exception{
         Point point = new Point(0, 1);
         Exit exit = new Exit();
         gameMapTest.addCell(exit, point);
@@ -126,13 +126,13 @@ public class MapValidatorTest {
     }
 
     /**
-     * This method tests if the map can be saved when player is not defined its party.
+     * This case tests if the map can be saved when player is not defined its party.
      * @throws Exception
      */
     @Test
     public void testPlayerNotDefined() throws Exception {
         Player player = new Player();
-        gameMapTest.addCell(player, new Point(3, 3));
+        gameMapTest.addCell(player, new Point(0, 0));
 
         Assert.assertEquals(GameMap.VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED, gameMapTest.validate());
     }

@@ -8,11 +8,11 @@ import org.junit.Test;
  * @author GU_HAN
  * @version 0.2
  *
- * this class is to test the method of boolean validate() in class of Equipment.
+ * This class is to test the method of boolean validate() in class of Equipment.
  */
 public class EquipmentTest {
     /**
-     * this method is to test if a weapon can be correctly created.
+     * This case tests if a weapon can be correctly created.
      * @throws Exception
      */
     @Test
@@ -30,7 +30,7 @@ public class EquipmentTest {
     }
 
     /**
-     * this method is to test if the shield can be correctly created.
+     * This case tests if the shield can be correctly created.
      * @throws Exception
      */
     @Test
@@ -45,7 +45,7 @@ public class EquipmentTest {
     }
 
     /**
-     * This case test the normal equipment-creation.
+     * This case tests the normal equipment-creation.
      * @throws Exception
      */
     @Test
