@@ -26,7 +26,7 @@ public class GameMapView extends View {
      * It is a implements for Delegate
      */
     public interface Delegate {
-        void gameMapViewSelect(GameMapView gameMapView, Point location);
+        void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location);
     }
 
     /**
@@ -243,7 +243,7 @@ public class GameMapView extends View {
         selectedLocation = location;
         repaint();
 
-        delegate.gameMapViewSelect(this, location);
+        delegate.gameMapViewSelectPerformAction(this, location);
     }
 
     /**
