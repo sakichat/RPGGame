@@ -1,6 +1,7 @@
 package ui.scene;
 
 import logic.*;
+import persistence.PlayFileManager;
 import ui.controlView.*;
 import ui.panel.*;
 import ui.view.GameMapView;
@@ -44,7 +45,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         super.init();
 
         backButtonEnabled = true;
-        saveButtonEnabled = false;
+        saveButtonEnabled = true;
     }
 
     /**
@@ -113,6 +114,15 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
             }
         });
 
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                save();
+
+                PlayScene.this.navigationView.popTo(MainScene.class);
+            }
+        });
+
         upDirectionButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -149,6 +159,13 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
             }
         });
 
+    }
+
+    /**
+     * This method can save a play to a file.
+     */
+    public void save() {
+        PlayFileManager.save(play);
     }
 
     /**
