@@ -231,9 +231,9 @@ public class GameMap {
 
     public final static String VALIDATION_SUCCESS = "Valid";
     public final static String VALIDATION_ERROR_NO_ENTRANCE = "No entrance";
-    public final static String VALIDATION_ERROR_TOO_MUCH_ENTRANCE = "Should be only one entrance";
+    public final static String VALIDATION_ERROR_TOO_MANY_ENTRANCES = "Should be only one entrance";
     public final static String VALIDATION_ERROR_NO_EXIT = "No exit";
-    public final static String VALIDATION_ERROR_TOO_MUCH_EXIT = "Should be only one exit";
+    public final static String VALIDATION_ERROR_TOO_MANY_EXITS = "Should be only one exit";
     public final static String VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE = "The exit is not reachable";
     public final static String VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED = "The player party is not defined";
 
@@ -250,14 +250,14 @@ public class GameMap {
         if (entrances.size() != 1){
             return entrances.size() < 1 ?
                     VALIDATION_ERROR_NO_ENTRANCE :
-                    VALIDATION_ERROR_TOO_MUCH_ENTRANCE;
+                    VALIDATION_ERROR_TOO_MANY_ENTRANCES;
         }
 
         //  if no exit or more than 1 exit
         if (exits.size() != 1) {
             return exits.size() < 1 ?
                     VALIDATION_ERROR_NO_EXIT :
-                    VALIDATION_ERROR_TOO_MUCH_EXIT;
+                    VALIDATION_ERROR_TOO_MANY_EXITS;
         }
 
         List<Player> players = getPlayers();

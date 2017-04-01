@@ -60,7 +60,7 @@ public class MapValidatorTest {
         Entrance entrance = new Entrance();
         gameMapTest.addCell(entrance, point);
 
-        Assert.assertEquals(GameMap.VALIDATION_ERROR_TOO_MUCH_ENTRANCE, gameMapTest.validate());
+        Assert.assertEquals(GameMap.VALIDATION_ERROR_TOO_MANY_ENTRANCES, gameMapTest.validate());
     }
 
     /**
@@ -85,7 +85,7 @@ public class MapValidatorTest {
         Exit exit = new Exit();
         gameMapTest.addCell(exit, point);
 
-        Assert.assertEquals(GameMap.VALIDATION_ERROR_TOO_MUCH_EXIT, gameMapTest.validate());
+        Assert.assertEquals(GameMap.VALIDATION_ERROR_TOO_MANY_EXITS, gameMapTest.validate());
     }
 
     /**
