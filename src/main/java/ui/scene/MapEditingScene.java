@@ -136,7 +136,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      * @param location
      */
     @Override
-    public void gameMapViewSelect(GameMapView gameMapView, Point location) {
+    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
         refreshControlView();
     }
 

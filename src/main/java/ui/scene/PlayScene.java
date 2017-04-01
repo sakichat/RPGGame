@@ -168,7 +168,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * @param location
      */
     @Override
-    public void gameMapViewSelect(GameMapView gameMapView, Point location) {
+    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
         refreshControlView();
     }
 
