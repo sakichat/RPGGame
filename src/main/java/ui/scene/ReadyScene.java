@@ -1,5 +1,7 @@
 package ui.scene;
 
+import ui.panel.PlaySelectorPanel;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,10 +26,15 @@ public class ReadyScene extends Scene {
 
     }
 
+    JLabel label;
+    JButton button;
+
     /**
      * This parameter is for the label of playName.
      */
     JLabel playNameLabel;
+    JButton newGameButton;
+    JButton loadGameButton;
 
     /**
      * This method creates components on this scene
@@ -35,17 +42,30 @@ public class ReadyScene extends Scene {
      */
     protected void initSubviews() {
 
-        JLabel label = new JLabel("Play");
+        label = new JLabel("Play");
         label.setSize(160, 40);
         label.setLocation(20, 20);
         contentView.add(label);
         playNameLabel = label;
 
-        JButton button = new JButton("New");
+        button = new JButton("New");
         button.setSize(160, 40);
         button.setLocation(20, 70);
         contentView.add(button);
-        JButton newGameButton = button;
+        newGameButton = button;
+
+        button = new JButton("Load");
+        button.setSize(160, 40);
+        button.setLocation(20, 130);
+        contentView.add(button);
+        loadGameButton = button;
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ReadyScene.this.navigationView.pop();
+            }
+        });
 
         newGameButton.addActionListener(new ActionListener() {
             @Override
@@ -55,10 +75,12 @@ public class ReadyScene extends Scene {
             }
         });
 
-        backButton.addActionListener(new ActionListener() {
+        loadGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReadyScene.this.navigationView.pop();
+                PlaySelectorPanel playSelectorPanel = new PlaySelectorPanel();
+                playSelectorPanel.setLocation(20, 170);
+                contentView.add(playSelectorPanel);
             }
         });
 
