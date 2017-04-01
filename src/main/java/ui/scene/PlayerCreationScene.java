@@ -1,6 +1,7 @@
 package ui.scene;
 
 import logic.*;
+import logic.builder.*;
 
 import javax.swing.*;
 import java.awt.*;

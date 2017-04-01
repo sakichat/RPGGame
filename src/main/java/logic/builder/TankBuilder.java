@@ -1,4 +1,6 @@
-package logic;
+package logic.builder;
+
+import logic.Player;
 
 /**
  * Created by Li Zhen on 2017-03-21.

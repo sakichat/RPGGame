@@ -1,5 +1,9 @@
 package logic;
 
+import logic.builder.BullyBuilder;
+import logic.builder.NimbleBuilder;
+import logic.builder.PlayerExplorer;
+import logic.builder.TankBuilder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
