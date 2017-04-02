@@ -81,6 +81,11 @@ public class PlayFileManager {
         return names;
     }
 
+    /**
+     * this class is to return the path of file
+     * @param filePath String
+     * @return String
+     */
     public static String filePathToName(String filePath){
         int number = filePath.indexOf(".");
         return FileManager.fileNameToName(filePath.substring(0, number));
