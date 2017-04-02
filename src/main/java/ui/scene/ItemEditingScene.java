@@ -103,207 +103,184 @@ public class ItemEditingScene extends Scene {
         label = new JLabel();
         label.setSize(120, 40);
         label.setHorizontalAlignment(JLabel.RIGHT);
-        label.setLocation(20, 60);
+        label.setLocation(20, 20);
         label.setText("Name");
-        this.add(label);
-
-        label = new JLabel();
-        label.setSize(120, 40);
-        label.setHorizontalAlignment(JLabel.RIGHT);
-        label.setLocation(20, 110);
-        label.setText("Type");
-        this.add(label);
-
-        label = new JLabel();
-        label.setSize(120, 40);
-        label.setHorizontalAlignment(JLabel.RIGHT);
-        label.setLocation(20, 210);
-        label.setText("Enhance On");
-        this.add(label);
-
-        label = new JLabel();
-        label.setSize(120, 40);
-        label.setHorizontalAlignment(JLabel.RIGHT);
-        label.setLocation(20, 360);
-        label.setText("Value");
-        this.add(label);
-
-        /*
-         * 3 Dynamic Outprint
-         */
+        contentView.add(label);
 
         label = new JLabel();
         label.setSize(200, 40);
         label.setHorizontalAlignment(JLabel.LEFT);
-        label.setLocation(150, 60);
+        label.setLocation(150, 20);
         nameLabel = label;
-        this.add(label);
+        contentView.add(label);
+
+        label = new JLabel();
+        label.setSize(120, 40);
+        label.setHorizontalAlignment(JLabel.RIGHT);
+        label.setLocation(20, 70);
+        label.setText("Type");
+        contentView.add(label);
 
         label = new JLabel();
         label.setSize(200, 40);
         label.setHorizontalAlignment(JLabel.LEFT);
-        label.setLocation(150, 110);
+        label.setLocation(150, 70);
         typeLabel = label;
-        this.add(label);
-
-        label = new JLabel();
-        label.setSize(200, 40);
-        label.setHorizontalAlignment(JLabel.LEFT);
-        label.setLocation(150, 210);
-        enhanceOnLabel = label;
-        this.add(label);
-
-        /*
-         * 7 Choices of Type
-         */
+        contentView.add(label);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(150, 160);
+        button.setLocation(150, 120);
         button.setText(Equipment.WEAPON);
         weaponButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(260, 160);
+        button.setLocation(260, 120);
         button.setText(Equipment.SHIELD);
         shieldButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(370, 160);
+        button.setLocation(370, 120);
         button.setText(Equipment.ARMOR);
         armorButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(480, 160);
+        button.setLocation(480, 120);
         button.setText(Equipment.HELMET);
         helmetButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(590, 160);
+        button.setLocation(590, 120);
         button.setText(Equipment.RING);
         ringButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(700, 160);
+        button.setLocation(700, 120);
         button.setText(Equipment.BELT);
         beltButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(810, 160);
+        button.setLocation(810, 120);
         button.setText(Equipment.BOOTS);
         bootsButton = button;
-        add(button);
+        contentView.add(button);
 
-        /*
-         * 6 Choices of Enhance on
-         */
+        label = new JLabel();
+        label.setSize(120, 40);
+        label.setHorizontalAlignment(JLabel.RIGHT);
+        label.setLocation(20, 170);
+        label.setText("Enhance On");
+        contentView.add(label);
+
+        label = new JLabel();
+        label.setSize(200, 40);
+        label.setHorizontalAlignment(JLabel.LEFT);
+        label.setLocation(150, 170);
+        enhanceOnLabel = label;
+        contentView.add(label);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(150, 260);
+        button.setLocation(150, 220);
         button.setText(Player.ABILITY_STR);
         strButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(260, 260);
+        button.setLocation(260, 220);
         button.setText(Player.ABILITY_DEX);
         dexButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(370, 260);
+        button.setLocation(370, 220);
         button.setText(Player.ABILITY_CON);
         conButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(480, 260);
+        button.setLocation(480, 220);
         button.setText(Player.ABILITY_INT);
         intButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(590, 260);
+        button.setLocation(590, 220);
         button.setText(Player.ABILITY_WIS);
         wisButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(700, 260);
+        button.setLocation(700, 220);
         button.setText(Player.ABILITY_CHA);
         chaButton = button;
-        add(button);
-
-        /*
-         * 3 Value of Choose
-         */
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(210, 40);
-        button.setLocation(150, 310);
+        button.setLocation(150, 270);
         button.setText("Armor Class");
         armorClassButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(210, 40);
-        button.setLocation(370, 310);
+        button.setLocation(370, 270);
         button.setText("Attack Bonus");
         attackBonusButton = button;
-        add(button);
+        contentView.add(button);
 
         button = new JButton();
         button.setSize(210, 40);
-        button.setLocation(590, 310);
+        button.setLocation(590, 270);
         button.setText("Damage Bonus");
         damageBonusButton = button;
-        add(button);
+        contentView.add(button);
 
-        /*
-         * TextFile
-         */
+        label = new JLabel();
+        label.setSize(120, 40);
+        label.setHorizontalAlignment(JLabel.RIGHT);
+        label.setLocation(20, 320);
+        label.setText("Value");
+        contentView.add(label);
 
         textField = new TextField();
         textField.setSize(160, 40);
-        textField.setLocation(150, 360);
+        textField.setLocation(150, 320);
         valueTextField = textField;
-        this.add(textField);
-
-        /*
-         * Validate button
-         */
+        contentView.add(textField);
 
         button = new JButton();
         button.setSize(160, 40);
-        button.setLocation(150, 440);
+        button.setLocation(150, 370);
         button.setText("Validate");
         validateButton = button;
-        add(button);
+        contentView.add(button);
 
         label = new JLabel();
         label.setSize(200, 40);
         label.setHorizontalAlignment(JLabel.CENTER);
-        label.setLocation(350, 440);
+        label.setLocation(350, 370);
         validateResultLabel = label;
-        add(label);
+        contentView.add(label);
+
 
 
         /*
