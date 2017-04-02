@@ -46,6 +46,10 @@ public class PlayFileManager {
         return null;
     }
 
+    /**
+     * this method is to save file
+     * @param play Play
+     */
     public static void save(Play play){
         String name = play.getName();
         File file = path(name);
@@ -57,6 +61,10 @@ public class PlayFileManager {
         FileManager.stringToFile(content, file);
     }
 
+    /**
+     * this method is to get allNames of Play
+     * @return List<String>
+     */
     public static List<String> allNames(){
         File folder = new File("data/plays/");
 
