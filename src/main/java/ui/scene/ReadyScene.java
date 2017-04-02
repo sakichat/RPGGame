@@ -1,5 +1,6 @@
 package ui.scene;
 
+import logic.Play;
 import ui.panel.PlaySelectorPanel;
 
 import javax.swing.*;
@@ -11,7 +12,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class ReadyScene extends Scene {
+public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -87,4 +88,8 @@ public class ReadyScene extends Scene {
         repaint();
     }
 
+    @Override
+    public void playSelectorPerformAction(PlaySelectorPanel playSelectorPanel, Play play) {
+        
+    }
 }

@@ -43,7 +43,7 @@ public class PlayFileManager {
         File file = PlayFileManager.path(name);
         String content = FileManager.fileToString(file);
         Play play = new Gson().fromJson(content, Play.class);
-        return null;
+        return play;
     }
 
     /**
