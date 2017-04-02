@@ -41,6 +41,15 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
      */
     JLabel playerNameLabel;
     JLabel campaignNameLabel;
+    JLabel playerModeLabel;
+    JButton playerSelectButton;
+    JButton humanPlayerModeButton;
+    JButton computerPlayerModeButton;
+    JButton campaignSelectButton;
+    JButton createButton;
+
+    public final static String HUMAN_PLAYER_MODE        = "Human Player";
+    public final static String COMPUTER_PLAYER_MODE     = "Computer Player";
 
     /**
      * This method creates components on this scene
@@ -78,16 +87,41 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         button.setSize(120, 40);
         button.setLocation(320, 80);
         contentView.add(button);
-        JButton playerSelectButton = button;
+        playerSelectButton = button;
 
-        label = new JLabel("Campaign", JLabel.RIGHT);
+        label = new JLabel("Player Mode", JLabel.RIGHT);
         label.setSize(120, 40);
-        label.setLocation(20, 130);
+        label.setLocation(20, 140);
         contentView.add(label);
 
         label = new JLabel("", JLabel.LEFT);
         label.setSize(160, 40);
-        label.setLocation(150, 130);
+        label.setLocation(150, 140);
+        contentView.add(label);
+        label.setOpaque(true);
+        label.setBackground(new Color(0xf4f4f4));
+        playerModeLabel = label;
+
+        button = new JButton("Human Player");
+        button.setSize(160, 40);
+        button.setLocation(150, 190);
+        contentView.add(button);
+        humanPlayerModeButton = button;
+
+        button = new JButton("Computer Player");
+        button.setSize(160, 40);
+        button.setLocation(320, 190);
+        contentView.add(button);
+        computerPlayerModeButton = button;
+
+        label = new JLabel("Campaign", JLabel.RIGHT);
+        label.setSize(120, 40);
+        label.setLocation(20, 250);
+        contentView.add(label);
+
+        label = new JLabel("", JLabel.LEFT);
+        label.setSize(160, 40);
+        label.setLocation(150, 250);
         contentView.add(label);
         label.setOpaque(true);
         label.setBackground(new Color(0xf4f4f4));
@@ -95,15 +129,15 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
 
         button = new JButton("Select");
         button.setSize(120, 40);
-        button.setLocation(320, 130);
+        button.setLocation(320, 250);
         contentView.add(button);
-        JButton campaignSelectButton = button;
+        campaignSelectButton = button;
 
         button = new JButton("Create");
         button.setSize(120, 40);
-        button.setLocation(150, 190);
+        button.setLocation(180, 310);
         contentView.add(button);
-        JButton createButton = button;
+        createButton = button;
 
         repaint();
 
@@ -118,6 +152,20 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
             @Override
             public void actionPerformed(ActionEvent e) {
                 selectPlayer();
+            }
+        });
+
+        humanPlayerModeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerModeLabel.setText(HUMAN_PLAYER_MODE);
+            }
+        });
+
+        computerPlayerModeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                playerModeLabel.setText(COMPUTER_PLAYER_MODE);
             }
         });
 
@@ -170,7 +218,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
      */
     private void selectCampaign() {
         CampaignSelectorPanel campaignSelectorPanel = new CampaignSelectorPanel();
-        campaignSelectorPanel.setLocation(460, 130);
+        campaignSelectorPanel.setLocation(460, 250);
         campaignSelectorPanel.setButtonText("Select");
         campaignSelectorPanel.setDelegate(this);
         contentView.add(campaignSelectorPanel);
