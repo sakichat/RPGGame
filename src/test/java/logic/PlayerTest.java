@@ -18,21 +18,21 @@ public class PlayerTest {
      * These parameters is pre-defined attributes for every method in this test class to use.
      */
     private Player player;
-    private Equipment equipment1;
-    private Equipment equipment2;
-    private Equipment equipment3;
-    private Equipment equipment4;
-    private Equipment equipment5;
-    private Equipment equipment6;
-    private Equipment equipment7;
-    private Equipment equipment8;
-    private Equipment equipment9;
-    private Equipment equipment10;
-    private Equipment equipment11;
-    private Equipment equipment12;
-    private Equipment equipment13;
-    private Equipment equipment14;
-    private Equipment equipment15;
+    private Equipment equipmentArmorAC1;
+    private Equipment equipmentArmorAC3;
+    private Equipment equipmentArmorAC5;
+    private Equipment equipmentHelmetInt3;
+    private Equipment equipmentHelmetWis5;
+    private Equipment equipmentHelmetAC2;
+    private Equipment equipmentShieldAC3;
+    private Equipment equipmentShieldAC4;
+    private Equipment equipmentShieldAC5;
+    private Equipment equipmentBeltCon3;
+    private Equipment equipmentBeltStr4;
+    private Equipment equipmentBeltCon5;
+    private Equipment equipmentBootsAC3;
+    private Equipment equipmentRingCon3;
+    private Equipment equipmentWeaponAB5;
     private Chest chest;
 
     /**
@@ -44,93 +44,106 @@ public class PlayerTest {
         player = new Player();
         player.generateAbilities();
 
-        equipment1 = new Equipment("Light Leather",Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,1);
-        equipment2 = new Equipment("Quilted Leather",Equipment.ARMOR,Player.ATTRIBUTE_ARMOR_CLASS,3);
-        equipment3 = new Equipment("Arming Coat",Equipment.ARMOR,Player.ATTRIBUTE_ARMOR_CLASS,5);
-        equipment4 = new Equipment("Might of Dread",Equipment.HELMET,Player.ABILITY_INT,3);
-        equipment5 = new Equipment("Coif of Delusions",Equipment.HELMET,Player.ABILITY_WIS,5);
-        equipment6 = new Equipment("Dawn of Insanity",Equipment.HELMET,Player.ATTRIBUTE_ARMOR_CLASS,2);
-        equipment7 = new Equipment("Oathkeeper",Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,3);
-        equipment8 = new Equipment("Ghostwalker",Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,4);
-        equipment9 = new Equipment("Sierra",Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,5);
-        equipment10 = new Equipment("Linen Sash",Equipment.BELT,Player.ABILITY_CON,3);
-        equipment11 = new Equipment("Loyal Wool Sash",Equipment.BELT,Player.ABILITY_STR,4);
-        equipment12 = new Equipment("Cord of Beginnings",Equipment.BELT,Player.ABILITY_CON,5);
-        equipment13 = new Equipment("Steel Walkers", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
-        equipment14 = new Equipment("Alythess Pyrogenics", Equipment.RING, Player.ABILITY_CON, 3);
-        equipment15 = new Equipment("Ashbringer", Equipment.WEAPON, Player.ATTRIBUTE_ATTACK_BONUS, 5);
+        equipmentArmorAC1 = new Equipment("Light Leather"    ,Equipment.ARMOR,Player.ATTRIBUTE_ARMOR_CLASS,1);
+        equipmentArmorAC3 = new Equipment("Quilted Leather"  ,Equipment.ARMOR,Player.ATTRIBUTE_ARMOR_CLASS,3);
+        equipmentArmorAC5 = new Equipment("Arming Coat"      ,Equipment.ARMOR,Player.ATTRIBUTE_ARMOR_CLASS,5);
+        equipmentHelmetInt3 = new Equipment("Might of Dread",Equipment.HELMET,Player.ABILITY_INT,3);
+        equipmentHelmetWis5 = new Equipment("Coif of Delusions",Equipment.HELMET,Player.ABILITY_WIS,5);
+        equipmentHelmetAC2 = new Equipment("Dawn of Insanity",Equipment.HELMET,Player.ATTRIBUTE_ARMOR_CLASS,2);
+        equipmentShieldAC3 = new Equipment("Oathkeeper",Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,3);
+        equipmentShieldAC4 = new Equipment("Ghostwalker",Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,4);
+        equipmentShieldAC5 = new Equipment("Sierra",Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,5);
+        equipmentBeltCon3 = new Equipment("Linen Sash",Equipment.BELT,Player.ABILITY_CON,3);
+        //Items below are pre-defined items.
+        equipmentBeltStr4 = new Equipment("Loyal Wool Sash",Equipment.BELT,Player.ABILITY_STR,4);
+        equipmentBeltCon5 = new Equipment("Cord of Beginnings",Equipment.BELT,Player.ABILITY_CON,5);
+        equipmentBootsAC3 = new Equipment("Steel Walkers", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
+        equipmentRingCon3 = new Equipment("Alythess Pyrogenics", Equipment.RING, Player.ABILITY_CON, 3);
+        equipmentWeaponAB5 = new Equipment("Ashbringer", Equipment.WEAPON, Player.ATTRIBUTE_ATTACK_BONUS, 5);
 
-        player.pickUpEquipment(equipment1);
-        player.pickUpEquipment(equipment2);
-        player.pickUpEquipment(equipment3);
-        player.pickUpEquipment(equipment4);
-        player.pickUpEquipment(equipment5);
-        player.pickUpEquipment(equipment6);
-        player.pickUpEquipment(equipment7);
-        player.pickUpEquipment(equipment8);
-        player.pickUpEquipment(equipment9);
-        player.pickUpEquipment(equipment10);
+        player.pickUpEquipment(equipmentArmorAC1);
+        player.pickUpEquipment(equipmentArmorAC3);
+        player.pickUpEquipment(equipmentArmorAC5);
+        player.pickUpEquipment(equipmentHelmetInt3);
+        player.pickUpEquipment(equipmentHelmetWis5);
+        player.pickUpEquipment(equipmentHelmetAC2);
+        player.pickUpEquipment(equipmentShieldAC3);
+        player.pickUpEquipment(equipmentShieldAC4);
+        player.pickUpEquipment(equipmentShieldAC5);
+        player.pickUpEquipment(equipmentBeltCon3);
 
         chest = new Chest();
-        chest.addEquipment(equipment7);
-        chest.addEquipment(equipment13);
-        chest.addEquipment(equipment14);
-        chest.addEquipment(equipment15);
+        chest.addEquipment(equipmentShieldAC3);
+        chest.addEquipment(equipmentBootsAC3);
+        chest.addEquipment(equipmentRingCon3);
+        chest.addEquipment(equipmentWeaponAB5);
     }
 
+
+
     /**
-     * This case tests if it is empty in the backpack after dropping all the items.
+     * This case tests if the wearing items can correctly influence character's abilities.
      * @throws Exception
      */
     @Test
-    public void testEmptyBackpack() throws Exception {
-        player.dropEquipment(equipment1);
-        player.dropEquipment(equipment2);
-        player.dropEquipment(equipment3);
-        player.dropEquipment(equipment4);
-        player.dropEquipment(equipment5);
-        player.dropEquipment(equipment6);
-        player.dropEquipment(equipment7);
-        player.dropEquipment(equipment8);
-        player.dropEquipment(equipment9);
-        player.dropEquipment(equipment10);
+    public void equip() throws Exception {
+        int preInt = player.getTotalAbilityScore(Player.ABILITY_INT);
+        int preStr = player.getTotalAbilityScore(Player.ABILITY_STR);
+        int preDex = player.getTotalAbilityScore(Player.ABILITY_DEX);
+        int preCon = player.getTotalAbilityScore(Player.ABILITY_CON);
+        int preWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
+        int preCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
+        int preAC  = player.getArmorClass();
+        int preAB  = player.getAttackBonus();
+        int preDB  = player.getDamageBonus();
 
-        Assert.assertEquals(true, player.equipmentsInBackpack().isEmpty());
+        player.equip(equipmentHelmetInt3);
+
+        int nowInt = player.getTotalAbilityScore(Player.ABILITY_INT);
+        int nowStr = player.getTotalAbilityScore(Player.ABILITY_STR);
+        int nowDex = player.getTotalAbilityScore(Player.ABILITY_DEX);
+        int nowCon = player.getTotalAbilityScore(Player.ABILITY_CON);
+        int nowWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
+        int nowCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
+        int nowAC  = player.getArmorClass();
+        int nowAB  = player.getAttackBonus();
+        int nowDB  = player.getDamageBonus();
+
+        Assert.assertTrue(preInt == nowInt - equipmentHelmetInt3.getEnhancedValue());
+
+        Assert.assertTrue(preStr == nowStr);
+
+        Assert.assertTrue(preDex == nowDex);
+
+        Assert.assertTrue(preCon == nowCon);
+
+        Assert.assertTrue(preWis == nowWis);
+
+        Assert.assertTrue(preCha == nowCha);
+
+        Assert.assertTrue(preAC  == nowAC);
+
+        Assert.assertTrue(preAB  == nowAB);
+
+        Assert.assertTrue(preDB  == nowDB);
     }
 
     /**
-     * This case tests if it is already empty in the backpack, can the player still drop items.
+     * This case tests if player can wear more than one item of each kind, wihch means
+     * if the player will drop previous item if he already wears one of the same category.
      * @throws Exception
      */
     @Test
-    public void testEmptyBackpack2() throws Exception {
-        player.dropEquipment(equipment1);
-        player.dropEquipment(equipment2);
-        player.dropEquipment(equipment3);
-        player.dropEquipment(equipment4);
-        player.dropEquipment(equipment5);
-        player.dropEquipment(equipment6);
-        player.dropEquipment(equipment7);
-        player.dropEquipment(equipment8);
-        player.dropEquipment(equipment9);
-        player.dropEquipment(equipment10);
+    public void equip2() throws Exception {
+        int pre = player.getTotalArmorClass();
+        player.equip(equipmentArmorAC1);
+        player.equip(equipmentArmorAC3);
+        int now = player.getTotalArmorClass();
+        player.equip(equipmentArmorAC5);
+        int after = player.getTotalArmorClass();
 
-        player.dropEquipment(equipment1);
-
-        Assert.assertEquals(0, player.equipmentsInBackpack().size());
-    }
-
-    /**
-     * This case tests if the wearing items can influence character's abilities.
-     * @throws Exception
-     */
-    @Test
-    public void testItemEnhancedAbilities() throws Exception {
-        int pre = player.getTotalAbilityScore(Player.ABILITY_INT);
-        player.equip(equipment4);
-        int now = player.getTotalAbilityScore(Player.ABILITY_INT);
-
-        Assert.assertEquals(pre, now - equipment4.getEnhancedValue());
+        Assert.assertTrue(pre == now   - equipmentArmorAC3.getEnhancedValue());
+        Assert.assertTrue(pre == after - equipmentArmorAC5.getEnhancedValue());
     }
 
     /**
@@ -139,8 +152,8 @@ public class PlayerTest {
      */
     @Test
     public void testNonExistingEquipmentDrop() throws Exception {
-        player.dropEquipment(equipment1);
-        player.dropEquipment(equipment11);
+        player.dropEquipment(equipmentArmorAC1);
+        player.dropEquipment(equipmentBeltStr4);
 
         Assert.assertEquals(9, player.equipmentsInBackpack().size());
     }
@@ -151,26 +164,10 @@ public class PlayerTest {
      */
     @Test
     public void testFullBackPack() throws Exception {
-        player.pickUpEquipment(equipment11);
-        boolean nowBackpack = player.equipmentsInBackpack().contains(equipment11);
+        player.pickUpEquipment(equipmentBeltStr4);
+        boolean nowBackpack = player.equipmentsInBackpack().contains(equipmentBeltStr4);
 
         Assert.assertEquals(false, nowBackpack);
-    }
-
-    /**
-     * This case tests if player can wear more than one item of each kind, wihch means
-     * if the player will drop previous item if he already wears one of the same category.
-     * @throws Exception
-     */
-    @Test
-    public void testOneItemOfEachKind() throws Exception {
-        int pre = player.getTotalAbilityScore(Player.ABILITY_CON);
-        player.equip(equipment10);
-        player.pickUpEquipment(equipment12);
-        player.equip(equipment12);
-        int now = player.getTotalAbilityScore(Player.ABILITY_CON);
-
-        Assert.assertEquals(pre, now - equipment12.getEnhancedValue());
     }
 
     /**
@@ -180,20 +177,20 @@ public class PlayerTest {
      */
     @Test
     public void testLooting() throws Exception {
-        player.dropEquipment(equipment1);
-        player.dropEquipment(equipment2);
-        player.dropEquipment(equipment3);
-        player.dropEquipment(equipment4);
-        player.dropEquipment(equipment5);
-        player.dropEquipment(equipment6);
-        player.dropEquipment(equipment7);
-        player.dropEquipment(equipment8);
+        player.dropEquipment(equipmentArmorAC1);
+        player.dropEquipment(equipmentArmorAC3);
+        player.dropEquipment(equipmentArmorAC5);
+        player.dropEquipment(equipmentHelmetInt3);
+        player.dropEquipment(equipmentHelmetWis5);
+        player.dropEquipment(equipmentHelmetAC2);
+        player.dropEquipment(equipmentShieldAC3);
+        player.dropEquipment(equipmentShieldAC4);
 
         int chestSize = chest.getEquipments().size();
         int previousSize = player.equipmentsInBackpack().size();
         player.lootChest(chest);
         int nowSize = player.equipmentsInBackpack().size();
-        boolean containItem = player.equipmentsInBackpack().contains(equipment13);
+        boolean containItem = player.equipmentsInBackpack().contains(equipmentBootsAC3);
 
         Assert.assertEquals(nowSize, previousSize + chestSize);
         Assert.assertEquals(true, containItem);
@@ -206,8 +203,8 @@ public class PlayerTest {
      */
     @Test
     public void testFullLooting() throws Exception {
-        player.dropEquipment(equipment1);
-        player.dropEquipment(equipment2);
+        player.dropEquipment(equipmentArmorAC1);
+        player.dropEquipment(equipmentArmorAC3);
         int previousChestSize = chest.getEquipments().size();
         int previousPlayerBackpackSize = player.equipmentsInBackpack().size();
         player.lootChest(chest);
@@ -243,16 +240,16 @@ public class PlayerTest {
      */
     @Test
     public void testAfterLooting() throws Exception {
-        player.dropEquipment(equipment1);
-        player.dropEquipment(equipment2);
-        player.dropEquipment(equipment3);
-        player.dropEquipment(equipment4);
-        player.dropEquipment(equipment5);
-        player.dropEquipment(equipment6);
-        player.dropEquipment(equipment7);
-        player.dropEquipment(equipment8);
-        player.dropEquipment(equipment9);
-        player.dropEquipment(equipment10);
+        player.dropEquipment(equipmentArmorAC1);
+        player.dropEquipment(equipmentArmorAC3);
+        player.dropEquipment(equipmentArmorAC5);
+        player.dropEquipment(equipmentHelmetInt3);
+        player.dropEquipment(equipmentHelmetWis5);
+        player.dropEquipment(equipmentHelmetAC2);
+        player.dropEquipment(equipmentShieldAC3);
+        player.dropEquipment(equipmentShieldAC4);
+        player.dropEquipment(equipmentShieldAC5);
+        player.dropEquipment(equipmentBeltCon3);
 
         Campaign campaign = CampaignFileManager.read("testcampaign");
 

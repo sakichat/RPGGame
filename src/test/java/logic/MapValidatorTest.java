@@ -43,7 +43,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testNoEntrance() throws Exception{
+    public void validate1() throws Exception{
         Point point = new Point(3, 3);
         gameMapTest.removeCell(point);
 
@@ -55,7 +55,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testMultiEntrance() throws Exception{
+    public void validate2() throws Exception{
         Point point = new Point(0, 0);
         Entrance entrance = new Entrance();
         gameMapTest.addCell(entrance, point);
@@ -68,7 +68,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testNoExit() throws Exception{
+    public void validate3() throws Exception{
         Point point = new Point(1, 1);
         gameMapTest.removeCell(point);
 
@@ -80,7 +80,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testTooMultiExit() throws Exception{
+    public void validate4() throws Exception{
         Point point = new Point(0, 1);
         Exit exit = new Exit();
         gameMapTest.addCell(exit, point);
@@ -93,7 +93,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testReachable() throws Exception{
+    public void validate5() throws Exception{
         Obstacle obstacle1 = new Obstacle();
         Obstacle obstacle2 = new Obstacle();
         Point point1 = new Point(0, 0);
@@ -110,7 +110,7 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testUnreachable() throws Exception{
+    public void validate6() throws Exception{
         Obstacle obstacle1 = new Obstacle();
         Obstacle obstacle2 = new Obstacle();
         Obstacle obstacle3 = new Obstacle();
@@ -130,10 +130,22 @@ public class MapValidatorTest {
      * @throws Exception
      */
     @Test
-    public void testPlayerNotDefined() throws Exception {
+    public void validate7() throws Exception {
         Player player = new Player();
         gameMapTest.addCell(player, new Point(0, 0));
 
         Assert.assertEquals(GameMap.VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED, gameMapTest.validate());
+    }
+
+    @Test
+    public void addCell() throws Exception {
+
+
+    }
+
+    @Test
+    public void removeCell() throws Exception {
+        
+
     }
 }
