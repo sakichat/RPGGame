@@ -13,13 +13,14 @@ import java.util.List;
  * Created by GU_HAN on 2017-04-01.
  */
 public class PlayFileManager {
+
     public static File folderPath(){
           return new File("data/plays");
     }
 
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
-        newName = "data/plays" + newName + ".play.json";
+        newName = "data/plays/" + newName + ".play.json";
         return new File(newName);
     }
 
