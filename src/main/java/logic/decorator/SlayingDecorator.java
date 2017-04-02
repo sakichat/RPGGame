@@ -11,6 +11,6 @@ public class SlayingDecorator extends WeaponDecorator {
 
     @Override
     public String getEnchantments(){
-        return super.getEnchantments() + "Slaying ";
+        return super.getEnchantments() + "-> Slaying ";
     }
 }
