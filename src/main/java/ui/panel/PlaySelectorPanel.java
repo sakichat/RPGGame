@@ -1,11 +1,13 @@
 package ui.panel;
 
 import logic.Play;
+import persistence.PlayFileManager;
 import ui.view.View;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * Created by GU_HAN on 2017-04-01.
@@ -77,7 +79,38 @@ public class PlaySelectorPanel extends Panel {
      *
      */
     public void search(){
-//        List<String> names =
+        List<String> names = PlayFileManager.allNames();
+        int number = 0;
+        int yOfView = 0;
+        int xOfView = 0;
 
+        for (String name : names) {
+            if(name.contains(textField.getText()) && number < 3){
+                Play play = PlayFileManager.read(name);
+
+                JLabel playLabel = new JLabel();
+                playLabel.setLayout(null);
+                playLabel.setSize(160, 20);
+                playLabel.setLocation(xOfView, yOfView);
+                playLabel.setText(play.getName());
+                playSelector.add(playLabel);
+
+                JButton addButton = new JButton(buttonText);
+                addButton.setLocation(170, yOfView);
+                addButton.setSize(60, 20);
+                playSelector.add(addButton);
+
+                addButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        delegate.playSelectorPerformAction(PlaySelectorPanel.this, play);
+                    }
+                });
+
+                number++;
+                yOfView += 30;
+            }
+        }
+        repaint();
     }
 }
