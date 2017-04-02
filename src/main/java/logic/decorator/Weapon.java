@@ -9,7 +9,6 @@ import logic.Equipment;
 public class Weapon extends Equipment implements Component{
 
     private int range;
-    private int enchantmentBonus;
 
 //    public Weapon(String name) {
 //        super(name);
@@ -28,14 +27,6 @@ public class Weapon extends Equipment implements Component{
 
     public void setRange(int range) {
         this.range = range;
-    }
-
-    public int getEnchantmentBonus() {
-        return enchantmentBonus;
-    }
-
-    public void setEnchantmentBonus(int enchantmentBonus) {
-        this.enchantmentBonus = enchantmentBonus;
     }
 
     @Override
