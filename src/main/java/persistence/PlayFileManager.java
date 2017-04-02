@@ -10,7 +10,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by GU_HAN on 2017-04-01.
+ * @author Guangbi Zhang
+ * @version 0.2
  */
 public class PlayFileManager {
 

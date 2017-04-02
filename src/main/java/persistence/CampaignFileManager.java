@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @author Li Zhen
- * @version 0.1
+ * @version 0.2
  *
  * this class is to manage the files of campaign
  */
