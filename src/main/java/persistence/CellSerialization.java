@@ -8,7 +8,7 @@ import java.lang.reflect.Type;
 
 /**
  * @author Li Zhen
- * @version 0.1
+ * @version 0.2
  * this class is to manage the cell
  */
 public class CellSerialization implements JsonSerializer<Cell>, JsonDeserializer<Cell> {

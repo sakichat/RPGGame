@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * this class is a fileManager to manage the files
  * @author Li Zhen
- * @version 0.1
+ * @version 0.2
  */
 
 
