@@ -6,20 +6,21 @@ import logic.Equipment;
  * @author Li ZHEN
  * @version 0.3
  */
-public class Weapon extends Equipment {
+public class Weapon extends Equipment implements Component{
+
     private int range;
     private int enchantmentBonus;
 
-    public Weapon(String name) {
-        super(name);
-    }
-
-    public Weapon(String name, String type, String enhancedAttribute, int enhancedValue) {
-        super(name, type, enhancedAttribute, enhancedValue);
-    }
-
-    public Weapon() {
-    }
+//    public Weapon(String name) {
+//        super(name);
+//    }
+//
+//    public Weapon(String name, String type, String enhancedAttribute, int enhancedValue) {
+//        super(name, type, enhancedAttribute, enhancedValue);
+//    }
+//
+//    public Weapon() {
+//    }
 
     public int getRange() {
         return range;
@@ -37,6 +38,7 @@ public class Weapon extends Equipment {
         this.enchantmentBonus = enchantmentBonus;
     }
 
+    @Override
     public String getEnchantments(){
         return "";
     }

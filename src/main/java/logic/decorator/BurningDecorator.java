@@ -10,7 +10,8 @@ public class BurningDecorator extends WeaponDecorator {
         super(weapon);
     }
 
+    @Override
     public String getEnchantments(){
-        return weapon.getEnchantments() + "Burning ";
+        return super.getEnchantments() + "Burning ";
     }
 }

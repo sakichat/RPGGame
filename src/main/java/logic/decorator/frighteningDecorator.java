@@ -9,7 +9,8 @@ public class frighteningDecorator extends WeaponDecorator {
         super(weapon);
     }
 
+    @Override
     public String getEnchantments(){
-        return weapon.getEnchantments() + "Frightening ";
+        return super.getEnchantments() + "Frightening ";
     }
 }
