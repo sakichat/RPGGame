@@ -69,6 +69,10 @@ public class EquipmentSelectorPanel extends Panel {
         return buttonText;
     }
 
+    /**
+     * Setter for buttonText
+     * @param buttonText
+     */
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
     }

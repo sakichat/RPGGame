@@ -10,9 +10,18 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
- * Created by GU_HAN on 2017-04-01.
+ * @author Guangbi Zhang
+ * @version 0.3
  */
 public class PlaySelectorPanel extends Panel {
+
+    /**
+     * Delegate
+     */
+
+    /**
+     * InnerClass to declaration of delegate
+     */
     public interface Delegate{
         /**
          * This method is to give the two parameters
@@ -21,12 +30,23 @@ public class PlaySelectorPanel extends Panel {
         void playSelectorPerformAction(PlaySelectorPanel playSelectorPanel, Play play);
     }
 
+    /**
+     * Property declaration.
+     */
     private Delegate delegate;
 
+    /**
+     * Getter for delegate
+     * @return
+     */
     public Delegate getDelegate() {
         return delegate;
     }
 
+    /**
+     * Setter for enhancedDelegate
+     * @param delegate
+     */
     public void setDelegate(Delegate delegate) {
         this.delegate = delegate;
     }
@@ -34,18 +54,20 @@ public class PlaySelectorPanel extends Panel {
     private JTextField textField;
     private JButton searchButton;
     private View playSelector;
-    private String buttonText;
 
-    public void setButtonText(String buttonText) {
-        this.buttonText = buttonText;
-    }
-
+    /**
+     * this method is to initial the view
+     */
+    @Override
     public void init(){
         super.init();
         title = "Play Selector";
         setSize(290, 170);
     }
 
+    /**
+     * this method is to set sub-views
+     */
     public void initSubviews(){
         super.initSubviews();
         playSelector = new View();
@@ -76,7 +98,7 @@ public class PlaySelectorPanel extends Panel {
     }
 
     /**
-     *
+     * this method is to search the files
      */
     public void search(){
         List<String> names = PlayFileManager.allNames();
@@ -95,12 +117,12 @@ public class PlaySelectorPanel extends Panel {
                 playLabel.setText(play.getName());
                 playSelector.add(playLabel);
 
-                JButton addButton = new JButton(buttonText);
-                addButton.setLocation(170, yOfView);
-                addButton.setSize(60, 20);
-                playSelector.add(addButton);
+                JButton selectButton = new JButton("Select");
+                selectButton.setLocation(170, yOfView);
+                selectButton.setSize(60, 20);
+                playSelector.add(selectButton);
 
-                addButton.addActionListener(new ActionListener() {
+                selectButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         delegate.playSelectorPerformAction(PlaySelectorPanel.this, play);

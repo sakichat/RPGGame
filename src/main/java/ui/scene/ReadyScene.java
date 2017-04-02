@@ -81,6 +81,7 @@ public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
             public void actionPerformed(ActionEvent e) {
                 PlaySelectorPanel playSelectorPanel = new PlaySelectorPanel();
                 playSelectorPanel.setLocation(20, 190);
+                playSelectorPanel.setDelegate(ReadyScene.this);
                 contentView.add(playSelectorPanel);
             }
         });
@@ -90,6 +91,12 @@ public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
 
     @Override
     public void playSelectorPerformAction(PlaySelectorPanel playSelectorPanel, Play play) {
-        
+
+        contentView.remove(playSelectorPanel);
+
+        PlayScene playScene = new PlayScene();
+        playScene.setPlay(play);
+        navigationView.push(playScene);
+
     }
 }

@@ -112,7 +112,7 @@ public class InventoryPanel extends Panel implements Observer {
     Delegate delegate;
 
     /**
-     * Getter for enhancedDelegate
+     * Getter for delegate
      * @return
      */
     public Delegate getDelegate() {

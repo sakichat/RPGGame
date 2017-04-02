@@ -88,6 +88,7 @@ public class PlayerSelectorPanel extends Panel {
 
     @Override
     protected void initSubviews() {
+        super.initSubviews();
         playerSelector = new View();
         playerSelector.setLayout(null);
         playerSelector.setLocation(10,80);

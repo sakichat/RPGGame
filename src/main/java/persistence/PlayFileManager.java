@@ -31,6 +31,7 @@ public class PlayFileManager {
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/plays/" + newName + ".play.json";
+        System.out.println(newName);
         return new File(newName);
     }
 

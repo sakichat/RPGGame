@@ -1,5 +1,6 @@
 package logic;
 
+import com.google.gson.annotations.Expose;
 import persistence.MapFileManager;
 
 import java.util.LinkedList;
@@ -12,13 +13,22 @@ import java.util.List;
  */
 public class Play {
 
+    @Expose
     private String name;
+
+    @Expose
     private Campaign campaign;
+
+    @Expose
     private Player player;
 
+    @Expose
     private int currentMapIndex;
+
+//    @Expose
     private GameMap currentMap;
 
+    @Expose
     private Point direction;
 
     /**
