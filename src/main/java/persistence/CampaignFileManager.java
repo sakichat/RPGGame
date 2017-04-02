@@ -32,9 +32,7 @@ public class CampaignFileManager {
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/campaigns/" + newName + ".cam.json";
-        System.out.println(newName);
         return new File(newName);
-
     }
 
     /**

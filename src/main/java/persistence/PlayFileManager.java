@@ -1,5 +1,7 @@
 package persistence;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import logic.Play;
 
 import java.io.File;
@@ -29,15 +31,18 @@ public class PlayFileManager {
     public static Play read(String name){
         File file = PlayFileManager.path(name);
         String content = FileManager.fileToString(file);
-//        Gson gson = new GsonBuilder()
-//                .registerTypeAdapter()
+        Play play = new Gson().fromJson(content, Play.class);
         return null;
     }
 
     public static void save(Play play){
         String name = play.getName();
         File file = path(name);
-        String content = FileManager.defaultGson().toJson(play);
+        Gson gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .setPrettyPrinting()
+                .create();
+        String content = gson.toJson(play);
         FileManager.stringToFile(content, file);
     }
 
