@@ -1,6 +1,7 @@
 package logic;
 
 import com.google.gson.annotations.Expose;
+import logic.decorator.Weapon;
 
 /**
  * This class is the equitment
@@ -231,5 +232,14 @@ public class Equipment {
                 ", enhancedAttribute='" + enhancedAttribute + '\'' +
                 ", enhancedValue=" + enhancedValue +
                 '}';
+    }
+
+    public Weapon toWeapon() {
+        Weapon weapon = new Weapon();
+        weapon.setName(getName());
+        weapon.setType(getType());
+        weapon.setEnhancedAttribute(getEnhancedAttribute());
+        weapon.setEnhancedValue(getEnhancedValue());
+        return weapon;
     }
 }

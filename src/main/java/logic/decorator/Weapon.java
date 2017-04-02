@@ -1,5 +1,6 @@
 package logic.decorator;
 
+import com.google.gson.annotations.Expose;
 import logic.Equipment;
 
 /**
@@ -8,6 +9,7 @@ import logic.Equipment;
  */
 public class Weapon extends Equipment implements Component{
 
+    @Expose
     private int range;
 
 //    public Weapon(String name) {
