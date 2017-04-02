@@ -94,8 +94,9 @@ public class GameMapView extends View {
 
     private final static int _LAYER_BACKGROUND  = 0;
     private final static int _LAYER_CONTENT     = 1;
-    private final static int _LAYER_HIGHLIGHT   = 2;
-    private final static int _LAYER_EVENT       = 3;
+    private final static int _LAYER_ATTACKRANGE = 2;
+    private final static int _LAYER_HIGHLIGHT   = 3;
+    private final static int _LAYER_EVENT       = 4;
 
 
     /**
@@ -110,6 +111,7 @@ public class GameMapView extends View {
     private void initLayers() {
         initBackgroundLayer();
         initContentLayer();
+        initAttackrangeLayer();
         initHighlightLayer();
         initEventLayer();
     }
@@ -152,6 +154,12 @@ public class GameMapView extends View {
     private void initContentLayer(){
         newLayer();
         refreshContent();
+    }
+
+    private void initAttackrangeLayer() {
+        newLayer();
+        GameMapLayerView layerView = layers.get(_LAYER_ATTACKRANGE);
+
     }
 
     /**

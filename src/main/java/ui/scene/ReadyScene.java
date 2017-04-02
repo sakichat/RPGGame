@@ -80,7 +80,7 @@ public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
             @Override
             public void actionPerformed(ActionEvent e) {
                 PlaySelectorPanel playSelectorPanel = new PlaySelectorPanel();
-                playSelectorPanel.setLocation(20, 170);
+                playSelectorPanel.setLocation(20, 190);
                 contentView.add(playSelectorPanel);
             }
         });
