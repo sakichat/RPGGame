@@ -15,10 +15,19 @@ import java.util.List;
  */
 public class PlayFileManager {
 
+    /**
+     * this method is to get new file
+     * @return file File
+     */
     public static File folderPath(){
           return new File("data/plays");
     }
 
+    /**
+     * this method is to get a file with path
+     * @param name String
+     * @return File
+     */
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/plays/" + newName + ".play.json";
@@ -26,9 +35,9 @@ public class PlayFileManager {
     }
 
     /**
-     *
-     * @param name
-     * @return
+     * this method is to read files of Play
+     * @param name String
+     * @return Play
      */
     public static Play read(String name){
         File file = PlayFileManager.path(name);
