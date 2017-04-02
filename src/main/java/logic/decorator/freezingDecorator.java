@@ -1,7 +1,7 @@
 package logic.decorator;
 
 /**
- * Created by thereaghostflash on 2017-04-01.
+ * Created by Li Zhen on 2017-04-01.
  */
 public class freezingDecorator extends WeaponDecorator {
 
