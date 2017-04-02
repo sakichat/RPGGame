@@ -217,6 +217,26 @@ public class PlayerTest {
         Assert.assertEquals(nowChestSize, previousChestSize - (10 - previousPlayerBackpackSize));
     }
 
+    @Test
+    public void testGenerateAbilities() throws Exception {
+        player.generateAbilities(Player.PLAYER_TYPE_BULLY);
+        int playerStr = player.getAbilityScore(Player.ABILITY_STR);
+        int playerCon = player.getAbilityScore(Player.ABILITY_CON);
+        int playerDex = player.getAbilityScore(Player.ABILITY_DEX);
+        int playerInt = player.getAbilityScore(Player.ABILITY_INT);
+        int playerCha = player.getAbilityScore(Player.ABILITY_CHA);
+        int playerWis = player.getAbilityScore(Player.ABILITY_WIS);
+
+        System.out.println(playerStr + " " + playerCon + " " + playerDex + " " + playerInt + " " + playerCha + " " + playerWis);
+
+
+        Assert.assertEquals(true, playerStr >= playerCon);
+        Assert.assertEquals(true, playerCon >= playerDex);
+        Assert.assertEquals(true, playerDex >= playerInt);
+        Assert.assertEquals(true, playerInt >= playerCha);
+        Assert.assertEquals(true, playerCha >= playerWis);
+    }
+
     /**
      * This case tests if the cell will become null after looting the chest to empty.
      * @throws Exception
