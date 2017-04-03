@@ -1,23 +1,9 @@
-package logic;
+package logic.equipments;
 
 import com.google.gson.annotations.Expose;
-import logic.decorator.Weapon;
+import logic.Player;
 
-/**
- * This class is the equitment
- * @author Li Zhen
- * @version 0.1
- */
-
-public abstract class Equipment {
-
-    public final static String HELMET = "Helmet";
-    public final static String ARMOR = "Armor";
-    public final static String SHIELD = "Shield";
-    public final static String RING = "Ring";
-    public final static String BELT = "Belt";
-    public final static String BOOTS = "Boots";
-    public final static String WEAPON = "Weapon";
+public class EquipmentSolid implements Equipment{
 
     @Expose
     protected String name;
@@ -29,11 +15,19 @@ public abstract class Equipment {
     protected int enhancedValue = 0;
 
     /**
+     * This is the constructor
+     */
+
+    public EquipmentSolid() {
+
+    }
+
+    /**
      * this is the constructor to send the name
      * @param name String
      */
 
-    public Equipment(String name) {
+    public EquipmentSolid(String name) {
         this.name = name;
     }
 
@@ -46,13 +40,15 @@ public abstract class Equipment {
      */
 
 
-    public Equipment(String name, String type, String enhancedAttribute, int enhancedValue) {
+    public EquipmentSolid(String name, String type, String enhancedAttribute, int enhancedValue) {
 
         this.name = name;
         this.type = type;
         this.enhancedAttribute = enhancedAttribute;
         this.enhancedValue = enhancedValue;
     }
+
+
 
     /**
      * This method is to validate whether the attribute can be improve according to  the logic.Equipment
@@ -119,14 +115,6 @@ public abstract class Equipment {
         return isValidate;
     }
 
-    /**
-     * This is the constructor
-     */
-
-
-    public Equipment() {
-
-    }
 
     /**
      * this method is to get name of logic.Equipment
@@ -234,12 +222,8 @@ public abstract class Equipment {
                 '}';
     }
 
-    public Weapon toWeapon() {
-        Weapon weapon = new Weapon();
-        weapon.setName(getName());
-        weapon.setType(getType());
-        weapon.setEnhancedAttribute(getEnhancedAttribute());
-        weapon.setEnhancedValue(getEnhancedValue());
-        return weapon;
+    public String displayName(){
+        return name;
     }
+
 }

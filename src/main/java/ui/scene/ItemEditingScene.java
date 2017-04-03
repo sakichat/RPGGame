@@ -1,8 +1,8 @@
 package ui.scene;
 
-import logic.Equipment;
+import logic.equipments.*;
 import logic.Player;
-import logic.decorator.*;
+import logic.equipments.decorator.*;
 import persistence.EquipmentFileManager;
 import ui.view.View;
 
@@ -474,8 +474,8 @@ public class ItemEditingScene extends Scene {
                         validateResultLabel.setText("Success!  Please set Range and Special Enchantments for the weapon.");
                         contentView.add(weaponSubPanel);
 
-                        Weapon weapon = equipment.toWeapon();
-                        equipment = weapon;
+                        EquipmentFactory equipmentFactory = new EquipmentFactory();
+                        equipment = equipmentFactory.equipmentToWeapon(equipment);
 
                     } else {
                         validateResultLabel.setText("Success!");
@@ -502,7 +502,7 @@ public class ItemEditingScene extends Scene {
         freezingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new FreezingDecorator((DecoratorComponent) equipment);
+                equipment = new FreezingDecorator((Weapon) equipment);
                 dataToView();
             }
         });
@@ -510,7 +510,7 @@ public class ItemEditingScene extends Scene {
         burningButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new BurningDecorator((DecoratorComponent) equipment);
+                equipment = new BurningDecorator((Weapon) equipment);
                 dataToView();
             }
         });
@@ -518,7 +518,7 @@ public class ItemEditingScene extends Scene {
         slayingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new SlayingDecorator((DecoratorComponent) equipment);
+                equipment = new SlayingDecorator((Weapon) equipment);
                 dataToView();
             }
         });
@@ -526,7 +526,7 @@ public class ItemEditingScene extends Scene {
         frighteningButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new FrighteningDecorator((DecoratorComponent) equipment);
+                equipment = new FrighteningDecorator((Weapon) equipment);
                 dataToView();
             }
         });
@@ -534,7 +534,7 @@ public class ItemEditingScene extends Scene {
         pacifyingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new PacifyingDecorator((DecoratorComponent) equipment);
+                equipment = new PacifyingDecorator((Weapon) equipment);
                 dataToView();
             }
         });
@@ -562,30 +562,19 @@ public class ItemEditingScene extends Scene {
      */
     public void dataToView(){
 
-        nameLabel.setText(equipment.getName());
+        nameLabel.setText(equipment.displayName());
         typeLabel.setText(equipment.getType());
         enhanceOnLabel.setText(equipment.getEnhancedAttribute());
         valueTextField.setText(equipment.getEnhancedValue() + "");
 
-        if (equipment instanceof Weapon) {
+        if (equipment instanceof Weapon){
             Weapon weapon = (Weapon) this.equipment;
 
             int range = weapon.getRange();
             rangeTextField.setText(range + "");
 
-            String enchantments = (weapon.getEnchantments());
-            rangeTextField.setText(enchantments);
-
-        } else if (equipment instanceof WeaponDecorator){
-            WeaponDecorator decoratedWeapon = (WeaponDecorator) equipment;
-            Weapon originalWeapon = (Weapon) decoratedWeapon.getOrigin();
-
-            int range = originalWeapon.getRange();
-            rangeTextField.setText(range + "");
-
-            String enchantments = decoratedWeapon.getEnchantments();
-            enchantmentsValueLabel.setText(enchantments);
-
+            String enhancementsChainText = weapon.enhancementsChainText();
+            enchantmentsValueLabel.setText(enhancementsChainText);
         }
 
     }

@@ -1,7 +1,8 @@
 package ui.scene;
 
-import logic.Equipment;
-import logic.NonWeaponEquipment;
+import logic.equipments.Equipment;
+import logic.equipments.EquipmentFactory;
+import logic.equipments.EquipmentSolid;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -58,7 +59,7 @@ public class ItemCreationScene extends Scene {
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Equipment equipment = new NonWeaponEquipment(nameField.getText());
+                Equipment equipment = new EquipmentFactory().newEquipment(nameField.getText());
                 ItemEditingScene itemEditingScene = new ItemEditingScene();
                 itemEditingScene.setEquipment(equipment);
                 ItemCreationScene.this.navigationView.push(itemEditingScene);

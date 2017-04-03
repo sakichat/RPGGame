@@ -1,17 +1,11 @@
 package persistence;
 
 import com.google.gson.*;
-import com.google.gson.annotations.Expose;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
 import logic.*;
+import logic.equipments.Equipment;
+import logic.equipments.EquipmentSolid;
 
-import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
 import java.lang.reflect.Type;
-import java.util.Map;
 
 
 public class FullSerialization implements JsonSerializer<Object>, JsonDeserializer<Object> {
@@ -52,7 +46,7 @@ public class FullSerialization implements JsonSerializer<Object>, JsonDeserializ
 
     public static void main(String[] args) {
 
-        Equipment equipment = new NonWeaponEquipment("name", "WEAPON", "STR", 1);
+        Equipment equipment = new EquipmentSolid("name", "WEAPON", "STR", 1);
 
         EquipmentWrapper equipmentWrapper = new EquipmentWrapper(equipment);
 

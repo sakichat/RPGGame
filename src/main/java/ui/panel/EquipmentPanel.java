@@ -1,7 +1,7 @@
 package ui.panel;
 
 import logic.Chest;
-import logic.Equipment;
+import logic.equipments.Equipment;
 import ui.view.EquipmentView;
 
 import javax.swing.*;

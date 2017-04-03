@@ -1,6 +1,6 @@
 package ui.panel;
 
-import logic.Equipment;
+import logic.equipments.Equipment;
 import logic.Player;
 import ui.view.EquipmentView;
 

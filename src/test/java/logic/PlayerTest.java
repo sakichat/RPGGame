@@ -1,5 +1,8 @@
 package logic;
 
+import logic.equipments.Equipment;
+import logic.equipments.EquipmentFactory;
+import logic.equipments.EquipmentSolid;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,21 +45,23 @@ public class PlayerTest {
         player = new Player();
         player.generateAbilities();
 
-        equipmentArmorAC1   = new NonWeaponEquipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,1);
-        equipmentArmorAC3   = new NonWeaponEquipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,3);
-        equipmentArmorAC5   = new NonWeaponEquipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,5);
-        equipmentHelmetInt3 = new NonWeaponEquipment("A", Equipment.HELMET,Player.ABILITY_INT,3);
-        equipmentHelmetWis5 = new NonWeaponEquipment("A", Equipment.HELMET,Player.ABILITY_WIS,5);
-        equipmentHelmetAC2  = new NonWeaponEquipment("A", Equipment.HELMET,Player.ATTRIBUTE_ARMOR_CLASS,2);
-        equipmentShieldAC3  = new NonWeaponEquipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,3);
-        equipmentShieldAC4  = new NonWeaponEquipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,4);
-        equipmentShieldAC5  = new NonWeaponEquipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,5);
-        equipmentBeltCon3   = new NonWeaponEquipment("A", Equipment.BELT,  Player.ABILITY_CON,3);
+        EquipmentFactory equipmentFactory = new EquipmentFactory();
+
+        equipmentArmorAC1   = equipmentFactory.newEquipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,1);
+        equipmentArmorAC3   = equipmentFactory.newEquipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,3);
+        equipmentArmorAC5   = equipmentFactory.newEquipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,5);
+        equipmentHelmetInt3 = equipmentFactory.newEquipment("A", Equipment.HELMET,Player.ABILITY_INT,3);
+        equipmentHelmetWis5 = equipmentFactory.newEquipment("A", Equipment.HELMET,Player.ABILITY_WIS,5);
+        equipmentHelmetAC2  = equipmentFactory.newEquipment("A", Equipment.HELMET,Player.ATTRIBUTE_ARMOR_CLASS,2);
+        equipmentShieldAC3  = equipmentFactory.newEquipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,3);
+        equipmentShieldAC4  = equipmentFactory.newEquipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,4);
+        equipmentShieldAC5  = equipmentFactory.newEquipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,5);
+        equipmentBeltCon3   = equipmentFactory.newEquipment("A", Equipment.BELT,  Player.ABILITY_CON,3);
         //Items below are pre-defined items.
-        equipmentBeltStr4   = new NonWeaponEquipment("A", Equipment.BELT,  Player.ABILITY_STR,4);
-        equipmentBootsAC3   = new NonWeaponEquipment("A", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
-        equipmentRingCon3   = new NonWeaponEquipment("A", Equipment.RING,  Player.ABILITY_CON, 3);
-        equipmentWeaponAB5  = new NonWeaponEquipment("A", Equipment.WEAPON,Player.ATTRIBUTE_ATTACK_BONUS, 5);
+        equipmentBeltStr4   = equipmentFactory.newEquipment("A", Equipment.BELT,  Player.ABILITY_STR,4);
+        equipmentBootsAC3   = equipmentFactory.newEquipment("A", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
+        equipmentRingCon3   = equipmentFactory.newEquipment("A", Equipment.RING,  Player.ABILITY_CON, 3);
+        equipmentWeaponAB5  = equipmentFactory.newEquipment("A", Equipment.WEAPON,Player.ATTRIBUTE_ATTACK_BONUS, 5);
 
         player.pickUpEquipment(equipmentArmorAC1);
         player.pickUpEquipment(equipmentArmorAC3);

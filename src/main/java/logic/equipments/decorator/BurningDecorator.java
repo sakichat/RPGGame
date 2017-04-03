@@ -1,4 +1,6 @@
-package logic.decorator;
+package logic.equipments.decorator;
+
+import logic.equipments.Weapon;
 
 /**
  * @author Li ZHEN
@@ -11,7 +13,7 @@ public class BurningDecorator extends WeaponDecorator {
      * @param decoratedWeapon DecoratorComponent
      */
 
-    public BurningDecorator(DecoratorComponent decoratedWeapon) {
+    public BurningDecorator(Weapon decoratedWeapon) {
         super(decoratedWeapon);
     }
 
@@ -21,8 +23,8 @@ public class BurningDecorator extends WeaponDecorator {
      */
 
     @Override
-    public String getName() {
-        return super.getName() + "/B";
+    public String displayName() {
+        return super.displayName() + " B";
     }
 
     /**
@@ -31,7 +33,7 @@ public class BurningDecorator extends WeaponDecorator {
      */
 
     @Override
-    public DecoratorComponent getOrigin() {
+    public Weapon getOrigin() {
         return decoratedWeapon;
     }
 
@@ -41,7 +43,7 @@ public class BurningDecorator extends WeaponDecorator {
      */
 
     @Override
-    public String getEnchantments(){
-        return super.getEnchantments() + " Burning ";
+    public String enhancementsChainText(){
+        return super.enhancementsChainText() + " Burning ";
     }
 }

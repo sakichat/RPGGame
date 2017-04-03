@@ -1,6 +1,7 @@
 package logic;
 
 import com.google.gson.annotations.Expose;
+import logic.equipments.Equipment;
 
 import java.util.LinkedList;
 import java.util.List;

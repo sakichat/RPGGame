@@ -1,7 +1,8 @@
 package logic;
 
 import com.google.gson.annotations.Expose;
-import logic.decorator.Weapon;
+import logic.equipments.WeaponSolid;
+import logic.equipments.Equipment;
 
 import java.util.*;
 
@@ -748,7 +749,7 @@ public class Player extends Cell{
         Equipment equipment = equipments.get(Equipment.WEAPON);
 
         if (equipment != null) {
-            return ((Weapon)equipment).getRange();
+            return ((WeaponSolid)equipment).getRange();
         }
 
         return 0;

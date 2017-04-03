@@ -1,6 +1,7 @@
 package ui.scene;
 
 import logic.*;
+import logic.equipments.Equipment;
 import persistence.PlayFileManager;
 import ui.controlView.*;
 import ui.panel.*;

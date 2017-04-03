@@ -1,0 +1,12 @@
+{
+  "equipment": {
+    "_class": "logic.equipments.WeaponSolid",
+    "_object": {
+      "range": 1,
+      "name": "weapon",
+      "type": "Weapon",
+      "enhancedAttribute": "AB",
+      "enhancedValue": 2
+    }
+  }
+}

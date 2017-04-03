@@ -1,6 +1,6 @@
 package ui.scene;
 
-import logic.Equipment;
+import logic.equipments.Equipment;
 import logic.Player;
 import persistence.PlayerFileManager;
 import ui.panel.*;

@@ -1,7 +1,7 @@
 package ui.scene;
 
 import logic.Campaign;
-import logic.Equipment;
+import logic.equipments.Equipment;
 import logic.GameMap;
 import logic.Player;
 import ui.panel.*;

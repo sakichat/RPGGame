@@ -1,6 +1,6 @@
 package ui.panel;
 
-import logic.Equipment;
+import logic.equipments.Equipment;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

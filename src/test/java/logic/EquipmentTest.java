@@ -1,5 +1,7 @@
 package logic;
 
+import logic.equipments.Equipment;
+import logic.equipments.EquipmentFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -19,13 +21,15 @@ public class EquipmentTest {
      */
     @Test
     public void validateWeapon() throws Exception {
-        equipment = new NonWeaponEquipment("", Equipment.WEAPON, Player.ATTRIBUTE_ARMOR_CLASS, 3);
+        EquipmentFactory equipmentFactory = new EquipmentFactory();
+        
+        equipment = equipmentFactory.newEquipment("", Equipment.WEAPON, Player.ATTRIBUTE_ARMOR_CLASS, 3);
         Assert.assertEquals(false, equipment.validate());
 
-        equipment = new NonWeaponEquipment("", Equipment.WEAPON, Player.ABILITY_STR, 6);
+        equipment = equipmentFactory.newEquipment("", Equipment.WEAPON, Player.ABILITY_STR, 6);
         Assert.assertEquals(false, equipment.validate());
 
-        equipment = new NonWeaponEquipment("", Equipment.WEAPON, Player.ATTRIBUTE_DAMAGE_BONUS, 2);
+        equipment = equipmentFactory.newEquipment("", Equipment.WEAPON, Player.ATTRIBUTE_DAMAGE_BONUS, 2);
         Assert.assertEquals(true, equipment.validate());
     }
 
@@ -35,10 +39,12 @@ public class EquipmentTest {
      */
     @Test
     public void validateShield() throws Exception {
-        equipment = new NonWeaponEquipment("", Equipment.SHIELD, Player.ATTRIBUTE_ATTACK_BONUS, 5);
+        EquipmentFactory equipmentFactory = new EquipmentFactory();
+
+        equipment = equipmentFactory.newEquipment("", Equipment.SHIELD, Player.ATTRIBUTE_ATTACK_BONUS, 5);
         Assert.assertEquals(false, equipment.validate());
 
-        equipment = new NonWeaponEquipment("", Equipment.SHIELD, Player.ATTRIBUTE_ARMOR_CLASS, 5);
+        equipment = equipmentFactory.newEquipment("", Equipment.SHIELD, Player.ATTRIBUTE_ARMOR_CLASS, 5);
         Assert.assertEquals(true, equipment.validate());
     }
 
@@ -48,7 +54,9 @@ public class EquipmentTest {
      */
     @Test
     public void validateBoots() throws Exception{
-        equipment = new NonWeaponEquipment("", Equipment.BOOTS, Player.ABILITY_DEX, 1);
+        EquipmentFactory equipmentFactory = new EquipmentFactory();
+
+        equipment = equipmentFactory.newEquipment("", Equipment.BOOTS, Player.ABILITY_DEX, 1);
         Assert.assertEquals(true, equipment.validate());
     }
 }

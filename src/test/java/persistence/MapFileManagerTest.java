@@ -1,6 +1,7 @@
 package persistence;
 
 import logic.*;
+import logic.equipments.Equipment;
 import org.junit.Assert;
 import org.junit.Test;
 

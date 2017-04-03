@@ -1,13 +1,12 @@
-package logic.decorator;
+package logic.equipments;
 
 import com.google.gson.annotations.Expose;
-import logic.Equipment;
 
 /**
  * @author Li ZHEN
  * @version 0.3
  */
-public class Weapon extends DecoratorComponent {
+public class WeaponSolid extends EquipmentSolid implements Weapon{
 
     @Expose
     private int range;
@@ -21,17 +20,17 @@ public class Weapon extends DecoratorComponent {
     }
 
     @Override
-    public String getName() {
+    public String displayName() {
         return "R" + getRange() + "*" + name;
     }
 
     @Override
-    public DecoratorComponent getOrigin() {
+    public Weapon getOrigin() {
         return this;
     }
 
     @Override
-    public String getEnchantments(){
+    public String enhancementsChainText(){
         return "";
     }
 
