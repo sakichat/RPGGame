@@ -6,6 +6,10 @@ package logic.decorator;
  * this class is to add enchantment of burning
  */
 public class BurningDecorator extends WeaponDecorator {
+    /**
+     * this method  is the constructor
+     * @param decoratedWeapon DecoratorComponent
+     */
 
     public BurningDecorator(DecoratorComponent decoratedWeapon) {
         super(decoratedWeapon);
