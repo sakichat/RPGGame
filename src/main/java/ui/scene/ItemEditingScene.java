@@ -36,7 +36,7 @@ public class ItemEditingScene extends Scene {
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
         if(equipment.getType() == null){
-            equipment.setType(Equipment.WEAPON);
+            equipment.setType(Equipment.HELMET);
         }
         if(equipment.getEnhancedAttribute() == null){
             equipment.setEnhancedAttribute(Player.ABILITY_STR);
@@ -104,50 +104,50 @@ public class ItemEditingScene extends Scene {
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(150, 120);
-        button.setText(Equipment.WEAPON);
-        contentView.add(button);
-        JButton weaponButton = button;
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(260, 120);
-        button.setText(Equipment.SHIELD);
-        contentView.add(button);
-        JButton shieldButton = button;
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(370, 120);
-        button.setText(Equipment.ARMOR);
-        contentView.add(button);
-        JButton armorButton = button;
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(480, 120);
         button.setText(Equipment.HELMET);
         contentView.add(button);
         JButton helmetButton = button;
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(590, 120);
+        button.setLocation(260, 120);
+        button.setText(Equipment.ARMOR);
+        contentView.add(button);
+        JButton armorButton = button;
+
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(370, 120);
+        button.setText(Equipment.SHIELD);
+        contentView.add(button);
+        JButton shieldButton = button;
+
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(480, 120);
         button.setText(Equipment.RING);
         contentView.add(button);
         JButton ringButton = button;
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(700, 120);
+        button.setLocation(590, 120);
         button.setText(Equipment.BELT);
         contentView.add(button);
         JButton beltButton = button;
 
         button = new JButton();
         button.setSize(100, 40);
-        button.setLocation(810, 120);
+        button.setLocation(700, 120);
         button.setText(Equipment.BOOTS);
+        contentView.add(button);
         JButton bootsButton = button;
+
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(810, 120);
+        button.setText(Equipment.WEAPON);
+        JButton weaponButton = button;
         contentView.add(button);
 
         label = new JLabel("Enhance On", JLabel.RIGHT);
