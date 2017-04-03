@@ -7,13 +7,10 @@ import logic.Equipment;
  * @author Li ZHEN
  * @version 0.3
  */
-public class Weapon extends Equipment implements DecoratorComponent {
+public class Weapon extends DecoratorComponent {
 
     @Expose
     private int range;
-
-    @Expose
-    private String specialEnchantments;
 
     public int getRange() {
         return range;
@@ -23,12 +20,14 @@ public class Weapon extends Equipment implements DecoratorComponent {
         this.range = range;
     }
 
-    public String getSpecialEnchantments() {
-        return specialEnchantments;
+    @Override
+    public String getName() {
+        return "R" + getRange() + "*" + name;
     }
 
-    public void setSpecialEnchantments(String specialEnchantments) {
-        this.specialEnchantments = specialEnchantments;
+    @Override
+    public DecoratorComponent getOrigin() {
+        return this;
     }
 
     @Override

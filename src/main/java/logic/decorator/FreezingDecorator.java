@@ -9,7 +9,18 @@ public class FreezingDecorator extends WeaponDecorator {
         super(decoratedWeapon);
     }
 
+    @Override
+    public String getName() {
+        return super.getName() + "/Frz";
+    }
+
+    @Override
+    public DecoratorComponent getOrigin() {
+        return decoratedWeapon;
+    }
+
+    @Override
     public String getEnchantments(){
-        return super.getEnchantments() + "-> Freezing ";
+        return super.getEnchantments() + " Freezing ";
     }
 }

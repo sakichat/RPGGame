@@ -20,13 +20,13 @@ public class Equipment {
     public final static String WEAPON = "Weapon";
 
     @Expose
-    private String name;
+    protected String name;
     @Expose
-    private String type;
+    protected String type;
     @Expose
-    private String enhancedAttribute;
+    protected String enhancedAttribute;
     @Expose
-    private int enhancedValue = 0;
+    protected int enhancedValue = 0;
 
     /**
      * this is the constructor to send the name

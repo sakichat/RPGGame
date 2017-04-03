@@ -10,7 +10,17 @@ public class PacifyingDecorator extends WeaponDecorator {
     }
 
     @Override
+    public String getName() {
+        return super.getName() + "/P";
+    }
+
+    @Override
+    public DecoratorComponent getOrigin() {
+        return decoratedWeapon;
+    }
+
+    @Override
     public String getEnchantments(){
-        return super.getEnchantments() + "-> Pacifying ";
+        return super.getEnchantments() + " Pacifying ";
     }
 }

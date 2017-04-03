@@ -10,7 +10,17 @@ public class FrighteningDecorator extends WeaponDecorator {
     }
 
     @Override
+    public String getName() {
+        return super.getName() + "/Frt";
+    }
+
+    @Override
+    public DecoratorComponent getOrigin() {
+        return decoratedWeapon;
+    }
+
+    @Override
     public String getEnchantments(){
-        return super.getEnchantments() + "-> Frightening ";
+        return super.getEnchantments() + " Frightening ";
     }
 }
