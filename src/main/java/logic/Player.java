@@ -129,10 +129,14 @@ public class Player extends Cell{
         diceResults.sort(new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                if (o1 >= o2) {
-                    return o1;
+                if (o1 > o2) {
+                    return -1;
+                }else if(o1 == o2){
+                    return 0;
+                }else if(o1 < o2){
+                    return 1;
                 }
-                return o2;
+                return 0;
             }
         });
 
