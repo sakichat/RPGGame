@@ -27,6 +27,7 @@ public class Play {
     @Expose
     private Point direction;
 
+    @Expose
     private GameMap currentMap;
 
     /**
@@ -139,7 +140,7 @@ public class Play {
      */
     public LinkedList<Player> playerSortList(){
         LinkedList<Player> playerList = currentMap.getPlayers();
-        Map<Player, Integer> initutiveValues = new HashMap<Player, Integer>();
+        Map<Player, Integer> initiativeValues = new HashMap<Player, Integer>();
 
         int sortStandard;
 
@@ -147,13 +148,13 @@ public class Play {
             int diceScore = Dice.rool(20);
             int dexScore = sortingPlayer.getAbilityModifier(sortingPlayer.ABILITY_DEX);
             sortStandard = diceScore + dexScore;
-            initutiveValues.put(sortingPlayer, sortStandard);
+            initiativeValues.put(sortingPlayer, sortStandard);
         }
 
         Collections.sort(playerList, new Comparator<Player>() {
                     @Override
                     public int compare(Player o1, Player o2) {
-                        return initutiveValues.get(o2).compareTo(initutiveValues.get(o1));
+                        return initiativeValues.get(o2).compareTo(initiativeValues.get(o1));
                     }
                 }
         );
