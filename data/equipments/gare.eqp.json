@@ -1,12 +1,17 @@
 {
   "equipment": {
-    "_class": "logic.equipments.WeaponSolid",
+    "_class": "logic.equipments.decorator.FreezingDecorator",
     "_object": {
-      "range": 0,
-      "name": "Gare",
-      "type": "Weapon",
-      "enhancedAttribute": "DB",
-      "enhancedValue": 5
+      "decoratedWeapon": {
+        "_class": "logic.equipments.WeaponSolid",
+        "_object": {
+          "range": 2,
+          "name": "Gare",
+          "type": "Weapon",
+          "enhancedAttribute": "DB",
+          "enhancedValue": 5
+        }
+      }
     }
   }
 }
