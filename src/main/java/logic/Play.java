@@ -30,6 +30,9 @@ public class Play {
     @Expose
     private GameMap currentMap;
 
+    @Expose
+    private LinkedList<Player> playerList;
+
     /**
      * Getter for name.
      * @return String
