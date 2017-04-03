@@ -25,11 +25,10 @@ public class Play {
     @Expose
     private int currentMapIndex;
 
-//    @Expose
-    private GameMap currentMap;
-
     @Expose
     private Point direction;
+
+    private GameMap currentMap;
 
     /**
      * Getter for name.
