@@ -44,34 +44,4 @@ public class FullSerialization implements JsonSerializer<Object>, JsonDeserializ
         return gson.fromJson(object, aClass);
     }
 
-    public static void main(String[] args) {
-
-        Equipment equipment = new EquipmentSolid("name", "WEAPON", "STR", 1);
-
-        EquipmentWrapper equipmentWrapper = new EquipmentWrapper(equipment);
-
-        String s = FileManager.defaultGson().toJson(equipmentWrapper);
-        System.out.println(s);
-
-
-//        Point point = new Point(1, 2);
-//
-//        Gson gson = FileManager.defaultGson();
-//
-//        String s = gson.toJson(point);
-//
-//        System.out.println(s);
-//
-//        Point point1 = gson.fromJson(s, Point.class);
-
-//        GameMap gameMap = new GameMap();
-//        gameMap.setName("a");
-//        gameMap.setWidth(2);
-//        gameMap.setHeight(2);
-//        gameMap.addCell(new Obstacle(), new Point(0, 0));
-//
-//        String s = FileManager.defaultGson().toJson(gameMap);
-//        System.out.println(s);
-
-    }
 }
