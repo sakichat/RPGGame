@@ -71,7 +71,7 @@ public class FileManager {
     public static Gson defaultGson(){
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeAdapter(Cell.class, new CellSerialization())
+                .registerTypeHierarchyAdapter(Object.class, new FullSerialization())
                 .setPrettyPrinting()
                 .create();
         return gson;
