@@ -136,7 +136,7 @@ public class Play {
     }
 
     public void turn(){
-        
+
     }
 
     /**
@@ -151,8 +151,19 @@ public class Play {
         }
     }
 
+    /**
+     * This is the method to limit player's movement.
+     * @param originalPoint Point
+     */
     public void movementLimit(Point originalPoint){
+        Point currentLocation = player.getLocation();
+        int differenceX = Math.abs(originalPoint.getX() - currentLocation.getX());
+        int differenceY = Math.abs(originalPoint.getY() - currentLocation.getY());
+        int difference = differenceX + differenceY;
 
+        if (difference <= 3) {
+            move();
+        }
     }
 
     /**
