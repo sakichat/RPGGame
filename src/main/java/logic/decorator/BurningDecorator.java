@@ -3,6 +3,7 @@ package logic.decorator;
 /**
  * @author Li ZHEN
  * @version 0.3
+ * this class is to add enchantment of burning
  */
 public class BurningDecorator extends WeaponDecorator {
 
