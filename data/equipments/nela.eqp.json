@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipments.EquipmentSolid",
+    "_object": {
+      "name": "Nela",
+      "type": "Belt",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 3
+    }
+  }
+}

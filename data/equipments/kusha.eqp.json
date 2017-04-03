@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipments.EquipmentSolid",
+    "_object": {
+      "name": "Kusha",
+      "type": "Shield",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 2
+    }
+  }
+}

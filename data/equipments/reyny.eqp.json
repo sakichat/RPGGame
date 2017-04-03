@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipments.EquipmentSolid",
+    "_object": {
+      "name": "Reyny",
+      "type": "Boots",
+      "enhancedAttribute": "DEX",
+      "enhancedValue": 5
+    }
+  }
+}
