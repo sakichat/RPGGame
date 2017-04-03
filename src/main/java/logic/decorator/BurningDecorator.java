@@ -27,13 +27,18 @@ public class BurningDecorator extends WeaponDecorator {
 
     /**
      * this method is to get origin
-     * @return DecoratorComponent 
+     * @return DecoratorComponent
      */
 
     @Override
     public DecoratorComponent getOrigin() {
         return decoratedWeapon;
     }
+
+    /**
+     * this method is to get enchantment which is added burning
+     * @return String enchantment
+     */
 
     @Override
     public String getEnchantments(){
