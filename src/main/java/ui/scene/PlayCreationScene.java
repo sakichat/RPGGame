@@ -42,11 +42,6 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
     JLabel playerNameLabel;
     JLabel campaignNameLabel;
     JLabel playerModeLabel;
-    JButton playerSelectButton;
-    JButton humanPlayerModeButton;
-    JButton computerPlayerModeButton;
-    JButton campaignSelectButton;
-    JButton createButton;
 
     public final static String HUMAN_PLAYER_MODE        = "Human Player";
     public final static String COMPUTER_PLAYER_MODE     = "Computer Player";
@@ -87,7 +82,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         button.setSize(120, 40);
         button.setLocation(320, 80);
         contentView.add(button);
-        playerSelectButton = button;
+        JButton playerSelectButton = button;
 
         label = new JLabel("Player Mode", JLabel.RIGHT);
         label.setSize(120, 40);
@@ -106,13 +101,13 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         button.setSize(160, 40);
         button.setLocation(150, 190);
         contentView.add(button);
-        humanPlayerModeButton = button;
+        JButton humanPlayerModeButton = button;
 
         button = new JButton("Computer Player");
         button.setSize(160, 40);
         button.setLocation(320, 190);
         contentView.add(button);
-        computerPlayerModeButton = button;
+        JButton computerPlayerModeButton = button;
 
         label = new JLabel("Campaign", JLabel.RIGHT);
         label.setSize(120, 40);
@@ -131,13 +126,13 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         button.setSize(120, 40);
         button.setLocation(320, 250);
         contentView.add(button);
-        campaignSelectButton = button;
+        JButton campaignSelectButton = button;
 
         button = new JButton("Create");
         button.setSize(120, 40);
         button.setLocation(180, 310);
         contentView.add(button);
-        createButton = button;
+        JButton createButton = button;
 
         repaint();
 

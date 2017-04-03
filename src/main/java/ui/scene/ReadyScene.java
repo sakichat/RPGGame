@@ -31,13 +31,6 @@ public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
     JButton button;
 
     /**
-     * This parameter is for the label of playName.
-     */
-    JLabel playNameLabel;
-    JButton newGameButton;
-    JButton loadGameButton;
-
-    /**
      * This method creates components on this scene
      * And adds events on buttons
      */
@@ -47,19 +40,18 @@ public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
         label.setSize(160, 40);
         label.setLocation(20, 20);
         contentView.add(label);
-        playNameLabel = label;
 
         button = new JButton("New");
         button.setSize(160, 40);
         button.setLocation(20, 70);
         contentView.add(button);
-        newGameButton = button;
+        JButton newGameButton = button;
 
         button = new JButton("Load");
         button.setSize(160, 40);
         button.setLocation(20, 130);
         contentView.add(button);
-        loadGameButton = button;
+        JButton loadGameButton = button;
 
         backButton.addActionListener(new ActionListener() {
             @Override
