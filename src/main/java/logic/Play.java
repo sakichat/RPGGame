@@ -135,7 +135,7 @@ public class Play {
 
     /**
      * This is the method for sort the players in play list
-     * @return playerList LinkedList
+     * @return LinkedList
      */
     public LinkedList<Player> playerSortList(){
         LinkedList<Player> playerList = currentMap.getPlayers();
