@@ -1,6 +1,7 @@
 package logic;
 
 import com.google.gson.annotations.Expose;
+import logic.decorator.Weapon;
 
 import java.util.*;
 
@@ -743,6 +744,13 @@ public class Player extends Cell{
      * This method gets attack range for weapons.
      */
     public int getAttackRange() {
+
+        Equipment equipment = equipments.get(Equipment.WEAPON);
+
+        if (equipment != null) {
+            return ((Weapon)equipment).getRange();
+        }
+
         return 0;
     }
 
