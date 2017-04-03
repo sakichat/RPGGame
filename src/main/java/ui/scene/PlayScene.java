@@ -160,7 +160,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         interactButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Cell targetCell = play.getTartget();
+                Cell targetCell = play.getTarget();
                 interactWith(targetCell);
             }
         });
@@ -386,7 +386,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
 
         play.getPlayer().dropInventories(equipment);
-        Player targetPlayer = (Player) play.getTartget();
+        Player targetPlayer = (Player) play.getTarget();
         Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
         play.getPlayer().pickUpEquipment(exchangeEquipmentRandom);
 

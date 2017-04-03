@@ -251,7 +251,7 @@ public class Play {
      * This is the method for get target cell in direction
      * @return Cell
      */
-    public Cell getTartget(){
+    public Cell getTarget(){
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
         Cell cell = currentMap.getCell(targetLocation);
@@ -276,7 +276,7 @@ public class Play {
      */
     public void refreshPlayer( ) {
 
-        Player targetPlayer = (Player)getTartget();
+        Player targetPlayer = (Player) getTarget();
 
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
