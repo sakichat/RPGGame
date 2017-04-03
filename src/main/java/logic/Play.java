@@ -3,10 +3,7 @@ package logic;
 import com.google.gson.annotations.Expose;
 import persistence.MapFileManager;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Qi Xia
@@ -136,23 +133,32 @@ public class Play {
         return false;
     }
 
-    public LinkedList<Player> playerList(){
+    public LinkedList<Player> playerSortList(){
         LinkedList<Player> playerList = currentMap.getPlayers();
-        Map<String, Integer> playerSortedList = new HashMap<String, Integer>();
+        Map<Player, Integer> playerSortedList = new HashMap<Player, Integer>();
 
         int sortStandard;
         int diceScore = Dice.rool(20);
-        for (Player playerSorting : playerList) {
-            int dexScore = playerSorting.getAbilityModifier(playerSorting.ABILITY_DEX);
+
+        for (Player sortingPlayer : playerList) {
+            int dexScore = sortingPlayer.getAbilityModifier(sortingPlayer.ABILITY_DEX);
             sortStandard = diceScore + dexScore;
-            playerSortedList.put(playerSorting.getName(), sortStandard);
+            playerSortedList.put(sortingPlayer, sortStandard);
         }
 
+        List<Map.Entry<Player, Integer>> sortingList
+                = new ArrayList<Map.Entry<Player, Integer>>(playerSortedList.entrySet());
+        Collections.sort(sortingList, new Comparator<Map.Entry<Player,Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
 
+        playerList.clear();
+        for (Map.Entry<Player, Integer> sortedPlayer : sortingList) {
 
-
-
-
+        }
         return playerList;
     }
 
