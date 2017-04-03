@@ -197,7 +197,7 @@ public class GameMap {
      * this method is to get all players on the map
      * @return List<Player>
      */
-    public List<Player> getPlayers(){
+    public LinkedList<Player> getPlayers(){
         LinkedList<Player> players = new LinkedList<>();
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {

@@ -3,8 +3,10 @@ package logic;
 import com.google.gson.annotations.Expose;
 import persistence.MapFileManager;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Qi Xia
@@ -134,14 +136,22 @@ public class Play {
         return false;
     }
 
-    public List<Player> playerList(){
-        LinkedList<Player> playerList = new LinkedList<Player>();
+    public LinkedList<Player> playerList(){
+        LinkedList<Player> playerList = currentMap.getPlayers();
+        Map<String, Integer> playerSortedList = new HashMap<String, Integer>();
+
         int sortStandard;
         int diceScore = Dice.rool(20);
-        int dexScore = player.getAbilityModifier(Player.ABILITY_DEX);
-        sortStandard = diceScore + dexScore;
+        for (Player playerSorting : playerList) {
+            int dexScore = playerSorting.getAbilityModifier(playerSorting.ABILITY_DEX);
+            sortStandard = diceScore + dexScore;
+            playerSortedList.put(playerSorting.getName(), sortStandard);
+        }
 
-        
+
+
+
+
 
         return playerList;
     }
