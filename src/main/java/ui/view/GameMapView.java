@@ -156,6 +156,9 @@ public class GameMapView extends View {
         refreshContent();
     }
 
+    /**
+     * This method creates a layer for showing attack range of players.
+     */
     private void initAttackrangeLayer() {
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_ATTACKRANGE);
@@ -291,6 +294,14 @@ public class GameMapView extends View {
         GameMapLayerView highlightLayerView = layers.get(_LAYER_HIGHLIGHT);
         highlightLayerView.removeAllCells();
         this.initHighlightLayer();
+
+        repaint();
+    }
+
+    public void refreshAttackrange(){
+        GameMapLayerView attackrangeLayerView = layers.get(_LAYER_ATTACKRANGE);
+        attackrangeLayerView.removeAllCells();
+        this.initAttackrangeLayer();
 
         repaint();
     }

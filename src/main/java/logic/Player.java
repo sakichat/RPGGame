@@ -739,4 +739,11 @@ public class Player extends Cell{
         return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
     }
 
+    /**
+     * This method gets attack range for weapons.
+     */
+    public int getAttackRange() {
+        return 0;
+    }
+
 }
