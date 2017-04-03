@@ -26,14 +26,9 @@ public class MapValidatorTest {
         GameMap gameMap = new GameMap();
         gameMap.setWidth(4);
         gameMap.setHeight(6);
-        Exit exit = new Exit();
-        Entrance entrance = new Entrance();
 
-        Point point1 = new Point(1, 1);
-        Point point2 = new Point(3, 3);
-
-        gameMap.addCell(exit, point1);
-        gameMap.addCell(entrance, point2);
+        gameMap.addCell(new Exit()    , new Point(1, 1));
+        gameMap.addCell(new Entrance(), new Point(3, 3));
 
         gameMapTest = gameMap;
     }
@@ -44,10 +39,11 @@ public class MapValidatorTest {
      */
     @Test
     public void validate1() throws Exception{
-        Point point = new Point(3, 3);
-        gameMapTest.removeCell(point);
+        gameMapTest.removeCell(new Point(3, 3));
 
-        Assert.assertEquals(GameMap.VALIDATION_ERROR_NO_ENTRANCE, gameMapTest.validate());
+        String noEntrance = gameMapTest.validate();
+
+        Assert.assertTrue(GameMap.VALIDATION_ERROR_NO_ENTRANCE == noEntrance);
     }
 
     /**
@@ -56,11 +52,11 @@ public class MapValidatorTest {
      */
     @Test
     public void validate2() throws Exception{
-        Point point = new Point(0, 0);
-        Entrance entrance = new Entrance();
-        gameMapTest.addCell(entrance, point);
+        gameMapTest.addCell(new Entrance(), new Point(0, 0));
 
-        Assert.assertEquals(GameMap.VALIDATION_ERROR_TOO_MANY_ENTRANCES, gameMapTest.validate());
+        String multiEntrance = gameMapTest.validate();
+
+        Assert.assertTrue(GameMap.VALIDATION_ERROR_TOO_MANY_ENTRANCES == multiEntrance);
     }
 
     /**
@@ -69,23 +65,24 @@ public class MapValidatorTest {
      */
     @Test
     public void validate3() throws Exception{
-        Point point = new Point(1, 1);
-        gameMapTest.removeCell(point);
+        gameMapTest.removeCell(new Point(1, 1));
 
-        Assert.assertEquals(GameMap.VALIDATION_ERROR_NO_EXIT, gameMapTest.validate());
+        String noExit = gameMapTest.validate();
+
+        Assert.assertTrue(GameMap.VALIDATION_ERROR_NO_EXIT == noExit);
     }
 
     /**
-     * This case tests if the map has too much exits.
+     * This case tests if the map has more than one exit.
      * @throws Exception
      */
     @Test
     public void validate4() throws Exception{
-        Point point = new Point(0, 1);
-        Exit exit = new Exit();
-        gameMapTest.addCell(exit, point);
+        gameMapTest.addCell(new Exit(), new Point(0, 1));
 
-        Assert.assertEquals(GameMap.VALIDATION_ERROR_TOO_MANY_EXITS, gameMapTest.validate());
+        String multiExit = gameMapTest.validate();
+
+        Assert.assertTrue(GameMap.VALIDATION_ERROR_TOO_MANY_EXITS == multiExit);
     }
 
     /**
@@ -94,15 +91,12 @@ public class MapValidatorTest {
      */
     @Test
     public void validate5() throws Exception{
-        Obstacle obstacle1 = new Obstacle();
-        Obstacle obstacle2 = new Obstacle();
-        Point point1 = new Point(0, 0);
-        Point point2 = new Point(2, 2);
+        gameMapTest.addCell(new Obstacle(), new Point(0, 0));
+        gameMapTest.addCell(new Obstacle(), new Point(2, 2));
 
-        gameMapTest.addCell(obstacle1, point1);
-        gameMapTest.addCell(obstacle2, point2);
+        String reachable = gameMapTest.validate();
 
-        Assert.assertEquals(GameMap.VALIDATION_SUCCESS, gameMapTest.validate());
+        Assert.assertTrue(GameMap.VALIDATION_SUCCESS == gameMapTest.validate());
     }
 
     /**
@@ -118,9 +112,9 @@ public class MapValidatorTest {
         Point point2 = new Point(3, 2);
         Point point3 = new Point(3, 4);
 
-        gameMapTest.addCell(obstacle1, point1);
-        gameMapTest.addCell(obstacle2, point2);
-        gameMapTest.addCell(obstacle3, point3);
+        gameMapTest.addCell(new Obstacle(), new Point(2, 3));
+        gameMapTest.addCell(new Obstacle(), new Point(3, 2));
+        gameMapTest.addCell(new Obstacle(), new Point(3, 4));
 
         Assert.assertEquals(GameMap.VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE, gameMapTest.validate());
     }
@@ -131,21 +125,8 @@ public class MapValidatorTest {
      */
     @Test
     public void validate7() throws Exception {
-        Player player = new Player();
-        gameMapTest.addCell(player, new Point(0, 0));
+        gameMapTest.addCell(new Player(), new Point(0, 0));
 
         Assert.assertEquals(GameMap.VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED, gameMapTest.validate());
-    }
-
-    @Test
-    public void addCell() throws Exception {
-
-
-    }
-
-    @Test
-    public void removeCell() throws Exception {
-        
-
     }
 }
