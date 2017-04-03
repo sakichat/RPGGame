@@ -335,6 +335,13 @@ public class ItemEditingScene extends Scene {
         JButton pacifyingButton = button;
         weaponSubPanel.add(button);
 
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(790, 100);
+        button.setText("RemoveAll");
+        JButton removeAllButton = button;
+        weaponSubPanel.add(button);
+
         /*
          * add Listener
          */
@@ -557,6 +564,13 @@ public class ItemEditingScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 equipment = new PacifyingDecorator((DecoratorComponent) equipment);
                 dataToView();
+            }
+        });
+
+        removeAllButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
 
