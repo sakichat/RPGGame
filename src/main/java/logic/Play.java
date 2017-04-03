@@ -133,35 +133,33 @@ public class Play {
         return false;
     }
 
+    /**
+     * This is the method for sort the players in play list
+     * @return playerList LinkedList
+     */
     public LinkedList<Player> playerSortList(){
         LinkedList<Player> playerList = currentMap.getPlayers();
-        Map<Player, Integer> playerSortedList = new HashMap<Player, Integer>();
+        Map<Player, Integer> initutiveValues = new HashMap<Player, Integer>();
 
         int sortStandard;
-        int diceScore = Dice.rool(20);
 
         for (Player sortingPlayer : playerList) {
+            int diceScore = Dice.rool(20);
             int dexScore = sortingPlayer.getAbilityModifier(sortingPlayer.ABILITY_DEX);
             sortStandard = diceScore + dexScore;
-            playerSortedList.put(sortingPlayer, sortStandard);
+            initutiveValues.put(sortingPlayer, sortStandard);
         }
 
-        List<Map.Entry<Player, Integer>> sortingList
-                = new ArrayList<Map.Entry<Player, Integer>>(playerSortedList.entrySet());
-        Collections.sort(sortingList, new Comparator<Map.Entry<Player,Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue().compareTo(o1.getValue());
-            }
-        });
+        Collections.sort(playerList, new Comparator<Player>() {
+                    @Override
+                    public int compare(Player o1, Player o2) {
+                        return initutiveValues.get(o2).compareTo(initutiveValues.get(o1));
+                    }
+                }
+        );
 
-        playerList.clear();
-        for (Map.Entry<Player, Integer> sortedPlayer : sortingList) {
-
-        }
         return playerList;
     }
-
 
     /**
      * This is the method to make player move.
