@@ -1,14 +1,12 @@
 package ui.view;
 
-import logic.Cell;
-import logic.GameMap;
-import logic.Play;
+import logic.*;
 import logic.Point;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.management.PlatformLoggingMXBean;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -72,6 +70,8 @@ public class GameMapView extends View {
         this.gameMap = gameMap;
         setup();
     }
+
+    private Player player;
 
     /**
      * This method is to set the size of this GameMapView, and to call initLayers() method.
@@ -161,8 +161,7 @@ public class GameMapView extends View {
      */
     private void initAttackrangeLayer() {
         newLayer();
-        GameMapLayerView layerView = layers.get(_LAYER_ATTACKRANGE);
-
+        refreshAttackrange();
     }
 
     /**
@@ -298,10 +297,34 @@ public class GameMapView extends View {
         repaint();
     }
 
+    /**
+     * This method regreshes AttackrangeLayer.
+     */
     public void refreshAttackrange(){
         GameMapLayerView attackrangeLayerView = layers.get(_LAYER_ATTACKRANGE);
         attackrangeLayerView.removeAllCells();
-        this.initAttackrangeLayer();
+
+        List<Player> players = gameMap.getPlayers();
+        LinkedList<Point> directions = Point.directions();
+        HashMap<String, String> playerParties = new HashMap<>();
+
+        playerParties.put(Player.PLAYER_PARTY_PLAYER, "player");
+        playerParties.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
+        playerParties.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
+
+        for (Player player : players) {
+            ImageView imageView = new ImageView();
+            imageView.setName("attack_range_" + playerParties.get(player.getPlayerParty()) + ".png");
+
+            for (Point direction : directions) {
+                for (int i = 0; i < player.getAttackRange(); i++) {
+                    Point point = player.getLocation();
+                    Point rangePoint = point.add(direction);
+
+                    attackrangeLayerView.addCell(imageView, rangePoint);
+                }
+            }
+        }
 
         repaint();
     }
