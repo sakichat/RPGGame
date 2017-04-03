@@ -35,6 +35,10 @@ public class Dice {
      * @return int, the final result.
      */
     public static int rool(int times, int face, int modifier) {
-        return times * rool(face) + modifier;
+        int value = 0;
+        for (int i = 0; i < times; i++) {
+            value += rool(face);
+        }
+        return value + modifier;
     }
 }
