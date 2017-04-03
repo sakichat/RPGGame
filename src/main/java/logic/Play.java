@@ -134,9 +134,18 @@ public class Play {
         return false;
     }
 
-    public void turn(){
+    public List<Player> playerList(){
+        LinkedList<Player> playerList = new LinkedList<Player>();
+        int sortStandard;
+        int diceScore = Dice.rool(20);
+        int dexScore = player.getAbilityModifier(Player.ABILITY_DEX);
+        sortStandard = diceScore + dexScore;
 
+        
+
+        return playerList;
     }
+
 
     /**
      * This is the method to make player move.
