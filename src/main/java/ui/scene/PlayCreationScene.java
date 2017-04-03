@@ -130,7 +130,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
 
         button = new JButton("Create");
         button.setSize(120, 40);
-        button.setLocation(180, 310);
+        button.setLocation(150, 310);
         contentView.add(button);
         JButton createButton = button;
 

@@ -105,6 +105,12 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         downDirectionButton = button;
         contentView.add(button);
 
+        button = new JButton("Finish");
+        button.setSize(140, 40);
+        button.setLocation(650, 210);
+        contentView.add(button);
+        JButton finishButton = button;
+
         repaint();
 
         backButton.addActionListener(new ActionListener() {
