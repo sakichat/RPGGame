@@ -754,4 +754,13 @@ public class Player extends Cell{
         return 0;
     }
 
+    private int remainStep;
+
+    public int getRemainStep() {
+        return remainStep;
+    }
+
+    public void setRemainStep(int remainStep) {
+        this.remainStep = remainStep;
+    }
 }

@@ -167,24 +167,12 @@ public class Play {
     public void move(){
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
-
-        if (currentMap.canPlace(targetLocation)){
-            currentMap.moveCell(location, targetLocation);
-        }
-    }
-
-    /**
-     * This is the method to limit player's movement.
-     * @param originalPoint Point
-     */
-    public void movementLimit(Point originalPoint){
-        Point currentLocation = player.getLocation();
-        int differenceX = Math.abs(originalPoint.getX() - currentLocation.getX());
-        int differenceY = Math.abs(originalPoint.getY() - currentLocation.getY());
+        int differenceX = Math.abs(location.getX() - targetLocation.getX());
+        int differenceY = Math.abs(location.getY() - targetLocation.getY());
         int difference = differenceX + differenceY;
 
-        if (difference <= 3) {
-            move();
+        if (difference <= 1 && currentMap.canPlace(targetLocation)){
+            currentMap.moveCell(location, targetLocation);
         }
     }
 
