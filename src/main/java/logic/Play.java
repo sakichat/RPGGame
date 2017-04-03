@@ -141,8 +141,8 @@ public class Play {
      * This is the method for sort the players in play list
      * @return LinkedList
      */
-    public LinkedList<Player> playerSortList(){
-        LinkedList<Player> playerList = currentMap.getPlayers();
+    public void playerSortList(){
+        playerList = currentMap.getPlayers();
         Map<Player, Integer> initiativeValues = new HashMap<Player, Integer>();
 
         int sortStandard;
@@ -161,8 +161,6 @@ public class Play {
                     }
                 }
         );
-
-        return playerList;
     }
 
     /**
