@@ -167,11 +167,12 @@ public class Play {
     public void move(){
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
-        int differenceX = Math.abs(location.getX() - targetLocation.getX());
-        int differenceY = Math.abs(location.getY() - targetLocation.getY());
-        int difference = differenceX + differenceY;
+//        int differenceX = Math.abs(location.getX() - targetLocation.getX());
+//        int differenceY = Math.abs(location.getY() - targetLocation.getY());
+//        int difference = differenceX + differenceY;
+//        difference <= 1 &&
 
-        if (difference <= 1 && currentMap.canPlace(targetLocation)){
+        if ( currentMap.canPlace(targetLocation)){
             currentMap.moveCell(location, targetLocation);
         }
     }
