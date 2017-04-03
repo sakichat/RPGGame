@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.NonWeaponEquipment",
+    "_object": {
+      "name": "SSSSSSSSSSSS",
+      "type": "Shield",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 1
+    }
+  }
+}

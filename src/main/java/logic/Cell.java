@@ -10,7 +10,7 @@ import java.util.Observable;
  *
  * this is the cell class
  */
-public abstract class Cell extends Observable{
+public class Cell extends Observable{
 
     /**
      * this is the constructor

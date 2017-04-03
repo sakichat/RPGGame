@@ -1,0 +1,29 @@
+{
+  "abilityScores": {
+    "STR": 24,
+    "WIS": 12,
+    "CON": 24,
+    "DEX": 12,
+    "CHA": 12,
+    "INT": 12
+  },
+  "backpack": [
+    {
+      "_class": "logic.NonWeaponEquipment",
+      "_object": {
+        "name": "SSSSSSSSSSSS",
+        "type": "Shield",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 1
+      }
+    }
+  ],
+  "equipments": {},
+  "multipleAttacks": {},
+  "level": 1,
+  "name": "new player",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 0
+}

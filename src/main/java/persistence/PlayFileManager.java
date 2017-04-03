@@ -43,7 +43,7 @@ public class PlayFileManager {
     public static Play read(String name){
         File file = PlayFileManager.path(name);
         String content = FileManager.fileToString(file);
-        Play play = new Gson().fromJson(content, Play.class);
+        Play play = FileManager.defaultGson().fromJson(content, Play.class);
         return play;
     }
 
@@ -54,11 +54,7 @@ public class PlayFileManager {
     public static void save(Play play){
         String name = play.getName();
         File file = path(name);
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .setPrettyPrinting()
-                .create();
-        String content = gson.toJson(play);
+        String content = FileManager.defaultGson().toJson(play);
         FileManager.stringToFile(content, file);
     }
 

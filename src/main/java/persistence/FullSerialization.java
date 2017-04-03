@@ -1,22 +1,31 @@
 package persistence;
 
 import com.google.gson.*;
+import com.google.gson.annotations.Expose;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
 import logic.*;
 
+import java.io.IOException;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.Type;
+import java.util.Map;
 
-/**
- * Created by Zhaozhe on 02/04/2017.
- */
+
 public class FullSerialization implements JsonSerializer<Object>, JsonDeserializer<Object> {
 
     @Override
-    public JsonElement serialize(Object o, Type type, JsonSerializationContext jsonSerializationContext) {
-        JsonElement element = FileManager.defaultGson().toJsonTree(o);
+    public JsonElement serialize(Object object, Type type, JsonSerializationContext jsonSerializationContext) {
+        System.out.println(object.getClass().getName() + "  :  " + type.getTypeName());
+
+        JsonElement element = FileManager.defaultGson().toJsonTree(object);
 
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("_class", o.getClass().getName());
+        jsonObject.addProperty("_class", object.getClass().getName());
         jsonObject.add("_object", element);
+
         return jsonObject;
     }
 
@@ -42,19 +51,33 @@ public class FullSerialization implements JsonSerializer<Object>, JsonDeserializ
     }
 
     public static void main(String[] args) {
-        Point point = new Point(1, 2);
 
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeHierarchyAdapter(Object.class, new FullSerialization())
-                .setPrettyPrinting()
-                .create();
+        Equipment equipment = new NonWeaponEquipment("name", "WEAPON", "STR", 1);
 
-        String s = gson.toJson(point);
+        EquipmentWrapper equipmentWrapper = new EquipmentWrapper(equipment);
+
+        String s = FileManager.defaultGson().toJson(equipmentWrapper);
+        System.out.println(s);
 
 
-        Point point1 = gson.fromJson(s, Point.class);
+//        Point point = new Point(1, 2);
+//
+//        Gson gson = FileManager.defaultGson();
+//
+//        String s = gson.toJson(point);
+//
+//        System.out.println(s);
+//
+//        Point point1 = gson.fromJson(s, Point.class);
 
+//        GameMap gameMap = new GameMap();
+//        gameMap.setName("a");
+//        gameMap.setWidth(2);
+//        gameMap.setHeight(2);
+//        gameMap.addCell(new Obstacle(), new Point(0, 0));
+//
+//        String s = FileManager.defaultGson().toJson(gameMap);
+//        System.out.println(s);
 
     }
 }

@@ -3,6 +3,8 @@ package persistence;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import logic.Cell;
+import logic.Equipment;
+import logic.decorator.WeaponDecorator;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -71,7 +73,9 @@ public class FileManager {
     public static Gson defaultGson(){
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeHierarchyAdapter(Object.class, new FullSerialization())
+                .registerTypeAdapter(Cell.class, new FullSerialization())
+                .registerTypeAdapter(Equipment.class, new FullSerialization())
+                .registerTypeAdapter(WeaponDecorator.class, new FullSerialization())
                 .setPrettyPrinting()
                 .create();
         return gson;

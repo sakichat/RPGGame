@@ -9,7 +9,7 @@ import logic.decorator.Weapon;
  * @version 0.1
  */
 
-public class Equipment {
+public abstract class Equipment {
 
     public final static String HELMET = "Helmet";
     public final static String ARMOR = "Armor";

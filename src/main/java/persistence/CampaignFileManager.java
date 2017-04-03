@@ -44,7 +44,7 @@ public class CampaignFileManager {
     public static Campaign read(String name){
         File file = CampaignFileManager.path(name);
         String content = FileManager.fileToString(file);
-        Campaign campaign = new Gson().fromJson(content,Campaign.class);
+        Campaign campaign = FileManager.defaultGson().fromJson(content,Campaign.class);
         return campaign;
 
     }
@@ -57,11 +57,7 @@ public class CampaignFileManager {
     public static void save(Campaign campaign){
         String name = campaign.getName();
         File file = path(name);
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .setPrettyPrinting()
-                .create();
-        String content = gson.toJson(campaign);
+        String content = FileManager.defaultGson().toJson(campaign);
         FileManager.stringToFile(content,file);
 
     }

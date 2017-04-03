@@ -42,21 +42,21 @@ public class PlayerTest {
         player = new Player();
         player.generateAbilities();
 
-        equipmentArmorAC1   = new Equipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,1);
-        equipmentArmorAC3   = new Equipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,3);
-        equipmentArmorAC5   = new Equipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,5);
-        equipmentHelmetInt3 = new Equipment("A", Equipment.HELMET,Player.ABILITY_INT,3);
-        equipmentHelmetWis5 = new Equipment("A", Equipment.HELMET,Player.ABILITY_WIS,5);
-        equipmentHelmetAC2  = new Equipment("A", Equipment.HELMET,Player.ATTRIBUTE_ARMOR_CLASS,2);
-        equipmentShieldAC3  = new Equipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,3);
-        equipmentShieldAC4  = new Equipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,4);
-        equipmentShieldAC5  = new Equipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,5);
-        equipmentBeltCon3   = new Equipment("A", Equipment.BELT,  Player.ABILITY_CON,3);
+        equipmentArmorAC1   = new NonWeaponEquipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,1);
+        equipmentArmorAC3   = new NonWeaponEquipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,3);
+        equipmentArmorAC5   = new NonWeaponEquipment("A", Equipment.ARMOR, Player.ATTRIBUTE_ARMOR_CLASS,5);
+        equipmentHelmetInt3 = new NonWeaponEquipment("A", Equipment.HELMET,Player.ABILITY_INT,3);
+        equipmentHelmetWis5 = new NonWeaponEquipment("A", Equipment.HELMET,Player.ABILITY_WIS,5);
+        equipmentHelmetAC2  = new NonWeaponEquipment("A", Equipment.HELMET,Player.ATTRIBUTE_ARMOR_CLASS,2);
+        equipmentShieldAC3  = new NonWeaponEquipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,3);
+        equipmentShieldAC4  = new NonWeaponEquipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,4);
+        equipmentShieldAC5  = new NonWeaponEquipment("A", Equipment.SHIELD,Player.ATTRIBUTE_ARMOR_CLASS,5);
+        equipmentBeltCon3   = new NonWeaponEquipment("A", Equipment.BELT,  Player.ABILITY_CON,3);
         //Items below are pre-defined items.
-        equipmentBeltStr4   = new Equipment("A", Equipment.BELT,  Player.ABILITY_STR,4);
-        equipmentBootsAC3   = new Equipment("A", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
-        equipmentRingCon3   = new Equipment("A", Equipment.RING,  Player.ABILITY_CON, 3);
-        equipmentWeaponAB5  = new Equipment("A", Equipment.WEAPON,Player.ATTRIBUTE_ATTACK_BONUS, 5);
+        equipmentBeltStr4   = new NonWeaponEquipment("A", Equipment.BELT,  Player.ABILITY_STR,4);
+        equipmentBootsAC3   = new NonWeaponEquipment("A", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
+        equipmentRingCon3   = new NonWeaponEquipment("A", Equipment.RING,  Player.ABILITY_CON, 3);
+        equipmentWeaponAB5  = new NonWeaponEquipment("A", Equipment.WEAPON,Player.ATTRIBUTE_ATTACK_BONUS, 5);
 
         player.pickUpEquipment(equipmentArmorAC1);
         player.pickUpEquipment(equipmentArmorAC3);
