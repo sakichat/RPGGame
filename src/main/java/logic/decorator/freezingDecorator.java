@@ -5,8 +5,8 @@ package logic.decorator;
  */
 public class FreezingDecorator extends WeaponDecorator {
 
-    public FreezingDecorator(WeaponDecorator weaponDecorator) {
-        super(weaponDecorator);
+    public FreezingDecorator(DecoratorComponent decoratedWeapon) {
+        super(decoratedWeapon);
     }
 
     public String getEnchantments(){

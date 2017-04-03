@@ -2,7 +2,9 @@ package ui.scene;
 
 import logic.Equipment;
 import logic.Player;
+import logic.decorator.*;
 import persistence.EquipmentFileManager;
+import ui.view.View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +18,9 @@ import java.awt.event.ActionListener;
  * This scene is for editing the equipments.
  */
 public class ItemEditingScene extends Scene {
+
+    private DecoratorComponent decoratedWeapon;
+
     private Equipment equipment;
 
     /**
@@ -48,27 +53,9 @@ public class ItemEditingScene extends Scene {
     private JLabel enhanceOnLabel;
     private TextField valueTextField;
 
-    private JLabel validateResultLabel;
-
-    private JButton weaponButton;
-    private JButton shieldButton;
-    private JButton armorButton;
-    private JButton helmetButton;
-    private JButton ringButton;
-    private JButton beltButton;
-    private JButton bootsButton;
-
-    private JButton strButton;
-    private JButton dexButton;
-    private JButton conButton;
-    private JButton intButton;
-    private JButton wisButton;
-    private JButton chaButton;
-    private JButton armorClassButton;
-    private JButton attackBonusButton;
-    private JButton damageBonusButton;
-
-    private JButton validateButton;
+    private JPanel weaponSubPanel;
+    private TextField rangeTextField;
+    private JLabel enchantmentsValueLabel;
 
     /**
      * This method is for initialization.
@@ -76,7 +63,7 @@ public class ItemEditingScene extends Scene {
     @Override
     protected void init() {
         super.init();
-        
+
         title = "Edit Item";
         backButtonEnabled = true;
         saveButtonEnabled = true;
@@ -87,18 +74,12 @@ public class ItemEditingScene extends Scene {
      * This method is the details of the initialization.
      */
     protected void initSubviews(){
+
         saveButton.setEnabled(false);
-        /*
-         * First Line
-         */
 
         JLabel label;
         JButton button;
         TextField textField;
-
-        /*
-         * 4 Stable Label
-         */
 
         label = new JLabel();
         label.setSize(120, 40);
@@ -132,49 +113,49 @@ public class ItemEditingScene extends Scene {
         button.setSize(100, 40);
         button.setLocation(150, 120);
         button.setText(Equipment.WEAPON);
-        weaponButton = button;
+        JButton weaponButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(260, 120);
         button.setText(Equipment.SHIELD);
-        shieldButton = button;
+        JButton shieldButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(370, 120);
         button.setText(Equipment.ARMOR);
-        armorButton = button;
+        JButton armorButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(480, 120);
         button.setText(Equipment.HELMET);
-        helmetButton = button;
+        JButton helmetButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(590, 120);
         button.setText(Equipment.RING);
-        ringButton = button;
+        JButton ringButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(700, 120);
         button.setText(Equipment.BELT);
-        beltButton = button;
+        JButton beltButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(810, 120);
         button.setText(Equipment.BOOTS);
-        bootsButton = button;
+        JButton bootsButton = button;
         contentView.add(button);
 
         label = new JLabel();
@@ -195,63 +176,63 @@ public class ItemEditingScene extends Scene {
         button.setSize(100, 40);
         button.setLocation(150, 220);
         button.setText(Player.ABILITY_STR);
-        strButton = button;
+        JButton strButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(260, 220);
         button.setText(Player.ABILITY_DEX);
-        dexButton = button;
+        JButton dexButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(370, 220);
         button.setText(Player.ABILITY_CON);
-        conButton = button;
+        JButton conButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(480, 220);
         button.setText(Player.ABILITY_INT);
-        intButton = button;
+        JButton intButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(590, 220);
         button.setText(Player.ABILITY_WIS);
-        wisButton = button;
+        JButton wisButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(100, 40);
         button.setLocation(700, 220);
         button.setText(Player.ABILITY_CHA);
-        chaButton = button;
+        JButton chaButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(210, 40);
         button.setLocation(150, 270);
         button.setText("Armor Class");
-        armorClassButton = button;
+        JButton armorClassButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(210, 40);
         button.setLocation(370, 270);
         button.setText("Attack Bonus");
-        attackBonusButton = button;
+        JButton attackBonusButton = button;
         contentView.add(button);
 
         button = new JButton();
         button.setSize(210, 40);
         button.setLocation(590, 270);
         button.setText("Damage Bonus");
-        damageBonusButton = button;
+        JButton damageBonusButton = button;
         contentView.add(button);
 
         label = new JLabel();
@@ -271,17 +252,90 @@ public class ItemEditingScene extends Scene {
         button.setSize(160, 40);
         button.setLocation(150, 370);
         button.setText("Validate");
-        validateButton = button;
+        JButton validateButton = button;
         contentView.add(button);
 
         label = new JLabel();
-        label.setSize(200, 40);
-        label.setHorizontalAlignment(JLabel.CENTER);
+        label.setSize(500, 40);
+        label.setHorizontalAlignment(JLabel.LEFT);
         label.setLocation(350, 370);
-        validateResultLabel = label;
+        JLabel validateResultLabel = label;
         contentView.add(label);
 
+        weaponSubPanel = new View();
+        weaponSubPanel.setLayout(null);
+        weaponSubPanel.setSize(960, 140);
+        weaponSubPanel.setBackground(new Color(0xFFFFFF));
+        weaponSubPanel.setLocation(20, 420);
 
+        label = new JLabel();
+        label.setSize(120, 40);
+        label.setHorizontalAlignment(JLabel.RIGHT);
+        label.setLocation(0, 0);
+        label.setText("Range");
+        weaponSubPanel.add(label);
+
+        textField = new TextField();
+        textField.setSize(160, 40);
+        textField.setLocation(130, 0);
+        rangeTextField = textField;
+        weaponSubPanel.add(textField);
+
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(300, 0);
+        button.setText("Set");
+        JButton rangeSetButton = button;
+        weaponSubPanel.add(button);
+
+        label = new JLabel();
+        label.setSize(120, 40);
+        label.setHorizontalAlignment(JLabel.RIGHT);
+        label.setLocation(0, 50);
+        label.setText("Enchantments");
+        weaponSubPanel.add(label);
+
+        label = new JLabel();
+        label.setSize(540, 40);
+        label.setHorizontalAlignment(JLabel.LEFT);
+        label.setLocation(130, 50);
+        enchantmentsValueLabel = label;
+        weaponSubPanel.add(label);
+
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(130, 100);
+        button.setText("Freezing");
+        JButton freezingButton = button;
+        weaponSubPanel.add(button);
+
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(240, 100);
+        button.setText("Burning");
+        JButton burningButton = button;
+        weaponSubPanel.add(button);
+
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(350, 100);
+        button.setText("Slaying");
+        JButton slayingButton = button;
+        weaponSubPanel.add(button);
+
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(460, 100);
+        button.setText("Frightening");
+        JButton frighteningButton = button;
+        weaponSubPanel.add(button);
+
+        button = new JButton();
+        button.setSize(100, 40);
+        button.setLocation(570, 100);
+        button.setText("Pacifying");
+        JButton pacifyingButton = button;
+        weaponSubPanel.add(button);
 
         /*
          * add Listener
@@ -431,19 +485,93 @@ public class ItemEditingScene extends Scene {
         validateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedValue(Integer.valueOf(textField.getText()));
+                equipment.setEnhancedValue(Integer.valueOf(valueTextField.getText()));
 
                 System.out.println(equipment);
 
                 if(equipment.validate()){
+
                     saveButton.setEnabled(true);
-                    validateResultLabel.setText("Success!");
+
+                    if (equipment.getType().equals(Equipment.WEAPON)) {
+
+                        validateResultLabel.setText("Success!  Please set Range and Special Enchantments for the weapon.");
+                        contentView.add(weaponSubPanel);
+//                        Weapon weapon = (Weapon) equipment;
+//                        equipment = weapon;
+
+                        Weapon weapon = equipment.toWeapon();
+                        decoratedWeapon = weapon;
+                        equipment = weapon;
+
+                    } else {
+                        validateResultLabel.setText("Success!");
+                    }
                 }else{
                     saveButton.setEnabled(false);
                     validateResultLabel.setText("Failure!");
                 }
 
                 ItemEditingScene.this.repaint();
+            }
+        });
+
+        rangeSetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Weapon weapon = (Weapon) equipment;
+                Integer range = Integer.valueOf(rangeTextField.getText());
+                weapon.setRange(range);
+            }
+        });
+
+        freezingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                decoratedWeapon = new FreezingDecorator(decoratedWeapon);
+                Weapon weapon = (Weapon) equipment;
+                weapon.setSpecialEnchantments(decoratedWeapon.getEnchantments());
+                dataToView();
+            }
+        });
+
+        burningButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                decoratedWeapon = new BurningDecorator(decoratedWeapon);
+                Weapon weapon = (Weapon) equipment;
+                weapon.setSpecialEnchantments(decoratedWeapon.getEnchantments());
+                dataToView();
+            }
+        });
+
+        slayingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                decoratedWeapon = new SlayingDecorator(decoratedWeapon);
+                Weapon weapon = (Weapon) equipment;
+                weapon.setSpecialEnchantments(decoratedWeapon.getEnchantments());
+                dataToView();
+            }
+        });
+
+        frighteningButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                decoratedWeapon = new FrighteningDecorator(decoratedWeapon);
+                Weapon weapon = (Weapon) equipment;
+                weapon.setSpecialEnchantments(decoratedWeapon.getEnchantments());
+                dataToView();
+            }
+        });
+
+        pacifyingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                decoratedWeapon = new PacifyingDecorator(decoratedWeapon);
+                Weapon weapon = (Weapon) equipment;
+                weapon.setSpecialEnchantments(decoratedWeapon.getEnchantments());
+                dataToView();
             }
         });
 
@@ -466,6 +594,17 @@ public class ItemEditingScene extends Scene {
         typeLabel.setText(equipment.getType());
         enhanceOnLabel.setText(equipment.getEnhancedAttribute());
         valueTextField.setText(equipment.getEnhancedValue() + "");
+
+        if (equipment instanceof Weapon) {
+
+            Weapon weapon = (Weapon) equipment;
+
+            int range = weapon.getRange();
+            rangeTextField.setText(range + "");
+
+            String specialEnchantments = weapon.getSpecialEnchantments();
+            enchantmentsValueLabel.setText(specialEnchantments);
+        }
 
     }
 
