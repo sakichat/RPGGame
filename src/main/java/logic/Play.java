@@ -135,6 +135,10 @@ public class Play {
         return false;
     }
 
+    public void turn(){
+        
+    }
+
     /**
      * This is the method to make player move.
      */
@@ -145,6 +149,10 @@ public class Play {
         if (currentMap.canPlace(targetLocation)){
             currentMap.moveCell(location, targetLocation);
         }
+    }
+
+    public void movementLimit(Point originalPoint){
+
     }
 
     /**
