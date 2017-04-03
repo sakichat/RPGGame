@@ -17,13 +17,18 @@ public class BurningDecorator extends WeaponDecorator {
 
     /**
      * this method is to get name
-     * @return name String 
+     * @return name String
      */
 
     @Override
     public String getName() {
         return super.getName() + "/B";
     }
+
+    /**
+     * this method is to get origin
+     * @return DecoratorComponent 
+     */
 
     @Override
     public DecoratorComponent getOrigin() {
