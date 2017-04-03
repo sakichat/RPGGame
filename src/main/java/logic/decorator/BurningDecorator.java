@@ -15,6 +15,11 @@ public class BurningDecorator extends WeaponDecorator {
         super(decoratedWeapon);
     }
 
+    /**
+     * this method is to get name
+     * @return name String 
+     */
+
     @Override
     public String getName() {
         return super.getName() + "/B";
