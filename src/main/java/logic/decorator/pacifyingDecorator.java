@@ -5,8 +5,8 @@ package logic.decorator;
  */
 public class PacifyingDecorator extends WeaponDecorator {
 
-    public PacifyingDecorator(Weapon weapon) {
-        super(weapon);
+    public PacifyingDecorator(DecoratorComponent decoratedWeapon) {
+        super(decoratedWeapon);
     }
 
     @Override

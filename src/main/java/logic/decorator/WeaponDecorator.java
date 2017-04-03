@@ -4,19 +4,16 @@ package logic.decorator;
  * @author Li ZHEN
  * @version 0.3
  */
-public abstract class WeaponDecorator implements Component{
+public abstract class WeaponDecorator implements DecoratorComponent {
 
-    protected Weapon weapon;
+    protected final DecoratorComponent decoratedWeapon;
 
-    public WeaponDecorator(Weapon weapon) {
-        this.weapon = weapon;
+    public WeaponDecorator(DecoratorComponent decoratedWeapon) {
+        this.decoratedWeapon = decoratedWeapon;
     }
-//
-//    public WeaponDecorator() {
-//    }
 
     @Override
     public String getEnchantments(){
-        return weapon.getEnchantments();
+        return decoratedWeapon.getEnchantments();
     }
 }
