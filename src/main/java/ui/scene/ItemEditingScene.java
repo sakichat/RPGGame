@@ -524,6 +524,7 @@ public class ItemEditingScene extends Scene {
                 Weapon weapon = (Weapon) equipment;
                 Integer range = Integer.valueOf(rangeTextField.getText());
                 weapon.setRange(range);
+                dataToView();
             }
         });
 
@@ -589,21 +590,30 @@ public class ItemEditingScene extends Scene {
      * This method updates the view from the model.
      */
     public void dataToView(){
+
         nameLabel.setText(equipment.getName());
         typeLabel.setText(equipment.getType());
         enhanceOnLabel.setText(equipment.getEnhancedAttribute());
         valueTextField.setText(equipment.getEnhancedValue() + "");
 
         if (equipment instanceof Weapon) {
+            Weapon weapon = (Weapon) this.equipment;
 
+            int range = weapon.getRange();
+            rangeTextField.setText(range + "");
+
+            String enchantments = (weapon.getEnchantments());
+            rangeTextField.setText(enchantments);
+
+        } else if (equipment instanceof WeaponDecorator){
             WeaponDecorator decoratedWeapon = (WeaponDecorator) equipment;
             Weapon originalWeapon = (Weapon) decoratedWeapon.getOrigin();
 
-            String enchantments = decoratedWeapon.getEnchantments();
-            enchantmentsValueLabel.setText(enchantments);
-
             int range = originalWeapon.getRange();
             rangeTextField.setText(range + "");
+
+            String enchantments = decoratedWeapon.getEnchantments();
+            enchantmentsValueLabel.setText(enchantments);
 
         }
 
