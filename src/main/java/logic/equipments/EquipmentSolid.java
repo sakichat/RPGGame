@@ -102,6 +102,8 @@ public class EquipmentSolid implements Equipment{
                 isValidate = true;
             }
         }else if (type.equals(WEAPON)){
+
+            boolean enhancementValid = false;
             if (enhancedAttribute.equals(Player.ATTRIBUTE_ATTACK_BONUS)
                     || enhancedAttribute.equals(Player.ATTRIBUTE_DAMAGE_BONUS)){
 
@@ -109,6 +111,18 @@ public class EquipmentSolid implements Equipment{
                     isValidate = true;
                 }
             }
+
+            boolean weaponTypeValid = false;
+            Weapon weapon = (Weapon) this;
+            String weaponType = weapon.getWeaponType();
+            int weaponRange = weapon.getRange();
+            if (weaponType.equals(WEAPON_TYPE_MELEE)) {
+                weaponTypeValid = weaponRange == 1;
+            } else if (weaponType.equals(WEAPON_TYPE_RANGED)) {
+                weaponTypeValid = weaponRange > 1;
+            }
+
+            isValidate = enhancementValid && weaponTypeValid;
         }
 
 

@@ -333,6 +333,11 @@ public class ItemEditingScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.WEAPON);
                 typeLabel.setText(Equipment.WEAPON);
+
+                contentView.add(weaponSubPanel);
+
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.equipmentToWeapon(equipment);
             }
         });
 
@@ -341,6 +346,12 @@ public class ItemEditingScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.SHIELD);
                 typeLabel.setText(Equipment.SHIELD);
+
+                if (equipment instanceof Weapon) {
+                    contentView.remove(weaponSubPanel);
+                    EquipmentFactory equipmentFactory = new EquipmentFactory();
+                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
+                }
             }
         });
 
@@ -349,6 +360,12 @@ public class ItemEditingScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.ARMOR);
                 typeLabel.setText(Equipment.ARMOR);
+
+                if (equipment instanceof Weapon) {
+                    contentView.remove(weaponSubPanel);
+                    EquipmentFactory equipmentFactory = new EquipmentFactory();
+                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
+                }
             }
         });
 
@@ -358,6 +375,11 @@ public class ItemEditingScene extends Scene {
                 equipment.setType(Equipment.HELMET);
                 typeLabel.setText(Equipment.HELMET);
 
+                if (equipment instanceof Weapon) {
+                    contentView.remove(weaponSubPanel);
+                    EquipmentFactory equipmentFactory = new EquipmentFactory();
+                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
+                }
             }
         });
 
@@ -366,6 +388,12 @@ public class ItemEditingScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.RING);
                 typeLabel.setText(Equipment.RING);
+
+                if (equipment instanceof Weapon) {
+                    contentView.remove(weaponSubPanel);
+                    EquipmentFactory equipmentFactory = new EquipmentFactory();
+                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
+                }
             }
         });
 
@@ -374,6 +402,12 @@ public class ItemEditingScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.BELT);
                 typeLabel.setText(Equipment.BELT);
+
+                if (equipment instanceof Weapon) {
+                    contentView.remove(weaponSubPanel);
+                    EquipmentFactory equipmentFactory = new EquipmentFactory();
+                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
+                }
             }
         });
 
@@ -382,6 +416,12 @@ public class ItemEditingScene extends Scene {
             public void actionPerformed(ActionEvent e) {
                 equipment.setType(Equipment.BOOTS);
                 typeLabel.setText(Equipment.BOOTS);
+
+                if (equipment instanceof Weapon) {
+                    contentView.remove(weaponSubPanel);
+                    EquipmentFactory equipmentFactory = new EquipmentFactory();
+                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
+                }
             }
         });
 
@@ -467,18 +507,8 @@ public class ItemEditingScene extends Scene {
                 if(equipment.validate()){
 
                     saveButton.setEnabled(true);
+                    validateResultLabel.setText("Success!");
 
-                    if (equipment.getType().equals(Equipment.WEAPON)) {
-
-                        validateResultLabel.setText("Success!  Please set Range and Special Enchantments for the weapon.");
-                        contentView.add(weaponSubPanel);
-
-                        EquipmentFactory equipmentFactory = new EquipmentFactory();
-                        equipment = equipmentFactory.equipmentToWeapon(equipment);
-
-                    } else {
-                        validateResultLabel.setText("Success!");
-                    }
                 }else{
                     saveButton.setEnabled(false);
                     validateResultLabel.setText("Failure!");

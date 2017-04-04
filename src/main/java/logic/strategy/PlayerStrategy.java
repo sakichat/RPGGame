@@ -8,6 +8,9 @@ import logic.Player;
  */
 public interface PlayerStrategy {
 
-    public void turn();
+    void turn();
+//    void tryMove();
+//    void tryAttack();
+//    void tryInteract();
 
 }

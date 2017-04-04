@@ -82,6 +82,16 @@ public class WeaponDecorator implements Weapon {
     }
 
     @Override
+    public String getWeaponType() {
+        return decoratedWeapon.getWeaponType();
+    }
+
+    @Override
+    public void setWeaponType(String weaponType) {
+        decoratedWeapon.getWeaponType();
+    }
+
+    @Override
     public Weapon getOrigin() {
         return decoratedWeapon.getOrigin();
     }

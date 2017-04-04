@@ -10,6 +10,8 @@ public class WeaponSolid extends EquipmentSolid implements Weapon{
 
     @Expose
     private int range;
+    @Expose
+    private String weaponType;
 
     public int getRange() {
         return range;
@@ -17,6 +19,14 @@ public class WeaponSolid extends EquipmentSolid implements Weapon{
 
     public void setRange(int range) {
         this.range = range;
+    }
+
+    public String getWeaponType() {
+        return weaponType;
+    }
+
+    public void setWeaponType(String weaponType) {
+        this.weaponType = weaponType;
     }
 
     @Override

@@ -12,7 +12,8 @@ public class EquipmentFactory {
     }
 
     public Weapon newWeapon(){
-        throw new RuntimeException("Code Not Finished Yet");
+        return new WeaponSolid();
+//        throw new RuntimeException("Code Not Finished Yet");
     }
 
     public Weapon equipmentToWeapon(Equipment equipment){
@@ -27,6 +28,13 @@ public class EquipmentFactory {
     }
 
     public Equipment WeaponToEquipment(Weapon weapon){
-        throw new RuntimeException("Code Not Finished Yet");
+
+        EquipmentSolid equipment = new EquipmentSolid();
+        equipment.setName(weapon.getName());
+        equipment.setType(weapon.getType());
+        equipment.setEnhancedAttribute(weapon.getEnhancedAttribute());
+        equipment.setEnhancedValue(weapon.getEnhancedValue());
+        return equipment;
+//        throw new RuntimeException("Code Not Finished Yet");
     }
 }
