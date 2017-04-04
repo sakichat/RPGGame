@@ -5,6 +5,6 @@ package logic;
  * @version 0.3
  */
 public class Movement {
-    
+
 
 }
