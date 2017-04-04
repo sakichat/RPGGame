@@ -106,6 +106,14 @@ public class Play {
     }
 
     /**
+     * Getter for playerList.
+     * @return LinkedList<Player>
+     */
+    public LinkedList<Player> getPlayerList() {
+        return playerList;
+    }
+
+    /**
      * This is the method for get currentMap,
      * and add player into the map(enter).
      */
@@ -306,8 +314,8 @@ public class Play {
 
     /**
      * The method is used to provide the range points for one player.
-     * @param player
-     * @return
+     * @param player Player
+     * @return List<Point>
      */
 
     private List<Point> getAttackRange(Player player) {
