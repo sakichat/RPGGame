@@ -757,14 +757,22 @@ public class Player extends Cell{
     }
 
     /**
-     *
+     * Properties of remainStep and getter & setter.
      */
     private int remainStep;
 
+    /**
+     * Getter for remainStep.
+     * @return
+     */
     public int getRemainStep() {
         return remainStep;
     }
 
+    /**
+     * Setter for remainStep.
+     * @param remainStep
+     */
     public void setRemainStep(int remainStep) {
         this.remainStep = remainStep;
     }
