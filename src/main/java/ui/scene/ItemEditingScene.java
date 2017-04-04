@@ -110,7 +110,7 @@ public class ItemEditingScene extends Scene {
 
         button = new JButton();
         button.setSize(80, 30);
-        button.setLocation(230, 100);
+        button.setLocation(240, 100);
         button.setText(Equipment.ARMOR);
         contentView.add(button);
         JButton armorButton = button;
