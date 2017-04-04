@@ -48,11 +48,12 @@ public class ItemEditingScene extends Scene {
     private JLabel nameLabel;
     private JLabel typeLabel;
     private JLabel enhanceOnLabel;
-    private TextField valueTextField;
+    private JLabel weaponTypeLabel;
+    private JTextField valueTextField;
 
     private JPanel weaponSubPanel;
-    private TextField rangeTextField;
-    private JLabel enchantmentsValueLabel;
+    private JTextField rangeTextField;
+    private JLabel effectsValueLabel;
 
     /**
      * This method is for initialization.
@@ -76,241 +77,261 @@ public class ItemEditingScene extends Scene {
 
         JLabel label;
         JButton button;
-        TextField textField;
+        JTextField textField;
 
         label = new JLabel("Name", JLabel.RIGHT);
-        label.setSize(120, 40);
+        label.setSize(120, 30);
         label.setLocation(20, 20);
         contentView.add(label);
 
         label = new JLabel();
-        label.setSize(300, 40);
+        label.setSize(200, 30);
         label.setLocation(150, 20);
         contentView.add(label);
         nameLabel = label;
 
         label = new JLabel("Type", JLabel.RIGHT);
-        label.setSize(120, 40);
-        label.setLocation(20, 70);
+        label.setSize(120, 30);
+        label.setLocation(20, 60);
         contentView.add(label);
 
         label = new JLabel();
-        label.setSize(200, 40);
-        label.setLocation(150, 70);
+        label.setSize(200, 30);
+        label.setLocation(150, 60);
         contentView.add(label);
         typeLabel = label;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(150, 120);
+        button.setSize(80, 30);
+        button.setLocation(150, 100);
         button.setText(Equipment.HELMET);
         contentView.add(button);
         JButton helmetButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(260, 120);
+        button.setSize(80, 30);
+        button.setLocation(230, 100);
         button.setText(Equipment.ARMOR);
         contentView.add(button);
         JButton armorButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(370, 120);
+        button.setSize(80, 30);
+        button.setLocation(330, 100);
         button.setText(Equipment.SHIELD);
         contentView.add(button);
         JButton shieldButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(480, 120);
+        button.setSize(80, 30);
+        button.setLocation(420, 100);
         button.setText(Equipment.RING);
         contentView.add(button);
         JButton ringButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(590, 120);
+        button.setSize(80, 30);
+        button.setLocation(510, 100);
         button.setText(Equipment.BELT);
         contentView.add(button);
         JButton beltButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(700, 120);
+        button.setSize(80, 30);
+        button.setLocation(600, 100);
         button.setText(Equipment.BOOTS);
         contentView.add(button);
         JButton bootsButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(810, 120);
+        button.setSize(80, 30);
+        button.setLocation(690, 100);
         button.setText(Equipment.WEAPON);
         JButton weaponButton = button;
         contentView.add(button);
 
         label = new JLabel("Enhance On", JLabel.RIGHT);
-        label.setSize(120, 40);
-        label.setLocation(20, 170);
+        label.setSize(120, 30);
+        label.setLocation(20, 140);
         contentView.add(label);
 
         label = new JLabel();
-        label.setSize(200, 40);
-        label.setLocation(150, 170);
+        label.setSize(200, 30);
+        label.setLocation(150, 140);
         contentView.add(label);
         enhanceOnLabel = label;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(150, 220);
+        button.setSize(80, 30);
+        button.setLocation(150, 180);
         button.setText(Player.ABILITY_STR);
         contentView.add(button);
         JButton strButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(260, 220);
+        button.setSize(80, 30);
+        button.setLocation(240, 180);
         button.setText(Player.ABILITY_DEX);
         contentView.add(button);
         JButton dexButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(370, 220);
+        button.setSize(80, 30);
+        button.setLocation(330, 180);
         button.setText(Player.ABILITY_CON);
         contentView.add(button);
         JButton conButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(480, 220);
+        button.setSize(80, 30);
+        button.setLocation(420, 180);
         button.setText(Player.ABILITY_INT);
         contentView.add(button);
         JButton intButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(590, 220);
+        button.setSize(80, 30);
+        button.setLocation(510, 180);
         button.setText(Player.ABILITY_WIS);
         contentView.add(button);
         JButton wisButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(700, 220);
+        button.setSize(80, 30);
+        button.setLocation(600, 180);
         button.setText(Player.ABILITY_CHA);
         contentView.add(button);
         JButton chaButton = button;
 
-        button = new JButton("Armor Class");
-        button.setSize(210, 40);
-        button.setLocation(150, 270);
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(690, 180);
+        button.setText(Player.ATTRIBUTE_ARMOR_CLASS);
         contentView.add(button);
         JButton armorClassButton = button;
 
-        button = new JButton("Attack Bonus");
-        button.setSize(210, 40);
-        button.setLocation(370, 270);
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(780, 180);
+        button.setText(Player.ATTRIBUTE_ATTACK_BONUS);
         contentView.add(button);
         JButton attackBonusButton = button;
 
-        button = new JButton("Damage Bonus");
-        button.setSize(210, 40);
-        button.setLocation(590, 270);
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(870, 180);
+        button.setText(Player.ATTRIBUTE_DAMAGE_BONUS);
         contentView.add(button);
         JButton damageBonusButton = button;
 
         label = new JLabel("Value", JLabel.RIGHT);
-        label.setSize(120, 40);
-        label.setLocation(20, 320);
+        label.setSize(120, 30);
+        label.setLocation(20, 220);
         contentView.add(label);
 
-        textField = new TextField();
-        textField.setSize(160, 40);
-        textField.setLocation(150, 320);
+        textField = new JTextField();
+        textField.setSize(160, 30);
+        textField.setLocation(150, 220);
         contentView.add(textField);
         valueTextField = textField;
 
         button = new JButton("Validate");
         button.setSize(160, 40);
-        button.setLocation(150, 370);
+        button.setLocation(150, 490);
         contentView.add(button);
         JButton validateButton = button;
 
         label = new JLabel();
         label.setSize(500, 40);
-        label.setLocation(350, 370);
+        label.setLocation(350, 490);
         contentView.add(label);
         JLabel validateResultLabel = label;
 
         weaponSubPanel = new View();
-        weaponSubPanel.setSize(960, 140);
-        weaponSubPanel.setLocation(20, 420);
+        weaponSubPanel.setSize(1000, 190);
+        weaponSubPanel.setLocation(0, 260);
         weaponSubPanel.setBackground(new Color(0xFFFFFF));
 
-        label = new JLabel("Range", JLabel.RIGHT);
-        label.setSize(120, 40);
-        label.setLocation(0, 0);
-        weaponSubPanel.add(label);
-
-        textField = new TextField();
-        textField.setSize(160, 40);
-        textField.setLocation(130, 0);
-        weaponSubPanel.add(textField);
-        rangeTextField = textField;
-
-        button = new JButton("Set");
-        button.setSize(100, 40);
-        button.setLocation(300, 0);
-        weaponSubPanel.add(button);
-        JButton rangeSetButton = button;
-
-        label = new JLabel("Enchantments", JLabel.RIGHT);
-        label.setSize(120, 40);
-        label.setLocation(0, 50);
+        label = new JLabel("Weapon", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 0);
         weaponSubPanel.add(label);
 
         label = new JLabel();
-        label.setSize(540, 40);
-        label.setLocation(130, 50);
+        label.setSize(200, 30);
+        label.setLocation(150, 0);
         weaponSubPanel.add(label);
-        enchantmentsValueLabel = label;
+        weaponTypeLabel = label;
+
+        button = new JButton("Melee");
+        button.setSize(80, 30);
+        button.setLocation(150, 40);
+        weaponSubPanel.add(button);
+        JButton meleeTypeButton = button;
+
+        button = new JButton("Ranged");
+        button.setSize(80, 30);
+        button.setLocation(230, 40);
+        weaponSubPanel.add(button);
+        JButton rangedTypeButton = button;
+
+        label = new JLabel("Range", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 80);
+        weaponSubPanel.add(label);
+
+        textField = new JTextField();
+        textField.setSize(160, 30);
+        textField.setLocation(150, 80);
+        weaponSubPanel.add(textField);
+        rangeTextField = textField;
+
+        label = new JLabel("Effects", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 120);
+        weaponSubPanel.add(label);
+
+        label = new JLabel();
+        label.setSize(710, 30);
+        label.setLocation(150, 120);
+        weaponSubPanel.add(label);
+        effectsValueLabel = label;
+
+        button = new JButton("Reset");
+        button.setSize(80, 30);
+        button.setLocation(870, 120);
+        weaponSubPanel.add(button);
+        JButton resetButton = button;
 
         button = new JButton("Freezing");
-        button.setSize(100, 40);
-        button.setLocation(130, 100);
+        button.setSize(120, 30);
+        button.setLocation(150, 160);
         weaponSubPanel.add(button);
         JButton freezingButton = button;
 
         button = new JButton("Burning");
-        button.setSize(100, 40);
-        button.setLocation(240, 100);
+        button.setSize(120, 30);
+        button.setLocation(280, 160);
         weaponSubPanel.add(button);
         JButton burningButton = button;
 
         button = new JButton("Slaying");
-        button.setSize(100, 40);
-        button.setLocation(350, 100);
+        button.setSize(120, 30);
+        button.setLocation(410, 160);
         weaponSubPanel.add(button);
         JButton slayingButton = button;
 
         button = new JButton("Frightening");
-        button.setSize(100, 40);
-        button.setLocation(460, 100);
+        button.setSize(120, 30);
+        button.setLocation(540, 160);
         weaponSubPanel.add(button);
         JButton frighteningButton = button;
 
         button = new JButton("Pacifying");
-        button.setSize(100, 40);
-        button.setLocation(570, 100);
+        button.setSize(120, 30);
+        button.setLocation(670, 160);
         weaponSubPanel.add(button);
         JButton pacifyingButton = button;
-
-        button = new JButton("Remove All");
-        button.setSize(100, 40);
-        button.setLocation(790, 100);
-        weaponSubPanel.add(button);
-        JButton removeAllButton = button;
 
         /*
          * add Listener
@@ -518,15 +539,33 @@ public class ItemEditingScene extends Scene {
             }
         });
 
-        rangeSetButton.addActionListener(new ActionListener() {
+        meleeTypeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Weapon weapon = (Weapon) equipment;
-                Integer range = Integer.valueOf(rangeTextField.getText());
-                weapon.setRange(range);
-                dataToView();
+                weapon.setWeaponType(Equipment.WEAPON_TYPE_MELEE);
+                weaponTypeLabel.setText(Equipment.WEAPON_TYPE_MELEE);
             }
         });
+
+        rangedTypeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Weapon weapon = (Weapon) equipment;
+                weapon.setWeaponType(Equipment.WEAPON_TYPE_RANGED);
+                weaponTypeLabel.setText(Equipment.WEAPON_TYPE_RANGED);
+            }
+        });
+
+//        rangeSetButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                Weapon weapon = (Weapon) equipment;
+//                Integer range = Integer.valueOf(rangeTextField.getText());
+//                weapon.setRange(range);
+//                dataToView();
+//            }
+//        });
 
         freezingButton.addActionListener(new ActionListener() {
             @Override
@@ -568,7 +607,7 @@ public class ItemEditingScene extends Scene {
             }
         });
 
-        removeAllButton.addActionListener(new ActionListener() {
+        resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -603,7 +642,7 @@ public class ItemEditingScene extends Scene {
             rangeTextField.setText(range + "");
 
             String enhancementsChainText = weapon.enhancementsChainText();
-            enchantmentsValueLabel.setText(enhancementsChainText);
+            effectsValueLabel.setText(enhancementsChainText);
         }
 
     }
