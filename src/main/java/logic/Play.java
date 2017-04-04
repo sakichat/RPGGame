@@ -296,43 +296,6 @@ public class Play {
         }
     }
 
-    /**
-     * This method is used for provide the range points for all the players.
-     */
 
-    public Map<Player, List<Point>> getAttackRanges() {
-
-        Map<Player, List<Point>> attackRanges = new HashMap<>();
-        playerList = currentMap.getPlayers();
-
-        for (Player player : playerList) {
-            attackRanges.put(player, getAttackRange(player));
-        }
-
-        return attackRanges;
-    }
-
-    /**
-     * The method is used to provide the range points for one player.
-     * @param player Player
-     * @return List<Point>
-     */
-
-    private List<Point> getAttackRange(Player player) {
-
-        List<Point> attackRange = new LinkedList<>();
-
-        LinkedList<Point> directions = Point.directions();
-        int range = player.getAttackRange();
-        Point location = player.getLocation();
-
-        for (Point direction : directions) {
-            for (int i = 0; i < range; i++) {
-                attackRange.add(location.add(direction));
-            }
-        }
-
-        return attackRange;
-    }
 
 }

@@ -9,7 +9,7 @@
   },
   "backpack": [
     {
-      "_class": "logic.equipments.decorator.FreezingDecorator",
+      "_class": "logic.equipments.WeaponDecoratorFreezing",
       "_object": {
         "decoratedWeapon": {
           "_class": "logic.equipments.WeaponSolid",

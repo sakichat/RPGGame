@@ -29,7 +29,7 @@
   ],
   "equipments": {
     "Weapon": {
-      "_class": "logic.equipments.decorator.BurningDecorator",
+      "_class": "logic.equipments.WeaponDecoratorBurning",
       "_object": {
         "decoratedWeapon": {
           "_class": "logic.equipments.WeaponSolid",

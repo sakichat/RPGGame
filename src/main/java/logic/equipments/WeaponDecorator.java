@@ -1,4 +1,4 @@
-package logic.equipments.decorator;
+package logic.equipments;
 
 import com.google.gson.annotations.Expose;
 import logic.equipments.Weapon;

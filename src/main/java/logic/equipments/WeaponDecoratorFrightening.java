@@ -1,13 +1,11 @@
-package logic.equipments.decorator;
-
-import logic.equipments.Weapon;
+package logic.equipments;
 
 /**
  * Created by Li Zhen on 2017-04-01.
  */
-public class FrighteningDecorator extends WeaponDecorator {
+public class WeaponDecoratorFrightening extends WeaponDecorator {
 
-    public FrighteningDecorator(Weapon decoratedWeapon) {
+    public WeaponDecoratorFrightening(Weapon decoratedWeapon) {
         super(decoratedWeapon);
     }
 

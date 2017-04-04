@@ -2,7 +2,6 @@ package ui.scene;
 
 import logic.equipments.*;
 import logic.Player;
-import logic.equipments.decorator.*;
 import persistence.EquipmentFileManager;
 import ui.view.View;
 
@@ -502,7 +501,7 @@ public class ItemEditingScene extends Scene {
         freezingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new FreezingDecorator((Weapon) equipment);
+                equipment = new WeaponDecoratorFreezing((Weapon) equipment);
                 dataToView();
             }
         });
@@ -510,7 +509,7 @@ public class ItemEditingScene extends Scene {
         burningButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new BurningDecorator((Weapon) equipment);
+                equipment = new WeaponDecoratorBurning((Weapon) equipment);
                 dataToView();
             }
         });
@@ -518,7 +517,7 @@ public class ItemEditingScene extends Scene {
         slayingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new SlayingDecorator((Weapon) equipment);
+                equipment = new WeaponDecoratorSlaying((Weapon) equipment);
                 dataToView();
             }
         });
@@ -526,7 +525,7 @@ public class ItemEditingScene extends Scene {
         frighteningButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new FrighteningDecorator((Weapon) equipment);
+                equipment = new WeaponDecoratorFrightening((Weapon) equipment);
                 dataToView();
             }
         });
@@ -534,7 +533,7 @@ public class ItemEditingScene extends Scene {
         pacifyingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                equipment = new PacifyingDecorator((Weapon) equipment);
+                equipment = new WeaponDecoratorPacifying((Weapon) equipment);
                 dataToView();
             }
         });

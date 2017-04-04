@@ -9,6 +9,7 @@ import java.awt.event.MouseListener;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This GameMapView class extends View class, and it can build map views.
@@ -304,26 +305,23 @@ public class GameMapView extends View {
         GameMapLayerView attackrangeLayerView = layers.get(_LAYER_ATTACKRANGE);
         attackrangeLayerView.removeAllCells();
 
-        List<Player> players = gameMap.getPlayers();
-        LinkedList<Point> directions = Point.directions();
         HashMap<String, String> playerParties = new HashMap<>();
-
         playerParties.put(Player.PLAYER_PARTY_PLAYER, "player");
         playerParties.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
         playerParties.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
 
-        for (Player player : players) {
+        Map<Player, List<Point>> attackRanges = gameMap.getAttackRanges();
+        List<Player> players = gameMap.getPlayers();
+
+        for (Player player : attackRanges.keySet()) {
             ImageView imageView = new ImageView();
             imageView.setName("attack_range_" + playerParties.get(player.getPlayerParty()) + ".png");
 
-            for (Point direction : directions) {
-                for (int i = 0; i < player.getAttackRange(); i++) {
-                    Point point = player.getLocation();
-                    Point rangePoint = point.add(direction);
-
-                    attackrangeLayerView.addCell(imageView, rangePoint);
-                }
+            List<Point> points = attackRanges.get(player);
+            for (Point point : points) {
+                attackrangeLayerView.addCell(imageView, point);
             }
+
         }
 
         repaint();

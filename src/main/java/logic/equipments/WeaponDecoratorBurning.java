@@ -1,19 +1,17 @@
-package logic.equipments.decorator;
-
-import logic.equipments.Weapon;
+package logic.equipments;
 
 /**
  * @author Li ZHEN
  * @version 0.3
  * this class is to add enchantment of burning
  */
-public class BurningDecorator extends WeaponDecorator {
+public class WeaponDecoratorBurning extends WeaponDecorator {
     /**
      * this method  is the constructor
      * @param decoratedWeapon DecoratorComponent
      */
 
-    public BurningDecorator(Weapon decoratedWeapon) {
+    public WeaponDecoratorBurning(Weapon decoratedWeapon) {
         super(decoratedWeapon);
     }
 

@@ -217,7 +217,7 @@
               }
             },
             "Weapon": {
-              "_class": "logic.equipments.decorator.BurningDecorator",
+              "_class": "logic.equipments.WeaponDecoratorBurning",
               "_object": {
                 "decoratedWeapon": {
                   "_class": "logic.equipments.WeaponSolid",
@@ -302,7 +302,7 @@
               }
             },
             "Weapon": {
-              "_class": "logic.equipments.decorator.BurningDecorator",
+              "_class": "logic.equipments.WeaponDecoratorBurning",
               "_object": {
                 "decoratedWeapon": {
                   "_class": "logic.equipments.WeaponSolid",
@@ -364,7 +364,7 @@
         "_object": {
           "equipments": [
             {
-              "_class": "logic.equipments.decorator.BurningDecorator",
+              "_class": "logic.equipments.WeaponDecoratorBurning",
               "_object": {
                 "decoratedWeapon": {
                   "_class": "logic.equipments.WeaponSolid",
@@ -467,7 +467,7 @@
               }
             },
             "Weapon": {
-              "_class": "logic.equipments.decorator.FreezingDecorator",
+              "_class": "logic.equipments.WeaponDecoratorFreezing",
               "_object": {
                 "decoratedWeapon": {
                   "_class": "logic.equipments.WeaponSolid",
@@ -512,7 +512,7 @@
           },
           "backpack": [
             {
-              "_class": "logic.equipments.decorator.BurningDecorator",
+              "_class": "logic.equipments.WeaponDecoratorBurning",
               "_object": {
                 "decoratedWeapon": {
                   "_class": "logic.equipments.WeaponSolid",

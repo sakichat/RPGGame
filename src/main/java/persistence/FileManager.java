@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import logic.Cell;
 import logic.equipments.Equipment;
 import logic.equipments.Weapon;
-import logic.equipments.decorator.WeaponDecorator;
+import logic.equipments.WeaponDecorator;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
