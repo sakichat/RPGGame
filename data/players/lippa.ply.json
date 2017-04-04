@@ -1,0 +1,54 @@
+{
+  "abilityScores": {
+    "STR": 14,
+    "WIS": 12,
+    "CON": 14,
+    "DEX": 17,
+    "CHA": 13,
+    "INT": 14
+  },
+  "backpack": [
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Iran",
+        "type": "Helmet",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Israh",
+        "type": "Armor",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
+    }
+  ],
+  "equipments": {
+    "Weapon": {
+      "_class": "logic.equipments.decorator.BurningDecorator",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipments.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "name": "fire weapon",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 3
+          }
+        }
+      }
+    }
+  },
+  "multipleAttacks": {},
+  "level": 10,
+  "name": "Lippa",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 67
+}

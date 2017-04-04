@@ -1,0 +1,100 @@
+{
+  "abilityScores": {
+    "STR": 12,
+    "WIS": 16,
+    "CON": 8,
+    "DEX": 8,
+    "CHA": 8,
+    "INT": 8
+  },
+  "backpack": [
+    {
+      "_class": "logic.equipments.decorator.FreezingDecorator",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipments.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "name": "Gare",
+            "type": "Weapon",
+            "enhancedAttribute": "DB",
+            "enhancedValue": 5
+          }
+        }
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Homes",
+        "type": "Ring",
+        "enhancedAttribute": "CHA",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Iran",
+        "type": "Helmet",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Israh",
+        "type": "Armor",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
+    }
+  ],
+  "equipments": {
+    "Belt": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    },
+    "Ring": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Tige",
+        "type": "Ring",
+        "enhancedAttribute": "CON",
+        "enhancedValue": 2
+      }
+    },
+    "Weapon": {
+      "_class": "logic.equipments.WeaponSolid",
+      "_object": {
+        "range": 6,
+        "name": "Wige",
+        "type": "Weapon",
+        "enhancedAttribute": "AB",
+        "enhancedValue": 4
+      }
+    }
+  },
+  "multipleAttacks": {},
+  "level": 4,
+  "name": "testPlayer",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 28
+}

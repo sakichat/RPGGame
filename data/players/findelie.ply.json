@@ -1,0 +1,63 @@
+{
+  "abilityScores": {
+    "STR": 18,
+    "WIS": 12,
+    "CON": 16,
+    "DEX": 16,
+    "CHA": 13,
+    "INT": 14
+  },
+  "backpack": [
+    {
+      "_class": "logic.equipments.decorator.BurningDecorator",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipments.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "name": "fire weapon",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 3
+          }
+        }
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    }
+  ],
+  "equipments": {
+    "Helmet": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Adrah",
+        "type": "Helmet",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 4
+      }
+    },
+    "Boots": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    }
+  },
+  "multipleAttacks": {},
+  "level": 3,
+  "name": "Findelie",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 22
+}

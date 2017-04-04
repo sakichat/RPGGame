@@ -1,0 +1,57 @@
+{
+  "abilityScores": {
+    "STR": 19,
+    "WIS": 12,
+    "CON": 17,
+    "DEX": 17,
+    "CHA": 14,
+    "INT": 16
+  },
+  "backpack": [
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    }
+  ],
+  "equipments": {
+    "Helmet": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Adrah",
+        "type": "Helmet",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 4
+      }
+    },
+    "Belt": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    }
+  },
+  "multipleAttacks": {},
+  "level": 14,
+  "name": "Wendru",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 112
+}

@@ -1,0 +1,72 @@
+{
+  "abilityScores": {
+    "STR": 17,
+    "WIS": 11,
+    "CON": 17,
+    "DEX": 18,
+    "CHA": 13,
+    "INT": 15
+  },
+  "backpack": [
+    {
+      "_class": "logic.equipments.decorator.BurningDecorator",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipments.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "name": "fire weapon",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 3
+          }
+        }
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Tige",
+        "type": "Ring",
+        "enhancedAttribute": "CON",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    }
+  ],
+  "equipments": {
+    "Helmet": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Adrah",
+        "type": "Helmet",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 4
+      }
+    }
+  },
+  "multipleAttacks": {},
+  "level": 2,
+  "name": "Gilda",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 15
+}

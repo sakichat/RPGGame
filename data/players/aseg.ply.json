@@ -1,0 +1,72 @@
+{
+  "abilityScores": {
+    "STR": 13,
+    "WIS": 7,
+    "CON": 17,
+    "DEX": 14,
+    "CHA": 11,
+    "INT": 13
+  },
+  "backpack": [
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Iran",
+        "type": "Helmet",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Kusha",
+        "type": "Shield",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Holes",
+        "type": "Ring",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 5
+      }
+    }
+  ],
+  "equipments": {
+    "Armor": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Israh",
+        "type": "Armor",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
+    },
+    "Weapon": {
+      "_class": "logic.equipments.decorator.BurningDecorator",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipments.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "name": "fire weapon",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 3
+          }
+        }
+      }
+    }
+  },
+  "multipleAttacks": {},
+  "level": 6,
+  "name": "Aseg",
+  "playerType": "Tank",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 58
+}

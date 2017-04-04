@@ -1,0 +1,73 @@
+{
+  "abilityScores": {
+    "STR": 15,
+    "WIS": 11,
+    "CON": 17,
+    "DEX": 16,
+    "CHA": 14,
+    "INT": 15
+  },
+  "backpack": [
+    {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipments.WeaponSolid",
+      "_object": {
+        "range": 6,
+        "name": "Wige",
+        "type": "Weapon",
+        "enhancedAttribute": "AB",
+        "enhancedValue": 4
+      }
+    }
+  ],
+  "equipments": {
+    "Helmet": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Adrah",
+        "type": "Helmet",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 4
+      }
+    },
+    "Belt": {
+      "_class": "logic.equipments.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    },
+    "Weapon": {
+      "_class": "logic.equipments.decorator.BurningDecorator",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipments.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "name": "fire weapon",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 3
+          }
+        }
+      }
+    }
+  },
+  "multipleAttacks": {},
+  "level": 4,
+  "name": "Khankad",
+  "playerType": "Tank",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 32
+}
