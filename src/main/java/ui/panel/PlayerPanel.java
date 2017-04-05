@@ -101,12 +101,10 @@ public class PlayerPanel extends Panel implements Observer {
         JLabel label;
         AbilityView abilityView;
 
-        label = new JLabel("", JLabel.RIGHT);
+        label = new JLabel("Name", JLabel.RIGHT);
         label.setSize(60, 20);
         label.setLocation(10, 30);
         add(label);
-        label.setText("Name");
-        JLabel nameLabel = label;
 
         label = new JLabel();
         label.setSize(90, 20);
@@ -114,12 +112,10 @@ public class PlayerPanel extends Panel implements Observer {
         add(label);
         nameValueLabel = label;
 
-        label = new JLabel("", JLabel.RIGHT);
+        label = new JLabel("Level", JLabel.RIGHT);
         label.setSize(60, 20);
         label.setLocation(190, 30);
         add(label);
-        label.setText("Level");
-        JLabel levelLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);
@@ -127,12 +123,10 @@ public class PlayerPanel extends Panel implements Observer {
         add(label);
         levelValueLabel = label;
 
-        label = new JLabel("", JLabel.RIGHT);
+        label = new JLabel("Type", JLabel.RIGHT);
         label.setSize(60, 20);
         label.setLocation(10, 60);
         add(label);
-        label.setText("Type");
-        JLabel playerTypeLabel = label;
 
         label = new JLabel();
         label.setSize(90, 20);
@@ -140,19 +134,16 @@ public class PlayerPanel extends Panel implements Observer {
         add(label);
         playerTypeValueLabel = label;
 
-        label = new JLabel("", JLabel.RIGHT);
+        label = new JLabel("Party", JLabel.RIGHT);
         label.setSize(60, 20);
         label.setLocation(190, 60);
         add(label);
-        label.setText("Party");
-        JLabel playerPartyLabel = label;
 
         label = new JLabel();
         label.setSize(90, 20);
         label.setLocation(260, 60);
         add(label);
         playerPartyValueLabel = label;
-
 
         abilityView = new AbilityView();
         abilityView.setLocation(10, 90);
@@ -190,12 +181,10 @@ public class PlayerPanel extends Panel implements Observer {
         abilityView.nameLabel.setText(Player.ABILITY_CHA);
         chaAbilityView = abilityView;
 
-        label = new JLabel("", JLabel.RIGHT);
+        label = new JLabel("Hit Point", JLabel.RIGHT);
         label.setSize(100, 20);
         label.setLocation(10, 180);
         add(label);
-        label.setText("Hit Point");
-        JLabel hpLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);
@@ -203,12 +192,10 @@ public class PlayerPanel extends Panel implements Observer {
         add(label);
         hpValueLabel = label;
 
-        label = new JLabel("", JLabel.RIGHT);
+        label = new JLabel("Attack Bonus", JLabel.RIGHT);
         label.setSize(100, 20);
         label.setLocation(190, 180);
         add(label);
-        label.setText("Attack Bonus");
-        JLabel abLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);
@@ -216,12 +203,10 @@ public class PlayerPanel extends Panel implements Observer {
         add(label);
         abValueLabel = label;
 
-        label = new JLabel("", JLabel.RIGHT);
+        label = new JLabel("Armor Class", JLabel.RIGHT);
         label.setSize(100, 20);
         label.setLocation(10, 210);
         add(label);
-        label.setText("Armor Class");
-        JLabel acLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);
@@ -229,12 +214,10 @@ public class PlayerPanel extends Panel implements Observer {
         add(label);
         acValueLabel = label;
 
-        label = new JLabel("", JLabel.RIGHT);
+        label = new JLabel("Damage Bonus", JLabel.RIGHT);
         label.setSize(100, 20);
         label.setLocation(190, 210);
         add(label);
-        label.setText("Damage Bonus");
-        JLabel dbLabel = label;
 
         label = new JLabel();
         label.setSize(40, 20);

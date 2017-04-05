@@ -88,12 +88,9 @@ public class PlaySelectorPanel extends Panel {
         searchButton.setLocation(180, 30);
         add(searchButton);
 
-        searchButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playSelector.removeAll();
-                search();
-            }
+        searchButton.addActionListener(e -> {
+            playSelector.removeAll();
+            search();
         });
     }
 
@@ -122,12 +119,7 @@ public class PlaySelectorPanel extends Panel {
                 selectButton.setSize(60, 20);
                 playSelector.add(selectButton);
 
-                selectButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        delegate.playSelectorPerformAction(PlaySelectorPanel.this, play);
-                    }
-                });
+                selectButton.addActionListener(e -> delegate.playSelectorPerformAction(PlaySelectorPanel.this, play));
 
                 number++;
                 yOfView += 30;
