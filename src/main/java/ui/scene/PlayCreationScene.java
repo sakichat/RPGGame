@@ -146,7 +146,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
 
         campaignSelectButton.addActionListener(e -> selectCampaign());
 
-        createButton.addActionListener(e ->  {
+        createButton.addActionListener(e -> {
             PlayScene playScene = new PlayScene();
             play.setName(playNameTextField.getText());
             play.resolveMap();

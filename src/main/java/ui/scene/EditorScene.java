@@ -111,7 +111,7 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
 
         backButton.addActionListener(e -> EditorScene.this.navigationView.pop());
 
-        itemCreateButton.addActionListener(e ->  {
+        itemCreateButton.addActionListener(e -> {
                 ItemCreationScene itemCreationScene = new ItemCreationScene();
                 EditorScene.this.navigationView.push(itemCreationScene);
         });
@@ -125,7 +125,7 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
 
         playerEditButton.addActionListener(e -> playerEdit());
 
-        mapCreateButton.addActionListener(e ->  {
+        mapCreateButton.addActionListener(e -> {
             MapCreationScene mapCreationScene = new MapCreationScene();
             EditorScene.this.navigationView.push(mapCreationScene);
         });
@@ -133,7 +133,7 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
         mapEditButton.addActionListener(e -> mapEdit());
 
 
-        campaignCreateButton.addActionListener(e ->  {
+        campaignCreateButton.addActionListener(e -> {
             CampaignCreationScene campaignCreationScene = new CampaignCreationScene();
             EditorScene.this.navigationView.push(campaignCreationScene);
         });

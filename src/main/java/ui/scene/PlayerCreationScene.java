@@ -136,71 +136,46 @@ public class PlayerCreationScene extends Scene {
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayerCreationScene.this.navigationView.pop();
-            }
-        });
+        backButton.addActionListener(e -> PlayerCreationScene.this.navigationView.pop());
 
-        bullyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                typeLabel.setText(Player.PLAYER_TYPE_BULLY);
-            }
-        });
+        bullyButton.addActionListener(e -> typeLabel.setText(Player.PLAYER_TYPE_BULLY));
 
-        nimbleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                typeLabel.setText(Player.PLAYER_TYPE_NIMBLE);
-            }
-        });
+        nimbleButton.addActionListener(e -> typeLabel.setText(Player.PLAYER_TYPE_NIMBLE));
 
-        tankButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                typeLabel.setText(Player.PLAYER_TYPE_TANK);
-            }
-        });
+        tankButton.addActionListener(e -> typeLabel.setText(Player.PLAYER_TYPE_TANK));
 
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int level = Integer.parseInt(levelField.getText());
+        createButton.addActionListener(e -> {
+            int level = Integer.parseInt(levelField.getText());
 
-                if (level < 1) {
-                    checkLevelLabel.setText("Level CANNOT less than 1!");
+            if (level < 1) {
+                checkLevelLabel.setText("Level CANNOT less than 1!");
 
-                } else if (level > 20) {
-                    checkLevelLabel.setText("Level CANNOT larger than 20!");
+            } else if (level > 20) {
+                checkLevelLabel.setText("Level CANNOT larger than 20!");
 
-                } else {
-                    // Builder
-                    PlayerExplorer playerExplorer;
+            } else {
+                PlayerExplorer playerExplorer;
 
-                    String name = nameField.getText();
-                    String type = typeLabel.getText();
+                String name = nameField.getText();
+                String type = typeLabel.getText();
 
-                    PlayerBuilder playerBuilder = null;
-                    if (type.equals(Player.PLAYER_TYPE_BULLY)){
-                        playerBuilder = new BullyBuilder();
-                    }else if (type.equals(Player.PLAYER_TYPE_NIMBLE)){
-                        playerBuilder = new NimbleBuilder();
-                    }else if(type.equals(Player.PLAYER_TYPE_TANK)){
-                        playerBuilder = new TankBuilder();
-                    }
-
-                    playerExplorer = new PlayerExplorer();
-                    playerExplorer.setPlayerBuilder(playerBuilder);
-                    playerExplorer.constructPlayer(name,level);
-                    player = playerExplorer.getPlayer();
-
-                    PlayerEditingScene playerEditingScene = new PlayerEditingScene();
-                    playerEditingScene.setPlayer(player);
-                    PlayerCreationScene.this.navigationView.push(playerEditingScene);
+                PlayerBuilder playerBuilder = null;
+                if (type.equals(Player.PLAYER_TYPE_BULLY)){
+                    playerBuilder = new BullyBuilder();
+                }else if (type.equals(Player.PLAYER_TYPE_NIMBLE)){
+                    playerBuilder = new NimbleBuilder();
+                }else if(type.equals(Player.PLAYER_TYPE_TANK)){
+                    playerBuilder = new TankBuilder();
                 }
 
+                playerExplorer = new PlayerExplorer();
+                playerExplorer.setPlayerBuilder(playerBuilder);
+                playerExplorer.constructPlayer(name,level);
+                player = playerExplorer.getPlayer();
+
+                PlayerEditingScene playerEditingScene = new PlayerEditingScene();
+                playerEditingScene.setPlayer(player);
+                PlayerCreationScene.this.navigationView.push(playerEditingScene);
             }
         });
     }
