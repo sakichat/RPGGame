@@ -136,50 +136,22 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayCreationScene.this.navigationView.pop();
-            }
-        });
+        backButton.addActionListener(e -> PlayCreationScene.this.navigationView.pop());
 
-        playerSelectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                selectPlayer();
-            }
-        });
+        playerSelectButton.addActionListener(e -> selectPlayer());
 
-        humanPlayerModeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playerModeLabel.setText(HUMAN_PLAYER_MODE);
-            }
-        });
+        humanPlayerModeButton.addActionListener(e -> playerModeLabel.setText(HUMAN_PLAYER_MODE));
 
-        computerPlayerModeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playerModeLabel.setText(COMPUTER_PLAYER_MODE);
-            }
-        });
+        computerPlayerModeButton.addActionListener(e -> playerModeLabel.setText(COMPUTER_PLAYER_MODE));
 
-        campaignSelectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                selectCampaign();
-            }
-        });
+        campaignSelectButton.addActionListener(e -> selectCampaign());
 
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayScene playScene = new PlayScene();
-                play.setName(playNameTextField.getText());
-                play.resolveMap();
-                playScene.setPlay(play);
-                PlayCreationScene.this.navigationView.push(playScene);
-            }
+        createButton.addActionListener(e ->  {
+            PlayScene playScene = new PlayScene();
+            play.setName(playNameTextField.getText());
+            play.resolveMap();
+            playScene.setPlay(play);
+            PlayCreationScene.this.navigationView.push(playScene);
         });
     }
 

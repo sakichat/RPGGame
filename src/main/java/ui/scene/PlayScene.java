@@ -114,56 +114,24 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayScene.this.navigationView.popTo(MainScene.class);
-            }
+        backButton.addActionListener(e -> PlayScene.this.navigationView.popTo(MainScene.class));
+
+        saveButton.addActionListener(e -> {
+            save();
+            PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                save();
+        upDirectionButton.addActionListener(e -> move(Point.DIRECTION_UP));
 
-                PlayScene.this.navigationView.popTo(MainScene.class);
-            }
-        });
+        downDirectionButton.addActionListener(e -> move(Point.DIRECTION_DOWN));
 
-        upDirectionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                move(Point.DIRECTION_UP);
-            }
-        });
+        leftDirectionButton.addActionListener(e -> move(Point.DIRECTION_LEFT));
 
-        downDirectionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                move(Point.DIRECTION_DOWN);
-            }
-        });
+        rightDirectionButton.addActionListener(e -> move(Point.DIRECTION_RIGHT));
 
-        leftDirectionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                move(Point.DIRECTION_LEFT);
-            }
-        });
-
-        rightDirectionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                move(Point.DIRECTION_RIGHT);
-            }
-        });
-
-        interactButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Cell targetCell = play.getTarget();
-                interactWith(targetCell);
-            }
+        interactButton.addActionListener(e -> {
+            Cell targetCell = play.getTarget();
+            interactWith(targetCell);
         });
 
     }

@@ -42,11 +42,6 @@ public class FinishScene extends Scene {
         button.setLocation(20, 80);
         contentView.add(button);
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                FinishScene.this.navigationView.popTo(MainScene.class);
-            }
-        });
+        button.addActionListener(e -> FinishScene.this.navigationView.popTo(MainScene.class));
     }
 }
