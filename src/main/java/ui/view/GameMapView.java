@@ -311,7 +311,6 @@ public class GameMapView extends View {
         playerParties.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
 
         Map<Player, List<Point>> attackRanges = gameMap.getAttackRanges();
-        List<Player> players = gameMap.getPlayers();
 
         for (Player player : attackRanges.keySet()) {
             ImageView imageView = new ImageView();
