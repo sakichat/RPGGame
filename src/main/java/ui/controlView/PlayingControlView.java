@@ -76,6 +76,7 @@ public class PlayingControlView extends ControlView {
     public void initSubviews() {
 
         JLabel label;
+        JButton button;
 
         label = new JLabel("", JLabel.LEFT);
         label.setSize(160, 40);
@@ -89,20 +90,16 @@ public class PlayingControlView extends ControlView {
         add(label);
         playerNameLabel = label;
 
-        JButton button;
-
-        button = new JButton();
+        button = new JButton("View Attribute");
         button.setSize(160, 40);
         button.setLocation(10, 110);
         add(button);
-        button.setText("View Attribute");
         JButton viewAttributesButton = button;
 
-        button = new JButton();
+        button = new JButton("View Inventory");
         button.setSize(160, 40);
         button.setLocation(10, 160);
         add(button);
-        button.setText("View Inventory");
         JButton viewInventoryButton = button;
 
         viewAttributesButton.addActionListener(e -> playScene.viewAttribute(player));

@@ -67,8 +67,6 @@ public class CampaignSelectorPanel extends Panel{
         this.buttonText = buttonText;
     }
 
-
-
     /**
      * this method is to initial the view
      */
@@ -79,6 +77,7 @@ public class CampaignSelectorPanel extends Panel{
         title = "Campaign Selector";
         setSize(290,170);
     }
+
     /**
      * this method is to set sub-views
      */
@@ -138,7 +137,9 @@ public class CampaignSelectorPanel extends Panel{
                 addButton.setSize(60,20);
                 campaignSelector.add(addButton);
 
-                addButton.addActionListener(e -> delegate.campaignSelectorPerformAction(CampaignSelectorPanel.this,campaign));
+                addButton.addActionListener(e ->
+                    delegate.campaignSelectorPerformAction(CampaignSelectorPanel.this,campaign)
+                );
 
                 number++;
                 yOfView += 30;

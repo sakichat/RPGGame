@@ -119,7 +119,9 @@ public class PlaySelectorPanel extends Panel {
                 selectButton.setSize(60, 20);
                 playSelector.add(selectButton);
 
-                selectButton.addActionListener(e -> delegate.playSelectorPerformAction(PlaySelectorPanel.this, play));
+                selectButton.addActionListener(e ->
+                    delegate.playSelectorPerformAction(PlaySelectorPanel.this, play)
+                );
 
                 number++;
                 yOfView += 30;

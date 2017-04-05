@@ -47,20 +47,17 @@ public class ChestViewControlView extends ControlView {
     public void initSubviews() {
 
         JLabel label;
+        JButton button;
 
-        label = new JLabel();
+        label = new JLabel("Chest");
         label.setSize(160, 40);
         label.setLocation(10, 10);
         add(label);
-        label.setText("Chest");
 
-        JButton button;
-
-        button = new JButton();
+        button = new JButton("View Inside");
         button.setSize(160, 40);
         button.setLocation(10, 60);
         add(button);
-        button.setText("View Inside");
         JButton viewInsideButton = button;
 
         viewInsideButton.addActionListener(e -> playScene.showChestViewInside(chest));

@@ -100,7 +100,6 @@ public class EquipmentPanel extends Panel implements Observer{
     public void dataToView(){
         equipmentsPanel.removeAll();
 
-
         int x = 10;
         int y = 10;
 

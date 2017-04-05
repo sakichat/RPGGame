@@ -25,21 +25,16 @@ public class EntranceControlView extends ControlView {
      */
     public void initSubviews() {
 
-        JLabel topicLabel = new JLabel();
-        topicLabel.setSize(160, 40);
-        topicLabel.setLocation(10, 10);
-        add(topicLabel);
-        topicLabel.setText("Entrance");
+        JLabel label = new JLabel("Entrance");
+        label.setSize(160, 40);
+        label.setLocation(10, 10);
+        add(label);
 
-        JButton jButton;
-
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 60);
-        add(jButton);
-        jButton.setText("Remove");
-        JButton removeButton = new JButton();
-        removeButton = jButton;
+        JButton button = new JButton("Remove");
+        button.setSize(160, 40);
+        button.setLocation(10, 60);
+        add(button);
+        JButton removeButton = button;
 
         removeButton.addActionListener(e -> mapEditingScene.destroy());
 

@@ -49,27 +49,23 @@ public class ChestControlView extends ControlView {
     public void initSubviews() {
 
         JLabel label;
+        JButton button;
 
-        label = new JLabel();
+        label = new JLabel("Chest");
         label.setSize(160, 40);
         label.setLocation(10, 10);
         add(label);
-        label.setText("Chest");
 
-        JButton button;
-
-        button = new JButton();
+        button = new JButton("View Inside");
         button.setSize(160, 40);
         button.setLocation(10, 60);
         add(button);
-        button.setText("View Inside");
         JButton viewInsideButton = button;
 
 
-        button = new JButton();
+        button = new JButton("Remove");
         button.setSize(160, 40);
         button.setLocation(10, 110);
-        button.setText("Remove");
         JButton removeButton = button;
 
         this.add(removeButton);

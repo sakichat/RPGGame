@@ -133,7 +133,9 @@ public class MapSelectorPanel extends Panel  {
                 addButton.setSize(60,20);
                 mapSelector.add(addButton);
 
-                addButton.addActionListener(e -> delegate.mapSelectorPerformAction(MapSelectorPanel.this, gameMap));
+                addButton.addActionListener(e ->
+                    delegate.mapSelectorPerformAction(MapSelectorPanel.this, gameMap)
+                );
 
                 number++;
                 yOfView += 30;

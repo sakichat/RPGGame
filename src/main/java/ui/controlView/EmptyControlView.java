@@ -27,52 +27,42 @@ public class EmptyControlView extends ControlView{
      */
     public void initSubviews() {
 
-        JLabel topicLabel = new JLabel();
-        topicLabel.setSize(160, 40);
-        topicLabel.setLocation(10, 10);
-        add(topicLabel);
+        JLabel label = new JLabel();
+        label.setSize(160, 40);
+        label.setLocation(10, 10);
+        add(label);
 
         JButton button;
 
-        button = new JButton();
+        button = new JButton("Wall");
         button.setSize(160, 40);
         button.setLocation(10, 60);
         add(button);
-        button.setText("Wall");
-        JButton wallButton = new JButton();
-        wallButton = button;
+        JButton wallButton = button;
 
-        button = new JButton();
+        button = new JButton("Entance");
         button.setSize(160, 40);
         button.setLocation(10, 110);
         add(button);
-        button.setText("Entrance");
-        JButton entranceButton = new JButton();
-        entranceButton = button;
+        JButton entranceButton = button;
 
-        button = new JButton();
+        button = new JButton("Exit");
         button.setSize(160, 40);
         button.setLocation(10, 160);
         add(button);
-        button.setText("Exit");
-        JButton exitButton = new JButton();
-        exitButton = button;
+        JButton exitButton = button;
 
-        button = new JButton();
+        button = new JButton("Chest");
         button.setSize(160, 40);
         button.setLocation(10, 210);
         add(button);
-        button.setText("Chest");
-        JButton chestButton = new JButton();
-        chestButton = button;
+        JButton chestButton = button;
 
-        button = new JButton();
+        button = new JButton("Player");
         button.setSize(160, 40);
         button.setLocation(10, 260);
         add(button);
-        button.setText("Player");
-        JButton playerButton = new JButton();
-        playerButton = button;
+        JButton playerButton = button;
 
 
         wallButton.addActionListener(e -> mapEditingScene.build(new Obstacle()));

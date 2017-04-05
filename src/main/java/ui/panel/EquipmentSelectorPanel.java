@@ -123,8 +123,6 @@ public class EquipmentSelectorPanel extends Panel {
             search();
         });
 
-
-
     }
     /**
      * this method is to search the files
@@ -135,8 +133,6 @@ public class EquipmentSelectorPanel extends Panel {
         int number = 0;
         int yOfView = 0;
         int xOfView = 0;
-
-
 
         for (String name : names){
             if (name.contains(textField.getText()) && number < 3){
@@ -152,7 +148,9 @@ public class EquipmentSelectorPanel extends Panel {
                 addButton.setSize(60,20);
                 equipmentPanel.add(addButton);
 
-                addButton.addActionListener(e -> delegate.equipmentSelectorPerformAction(EquipmentSelectorPanel.this, equipment));
+                addButton.addActionListener(e ->
+                    delegate.equipmentSelectorPerformAction(EquipmentSelectorPanel.this, equipment)
+                );
 
                 number++;
                 yOfView += 30;
