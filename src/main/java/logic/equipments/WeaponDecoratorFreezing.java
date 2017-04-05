@@ -16,7 +16,7 @@ public class WeaponDecoratorFreezing extends WeaponDecorator {
 
     @Override
     public Weapon getOrigin() {
-        return decoratedWeapon;
+        return decoratedWeapon.getOrigin();
     }
 
     @Override

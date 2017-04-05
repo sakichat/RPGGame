@@ -32,7 +32,7 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
 
     @Override
     public Weapon getOrigin() {
-        return decoratedWeapon;
+        return decoratedWeapon.getOrigin();
     }
 
     /**

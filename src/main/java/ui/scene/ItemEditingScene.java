@@ -271,7 +271,7 @@ public class ItemEditingScene extends Scene {
 
         button = new JButton("Ranged");
         button.setSize(80, 30);
-        button.setLocation(230, 40);
+        button.setLocation(240, 40);
         weaponSubPanel.add(button);
         JButton rangedTypeButton = button;
 
@@ -336,282 +336,197 @@ public class ItemEditingScene extends Scene {
         /*
          * add Listener
          */
-        backButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ItemEditingScene.this.navigationView.popTo(EditorScene.class);
-            }
-        });
+        backButton.addActionListener(e -> ItemEditingScene.this.navigationView.popTo(EditorScene.class));
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                save();
-            }
-        });
+        saveButton.addActionListener(e -> save());
 
-        weaponButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-                typeLabel.setText(Equipment.WEAPON);
+        weaponButton.addActionListener(e -> {
+            equipment.setType(Equipment.WEAPON);
+            typeLabel.setText(Equipment.WEAPON);
 
-                contentView.add(weaponSubPanel);
+            contentView.add(weaponSubPanel);
 
+            EquipmentFactory equipmentFactory = new EquipmentFactory();
+            equipment = equipmentFactory.equipmentToWeapon(equipment);
+        }
+        );
+
+        shieldButton.addActionListener(e -> {
+            equipment.setType(Equipment.SHIELD);
+            typeLabel.setText(Equipment.SHIELD);
+
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
                 EquipmentFactory equipmentFactory = new EquipmentFactory();
-                equipment = equipmentFactory.equipmentToWeapon(equipment);
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
         });
 
-        shieldButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.SHIELD);
-                typeLabel.setText(Equipment.SHIELD);
+        armorButton.addActionListener(e -> {
+            equipment.setType(Equipment.ARMOR);
+            typeLabel.setText(Equipment.ARMOR);
 
-                if (equipment instanceof Weapon) {
-                    contentView.remove(weaponSubPanel);
-                    EquipmentFactory equipmentFactory = new EquipmentFactory();
-                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
-                }
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
         });
 
-        armorButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.ARMOR);
-                typeLabel.setText(Equipment.ARMOR);
+        helmetButton.addActionListener(e -> {
+            equipment.setType(Equipment.HELMET);
+            typeLabel.setText(Equipment.HELMET);
 
-                if (equipment instanceof Weapon) {
-                    contentView.remove(weaponSubPanel);
-                    EquipmentFactory equipmentFactory = new EquipmentFactory();
-                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
-                }
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
         });
 
-        helmetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.HELMET);
-                typeLabel.setText(Equipment.HELMET);
+        ringButton.addActionListener(e -> {
+            equipment.setType(Equipment.RING);
+            typeLabel.setText(Equipment.RING);
 
-                if (equipment instanceof Weapon) {
-                    contentView.remove(weaponSubPanel);
-                    EquipmentFactory equipmentFactory = new EquipmentFactory();
-                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
-                }
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
         });
 
-        ringButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.RING);
-                typeLabel.setText(Equipment.RING);
+        beltButton.addActionListener(e -> {
+            equipment.setType(Equipment.BELT);
+            typeLabel.setText(Equipment.BELT);
 
-                if (equipment instanceof Weapon) {
-                    contentView.remove(weaponSubPanel);
-                    EquipmentFactory equipmentFactory = new EquipmentFactory();
-                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
-                }
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
         });
 
-        beltButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.BELT);
-                typeLabel.setText(Equipment.BELT);
+        bootsButton.addActionListener(e -> {
+            equipment.setType(Equipment.BOOTS);
+            typeLabel.setText(Equipment.BOOTS);
 
-                if (equipment instanceof Weapon) {
-                    contentView.remove(weaponSubPanel);
-                    EquipmentFactory equipmentFactory = new EquipmentFactory();
-                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
-                }
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
         });
 
-        bootsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.BOOTS);
-                typeLabel.setText(Equipment.BOOTS);
-
-                if (equipment instanceof Weapon) {
-                    contentView.remove(weaponSubPanel);
-                    EquipmentFactory equipmentFactory = new EquipmentFactory();
-                    equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
-                }
-            }
+        strButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_STR);
+            enhanceOnLabel.setText(Player.ABILITY_STR);
         });
 
-        strButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_STR);
-                enhanceOnLabel.setText(Player.ABILITY_STR);
-            }
+        dexButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_DEX);
+            enhanceOnLabel.setText(Player.ABILITY_DEX);
         });
 
-        dexButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_DEX);
-                enhanceOnLabel.setText(Player.ABILITY_DEX);
-            }
+        conButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_CON);
+            enhanceOnLabel.setText(Player.ABILITY_CON);
         });
 
-        conButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_CON);
-                enhanceOnLabel.setText(Player.ABILITY_CON);
-            }
+        intButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_INT);
+            enhanceOnLabel.setText(Player.ABILITY_INT);
         });
 
-        intButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_INT);
-                enhanceOnLabel.setText(Player.ABILITY_INT);
-            }
+        wisButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_WIS);
+            enhanceOnLabel.setText(Player.ABILITY_WIS);
         });
 
-        wisButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_WIS);
-                enhanceOnLabel.setText(Player.ABILITY_WIS);
-            }
+        chaButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_CHA);
+            enhanceOnLabel.setText(Player.ABILITY_CHA);
         });
 
-        chaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_CHA);
-                enhanceOnLabel.setText(Player.ABILITY_CHA);
-            }
+        armorClassButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
+            enhanceOnLabel.setText("Armor Class");
         });
 
-        armorClassButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
-                enhanceOnLabel.setText("Armor Class");
-            }
+        attackBonusButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
+            enhanceOnLabel.setText("Attack Bonus");
         });
 
-        attackBonusButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
-                enhanceOnLabel.setText("Attack Bonus");
-            }
+        damageBonusButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
+            enhanceOnLabel.setText("Damage Bonus");
         });
 
-        damageBonusButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
-                enhanceOnLabel.setText("Damage Bonus");
+        validateButton.addActionListener(e -> {
+
+            Integer enhancedValue = Integer.valueOf(valueTextField.getText());
+            equipment.setEnhancedValue(enhancedValue);
+
+            if (equipment instanceof Weapon) {
+                Integer range = Integer.valueOf(rangeTextField.getText());
+                ((Weapon) equipment).setRange(range);
             }
+
+            System.out.println(equipment);
+
+            if(equipment.validate()){
+                saveButton.setEnabled(true);
+                validateResultLabel.setText("Success!");
+
+            }else{
+                saveButton.setEnabled(false);
+                validateResultLabel.setText("Failure!");
+            }
+
+            ItemEditingScene.this.repaint();
         });
 
-        validateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedValue(Integer.valueOf(valueTextField.getText()));
-
-                System.out.println(equipment);
-
-                if(equipment.validate()){
-
-                    saveButton.setEnabled(true);
-                    validateResultLabel.setText("Success!");
-
-                }else{
-                    saveButton.setEnabled(false);
-                    validateResultLabel.setText("Failure!");
-                }
-
-                ItemEditingScene.this.repaint();
-            }
+        meleeTypeButton.addActionListener(e -> {
+            Weapon weapon = (Weapon) equipment;
+            weapon.setWeaponType(Equipment.WEAPON_TYPE_MELEE);
+            weaponTypeLabel.setText(Equipment.WEAPON_TYPE_MELEE);
         });
 
-        meleeTypeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Weapon weapon = (Weapon) equipment;
-                weapon.setWeaponType(Equipment.WEAPON_TYPE_MELEE);
-                weaponTypeLabel.setText(Equipment.WEAPON_TYPE_MELEE);
-            }
+        rangedTypeButton.addActionListener(e -> {
+            Weapon weapon = (Weapon) equipment;
+            weapon.setWeaponType(Equipment.WEAPON_TYPE_RANGED);
+            weaponTypeLabel.setText(Equipment.WEAPON_TYPE_RANGED);
         });
 
-        rangedTypeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Weapon weapon = (Weapon) equipment;
-                weapon.setWeaponType(Equipment.WEAPON_TYPE_RANGED);
-                weaponTypeLabel.setText(Equipment.WEAPON_TYPE_RANGED);
-            }
+        freezingButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorFreezing((Weapon) equipment);
+            dataToView();
         });
 
-//        rangeSetButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                Weapon weapon = (Weapon) equipment;
-//                Integer range = Integer.valueOf(rangeTextField.getText());
-//                weapon.setRange(range);
-//                dataToView();
-//            }
-//        });
-
-        freezingButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment = new WeaponDecoratorFreezing((Weapon) equipment);
-                dataToView();
-            }
+        burningButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorBurning((Weapon) equipment);
+            dataToView();
         });
 
-        burningButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment = new WeaponDecoratorBurning((Weapon) equipment);
-                dataToView();
-            }
+        slayingButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorSlaying((Weapon) equipment);
+            dataToView();
         });
 
-        slayingButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment = new WeaponDecoratorSlaying((Weapon) equipment);
-                dataToView();
-            }
+        frighteningButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorFrightening((Weapon) equipment);
+            dataToView();
         });
 
-        frighteningButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment = new WeaponDecoratorFrightening((Weapon) equipment);
-                dataToView();
-            }
+        pacifyingButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorPacifying((Weapon) equipment);
+            dataToView();
         });
 
-        pacifyingButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment = new WeaponDecoratorPacifying((Weapon) equipment);
-                dataToView();
-            }
-        });
-
-        resetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
+        resetButton.addActionListener(e -> {
+            Weapon originalWeapon = ((Weapon) equipment).getOrigin();
+            equipment = originalWeapon;
+            dataToView();
         });
 
         repaint();

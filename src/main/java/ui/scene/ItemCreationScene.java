@@ -49,21 +49,13 @@ public class ItemCreationScene extends Scene {
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ItemCreationScene.this.navigationView.pop();
-            }
-        });
+        backButton.addActionListener(e -> ItemCreationScene.this.navigationView.pop());
 
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Equipment equipment = new EquipmentFactory().newEquipment(nameField.getText());
-                ItemEditingScene itemEditingScene = new ItemEditingScene();
-                itemEditingScene.setEquipment(equipment);
-                ItemCreationScene.this.navigationView.push(itemEditingScene);
-            }
+        createButton.addActionListener(e -> {
+            Equipment equipment = new EquipmentFactory().newEquipment(nameField.getText());
+            ItemEditingScene itemEditingScene = new ItemEditingScene();
+            itemEditingScene.setEquipment(equipment);
+            ItemCreationScene.this.navigationView.push(itemEditingScene);
         });
     }
 }

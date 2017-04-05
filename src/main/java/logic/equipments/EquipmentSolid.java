@@ -108,9 +108,10 @@ public class EquipmentSolid implements Equipment{
                     || enhancedAttribute.equals(Player.ATTRIBUTE_DAMAGE_BONUS)){
 
                 if (enhancedValue >= 1 && enhancedValue <= 5){
-                    isValidate = true;
+                    enhancementValid = true;
                 }
             }
+            System.out.println("enhancementValid = " + enhancementValid);
 
             boolean weaponTypeValid = false;
             Weapon weapon = (Weapon) this;
@@ -121,6 +122,7 @@ public class EquipmentSolid implements Equipment{
             } else if (weaponType.equals(WEAPON_TYPE_RANGED)) {
                 weaponTypeValid = weaponRange > 1;
             }
+            System.out.println("weaponTypeValid = " + weaponTypeValid);
 
             isValidate = enhancementValid && weaponTypeValid;
         }
