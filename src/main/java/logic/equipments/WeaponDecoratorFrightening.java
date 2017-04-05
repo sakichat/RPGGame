@@ -20,7 +20,7 @@ public class WeaponDecoratorFrightening extends WeaponDecorator {
     }
 
     @Override
-    public String enhancementsChainText(){
-        return super.enhancementsChainText() + " Frightening ";
+    public String enchantmentsChainText(){
+        return super.enchantmentsChainText() + " Frightening ";
     }
 }

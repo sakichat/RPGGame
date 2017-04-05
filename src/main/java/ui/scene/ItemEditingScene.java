@@ -7,8 +7,6 @@ import ui.view.View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * @author GU_HAN
@@ -563,7 +561,7 @@ public class ItemEditingScene extends Scene {
             int range = weapon.getRange();
             rangeTextField.setText(range + "");
 
-            String enhancementsChainText = weapon.enhancementsChainText();
+            String enhancementsChainText = weapon.enchantmentsChainText();
             effectsValueLabel.setText(enhancementsChainText);
         }
 

@@ -12,5 +12,5 @@ public interface Weapon extends Equipment{
     void setWeaponType(String weaponType);
 
     Weapon getOrigin();
-    String enhancementsChainText();
+    String enchantmentsChainText();
 }

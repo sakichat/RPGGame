@@ -40,7 +40,7 @@ public class WeaponSolid extends EquipmentSolid implements Weapon{
     }
 
     @Override
-    public String enhancementsChainText(){
+    public String enchantmentsChainText(){
         return "";
     }
 

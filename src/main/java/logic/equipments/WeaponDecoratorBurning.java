@@ -41,7 +41,7 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
      */
 
     @Override
-    public String enhancementsChainText(){
-        return super.enhancementsChainText() + " Burning ";
+    public String enchantmentsChainText(){
+        return super.enchantmentsChainText() + " Burning ";
     }
 }

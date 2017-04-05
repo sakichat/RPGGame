@@ -20,7 +20,7 @@ public class WeaponDecoratorFreezing extends WeaponDecorator {
     }
 
     @Override
-    public String enhancementsChainText(){
-        return super.enhancementsChainText() + " Freezing ";
+    public String enchantmentsChainText(){
+        return super.enchantmentsChainText() + " Freezing ";
     }
 }

@@ -1,7 +1,6 @@
 package logic.equipments;
 
 import com.google.gson.annotations.Expose;
-import logic.equipments.Weapon;
 
 /**
  * @author Li ZHEN
@@ -97,8 +96,8 @@ public class WeaponDecorator implements Weapon {
     }
 
     @Override
-    public String enhancementsChainText(){
-        return decoratedWeapon.enhancementsChainText();
+    public String enchantmentsChainText(){
+        return decoratedWeapon.enchantmentsChainText();
     }
 
 
