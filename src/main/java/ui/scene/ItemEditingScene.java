@@ -336,7 +336,9 @@ public class ItemEditingScene extends Scene {
         /*
          * add Listener
          */
-        backButton.addActionListener(e -> ItemEditingScene.this.navigationView.popTo(EditorScene.class));
+        backButton.addActionListener(e ->
+            ItemEditingScene.this.navigationView.popTo(EditorScene.class)
+        );
 
         saveButton.addActionListener(e -> save());
 

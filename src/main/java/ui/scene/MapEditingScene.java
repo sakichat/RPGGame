@@ -18,7 +18,9 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerSelectorPanel.Delegate, EquipmentSelectorPanel.Delegate {
+public class MapEditingScene extends Scene implements   GameMapView.Delegate,
+                                                        PlayerSelectorPanel.Delegate,
+                                                        EquipmentSelectorPanel.Delegate {
 
     private GameMap gameMap;
     private GameMapView gameMapView;
@@ -88,7 +90,9 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
         repaint();
 
-        backButton.addActionListener(e -> MapEditingScene.this.navigationView.popTo(EditorScene.class));
+        backButton.addActionListener(e ->
+            MapEditingScene.this.navigationView.popTo(EditorScene.class)
+        );
 
         saveButton.setEnabled(false);
 

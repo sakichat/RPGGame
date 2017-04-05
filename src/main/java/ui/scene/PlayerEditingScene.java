@@ -137,7 +137,9 @@ public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.
 
         repaint();
 
-        backButton.addActionListener(e -> PlayerEditingScene.this.navigationView.popTo(EditorScene.class));
+        backButton.addActionListener(e ->
+            PlayerEditingScene.this.navigationView.popTo(EditorScene.class)
+        );
 
         saveButton.addActionListener(e -> save());
 
