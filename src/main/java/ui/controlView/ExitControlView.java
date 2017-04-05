@@ -42,11 +42,6 @@ public class ExitControlView extends ControlView {
         JButton removeButton = new JButton();
         removeButton = jButton;
 
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.destroy();
-            }
-        });
+        removeButton.addActionListener(e -> mapEditingScene.destroy());
     }
 }

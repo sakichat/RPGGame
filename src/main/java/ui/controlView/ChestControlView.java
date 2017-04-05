@@ -74,19 +74,9 @@ public class ChestControlView extends ControlView {
 
         this.add(removeButton);
 
-        viewInsideButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.showChestViewInside(chest);
-            }
-        });
+        viewInsideButton.addActionListener(e -> mapEditingScene.showChestViewInside(chest));
 
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.destroy();
-            }
-        });
+        removeButton.addActionListener(e -> mapEditingScene.destroy());
 
         repaint();
 

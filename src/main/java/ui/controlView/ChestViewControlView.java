@@ -63,12 +63,7 @@ public class ChestViewControlView extends ControlView {
         button.setText("View Inside");
         JButton viewInsideButton = button;
 
-        viewInsideButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playScene.showChestViewInside(chest);
-            }
-        });
+        viewInsideButton.addActionListener(e -> playScene.showChestViewInside(chest));
 
     }
 

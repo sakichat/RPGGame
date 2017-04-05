@@ -75,40 +75,15 @@ public class EmptyControlView extends ControlView{
         playerButton = button;
 
 
-        wallButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.build(new Obstacle());
-            }
-        });
+        wallButton.addActionListener(e -> mapEditingScene.build(new Obstacle()));
 
-        entranceButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.build(new Entrance());
-            }
-        });
+        entranceButton.addActionListener(e -> mapEditingScene.build(new Entrance()));
 
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.build(new Exit());
-            }
-        });
+        exitButton.addActionListener(e -> mapEditingScene.build(new Exit()));
 
-        playerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.addPlayer();
-            }
-        });
+        playerButton.addActionListener(e -> mapEditingScene.addPlayer());
 
-        chestButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.addChest();
-            }
-        });
+        chestButton.addActionListener(e -> mapEditingScene.addChest());
     }
 
 }

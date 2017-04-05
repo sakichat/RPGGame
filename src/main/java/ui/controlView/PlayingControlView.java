@@ -105,20 +105,9 @@ public class PlayingControlView extends ControlView {
         button.setText("View Inventory");
         JButton viewInventoryButton = button;
 
-        viewAttributesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playScene.viewAttribute(player);
-            }
-        });
+        viewAttributesButton.addActionListener(e -> playScene.viewAttribute(player));
 
-        viewInventoryButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playScene.viewInventory(player);
-
-            }
-        });
+        viewInventoryButton.addActionListener(e -> playScene.viewInventory(player));
     }
 
     /**
