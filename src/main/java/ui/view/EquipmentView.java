@@ -72,7 +72,7 @@ public class EquipmentView extends View {
     private void dataToView(){
 
         typeLabel.setText(equipment.getType());
-        nameLabel.setText(equipment.getName());
+        nameLabel.setText(equipment.displayName());
 
         String valueString = TextDisplay.signedNumber(equipment.getEnhancedValue());
         String attributeString = equipment.getEnhancedAttribute();
