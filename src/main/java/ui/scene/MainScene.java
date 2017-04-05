@@ -39,20 +39,14 @@ public class MainScene extends Scene {
 
         repaint();
 
-        playButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ReadyScene readyScene = new ReadyScene();
-                MainScene.this.navigationView.push(readyScene);
-            }
+        playButton.addActionListener(e -> {
+            ReadyScene readyScene = new ReadyScene();
+            MainScene.this.navigationView.push(readyScene);
         });
 
-        editorButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EditorScene editorScene = new EditorScene();
-                MainScene.this.navigationView.push(editorScene);
-            }
+        editorButton.addActionListener(e -> {
+            EditorScene editorScene = new EditorScene();
+            MainScene.this.navigationView.push(editorScene);
         });
     }
 

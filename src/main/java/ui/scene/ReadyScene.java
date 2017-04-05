@@ -53,29 +53,19 @@ public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
         contentView.add(button);
         JButton loadGameButton = button;
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ReadyScene.this.navigationView.pop();
-            }
+        backButton.addActionListener(e -> ReadyScene.this.navigationView.pop());
+
+        newGameButton.addActionListener(e -> {
+            PlayCreationScene playCreationScene = new PlayCreationScene();
+            ReadyScene.this.navigationView.push(playCreationScene);
+
         });
 
-        newGameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayCreationScene playCreationScene = new PlayCreationScene();
-                ReadyScene.this.navigationView.push(playCreationScene);
-            }
-        });
-
-        loadGameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlaySelectorPanel playSelectorPanel = new PlaySelectorPanel();
-                playSelectorPanel.setLocation(20, 190);
-                playSelectorPanel.setDelegate(ReadyScene.this);
-                contentView.add(playSelectorPanel);
-            }
+        loadGameButton.addActionListener(e -> {
+            PlaySelectorPanel playSelectorPanel = new PlaySelectorPanel();
+            playSelectorPanel.setLocation(20, 190);
+            playSelectorPanel.setDelegate(ReadyScene.this);
+            contentView.add(playSelectorPanel);
         });
 
         repaint();

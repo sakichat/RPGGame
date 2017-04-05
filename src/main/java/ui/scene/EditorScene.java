@@ -109,76 +109,36 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                EditorScene.this.navigationView.pop();
-            }
-        });
+        backButton.addActionListener(e -> EditorScene.this.navigationView.pop());
 
-        itemCreateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        itemCreateButton.addActionListener(e ->  {
                 ItemCreationScene itemCreationScene = new ItemCreationScene();
                 EditorScene.this.navigationView.push(itemCreationScene);
-            }
         });
 
-        itemEditButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                itemEdit();
-            }
+        itemEditButton.addActionListener(e -> itemEdit());
+
+        playerCreateButton.addActionListener(e -> {
+            PlayerCreationScene playerCreationScene = new PlayerCreationScene();
+            EditorScene.this.navigationView.push(playerCreationScene);
         });
 
-        playerCreateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayerCreationScene playerCreationScene = new PlayerCreationScene();
-                EditorScene.this.navigationView.push(playerCreationScene);
-            }
+        playerEditButton.addActionListener(e -> playerEdit());
+
+        mapCreateButton.addActionListener(e ->  {
+            MapCreationScene mapCreationScene = new MapCreationScene();
+            EditorScene.this.navigationView.push(mapCreationScene);
         });
 
-        playerEditButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playerEdit();
+        mapEditButton.addActionListener(e -> mapEdit());
 
-            }
+
+        campaignCreateButton.addActionListener(e ->  {
+            CampaignCreationScene campaignCreationScene = new CampaignCreationScene();
+            EditorScene.this.navigationView.push(campaignCreationScene);
         });
 
-        mapCreateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MapCreationScene mapCreationScene = new MapCreationScene();
-                EditorScene.this.navigationView.push(mapCreationScene);
-            }
-        });
-
-        mapEditButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEdit();
-
-            }
-        });
-
-
-        campaignCreateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CampaignCreationScene campaignCreationScene = new CampaignCreationScene();
-                EditorScene.this.navigationView.push(campaignCreationScene);
-            }
-        });
-
-        campaignEditButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                campaignEdit();
-
-            }
-        });
+        campaignEditButton.addActionListener(e -> campaignEdit());
     }
 
     /**
