@@ -88,28 +88,16 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MapEditingScene.this.navigationView.popTo(EditorScene.class);
-            }
-        });
+        backButton.addActionListener(e -> MapEditingScene.this.navigationView.popTo(EditorScene.class));
 
         saveButton.setEnabled(false);
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                save();
-                MapEditingScene.this.navigationView.popTo(EditorScene.class);
-            }
+
+        saveButton.addActionListener(e -> {
+            save();
+            MapEditingScene.this.navigationView.popTo(EditorScene.class);
         });
 
-        validateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                validateMap();
-            }
-        });
+        validateButton.addActionListener(e -> validateMap());
     }
 
     /**

@@ -71,19 +71,9 @@ public class CampaignEditingScene extends Scene implements MapSelectorPanel.Dele
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CampaignEditingScene.this.navigationView.popTo(EditorScene.class);
-            }
-        });
+        backButton.addActionListener(e -> CampaignEditingScene.this.navigationView.popTo(EditorScene.class));
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                save();
-            }
-        });
+        saveButton.addActionListener(e -> save());
 
     }
 

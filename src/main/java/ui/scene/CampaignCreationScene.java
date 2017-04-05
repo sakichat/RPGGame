@@ -59,22 +59,14 @@ public class CampaignCreationScene extends Scene {
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CampaignCreationScene.this.navigationView.pop();
-            }
-        });
+        backButton.addActionListener(e -> CampaignCreationScene.this.navigationView.pop());
 
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CampaignEditingScene campaignEditingScene = new CampaignEditingScene();
-                Campaign campaign = new Campaign();
-                campaign.setName(nameField.getText());
-                campaignEditingScene.setCampaign(campaign);
-                CampaignCreationScene.this.navigationView.push(campaignEditingScene);
-            }
+        createButton.addActionListener(e -> {
+            CampaignEditingScene campaignEditingScene = new CampaignEditingScene();
+            Campaign campaign = new Campaign();
+            campaign.setName(nameField.getText());
+            campaignEditingScene.setCampaign(campaign);
+            CampaignCreationScene.this.navigationView.push(campaignEditingScene);
         });
     }
 }
