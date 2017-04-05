@@ -122,13 +122,7 @@ public class EquipmentPanel extends Panel implements Observer{
                 equipmentsPanel.add(dropButton);
             }
 
-            dropButton.addActionListener(new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    chest.dropEquipment(equipment);
-                }
-            });
+            dropButton.addActionListener(e -> chest.dropEquipment(equipment));
 
             y += 30;
         }

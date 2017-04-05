@@ -104,11 +104,9 @@ public class CampaignSelectorPanel extends Panel{
         searchButton.setLocation(180,30);
         add(searchButton);
 
-        searchButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                campaignSelector.removeAll();
-                search();
-            }
+        searchButton.addActionListener(e -> {
+            campaignSelector.removeAll();
+            search();
         });
 
     }
@@ -140,13 +138,7 @@ public class CampaignSelectorPanel extends Panel{
                 addButton.setSize(60,20);
                 campaignSelector.add(addButton);
 
-                addButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        delegate.campaignSelectorPerformAction(CampaignSelectorPanel.this,campaign);
-
-                    }
-                });
+                addButton.addActionListener(e -> delegate.campaignSelectorPerformAction(CampaignSelectorPanel.this,campaign));
 
                 number++;
                 yOfView += 30;

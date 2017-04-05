@@ -118,11 +118,9 @@ public class EquipmentSelectorPanel extends Panel {
         searchButton.setSize(100,40);
         add(searchButton);
 
-        searchButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                equipmentPanel.removeAll();
-                search();
-            }
+        searchButton.addActionListener(e -> {
+            equipmentPanel.removeAll();
+            search();
         });
 
 
@@ -154,12 +152,7 @@ public class EquipmentSelectorPanel extends Panel {
                 addButton.setSize(60,20);
                 equipmentPanel.add(addButton);
 
-                addButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        delegate.equipmentSelectorPerformAction(EquipmentSelectorPanel.this, equipment);
-                    }
-                });
+                addButton.addActionListener(e -> delegate.equipmentSelectorPerformAction(EquipmentSelectorPanel.this, equipment));
 
                 number++;
                 yOfView += 30;

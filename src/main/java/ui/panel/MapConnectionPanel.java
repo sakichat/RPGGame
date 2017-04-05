@@ -103,16 +103,12 @@ public class MapConnectionPanel extends Panel {
             label.setLocation(140, y);
             mapSequencePanel.add(label);
             label.setText(s);
-            JLabel mapNameLabel = label;
 
             y += 50;
 
-            removeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    campaign.removeMapName(index);
-                    dataToView();
-                }
+            removeButton.addActionListener(e -> {
+                campaign.removeMapName(index);
+                dataToView();
             });
 
         }
@@ -121,7 +117,6 @@ public class MapConnectionPanel extends Panel {
         label.setSize(100, 40);
         label.setLocation(140, y);
         mapSequencePanel.add(label);
-        JLabel endNameLabel = label;
         y += 50;
 
         button = new JButton("Validate");
@@ -131,12 +126,7 @@ public class MapConnectionPanel extends Panel {
         JButton validateButton = button;
         y += 50;
 
-        validateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                messageLabel.setText(campaign.validate());
-            }
-        });
+        validateButton.addActionListener(e -> messageLabel.setText(campaign.validate()));
 
         label = new JLabel();
         label.setSize(200, 40);

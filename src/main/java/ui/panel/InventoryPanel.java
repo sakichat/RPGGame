@@ -256,7 +256,6 @@ public class InventoryPanel extends Panel implements Observer {
         label.setLocation(10, 210);
         add(label);
         label.setText("W");
-        JLabel weaponLabel = label;
 
         equipmentView = new EquipmentView();
         equipmentView.setLocation(30, 210);
@@ -274,7 +273,6 @@ public class InventoryPanel extends Panel implements Observer {
         label.setLocation(10, 240);
         add(label);
         label.setText("B");
-        JLabel backpackLabel = label;
 
         backpackSubPanel = new JPanel();
         backpackSubPanel.setLayout(null);
@@ -282,81 +280,60 @@ public class InventoryPanel extends Panel implements Observer {
         backpackSubPanel.setLocation(30, 240);
         add(backpackSubPanel);
 
-        unequipWeaponBotton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Equipment currentEquipment = player.getEquipment(Equipment.WEAPON);
-                if (currentEquipment != null) {
-                    player.unequip(currentEquipment);
-                }
-                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
+        unequipWeaponBotton.addActionListener(e -> {
+            Equipment currentEquipment = player.getEquipment(Equipment.WEAPON);
+            if (currentEquipment != null) {
+                player.unequip(currentEquipment);
             }
+            delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
         });
 
-        unequipShieldBotton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Equipment currentEquipment = player.getEquipment(Equipment.SHIELD);
-                if (currentEquipment != null) {
-                    player.unequip(currentEquipment);
-                }
-                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
+        unequipShieldBotton.addActionListener(e -> {
+            Equipment currentEquipment = player.getEquipment(Equipment.SHIELD);
+            if (currentEquipment != null) {
+                player.unequip(currentEquipment);
             }
+            delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
         });
 
-        unequipArmorBotton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Equipment currentEquipment = player.getEquipment(Equipment.ARMOR);
-                if (currentEquipment != null) {
-                    player.unequip(currentEquipment);
-                }
-                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
+        unequipArmorBotton.addActionListener(e -> {
+            Equipment currentEquipment = player.getEquipment(Equipment.ARMOR);
+            if (currentEquipment != null) {
+                player.unequip(currentEquipment);
             }
+            delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
         });
 
-        unequipHelmetBotton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Equipment currentEquipment = player.getEquipment(Equipment.HELMET);
-                if (currentEquipment != null) {
-                    player.unequip(currentEquipment);
-                }
-                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
+        unequipHelmetBotton.addActionListener(e -> {
+            Equipment currentEquipment = player.getEquipment(Equipment.HELMET);
+            if (currentEquipment != null) {
+                player.unequip(currentEquipment);
             }
+            delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
         });
 
-        unequipRingBotton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Equipment currentEquipment = player.getEquipment(Equipment.RING);
-                if (currentEquipment != null) {
-                    player.unequip(currentEquipment);
-                }
-                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
+        unequipRingBotton.addActionListener(e -> {
+            Equipment currentEquipment = player.getEquipment(Equipment.RING);
+            if (currentEquipment != null) {
+                player.unequip(currentEquipment);
             }
+            delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
         });
 
-        unequipBeltBotton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Equipment currentEquipment = player.getEquipment(Equipment.BELT);
-                if (currentEquipment != null) {
-                    player.unequip(currentEquipment);
-                }
-                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
+        unequipBeltBotton.addActionListener(e -> {
+            Equipment currentEquipment = player.getEquipment(Equipment.BELT);
+            if (currentEquipment != null) {
+                player.unequip(currentEquipment);
             }
+            delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
         });
 
-        unequipBootsBotton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Equipment currentEquipment = player.getEquipment(Equipment.BOOTS);
-                if (currentEquipment != null) {
-                    player.unequip(currentEquipment);
-                }
-                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
+        unequipBootsBotton.addActionListener(e -> {
+            Equipment currentEquipment = player.getEquipment(Equipment.BOOTS);
+            if (currentEquipment != null) {
+                player.unequip(currentEquipment);
             }
+            delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
         });
     }
 
@@ -450,12 +427,9 @@ public class InventoryPanel extends Panel implements Observer {
             if (isButtonEnabled()) {
                 backpackSubPanel.add(equipButton);
             }
-            equipButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    player.equip(equipment);
-                    delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
-                }
+            equipButton.addActionListener(e -> {
+                player.equip(equipment);
+                delegate.inventoryEnhancedPerformAction(InventoryPanel.this);
             });
 
             JButton operationButton = new JButton(buttonText);
@@ -464,14 +438,11 @@ public class InventoryPanel extends Panel implements Observer {
             if (isButtonEnabled()) {
                 backpackSubPanel.add(operationButton);
             }
-            operationButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if (buttonText.equals("Drop")) {
-                        player.dropEquipment(equipment);
-                    } else if (buttonText.equals("Swap")) {
-                        delegate.inventoryExchangePerformAction(InventoryPanel.this, equipment);
-                    }
+            operationButton.addActionListener(e -> {
+                if (buttonText.equals("Drop")) {
+                    player.dropEquipment(equipment);
+                } else if (buttonText.equals("Swap")) {
+                    delegate.inventoryExchangePerformAction(InventoryPanel.this, equipment);
                 }
             });
 

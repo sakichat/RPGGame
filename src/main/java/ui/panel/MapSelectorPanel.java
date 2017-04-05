@@ -80,6 +80,7 @@ public class MapSelectorPanel extends Panel  {
     @Override
     public void initSubviews() {
         super.initSubviews();
+
         mapSelector = new View();
         mapSelector.setLayout(null);
         mapSelector.setLocation(10,80);
@@ -98,11 +99,9 @@ public class MapSelectorPanel extends Panel  {
         searchButton.setLocation(180,30);
         add(searchButton);
 
-        searchButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                mapSelector.removeAll();
-                search();
-            }
+        searchButton.addActionListener(e -> {
+            mapSelector.removeAll();
+            search();
         });
 
     }
@@ -134,13 +133,7 @@ public class MapSelectorPanel extends Panel  {
                 addButton.setSize(60,20);
                 mapSelector.add(addButton);
 
-                addButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        delegate.mapSelectorPerformAction(MapSelectorPanel.this, gameMap);
-
-                    }
-                });
+                addButton.addActionListener(e -> delegate.mapSelectorPerformAction(MapSelectorPanel.this, gameMap));
 
                 number++;
                 yOfView += 30;
