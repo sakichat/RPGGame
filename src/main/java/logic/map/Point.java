@@ -36,7 +36,6 @@ public class Point {
     }
 
     public Point sub(Point delta){
-        // TODO: 06/04/2017
         Point point = new Point();
         point.x = x - delta.x;
         point.y = y - delta.y;
@@ -161,7 +160,6 @@ public class Point {
     }
 
     public Direction toDirection(){
-        // TODO: 06/04/2017
         if (x == 0){
             if (y > 0){
                 return Direction.DOWN;
@@ -187,11 +185,7 @@ public class Point {
         private Point point;
 
         Direction(int x, int y) {
-            // TODO: 06/04/2017
-            // QIKAI
-
-            point.setX(x);
-            point.setY(y);
+            this.point = new Point(x,y);
         }
 
         public Point toPoint(){
