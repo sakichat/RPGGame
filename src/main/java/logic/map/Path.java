@@ -20,10 +20,11 @@ public class Path implements Iterable<Point>{
 
         Point lastLocation = locations.get(locations.size() - 1);
         Point.Direction direction = location.sub(lastLocation).toDirection();
+        Point middle = lastLocation;
 
-        while (lastLocation.equals(location)) {
-            lastLocation = lastLocation.add(direction);
-            locations.add(lastLocation);
+        while (!middle.equals(location)) {
+            middle = middle.add(direction);
+            locations.add(middle);
         }
     }
 
