@@ -10,6 +10,15 @@ import java.util.List;
  */
 public class PlayerCellView extends View{
     private String name;
+    private String enchantmentName;
+
+    public String getEnchantmentName() {
+        return enchantmentName;
+    }
+
+    public void setEnchantmentName(String enchantmentName) {
+        this.enchantmentName = enchantmentName;
+    }
 
     @Override
     public String getName() {
@@ -28,9 +37,8 @@ public class PlayerCellView extends View{
         g.setColor(new Color(0xF4F4F4));
         g.drawRect(0, 0, 40, 5);
 
-        ImageIcon burningImageView = new ImageIcon("data/images/burning.png");
-
-        ImageIcon freezingImageView = new ImageIcon("data/images/freezing.png");
+        ImageIcon enchantmentImageView = new ImageIcon("data/images/" + getEnchantmentName());
+        g.drawImage(enchantmentImageView.getImage(), 0, 0, null);
 
         ImageIcon playerImageView = new ImageIcon("data/images/" + getName());
         g.drawImage(playerImageView.getImage(), 0, 0, null);
