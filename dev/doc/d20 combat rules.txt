@@ -1,6 +1,5 @@
 attack roll{
   attackRoll = d20 + getAttackBonus();
-  // attackRoll not defined
 
   if(d20 == 1){
     miss;
@@ -9,13 +8,10 @@ attack roll{
 
     if(d20 == 20) {
       newAttackRoll = d20 + getAttackBonus();
-      // newAttackRoll not defined
 
       if (newAttackRoll >= hostilePlayer.ATTRIBUTE_ARMOR_CLASS) {
         criticalRoll = attackRoll + newAttackRoll;
-        // criticalRoll not defined
         threatRange = 20;
-        // threatRange not defined
         modifier = 2;
         // Exception: Extra damage dice over and above a weapon’s normal damage
         // is not multiplied when you score a critical hit.
@@ -29,14 +25,49 @@ attack roll{
   }
 }
 
-attack bonus with a melee weapon{
-  meleeAB = ATTRIBUTE_ATTACK_BONUS + ABILITY_STR + sizeModifier
-  // sizeModifier not defined
+attack bonus{
+  if (weaponType.equals(WEAPON_TYPE_MELEE)) {
+    meleeAB = ATTRIBUTE_ATTACK_BONUS + getAbilityModifier(ABILITY_STR) + sizeModifier;
+  }
+  if (weaponType.equals(WEAPON_TYPE_RANGED)) {
+    rangedAB= ATTRIBUTE_ATTACK_BONUS + getAbilityModifier(ABILITY_DEX) + sizeModifier + weapon.getRange();
+    // weapon.getRange() -> range penalty
+  }
 }
 
-attack bonus with a melee weapon{
-  rangedAB= ATTRIBUTE_ATTACK_BONUS + ABILITY_DEX + sizeModifier + range
-  // range -> range penalty
+damage{
+  if (damage <= 1) {
+    damage = 1;
+  }
+  if (weaponType.equals(WEAPON_TYPE_MELEE)) {
+    damage = damage + getAbilityModifier(ABILITY_STR);
+  }
+  if (criticalHit) {
+    Roll the damage (with all modifiers) multiple times and total the results
+    // each multiplier works off the original, un-multiplied damage
+  }
+}
+
+armorClass{
+  armorClass = 10 + armorBonus + shieldBonus + getAbilityModifier(ABILITY_DEX) + sizeModifier;
+  // if you’re wearing armor, you might not be able to apply your whole Dexterity bonus
+}
+
+hitPoints{
+  if (hp <= -10) {
+    dead;
+  } else if (hp <= -1) {
+    dying;
+  } else if (hp <= 0 ) {
+    disabled;
+  }
+}
+
+initiativeList{
+  initiativeCheck = d20 + getAbilityModifier(ABILITY_DEX);
+  order : initiativeCheck high -> low;
+  // each turn same order
+  // unless
 }
 
 http://www.d20srd.org/srd/combat/combatStatistics.htm
