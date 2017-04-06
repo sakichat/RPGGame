@@ -35,11 +35,6 @@ public class Point {
         this.y = y;
     }
 
-    public Point add(Direction direction){
-        Point newPoint = new Point(direction.point.getX() + x, direction.point.getY() + y);
-        return newPoint;
-
-    }
 
 
     public Point copy(){
@@ -66,6 +61,10 @@ public class Point {
         return point;
     }
 
+
+    public Point add(Direction direction){
+        return add(direction.toPoint());
+    }
 
     /**
      * this method is to get X
