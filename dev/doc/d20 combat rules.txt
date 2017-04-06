@@ -63,6 +63,10 @@ hitPoints{
   }
 }
 
+http://www.d20srd.org/srd/combat/combatStatistics.htm
+
+-----------------------------------------------------------------------------------------------------------------------
+
 initiativeList{
   initiativeCheck = d20 + getAbilityModifier(ABILITY_DEX);
   order : initiativeCheck high -> low;
@@ -70,4 +74,19 @@ initiativeList{
   // unless the character takes a special initiative action to change the initiativeCheck
 }
 
-http://www.d20srd.org/srd/combat/combatStatistics.htm
+http://www.d20srd.org/srd/combat/initiative.htm
+
+-----------------------------------------------------------------------------------------------------------------------
+
+*attacksOfOpportunity{
+}
+
+http://www.d20srd.org/srd/combat/attacksOfOpportunity.htm
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+http://www.d20srd.org/srd/combat/injuryandDeath.htm
+
+-----------------------------------------------------------------------------------------------------------------------
