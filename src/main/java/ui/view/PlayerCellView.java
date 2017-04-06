@@ -21,20 +21,18 @@ public class PlayerCellView extends View{
         this.name = name;
     }
 
-//    private final static int _WEAPON_EFFECT_VIEW = 0;
-//    private final static int _PLAYER_IMAGE_VIEW = 1;
-//
-//    private List<View> playerCellViews= new LinkedList<>();
-//
-//    public PlayerCellView() {
-//        ImageView imageView = new ImageView();
-//        playerCellViews.add(imageView);
-//    }
+
 
     @Override
     public void paint(Graphics g) {
+        g.setColor(new Color(0xF4F4F4));
+        g.drawRect(0, 0, 40, 5);
+
         ImageIcon playerImageView = new ImageIcon("data/images/" + getName());
 
+        ImageIcon burningImageView = new ImageIcon("data/images/burning.png");
+
+        ImageIcon freezingImageView = new ImageIcon("data/images/freezing.png");
 
     }
 }
