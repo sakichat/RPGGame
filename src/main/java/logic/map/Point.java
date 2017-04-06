@@ -189,10 +189,13 @@ public class Point {
         }
 
         public Point toPoint(){
-            // TODO: 06/04/2017
-            // QIKAI
-
-            return point;
+            switch (this){
+                case UP: return UP.point;
+                case DOWN: return DOWN.point;
+                case LEFT: return LEFT.point;
+                case RIGHT: return RIGHT.point;
+            }
+            return null;
         }
     }
 }
