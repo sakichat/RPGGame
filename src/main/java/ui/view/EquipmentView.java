@@ -1,7 +1,7 @@
 package ui.view;
 
-import logic.equipments.Equipment;
-import logic.equipments.Weapon;
+import logic.equipment.Equipment;
+import logic.equipment.Weapon;
 
 import javax.swing.*;
 

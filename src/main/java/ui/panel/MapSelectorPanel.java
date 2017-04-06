@@ -1,12 +1,10 @@
 package ui.panel;
 
-import logic.GameMap;
+import logic.map.GameMap;
 import persistence.MapFileManager;
 import ui.view.View;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 /**

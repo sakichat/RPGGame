@@ -1,13 +1,10 @@
 package ui.scene;
 
 import logic.Campaign;
-import logic.GameMap;
+import logic.map.GameMap;
 import persistence.CampaignFileManager;
 import ui.panel.MapConnectionPanel;
 import ui.panel.MapSelectorPanel;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class is a subclass of Scene and implements the interface MapDelegate.

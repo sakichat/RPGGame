@@ -94,5 +94,127 @@ Item creation/editing
 
 
 
+Move 3 squares
+
+Turn
++   move
++   attack once
++   interact with adjacent elements
+
+Attack
++   range
+    1 melee, n range
+    [n length, go through anything]
+
+Strategy
++   Computer
+    +   move
+        to exit
+        shortest path,
+        though player, chest
+    +   attack *
+        player if on the way && hostile
+    +   interact *
+        chest if on the way
+
++   Aggressive
+    +   move
+        to human player
+    +   attack
+        main player
+        on the way if in range && NPC
+    +   interact
+        chest if near
+
++   Friendly
+    +   move
+        Randomly
+
+    +   attack
+        no
+
+    +   interact
+        chest if near
+
+    +   attacked
+        turn to Aggressive
+
+
+Effect
++   Freezing
+    cannot move in EB turns
+
++   Burning
+    - 3 x EB hp in 3 turns
+
++   Slaying
+    die now
+
++   Frightening
+    move
+    +   run away from charater in EB turns
+
++   Pacifying
+    turn to Friendly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .

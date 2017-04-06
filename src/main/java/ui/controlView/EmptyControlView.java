@@ -1,10 +1,10 @@
 package ui.controlView;
 
-import logic.*;
+import logic.map.Entrance;
+import logic.map.Exit;
+import logic.map.Obstacle;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * @author Kai QI

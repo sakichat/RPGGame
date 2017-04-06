@@ -1,4 +1,4 @@
-package logic.equipments;
+package logic.equipment;
 
 import com.google.gson.annotations.Expose;
 

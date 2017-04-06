@@ -1,4 +1,4 @@
-package logic;
+package logic.map;
 
 
 import com.google.gson.annotations.Expose;

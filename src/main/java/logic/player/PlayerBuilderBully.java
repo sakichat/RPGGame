@@ -1,13 +1,11 @@
-package logic.builder;
-
-import logic.Player;
+package logic.player;
 
 /**
  * Created by lizhen on 2017-03-21.
  * this is the class that build  type  of Bully player
  *@version 0.2
  */
-public class BullyBuilder extends PlayerBuilder {
+public class PlayerBuilderBully extends PlayerBuilder {
     /**
      * this is the method to set type of player
      */

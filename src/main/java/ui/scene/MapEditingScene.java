@@ -1,7 +1,8 @@
 package ui.scene;
 
-import logic.*;
-import logic.equipments.Equipment;
+import logic.equipment.Equipment;
+import logic.map.*;
+import logic.player.Player;
 import persistence.MapFileManager;
 import ui.controlView.*;
 import ui.panel.*;
@@ -9,8 +10,6 @@ import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This MapEditingScene class is for editing game map view which extends Scene class

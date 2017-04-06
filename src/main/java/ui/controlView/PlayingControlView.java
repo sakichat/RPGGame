@@ -1,12 +1,9 @@
 package ui.controlView;
 
-import logic.Player;
+import logic.player.Player;
 import ui.scene.PlayScene;
-import ui.view.View;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * @author Kai QI

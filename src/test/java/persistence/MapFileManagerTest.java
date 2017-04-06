@@ -1,6 +1,7 @@
 package persistence;
 
-import logic.*;
+import logic.map.*;
+import logic.player.Player;
 import org.junit.Assert;
 import org.junit.Test;
 

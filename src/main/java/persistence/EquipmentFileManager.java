@@ -2,7 +2,7 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
-import logic.equipments.Equipment;
+import logic.equipment.Equipment;
 
 import java.io.File;
 import java.io.FilenameFilter;

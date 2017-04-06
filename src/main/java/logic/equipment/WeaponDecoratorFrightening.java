@@ -1,17 +1,17 @@
-package logic.equipments;
+package logic.equipment;
 
 /**
  * Created by Li Zhen on 2017-04-01.
  */
-public class WeaponDecoratorPacifying extends WeaponDecorator {
+public class WeaponDecoratorFrightening extends WeaponDecorator {
 
-    public WeaponDecoratorPacifying(Weapon decoratedWeapon) {
+    public WeaponDecoratorFrightening(Weapon decoratedWeapon) {
         super(decoratedWeapon);
     }
 
     @Override
     public String displayName() {
-        return super.displayName() + " P";
+        return super.displayName() + " Frt";
     }
 
     @Override
@@ -21,6 +21,6 @@ public class WeaponDecoratorPacifying extends WeaponDecorator {
 
     @Override
     public String enchantmentsChainText(){
-        return super.enchantmentsChainText() + " Pacifying ";
+        return super.enchantmentsChainText() + " Frightening ";
     }
 }

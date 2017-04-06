@@ -1,4 +1,4 @@
-package logic.equipments;
+package logic.equipment;
 
 /**
  * @author Li ZHEN

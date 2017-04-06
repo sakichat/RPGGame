@@ -1,8 +1,9 @@
 package logic;
 
-import logic.equipments.Equipment;
-import logic.equipments.EquipmentFactory;
-import logic.equipments.EquipmentSolid;
+import logic.equipment.Equipment;
+import logic.equipment.EquipmentFactory;
+import logic.map.Chest;
+import logic.player.Player;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +20,7 @@ public class PlayerTest {
     /**
      * These parameters is pre-defined attributes for every method in this test class to use.
      */
-    private Player    player;
+    private Player player;
     private Equipment equipmentArmorAC1;
     private Equipment equipmentArmorAC3;
     private Equipment equipmentArmorAC5;
@@ -34,7 +35,7 @@ public class PlayerTest {
     private Equipment equipmentBootsAC3;
     private Equipment equipmentRingCon3;
     private Equipment equipmentWeaponAB5;
-    private Chest     chest;
+    private Chest chest;
 
     /**
      * This method is for initializing.

@@ -1,4 +1,4 @@
-package logic.equipments;
+package logic.equipment;
 
 /**
  * This class is the equitment

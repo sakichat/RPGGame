@@ -1,13 +1,11 @@
-package logic.builder;
-
-import logic.Player;
+package logic.player;
 
 /**
  * Created by Li Zhen on 2017-03-21.
  * this is the class to build typle of Nimble Player
  * @version 0.2
  */
-public class NimbleBuilder extends PlayerBuilder {
+public class PlayerBuilderNimble extends PlayerBuilder {
     /**
      * this is the method to set type of Player
      */

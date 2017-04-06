@@ -1,7 +1,7 @@
 package ui.scene;
 
-import logic.equipments.*;
-import logic.Player;
+import logic.equipment.*;
+import logic.player.Player;
 import persistence.EquipmentFileManager;
 import ui.view.View;
 

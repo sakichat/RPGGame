@@ -1,7 +1,9 @@
 package ui.view;
 
-import logic.*;
-import logic.Point;
+import logic.map.Cell;
+import logic.map.GameMap;
+import logic.map.Point;
+import logic.player.Player;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;

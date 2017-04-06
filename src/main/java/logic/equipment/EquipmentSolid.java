@@ -1,7 +1,7 @@
-package logic.equipments;
+package logic.equipment;
 
 import com.google.gson.annotations.Expose;
-import logic.Player;
+import logic.player.Player;
 
 public class EquipmentSolid implements Equipment{
 

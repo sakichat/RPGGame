@@ -1,12 +1,9 @@
 package ui.scene;
 
-import logic.*;
-import logic.builder.*;
+import logic.player.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is a PlayerCreationScene to show the scene for creating player name which extends Scene class
@@ -161,11 +158,11 @@ public class PlayerCreationScene extends Scene {
 
                 PlayerBuilder playerBuilder = null;
                 if (type.equals(Player.PLAYER_TYPE_BULLY)){
-                    playerBuilder = new BullyBuilder();
+                    playerBuilder = new PlayerBuilderBully();
                 }else if (type.equals(Player.PLAYER_TYPE_NIMBLE)){
-                    playerBuilder = new NimbleBuilder();
+                    playerBuilder = new PlayerBuilderNimble();
                 }else if(type.equals(Player.PLAYER_TYPE_TANK)){
-                    playerBuilder = new TankBuilder();
+                    playerBuilder = new PlayerBuilderTank();
                 }
 
                 playerExplorer = new PlayerExplorer();

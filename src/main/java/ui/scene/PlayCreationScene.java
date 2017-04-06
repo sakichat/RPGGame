@@ -2,14 +2,12 @@ package ui.scene;
 
 import logic.Campaign;
 import logic.Play;
-import logic.Player;
+import logic.player.Player;
 import ui.panel.CampaignSelectorPanel;
 import ui.panel.PlayerSelectorPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class extends Scene and implements PlayerDelegate and CampaignDelegate.

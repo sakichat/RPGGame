@@ -2,10 +2,10 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import logic.Cell;
-import logic.equipments.Equipment;
-import logic.equipments.Weapon;
-import logic.equipments.WeaponDecorator;
+import logic.map.Cell;
+import logic.equipment.Equipment;
+import logic.equipment.Weapon;
+import logic.equipment.WeaponDecorator;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

@@ -1,9 +1,11 @@
-package logic;
+package logic.player;
 
 import com.google.gson.annotations.Expose;
-import logic.equipments.Weapon;
-import logic.equipments.WeaponSolid;
-import logic.equipments.Equipment;
+import logic.map.Cell;
+import logic.map.Chest;
+import logic.Dice;
+import logic.equipment.Weapon;
+import logic.equipment.Equipment;
 
 import java.util.*;
 
@@ -15,7 +17,7 @@ import java.util.*;
  * @version 0.2
  *
  */
-public class Player extends Cell{
+public class Player extends Cell {
 
     public final static String ABILITY_STR = "STR";
     public final static String ABILITY_DEX = "DEX";

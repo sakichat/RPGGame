@@ -1,10 +1,8 @@
 package ui.controlView;
 
-import logic.Chest;
+import logic.map.Chest;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * @author Kai QI

@@ -1,13 +1,11 @@
 package ui.scene;
 
-import logic.equipments.Equipment;
-import logic.Player;
+import logic.equipment.Equipment;
+import logic.player.Player;
 import persistence.PlayerFileManager;
 import ui.panel.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is a class for players to create or edit the details of their characters.

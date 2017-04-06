@@ -1,12 +1,10 @@
 package ui.panel;
 
-import logic.Chest;
-import logic.equipments.Equipment;
+import logic.map.Chest;
+import logic.equipment.Equipment;
 import ui.view.EquipmentView;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;

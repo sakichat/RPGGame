@@ -1,13 +1,11 @@
-package logic.builder;
-
-import logic.Player;
+package logic.player;
 
 /**
  * Created by Li Zhen on 2017-03-21.
  * this is the class that build type of Tank Player
  * @version 0.2
  */
-public class TankBuilder extends PlayerBuilder {
+public class PlayerBuilderTank extends PlayerBuilder {
     /**
      * this is the method that set type of Player
      */

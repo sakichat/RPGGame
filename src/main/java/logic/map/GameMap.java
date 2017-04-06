@@ -1,6 +1,7 @@
-package logic;
+package logic.map;
 
 import com.google.gson.annotations.Expose;
+import logic.player.Player;
 
 import java.util.HashMap;
 import java.util.LinkedList;

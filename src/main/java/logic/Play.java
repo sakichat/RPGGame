@@ -1,6 +1,11 @@
 package logic;
 
 import com.google.gson.annotations.Expose;
+import logic.map.Cell;
+import logic.map.Chest;
+import logic.map.GameMap;
+import logic.map.Point;
+import logic.player.Player;
 import persistence.MapFileManager;
 
 import java.util.*;

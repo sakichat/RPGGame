@@ -1,9 +1,6 @@
 package logic;
 
-import logic.builder.BullyBuilder;
-import logic.builder.NimbleBuilder;
-import logic.builder.PlayerExplorer;
-import logic.builder.TankBuilder;
+import logic.player.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,7 +33,7 @@ public class PlayerExplorerTest {
      */
     @Test
     public void getTankPlayer() throws Exception {
-        playerExplorer.setPlayerBuilder(new TankBuilder());
+        playerExplorer.setPlayerBuilder(new PlayerBuilderTank());
         playerExplorer.constructPlayer("test", 5);
         Player player = playerExplorer.getPlayer();
         int playerCon = player.getAbilityScore(Player.ABILITY_CON);
@@ -61,7 +58,7 @@ public class PlayerExplorerTest {
      */
     @Test
     public void getBullyPlayer() throws Exception {
-        playerExplorer.setPlayerBuilder(new BullyBuilder());
+        playerExplorer.setPlayerBuilder(new PlayerBuilderBully());
         playerExplorer.constructPlayer("test", 5);
         Player player = playerExplorer.getPlayer();
         int playerStr = player.getAbilityScore(Player.ABILITY_STR);
@@ -86,7 +83,7 @@ public class PlayerExplorerTest {
      */
     @Test
     public void getNimblePlayer() throws Exception {
-        playerExplorer.setPlayerBuilder(new NimbleBuilder());
+        playerExplorer.setPlayerBuilder(new PlayerBuilderNimble());
         playerExplorer.constructPlayer("test", 5);
         Player player = playerExplorer.getPlayer();
         int playerDex = player.getAbilityScore(Player.ABILITY_DEX);

@@ -1,9 +1,6 @@
 package persistence;
 
 import com.google.gson.*;
-import logic.*;
-import logic.equipments.Equipment;
-import logic.equipments.EquipmentSolid;
 
 import java.lang.reflect.Type;
 

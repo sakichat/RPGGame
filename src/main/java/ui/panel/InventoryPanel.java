@@ -1,12 +1,10 @@
 package ui.panel;
 
-import logic.equipments.Equipment;
-import logic.Player;
+import logic.equipment.Equipment;
+import logic.player.Player;
 import ui.view.EquipmentView;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.List;
 

@@ -1,9 +1,6 @@
 package persistence;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import logic.Cell;
-import logic.GameMap;
+import logic.map.GameMap;
 
 import java.io.File;
 import java.io.FilenameFilter;

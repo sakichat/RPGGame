@@ -1,12 +1,9 @@
 package ui.scene;
 
-import logic.equipments.Equipment;
-import logic.equipments.EquipmentFactory;
-import logic.equipments.EquipmentSolid;
+import logic.equipment.Equipment;
+import logic.equipment.EquipmentFactory;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is a ItemCreationScene to show the scene for creating item name which extends Scene class

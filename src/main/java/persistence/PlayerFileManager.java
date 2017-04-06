@@ -1,8 +1,6 @@
 package persistence;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import logic.Player;
+import logic.player.Player;
 
 import java.io.File;
 import java.io.FilenameFilter;

@@ -1,7 +1,9 @@
 package ui.scene;
 
 import logic.*;
-import logic.equipments.Equipment;
+import logic.equipment.Equipment;
+import logic.map.*;
+import logic.player.Player;
 import persistence.PlayFileManager;
 import ui.controlView.*;
 import ui.panel.*;
@@ -9,8 +11,6 @@ import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is a PlayScene for player to play on created maps.

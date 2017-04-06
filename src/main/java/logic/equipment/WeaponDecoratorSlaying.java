@@ -1,4 +1,4 @@
-package logic.equipments;
+package logic.equipment;
 
 /**
  * Created by thereaghostflash on 2017-04-01.

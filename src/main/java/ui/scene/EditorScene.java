@@ -1,14 +1,12 @@
 package ui.scene;
 
 import logic.Campaign;
-import logic.equipments.Equipment;
-import logic.GameMap;
-import logic.Player;
+import logic.equipment.Equipment;
+import logic.map.GameMap;
+import logic.player.Player;
 import ui.panel.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class for choosing editor and creation.

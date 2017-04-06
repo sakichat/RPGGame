@@ -1,5 +1,7 @@
 package logic;
 
+import logic.map.Point;
+import logic.player.Player;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,8 @@
 package logic;
 
-import logic.equipments.Equipment;
-import logic.equipments.EquipmentFactory;
+import logic.equipment.Equipment;
+import logic.equipment.EquipmentFactory;
+import logic.player.Player;
 import org.junit.Assert;
 import org.junit.Test;
 

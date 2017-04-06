@@ -1,6 +1,6 @@
 package ui.panel;
 
-import logic.Player;
+import logic.player.Player;
 import ui.view.AbilityView;
 import ui.view.TextDisplay;
 

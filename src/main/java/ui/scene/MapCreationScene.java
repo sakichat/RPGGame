@@ -1,10 +1,8 @@
 package ui.scene;
 
-import logic.GameMap;
+import logic.map.GameMap;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is a MapCreationScene to show the scene for creating map name which extends Scene class

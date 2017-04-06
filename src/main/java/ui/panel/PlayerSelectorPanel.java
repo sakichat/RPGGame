@@ -1,13 +1,10 @@
 package ui.panel;
 
-import logic.Player;
+import logic.player.Player;
 import persistence.PlayerFileManager;
-import ui.view.ImageView;
 import ui.view.View;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 /**

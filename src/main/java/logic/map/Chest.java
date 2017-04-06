@@ -1,7 +1,7 @@
-package logic;
+package logic.map;
 
 import com.google.gson.annotations.Expose;
-import logic.equipments.Equipment;
+import logic.equipment.Equipment;
 
 import java.util.LinkedList;
 import java.util.List;
