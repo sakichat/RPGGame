@@ -167,11 +167,17 @@ public class Point {
 
         Direction(int x, int y) {
             // TODO: 06/04/2017
+            // QIKAI
+
+            point.setX(x);
+            point.setY(y);
         }
 
         public Point toPoint(){
             // TODO: 06/04/2017
-            return null;
+            // QIKAI
+
+            return point;
         }
     }
 }
