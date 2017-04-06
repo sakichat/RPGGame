@@ -35,6 +35,11 @@ public class Point {
         this.y = y;
     }
 
+    public Point sub(Point delta){
+        // TODO: 06/04/2017  
+        return null;
+    }
+
     /**
      * this method is to add point
      * @param delta Point
