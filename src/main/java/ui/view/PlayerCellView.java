@@ -12,14 +12,6 @@ public class PlayerCellView extends View{
     private String name;
     private String enchantmentName;
 
-    public String getEnchantmentName() {
-        return enchantmentName;
-    }
-
-    public void setEnchantmentName(String enchantmentName) {
-        this.enchantmentName = enchantmentName;
-    }
-
     @Override
     public String getName() {
         return name;
@@ -30,7 +22,13 @@ public class PlayerCellView extends View{
         this.name = name;
     }
 
+    public String getEnchantmentName() {
+        return enchantmentName;
+    }
 
+    public void setEnchantmentName(String enchantmentName) {
+        this.enchantmentName = enchantmentName;
+    }
 
     @Override
     public void paint(Graphics g) {
