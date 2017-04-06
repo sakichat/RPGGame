@@ -4,6 +4,7 @@ package logic.map;
 import com.google.gson.annotations.Expose;
 
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Qi Xia
@@ -46,25 +47,6 @@ public class Point {
         return point;
     }
 
-    /**
-     * This method is to get points from the directions.
-     * @return LinkedList<Point>
-     */
-    public final static Point DIRECTION_UP = new Point(0, -1);
-    public final static Point DIRECTION_DOWN = new Point(0, 1);
-    public final static Point DIRECTION_LEFT = new Point(-1, 0);
-    public final static Point DIRECTION_RIGHT = new Point(1, 0);
-
-    public static LinkedList<Point> directions(){
-        LinkedList<Point> points = new LinkedList<>();
-
-        points.add(DIRECTION_UP);
-        points.add(DIRECTION_DOWN);
-        points.add(DIRECTION_LEFT);
-        points.add(DIRECTION_RIGHT);
-
-        return points;
-    }
 
     /**
      * this method is to get X
@@ -137,5 +119,59 @@ public class Point {
         int result = x;
         result = 31 * result + y;
         return result;
+    }
+
+
+    /**
+     * This method is to get points from the directions.
+     * @return LinkedList<Point>
+     */
+
+    @Deprecated
+    public final static Point DIRECTION_UP = new Point(0, -1);
+
+    @Deprecated
+    public final static Point DIRECTION_DOWN = new Point(0, 1);
+
+    @Deprecated
+    public final static Point DIRECTION_LEFT = new Point(-1, 0);
+
+    @Deprecated
+    public final static Point DIRECTION_RIGHT = new Point(1, 0);
+
+
+    @Deprecated
+    public static LinkedList<Point> directions(){
+        LinkedList<Point> points = new LinkedList<>();
+
+        points.add(DIRECTION_UP);
+        points.add(DIRECTION_DOWN);
+        points.add(DIRECTION_LEFT);
+        points.add(DIRECTION_RIGHT);
+
+        return points;
+    }
+
+    public Direction toDirection(){
+        // TODO: 06/04/2017
+        return null;
+    }
+
+    public static enum Direction {
+        UP(0, -1),
+        DOWN(0, 1),
+        LEFT(-1, 0),
+        RIGHT(1, 0);
+
+        private Point point;
+
+        Direction(int x, int y) {
+            // TODO: 06/04/2017
+        }
+
+        public Point toPoint(){
+            // TODO: 06/04/2017
+            return null;
+        }
     }
 }

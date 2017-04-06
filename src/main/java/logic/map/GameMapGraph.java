@@ -3,6 +3,7 @@ package logic.map;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class GameMapGraph {
     private GameMap gameMap;
@@ -11,7 +12,12 @@ public class GameMapGraph {
         this.gameMap = gameMap;
     }
 
-    public List<Point> pointsInRangeFromLocation(Point location, int range) {
+    public List<Point> pointsInRange(Point location, int range) {
+        // TODO: 06/04/2017
+        return null;
+    }
+
+    public List<Cell> cellsInRange(Point location, int range, Cell.Type cellType) {
         // TODO: 06/04/2017
         return null;
     }
