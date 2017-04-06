@@ -13,6 +13,9 @@ import org.junit.Test;
  * This class is to test the class of Equipment.
  */
 public class EquipmentTest {
+    /**
+     * This parameter is the pre-defined equipment.
+     */
     Equipment equipment;
 
     /**

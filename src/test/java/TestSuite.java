@@ -15,6 +15,7 @@ import persistence.MapFileManagerTest;
 @Suite.SuiteClasses({CampaignTest.class,
                     EquipmentTest.class ,
                     MapValidatorTest.class,
+                    PlayerExplorerTest.class,
                     PlayerTest.class,
                     PlayTest.class,
                     FileManagerTest.class,
