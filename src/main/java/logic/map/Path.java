@@ -8,48 +8,32 @@ import java.util.List;
 public class Path implements Iterable<Point>{
     private List<Point> locations = new LinkedList<>();
 
+    public List<Point> getLocations() {
+        return locations;
+    }
+
     public void addLocation(Point location) {
         locations.add(location);
     }
 
     public void addLocationsToLocation(Point location){
 
-        Point lastPoint = locations.get(locations.size() - 1);
+        Point lastLocation = locations.get(locations.size() - 1);
+        Point.Direction direction = location.sub(lastLocation).toDirection();
 
-        if (location.getX() == lastPoint.getX()) {
-            int dy = location.getY() - lastPoint.getY();
-            for (int i = 0; i < Math.abs(dy); i++) {
-                if (dy > 0) {
-                    Point point = lastPoint.add(Point.Direction.DOWN.toPoint());
-                    locations.add(point);
-                } else if (dy < 0) {
-                    Point point = lastPoint.add(Point.Direction.UP.toPoint());
-                    locations.add(point);
-                }
-            }
+        while (lastLocation.equals(location)) {
+            lastLocation = lastLocation.add(direction);
+            locations.add(lastLocation);
         }
-
-        if (location.getY() == lastPoint.getY()) {
-            int dx = location.getX() - lastPoint.getX();
-            for (int i = 0; i < Math.abs(dx); i++) {
-                if (dx > 0) {
-                    Point point = lastPoint.add(Point.Direction.RIGHT.toPoint());
-                    locations.add(point);
-                } else if (dx < 0) {
-                    Point point = lastPoint.add(Point.Direction.LEFT.toPoint());
-                    locations.add(point);
-                }
-            }
-        }
-
-
     }
 
     public Movement getMovement(int steps) {
 
         Movement movement = new Movement();
 
-        for (int i = 0; i < steps; i++) {
+        int number = Math.min(steps, locations.size());
+
+        for (int i = 0; i < number; i++) {
             Point startLocation = locations.get(i);
             Point endLocation = locations.get(i + 1);
             Point point = endLocation.sub(startLocation);
