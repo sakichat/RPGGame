@@ -12,6 +12,10 @@ public class Path {
         // TODO: 06/04/2017
     }
 
+    public void addLocationsToLocation(Point location){
+        // TODO: 06/04/2017
+    }
+
     public Movement getMovement(int steps) {
         // TODO: 06/04/2017  
         return null;

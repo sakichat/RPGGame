@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Movement implements Iterable<Point.Direction>{
-    private List<Point> moves = new LinkedList<>();
+    private List<Point.Direction> moves = new LinkedList<>();
 
     public void addMove(Point.Direction move){
         // TODO: 06/04/2017  
