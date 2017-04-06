@@ -342,6 +342,7 @@ public class GameMap {
      * This method is used for provide the range points for all the players.
      */
 
+    @Deprecated
     public Map<Player, List<Point>> getAttackRanges() {
 
         Map<Player, List<Point>> attackRanges = new HashMap<>();
@@ -360,6 +361,7 @@ public class GameMap {
      * @return List<Point>
      */
 
+    @Deprecated
     private List<Point> getAttackRange(Player player) {
 
         List<Point> attackRange = new LinkedList<>();
@@ -379,5 +381,13 @@ public class GameMap {
 
         return attackRange;
     }
+
+
+    public GameMapGraph getGraph(){
+        // TODO: 06/04/2017
+        return null;
+    }
+
+
 
 }

@@ -142,19 +142,23 @@ Strategy
 
 Effect
 +   Freezing
+    +   move
     cannot move in EB turns
 
 +   Burning
-    - 3 x EB hp in 3 turns
+    +   hp
+        - 3 x EB hp in 3 turns
 
 +   Slaying
-    die now
+    +   hp
+        die now
 
 +   Frightening
-    move
-    +   run away from charater in EB turns
+    +   move
+        run away from charater in EB turns
 
 +   Pacifying
+    +   strategy
     turn to Friendly
 
 
@@ -162,15 +166,42 @@ Effect
 
 
 
++   Computer
+    +   move
+        shortest path to exit
+        though player, chest
+    +   code
+        shortestPath()
+
++   Aggressive
+    +   move
+        shortest path to human player
+        though player, chest
+    +   code
+        shortestPath()
+
++   Friendly
+    +   move
+        Randomly
+    +   code
+        pointsInRangeFromLocation()
+        random
+        shortestPath()
+
++   Freezing
+    +   move
+        cannot move in EB turns
 
 
-
-
-
-
-
-
-
++   Frightening
+    +   move
+        run away from charater in EB turns
+    +   code
+        pointsInRangeFromLocation ()
+        for all {
+            distanceBetween()
+        }
+        shortestPath()
 
 
 

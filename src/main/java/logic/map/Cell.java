@@ -12,6 +12,15 @@ import java.util.Observable;
  */
 public class Cell extends Observable{
 
+    public static enum Type {
+        PLAYER, CHEST, OBSTACLE, ENTRANCE, EXIT
+    }
+
+    public Type getCellType(){
+        // TODO: 06/04/2017
+        return null;
+    }
+
     /**
      * this is the constructor
      */
