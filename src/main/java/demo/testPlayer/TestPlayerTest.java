@@ -2,7 +2,6 @@ package demo.testPlayer;
 
 import org.junit.Assert;
 import org.junit.Test;
-import persistence.DemoPersistence.DemoFileManager;
 
 import java.io.File;
 

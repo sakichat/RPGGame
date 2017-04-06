@@ -1,6 +1,5 @@
-package persistence.DemoPersistence;
+package demo.testPlayer;
 
-import demo.testPlayer.TestPlayer;
 import persistence.FileManager;
 
 import java.io.File;
