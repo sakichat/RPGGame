@@ -36,8 +36,11 @@ public class Point {
     }
 
     public Point sub(Point delta){
-        // TODO: 06/04/2017  
-        return null;
+        // TODO: 06/04/2017
+        Point point = new Point();
+        point.x = x - delta.x;
+        point.y = y - delta.y;
+        return point;
     }
 
     /**
@@ -159,6 +162,19 @@ public class Point {
 
     public Direction toDirection(){
         // TODO: 06/04/2017
+        if (x == 0){
+            if (y > 0){
+                return Direction.DOWN;
+            }else {
+                return Direction.UP;
+            }
+        }else if(y == 0){
+            if (x > 0){
+                return Direction.RIGHT;
+            }else {
+                return Direction.LEFT;
+            }
+        }
         return null;
     }
 
