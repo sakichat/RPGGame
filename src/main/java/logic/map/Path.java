@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Path {
+public class Path implements Iterable<Point>{
     private List<Point> locations = new LinkedList<>();
 
     public void addLocation(Point location) {
@@ -57,5 +57,10 @@ public class Path {
         }
 
         return movement;
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+        return locations.iterator();
     }
 }

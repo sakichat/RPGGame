@@ -1,9 +1,7 @@
 package logic.map;
 
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -18,7 +16,11 @@ public class GameMapGraph {
     private int[][] values;
 
     private int getValue(Point location){
-        return values[location.getY()][location.getX()];
+        if (gameMap.pointInMap(location)) {
+            return values[location.getY()][location.getX()];
+        } else {
+            return Integer.MAX_VALUE;
+        }
     }
 
     private void setValue(Point location, int value){
@@ -30,6 +32,13 @@ public class GameMapGraph {
             for (int j = 0; j < gameMap.getWidth(); j++) {
                 values[i][j] = Integer.MAX_VALUE;
             }
+        }
+    }
+
+    void setValueByPath(Path path){
+        resetValues();
+        for (Point point : path) {
+            setValue(point, 1);
         }
     }
 
@@ -143,7 +152,43 @@ public class GameMapGraph {
             return null;
         }
 
-        return null;
+        LinkedList<Point> steps = new LinkedList<Point>();
+        steps.add(target);
+
+        Point location = target;
+        while (!location.equals(source)){
+            Point.Direction direction = downsideDirection(location);
+
+            Point nextLocation = location.add(direction);
+            while (getValue(nextLocation) < getValue(location)){
+                location = nextLocation;
+                nextLocation = location.add(direction);
+            }
+
+            steps.addFirst(location);
+        }
+        steps.removeFirst();
+
+        Path path = new Path();
+        path.addLocation(source);
+
+        steps.forEach(System.out::println);
+        steps.forEach(path::addLocationsToLocation);
+
+        return path;
+    }
+
+    private Point.Direction downsideDirection(Point source) {
+        int value = getValue(source);
+        List<Point.Direction> directions = Arrays.asList(Point.Direction.values());
+        return directions
+                .stream()
+                .filter(d -> {
+                    Point location = source.add(d.toPoint());
+                    return getValue(location) < value;
+                })
+                .findAny()
+                .get();
     }
 
     public int distanceBetween(Point source, Point target){

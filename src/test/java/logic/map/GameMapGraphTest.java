@@ -91,7 +91,13 @@ public class GameMapGraphTest {
 
     @Test
     public void shortestPath() throws Exception {
-
+        {
+            GameMapGraph graph = realMap.getGraph();
+            Path path = graph.shortestPath(centerPoint, rightTopPoint);
+            graph.printValues();
+            graph.setValueByPath(path);
+            graph.printValues();
+        }
     }
 
     @Test
