@@ -32,7 +32,7 @@ public class Path implements Iterable<Point>{
 
         Movement movement = new Movement();
 
-        int number = Math.min(steps, locations.size());
+        int number = Math.min(steps, locations.size() - 1);
 
         for (int i = 0; i < number; i++) {
             Point startLocation = locations.get(i);
