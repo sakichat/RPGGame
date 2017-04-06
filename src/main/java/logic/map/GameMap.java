@@ -106,7 +106,7 @@ public class GameMap {
      * @return Cell
      */
     public Cell getCell(Point location){
-        if (!inMap(location)) {
+        if (!pointInMap(location)) {
             return null;
         }
 
@@ -121,7 +121,7 @@ public class GameMap {
      * @return Boolean
      */
     public boolean hasCell(Point location){
-        if (!inMap(location)){
+        if (!pointInMap(location)){
             return false;
         }
 
@@ -134,12 +134,13 @@ public class GameMap {
      * @return Boolean
      */
     public boolean canPlace(Point location){
-        if (inMap(location)) {
+        if (pointInMap(location)) {
             return !hasCell(location);
         }
 
         return false;
     }
+
 
     /**
      * this method is to move cell
@@ -272,51 +273,15 @@ public class GameMap {
             }
         }
 
-        LinkedList<Point> visitedLocations = new LinkedList<>();
-        LinkedList<Point> pendingLocations = new LinkedList<>();
+        GameMapGraph graph = getGraph();
+        graph.addIgnoreType(Cell.Type.CHEST);
+        graph.addIgnoreType(Cell.Type.PLAYER);
 
         Point startPoint = entrances.get(0).getLocation();
-        pendingLocations.addLast(startPoint);
+        Point endPoint = exits.get(0).getLocation();
+        boolean reachable = graph.isReachable(startPoint, endPoint);
 
-        while (pendingLocations.size() > 0) {
-            Point location = pendingLocations.removeFirst();
-            visitedLocations.addLast(location);
-
-            LinkedList<Point> directions = Point.directions();
-            for (Point direction : directions) {
-                Point adjacentLocation = location.add(direction);
-
-
-                // if point out of range, then ignore this point
-                if (!inMap(adjacentLocation)){
-                    continue;
-                }
-
-                // if point is visited or pending, then ignore this point
-                if (    pendingLocations.contains(adjacentLocation) ||
-                        visitedLocations.contains(adjacentLocation)     ){
-                    continue;
-                }
-
-                Cell adjacentCell = getCell(adjacentLocation);
-
-                if (adjacentCell != null) {
-
-                    //  if is exit
-                    if (adjacentCell instanceof Exit) {
-                        return VALIDATION_SUCCESS;
-                    }
-
-                    // if other object, which mean cannot go through
-                    continue;
-                }
-
-                pendingLocations.addLast(adjacentLocation);
-            }
-        }
-
-        //  mean exit is not reachable
-        return VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE;
+        return reachable ? VALIDATION_SUCCESS : VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE;
     }
 
     /**
@@ -324,7 +289,7 @@ public class GameMap {
      * @param location Point
      * @return Boolean
      */
-    public boolean inMap(Point location) {
+    public boolean pointInMap(Point location) {
         int x = location.getX();
         if (x < 0 || x >= width) {
             return false;
@@ -373,7 +338,7 @@ public class GameMap {
         for (Point direction : directions) {
             for (int i = 0; i < range; i++) {
                 Point rangePoint = location.add(direction);
-                if (inMap(rangePoint)) {
+                if (pointInMap(rangePoint)) {
                     attackRange.add(rangePoint);
                 }
             }
@@ -384,10 +349,17 @@ public class GameMap {
 
 
     public GameMapGraph getGraph(){
-        // TODO: 06/04/2017
-        return null;
+        return new GameMapGraph(this);
     }
 
 
-
+    public Iterable<Point> fullLocations(){
+        List<Point> locations = new LinkedList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                locations.add(new Point(j, i));
+            }
+        }
+        return locations;
+    }
 }

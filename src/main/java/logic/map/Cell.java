@@ -17,8 +17,8 @@ public class Cell extends Observable{
     }
 
     public Type getCellType(){
-        // TODO: 06/04/2017
-        return null;
+        String name = this.getClass().getSimpleName();
+        return Type.valueOf(name.toUpperCase());
     }
 
     /**

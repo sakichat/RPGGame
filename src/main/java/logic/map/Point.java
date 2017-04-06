@@ -153,9 +153,9 @@ public class Point {
         LinkedList<Point> points = new LinkedList<>();
 
         points.add(DIRECTION_UP);
+        points.add(DIRECTION_RIGHT);
         points.add(DIRECTION_DOWN);
         points.add(DIRECTION_LEFT);
-        points.add(DIRECTION_RIGHT);
 
         return points;
     }
