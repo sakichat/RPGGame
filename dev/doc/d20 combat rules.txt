@@ -67,7 +67,7 @@ initiativeList{
   initiativeCheck = d20 + getAbilityModifier(ABILITY_DEX);
   order : initiativeCheck high -> low;
   // each turn same order
-  // unless
+  // unless the character takes a special initiative action to change the initiativeCheck
 }
 
 http://www.d20srd.org/srd/combat/combatStatistics.htm
