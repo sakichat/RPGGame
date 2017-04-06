@@ -35,6 +35,18 @@ public class Point {
         this.y = y;
     }
 
+    public Point add(Direction direction){
+        Point newPoint = new Point(direction.point.getX() + x, direction.point.getY() + y);
+        return newPoint;
+
+    }
+
+
+    public Point copy(){
+        Point copyedPoint = new Point(x,y);
+        return copyedPoint;
+    }
+
     public Point sub(Point delta){
         Point point = new Point();
         point.x = x - delta.x;
@@ -189,13 +201,17 @@ public class Point {
         }
 
         public Point toPoint(){
-            switch (this){
-                case UP: return UP.point;
-                case DOWN: return DOWN.point;
-                case LEFT: return LEFT.point;
-                case RIGHT: return RIGHT.point;
-            }
-            return null;
+            return point.copy();
         }
+
+        public static List<Direction> directions(){
+            List<Direction> directions = new LinkedList<>();
+            directions.add(UP);
+            directions.add(RIGHT);
+            directions.add(DOWN);
+            directions.add(LEFT);
+            return directions;
+        }
+
     }
 }
