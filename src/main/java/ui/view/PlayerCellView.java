@@ -28,11 +28,12 @@ public class PlayerCellView extends View{
         g.setColor(new Color(0xF4F4F4));
         g.drawRect(0, 0, 40, 5);
 
-        ImageIcon playerImageView = new ImageIcon("data/images/" + getName());
-
         ImageIcon burningImageView = new ImageIcon("data/images/burning.png");
 
         ImageIcon freezingImageView = new ImageIcon("data/images/freezing.png");
+
+        ImageIcon playerImageView = new ImageIcon("data/images/" + getName());
+        g.drawImage(playerImageView.getImage(), 0, 0, null);
 
     }
 }
