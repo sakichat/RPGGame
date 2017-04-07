@@ -13,6 +13,10 @@ import java.util.List;
 public class Movement implements Iterable<Point.Direction>{
     private List<Point.Direction> moves = new LinkedList<>();
 
+    List<Point.Direction> getMoves() {
+        return moves;
+    }
+
     public void addMove(Point.Direction move){
         moves.add(move);
     }

@@ -32,50 +32,71 @@ public class PathTest {
 
     @Test
     public void addLocationsToLocation() throws Exception {
-        System.out.println("location1");
-        for (Point point : path.getLocations()) {
-            System.out.println(point);
+        {
+            System.out.println("location1");
+            for (Point point : path.getLocations()) {
+                System.out.println(point);
+            }
+            Assert.assertEquals(1, path.getLocations().size());
         }
 
-        path.addLocationsToLocation(location2);
-        System.out.println("location1 + location2");
-        for (Point point : path.getLocations()) {
-            System.out.println(point);
+        {
+            path.addLocationsToLocation(location2);
+            System.out.println("location1 + location2");
+            for (Point point : path.getLocations()) {
+                System.out.println(point);
+            }
+            Assert.assertEquals(5, path.getLocations().size());
         }
 
-        path.addLocationsToLocation(location3);
-        System.out.println("location1 + location2 + location3");
-        for (Point point : path.getLocations()) {
-            System.out.println(point);
+        {
+            path.addLocationsToLocation(location3);
+            System.out.println("location1 + location2 + location3");
+            for (Point point : path.getLocations()) {
+                System.out.println(point);
+            }
+            Assert.assertEquals(8, path.getLocations().size());
         }
 
     }
 
     @Test
     public void getMovement() throws Exception {
-        System.out.println("location1, movement3");
-        Movement movement1 = path.getMovement(3);
-        for (Point.Direction direction : movement1) {
-            System.out.println(direction);
+        {
+            System.out.println("location1, movement3");
+            Movement movement = path.getMovement(3);
+            for (Point.Direction direction : movement) {
+                System.out.println(direction);
+            }
+            Assert.assertEquals(0, movement.getMoves().size());
         }
 
-        System.out.println("location1 + location2, movement3");
-        path.addLocationsToLocation(location2);
-        Movement movement2 = path.getMovement(3);
-        for (Point.Direction direction : movement2) {
-            System.out.println(direction);
+        {
+            System.out.println("location1 + location2, movement3");
+            path.addLocationsToLocation(location2);
+            Movement movement = path.getMovement(3);
+            for (Point.Direction direction : movement) {
+                System.out.println(direction);
+            }
+            Assert.assertEquals(3, movement.getMoves().size());
         }
 
-        path.addLocationsToLocation(location3);
-        System.out.println("location1 + location2 + location3, movement6");
-        Movement movement3 = path.getMovement(6);
-        for (Point.Direction direction : movement3) {
-            System.out.println(direction);
+        {
+            path.addLocationsToLocation(location3);
+            System.out.println("location1 + location2 + location3, movement6");
+            Movement movement = path.getMovement(6);
+            for (Point.Direction direction : movement) {
+                System.out.println(direction);
+            }
+            Assert.assertEquals(6, movement.getMoves().size());
         }
-        System.out.println("location1 + location2 + location3, movement10");
-        Movement movement4 = path.getMovement(10);
-        for (Point.Direction direction : movement4) {
-            System.out.println(direction);
+        {
+            System.out.println("location1 + location2 + location3, movement10");
+            Movement movement = path.getMovement(10);
+            for (Point.Direction direction : movement) {
+                System.out.println(direction);
+            }
+            Assert.assertEquals(7, movement.getMoves().size());
         }
     }
 
