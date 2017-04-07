@@ -140,36 +140,6 @@ public class Point {
     }
 
 
-    /**
-     * This method is to get points from the directions.
-     * @return LinkedList<Point>
-     */
-
-    @Deprecated
-    public final static Point DIRECTION_UP = new Point(0, -1);
-
-    @Deprecated
-    public final static Point DIRECTION_DOWN = new Point(0, 1);
-
-    @Deprecated
-    public final static Point DIRECTION_LEFT = new Point(-1, 0);
-
-    @Deprecated
-    public final static Point DIRECTION_RIGHT = new Point(1, 0);
-
-
-    @Deprecated
-    public static LinkedList<Point> directions(){
-        LinkedList<Point> points = new LinkedList<>();
-
-        points.add(DIRECTION_UP);
-        points.add(DIRECTION_RIGHT);
-        points.add(DIRECTION_DOWN);
-        points.add(DIRECTION_LEFT);
-
-        return points;
-    }
-
     public Direction toDirection(){
         if (x == 0){
             if (y > 0){

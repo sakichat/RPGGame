@@ -30,12 +30,12 @@ public class GameMapGraphTest {
         realMap = new GameMap();
         realMap.setWidth(SIZE);
         realMap.setHeight(SIZE);
-        realMap.addCell(new Obstacle(), centerPoint.add(Point.DIRECTION_UP));
-        realMap.addCell(new Obstacle(), centerPoint.add(Point.DIRECTION_UP).add(Point.DIRECTION_UP));
-        realMap.addCell(new Obstacle(), centerPoint.add(Point.DIRECTION_UP).add(Point.DIRECTION_UP).add(Point.DIRECTION_UP));
-        realMap.addCell(new Chest(), centerPoint.add(Point.DIRECTION_RIGHT));
-        realMap.addCell(new Chest(), centerPoint.add(Point.DIRECTION_RIGHT).add(Point.DIRECTION_RIGHT));
-        realMap.addCell(new Chest(), centerPoint.add(Point.DIRECTION_RIGHT).add(Point.DIRECTION_RIGHT).add(Point.DIRECTION_RIGHT));
+        realMap.addCell(new Obstacle(), centerPoint.add(Point.Direction.UP));
+        realMap.addCell(new Obstacle(), centerPoint.add(Point.Direction.UP).add(Point.Direction.UP));
+        realMap.addCell(new Obstacle(), centerPoint.add(Point.Direction.UP).add(Point.Direction.UP).add(Point.Direction.UP));
+        realMap.addCell(new Chest(), centerPoint.add(Point.Direction.RIGHT));
+        realMap.addCell(new Chest(), centerPoint.add(Point.Direction.RIGHT).add(Point.Direction.RIGHT));
+        realMap.addCell(new Chest(), centerPoint.add(Point.Direction.RIGHT).add(Point.Direction.RIGHT).add(Point.Direction.RIGHT));
     }
 
     @Test

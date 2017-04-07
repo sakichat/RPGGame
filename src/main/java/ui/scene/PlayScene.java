@@ -121,13 +121,13 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
             PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
-        upDirectionButton.addActionListener(e -> move(Point.DIRECTION_UP));
+        upDirectionButton.addActionListener(e -> move(Point.Direction.UP));
 
-        downDirectionButton.addActionListener(e -> move(Point.DIRECTION_DOWN));
+        downDirectionButton.addActionListener(e -> move(Point.Direction.DOWN));
 
-        leftDirectionButton.addActionListener(e -> move(Point.DIRECTION_LEFT));
+        leftDirectionButton.addActionListener(e -> move(Point.Direction.LEFT));
 
-        rightDirectionButton.addActionListener(e -> move(Point.DIRECTION_RIGHT));
+        rightDirectionButton.addActionListener(e -> move(Point.Direction.RIGHT));
 
         interactButton.addActionListener(e -> {
             Cell targetCell = play.getTarget();
@@ -147,7 +147,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * This method sets move actions for buttons.
      * @param direction
      */
-    public void move(Point direction) {
+    public void move(Point.Direction direction) {
         play.setDirection(direction);
         play.move();
 

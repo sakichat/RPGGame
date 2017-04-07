@@ -78,8 +78,8 @@ public class GameMapGraph {
             int value = getValue(location);
             visitedLocations.addLast(location);
 
-            LinkedList<Point> directions = Point.directions();
-            for (Point direction : directions) {
+            List<Point.Direction> directions = Point.Direction.directions();
+            for (Point.Direction direction : directions) {
                 Point adjacentLocation = location.add(direction);
 
 

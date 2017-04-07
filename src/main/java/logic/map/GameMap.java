@@ -331,11 +331,11 @@ public class GameMap {
 
         List<Point> attackRange = new LinkedList<>();
 
-        LinkedList<Point> directions = Point.directions();
+        List<Point.Direction> directions = Point.Direction.directions();
         int range = player.getAttackRange();
         Point location = player.getLocation();
 
-        for (Point direction : directions) {
+        for (Point.Direction direction : directions) {
             for (int i = 0; i < range; i++) {
                 Point rangePoint = location.add(direction);
                 if (pointInMap(rangePoint)) {

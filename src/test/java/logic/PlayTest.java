@@ -44,7 +44,7 @@ public class PlayTest {
      */
     @Test
     public void moveToNextCell() throws Exception {
-        play.setDirection(Point.DIRECTION_DOWN);
+        play.setDirection(Point.Direction.DOWN);
         Point previousLocation = play.getPlayer().getLocation();
 
         play.move();
@@ -61,7 +61,7 @@ public class PlayTest {
      */
     @Test
     public void moveBorderTest() throws Exception {
-        play.setDirection(Point.DIRECTION_LEFT);
+        play.setDirection(Point.Direction.LEFT);
         Point previousLocation = play.getPlayer().getLocation();
 
         play.move();
@@ -79,13 +79,13 @@ public class PlayTest {
      */
     @Test
     public void cannotMoveTest() throws Exception {
-        play.setDirection(Point.DIRECTION_RIGHT);
+        play.setDirection(Point.Direction.RIGHT);
         System.out.println(play.getPlayer().getLocation());
 
         play.move();
         play.move();
         play.move();
-        play.setDirection(Point.DIRECTION_DOWN);
+        play.setDirection(Point.Direction.DOWN);
 
         Point previousLocation = play.getPlayer().getLocation();
 

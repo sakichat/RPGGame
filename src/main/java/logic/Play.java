@@ -30,7 +30,7 @@ public class Play {
     private int currentMapIndex;
 
     @Expose
-    private Point direction;
+    private Point.Direction direction;
 
     @Expose
     private GameMap currentMap;
@@ -90,7 +90,7 @@ public class Play {
      * Getter for direction
      * @return direction
      */
-    public Point getDirection() {
+    public Point.Direction getDirection() {
         return direction;
     }
 
@@ -98,7 +98,7 @@ public class Play {
      * Setter for direction
      * @param direction
      */
-    public void setDirection(Point direction) {
+    public void setDirection(Point.Direction direction) {
         this.direction = direction;
     }
 
@@ -199,8 +199,8 @@ public class Play {
     private void enterIntoMap(){
         Point entrance = currentMap.getEntrances().get(0).getLocation();
 
-        LinkedList<Point> directions = Point.directions();
-        for (Point direction : directions) {
+        List<Point.Direction> directions = Point.Direction.directions();
+        for (Point.Direction direction : directions) {
             Point enter = entrance.add(direction);
 
             if (currentMap.canPlace(enter)){
