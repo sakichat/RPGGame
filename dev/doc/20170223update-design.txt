@@ -155,7 +155,7 @@ Effect
 
 +   Frightening
     +   move
-        run away from charater in EB turns
+        run away from character in EB turns
 
 +   Pacifying
     +   strategy
@@ -195,7 +195,7 @@ Effect
 
 +   Frightening
     +   move
-        run away from charater in EB turns
+        run away from character in EB turns
     +   code
         pointsInRangeFromLocation ()
         for all {
