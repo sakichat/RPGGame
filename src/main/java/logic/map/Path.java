@@ -8,7 +8,7 @@ import java.util.List;
 public class Path implements Iterable<Point>{
     private List<Point> locations = new LinkedList<>();
 
-    public List<Point> getLocations() {
+    List<Point> getLocations() {
         return locations;
     }
 
