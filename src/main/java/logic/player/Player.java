@@ -801,16 +801,6 @@ public class Player extends Cell {
         return effects;
     }
 
-    public boolean isFreezing() {
-        // TODO
-        return false;
-    }
-
-    public boolean isBurning() {
-        // TODO
-        return false;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Player)) return false;
