@@ -1,5 +1,8 @@
 package logic.equipment;
 
+import logic.effect.Effect;
+import logic.player.Player;
+
 /**
  * @author Li ZHEN
  * @version 0.3
@@ -24,5 +27,11 @@ public class WeaponDecoratorPacifying extends WeaponDecorator {
     @Override
     public String enchantmentsChainText(){
         return super.enchantmentsChainText() + " Pacifying ";
+    }
+
+    @Override
+    protected Effect generateEffect() {
+        // TODO: 08/04/2017
+        return null;
     }
 }

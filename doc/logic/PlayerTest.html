@@ -114,7 +114,7 @@ extends java.lang.Object</pre>
 <dt><span class="simpleTagLabel">Version:</span></dt>
 <dd>0.2
 
- This class is basically for class of player's tests.</dd>
+ This class is basically for class of onPlayer's tests.</dd>
 <dt><span class="simpleTagLabel">Author:</span></dt>
 <dd>GU_HAN</dd>
 </dl>
@@ -174,13 +174,13 @@ extends java.lang.Object</pre>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../logic/PlayerTest.html#testEmptyBackpack2--">testEmptyBackpack2</a></span>()</code>
-<div class="block">This method test if it is already empty in the backpack, can the player still drop items.</div>
+<div class="block">This method test if it is already empty in the backpack, can the onPlayer still drop items.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../logic/PlayerTest.html#testFullBackPack--">testFullBackPack</a></span>()</code>
-<div class="block">This method tests if player can still pick up items when backpack is full.</div>
+<div class="block">This method tests if onPlayer can still pick up items when backpack is full.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
@@ -192,27 +192,27 @@ extends java.lang.Object</pre>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../logic/PlayerTest.html#testLooting--">testLooting</a></span>()</code>
-<div class="block">This method test if the player will correctly loot the chest, which means the player will get
+<div class="block">This method test if the onPlayer will correctly loot the chest, which means the onPlayer will get
  the item in the chest to his backpack.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../logic/PlayerTest.html#testNotLooting--">testNotLooting</a></span>()</code>
-<div class="block">This method is to test if the player will successfully loot the chest.</div>
+<div class="block">This method is to test if the onPlayer will successfully loot the chest.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../logic/PlayerTest.html#testOneItemOfEachKind--">testOneItemOfEachKind</a></span>()</code>
-<div class="block">This method tests if player can wear more than one item of the same category, wihch means
- if the player will drop previous item if wearing the same category.</div>
+<div class="block">This method tests if onPlayer can wear more than one item of the same category, wihch means
+ if the onPlayer will drop previous item if wearing the same category.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../logic/PlayerTest.html#testUnexistingEquipmentDrop--">testUnexistingEquipmentDrop</a></span>()</code>
-<div class="block">This method tests if player can drop unexisting items.</div>
+<div class="block">This method tests if onPlayer can drop unexisting items.</div>
 </td>
 </tr>
 </table>
@@ -307,7 +307,7 @@ extends java.lang.Object</pre>
 <h4>testEmptyBackpack2</h4>
 <pre>public&nbsp;void&nbsp;testEmptyBackpack2()
                         throws java.lang.Exception</pre>
-<div class="block">This method test if it is already empty in the backpack, can the player still drop items.</div>
+<div class="block">This method test if it is already empty in the backpack, can the onPlayer still drop items.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
@@ -322,7 +322,7 @@ extends java.lang.Object</pre>
 <h4>testFullBackPack</h4>
 <pre>public&nbsp;void&nbsp;testFullBackPack()
                       throws java.lang.Exception</pre>
-<div class="block">This method tests if player can still pick up items when backpack is full.</div>
+<div class="block">This method tests if onPlayer can still pick up items when backpack is full.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
@@ -352,7 +352,7 @@ extends java.lang.Object</pre>
 <h4>testLooting</h4>
 <pre>public&nbsp;void&nbsp;testLooting()
                  throws java.lang.Exception</pre>
-<div class="block">This method test if the player will correctly loot the chest, which means the player will get
+<div class="block">This method test if the onPlayer will correctly loot the chest, which means the onPlayer will get
  the item in the chest to his backpack.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
@@ -368,7 +368,7 @@ extends java.lang.Object</pre>
 <h4>testNotLooting</h4>
 <pre>public&nbsp;void&nbsp;testNotLooting()
                     throws java.lang.Exception</pre>
-<div class="block">This method is to test if the player will successfully loot the chest.</div>
+<div class="block">This method is to test if the onPlayer will successfully loot the chest.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
@@ -383,8 +383,8 @@ extends java.lang.Object</pre>
 <h4>testOneItemOfEachKind</h4>
 <pre>public&nbsp;void&nbsp;testOneItemOfEachKind()
                            throws java.lang.Exception</pre>
-<div class="block">This method tests if player can wear more than one item of the same category, wihch means
- if the player will drop previous item if wearing the same category.</div>
+<div class="block">This method tests if onPlayer can wear more than one item of the same category, wihch means
+ if the onPlayer will drop previous item if wearing the same category.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>
@@ -399,7 +399,7 @@ extends java.lang.Object</pre>
 <h4>testUnexistingEquipmentDrop</h4>
 <pre>public&nbsp;void&nbsp;testUnexistingEquipmentDrop()
                                  throws java.lang.Exception</pre>
-<div class="block">This method tests if player can drop unexisting items.</div>
+<div class="block">This method tests if onPlayer can drop unexisting items.</div>
 <dl>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.Exception</code></dd>

@@ -111,17 +111,17 @@ Strategy
     +   move
         to exit
         shortest path,
-        though player, chest
+        though onPlayer, chest
     +   attack *
-        player if on the way && hostile
+        onPlayer if on the way && hostile
     +   interact *
         chest if on the way
 
 +   Aggressive
     +   move
-        to human player
+        to human onPlayer
     +   attack
-        main player
+        main onPlayer
         on the way if in range && NPC
     +   interact
         chest if near
@@ -169,14 +169,14 @@ Effect
 +   Computer
     +   move
         shortest path to exit
-        though player, chest
+        though onPlayer, chest
     +   code
         shortestPath()
 
 +   Aggressive
     +   move
-        shortest path to human player
-        though player, chest
+        shortest path to human onPlayer
+        though onPlayer, chest
     +   code
         shortestPath()
 

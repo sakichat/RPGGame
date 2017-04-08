@@ -144,7 +144,7 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">PlayScene</span>
 extends <a href="../../ui/scene/Scene.html" title="class in ui.scene">Scene</a>
 implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in ui.view">GameMapView.Delegate</a>, <a href="../../ui/panel/InventoryPanel.Delegate.html" title="interface in ui.panel">InventoryPanel.Delegate</a></pre>
-<div class="block">This is a PlayScene for player to play on created maps.</div>
+<div class="block">This is a PlayScene for onPlayer to play on created maps.</div>
 <dl>
 <dt><span class="simpleTagLabel">Version:</span></dt>
 <dd>0.2</dd>
@@ -320,13 +320,13 @@ implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../ui/scene/PlayScene.html#viewAttribute-logic.Player-">viewAttribute</a></span>(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../ui/scene/PlayScene.html#viewAttribute-logic.Player-">viewAttribute</a></span>(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</code>
 <div class="block">This method creates view Attribute action.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../ui/scene/PlayScene.html#viewInventory-logic.Player-">viewInventory</a></span>(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../ui/scene/PlayScene.html#viewInventory-logic.Player-">viewInventory</a></span>(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</code>
 <div class="block">This method creates view Inventory action.</div>
 </td>
 </tr>
@@ -540,11 +540,11 @@ implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in
 <ul class="blockList">
 <li class="blockList">
 <h4>viewAttribute</h4>
-<pre>public&nbsp;void&nbsp;viewAttribute(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</pre>
+<pre>public&nbsp;void&nbsp;viewAttribute(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</pre>
 <div class="block">This method creates view Attribute action.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>player</code> - </dd>
+<dd><code>onPlayer</code> - </dd>
 </dl>
 </li>
 </ul>
@@ -554,11 +554,11 @@ implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in
 <ul class="blockListLast">
 <li class="blockList">
 <h4>viewInventory</h4>
-<pre>public&nbsp;void&nbsp;viewInventory(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</pre>
+<pre>public&nbsp;void&nbsp;viewInventory(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</pre>
 <div class="block">This method creates view Inventory action.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>player</code> - </dd>
+<dd><code>onPlayer</code> - </dd>
 </dl>
 </li>
 </ul>

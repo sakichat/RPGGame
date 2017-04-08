@@ -1,6 +1,7 @@
 package logic.equipment;
 
 import com.google.gson.annotations.Expose;
+import logic.player.Player;
 
 /**
  * @author Li ZHEN
@@ -44,4 +45,8 @@ public class WeaponSolid extends EquipmentSolid implements Weapon{
         return "";
     }
 
+    @Override
+    public void attach(Player target) {
+        // do nothing
+    }
 }

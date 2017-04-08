@@ -1,5 +1,8 @@
 package logic.equipment;
 
+import logic.Play;
+import logic.player.Player;
+
 /**
  * @author Kai QI
  * @version 0.3
@@ -11,7 +14,7 @@ public interface Weapon extends Equipment{
     enum Type{
         Melee, Ranged
     }
-    
+
     String TYPE_MELEE = "Melee";
     String TYPE_RANGED = "Ranged";
 
@@ -42,4 +45,6 @@ public interface Weapon extends Equipment{
      * @return String, the decorator information is stored in the String.
      */
     String enchantmentsChainText();
+
+    void attach(Player target);
 }

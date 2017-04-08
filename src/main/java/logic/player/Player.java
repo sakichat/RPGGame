@@ -1,6 +1,7 @@
 package logic.player;
 
 import com.google.gson.annotations.Expose;
+import logic.effect.Effect;
 import logic.map.Cell;
 import logic.map.Chest;
 import logic.Dice;
@@ -772,5 +773,19 @@ public class Player extends Cell {
      */
     public void setRemainStep(int remainStep) {
         this.remainStep = remainStep;
+    }
+
+    private List<Effect> effects = new LinkedList<>();
+
+    public void addEffect(Effect effect){
+        // TODO: 08/04/2017
+    }
+
+    public void removeEffect(Effect effect){
+        // TODO: 08/04/2017
+    }
+
+    public List<Effect> getEffects() {
+        return effects;
     }
 }
