@@ -1,7 +1,7 @@
 package logic.equipment;
 
 /**
- * This class is the equitment
+ * This class is the interface of equipment.
  * @author Li Zhen
  * @version 0.1
  */

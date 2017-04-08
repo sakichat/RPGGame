@@ -1,21 +1,46 @@
 package logic.equipment;
 
 
+/**
+ * @author Kai QI
+ * @version
+ */
 public class EquipmentFactory {
 
+    /**
+     * This method is to build a new equipment object.
+     * @param name String
+     * @return a new Equipment
+     */
     public Equipment newEquipment(String name){
         return new EquipmentSolid(name);
     }
 
+    /**
+     * The method is to build a new equipment object with more parameters.
+     * @param name String
+     * @param type String
+     * @param enhancedAttribute String
+     * @param enhancedValue int
+     * @return a new equipment
+     */
     public Equipment newEquipment(String name, String type, String enhancedAttribute, int enhancedValue){
         return new EquipmentSolid(name, type, enhancedAttribute, enhancedValue);
     }
 
+    /**
+     * The method is used to build a new weapon object
+     * @return a new weapon
+     */
     public Weapon newWeapon(){
         return new WeaponSolid();
-//        throw new RuntimeException("Code Not Finished Yet");
     }
 
+    /**
+     * The method is used to convert an equipment object to a weapon object, if the type is Weapon.
+     * @param equipment Equipment
+     * @return a weapon object
+     */
     public Weapon equipmentToWeapon(Equipment equipment){
 
         WeaponSolid weapon = new WeaponSolid();
@@ -27,6 +52,11 @@ public class EquipmentFactory {
 
     }
 
+    /**
+     * The method is used to convert a weapon object to an equipment object, if the type is Weapon.
+     * @param weapon Weapon
+     * @return an equipment object
+     */
     public Equipment WeaponToEquipment(Weapon weapon){
 
         EquipmentSolid equipment = new EquipmentSolid();
@@ -35,6 +65,5 @@ public class EquipmentFactory {
         equipment.setEnhancedAttribute(weapon.getEnhancedAttribute());
         equipment.setEnhancedValue(weapon.getEnhancedValue());
         return equipment;
-//        throw new RuntimeException("Code Not Finished Yet");
     }
 }
