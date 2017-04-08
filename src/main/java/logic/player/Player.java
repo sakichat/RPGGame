@@ -57,28 +57,28 @@ public class Player extends Cell {
 
     /**
      * This method is used to get the ability score of object based on the given name of the ability.
-     * @param name String
+     * @param abilityScoreName String
      * @return Integer
      */
-    public Integer getAbilityScore(String name) {
+    public Integer getAbilityScore(String abilityScoreName) {
 
-        Integer score = abilityScores.get(name);
+        Integer score = abilityScores.get(abilityScoreName);
         return score != null ? score : 0;
     }
 
     /**
      * This method is used to get the total ability score of object after enhanced by equipments.
-     * @param name String
+     * @param abilityScoreName String
      * @return Integer
      */
-    public Integer getTotalAbilityScore(String name){
-        return getAbilityScore(name) + enhancedValueOnEquipments(name);
+    public Integer getTotalAbilityScore(String abilityScoreName){
+        return getAbilityScore(abilityScoreName) + enhancedValueOnEquipments(abilityScoreName);
     }
 
     /**
      * This method is used to calculate the modifiers for each ability score, based on the D20 formulas..
      * @param name String
-     * @return Integer
+     * @return Integer ,the value of the modifier
      */
     public Integer getAbilityModifier(String name) {
         Integer ability = getAbilityScore(name);
@@ -103,8 +103,6 @@ public class Player extends Cell {
         }
     }
 
-
-
     /**
      * This method is used to calculate the ability scores based on the D20 formulas.
      */
@@ -122,7 +120,7 @@ public class Player extends Cell {
 
     /**
      * The method is used to calculate the ability scores based on different fighter type.
-     * @param playerType
+     * @param playerType String
      */
     public void generateAbilities(String playerType) {
 
@@ -131,18 +129,15 @@ public class Player extends Cell {
             diceResults.add(Dice.rool(4, 6, 0));
         }
 
-        diceResults.sort(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                if (o1 > o2) {
-                    return -1;
-                }else if(o1 == o2){
-                    return 0;
-                }else if(o1 < o2){
-                    return 1;
-                }
+        diceResults.sort((o1, o2) -> {
+            if (o1 > o2) {
+                return -1;
+            }else if(o1 == o2){
                 return 0;
+            }else if(o1 < o2){
+                return 1;
             }
+            return 0;
         });
 
         List<String> abilities = new LinkedList<>();
@@ -179,8 +174,6 @@ public class Player extends Cell {
         setChanged();
         notifyObservers(ABILITY_CHANGE);
     }
-
-
 
     /**
      * Backpack and methods.
@@ -243,7 +236,7 @@ public class Player extends Cell {
     /**
      * This method is used to get the equipment worn by the character based on the given type(slot).
      * @param type also the equipment slot
-     * @return logic.Equipment
+     * @return Equipment object which is in the equipment slot, aka, worn equipment.
      */
     public Equipment getEquipment(String type) {
         return equipments.get(type);
@@ -312,7 +305,7 @@ public class Player extends Cell {
 
     /**
      * The method is used to get all inventories the player owned.
-     * @return
+     * @return all the equipments in backpack or worn.
      */
     public List<Equipment> getInventories() {
         List<Equipment> inventory = new LinkedList<>();
@@ -330,7 +323,7 @@ public class Player extends Cell {
 
     /**
      * The method is used to drop an inventory.
-     * @param dropEquipment
+     * @param dropEquipment the equipment which is requested to drop from inventories.
      */
     public void dropInventories(Equipment dropEquipment) {
 
@@ -346,7 +339,6 @@ public class Player extends Cell {
         }
 
         dropEquipment(dropEquipment);
-
     }
 
     /**
@@ -409,12 +401,14 @@ public class Player extends Cell {
                has = true;
             }
         }
+
         if (!has){
             multipleAttacks.put(hostilePlayer.getName(),3);
         }
+
         if (multipleAttacks.get(hostilePlayer.getName()) == 0) {
             hostilePlayer.setHp(0);
-        }else {
+        } else {
             if (multipleAttacks.get(hostilePlayer.getName()) == 3) {
                 if (hostilePlayer.getHp() - damage > 0) {
                     hostilePlayer.setHp(hostilePlayer.getHp() - damage);
@@ -434,6 +428,7 @@ public class Player extends Cell {
             } else if (multipleAttacks.get(hostilePlayer.getName()) == 1) {
                 hostilePlayer.setHp(0);
             }
+
             for (String name : multipleAttacks.keySet()) {
                 if (name.equals(hostilePlayer.getName())) {
                     int times = multipleAttacks.get(name);
@@ -458,7 +453,6 @@ public class Player extends Cell {
             pickUpEquipment(lootEquipment);
             chest.dropEquipment(lootEquipment);
         }
-
     }
 
     /**
@@ -479,7 +473,6 @@ public class Player extends Cell {
             deadNPC.dropInventories(lootEquipment);
             inventories.remove(0);
         }
-
     }
 
 
@@ -627,7 +620,6 @@ public class Player extends Cell {
         typeNames.put(PLAYER_TYPE_NIMBLE, "nimble");
 
         return partyNames.get(playerParty) + "_" + typeNames.get(playerType) + ".png";
-
     }
 
 
@@ -654,9 +646,11 @@ public class Player extends Cell {
         if (hp < 0) {
             hp = 0;
         }
+
         if (hp == 0) {
             dead();
         }
+
         this.hp = hp;
 
         setChanged();
@@ -749,10 +743,10 @@ public class Player extends Cell {
      */
     public int getAttackRange() {
 
-        Weapon equipment = (Weapon) equipments.get(Equipment.WEAPON);
+        Weapon weapon = (Weapon) equipments.get(Equipment.WEAPON);
 
-        if (equipment != null) {
-            return equipment.getRange();
+        if (weapon != null) {
+            return weapon.getRange();
         }
 
         return 0;
@@ -761,6 +755,7 @@ public class Player extends Cell {
     /**
      * Properties of remainStep and getter & setter.
      */
+    @Expose
     private int remainStep;
 
     /**

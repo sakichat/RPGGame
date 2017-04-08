@@ -4,7 +4,7 @@ package logic;
  *
  * @author Kai QI
  * @version 0.2
- * This class is the dice result calculator.
+ * This class is the dice result generator.
  */
 public class Dice {
 
