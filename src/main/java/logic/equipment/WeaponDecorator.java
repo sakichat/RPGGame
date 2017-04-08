@@ -1,12 +1,14 @@
 package logic.equipment;
 
 import com.google.gson.annotations.Expose;
+import logic.effect.Effect;
+import logic.player.Player;
 
 /**
  * @author Li ZHEN
  * @version 0.3
  */
-public class WeaponDecorator implements Weapon {
+public abstract class WeaponDecorator implements Weapon {
 
     @Expose
     protected Weapon decoratedWeapon;
@@ -20,6 +22,7 @@ public class WeaponDecorator implements Weapon {
         return decoratedWeapon.validate();
     }
 
+    //region Description
     @Override
     public String getName() {
         return decoratedWeapon.getName();
@@ -29,6 +32,7 @@ public class WeaponDecorator implements Weapon {
     public void setName(String name) {
         decoratedWeapon.setName(name);
     }
+    //endregion
 
     @Override
     public String getType() {
@@ -100,7 +104,12 @@ public class WeaponDecorator implements Weapon {
         return decoratedWeapon.enchantmentsChainText();
     }
 
+    @Override
+    public void attach(Player target) {
+        // to read
+        target.addEffect(generateEffect());
+        decoratedWeapon.attach(target);
+    }
 
-
-
+    protected abstract Effect generateEffect();
 }

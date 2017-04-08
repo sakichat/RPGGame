@@ -1,6 +1,8 @@
 package logic.equipment;
 
+
 import org.apache.commons.lang3.text.WordUtils;
+import logic.player.Player;
 
 /**
  * @author Kai QI
@@ -13,8 +15,7 @@ public interface Weapon extends Equipment{
     enum Type{
         MELEE, RANGED;
         public String display() {
-            String nameText = this.name();
-            return WordUtils.capitalize(nameText.toLowerCase());
+            return WordUtils.capitalize(name());
         }
     }
 
@@ -45,4 +46,6 @@ public interface Weapon extends Equipment{
      * @return String, the decorator information is stored in the String.
      */
     String enchantmentsChainText();
+
+    void attach(Player target);
 }
