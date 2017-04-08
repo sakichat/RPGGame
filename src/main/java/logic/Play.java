@@ -162,7 +162,7 @@ public class Play {
 
         for (Player sortingPlayer : playerList) {
             int diceScore = Dice.rool(20);
-            int dexScore = sortingPlayer.getAbilityModifier(sortingPlayer.ABILITY_DEX);
+            int dexScore = sortingPlayer.getTotalAbilityModifier(Player.ABILITY_DEX);
             sortStandard = diceScore + dexScore;
             initiativeValues.put(sortingPlayer, sortStandard);
         }
