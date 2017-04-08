@@ -1,8 +1,8 @@
 package logic.player;
 
 /**
- * Created by lizhen on 2017-03-21.
  * this is the class that build  type  of Bully player
+ * @author Li Zhen
  *@version 0.2
  */
 public class PlayerBuilderBully extends PlayerBuilder {

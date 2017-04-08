@@ -14,7 +14,7 @@ import java.util.*;
  * This Class is player, which includes users and NPCs.
  *
  * @author Kai QI
- * @version 0.2
+ * @version 0.3
  *
  */
 public class Player extends Cell {

@@ -3,7 +3,7 @@ package logic.equipment;
 /**
  * This class is the interface of equipment.
  * @author Li Zhen
- * @version 0.1
+ * @version 0.3
  */
 
 public interface Equipment {

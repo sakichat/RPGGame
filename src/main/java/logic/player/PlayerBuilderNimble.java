@@ -1,8 +1,8 @@
 package logic.player;
 
 /**
- * Created by Li Zhen on 2017-03-21.
  * this is the class to build typle of Nimble Player
+ * @author Li Zhen
  * @version 0.2
  */
 public class PlayerBuilderNimble extends PlayerBuilder {

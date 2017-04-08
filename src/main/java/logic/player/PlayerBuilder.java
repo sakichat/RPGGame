@@ -1,8 +1,8 @@
 package logic.player;
 
 /**
- * Created by Li Zhen on 2017-03-21.
  * this class is a abstract class to build the player
+ * @author Li Zhen
  * @version 0.2
  */
 public abstract class PlayerBuilder {

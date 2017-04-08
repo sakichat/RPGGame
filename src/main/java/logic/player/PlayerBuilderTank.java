@@ -1,8 +1,8 @@
 package logic.player;
 
 /**
- * Created by Li Zhen on 2017-03-21.
  * this is the class that build type of Tank Player
+ * @author Li Zhen
  * @version 0.2
  */
 public class PlayerBuilderTank extends PlayerBuilder {
