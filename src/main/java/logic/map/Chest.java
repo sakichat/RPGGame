@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * this class is the logic.Chest in the game
  * @author Li Zhen
- * @version 0.1
+ * @version 0.3
  */
 public class Chest extends Cell{
 

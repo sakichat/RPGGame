@@ -144,13 +144,13 @@ public class Point {
         if (x == 0){
             if (y > 0){
                 return Direction.DOWN;
-            }else {
+            } else {
                 return Direction.UP;
             }
-        }else if(y == 0){
+        } else if (y == 0){
             if (x > 0){
                 return Direction.RIGHT;
-            }else {
+            } else {
                 return Direction.LEFT;
             }
         }
