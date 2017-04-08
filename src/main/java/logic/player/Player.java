@@ -7,6 +7,7 @@ import logic.map.Chest;
 import logic.Dice;
 import logic.equipment.Weapon;
 import logic.equipment.Equipment;
+import logic.turn.TurnStrategy;
 
 import java.util.*;
 
@@ -773,6 +774,16 @@ public class Player extends Cell {
      */
     public void setRemainStep(int remainStep) {
         this.remainStep = remainStep;
+    }
+
+    private TurnStrategy strategy;
+
+    public TurnStrategy getStrategy() {
+        return strategy;
+    }
+
+    public void setStrategy(TurnStrategy strategy) {
+        this.strategy = strategy;
     }
 
     private List<Effect> effects = new LinkedList<>();
