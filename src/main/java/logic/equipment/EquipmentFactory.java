@@ -3,7 +3,10 @@ package logic.equipment;
 
 /**
  * @author Kai QI
- * @version
+ * @version 0.3
+ *
+ * This class is a factory of Equipment and Weapon class,
+ * also includes the methods used to convert objects.
  */
 public class EquipmentFactory {
 
@@ -48,6 +51,10 @@ public class EquipmentFactory {
         weapon.setType(equipment.getType());
         weapon.setEnhancedAttribute(equipment.getEnhancedAttribute());
         weapon.setEnhancedValue(equipment.getEnhancedValue());
+        if (equipment instanceof Weapon) {
+            weapon.setWeaponType(((Weapon) equipment).getWeaponType());
+            weapon.setRange(((Weapon)equipment).getRange());
+        }
         return weapon;
 
     }

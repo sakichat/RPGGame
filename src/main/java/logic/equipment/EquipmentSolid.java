@@ -3,8 +3,17 @@ package logic.equipment;
 import com.google.gson.annotations.Expose;
 import logic.player.Player;
 
+/**
+ * @author Kai QI
+ * @version 0.3
+ * The class is the solid class of the Equipment, which implement the interface of Equipment.
+ */
+
 public class EquipmentSolid implements Equipment{
 
+    /**
+     * The declarations of properties of name, type, enhancedAttribute and enhancedValue.
+     */
     @Expose
     protected String name;
     @Expose
@@ -15,15 +24,14 @@ public class EquipmentSolid implements Equipment{
     protected int enhancedValue = 0;
 
     /**
-     * This is the constructor
+     * This is the constructor without paremeter.
      */
-
     public EquipmentSolid() {
 
     }
 
     /**
-     * this is the constructor to send the name
+     * this is the constructor with the parameter of name.
      * @param name String
      */
 
@@ -32,14 +40,12 @@ public class EquipmentSolid implements Equipment{
     }
 
     /**
-     * This is the construtor of logic.Equipment
+     * This is the constructor with all the three parameters.
      * @param name String
      * @param type String
      * @param enhancedAttribute String
      * @param enhancedValue int
      */
-
-
     public EquipmentSolid(String name, String type, String enhancedAttribute, int enhancedValue) {
 
         this.name = name;
@@ -48,36 +54,31 @@ public class EquipmentSolid implements Equipment{
         this.enhancedValue = enhancedValue;
     }
 
-
-
     /**
-     * This method is to validate whether the attribute can be improve according to  the logic.Equipment
+     * This method is to validate whether the attribute can be improve according to the requirements.
      * @return isValidate boolean
      */
-
     public boolean validate(){
 
-        boolean isValidate = false;
+        boolean enhancedValueValidate = false;
+        if (enhancedValue >= 1 && enhancedValue <=5) {
+            enhancedValueValidate = true;
+        }
 
+        boolean enhancedAttributeValidate = false;
         if (type.equals(HELMET)){
             if (enhancedAttribute.equals(Player.ABILITY_INT)
                     || enhancedAttribute.equals(Player.ATTRIBUTE_ARMOR_CLASS)
                     || enhancedAttribute.equals(Player.ABILITY_WIS)){
-                if (enhancedValue >= 1 && enhancedValue <= 5){
-                    isValidate = true;
-                }
+                enhancedAttributeValidate = true;
             }
         }else if (type.equals(ARMOR)){
             if (enhancedAttribute.equals(Player.ATTRIBUTE_ARMOR_CLASS)){
-                if (enhancedValue >= 1 && enhancedValue <= 5){
-                    isValidate = true;
-                }
+                enhancedAttributeValidate = true;
             }
         }else if (type.equals(SHIELD)){
             if (enhancedAttribute.equals(Player.ATTRIBUTE_ARMOR_CLASS)){
-                if (enhancedValue >= 1 && enhancedValue <= 5){
-                    isValidate = true;
-                }
+                enhancedAttributeValidate = true;
             }
         }else if (type.equals(RING)){
             if (enhancedAttribute.equals(Player.ATTRIBUTE_ARMOR_CLASS)
@@ -85,36 +86,29 @@ public class EquipmentSolid implements Equipment{
                     || enhancedAttribute.equals(Player.ABILITY_CON)
                     || enhancedAttribute.equals(Player.ABILITY_WIS)
                     || enhancedAttribute.equals(Player.ABILITY_CHA)){
-                if (enhancedValue >= 1 && enhancedValue <= 5){
-                    isValidate = true;
-                }
+                enhancedAttributeValidate = true;
             }
         }else if (type.equals(BELT)){
             if (enhancedAttribute.equals(Player.ABILITY_CON)
                     || enhancedAttribute.equals(Player.ABILITY_STR)){
-                if (enhancedValue >= 1 && enhancedValue <= 5){
-                    isValidate = true;
-                }
+                enhancedAttributeValidate = true;
             }
         }else if (type.equals(BOOTS)){
             if (enhancedAttribute.equals(Player.ATTRIBUTE_ARMOR_CLASS)
                     || enhancedAttribute.equals(Player.ABILITY_DEX)){
-                isValidate = true;
+                enhancedAttributeValidate = true;
             }
         }else if (type.equals(WEAPON)){
 
-            boolean enhancementValid = false;
+            boolean weaponEnhancedAttributeValid = false;
             if (enhancedAttribute.equals(Player.ATTRIBUTE_ATTACK_BONUS)
                     || enhancedAttribute.equals(Player.ATTRIBUTE_DAMAGE_BONUS)){
-
-                if (enhancedValue >= 1 && enhancedValue <= 5){
-                    enhancementValid = true;
-                }
+                weaponEnhancedAttributeValid = true;
             }
-            System.out.println("enhancementValid = " + enhancementValid);
 
             boolean weaponTypeValid = false;
-            Weapon weapon = (Weapon) this;
+            EquipmentFactory equipmentFactory = new EquipmentFactory();
+            Weapon weapon = equipmentFactory.equipmentToWeapon(this);
             String weaponType = weapon.getWeaponType();
             int weaponRange = weapon.getRange();
             if (weaponType.equals(WEAPON_TYPE_MELEE)) {
@@ -124,91 +118,83 @@ public class EquipmentSolid implements Equipment{
             }
             System.out.println("weaponTypeValid = " + weaponTypeValid);
 
-            isValidate = enhancementValid && weaponTypeValid;
+            enhancedAttributeValidate = weaponEnhancedAttributeValid && weaponTypeValid;
         }
 
+        boolean isValidate = enhancedValueValidate && enhancedAttributeValidate;
 
         return isValidate;
     }
 
 
     /**
-     * this method is to get name of logic.Equipment
+     * Getter for the property name.
      * @return name String
      */
-
     public String getName() {
         return name;
     }
 
     /**
-     * this method is to set name of logic.Equipment
+     * Setter for the property name.
      * @param name String
      */
-
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * this method is to get type of logic.Equipment
+     * Getter for the property type.
      * @return type String
      */
-
     public String getType() {
         return type;
     }
 
     /**
-     * this method is to set type of logic.Equipment
+     * Setter for the property type.
      * @param type String
      */
-
     public void setType(String type) {
         this.type = type;
     }
 
     /**
-     * this method is to get enhancedAttribute
+     * Getter for the property enhancedAttribute.
      * @return enhancedAttribute String
      */
-
     public String getEnhancedAttribute() {
         return enhancedAttribute;
     }
 
     /**
-     * this method is to set getEnhancedAttribute
+     * Setter for the property enhancedAttribute.
      * @param enhancedAttribute String
      */
-
     public void setEnhancedAttribute(String enhancedAttribute) {
         this.enhancedAttribute = enhancedAttribute;
     }
 
     /**
-     * this method is to get enhancedValue
+     * Getter for the property enhancedValue.
      * @return enhancedValue int
      */
-
     public int getEnhancedValue() {
         return enhancedValue;
     }
 
     /**
-     * this method is to set enhancedValue
+     * Setter for the property enhancedValue.
      * @param enhancedValue int
      */
-
     public void setEnhancedValue(int enhancedValue) {
         this.enhancedValue = enhancedValue;
     }
 
     /**
-     * this method is to refresh the value of equipment accoding to the level of player
+     * this method is to refresh the value of equipment according to the level of player
      * @param level int
      */
-
     public void levelRefresh(int level) {
         if (level >= 1 && level <= 4){
             this.setEnhancedValue(1);
@@ -227,7 +213,6 @@ public class EquipmentSolid implements Equipment{
      * this method is to show the Equipment
      * @return String
      */
-
     @Override
     public String toString() {
         return "Equipment{" +
@@ -238,8 +223,13 @@ public class EquipmentSolid implements Equipment{
                 '}';
     }
 
+    /**
+     * The method is override the abstract method in Equipment interface.
+     * It is used to show the name of equipment in UI.
+     * @return String, the displayName of equipment.
+     */
+    @Override
     public String displayName(){
         return name;
     }
-
 }
