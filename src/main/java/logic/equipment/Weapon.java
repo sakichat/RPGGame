@@ -15,7 +15,7 @@ public interface Weapon extends Equipment{
     enum Type{
         MELEE, RANGED;
         public String display() {
-            return WordUtils.capitalize(name());
+            return WordUtils.capitalizeFully(name());
         }
     }
 
