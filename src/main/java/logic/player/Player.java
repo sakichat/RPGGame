@@ -802,10 +802,12 @@ public class Player extends Cell {
     }
 
     public boolean isFreezing() {
+        // TODO
         return false;
     }
 
     public boolean isBurning() {
+        // TODO
         return false;
     }
 
