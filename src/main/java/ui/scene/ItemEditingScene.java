@@ -2,6 +2,7 @@ package ui.scene;
 
 import logic.equipment.*;
 import logic.player.Player;
+import org.apache.commons.lang3.text.WordUtils;
 import persistence.EquipmentFileManager;
 import ui.view.View;
 
@@ -488,14 +489,14 @@ public class ItemEditingScene extends Scene {
 
         meleeTypeButton.addActionListener(e -> {
             Weapon weapon = (Weapon) equipment;
-            weapon.setWeaponType(Weapon.TYPE_MELEE);
-            weaponTypeLabel.setText(Weapon.TYPE_MELEE);
+            weapon.setWeaponType(Weapon.Type.MELEE);
+            weaponTypeLabel.setText(Weapon.Type.MELEE.display());
         });
 
         rangedTypeButton.addActionListener(e -> {
             Weapon weapon = (Weapon) equipment;
-            weapon.setWeaponType(Weapon.TYPE_RANGED);
-            weaponTypeLabel.setText(Weapon.TYPE_RANGED);
+            weapon.setWeaponType(Weapon.Type.RANGED);
+            weaponTypeLabel.setText(Weapon.Type.RANGED.display());
         });
 
         freezingButton.addActionListener(e -> {

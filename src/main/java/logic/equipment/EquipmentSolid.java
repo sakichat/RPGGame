@@ -109,11 +109,11 @@ public class EquipmentSolid implements Equipment{
             boolean weaponTypeValid = false;
             EquipmentFactory equipmentFactory = new EquipmentFactory();
             Weapon weapon = equipmentFactory.equipmentToWeapon(this);
-            String weaponType = weapon.getWeaponType();
+            Weapon.Type weaponType = weapon.getWeaponType();
             int weaponRange = weapon.getRange();
-            if (weaponType.equals(Weapon.TYPE_MELEE)) {
+            if (weaponType.equals(Weapon.Type.MELEE)) {
                 weaponTypeValid = weaponRange == 1;
-            } else if (weaponType.equals(Weapon.TYPE_RANGED)) {
+            } else if (weaponType.equals(Weapon.Type.RANGED)) {
                 weaponTypeValid = weaponRange > 1;
             }
             System.out.println("weaponTypeValid = " + weaponTypeValid);

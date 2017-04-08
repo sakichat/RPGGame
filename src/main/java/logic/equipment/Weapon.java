@@ -1,5 +1,7 @@
 package logic.equipment;
 
+import org.apache.commons.lang3.text.WordUtils;
+
 /**
  * @author Kai QI
  * @version 0.3
@@ -9,11 +11,12 @@ package logic.equipment;
 public interface Weapon extends Equipment{
 
     enum Type{
-        Melee, Ranged
+        MELEE, RANGED;
+        public String display() {
+            String nameText = this.name();
+            return WordUtils.capitalize(nameText.toLowerCase());
+        }
     }
-    
-    String TYPE_MELEE = "Melee";
-    String TYPE_RANGED = "Ranged";
 
     /**
      * Some abstract methods which are implemented by the implement classes.
@@ -24,8 +27,8 @@ public interface Weapon extends Equipment{
      */
     int getRange();
     void setRange(int range);
-    String getWeaponType();
-    void setWeaponType(String weaponType);
+    Type getWeaponType();
+    void setWeaponType(Type weaponType);
 
     /**
      * The two methods below are main methods in decorator pattern.
