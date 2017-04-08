@@ -1,7 +1,9 @@
 package logic.equipment;
 
 /**
- * Created by thereaghostflash on 2017-04-01.
+ * @author Li ZHEN
+ * @version 0.3
+ * This class is to add enchantment of slaying.
  */
 public class WeaponDecoratorSlaying extends WeaponDecorator {
 

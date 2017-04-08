@@ -1,7 +1,9 @@
 package logic.equipment;
 
 /**
- * Created by Li Zhen on 2017-04-01.
+ * @author Li ZHEN
+ * @version 0.3
+ * This class is to add enchantment of frightening.
  */
 public class WeaponDecoratorFrightening extends WeaponDecorator {
 

@@ -3,7 +3,7 @@ package logic.equipment;
 /**
  * @author Li ZHEN
  * @version 0.3
- * this class is to add enchantment of burning
+ * This class is to add enchantment of burning
  */
 public class WeaponDecoratorBurning extends WeaponDecorator {
     /**
