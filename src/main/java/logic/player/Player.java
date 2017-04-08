@@ -1,6 +1,7 @@
 package logic.player;
 
 import com.google.gson.annotations.Expose;
+import logic.Play;
 import logic.effect.Effect;
 import logic.map.Cell;
 import logic.map.Chest;
@@ -799,4 +800,25 @@ public class Player extends Cell {
     public List<Effect> getEffects() {
         return effects;
     }
+
+    public boolean isFreezing() {
+        return false;
+    }
+
+    public boolean isBurning() {
+        return false;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Player)) return false;
+        return this.getName().equals(((Player) obj).getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+
 }
