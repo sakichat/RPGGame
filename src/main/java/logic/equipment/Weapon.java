@@ -8,6 +8,13 @@ package logic.equipment;
  */
 public interface Weapon extends Equipment{
 
+    enum Type{
+        Melee, Ranged
+    }
+    
+    String TYPE_MELEE = "Melee";
+    String TYPE_RANGED = "Ranged";
+
     /**
      * Some abstract methods which are implemented by the implement classes.
      */

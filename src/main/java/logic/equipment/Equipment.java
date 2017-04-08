@@ -16,9 +16,6 @@ public interface Equipment {
     public final static String BOOTS = "Boots";
     public final static String WEAPON = "Weapon";
 
-    public final static String WEAPON_TYPE_MELEE = "Melee";
-    public final static String WEAPON_TYPE_RANGED = "Ranged";
-
     boolean validate();
 
     String getName();

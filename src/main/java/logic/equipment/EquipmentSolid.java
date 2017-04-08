@@ -111,9 +111,9 @@ public class EquipmentSolid implements Equipment{
             Weapon weapon = equipmentFactory.equipmentToWeapon(this);
             String weaponType = weapon.getWeaponType();
             int weaponRange = weapon.getRange();
-            if (weaponType.equals(WEAPON_TYPE_MELEE)) {
+            if (weaponType.equals(Weapon.TYPE_MELEE)) {
                 weaponTypeValid = weaponRange == 1;
-            } else if (weaponType.equals(WEAPON_TYPE_RANGED)) {
+            } else if (weaponType.equals(Weapon.TYPE_RANGED)) {
                 weaponTypeValid = weaponRange > 1;
             }
             System.out.println("weaponTypeValid = " + weaponTypeValid);

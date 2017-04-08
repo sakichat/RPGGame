@@ -488,14 +488,14 @@ public class ItemEditingScene extends Scene {
 
         meleeTypeButton.addActionListener(e -> {
             Weapon weapon = (Weapon) equipment;
-            weapon.setWeaponType(Equipment.WEAPON_TYPE_MELEE);
-            weaponTypeLabel.setText(Equipment.WEAPON_TYPE_MELEE);
+            weapon.setWeaponType(Weapon.TYPE_MELEE);
+            weaponTypeLabel.setText(Weapon.TYPE_MELEE);
         });
 
         rangedTypeButton.addActionListener(e -> {
             Weapon weapon = (Weapon) equipment;
-            weapon.setWeaponType(Equipment.WEAPON_TYPE_RANGED);
-            weaponTypeLabel.setText(Equipment.WEAPON_TYPE_RANGED);
+            weapon.setWeaponType(Weapon.TYPE_RANGED);
+            weaponTypeLabel.setText(Weapon.TYPE_RANGED);
         });
 
         freezingButton.addActionListener(e -> {
