@@ -18,6 +18,15 @@ import java.awt.*;
 public class ItemEditingScene extends Scene {
 
     private Equipment equipment;
+    private boolean weaponSubPanelEnabeld;
+
+    public boolean isWeaponSubPanelEnabeld() {
+        return weaponSubPanelEnabeld;
+    }
+
+    public void setWeaponSubPanelEnabeld(boolean weaponSubPanelEnabeld) {
+        this.weaponSubPanelEnabeld = weaponSubPanelEnabeld;
+    }
 
     /**
      * This method is for get the equipment.
@@ -256,6 +265,9 @@ public class ItemEditingScene extends Scene {
         weaponSubPanel.setSize(1000, 190);
         weaponSubPanel.setLocation(0, 260);
         weaponSubPanel.setBackground(new Color(0xFFFFFF));
+        if (weaponSubPanelEnabeld) {
+            contentView.add(weaponSubPanel);
+        }
 
         label = new JLabel("Weapon", JLabel.RIGHT);
         label.setSize(120, 30);
@@ -494,11 +506,6 @@ public class ItemEditingScene extends Scene {
         });
 
         validateButton.addActionListener(e -> {
-
-//            if (equipment instanceof Weapon) {
-//                Integer range = Integer.valueOf(rangeTextField.getText());
-//                ((Weapon) equipment).setRange(range);
-//            }
 
             System.out.println(equipment);
 

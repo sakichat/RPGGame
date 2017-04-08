@@ -2,6 +2,7 @@ package ui.scene;
 
 import logic.Campaign;
 import logic.equipment.Equipment;
+import logic.equipment.Weapon;
 import logic.map.GameMap;
 import logic.player.Player;
 import ui.panel.*;
@@ -110,8 +111,8 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
         backButton.addActionListener(e -> EditorScene.this.navigationView.pop());
 
         itemCreateButton.addActionListener(e -> {
-                ItemCreationScene itemCreationScene = new ItemCreationScene();
-                EditorScene.this.navigationView.push(itemCreationScene);
+            ItemCreationScene itemCreationScene = new ItemCreationScene();
+            EditorScene.this.navigationView.push(itemCreationScene);
         });
 
         itemEditButton.addActionListener(e -> itemEdit());
@@ -162,6 +163,9 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
 
         ItemEditingScene itemEditingScene = new ItemEditingScene();
         itemEditingScene.setEquipment(equipment);
+        if (equipment instanceof Weapon) {
+            itemEditingScene.setWeaponSubPanelEnabeld(true);
+        }
         navigationView.push(itemEditingScene);
     }
 
