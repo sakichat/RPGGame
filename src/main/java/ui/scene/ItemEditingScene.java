@@ -234,6 +234,12 @@ public class ItemEditingScene extends Scene {
         contentView.add(textField);
         valueTextField = textField;
 
+        button = new JButton("Set");
+        button.setSize(120, 30);
+        button.setLocation(320, 220);
+        contentView.add(button);
+        JButton valueSetButton = button;
+
         button = new JButton("Validate");
         button.setSize(160, 40);
         button.setLocation(150, 490);
@@ -284,6 +290,12 @@ public class ItemEditingScene extends Scene {
         textField.setLocation(150, 80);
         weaponSubPanel.add(textField);
         rangeTextField = textField;
+
+        button = new JButton("Set");
+        button.setSize(120, 30);
+        button.setLocation(320, 80);
+        weaponSubPanel.add(button);
+        JButton rangeSetButton = button;
 
         label = new JLabel("Effects", JLabel.RIGHT);
         label.setSize(120, 30);
@@ -349,8 +361,9 @@ public class ItemEditingScene extends Scene {
 
             EquipmentFactory equipmentFactory = new EquipmentFactory();
             equipment = equipmentFactory.equipmentToWeapon(equipment);
-        }
-        );
+
+            dataToView();
+        });
 
         shieldButton.addActionListener(e -> {
             equipment.setType(Equipment.SHIELD);
@@ -361,6 +374,8 @@ public class ItemEditingScene extends Scene {
                 EquipmentFactory equipmentFactory = new EquipmentFactory();
                 equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
         armorButton.addActionListener(e -> {
@@ -372,6 +387,8 @@ public class ItemEditingScene extends Scene {
                 EquipmentFactory equipmentFactory = new EquipmentFactory();
                 equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
         helmetButton.addActionListener(e -> {
@@ -383,6 +400,8 @@ public class ItemEditingScene extends Scene {
                 EquipmentFactory equipmentFactory = new EquipmentFactory();
                 equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
         ringButton.addActionListener(e -> {
@@ -394,6 +413,8 @@ public class ItemEditingScene extends Scene {
                 EquipmentFactory equipmentFactory = new EquipmentFactory();
                 equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
         beltButton.addActionListener(e -> {
@@ -405,6 +426,8 @@ public class ItemEditingScene extends Scene {
                 EquipmentFactory equipmentFactory = new EquipmentFactory();
                 equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
         bootsButton.addActionListener(e -> {
@@ -416,6 +439,8 @@ public class ItemEditingScene extends Scene {
                 EquipmentFactory equipmentFactory = new EquipmentFactory();
                 equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
         strButton.addActionListener(e -> {
@@ -463,15 +488,17 @@ public class ItemEditingScene extends Scene {
             enhanceOnLabel.setText("Damage Bonus");
         });
 
-        validateButton.addActionListener(e -> {
-
+        valueSetButton.addActionListener(e -> {
             Integer enhancedValue = Integer.valueOf(valueTextField.getText());
             equipment.setEnhancedValue(enhancedValue);
+        });
 
-            if (equipment instanceof Weapon) {
-                Integer range = Integer.valueOf(rangeTextField.getText());
-                ((Weapon) equipment).setRange(range);
-            }
+        validateButton.addActionListener(e -> {
+
+//            if (equipment instanceof Weapon) {
+//                Integer range = Integer.valueOf(rangeTextField.getText());
+//                ((Weapon) equipment).setRange(range);
+//            }
 
             System.out.println(equipment);
 
@@ -497,6 +524,12 @@ public class ItemEditingScene extends Scene {
             Weapon weapon = (Weapon) equipment;
             weapon.setWeaponType(Weapon.Type.RANGED);
             weaponTypeLabel.setText(Weapon.Type.RANGED.display());
+        });
+
+        rangeSetButton.addActionListener(e -> {
+            Integer rangeValue = Integer.valueOf(rangeTextField.getText());
+            ((Weapon)equipment).setRange(rangeValue);
+            dataToView();
         });
 
         freezingButton.addActionListener(e -> {
