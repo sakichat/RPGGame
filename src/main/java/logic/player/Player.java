@@ -245,6 +245,18 @@ public class Player extends Cell {
     }
 
     /**
+     * The method is used to return the weapon player object is wearing.
+     * @return
+     */
+    public Weapon getWeapon() {
+        Equipment equipment = equipments.get(Equipment.WEAPON);
+        if (equipment != null) {
+            return (Weapon)equipment;
+        }
+        return null;
+    }
+
+    /**
      * This method is used to equip the equipment on the character.
      * The equip action will replace the current one on the same slot.
      * @param e the equipment the character wants to equip, which is picked from backpack.
@@ -669,16 +681,34 @@ public class Player extends Cell {
         setImageName(getImageName());
     }
 
+    /**
+     * The declaration of property totalHp
+     */
+    @Expose
     private int totalHp;
 
+    /**
+     * Getter of totalHp
+     * @return
+     */
     public int getTotalHp() {
         return totalHp;
     }
 
+    /**
+     * Setter of totalHp
+     * @param totalHp
+     */
     public void setTotalHp(int totalHp) {
         this.totalHp = totalHp;
     }
 
+    /**
+     * The method is used to generate totalHp according to the D20 rule.
+     * The method is called when the player object is edited or created.
+     * The method also is called when the level changes.
+     * The method also is called when the CON modifier changed, aka, when the type changes.
+     */
     public void generateTotalHp() {
         totalHp = Dice.rool(10);
 
@@ -764,6 +794,7 @@ public class Player extends Cell {
     /**
      * Properties of remainStep and getter & setter.
      */
+    @Deprecated
     @Expose
     private int remainStep;
 
@@ -771,6 +802,7 @@ public class Player extends Cell {
      * Getter for remainStep.
      * @return
      */
+    @Deprecated
     public int getRemainStep() {
         return remainStep;
     }
@@ -779,42 +811,78 @@ public class Player extends Cell {
      * Setter for remainStep.
      * @param remainStep
      */
+    @Deprecated
     public void setRemainStep(int remainStep) {
         this.remainStep = remainStep;
     }
 
+    /**
+     * The declaration of property strategy.
+     */
     private TurnStrategy strategy;
 
+    /**
+     * Getter for strategy.
+     * @return
+     */
     public TurnStrategy getStrategy() {
         return strategy;
     }
 
+    /**
+     * Setter for strategy.
+     * @param strategy Strategy
+     */
     public void setStrategy(TurnStrategy strategy) {
         this.strategy = strategy;
     }
 
+    /**
+     * The declaration of the property effects, which used to store the effects of enchantments weapon.
+     */
     private List<Effect> effects = new LinkedList<>();
 
+    /**
+     * The method is used to add effect to the player.
+     * @param effect Effect
+     */
     public void addEffect(Effect effect){
         effect.setOnPlayer(this);
         effects.add(effect);
 
     }
 
+    /**
+     * The method is used to remove effect to the player.
+     * @param effect Effect
+     */
     public void removeEffect(Effect effect){
         effects.remove(effect);
     }
 
+    /**
+     * Getter for the effects.
+     * @return List
+     */
     public List<Effect> getEffects() {
         return effects;
     }
 
+    /**
+     * The method is override for the equals method, which is used to compare player object.
+     * @param obj
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof Player)) return false;
         return this.getName().equals(((Player) obj).getName());
     }
 
+    /**
+     * The mothod is override method of hashcode calculator.
+     * @return
+     */
     @Override
     public int hashCode() {
         return super.hashCode();
