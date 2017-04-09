@@ -790,14 +790,12 @@ public class Player extends Cell {
     private List<Effect> effects = new LinkedList<>();
 
     public void addEffect(Effect effect){
-        // TODO: 08/04/2017
         effect.setOnPlayer(this);
         effects.add(effect);
 
     }
 
     public void removeEffect(Effect effect){
-        // TODO: 08/04/2017
         effects.remove(effect);
     }
 
