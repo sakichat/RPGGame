@@ -2,7 +2,6 @@ package logic.equipment;
 
 import logic.effect.Effect;
 import logic.effect.EffectPacifying;
-import logic.player.Player;
 
 /**
  * @author Li ZHEN
@@ -32,7 +31,6 @@ public class WeaponDecoratorPacifying extends WeaponDecorator {
 
     @Override
     protected Effect generateEffect() {
-        // TODO: 08/04/2017
-        return null;
+        return new EffectPacifying();
     }
 }
