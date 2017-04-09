@@ -1,6 +1,7 @@
 package logic.equipment;
 
 import logic.effect.Effect;
+import logic.effect.EffectBurning;
 import logic.player.Player;
 
 /**
@@ -51,6 +52,8 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
     @Override
     protected Effect generateEffect() {
         // TODO: 08/04/2017
+//        EffectBurning effect = new EffectBurning();
+//        effect.setEnchantmentBonus(getEnhancedValue());
         return null;
     }
 }

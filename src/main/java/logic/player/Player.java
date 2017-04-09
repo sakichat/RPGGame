@@ -791,10 +791,14 @@ public class Player extends Cell {
 
     public void addEffect(Effect effect){
         // TODO: 08/04/2017
+        effect.setOnPlayer(this);
+        effects.add(effect);
+
     }
 
     public void removeEffect(Effect effect){
         // TODO: 08/04/2017
+        effects.remove(effect);
     }
 
     public List<Effect> getEffects() {

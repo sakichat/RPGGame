@@ -1,6 +1,7 @@
 package logic.equipment;
 
 import logic.effect.Effect;
+import logic.effect.EffectSlaying;
 import logic.player.Player;
 
 /**

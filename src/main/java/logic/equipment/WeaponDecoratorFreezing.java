@@ -1,6 +1,7 @@
 package logic.equipment;
 
 import logic.effect.Effect;
+import logic.effect.EffectFreezing;
 import logic.player.Player;
 
 /**
@@ -32,6 +33,8 @@ public class WeaponDecoratorFreezing extends WeaponDecorator {
     @Override
     protected Effect generateEffect() {
         // TODO: 08/04/2017
-        return null;
+        EffectFreezing effectFreezing = new EffectFreezing();
+        effectFreezing.setTurns(decoratedWeapon.getEnhancedValue());
+        return effectFreezing;
     }
 }

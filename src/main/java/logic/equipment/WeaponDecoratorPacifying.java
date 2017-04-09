@@ -1,6 +1,7 @@
 package logic.equipment;
 
 import logic.effect.Effect;
+import logic.effect.EffectPacifying;
 import logic.player.Player;
 
 /**
