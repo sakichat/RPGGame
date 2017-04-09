@@ -487,17 +487,20 @@ public class ItemEditingScene extends Scene {
 
         armorClassButton.addActionListener(e -> {
             equipment.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
-            enhanceOnLabel.setText("Armor Class");
+//            enhanceOnLabel.setText("Armor Class");
+            enhanceOnLabel.setText("AC");
         });
 
         attackBonusButton.addActionListener(e -> {
             equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
-            enhanceOnLabel.setText("Attack Bonus");
+//            enhanceOnLabel.setText("Attack Bonus");
+            enhanceOnLabel.setText("AB");
         });
 
         damageBonusButton.addActionListener(e -> {
             equipment.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
-            enhanceOnLabel.setText("Damage Bonus");
+//            enhanceOnLabel.setText("Damage Bonus");
+            enhanceOnLabel.setText("DB");
         });
 
         valueSetButton.addActionListener(e -> {
@@ -506,6 +509,12 @@ public class ItemEditingScene extends Scene {
         });
 
         validateButton.addActionListener(e -> {
+
+//            Integer enhancedValue = Integer.valueOf(valueTextField.getText());
+//            equipment.setEnhancedValue(enhancedValue);
+//
+//            Integer rangeValue = Integer.valueOf(rangeTextField.getText());
+//            ((Weapon)equipment).setRange(rangeValue);
 
             System.out.println(equipment);
 
