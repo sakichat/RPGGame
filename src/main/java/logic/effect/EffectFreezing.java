@@ -5,7 +5,7 @@ import logic.turn.TurnStrategy;
 import logic.turn.TurnStrategyFrozen;
 
 public class EffectFreezing extends Effect {
-    private TurnStrategy turnStrategy = onPlayer.getStrategy();
+    private TurnStrategy turnStrategy;
 
 
     @Override
