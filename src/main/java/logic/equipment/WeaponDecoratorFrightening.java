@@ -32,7 +32,8 @@ public class WeaponDecoratorFrightening extends WeaponDecorator {
 
     @Override
     protected Effect generateEffect() {
-        // TODO: 08/04/2017
-        return null;
+        EffectFrightening effectFrightening = new EffectFrightening();
+        effectFrightening.setTurns(decoratedWeapon.getEnhancedValue());
+        return effectFrightening;
     }
 }
