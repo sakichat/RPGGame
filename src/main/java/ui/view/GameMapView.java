@@ -95,11 +95,11 @@ public class GameMapView extends View {
                 gameMap.getHeight() * GameMapLayerView.UNIT_SIZE);
     }
 
-    private final static int _LAYER_BACKGROUND  = 0;
-    private final static int _LAYER_CONTENT     = 1;
-    private final static int _LAYER_ATTACKRANGE = 2;
-    private final static int _LAYER_HIGHLIGHT   = 3;
-    private final static int _LAYER_EVENT       = 4;
+    private final static int _LAYER_BACKGROUND      = 0;
+    private final static int _LAYER_RANGE           = 1;
+    private final static int _LAYER_CONTENT         = 2;
+    private final static int _LAYER_HIGHLIGHT       = 3;
+    private final static int _LAYER_EVENT           = 4;
 
 
     /**
@@ -164,7 +164,7 @@ public class GameMapView extends View {
      */
     private void initAttackrangeLayer() {
         newLayer();
-        refreshAttackrange();
+        refreshRange();
     }
 
     /**
@@ -303,9 +303,9 @@ public class GameMapView extends View {
     /**
      * This method regreshes AttackrangeLayer.
      */
-    public void refreshAttackrange(){
-        GameMapLayerView attackrangeLayerView = layers.get(_LAYER_ATTACKRANGE);
-        attackrangeLayerView.removeAllCells();
+    public void refreshRange(){
+        GameMapLayerView rangeLayerView = layers.get(_LAYER_RANGE);
+        rangeLayerView.removeAllCells();
 
         HashMap<String, String> playerParties = new HashMap<>();
         playerParties.put(Player.PLAYER_PARTY_PLAYER, "player");
@@ -320,7 +320,7 @@ public class GameMapView extends View {
 
             List<Point> points = attackRanges.get(player);
             for (Point point : points) {
-                attackrangeLayerView.addCell(imageView, point);
+                rangeLayerView.addCell(imageView, point);
             }
 
         }
