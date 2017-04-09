@@ -32,7 +32,6 @@ public class WeaponDecoratorFreezing extends WeaponDecorator {
 
     @Override
     protected Effect generateEffect() {
-        // TODO: 08/04/2017
         EffectFreezing effectFreezing = new EffectFreezing();
         effectFreezing.setTurns(decoratedWeapon.getEnhancedValue());
         return effectFreezing;
