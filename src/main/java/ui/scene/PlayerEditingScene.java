@@ -151,21 +151,21 @@ public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.
 
         bullyButton.addActionListener(e -> {
             player.setPlayerType(Player.PLAYER_TYPE_BULLY);
-            player.generateTotalHP();
+            player.generateTotalHp();
             player.generateAbilities(Player.PLAYER_TYPE_BULLY);
             playerPanel.dataToView();
         });
 
         nimbleButton.addActionListener(e -> {
             player.setPlayerType(Player.PLAYER_TYPE_NIMBLE);
-            player.generateTotalHP();
+            player.generateTotalHp();
             player.generateAbilities(Player.PLAYER_TYPE_NIMBLE);
             playerPanel.dataToView();
         });
 
         tankButton.addActionListener(e -> {
             player.setPlayerType(Player.PLAYER_TYPE_TANK);
-            player.generateTotalHP();
+            player.generateTotalHp();
             player.generateAbilities(Player.PLAYER_TYPE_TANK);
             playerPanel.dataToView();
         });

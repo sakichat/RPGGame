@@ -1,7 +1,6 @@
 package logic.player;
 
 import com.google.gson.annotations.Expose;
-import logic.Play;
 import logic.effect.Effect;
 import logic.map.Cell;
 import logic.map.Chest;
@@ -511,7 +510,7 @@ public class Player extends Cell {
      */
     public void setLevel(int level) {
         this.level = level;
-        generateTotalHP();
+        generateTotalHp();
         setChanged();
         notifyObservers(LEVEL_CHANGE);
     }
@@ -670,43 +669,26 @@ public class Player extends Cell {
         setImageName(getImageName());
     }
 
-    /**
-     * This method is used to calculate the hp value based on the D20 rules.
-     */
-//    public void generateHp() {
-//
-//        hp = Dice.rool(10);
-//
-//        for (int i = 0; i < level - 1; i++) {
-//            int hitDie = Dice.rool(10);
-//            int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
-//            hp += levelAdvances > 1 ? levelAdvances : 1;
-//        }
-//
-//        setChanged();
-//        notifyObservers(HP_CHANGE);
-//    }
+    private int totalHp;
 
-    private int totalHP;
-
-    public int getTotalHP() {
-        return totalHP;
+    public int getTotalHp() {
+        return totalHp;
     }
 
-    public void setTotalHP(int totalHP) {
-        this.totalHP = totalHP;
+    public void setTotalHp(int totalHp) {
+        this.totalHp = totalHp;
     }
 
-    public void generateTotalHP() {
-        totalHP = Dice.rool(10);
+    public void generateTotalHp() {
+        totalHp = Dice.rool(10);
 
         for (int i = 0; i < level - 1; i++) {
             int hitDie = Dice.rool(10);
             int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
-            totalHP += levelAdvances > 1 ? levelAdvances : 1;
+            totalHp += levelAdvances > 1 ? levelAdvances : 1;
         }
 
-        setHp(totalHP);
+        setHp(totalHp);
 
     }
 
