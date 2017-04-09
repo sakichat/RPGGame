@@ -52,8 +52,9 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
     @Override
     protected Effect generateEffect() {
         // TODO: 08/04/2017
-//        EffectBurning effect = new EffectBurning();
-//        effect.setEnchantmentBonus(getEnhancedValue());
-        return null;
+        EffectBurning effectBurning = new EffectBurning();
+        effectBurning.setDamage(decoratedWeapon.getEnhancedValue());
+        effectBurning.setTurns(3);
+        return effectBurning;
     }
 }

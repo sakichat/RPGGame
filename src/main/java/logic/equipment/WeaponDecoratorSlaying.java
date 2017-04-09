@@ -1,6 +1,7 @@
 package logic.equipment;
 
 import logic.effect.Effect;
+import logic.effect.EffectBurning;
 import logic.effect.EffectSlaying;
 import logic.player.Player;
 
@@ -32,7 +33,6 @@ public class WeaponDecoratorSlaying extends WeaponDecorator {
 
     @Override
     protected Effect generateEffect() {
-        // TODO: 08/04/2017
-        return null;
+        return new EffectSlaying();
     }
 }
