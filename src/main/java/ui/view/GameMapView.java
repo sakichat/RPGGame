@@ -113,8 +113,8 @@ public class GameMapView extends View {
      */
     private void initLayers() {
         initBackgroundLayer();
+        initRangeLayer();
         initContentLayer();
-        initAttackrangeLayer();
         initHighlightLayer();
         initEventLayer();
     }
@@ -151,20 +151,20 @@ public class GameMapView extends View {
     }
 
     /**
+     * This method creates a layer for showing attack range of players.
+     */
+    private void initRangeLayer() {
+        newLayer();
+        refreshRange();
+    }
+
+    /**
      * This method is to create the Content Layer,
      * and calls refreshContent() method to paint the layer for placing items.
      */
     private void initContentLayer(){
         newLayer();
         refreshContent();
-    }
-
-    /**
-     * This method creates a layer for showing attack range of players.
-     */
-    private void initAttackrangeLayer() {
-        newLayer();
-        refreshRange();
     }
 
     /**
@@ -312,18 +312,18 @@ public class GameMapView extends View {
         playerParties.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
         playerParties.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
 
-        Map<Player, List<Point>> attackRanges = gameMap.getAttackRanges();
-
-        for (Player player : attackRanges.keySet()) {
-            ImageView imageView = new ImageView();
-            imageView.setName("attack_range_" + playerParties.get(player.getPlayerParty()) + ".png");
-
-            List<Point> points = attackRanges.get(player);
-            for (Point point : points) {
-                rangeLayerView.addCell(imageView, point);
-            }
-
-        }
+//        Map<Player, List<Point>> attackRanges = gameMap.getAttackRanges();
+//
+//        for (Player player : attackRanges.keySet()) {
+//            ImageView imageView = new ImageView();
+//            imageView.setName("attack_range_" + playerParties.get(player.getPlayerParty()) + ".png");
+//
+//            List<Point> points = attackRanges.get(player);
+//            for (Point point : points) {
+//                rangeLayerView.addCell(imageView, point);
+//            }
+//
+//        }
 
         repaint();
     }
