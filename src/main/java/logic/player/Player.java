@@ -654,14 +654,6 @@ public class Player extends Cell {
     }
 
     /**
-     * The method is used to minus damage from hp.
-     * @param damage
-     */
-    public void damage(int damage) {
-        setHp(getHp() - damage);
-    }
-
-    /**
      * Setter for hp.
      * @param hp int
      */
@@ -681,10 +673,18 @@ public class Player extends Cell {
     }
 
     /**
+     * The method is used to minus damage from hp.
+     * @param damage
+     */
+    public void damage(int damage) {
+        setHp(getHp() - damage);
+    }
+
+    /**
      * The method is to describe the dead status;
      * @return
      */
-    public void dead() {
+    private void dead() {
         setDead(true);
         setImageName(getImageName());
     }
