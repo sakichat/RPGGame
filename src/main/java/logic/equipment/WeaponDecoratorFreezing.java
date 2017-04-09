@@ -2,7 +2,6 @@ package logic.equipment;
 
 import logic.effect.Effect;
 import logic.effect.EffectFreezing;
-import logic.player.Player;
 
 /**
  * @author Li ZHEN
