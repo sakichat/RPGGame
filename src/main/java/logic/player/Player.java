@@ -511,6 +511,7 @@ public class Player extends Cell {
      */
     public void setLevel(int level) {
         this.level = level;
+        generateTotalHP();
         setChanged();
         notifyObservers(LEVEL_CHANGE);
     }
@@ -672,18 +673,41 @@ public class Player extends Cell {
     /**
      * This method is used to calculate the hp value based on the D20 rules.
      */
-    public void generateHp() {
+//    public void generateHp() {
+//
+//        hp = Dice.rool(10);
+//
+//        for (int i = 0; i < level - 1; i++) {
+//            int hitDie = Dice.rool(10);
+//            int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
+//            hp += levelAdvances > 1 ? levelAdvances : 1;
+//        }
+//
+//        setChanged();
+//        notifyObservers(HP_CHANGE);
+//    }
 
-        hp = Dice.rool(10);
+    private int totalHP;
+
+    public int getTotalHP() {
+        return totalHP;
+    }
+
+    public void setTotalHP(int totalHP) {
+        this.totalHP = totalHP;
+    }
+
+    public void generateTotalHP() {
+        totalHP = Dice.rool(10);
 
         for (int i = 0; i < level - 1; i++) {
             int hitDie = Dice.rool(10);
             int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
-            hp += levelAdvances > 1 ? levelAdvances : 1;
+            totalHP += levelAdvances > 1 ? levelAdvances : 1;
         }
 
-        setChanged();
-        notifyObservers(HP_CHANGE);
+        setHp(totalHP);
+
     }
 
     /**

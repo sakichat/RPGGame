@@ -32,10 +32,10 @@ public class PlayerCellView extends View implements Observer{
     @Override
     public void paint(Graphics g) {
         g.setColor(new Color(0xDB2C5A));
-        g.fillRect(0, 0, getPlayer().getHp(), 5);
+        g.fillRect(0, 0, getPlayer().getTotalHP(), 5);
 
         g.setColor(Color.LIGHT_GRAY);
-        g.fillRect(getPlayer().getHp(), 0, 40 - getPlayer().getHp(), 5);
+        g.fillRect(getPlayer().getTotalHP(), 0, 40 - getPlayer().getTotalHP(), 5);
 
         g.setColor(new Color(0xF4F4F4));
         g.drawRect(0, 0, 40, 5);
