@@ -726,9 +726,9 @@ public class Player extends Cell {
      */
     public int getTotalDamageBonus() {
         if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
-            return rollDamage() + getAbilityModifier(ABILITY_STR);
+            return getAbilityModifier(ABILITY_STR);
         }
-        return rollDamage();
+        return 0;
     }
 
 
