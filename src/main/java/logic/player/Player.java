@@ -683,30 +683,13 @@ public class Player extends Cell {
      */
 
     /**
-     * This method is used to calculate the armor class value based on the D20 rules.
-     * @return Integer
-     */
-    public int getArmorClass() {
-        int dexModifier = getAbilityModifier(ABILITY_DEX);
-        return 10 + dexModifier;
-    }
-
-    /**
      * This method is used to get the total armor class of object after enhanced by equipments.
      * @return Integer
      */
     public int getTotalArmorClass() {
-        return getArmorClass() + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
+        return 10 + getAbilityModifier(ABILITY_DEX) + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
     }
 
-
-    /**
-     * This method is used to calculate the attack bonus value based on the D20 rules.
-     * @return Integer
-     */
-    public int getAttackBonus() {
-        return level;
-    }
 
     /**
      * This method is used to calculate the total attack bonus value enhanced by equipments.
@@ -714,15 +697,7 @@ public class Player extends Cell {
      */
     public int getTotalAttackBonus() {
         // TODO: 10/04/2017
-        return getAttackBonus() + enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS);
-    }
-
-    /**
-     * This method is used to calculate the damage bonus value based on the D20 rules.
-     * @return Integer
-     */
-    public int getDamageBonus() {
-        return getAbilityModifier(ABILITY_STR);
+        return level + enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS);
     }
 
     /**
@@ -731,7 +706,7 @@ public class Player extends Cell {
      */
     public int getTotalDamageBonus() {
         // TODO: 10/04/2017
-        return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
+        return getAbilityModifier(ABILITY_STR) + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
     }
 
 
