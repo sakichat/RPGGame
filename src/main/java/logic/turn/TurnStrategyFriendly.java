@@ -1,9 +1,8 @@
 package logic.turn;
 
 import logic.Play;
-import logic.map.GameMap;
-import logic.map.GameMapGraph;
-import logic.map.Point;
+import logic.map.*;
+import logic.player.Player;
 
 import java.util.List;
 
@@ -14,13 +13,14 @@ public class TurnStrategyFriendly extends TurnStrategy {
 
     @Override
     protected Point preferredNextLocation() {
-        // TODO: 10/04/2017
+
         Play play = Play.getCurrentPlay();
         GameMap gameMap = play.getCurrentMap();
         GameMapGraph gameMapGraph = gameMap.getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(getPlayer().getLocation(), 3);
+        List<Point> points = gameMapGraph.pointsInRange(getPlayer().getLocation(), getPlayer().getRangeForMove());
 
-        return null;
+        Point result = points.get((int)(Math.random() * points.size()));
+        return result;
     }
 
     @Override
@@ -31,19 +31,36 @@ public class TurnStrategyFriendly extends TurnStrategy {
 
     @Override
     protected boolean couldInteract(Point target) {
-        // TODO: 10/04/2017
-        return false;
+
+        boolean result = false;
+        Play play = Play.getCurrentPlay();
+        GameMap gameMap = play.getCurrentMap();
+        Cell cell = gameMap.getCell(target);
+        if (cell instanceof Chest){
+            result = true;
+        }
+
+        return result;
     }
 
     @Override
     public Point preferredAttackingLocation() {
-        // TODO: 10/04/2017
-        return null;
+
+        Play play = Play.getCurrentPlay();
+        GameMap gameMap = play.getCurrentMap();
+        GameMapGraph gameMapGraph = gameMap.getGraph();
+        List<Point> points = gameMapGraph.pointsInRange(getPlayer().getLocation(), getPlayer().getRangeForAttack());
+        Point result = points.get((int)(Math.random() * points.size()));
+        return result;
     }
 
     @Override
     public Point preferredInteractionLocation() {
-        // TODO: 10/04/2017
-        return null;
+        Play play = Play.getCurrentPlay();
+        GameMap gameMap = play.getCurrentMap();
+        GameMapGraph gameMapGraph = gameMap.getGraph();
+        List<Point> points = gameMapGraph.pointsInRange(getPlayer().getLocation(), 1);
+        Point result = points.get((int)(Math.random() * points.size()));
+        return result;
     }
 }
