@@ -3,12 +3,11 @@ package logic.player;
 import com.google.gson.annotations.Expose;
 import logic.Play;
 import logic.effect.Effect;
-import logic.map.Cell;
-import logic.map.Chest;
+import logic.interation.InteractionMove;
+import logic.map.*;
 import logic.Dice;
 import logic.equipment.Weapon;
 import logic.equipment.Equipment;
-import logic.map.Point;
 import logic.turn.TurnStrategy;
 import logic.turn.TurnThread;
 
@@ -858,30 +857,69 @@ public class Player extends Cell {
     }
 
     public void turn(){
+
+        turnEffect();
+        if (hp == 0) {
+            return;
+        }
+
+        turnMove();
+//        turnAttack();
+//        turnInteract();
+    }
+
+    private void turnEffect() {
         //  effects
         for (Effect effect : effects) {
             effect.turn();
             TurnThread.pause(TurnThread.PAUSE_NORMAL);
         }
+    }
 
-        if (hp == 0) {
-            return;
-        }
-
+    private void turnMove() {
+        //  move
         //  show range;
         // TODO: 10/04/2017
 
-        Point location = strategy.preferredNextLocation();
-        if (location != null) {
+        Point target = strategy.preferredNextLocation();
+        if (target != null) {
             //  show target
             // TODO: 10/04/2017
 
             //  move animation
-            // TODO: 10/04/2017
+            GameMap currentMap = Play.getCurrentPlay().getCurrentMap();
+            Movement movement = currentMap.getGraph().shortestPath(location, target).getMovement(3);
+            InteractionMove interactionMove = new InteractionMove();
+            interactionMove.setMovement(movement);
+            interactionMove.execute();
+        }
+    }
+
+    private void turnAttack() {
+        //  attack
+        List<Point> points = strategy.attackTargetsInNear();
+        if (points.size() == 0) {
+            return;
         }
 
+        //  show range
+        // TODO: 11/04/2017
 
+        Point point = strategy.preferredAttackingLocation();
 
+        if (point == null){
+            return;
+        }
 
+        //  show target
+        // TODO: 11/04/2017
+
+        GameMap currentMap = Play.getCurrentPlay().getCurrentMap();
+        Player player = (Player) currentMap.getCell(point);
+        attack(player);
+    }
+
+    private void turnInteract() {
+        //  interact
     }
 }
