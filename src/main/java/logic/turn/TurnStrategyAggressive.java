@@ -35,7 +35,7 @@ public class TurnStrategyAggressive extends TurnStrategy {
         }else {
             if (cell.getCellType().equals(Cell.Type.PLAYER)){
                 Player targetPlayer = (Player)cell;
-                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)){
+                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))){
                     if (targetPlayer.isAlive()){
                         result = true;
                     }
@@ -62,7 +62,7 @@ public class TurnStrategyAggressive extends TurnStrategy {
         }else {
             if (cell.getCellType().equals(Cell.Type.PLAYER)){
                 Player targetPlayer = (Player)cell;
-                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)){
+                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))){
                     if (targetPlayer.isAlive()){
                         result = true;
                     }
