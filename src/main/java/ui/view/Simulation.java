@@ -17,8 +17,10 @@ public class Simulation {
         player.setPlayerParty(Player.PLAYER_PARTY_PLAYER);
         player.setPlayerType(Player.PLAYER_TYPE_BULLY);
         player.setName("Test");
-        player.setTotalHp(30);
-        player.setLevel(3);
+        player.setLevel(10);
+        player.setHp(10);
+        player.addEffect(new EffectFreezing());
+        player.addEffect(new EffectBurning());
         player.setLocation(new Point(1, 1));
 
         return player;

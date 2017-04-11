@@ -7,6 +7,11 @@ import logic.turn.TurnStrategyFrozen;
 public class EffectFreezing extends Effect {
     private TurnStrategy turnStrategy;
 
+    @Override
+    public String getImageName() {
+        String imageName = "freezing.png";
+        return imageName;
+    }
 
     @Override
     protected void didAttach() {

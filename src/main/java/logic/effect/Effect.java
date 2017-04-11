@@ -4,6 +4,16 @@ import logic.player.Player;
 
 public class Effect {
     protected Player onPlayer;
+    private int turns;
+    private String imageName;
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
 
     public Player getOnPlayer() {
         return onPlayer;
@@ -14,8 +24,6 @@ public class Effect {
         attaching();
     }
 
-    private int turns;
-
     public int getTurns() {
         return turns;
     }
@@ -23,7 +31,6 @@ public class Effect {
     public void setTurns(int turns) {
         this.turns = turns;
     }
-
 
     public final void turn(){
         affect();

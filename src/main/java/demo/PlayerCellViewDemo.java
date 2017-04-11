@@ -8,7 +8,7 @@ import javax.swing.*;
 /**
  * Created by Penelope on 2017-04-09.
  */
-public class PlayerCellViewDemo extends JFrame {
+public class PlayerCellViewDemo {
     public static void main(String[] args) {
         new PlayerCellViewDemo().run();
     }
@@ -27,10 +27,11 @@ public class PlayerCellViewDemo extends JFrame {
 
         PlayerCellView playerCellView = new PlayerCellView();
         playerCellView.setPlayer(Simulation.player());
+        playerCellView.setLayout(null);
         playerCellView.setSize(40, 40);
         playerCellView.setLocation(100, 100);
-        this.add(playerCellView);
+        frame.add(playerCellView);
 
-        repaint();
+        frame.repaint();
     }
 }
