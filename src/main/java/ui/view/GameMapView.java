@@ -273,15 +273,11 @@ public class GameMapView extends View {
         for (int y = 0; y < gridHeight; y++) {
             for (int x = 0; x < gridWidth; x++) {
                 Point location = new Point(x, y);
-                try {
-                    Cell cell = gameMap.getCell(location);
-                    if (cell != null) {
-                        ImageView imageView = new ImageView();
-                        imageView.setName(cell.getImageName());
-                        layerView.addCell(imageView, location);
-                    }
-                }catch (Exception e) {
-                    System.out.println();
+                Cell cell = gameMap.getCell(location);
+                if (cell != null) {
+                    ImageView imageView = new ImageView();
+                    imageView.setName(cell.getImageName());
+                    layerView.addCell(imageView, location);
                 }
             }
         }

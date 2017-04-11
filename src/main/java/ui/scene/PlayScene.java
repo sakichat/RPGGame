@@ -53,11 +53,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * These parameters are specific for view or buttons.
      */
     private View controlViewContainerView;
-    private JButton upDirectionButton;
-    private JButton downDirectionButton;
-    private JButton leftDirectionButton;
-    private JButton rightDirectionButton;
-    private JButton interactButton;
 
     /**
      * This method creates components on this scene
@@ -76,41 +71,53 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
         JButton button;
 
-        button = new JButton(new ImageIcon("data/images/up_button.png"));
-        button.setLocation(700, 30);
-        button.setSize(40, 40);
-        upDirectionButton = button;
+        button = new JButton("Skip");
+        button.setLocation(600, 40);
+        button.setSize(160, 40);
         contentView.add(button);
+        JButton skipButton = button;
 
-        button = new JButton(new ImageIcon("data/images/left_button.png"));
-        button.setLocation(650, 80);
-        button.setSize(40, 40);
-        leftDirectionButton = button;
+        button = new JButton("Select");
+        button.setLocation(600, 100);
+        button.setSize(160, 40);
         contentView.add(button);
+        JButton selectButton = button;
 
-        button = new JButton(new ImageIcon("data/images/center_button.png"));
-        button.setLocation(700, 80);
-        button.setSize(40, 40);
-        interactButton = button;
-        contentView.add(button);
-
-        button = new JButton(new ImageIcon("data/images/right_button.png"));
-        button.setLocation(750, 80);
-        button.setSize(40, 40);
-        rightDirectionButton = button;
-        contentView.add(button);
-
-        button = new JButton(new ImageIcon("data/images/down_button.png"));
-        button.setLocation(700, 130);
-        button.setSize(40, 40);
-        downDirectionButton = button;
-        contentView.add(button);
-
-        button = new JButton("Finish");
-        button.setSize(140, 40);
-        button.setLocation(650, 210);
-        contentView.add(button);
-        JButton finishButton = button;
+//        button = new JButton(new ImageIcon("data/images/up_button.png"));
+//        button.setLocation(700, 30);
+//        button.setSize(40, 40);
+//        upDirectionButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton(new ImageIcon("data/images/left_button.png"));
+//        button.setLocation(650, 80);
+//        button.setSize(40, 40);
+//        leftDirectionButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton(new ImageIcon("data/images/center_button.png"));
+//        button.setLocation(700, 80);
+//        button.setSize(40, 40);
+//        interactButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton(new ImageIcon("data/images/right_button.png"));
+//        button.setLocation(750, 80);
+//        button.setSize(40, 40);
+//        rightDirectionButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton(new ImageIcon("data/images/down_button.png"));
+//        button.setLocation(700, 130);
+//        button.setSize(40, 40);
+//        downDirectionButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton("Finish");
+//        button.setSize(140, 40);
+//        button.setLocation(650, 210);
+//        contentView.add(button);
+//        JButton finishButton = button;
 
         repaint();
 
@@ -121,18 +128,14 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
             PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
-        upDirectionButton.addActionListener(e -> move(Point.Direction.UP));
+        skipButton.addActionListener(e -> move(Point.Direction.UP));
 
-        downDirectionButton.addActionListener(e -> move(Point.Direction.DOWN));
+        selectButton.addActionListener(e -> move(Point.Direction.DOWN));
 
-        leftDirectionButton.addActionListener(e -> move(Point.Direction.LEFT));
-
-        rightDirectionButton.addActionListener(e -> move(Point.Direction.RIGHT));
-
-        interactButton.addActionListener(e -> {
-            Cell targetCell = play.getTarget();
-            interactWith(targetCell);
-        });
+//        interactButton.addActionListener(e -> {
+//            Cell targetCell = play.getTarget();
+//            interactWith(targetCell);
+//        });
 
     }
 
