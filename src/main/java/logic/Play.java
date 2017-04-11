@@ -18,7 +18,7 @@ import java.util.*;
 public class Play {
 
     public static class CurrentPlay{
-        private static Play currentPlay;
+        private  Play currentPlay;
 
         public  Play getCurrentPlay() {
             return currentPlay;
