@@ -784,22 +784,18 @@ public class Player extends Cell {
         return effects;
     }
 
-
-
+    /**
+     * This method if used for attack
+     * @param player
+     */
     public void attack(Player player) {
-        int damage;
         if (shouldDealDamage(player)) {
             if (Dice.rool(20) != 1) {
-                damage = Dice.rool(8) + getAbilityModifier(ABILITY_STR);
+                int damage = rollDamage() + getTotalDamageBonus();
                 player.damage(damage);
-                this.getWeapon()
+                this.getWeapon().attach(player);
             }
         }
-        // shoulddealdamage
-        // attack roll > 1 true
-        //      damage roll
-        //           damage roll
-        //  weapon generate effect if not null weapon.attach(attch)
     }
 
     /**
