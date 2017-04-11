@@ -1,10 +1,11 @@
 package logic.turn;
 
 import logic.Play;
+import logic.effect.EffectFrightening;
 import logic.map.GameMapGraph;
 import logic.map.Point;
 
-import java.util.List;
+import java.util.*;
 
 public class TurnStrategyFrightened extends TurnStrategy {
 
@@ -13,12 +14,20 @@ public class TurnStrategyFrightened extends TurnStrategy {
         GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
 
-        if (points.size() != 0) {
-            Point result = points.get((int) (Math.random() * points.size()));
-            return result;
+        EffectFrightening effectFrightening = new EffectFrightening();
+        Point combatantLocation = effectFrightening.getCombatant().getLocation();
+
+        int checkDistance = 0;
+        Point farestPoint = null;
+        for (Point point : points) {
+            int distance = gameMapGraph.distanceBetween(combatantLocation, point);
+            if (distance > checkDistance) {
+                checkDistance = distance;
+                farestPoint = point;
+            }
         }
 
-        return null;
+        return farestPoint;
     }
 
     @Override

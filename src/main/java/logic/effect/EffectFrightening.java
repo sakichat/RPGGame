@@ -20,4 +20,8 @@ public class EffectFrightening extends Effect {
     protected void willDetach() {
         onPlayer.setStrategy(turnStrategy);
     }
+
+    public Player getCombatant() {
+        return combatant;
+    }
 }
