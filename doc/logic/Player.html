@@ -101,10 +101,10 @@ var activeTableTab = "activeTableTab";
 <li>java.util.Observable</li>
 <li>
 <ul class="inheritance">
-<li><a href="../logic/Cell.html" title="class in logic">logic.Cell</a></li>
+<li><a href="../logic/Cell.html" title="class in logic">logic.map.Cell</a></li>
 <li>
 <ul class="inheritance">
-<li>logic.Player</li>
+<li>logic.onPlayer.Player</li>
 </ul>
 </li>
 </ul>
@@ -119,7 +119,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">Player</span>
 extends <a href="../logic/Cell.html" title="class in logic">Cell</a></pre>
-<div class="block">This Class is player, which includes users and NPCs.</div>
+<div class="block">This Class is onPlayer, which includes users and NPCs.</div>
 <dl>
 <dt><span class="simpleTagLabel">Version:</span></dt>
 <dd>0.2</dd>
@@ -391,7 +391,7 @@ extends <a href="../logic/Cell.html" title="class in logic">Cell</a></pre>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../logic/Equipment.html" title="class in logic">Equipment</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../logic/Player.html#getInventories--">getInventories</a></span>()</code>
-<div class="block">The method is used to get all inventories the player owned.</div>
+<div class="block">The method is used to get all inventories the onPlayer owned.</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
@@ -469,13 +469,13 @@ extends <a href="../logic/Cell.html" title="class in logic">Cell</a></pre>
 <tr id="i30" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../logic/Player.html#lootChest-logic.Chest-">lootChest</a></span>(<a href="../logic/Chest.html" title="class in logic">Chest</a>&nbsp;chest)</code>
-<div class="block">The method is used by a player to loot a chest.</div>
+<div class="block">The method is used by a onPlayer to loot a chest.</div>
 </td>
 </tr>
 <tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../logic/Player.html#lootDeadNPC-logic.Player-">lootDeadNPC</a></span>(<a href="../logic/Player.html" title="class in logic">Player</a>&nbsp;deadNPC)</code>
-<div class="block">The method is used by a player to loot a deadNPC.</div>
+<div class="block">The method is used by a onPlayer to loot a deadNPC.</div>
 </td>
 </tr>
 <tr id="i32" class="altColor">
@@ -1121,7 +1121,7 @@ extends <a href="../logic/Cell.html" title="class in logic">Cell</a></pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>type</code> - also the equipment slot</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>logic.Equipment</dd>
+<dd>logic.equipments.Equipment</dd>
 </dl>
 </li>
 </ul>
@@ -1161,7 +1161,7 @@ extends <a href="../logic/Cell.html" title="class in logic">Cell</a></pre>
 <li class="blockList">
 <h4>getInventories</h4>
 <pre>public&nbsp;java.util.List&lt;<a href="../logic/Equipment.html" title="class in logic">Equipment</a>&gt;&nbsp;getInventories()</pre>
-<div class="block">The method is used to get all inventories the player owned.</div>
+<div class="block">The method is used to get all inventories the onPlayer owned.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>
@@ -1303,7 +1303,7 @@ extends <a href="../logic/Cell.html" title="class in logic">Cell</a></pre>
 <h4>inventoryLevelRefresh</h4>
 <pre>public&nbsp;void&nbsp;inventoryLevelRefresh()</pre>
 <div class="block">This method is used by NPCs to refresh the value of inventories.
- according to the level of player.</div>
+ according to the level of onPlayer.</div>
 </li>
 </ul>
 <a name="isBackpackFull--">
@@ -1337,7 +1337,7 @@ extends <a href="../logic/Cell.html" title="class in logic">Cell</a></pre>
 <li class="blockList">
 <h4>lootChest</h4>
 <pre>public&nbsp;void&nbsp;lootChest(<a href="../logic/Chest.html" title="class in logic">Chest</a>&nbsp;chest)</pre>
-<div class="block">The method is used by a player to loot a chest.</div>
+<div class="block">The method is used by a onPlayer to loot a chest.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>chest</code> - </dd>
@@ -1351,7 +1351,7 @@ extends <a href="../logic/Cell.html" title="class in logic">Cell</a></pre>
 <li class="blockList">
 <h4>lootDeadNPC</h4>
 <pre>public&nbsp;void&nbsp;lootDeadNPC(<a href="../logic/Player.html" title="class in logic">Player</a>&nbsp;deadNPC)</pre>
-<div class="block">The method is used by a player to loot a deadNPC.</div>
+<div class="block">The method is used by a onPlayer to loot a deadNPC.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>deadNPC</code> - </dd>

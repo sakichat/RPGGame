@@ -1,10 +1,8 @@
 package ui.scene;
 
-import logic.GameMap;
+import logic.map.GameMap;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is a MapCreationScene to show the scene for creating map name which extends Scene class
@@ -89,44 +87,35 @@ public class MapCreationScene extends Scene {
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MapCreationScene.this.navigationView.pop();
+        backButton.addActionListener(e -> MapCreationScene.this.navigationView.pop());
+
+        createButton.addActionListener(e -> {
+            gridWidth = Integer.parseInt(gridWidthField.getText());
+            gridHeight = Integer.parseInt(gridHeightField.getText());
+
+            if (gridWidth > 12) {
+                widthCheckLabel.setText("Maximum size is 12.");
+            } else {
+                widthCheckLabel.setText("");
             }
-        });
 
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            if (gridHeight > 12) {
+                heightCheckLabel.setText("Maximum size is 12.");
+            } else {
+                heightCheckLabel.setText("");
+            }
 
-                gridWidth = Integer.parseInt(gridWidthField.getText());
-                gridHeight = Integer.parseInt(gridHeightField.getText());
+            if (gridWidth <= 12 && gridHeight <= 12) {
 
-                if (gridWidth > 12) {
-                    widthCheckLabel.setText("Maximum size is 12.");
-                } else {
-                    widthCheckLabel.setText("");
-                }
+                GameMap gameMap = new GameMap();
 
-                if (gridHeight > 12) {
-                    heightCheckLabel.setText("Maximum size is 12.");
-                } else {
-                    heightCheckLabel.setText("");
-                }
+                gameMap.setName(nameField.getText());
+                gameMap.setWidth(gridWidth);
+                gameMap.setHeight(gridHeight);
 
-                if (gridWidth <= 12 && gridHeight <= 12) {
-
-                    GameMap gameMap = new GameMap();
-
-                    gameMap.setName(nameField.getText());
-                    gameMap.setWidth(gridWidth);
-                    gameMap.setHeight(gridHeight);
-
-                    MapEditingScene mapEditingScene = new MapEditingScene();
-                    mapEditingScene.setGameMap(gameMap);
-                    MapCreationScene.this.navigationView.push(mapEditingScene);
-                }
+                MapEditingScene mapEditingScene = new MapEditingScene();
+                mapEditingScene.setGameMap(gameMap);
+                MapCreationScene.this.navigationView.push(mapEditingScene);
             }
         });
     }

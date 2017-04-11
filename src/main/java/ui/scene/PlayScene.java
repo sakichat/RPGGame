@@ -1,14 +1,16 @@
 package ui.scene;
 
 import logic.*;
+import logic.equipment.Equipment;
+import logic.map.*;
+import logic.player.Player;
+import persistence.PlayFileManager;
 import ui.controlView.*;
 import ui.panel.*;
 import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is a PlayScene for player to play on created maps.
@@ -44,18 +46,13 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         super.init();
 
         backButtonEnabled = true;
-        saveButtonEnabled = false;
+        saveButtonEnabled = true;
     }
 
     /**
      * These parameters are specific for view or buttons.
      */
     private View controlViewContainerView;
-    private JButton upDirectionButton;
-    private JButton downDirectionButton;
-    private JButton leftDirectionButton;
-    private JButton rightDirectionButton;
-    private JButton interactButton;
 
     /**
      * This method creates components on this scene
@@ -74,88 +71,86 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
         JButton button;
 
-        button = new JButton(new ImageIcon("data/images/up_button.png"));
-        button.setLocation(700, 30);
-        button.setSize(40, 40);
-        upDirectionButton = button;
+        button = new JButton("Skip");
+        button.setLocation(600, 40);
+        button.setSize(160, 40);
         contentView.add(button);
+        JButton skipButton = button;
 
-        button = new JButton(new ImageIcon("data/images/left_button.png"));
-        button.setLocation(650, 80);
-        button.setSize(40, 40);
-        leftDirectionButton = button;
+        button = new JButton("Select");
+        button.setLocation(600, 100);
+        button.setSize(160, 40);
         contentView.add(button);
+        JButton selectButton = button;
 
-        button = new JButton(new ImageIcon("data/images/center_button.png"));
-        button.setLocation(700, 80);
-        button.setSize(40, 40);
-        interactButton = button;
-        contentView.add(button);
-
-        button = new JButton(new ImageIcon("data/images/right_button.png"));
-        button.setLocation(750, 80);
-        button.setSize(40, 40);
-        rightDirectionButton = button;
-        contentView.add(button);
-
-        button = new JButton(new ImageIcon("data/images/down_button.png"));
-        button.setLocation(700, 130);
-        button.setSize(40, 40);
-        downDirectionButton = button;
-        contentView.add(button);
+//        button = new JButton(new ImageIcon("data/images/up_button.png"));
+//        button.setLocation(700, 30);
+//        button.setSize(40, 40);
+//        upDirectionButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton(new ImageIcon("data/images/left_button.png"));
+//        button.setLocation(650, 80);
+//        button.setSize(40, 40);
+//        leftDirectionButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton(new ImageIcon("data/images/center_button.png"));
+//        button.setLocation(700, 80);
+//        button.setSize(40, 40);
+//        interactButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton(new ImageIcon("data/images/right_button.png"));
+//        button.setLocation(750, 80);
+//        button.setSize(40, 40);
+//        rightDirectionButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton(new ImageIcon("data/images/down_button.png"));
+//        button.setLocation(700, 130);
+//        button.setSize(40, 40);
+//        downDirectionButton = button;
+//        contentView.add(button);
+//
+//        button = new JButton("Finish");
+//        button.setSize(140, 40);
+//        button.setLocation(650, 210);
+//        contentView.add(button);
+//        JButton finishButton = button;
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayScene.this.navigationView.popTo(MainScene.class);
-            }
+        backButton.addActionListener(e -> PlayScene.this.navigationView.popTo(MainScene.class));
+
+        saveButton.addActionListener(e -> {
+            save();
+            PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
-        upDirectionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                move(Point.DIRECTION_UP);
-            }
-        });
+        skipButton.addActionListener(e -> move(Point.Direction.UP));
 
-        downDirectionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                move(Point.DIRECTION_DOWN);
-            }
-        });
+        selectButton.addActionListener(e -> move(Point.Direction.DOWN));
 
-        leftDirectionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                move(Point.DIRECTION_LEFT);
-            }
-        });
+//        interactButton.addActionListener(e -> {
+//            Cell targetCell = play.getTarget();
+//            interactWith(targetCell);
+//        });
 
-        rightDirectionButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                move(Point.DIRECTION_RIGHT);
-            }
-        });
+    }
 
-        interactButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Cell targetCell = play.getTartget();
-                interactWith(targetCell);
-            }
-        });
-
+    /**
+     * This method can save a play to a file.
+     */
+    public void save() {
+        PlayFileManager.save(play);
     }
 
     /**
      * This method sets move actions for buttons.
      * @param direction
      */
-    public void move(Point direction) {
+    public void move(Point.Direction direction) {
         play.setDirection(direction);
         play.move();
 
@@ -168,7 +163,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * @param location
      */
     @Override
-    public void gameMapViewSelect(GameMapView gameMapView, Point location) {
+    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
         refreshControlView();
     }
 
@@ -245,7 +240,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     public void viewInventory(Player player) {
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setPlayer(player);
-        if (player.getPlayerParty() == Player.PLAYER_PARTY_PLAYER) {
+        if (player.getPlayerParty().equals(Player.PLAYER_PARTY_PLAYER)) {
             inventoryPanel.setButtonEnabled(true);
             inventoryPanel.setButtonText("Drop");
             inventoryPanel.dataToView();
@@ -363,7 +358,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
 
         play.getPlayer().dropInventories(equipment);
-        Player targetPlayer = (Player) play.getTartget();
+        Player targetPlayer = (Player) play.getTarget();
         Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
         play.getPlayer().pickUpEquipment(exchangeEquipmentRandom);
 

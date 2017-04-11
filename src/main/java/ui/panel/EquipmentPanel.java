@@ -1,12 +1,10 @@
 package ui.panel;
 
-import logic.Chest;
-import logic.Equipment;
+import logic.map.Chest;
+import logic.equipment.Equipment;
 import ui.view.EquipmentView;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -87,7 +85,7 @@ public class EquipmentPanel extends Panel implements Observer{
     public void update(Observable observer, Object x) {
 
         boolean change = false;
-        change = change || (x == Chest.CHEST_CHANGE);
+        change = change || (x.equals(Chest.CHEST_CHANGE));
 
         if (change) {
             dataToView();
@@ -99,7 +97,6 @@ public class EquipmentPanel extends Panel implements Observer{
      */
     public void dataToView(){
         equipmentsPanel.removeAll();
-
 
         int x = 10;
         int y = 10;
@@ -122,13 +119,7 @@ public class EquipmentPanel extends Panel implements Observer{
                 equipmentsPanel.add(dropButton);
             }
 
-            dropButton.addActionListener(new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    chest.dropEquipment(equipment);
-                }
-            });
+            dropButton.addActionListener(e -> chest.dropEquipment(equipment));
 
             y += 30;
         }

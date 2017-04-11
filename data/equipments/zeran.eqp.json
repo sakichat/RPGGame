@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipment.EquipmentSolid",
+    "_object": {
+      "name": "Zeran",
+      "type": "Helmet",
+      "enhancedAttribute": "INT",
+      "enhancedValue": 3
+    }
+  }
+}

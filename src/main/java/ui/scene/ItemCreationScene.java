@@ -1,10 +1,9 @@
 package ui.scene;
 
-import logic.Equipment;
+import logic.equipment.Equipment;
+import logic.equipment.EquipmentFactory;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is a ItemCreationScene to show the scene for creating item name which extends Scene class
@@ -47,21 +46,13 @@ public class ItemCreationScene extends Scene {
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ItemCreationScene.this.navigationView.pop();
-            }
-        });
+        backButton.addActionListener(e -> ItemCreationScene.this.navigationView.pop());
 
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Equipment equipment = new Equipment(nameField.getText());
-                ItemEditingScene itemEditingScene = new ItemEditingScene();
-                itemEditingScene.setEquipment(equipment);
-                ItemCreationScene.this.navigationView.push(itemEditingScene);
-            }
+        createButton.addActionListener(e -> {
+            Equipment equipment = new EquipmentFactory().newEquipment(nameField.getText());
+            ItemEditingScene itemEditingScene = new ItemEditingScene();
+            itemEditingScene.setEquipment(equipment);
+            ItemCreationScene.this.navigationView.push(itemEditingScene);
         });
     }
 }

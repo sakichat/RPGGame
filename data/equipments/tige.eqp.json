@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipment.EquipmentSolid",
+    "_object": {
+      "name": "Tige",
+      "type": "Ring",
+      "enhancedAttribute": "CON",
+      "enhancedValue": 2
+    }
+  }
+}

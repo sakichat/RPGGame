@@ -94,5 +94,227 @@ Item creation/editing
 
 
 
+Move 3 squares
+
+Turn
++   move
++   attack once
++   interact with adjacent elements
+
+Attack
++   range
+    1 melee, n range
+    [n length, go through anything]
+
+Strategy
++   Computer
+    +   move
+        to hostile
+        shortest path,
+        to exit
+        though onPlayer, chest
+    +   attack *
+        onPlayer if on the way && hostile
+    +   interact *
+        chest if on the way
+
++   Aggressive
+    +   move
+        to human onPlayer
+    +   attack
+        main onPlayer
+        on the way if in range && NPC
+    +   interact
+        chest if near
+
++   Friendly
+    +   move
+        Randomly
+
+    +   attack
+        no
+
+    +   interact
+        chest if near
+
+    +   attacked
+        turn to Aggressive
+
+
+Effect
++   Freezing*
+    +   move
+    cannot move in EB turns
+
++   Burning
+    +   hp
+        - 3 x EB hp in 3 turns
+
++   Slaying
+    +   hp
+        die now
+
++   Frightening*
+    +   move
+        run away from character in EB turns
+
++   Pacifying
+    +   strategy
+    turn to Friendly
+
+
+
+
+
+
++   Computer
+    +   move
+        shortest path to exit
+        though onPlayer, chest
+    +   code
+        shortestPath()
+
++   Aggressive
+    +   move
+        shortest path to human onPlayer
+        though onPlayer, chest
+    +   code
+        shortestPath()
+
++   Friendly
+    +   move
+        Randomly
+    +   code
+        pointsInRangeFromLocation()
+        random
+        shortestPath()
+
++   Freezing
+    +   move
+        cannot move in EB turns
+
+
++   Frightening
+    +   move
+        run away from character in EB turns
+    +   code
+        pointsInRangeFromLocation ()
+        for all {
+            distanceBetween()
+        }
+        shortestPath()
+
+
+
+
+turn
++   effects
++   move
+    +   computer
+        +   select
+        +   move by timer
+    +   human
+        +   show range
+        +   select
+        +   move by timer
++   attack
+    +   computer
+        if (has target){
+            +   select
+            +   attack
+        }
+    +   human
+        if (has target){
+            +   show range
+            +   select
+            +   attack
+        }
++   interact
+    +   computer
+        if (has target){
+            +   select
+            +   interact
+        }
+    +   human
+        if (has target){
+            +   show range
+            +   select
+            +   interact
+        }
+
+template
++   effects.turn()
+    for each, pause
++   showRange
+    pause
++
+
+
+
+
+Layers
++   glass celling
+    *   glass
+
++   highlight
+    +   current
+        current focus point
+    +   selection
+        selection focus point
+
++   objects
+    *   player cells
+        +   hp bar
+        +   effects
+        +   player
+    *   non-player cells
+
++   range
+    *   effective cell
+
++   background
+    *   background cell
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .

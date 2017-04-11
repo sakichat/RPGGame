@@ -4,7 +4,7 @@ package logic;
  *
  * @author Kai QI
  * @version 0.2
- * This class is the dice result calculator.
+ * This class is the dice result generator.
  */
 public class Dice {
 
@@ -35,6 +35,10 @@ public class Dice {
      * @return int, the final result.
      */
     public static int rool(int times, int face, int modifier) {
-        return times * rool(face) + modifier;
+        int value = 0;
+        for (int i = 0; i < times; i++) {
+            value += rool(face);
+        }
+        return value + modifier;
     }
 }

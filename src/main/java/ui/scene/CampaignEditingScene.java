@@ -1,13 +1,10 @@
 package ui.scene;
 
 import logic.Campaign;
-import logic.GameMap;
+import logic.map.GameMap;
 import persistence.CampaignFileManager;
 import ui.panel.MapConnectionPanel;
 import ui.panel.MapSelectorPanel;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class is a subclass of Scene and implements the interface MapDelegate.
@@ -62,28 +59,20 @@ public class CampaignEditingScene extends Scene implements MapSelectorPanel.Dele
         mapSelectorPanel.setLocation(20,20);
         mapSelectorPanel.setButtonText("Add");
         contentView.add(mapSelectorPanel);
+        mapSelectorPanel.setDelegate(this);
 
         mapConnectionPanel = new MapConnectionPanel();
         mapConnectionPanel.setLocation(330, 20);
         contentView.add(mapConnectionPanel);
 
-        mapSelectorPanel.setDelegate(this);
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                CampaignEditingScene.this.navigationView.popTo(EditorScene.class);
-            }
-        });
+        backButton.addActionListener(e ->
+            CampaignEditingScene.this.navigationView.popTo(EditorScene.class)
+        );
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                save();
-            }
-        });
+        saveButton.addActionListener(e -> save());
 
     }
 

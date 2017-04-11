@@ -1,6 +1,8 @@
 package ui.scene;
 
-import logic.*;
+import logic.equipment.Equipment;
+import logic.map.*;
+import logic.player.Player;
 import persistence.MapFileManager;
 import ui.controlView.*;
 import ui.panel.*;
@@ -8,8 +10,6 @@ import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This MapEditingScene class is for editing game map view which extends Scene class
@@ -17,7 +17,9 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class MapEditingScene extends Scene implements GameMapView.Delegate, PlayerSelectorPanel.Delegate, EquipmentSelectorPanel.Delegate {
+public class MapEditingScene extends Scene implements   GameMapView.Delegate,
+                                                        PlayerSelectorPanel.Delegate,
+                                                        EquipmentSelectorPanel.Delegate {
 
     private GameMap gameMap;
     private GameMapView gameMapView;
@@ -87,28 +89,18 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                MapEditingScene.this.navigationView.popTo(EditorScene.class);
-            }
-        });
+        backButton.addActionListener(e ->
+            MapEditingScene.this.navigationView.popTo(EditorScene.class)
+        );
 
         saveButton.setEnabled(false);
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                save();
-                MapEditingScene.this.navigationView.popTo(EditorScene.class);
-            }
+
+        saveButton.addActionListener(e -> {
+            save();
+            MapEditingScene.this.navigationView.popTo(EditorScene.class);
         });
 
-        validateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                validateMap();
-            }
-        });
+        validateButton.addActionListener(e -> validateMap());
     }
 
     /**
@@ -116,7 +108,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      */
     private void validateMap(){
         String result = gameMap.validate();
-        boolean success = result == GameMap.VALIDATION_SUCCESS;
+        boolean success = result.equals(GameMap.VALIDATION_SUCCESS);
         saveButton.setEnabled(success);
 
         validationMessageLabel.setText(result);
@@ -136,7 +128,7 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
      * @param location
      */
     @Override
-    public void gameMapViewSelect(GameMapView gameMapView, Point location) {
+    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
         refreshControlView();
     }
 
@@ -181,7 +173,6 @@ public class MapEditingScene extends Scene implements GameMapView.Delegate, Play
             Chest chest = (Chest) cell;
             ChestControlView chestControlView = new ChestControlView();
             chestControlView.setChest(chest);
-//            chestControlView.setRemoveButtonEnabled(true);
             controlView = chestControlView;
         }
 

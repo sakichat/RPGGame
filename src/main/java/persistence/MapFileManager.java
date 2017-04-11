@@ -1,9 +1,6 @@
 package persistence;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import logic.Cell;
-import logic.GameMap;
+import logic.map.GameMap;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -12,7 +9,7 @@ import java.util.List;
 
 /**
  * @author Li Zhen
- * @version 0.1
+ * @version 0.2
  *
  * this class is to manage the files of map
  */
@@ -49,10 +46,7 @@ public class MapFileManager {
     public static GameMap read(String name){
         File file = MapFileManager.path(name);
         String content = FileManager.fileToString(file);
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Cell.class, new CellSerialization())
-                .create();
-        GameMap gameMap = gson.fromJson(content,GameMap.class);
+        GameMap gameMap = FileManager.defaultGson().fromJson(content,GameMap.class);
         return gameMap;
 
     }

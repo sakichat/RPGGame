@@ -1,6 +1,9 @@
 package logic;
 
+import logic.map.Point;
+import logic.player.Player;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import persistence.CampaignFileManager;
 import persistence.PlayerFileManager;
@@ -9,78 +12,89 @@ import persistence.PlayerFileManager;
  * Created by GU_HAN on 2017-03-20.
  * @author GU_HAN
  * @version 0.2
+ *
+ * This class tests character movement on the map.
  */
 public class PlayTest {
     /**
-     * This method tests if the player as an arttribute can be changed after moving.
+     * These two parameters is for pre-defined attributes to be used.
+     */
+    private Play play;
+    private Campaign campaign;
+    private Player player;
+
+    /**
+     * This method is for initializing.
+     * @throws Exception
+     */
+    @Before
+    public void setUp() throws Exception {
+        play = new Play();
+        campaign = CampaignFileManager.read("testcampaign");
+        player = PlayerFileManager.read("testplayer");
+
+        play.setCampaign(campaign);
+        play.setPlayer(player);
+        play.resolveMap();
+    }
+
+    /**
+     * This case tests if the player as an arttribute can be changed after moving.
      * @throws Exception
      */
     @Test
     public void moveToNextCell() throws Exception {
-    Campaign campaign = CampaignFileManager.read("testcampaign");
-    Player player = PlayerFileManager.read("asheley");
-    Play play = new Play();
-    play.setCampaign(campaign);
-    play.setPlayer(player);
-    play.resolveMap();
+        play.setDirection(Point.Direction.DOWN);
+        Point previousLocation = play.getPlayer().getLocation();
 
-    System.out.println(play.getPlayer().getLocation());
+        play.move();
+        play.move();
 
-    play.move();
-    play.move();
+        Point nowLocation = play.getPlayer().getLocation();
+        boolean notChangeLocation = previousLocation == nowLocation;
 
-    System.out.println(play.getPlayer().getLocation());
-
-    Assert.assertEquals(new Point(0, 3), play.getPlayer().getLocation());
+        Assert.assertEquals(false, notChangeLocation);
 }
     /**
-     * This method is to test if the player will move out of border.
+     * This case tests if the player will move out of border.
      * @throws Exception
      */
     @Test
     public void moveBorderTest() throws Exception {
-        Campaign campaign = CampaignFileManager.read("testcampaign");
-        Player player = PlayerFileManager.read("asheley");
-        Play play = new Play();
-        play.setCampaign(campaign);
-        play.setPlayer(player);
-        play.resolveMap();
-        play.setDirection(Point.DIRECTION_LEFT);
-        System.out.println(play.getPlayer().getLocation());
+        play.setDirection(Point.Direction.LEFT);
+        Point previousLocation = play.getPlayer().getLocation();
 
         play.move();
 
+        Point nowLocation = play.getPlayer().getLocation();
 
-        System.out.println(play.getPlayer().getLocation());
+        boolean notChangeLocation = previousLocation == nowLocation;
 
-        Assert.assertEquals(new Point(0, 1), play.getPlayer().getLocation());
+        Assert.assertEquals(true, notChangeLocation);
     }
 
     /**
-     * This method tests if the player will move into the obstacle.
+     * This case tests if the player will move into the obstacle.
      * @throws Exception
      */
     @Test
     public void cannotMoveTest() throws Exception {
-        Campaign campaign = CampaignFileManager.read("testcampaign");
-        Player player = PlayerFileManager.read("asheley");
-        Play play = new Play();
-        play.setCampaign(campaign);
-        play.setPlayer(player);
-        play.resolveMap();
-        play.setDirection(Point.DIRECTION_RIGHT);
+        play.setDirection(Point.Direction.RIGHT);
         System.out.println(play.getPlayer().getLocation());
 
         play.move();
         play.move();
         play.move();
-        play.setDirection(Point.DIRECTION_DOWN);
+        play.setDirection(Point.Direction.DOWN);
+
+        Point previousLocation = play.getPlayer().getLocation();
+
         play.move();
 
-        System.out.println(play.getPlayer().getLocation());
+        Point nowLocation = play.getPlayer().getLocation();
 
-        Assert.assertEquals(new Point(3, 1), play.getPlayer().getLocation());
+        boolean notChangeLocation = previousLocation == nowLocation;
+
+        Assert.assertEquals(true, notChangeLocation);
     }
-
-
 }

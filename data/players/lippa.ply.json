@@ -1,38 +1,55 @@
 {
   "abilityScores": {
-    "STR": 4,
-    "WIS": 12,
-    "CON": 12,
-    "DEX": 8,
-    "CHA": 4,
-    "INT": 20
+    "STR": 16,
+    "WIS": 11,
+    "CON": 17,
+    "DEX": 17,
+    "CHA": 12,
+    "INT": 15
   },
   "backpack": [
     {
-      "name": "Arming Coat",
-      "type": "Armor",
-      "enhancedAttribute": "AC",
-      "enhancedValue": 5
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Israh",
+        "type": "Armor",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
     },
     {
-      "name": "Dual Determination",
-      "type": "Ring",
-      "enhancedAttribute": "CHA",
-      "enhancedValue": 5
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Iran",
+        "type": "Helmet",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 2
+      }
     }
   ],
   "equipments": {
-    "Boots": {
-      "name": "Bone Stompers",
-      "type": "Boots",
-      "enhancedAttribute": "DEX",
-      "enhancedValue": 5
+    "Weapon": {
+      "_class": "logic.equipment.WeaponDecoratorBurning",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "weaponType": "RANGED",
+            "name": "fire",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 3
+          }
+        }
+      }
     }
   },
   "level": 10,
-  "name": "lippa",
+  "name": "Lippa",
   "playerType": "Nimble",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 2
+  "hp": 65,
+  "totalHp": 65
 }

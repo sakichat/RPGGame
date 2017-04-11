@@ -8,10 +8,9 @@ import org.junit.Test;
  * @author GU_HAN
  * @version 0.2
  *
- * This class is for testing the fileManager method, to see if it can success read file.
+ * This class tests the fileManager method, to see if it can successfully transfer between file name and typing name.
  */
 public class FileManagerTest {
-
     /**
      * This case tests the nameToFileName() method.
      * @throws Exception
@@ -31,11 +30,10 @@ public class FileManagerTest {
      */
     @Test
     public void fileNameToName() throws Exception {
-        String testIt = "AB___CDE";
+        String testIt = "ab___cde";
         String after = FileManager.fileNameToName(testIt);
-        String shouldBe = "AB   CDE";
+        String shouldBe = "ab   cde";
 
         Assert.assertEquals(shouldBe, after);
     }
-
 }

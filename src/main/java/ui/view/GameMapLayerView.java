@@ -1,6 +1,6 @@
 package ui.view;
 
-import logic.Point;
+import logic.map.Point;
 
 import java.awt.*;
 

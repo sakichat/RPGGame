@@ -1,10 +1,8 @@
 package ui.controlView;
 
-import logic.Chest;
+import logic.map.Chest;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class for viewing chest inside during play
@@ -47,28 +45,20 @@ public class ChestViewControlView extends ControlView {
     public void initSubviews() {
 
         JLabel label;
+        JButton button;
 
-        label = new JLabel();
+        label = new JLabel("Chest");
         label.setSize(160, 40);
         label.setLocation(10, 10);
         add(label);
-        label.setText("Chest");
 
-        JButton button;
-
-        button = new JButton();
+        button = new JButton("View Inside");
         button.setSize(160, 40);
         button.setLocation(10, 60);
         add(button);
-        button.setText("View Inside");
         JButton viewInsideButton = button;
 
-        viewInsideButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playScene.showChestViewInside(chest);
-            }
-        });
+        viewInsideButton.addActionListener(e -> playScene.showChestViewInside(chest));
 
     }
 

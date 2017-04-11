@@ -1,44 +1,57 @@
 {
   "abilityScores": {
-    "STR": 4,
-    "WIS": 20,
-    "CON": 12,
-    "DEX": 16,
-    "CHA": 4,
-    "INT": 20
+    "STR": 18,
+    "WIS": 11,
+    "CON": 16,
+    "DEX": 14,
+    "CHA": 12,
+    "INT": 13
   },
   "backpack": [
     {
-      "name": "Alythess Pyrogenics",
-      "type": "Ring",
-      "enhancedAttribute": "CON",
-      "enhancedValue": 3
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
     },
     {
-      "name": "Axe of Cenarius",
-      "type": "Weapon",
-      "enhancedAttribute": "DB",
-      "enhancedValue": 5
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
     }
   ],
   "equipments": {
-    "Armor": {
-      "name": "Arming Coat",
-      "type": "Armor",
-      "enhancedAttribute": "AC",
-      "enhancedValue": 5
+    "Helmet": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Adrah",
+        "type": "Helmet",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 4
+      }
     },
-    "Boots": {
-      "name": "Bone Stompers",
-      "type": "Boots",
-      "enhancedAttribute": "DEX",
-      "enhancedValue": 5
+    "Belt": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
     }
   },
   "level": 14,
-  "name": "wendru",
+  "name": "Wendru",
   "playerType": "Bully",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 7
+  "hp": 119,
+  "totalHp": 119
 }

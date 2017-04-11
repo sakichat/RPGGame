@@ -1,8 +1,6 @@
 package persistence;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import logic.Player;
+import logic.player.Player;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -11,7 +9,7 @@ import java.util.List;
 
 /**
  * @author Li Zhen
- * @version 0.1
+ * @version 0.2
  *
  * this class is to manage the files of player
  */
@@ -48,7 +46,7 @@ public class PlayerFileManager {
     public static Player read(String name){
         File file = PlayerFileManager.path(name);
         String content = FileManager.fileToString(file);
-        Player player = new Gson().fromJson(content,Player.class);
+        Player player = FileManager.defaultGson().fromJson(content,Player.class);
         return player;
 
     }
@@ -61,11 +59,7 @@ public class PlayerFileManager {
     public static void save(Player player){
         String name = player.getName();
         File file = path(name);
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .setPrettyPrinting()
-                .create();
-        String content = gson.toJson(player);
+        String content = FileManager.defaultGson().toJson(player);
         FileManager.stringToFile(content,file);
 
     }

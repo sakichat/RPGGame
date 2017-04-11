@@ -1,0 +1,73 @@
+{
+  "abilityScores": {
+    "STR": 12,
+    "WIS": 8,
+    "CON": 12,
+    "DEX": 13,
+    "CHA": 11,
+    "INT": 12
+  },
+  "backpack": [
+    {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    },
+    {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Tige",
+        "type": "Ring",
+        "enhancedAttribute": "CON",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipment.WeaponDecoratorBurning",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "weaponType": "RANGED",
+            "name": "fire",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 3
+          }
+        }
+      }
+    }
+  ],
+  "equipments": {
+    "Helmet": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Adrah",
+        "type": "Helmet",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 4
+      }
+    }
+  },
+  "level": 2,
+  "name": "Gildai",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "isDead": false,
+  "hp": 14,
+  "totalHp": 14
+}

@@ -1,0 +1,62 @@
+attack roll{
+  attackRoll = d20 + getAttackBonus();
+
+  if(d20 == 1){
+    miss;
+    attackRoll = 0;
+    return;
+  }
+
+  if(d20 == 20) {
+    newAttackRoll = d20 + getAttackBonus();
+     if (newAttackRoll >= hostilePlayer.ATTRIBUTE_ARMOR_CLASS) {
+      criticalRoll = attackRoll + newAttackRoll;
+      modifier = 2;
+      // Exception: Extra damage dice over and above a weapon’s normal damage
+      // is not multiplied when you score a critical hit.
+    }
+  }
+}
+
+attack bonus{
+  if (weaponType.equals(WEAPON_TYPE_MELEE)) {
+    meleeAB = ATTRIBUTE_ATTACK_BONUS + getAbilityModifier(ABILITY_STR) + sizeModifier;
+  }
+  if (weaponType.equals(WEAPON_TYPE_RANGED)) {
+    rangedAB= ATTRIBUTE_ATTACK_BONUS + getAbilityModifier(ABILITY_DEX) + sizeModifier + weapon.getRange();
+    // weapon.getRange() -> range penalty
+  }
+}
+
+damage{
+  if (damage <= 1) {
+    damage = 1;
+  }
+  if (weaponType.equals(WEAPON_TYPE_MELEE)) {
+    damage = damage + getAbilityModifier(ABILITY_STR);
+  }
+  if (criticalHit) {
+    Roll the damage (with all modifiers) multiple times and total the results
+    // each multiplier works off the original, un-multiplied damage
+  }
+}
+
+armorClass{
+  armorClass = 10 + armorBonus + shieldBonus + getAbilityModifier(ABILITY_DEX) + sizeModifier;
+  // if you’re wearing armor, you might not be able to apply your whole Dexterity bonus
+}
+
+http://www.d20srd.org/srd/combat/combatStatistics.htm
+
+-----------------------------------------------------------------------------------------------------------------------
+
+initiativeList{
+  initiativeCheck = d20 + getAbilityModifier(ABILITY_DEX);
+  order : initiativeCheck high -> low;
+  // each turn uses same order
+  // unless the character takes a special initiative action to change the initiativeCheck
+}
+
+http://www.d20srd.org/srd/combat/initiative.htm
+
+-----------------------------------------------------------------------------------------------------------------------

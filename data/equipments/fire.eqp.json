@@ -1,0 +1,18 @@
+{
+  "equipment": {
+    "_class": "logic.equipment.WeaponDecoratorBurning",
+    "_object": {
+      "decoratedWeapon": {
+        "_class": "logic.equipment.WeaponSolid",
+        "_object": {
+          "range": 2,
+          "weaponType": "RANGED",
+          "name": "fire",
+          "type": "Weapon",
+          "enhancedAttribute": "AB",
+          "enhancedValue": 3
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,10 @@ package persistence;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import logic.Cell;
+import logic.map.Cell;
+import logic.equipment.Equipment;
+import logic.equipment.Weapon;
+import logic.equipment.WeaponDecorator;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -11,7 +14,7 @@ import java.io.IOException;
 /**
  * this class is a fileManager to manage the files
  * @author Li Zhen
- * @version 0.1
+ * @version 0.2
  */
 
 
@@ -71,7 +74,10 @@ public class FileManager {
     public static Gson defaultGson(){
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
-                .registerTypeAdapter(Cell.class, new CellSerialization())
+                .registerTypeAdapter(Cell.class, new FullSerialization())
+                .registerTypeAdapter(Equipment.class, new FullSerialization())
+                .registerTypeAdapter(Weapon.class, new FullSerialization())
+                .registerTypeAdapter(WeaponDecorator.class, new FullSerialization())
                 .setPrettyPrinting()
                 .create();
         return gson;

@@ -1,9 +1,14 @@
 package logic;
 
+import com.google.gson.annotations.Expose;
+import logic.map.Cell;
+import logic.map.Chest;
+import logic.map.GameMap;
+import logic.map.Point;
+import logic.player.Player;
 import persistence.MapFileManager;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Qi Xia
@@ -12,14 +17,36 @@ import java.util.List;
  */
 public class Play {
 
+    private static Play currentPlay;
+
+    public static Play getCurrentPlay() {
+        return currentPlay;
+    }
+
+    public static void setCurrentPlay(Play currentPlay) {
+        Play.currentPlay = currentPlay;
+    }
+
+    @Expose
     private String name;
+
+    @Expose
     private Campaign campaign;
+
+    @Expose
     private Player player;
 
+    @Expose
     private int currentMapIndex;
+
+    @Expose
+    private Point.Direction direction;
+
+    @Expose
     private GameMap currentMap;
 
-    private Point direction;
+    @Expose
+    private LinkedList<Player> playerList;
 
     /**
      * Getter for name.
@@ -73,7 +100,7 @@ public class Play {
      * Getter for direction
      * @return direction
      */
-    public Point getDirection() {
+    public Point.Direction getDirection() {
         return direction;
     }
 
@@ -81,7 +108,7 @@ public class Play {
      * Setter for direction
      * @param direction
      */
-    public void setDirection(Point direction) {
+    public void setDirection(Point.Direction direction) {
         this.direction = direction;
     }
 
@@ -91,6 +118,14 @@ public class Play {
      */
     public GameMap getCurrentMap() {
         return currentMap;
+    }
+
+    /**
+     * Getter for playerList.
+     * @return LinkedList<Player>
+     */
+    public LinkedList<Player> getPlayerList() {
+        return playerList;
     }
 
     /**
@@ -126,13 +161,42 @@ public class Play {
     }
 
     /**
+     * This is the method for sort the players in play list
+     */
+    public void playerSortList(){
+        playerList = currentMap.getPlayers();
+        Map<Player, Integer> initiativeValues = new HashMap<Player, Integer>();
+
+        int sortStandard;
+
+        for (Player sortingPlayer : playerList) {
+            int diceScore = Dice.rool(20);
+            int dexScore = sortingPlayer.getTotalAbilityModifier(Player.ABILITY_DEX);
+            sortStandard = diceScore + dexScore;
+            initiativeValues.put(sortingPlayer, sortStandard);
+        }
+
+        Collections.sort(playerList, new Comparator<Player>() {
+                    @Override
+                    public int compare(Player o1, Player o2) {
+                        return initiativeValues.get(o2).compareTo(initiativeValues.get(o1));
+                    }
+                }
+        );
+    }
+
+    /**
      * This is the method to make player move.
      */
     public void move(){
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
+//        int differenceX = Math.abs(location.getX() - targetLocation.getX());
+//        int differenceY = Math.abs(location.getY() - targetLocation.getY());
+//        int difference = differenceX + differenceY;
+//        difference <= 1 &&
 
-        if (currentMap.canPlace(targetLocation)){
+        if ( currentMap.canPlace(targetLocation)){
             currentMap.moveCell(location, targetLocation);
         }
     }
@@ -144,8 +208,8 @@ public class Play {
     private void enterIntoMap(){
         Point entrance = currentMap.getEntrances().get(0).getLocation();
 
-        LinkedList<Point> directions = Point.directions();
-        for (Point direction : directions) {
+        List<Point.Direction> directions = Point.Direction.directions();
+        for (Point.Direction direction : directions) {
             Point enter = entrance.add(direction);
 
             if (currentMap.canPlace(enter)){
@@ -189,9 +253,9 @@ public class Play {
         List<Player> players = currentMap.getPlayers();
         List<Player> hostilePlayers = new LinkedList<Player>();
 
-        for (Player hostilePlayer : players) {
-            if (hostilePlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
-                hostilePlayers.add(hostilePlayer);
+        for (Player player : players) {
+            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
+                hostilePlayers.add(player);
             }
         }
 
@@ -210,7 +274,7 @@ public class Play {
      * This is the method for get target cell in direction
      * @return Cell
      */
-    public Cell getTartget(){
+    public Cell getTarget(){
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
         Cell cell = currentMap.getCell(targetLocation);
@@ -235,7 +299,7 @@ public class Play {
      */
     public void refreshPlayer( ) {
 
-        Player targetPlayer = (Player)getTartget();
+        Player targetPlayer = (Player) getTarget();
 
         Point location = player.getLocation();
         Point targetLocation = location.add(direction);
@@ -245,5 +309,7 @@ public class Play {
             currentMap.removeCell(targetLocation);
         }
     }
+
+
 
 }

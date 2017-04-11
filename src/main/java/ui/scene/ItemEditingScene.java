@@ -1,13 +1,13 @@
 package ui.scene;
 
-import logic.Equipment;
-import logic.Player;
+import logic.equipment.*;
+import logic.player.Player;
+import org.apache.commons.lang3.text.WordUtils;
 import persistence.EquipmentFileManager;
+import ui.view.View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * @author GU_HAN
@@ -16,7 +16,17 @@ import java.awt.event.ActionListener;
  * This scene is for editing the equipments.
  */
 public class ItemEditingScene extends Scene {
+
     private Equipment equipment;
+    private boolean weaponSubPanelEnabeld;
+
+    public boolean isWeaponSubPanelEnabeld() {
+        return weaponSubPanelEnabeld;
+    }
+
+    public void setWeaponSubPanelEnabeld(boolean weaponSubPanelEnabeld) {
+        this.weaponSubPanelEnabeld = weaponSubPanelEnabeld;
+    }
 
     /**
      * This method is for get the equipment.
@@ -33,10 +43,13 @@ public class ItemEditingScene extends Scene {
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
         if(equipment.getType() == null){
-            equipment.setType(Equipment.WEAPON);
+            equipment.setType(Equipment.HELMET);
         }
         if(equipment.getEnhancedAttribute() == null){
             equipment.setEnhancedAttribute(Player.ABILITY_STR);
+        }
+        if (equipment instanceof Weapon) {
+            setWeaponSubPanelEnabeld(true);
         }
         dataToView();
     }
@@ -46,29 +59,12 @@ public class ItemEditingScene extends Scene {
     private JLabel nameLabel;
     private JLabel typeLabel;
     private JLabel enhanceOnLabel;
-    private TextField valueTextField;
+    private JLabel weaponTypeLabel;
+    private JTextField valueTextField;
 
-    private JLabel validateResultLabel;
-
-    private JButton weaponButton;
-    private JButton shieldButton;
-    private JButton armorButton;
-    private JButton helmetButton;
-    private JButton ringButton;
-    private JButton beltButton;
-    private JButton bootsButton;
-
-    private JButton strButton;
-    private JButton dexButton;
-    private JButton conButton;
-    private JButton intButton;
-    private JButton wisButton;
-    private JButton chaButton;
-    private JButton armorClassButton;
-    private JButton attackBonusButton;
-    private JButton damageBonusButton;
-
-    private JButton validateButton;
+    private JPanel weaponSubPanel;
+    private JTextField rangeTextField;
+    private JLabel effectsValueLabel;
 
     /**
      * This method is for initialization.
@@ -76,7 +72,7 @@ public class ItemEditingScene extends Scene {
     @Override
     protected void init() {
         super.init();
-        
+
         title = "Edit Item";
         backButtonEnabled = true;
         saveButtonEnabled = true;
@@ -87,387 +83,494 @@ public class ItemEditingScene extends Scene {
      * This method is the details of the initialization.
      */
     protected void initSubviews(){
+
         saveButton.setEnabled(false);
-        /*
-         * First Line
-         */
 
         JLabel label;
         JButton button;
-        TextField textField;
+        JTextField textField;
 
-        /*
-         * 4 Stable Label
-         */
-
-        label = new JLabel();
-        label.setSize(120, 40);
-        label.setHorizontalAlignment(JLabel.RIGHT);
-        label.setLocation(20, 60);
-        label.setText("Name");
-        this.add(label);
+        label = new JLabel("Name", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 20);
+        contentView.add(label);
 
         label = new JLabel();
-        label.setSize(120, 40);
-        label.setHorizontalAlignment(JLabel.RIGHT);
-        label.setLocation(20, 110);
-        label.setText("Type");
-        this.add(label);
-
-        label = new JLabel();
-        label.setSize(120, 40);
-        label.setHorizontalAlignment(JLabel.RIGHT);
-        label.setLocation(20, 210);
-        label.setText("Enhance On");
-        this.add(label);
-
-        label = new JLabel();
-        label.setSize(120, 40);
-        label.setHorizontalAlignment(JLabel.RIGHT);
-        label.setLocation(20, 360);
-        label.setText("Value");
-        this.add(label);
-
-        /*
-         * 3 Dynamic Outprint
-         */
-
-        label = new JLabel();
-        label.setSize(200, 40);
-        label.setHorizontalAlignment(JLabel.LEFT);
-        label.setLocation(150, 60);
+        label.setSize(200, 30);
+        label.setLocation(150, 20);
+        contentView.add(label);
         nameLabel = label;
-        this.add(label);
+
+        label = new JLabel("Type", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 60);
+        contentView.add(label);
 
         label = new JLabel();
-        label.setSize(200, 40);
-        label.setHorizontalAlignment(JLabel.LEFT);
-        label.setLocation(150, 110);
+        label.setSize(200, 30);
+        label.setLocation(150, 60);
+        contentView.add(label);
         typeLabel = label;
-        this.add(label);
-
-        label = new JLabel();
-        label.setSize(200, 40);
-        label.setHorizontalAlignment(JLabel.LEFT);
-        label.setLocation(150, 210);
-        enhanceOnLabel = label;
-        this.add(label);
-
-        /*
-         * 7 Choices of Type
-         */
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(150, 160);
-        button.setText(Equipment.WEAPON);
-        weaponButton = button;
-        add(button);
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(260, 160);
-        button.setText(Equipment.SHIELD);
-        shieldButton = button;
-        add(button);
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(370, 160);
-        button.setText(Equipment.ARMOR);
-        armorButton = button;
-        add(button);
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(480, 160);
+        button.setSize(80, 30);
+        button.setLocation(150, 100);
         button.setText(Equipment.HELMET);
-        helmetButton = button;
-        add(button);
+        contentView.add(button);
+        JButton helmetButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(590, 160);
+        button.setSize(80, 30);
+        button.setLocation(240, 100);
+        button.setText(Equipment.ARMOR);
+        contentView.add(button);
+        JButton armorButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(330, 100);
+        button.setText(Equipment.SHIELD);
+        contentView.add(button);
+        JButton shieldButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(420, 100);
         button.setText(Equipment.RING);
-        ringButton = button;
-        add(button);
+        contentView.add(button);
+        JButton ringButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(700, 160);
+        button.setSize(80, 30);
+        button.setLocation(510, 100);
         button.setText(Equipment.BELT);
-        beltButton = button;
-        add(button);
+        contentView.add(button);
+        JButton beltButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(810, 160);
+        button.setSize(80, 30);
+        button.setLocation(600, 100);
         button.setText(Equipment.BOOTS);
-        bootsButton = button;
-        add(button);
-
-        /*
-         * 6 Choices of Enhance on
-         */
+        contentView.add(button);
+        JButton bootsButton = button;
 
         button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(150, 260);
-        button.setText(Player.ABILITY_STR);
-        strButton = button;
-        add(button);
+        button.setSize(80, 30);
+        button.setLocation(690, 100);
+        button.setText(Equipment.WEAPON);
+        JButton weaponButton = button;
+        contentView.add(button);
 
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(260, 260);
-        button.setText(Player.ABILITY_DEX);
-        dexButton = button;
-        add(button);
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(370, 260);
-        button.setText(Player.ABILITY_CON);
-        conButton = button;
-        add(button);
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(480, 260);
-        button.setText(Player.ABILITY_INT);
-        intButton = button;
-        add(button);
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(590, 260);
-        button.setText(Player.ABILITY_WIS);
-        wisButton = button;
-        add(button);
-
-        button = new JButton();
-        button.setSize(100, 40);
-        button.setLocation(700, 260);
-        button.setText(Player.ABILITY_CHA);
-        chaButton = button;
-        add(button);
-
-        /*
-         * 3 Value of Choose
-         */
-
-        button = new JButton();
-        button.setSize(210, 40);
-        button.setLocation(150, 310);
-        button.setText("Armor Class");
-        armorClassButton = button;
-        add(button);
-
-        button = new JButton();
-        button.setSize(210, 40);
-        button.setLocation(370, 310);
-        button.setText("Attack Bonus");
-        attackBonusButton = button;
-        add(button);
-
-        button = new JButton();
-        button.setSize(210, 40);
-        button.setLocation(590, 310);
-        button.setText("Damage Bonus");
-        damageBonusButton = button;
-        add(button);
-
-        /*
-         * TextFile
-         */
-
-        textField = new TextField();
-        textField.setSize(160, 40);
-        textField.setLocation(150, 360);
-        valueTextField = textField;
-        this.add(textField);
-
-        /*
-         * Validate button
-         */
-
-        button = new JButton();
-        button.setSize(160, 40);
-        button.setLocation(150, 440);
-        button.setText("Validate");
-        validateButton = button;
-        add(button);
+        label = new JLabel("Enhance On", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 140);
+        contentView.add(label);
 
         label = new JLabel();
-        label.setSize(200, 40);
-        label.setHorizontalAlignment(JLabel.CENTER);
-        label.setLocation(350, 440);
-        validateResultLabel = label;
-        add(label);
+        label.setSize(200, 30);
+        label.setLocation(150, 140);
+        contentView.add(label);
+        enhanceOnLabel = label;
 
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(150, 180);
+        button.setText(Player.ABILITY_STR);
+        contentView.add(button);
+        JButton strButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(240, 180);
+        button.setText(Player.ABILITY_DEX);
+        contentView.add(button);
+        JButton dexButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(330, 180);
+        button.setText(Player.ABILITY_CON);
+        contentView.add(button);
+        JButton conButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(420, 180);
+        button.setText(Player.ABILITY_INT);
+        contentView.add(button);
+        JButton intButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(510, 180);
+        button.setText(Player.ABILITY_WIS);
+        contentView.add(button);
+        JButton wisButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(600, 180);
+        button.setText(Player.ABILITY_CHA);
+        contentView.add(button);
+        JButton chaButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(690, 180);
+        button.setText(Player.ATTRIBUTE_ARMOR_CLASS);
+        contentView.add(button);
+        JButton armorClassButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(780, 180);
+        button.setText(Player.ATTRIBUTE_ATTACK_BONUS);
+        contentView.add(button);
+        JButton attackBonusButton = button;
+
+        button = new JButton();
+        button.setSize(80, 30);
+        button.setLocation(870, 180);
+        button.setText(Player.ATTRIBUTE_DAMAGE_BONUS);
+        contentView.add(button);
+        JButton damageBonusButton = button;
+
+        label = new JLabel("Value", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 220);
+        contentView.add(label);
+
+        textField = new JTextField();
+        textField.setSize(160, 30);
+        textField.setLocation(150, 220);
+        contentView.add(textField);
+        valueTextField = textField;
+
+        button = new JButton("Set");
+        button.setSize(120, 30);
+        button.setLocation(320, 220);
+        contentView.add(button);
+        JButton valueSetButton = button;
+
+        button = new JButton("Validate");
+        button.setSize(160, 40);
+        button.setLocation(150, 490);
+        contentView.add(button);
+        JButton validateButton = button;
+
+        label = new JLabel();
+        label.setSize(500, 40);
+        label.setLocation(350, 490);
+        contentView.add(label);
+        JLabel validateResultLabel = label;
+
+        weaponSubPanel = new View();
+        weaponSubPanel.setSize(1000, 190);
+        weaponSubPanel.setLocation(0, 260);
+        weaponSubPanel.setBackground(new Color(0xFFFFFF));
+//        if (weaponSubPanelEnabeld) {
+//            contentView.add(weaponSubPanel);
+//        }
+
+        label = new JLabel("Weapon", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 0);
+        weaponSubPanel.add(label);
+
+        label = new JLabel();
+        label.setSize(200, 30);
+        label.setLocation(150, 0);
+        weaponSubPanel.add(label);
+        weaponTypeLabel = label;
+
+        button = new JButton("Melee");
+        button.setSize(80, 30);
+        button.setLocation(150, 40);
+        weaponSubPanel.add(button);
+        JButton meleeTypeButton = button;
+
+        button = new JButton("Ranged");
+        button.setSize(80, 30);
+        button.setLocation(240, 40);
+        weaponSubPanel.add(button);
+        JButton rangedTypeButton = button;
+
+        label = new JLabel("Range", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 80);
+        weaponSubPanel.add(label);
+
+        textField = new JTextField();
+        textField.setSize(160, 30);
+        textField.setLocation(150, 80);
+        weaponSubPanel.add(textField);
+        rangeTextField = textField;
+
+        button = new JButton("Set");
+        button.setSize(120, 30);
+        button.setLocation(320, 80);
+        weaponSubPanel.add(button);
+        JButton rangeSetButton = button;
+
+        label = new JLabel("Effects", JLabel.RIGHT);
+        label.setSize(120, 30);
+        label.setLocation(20, 120);
+        weaponSubPanel.add(label);
+
+        label = new JLabel();
+        label.setSize(710, 30);
+        label.setLocation(150, 120);
+        weaponSubPanel.add(label);
+        effectsValueLabel = label;
+
+        button = new JButton("Reset");
+        button.setSize(80, 30);
+        button.setLocation(870, 120);
+        weaponSubPanel.add(button);
+        JButton resetButton = button;
+
+        button = new JButton("Freezing");
+        button.setSize(120, 30);
+        button.setLocation(150, 160);
+        weaponSubPanel.add(button);
+        JButton freezingButton = button;
+
+        button = new JButton("Burning");
+        button.setSize(120, 30);
+        button.setLocation(280, 160);
+        weaponSubPanel.add(button);
+        JButton burningButton = button;
+
+        button = new JButton("Slaying");
+        button.setSize(120, 30);
+        button.setLocation(410, 160);
+        weaponSubPanel.add(button);
+        JButton slayingButton = button;
+
+        button = new JButton("Frightening");
+        button.setSize(120, 30);
+        button.setLocation(540, 160);
+        weaponSubPanel.add(button);
+        JButton frighteningButton = button;
+
+        button = new JButton("Pacifying");
+        button.setSize(120, 30);
+        button.setLocation(670, 160);
+        weaponSubPanel.add(button);
+        JButton pacifyingButton = button;
 
         /*
          * add Listener
          */
-        backButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ItemEditingScene.this.navigationView.popTo(EditorScene.class);
-            }
+        backButton.addActionListener(e ->
+            ItemEditingScene.this.navigationView.popTo(EditorScene.class)
+        );
+
+        saveButton.addActionListener(e -> save());
+
+        weaponButton.addActionListener(e -> {
+            equipment.setType(Equipment.WEAPON);
+            typeLabel.setText(Equipment.WEAPON);
+
+            contentView.add(weaponSubPanel);
+
+            EquipmentFactory equipmentFactory = new EquipmentFactory();
+            equipment = equipmentFactory.equipmentToWeapon(equipment);
+
+            dataToView();
         });
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                save();
+        shieldButton.addActionListener(e -> {
+            equipment.setType(Equipment.SHIELD);
+            typeLabel.setText(Equipment.SHIELD);
+
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
-        weaponButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.WEAPON);
-                typeLabel.setText(Equipment.WEAPON);
+        armorButton.addActionListener(e -> {
+            equipment.setType(Equipment.ARMOR);
+            typeLabel.setText(Equipment.ARMOR);
+
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
-        shieldButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.SHIELD);
-                typeLabel.setText(Equipment.SHIELD);
+        helmetButton.addActionListener(e -> {
+            equipment.setType(Equipment.HELMET);
+            typeLabel.setText(Equipment.HELMET);
+
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
-        armorButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.ARMOR);
-                typeLabel.setText(Equipment.ARMOR);
+        ringButton.addActionListener(e -> {
+            equipment.setType(Equipment.RING);
+            typeLabel.setText(Equipment.RING);
+
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
-        helmetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.HELMET);
-                typeLabel.setText(Equipment.HELMET);
+        beltButton.addActionListener(e -> {
+            equipment.setType(Equipment.BELT);
+            typeLabel.setText(Equipment.BELT);
 
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
-        ringButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.RING);
-                typeLabel.setText(Equipment.RING);
+        bootsButton.addActionListener(e -> {
+            equipment.setType(Equipment.BOOTS);
+            typeLabel.setText(Equipment.BOOTS);
+
+            if (equipment instanceof Weapon) {
+                contentView.remove(weaponSubPanel);
+                EquipmentFactory equipmentFactory = new EquipmentFactory();
+                equipment = equipmentFactory.WeaponToEquipment((Weapon) equipment);
             }
+
+            dataToView();
         });
 
-        beltButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.BELT);
-                typeLabel.setText(Equipment.BELT);
-            }
+        strButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_STR);
+            enhanceOnLabel.setText(Player.ABILITY_STR);
         });
 
-        bootsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setType(Equipment.BOOTS);
-                typeLabel.setText(Equipment.BOOTS);
-            }
+        dexButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_DEX);
+            enhanceOnLabel.setText(Player.ABILITY_DEX);
         });
 
-        strButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_STR);
-                enhanceOnLabel.setText(Player.ABILITY_STR);
-            }
+        conButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_CON);
+            enhanceOnLabel.setText(Player.ABILITY_CON);
         });
 
-        dexButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_DEX);
-                enhanceOnLabel.setText(Player.ABILITY_DEX);
-            }
+        intButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_INT);
+            enhanceOnLabel.setText(Player.ABILITY_INT);
         });
 
-        conButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_CON);
-                enhanceOnLabel.setText(Player.ABILITY_CON);
-            }
+        wisButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_WIS);
+            enhanceOnLabel.setText(Player.ABILITY_WIS);
         });
 
-        intButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_INT);
-                enhanceOnLabel.setText(Player.ABILITY_INT);
-            }
+        chaButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ABILITY_CHA);
+            enhanceOnLabel.setText(Player.ABILITY_CHA);
         });
 
-        wisButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_WIS);
-                enhanceOnLabel.setText(Player.ABILITY_WIS);
-            }
+        armorClassButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
+            enhanceOnLabel.setText("AC");
         });
 
-        chaButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ABILITY_CHA);
-                enhanceOnLabel.setText(Player.ABILITY_CHA);
-            }
+        attackBonusButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
+            enhanceOnLabel.setText("AB");
         });
 
-        armorClassButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
-                enhanceOnLabel.setText("Armor Class");
-            }
+        damageBonusButton.addActionListener(e -> {
+            equipment.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
+            enhanceOnLabel.setText("DB");
         });
 
-        attackBonusButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
-                enhanceOnLabel.setText("Attack Bonus");
-            }
+        valueSetButton.addActionListener(e -> {
+            Integer enhancedValue = Integer.valueOf(valueTextField.getText());
+            equipment.setEnhancedValue(enhancedValue);
         });
 
-        damageBonusButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
-                enhanceOnLabel.setText("Damage Bonus");
+        validateButton.addActionListener(e -> {
+
+            System.out.println(equipment);
+
+            if(equipment.validate()){
+                saveButton.setEnabled(true);
+                validateResultLabel.setText("Success!");
+
+            }else{
+                saveButton.setEnabled(false);
+                validateResultLabel.setText("Failure!");
             }
+
+            ItemEditingScene.this.repaint();
         });
 
-        validateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                equipment.setEnhancedValue(Integer.valueOf(textField.getText()));
+        meleeTypeButton.addActionListener(e -> {
+            Weapon weapon = (Weapon) equipment;
+            weapon.setWeaponType(Weapon.Type.MELEE);
+            weaponTypeLabel.setText(Weapon.Type.MELEE.display());
+        });
 
-                System.out.println(equipment);
+        rangedTypeButton.addActionListener(e -> {
+            Weapon weapon = (Weapon) equipment;
+            weapon.setWeaponType(Weapon.Type.RANGED);
+            weaponTypeLabel.setText(Weapon.Type.RANGED.display());
+        });
 
-                if(equipment.validate()){
-                    saveButton.setEnabled(true);
-                    validateResultLabel.setText("Success!");
-                }else{
-                    saveButton.setEnabled(false);
-                    validateResultLabel.setText("Failure!");
-                }
+        rangeSetButton.addActionListener(e -> {
+            Integer rangeValue = Integer.valueOf(rangeTextField.getText());
+            ((Weapon)equipment).setRange(rangeValue);
+            dataToView();
+        });
 
-                ItemEditingScene.this.repaint();
-            }
+        freezingButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorFreezing((Weapon) equipment);
+            dataToView();
+        });
+
+        burningButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorBurning((Weapon) equipment);
+            dataToView();
+        });
+
+        slayingButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorSlaying((Weapon) equipment);
+            dataToView();
+        });
+
+        frighteningButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorFrightening((Weapon) equipment);
+            dataToView();
+        });
+
+        pacifyingButton.addActionListener(e -> {
+            equipment = new WeaponDecoratorPacifying((Weapon) equipment);
+            dataToView();
+        });
+
+        resetButton.addActionListener(e -> {
+            Weapon originalWeapon = ((Weapon) equipment).getOrigin();
+            equipment = originalWeapon;
+            dataToView();
         });
 
         repaint();
@@ -485,11 +588,25 @@ public class ItemEditingScene extends Scene {
      * This method updates the view from the model.
      */
     public void dataToView(){
-        nameLabel.setText(equipment.getName());
+
         typeLabel.setText(equipment.getType());
         enhanceOnLabel.setText(equipment.getEnhancedAttribute());
         valueTextField.setText(equipment.getEnhancedValue() + "");
 
+        if (weaponSubPanelEnabeld) {
+
+            Weapon weapon = (Weapon)equipment;
+
+            nameLabel.setText(equipment.displayName());
+
+            contentView.add(weaponSubPanel);
+            weaponTypeLabel.setText(weapon.getWeaponType().display());
+            rangeTextField.setText(weapon.getRange() + "");
+            effectsValueLabel.setText(weapon.enchantmentsChainText());
+
+        } else {
+            nameLabel.setText(equipment.getName());
+        }
     }
 
 

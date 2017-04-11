@@ -331,8 +331,8 @@ implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../ui/scene/MapEditingScene.html#playerSelectorPerformAction-ui.panel.PlayerSelectorPanel-logic.Player-">playerSelectorPerformAction</a></span>(<a href="../../ui/panel/PlayerSelectorPanel.html" title="class in ui.panel">PlayerSelectorPanel</a>&nbsp;playerSelectorPanel,
-                           <a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</code>
-<div class="block">This method is to paint a player on the specific cell view and remove the selector panel</div>
+                           <a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</code>
+<div class="block">This method is to paint a onPlayer on the specific cell view and remove the selector panel</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
@@ -349,7 +349,7 @@ implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../ui/scene/MapEditingScene.html#showAttributePanel-logic.Player-">showAttributePanel</a></span>(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../ui/scene/MapEditingScene.html#showAttributePanel-logic.Player-">showAttributePanel</a></span>(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</code>
 <div class="block">Method showAttributePanel</div>
 </td>
 </tr>
@@ -361,7 +361,7 @@ implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../ui/scene/MapEditingScene.html#showInventoryPanel-logic.Player-">showInventoryPanel</a></span>(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../ui/scene/MapEditingScene.html#showInventoryPanel-logic.Player-">showInventoryPanel</a></span>(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</code>
 <div class="block">Method showInventoryPanel</div>
 </td>
 </tr>
@@ -581,14 +581,14 @@ implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in
 <li class="blockList">
 <h4>playerSelectorPerformAction</h4>
 <pre>public&nbsp;void&nbsp;playerSelectorPerformAction(<a href="../../ui/panel/PlayerSelectorPanel.html" title="class in ui.panel">PlayerSelectorPanel</a>&nbsp;playerSelectorPanel,
-                                        <a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</pre>
-<div class="block">This method is to paint a player on the specific cell view and remove the selector panel</div>
+                                        <a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</pre>
+<div class="block">This method is to paint a onPlayer on the specific cell view and remove the selector panel</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../ui/panel/PlayerSelectorPanel.Delegate.html#playerSelectorPerformAction-ui.panel.PlayerSelectorPanel-logic.Player-">playerSelectorPerformAction</a></code>&nbsp;in interface&nbsp;<code><a href="../../ui/panel/PlayerSelectorPanel.Delegate.html" title="interface in ui.panel">PlayerSelectorPanel.Delegate</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>playerSelectorPanel</code> - PlayerSelectorPanel</dd>
-<dd><code>player</code> - Player</dd>
+<dd><code>onPlayer</code> - Player</dd>
 </dl>
 </li>
 </ul>
@@ -622,11 +622,11 @@ implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in
 <ul class="blockList">
 <li class="blockList">
 <h4>showAttributePanel</h4>
-<pre>public&nbsp;void&nbsp;showAttributePanel(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</pre>
+<pre>public&nbsp;void&nbsp;showAttributePanel(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</pre>
 <div class="block">Method showAttributePanel</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>player</code> - </dd>
+<dd><code>onPlayer</code> - </dd>
 </dl>
 </li>
 </ul>
@@ -650,11 +650,11 @@ implements <a href="../../ui/view/GameMapView.Delegate.html" title="interface in
 <ul class="blockListLast">
 <li class="blockList">
 <h4>showInventoryPanel</h4>
-<pre>public&nbsp;void&nbsp;showInventoryPanel(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;player)</pre>
+<pre>public&nbsp;void&nbsp;showInventoryPanel(<a href="../../logic/Player.html" title="class in logic">Player</a>&nbsp;onPlayer)</pre>
 <div class="block">Method showInventoryPanel</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>player</code> - </dd>
+<dd><code>onPlayer</code> - </dd>
 </dl>
 </li>
 </ul>

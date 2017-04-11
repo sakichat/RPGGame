@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipment.EquipmentSolid",
+    "_object": {
+      "name": "Reda",
+      "type": "Ring",
+      "enhancedAttribute": "STR",
+      "enhancedValue": 1
+    }
+  }
+}

@@ -35,7 +35,7 @@ public class Scene extends View{
      * This init() method init the basic properties for Scene
      */
     protected void init(){
-        this.setSize(1000, 600);
+        this.setSize(1000, 640);
     }
 
     /**
@@ -61,7 +61,7 @@ public class Scene extends View{
      */
     protected void initWindows() {
         contentView = new View();
-        contentView.setSize(1000, 560);
+        contentView.setSize(1000, 600);
         contentView.setLocation(0, 40);
         this.add(contentView);
         contentView.setBackground(new Color(0xFFFFFF));

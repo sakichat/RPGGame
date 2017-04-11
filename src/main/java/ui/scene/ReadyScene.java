@@ -1,5 +1,8 @@
 package ui.scene;
 
+import logic.Play;
+import ui.panel.PlaySelectorPanel;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +12,7 @@ import java.awt.event.ActionListener;
  * @author Siyu Chen
  * @version 0.2
  */
-public class ReadyScene extends Scene {
+public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -24,10 +27,8 @@ public class ReadyScene extends Scene {
 
     }
 
-    /**
-     * This parameter is for the label of playName.
-     */
-    JLabel playNameLabel;
+    JLabel label;
+    JButton button;
 
     /**
      * This method creates components on this scene
@@ -35,34 +36,49 @@ public class ReadyScene extends Scene {
      */
     protected void initSubviews() {
 
-        JLabel label = new JLabel("Play");
+        label = new JLabel("Play");
         label.setSize(160, 40);
         label.setLocation(20, 20);
         contentView.add(label);
-        playNameLabel = label;
 
-        JButton button = new JButton("New");
+        button = new JButton("New");
         button.setSize(160, 40);
         button.setLocation(20, 70);
         contentView.add(button);
         JButton newGameButton = button;
 
-        newGameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayCreationScene playCreationScene = new PlayCreationScene();
-                ReadyScene.this.navigationView.push(playCreationScene);
-            }
+        button = new JButton("Load");
+        button.setSize(160, 40);
+        button.setLocation(20, 130);
+        contentView.add(button);
+        JButton loadGameButton = button;
+
+        backButton.addActionListener(e -> ReadyScene.this.navigationView.pop());
+
+        newGameButton.addActionListener(e -> {
+            PlayCreationScene playCreationScene = new PlayCreationScene();
+            ReadyScene.this.navigationView.push(playCreationScene);
+
         });
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ReadyScene.this.navigationView.pop();
-            }
+        loadGameButton.addActionListener(e -> {
+            PlaySelectorPanel playSelectorPanel = new PlaySelectorPanel();
+            playSelectorPanel.setLocation(20, 190);
+            playSelectorPanel.setDelegate(ReadyScene.this);
+            contentView.add(playSelectorPanel);
         });
 
         repaint();
     }
 
+    @Override
+    public void playSelectorPerformAction(PlaySelectorPanel playSelectorPanel, Play play) {
+
+        contentView.remove(playSelectorPanel);
+
+        PlayScene playScene = new PlayScene();
+        playScene.setPlay(play);
+        navigationView.push(playScene);
+
+    }
 }

@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @author Li Zhen
- * @version 0.1
+ * @version 0.2
  *
  * this class is to manage the files of campaign
  */
@@ -32,9 +32,7 @@ public class CampaignFileManager {
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/campaigns/" + newName + ".cam.json";
-        System.out.println(newName);
         return new File(newName);
-
     }
 
     /**
@@ -46,7 +44,7 @@ public class CampaignFileManager {
     public static Campaign read(String name){
         File file = CampaignFileManager.path(name);
         String content = FileManager.fileToString(file);
-        Campaign campaign = new Gson().fromJson(content,Campaign.class);
+        Campaign campaign = FileManager.defaultGson().fromJson(content,Campaign.class);
         return campaign;
 
     }
@@ -59,11 +57,7 @@ public class CampaignFileManager {
     public static void save(Campaign campaign){
         String name = campaign.getName();
         File file = path(name);
-        Gson gson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation()
-                .setPrettyPrinting()
-                .create();
-        String content = gson.toJson(campaign);
+        String content = FileManager.defaultGson().toJson(campaign);
         FileManager.stringToFile(content,file);
 
     }

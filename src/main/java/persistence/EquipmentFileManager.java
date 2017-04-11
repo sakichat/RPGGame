@@ -1,8 +1,8 @@
 package persistence;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import logic.Equipment;
+import com.google.gson.annotations.Expose;
+import logic.equipment.Equipment;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @author Li Zhen
- * @version 0.1
+ * @version 0.2
  *
  * this class is to manage the files of equipments
  */
@@ -45,7 +45,8 @@ public class EquipmentFileManager {
     public static Equipment read(String name){
         File file = EquipmentFileManager.path(name);
         String content = FileManager.fileToString(file);
-        Equipment equipment = new Gson().fromJson(content,Equipment.class);
+        Gson gson = FileManager.defaultGson();
+        Equipment equipment = gson.fromJson(content,EquipmentWrapper.class).getEquipment();
         return equipment;
 
     }
@@ -57,10 +58,8 @@ public class EquipmentFileManager {
     public static void save(Equipment equipment){
         String name = equipment.getName();
         File file = path(name);
-        Gson gson = new GsonBuilder()
-                .setPrettyPrinting()
-                .create();
-        String content = gson.toJson(equipment);
+        Gson gson = FileManager.defaultGson();
+        String content = gson.toJson(new EquipmentWrapper(equipment));
         FileManager.stringToFile(content,file);
 
     }
@@ -100,4 +99,26 @@ public class EquipmentFileManager {
     }
 
 
+}
+
+class EquipmentWrapper{
+
+    @Expose
+    private Equipment equipment;
+
+    public EquipmentWrapper() {
+
+    }
+
+    public EquipmentWrapper(Equipment equipment) {
+        this.equipment = equipment;
+    }
+
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
+    }
 }

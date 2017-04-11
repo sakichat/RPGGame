@@ -1,69 +1,117 @@
 {
   "abilityScores": {
-    "STR": 12,
-    "WIS": 16,
-    "CON": 8,
-    "DEX": 8,
-    "CHA": 8,
-    "INT": 8
+    "STR": 14,
+    "WIS": 10,
+    "CON": 16,
+    "DEX": 18,
+    "CHA": 13,
+    "INT": 14
   },
   "backpack": [
     {
-      "name": "bi",
-      "type": "Weapon",
-      "enhancedAttribute": "AB",
-      "enhancedValue": 3
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Israh",
+        "type": "Armor",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
     },
     {
-      "name": "Steel Walkers",
-      "type": "Boots",
-      "enhancedAttribute": "AC",
-      "enhancedValue": 3
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Iran",
+        "type": "Helmet",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 2
+      }
     },
     {
-      "name": "Dual Determination",
-      "type": "Ring",
-      "enhancedAttribute": "CHA",
-      "enhancedValue": 5
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "homes",
+        "type": "Ring",
+        "enhancedAttribute": "CHA",
+        "enhancedValue": 2
+      }
     },
     {
-      "name": "Coif of Delusions",
-      "type": "Helmet",
-      "enhancedAttribute": "WIS",
-      "enhancedValue": 5
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
     },
     {
-      "name": "Arming Coat",
-      "type": "Armor",
-      "enhancedAttribute": "AC",
-      "enhancedValue": 5
+      "_class": "logic.equipment.WeaponDecoratorSlaying",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponDecoratorBurning",
+          "_object": {
+            "decoratedWeapon": {
+              "_class": "logic.equipment.WeaponSolid",
+              "_object": {
+                "range": 1,
+                "weaponType": "MELEE",
+                "name": "Gare",
+                "type": "Weapon",
+                "enhancedAttribute": "DB",
+                "enhancedValue": 5
+              }
+            }
+          }
+        }
+      }
     }
   ],
   "equipments": {
+    "Belt": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    },
     "Ring": {
-      "name": "Alythess Pyrogenics",
-      "type": "Ring",
-      "enhancedAttribute": "CON",
-      "enhancedValue": 3
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Tige",
+        "type": "Ring",
+        "enhancedAttribute": "CON",
+        "enhancedValue": 2
+      }
     },
     "Weapon": {
-      "name": "Ashbringer",
-      "type": "Weapon",
-      "enhancedAttribute": "AB",
-      "enhancedValue": 5
-    },
-    "Belt": {
-      "name": "Loyal Wool Sash",
-      "type": "Belt",
-      "enhancedAttribute": "STR",
-      "enhancedValue": 4
+      "_class": "logic.equipment.WeaponDecoratorBurning",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponDecoratorFreezing",
+          "_object": {
+            "decoratedWeapon": {
+              "_class": "logic.equipment.WeaponSolid",
+              "_object": {
+                "range": 1,
+                "weaponType": "MELEE",
+                "name": "Wige",
+                "type": "Weapon",
+                "enhancedAttribute": "AB",
+                "enhancedValue": 4
+              }
+            }
+          }
+        }
+      }
     }
   },
-  "multipleAttacks": {},
   "level": 4,
   "name": "testPlayer",
   "playerType": "Nimble",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 28
+  "hp": 31,
+  "totalHp": 31
 }

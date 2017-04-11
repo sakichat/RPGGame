@@ -1,50 +1,73 @@
 {
   "abilityScores": {
-    "STR": 8,
-    "WIS": 20,
-    "CON": 16,
-    "DEX": 20,
-    "CHA": 24,
-    "INT": 12
+    "STR": 15,
+    "WIS": 10,
+    "CON": 20,
+    "DEX": 17,
+    "CHA": 14,
+    "INT": 15
   },
   "backpack": [
     {
-      "name": "Axe of Cenarius",
-      "type": "Weapon",
-      "enhancedAttribute": "DB",
-      "enhancedValue": 5
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Kusha",
+        "type": "Shield",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
     },
     {
-      "name": "Alythess Pyrogenics",
-      "type": "Ring",
-      "enhancedAttribute": "CON",
-      "enhancedValue": 3
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "holes",
+        "type": "Ring",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 5
+      }
     },
     {
-      "name": "Ashbringer",
-      "type": "Weapon",
-      "enhancedAttribute": "AB",
-      "enhancedValue": 5
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Iran",
+        "type": "Helmet",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 2
+      }
     }
   ],
   "equipments": {
-    "Helmet": {
-      "name": "Coif of Delusions",
-      "type": "Helmet",
-      "enhancedAttribute": "WIS",
-      "enhancedValue": 5
+    "Armor": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Israh",
+        "type": "Armor",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
     },
     "Weapon": {
-      "name": "Bloodhoof Runespear",
-      "type": "Weapon",
-      "enhancedAttribute": "DB",
-      "enhancedValue": 5
+      "_class": "logic.equipment.WeaponDecoratorBurning",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "weaponType": "RANGED",
+            "name": "fire",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 3
+          }
+        }
+      }
     }
   },
   "level": 6,
-  "name": "aseg",
+  "name": "Aseg",
   "playerType": "Tank",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 9
+  "hp": 49,
+  "totalHp": 49
 }

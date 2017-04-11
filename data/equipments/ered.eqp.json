@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipment.EquipmentSolid",
+    "_object": {
+      "name": "Ered",
+      "type": "Belt",
+      "enhancedAttribute": "STR",
+      "enhancedValue": 2
+    }
+  }
+}

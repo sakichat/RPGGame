@@ -1,13 +1,11 @@
 package ui.scene;
 
-import logic.Equipment;
-import logic.Player;
+import logic.equipment.Equipment;
+import logic.player.Player;
 import persistence.PlayerFileManager;
 import ui.panel.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This is a class for players to create or edit the details of their characters.
@@ -120,7 +118,7 @@ public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.
         /*
          * Equipment Selector Panel
          */
-        EquipmentSelectorPanel equipmentSelectorPanel = new EquipmentSelectorPanel();
+        equipmentSelectorPanel = new EquipmentSelectorPanel();
         equipmentSelectorPanel.setLocation(110, 380);
         equipmentSelectorPanel.setButtonText("Add");
         contentView.add(equipmentSelectorPanel);
@@ -137,56 +135,39 @@ public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayerEditingScene.this.navigationView.popTo(EditorScene.class);
+        backButton.addActionListener(e ->
+            PlayerEditingScene.this.navigationView.popTo(EditorScene.class)
+        );
+
+        saveButton.addActionListener(e -> save());
+
+        setButton.addActionListener(e -> {
+            int level = Integer.valueOf(levelField.getText());
+            if (level > 0 && level <= 20) {
+                player.setLevel(level);
             }
+            playerPanel.dataToView();
         });
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                save();
-            }
+        bullyButton.addActionListener(e -> {
+            player.setPlayerType(Player.PLAYER_TYPE_BULLY);
+            player.generateTotalHp();
+            player.generateAbilities(Player.PLAYER_TYPE_BULLY);
+            playerPanel.dataToView();
         });
 
-        setButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                player.setLevel(Integer.valueOf(levelField.getText()));
-                playerPanel.dataToView();
-            }
+        nimbleButton.addActionListener(e -> {
+            player.setPlayerType(Player.PLAYER_TYPE_NIMBLE);
+            player.generateTotalHp();
+            player.generateAbilities(Player.PLAYER_TYPE_NIMBLE);
+            playerPanel.dataToView();
         });
 
-        bullyButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                player.setPlayerType(Player.PLAYER_TYPE_BULLY);
-                player.generateHp();
-                player.generateAbilities(Player.PLAYER_TYPE_BULLY);
-                playerPanel.dataToView();
-            }
-        });
-
-        nimbleButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                player.setPlayerType(Player.PLAYER_TYPE_NIMBLE);
-                player.generateHp();
-                player.generateAbilities(Player.PLAYER_TYPE_NIMBLE);
-                playerPanel.dataToView();
-            }
-        });
-
-        tankButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                player.setPlayerType(Player.PLAYER_TYPE_TANK);
-                player.generateHp();
-                player.generateAbilities(Player.PLAYER_TYPE_TANK);
-                playerPanel.dataToView();
-            }
+        tankButton.addActionListener(e -> {
+            player.setPlayerType(Player.PLAYER_TYPE_TANK);
+            player.generateTotalHp();
+            player.generateAbilities(Player.PLAYER_TYPE_TANK);
+            playerPanel.dataToView();
         });
     }
 

@@ -1,10 +1,8 @@
 package ui.panel;
 
-import logic.Equipment;
+import logic.equipment.Equipment;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 import persistence.EquipmentFileManager;
@@ -69,6 +67,10 @@ public class EquipmentSelectorPanel extends Panel {
         return buttonText;
     }
 
+    /**
+     * Setter for buttonText
+     * @param buttonText
+     */
     public void setButtonText(String buttonText) {
         this.buttonText = buttonText;
     }
@@ -114,14 +116,10 @@ public class EquipmentSelectorPanel extends Panel {
         searchButton.setSize(100,40);
         add(searchButton);
 
-        searchButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                equipmentPanel.removeAll();
-                search();
-            }
+        searchButton.addActionListener(e -> {
+            equipmentPanel.removeAll();
+            search();
         });
-
-
 
     }
     /**
@@ -133,8 +131,6 @@ public class EquipmentSelectorPanel extends Panel {
         int number = 0;
         int yOfView = 0;
         int xOfView = 0;
-
-
 
         for (String name : names){
             if (name.contains(textField.getText()) && number < 3){
@@ -150,12 +146,9 @@ public class EquipmentSelectorPanel extends Panel {
                 addButton.setSize(60,20);
                 equipmentPanel.add(addButton);
 
-                addButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        delegate.equipmentSelectorPerformAction(EquipmentSelectorPanel.this, equipment);
-                    }
-                });
+                addButton.addActionListener(e ->
+                    delegate.equipmentSelectorPerformAction(EquipmentSelectorPanel.this, equipment)
+                );
 
                 number++;
                 yOfView += 30;

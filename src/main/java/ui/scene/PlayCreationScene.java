@@ -2,14 +2,12 @@ package ui.scene;
 
 import logic.Campaign;
 import logic.Play;
-import logic.Player;
+import logic.player.Player;
 import ui.panel.CampaignSelectorPanel;
 import ui.panel.PlayerSelectorPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class extends Scene and implements PlayerDelegate and CampaignDelegate.
@@ -41,6 +39,10 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
      */
     JLabel playerNameLabel;
     JLabel campaignNameLabel;
+    JLabel playerModeLabel;
+
+    public final static String HUMAN_PLAYER_MODE        = "Human Player";
+    public final static String COMPUTER_PLAYER_MODE     = "Computer Player";
 
     /**
      * This method creates components on this scene
@@ -80,14 +82,39 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         contentView.add(button);
         JButton playerSelectButton = button;
 
-        label = new JLabel("Campaign", JLabel.RIGHT);
+        label = new JLabel("Player Mode", JLabel.RIGHT);
         label.setSize(120, 40);
-        label.setLocation(20, 130);
+        label.setLocation(20, 140);
         contentView.add(label);
 
         label = new JLabel("", JLabel.LEFT);
         label.setSize(160, 40);
-        label.setLocation(150, 130);
+        label.setLocation(150, 140);
+        contentView.add(label);
+        label.setOpaque(true);
+        label.setBackground(new Color(0xf4f4f4));
+        playerModeLabel = label;
+
+        button = new JButton("Human Player");
+        button.setSize(160, 40);
+        button.setLocation(150, 190);
+        contentView.add(button);
+        JButton humanPlayerModeButton = button;
+
+        button = new JButton("Computer Player");
+        button.setSize(160, 40);
+        button.setLocation(320, 190);
+        contentView.add(button);
+        JButton computerPlayerModeButton = button;
+
+        label = new JLabel("Campaign", JLabel.RIGHT);
+        label.setSize(120, 40);
+        label.setLocation(20, 250);
+        contentView.add(label);
+
+        label = new JLabel("", JLabel.LEFT);
+        label.setSize(160, 40);
+        label.setLocation(150, 250);
         contentView.add(label);
         label.setOpaque(true);
         label.setBackground(new Color(0xf4f4f4));
@@ -95,48 +122,34 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
 
         button = new JButton("Select");
         button.setSize(120, 40);
-        button.setLocation(320, 130);
+        button.setLocation(320, 250);
         contentView.add(button);
         JButton campaignSelectButton = button;
 
         button = new JButton("Create");
         button.setSize(120, 40);
-        button.setLocation(150, 190);
+        button.setLocation(150, 310);
         contentView.add(button);
         JButton createButton = button;
 
         repaint();
 
-        backButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayCreationScene.this.navigationView.pop();
-            }
-        });
+        backButton.addActionListener(e -> PlayCreationScene.this.navigationView.pop());
 
-        playerSelectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                selectPlayer();
-            }
-        });
+        playerSelectButton.addActionListener(e -> selectPlayer());
 
-        campaignSelectButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                selectCampaign();
-            }
-        });
+        humanPlayerModeButton.addActionListener(e -> playerModeLabel.setText(HUMAN_PLAYER_MODE));
 
-        createButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PlayScene playScene = new PlayScene();
-                play.setName(playNameTextField.getText());
-                play.resolveMap();
-                playScene.setPlay(play);
-                PlayCreationScene.this.navigationView.push(playScene);
-            }
+        computerPlayerModeButton.addActionListener(e -> playerModeLabel.setText(COMPUTER_PLAYER_MODE));
+
+        campaignSelectButton.addActionListener(e -> selectCampaign());
+
+        createButton.addActionListener(e -> {
+            PlayScene playScene = new PlayScene();
+            play.setName(playNameTextField.getText());
+            play.resolveMap();
+            playScene.setPlay(play);
+            PlayCreationScene.this.navigationView.push(playScene);
         });
     }
 
@@ -170,7 +183,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
      */
     private void selectCampaign() {
         CampaignSelectorPanel campaignSelectorPanel = new CampaignSelectorPanel();
-        campaignSelectorPanel.setLocation(460, 130);
+        campaignSelectorPanel.setLocation(460, 250);
         campaignSelectorPanel.setButtonText("Select");
         campaignSelectorPanel.setDelegate(this);
         contentView.add(campaignSelectorPanel);

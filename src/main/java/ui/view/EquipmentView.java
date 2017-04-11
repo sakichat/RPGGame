@@ -1,6 +1,7 @@
 package ui.view;
 
-import logic.Equipment;
+import logic.equipment.Equipment;
+import logic.equipment.Weapon;
 
 import javax.swing.*;
 
@@ -72,7 +73,11 @@ public class EquipmentView extends View {
     private void dataToView(){
 
         typeLabel.setText(equipment.getType());
-        nameLabel.setText(equipment.getName());
+        if (equipment instanceof Weapon) {
+            nameLabel.setText(equipment.displayName());
+        } else {
+            nameLabel.setText(equipment.getName());
+        }
 
         String valueString = TextDisplay.signedNumber(equipment.getEnhancedValue());
         String attributeString = equipment.getEnhancedAttribute();

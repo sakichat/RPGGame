@@ -25,28 +25,20 @@ public class ObstacleControlView extends ControlView {
      */
     public void initSubviews() {
 
-        JLabel topicLabel = new JLabel();
+        JLabel topicLabel = new JLabel("Wall");
         topicLabel.setSize(160, 40);
         topicLabel.setLocation(10, 10);
         add(topicLabel);
-        topicLabel.setText("Wall");
 
-        JButton jButton;
+        JButton button;
 
-        jButton = new JButton();
-        jButton.setSize(160, 40);
-        jButton.setLocation(10, 60);
-        add(jButton);
-        jButton.setText("Remove");
-        JButton removeButton = new JButton();
-        removeButton = jButton;
+        button = new JButton("Remove");
+        button.setSize(160, 40);
+        button.setLocation(10, 60);
+        add(button);
+        JButton removeButton = button;
 
-        removeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mapEditingScene.destroy();
-            }
-        });
+        removeButton.addActionListener(e -> mapEditingScene.destroy());
 
     }
 

@@ -1,16 +1,17 @@
 package ui.view;
 
-import logic.Cell;
-import logic.GameMap;
-import logic.Play;
-import logic.Point;
+import logic.map.Cell;
+import logic.map.GameMap;
+import logic.map.Point;
+import logic.player.Player;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.management.PlatformLoggingMXBean;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This GameMapView class extends View class, and it can build map views.
@@ -26,7 +27,7 @@ public class GameMapView extends View {
      * It is a implements for Delegate
      */
     public interface Delegate {
-        void gameMapViewSelect(GameMapView gameMapView, Point location);
+        void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location);
     }
 
     /**
@@ -73,6 +74,8 @@ public class GameMapView extends View {
         setup();
     }
 
+    private Player player;
+
     /**
      * This method is to set the size of this GameMapView, and to call initLayers() method.
      */
@@ -92,10 +95,11 @@ public class GameMapView extends View {
                 gameMap.getHeight() * GameMapLayerView.UNIT_SIZE);
     }
 
-    private final static int _LAYER_BACKGROUND  = 0;
-    private final static int _LAYER_CONTENT     = 1;
-    private final static int _LAYER_HIGHLIGHT   = 2;
-    private final static int _LAYER_EVENT       = 3;
+    private final static int _LAYER_BACKGROUND      = 0;
+    private final static int _LAYER_RANGE           = 1;
+    private final static int _LAYER_CONTENT         = 2;
+    private final static int _LAYER_HIGHLIGHT       = 3;
+    private final static int _LAYER_EVENT           = 4;
 
 
     /**
@@ -109,6 +113,7 @@ public class GameMapView extends View {
      */
     private void initLayers() {
         initBackgroundLayer();
+        initRangeLayer();
         initContentLayer();
         initHighlightLayer();
         initEventLayer();
@@ -143,6 +148,14 @@ public class GameMapView extends View {
             }
         }
 
+    }
+
+    /**
+     * This method creates a layer for showing attack range of players.
+     */
+    private void initRangeLayer() {
+        newLayer();
+        refreshRange();
     }
 
     /**
@@ -243,7 +256,7 @@ public class GameMapView extends View {
         selectedLocation = location;
         repaint();
 
-        delegate.gameMapViewSelect(this, location);
+        delegate.gameMapViewSelectPerformAction(this, location);
     }
 
     /**
@@ -260,15 +273,16 @@ public class GameMapView extends View {
         for (int y = 0; y < gridHeight; y++) {
             for (int x = 0; x < gridWidth; x++) {
                 Point location = new Point(x, y);
-                try {
-                    Cell cell = gameMap.getCell(location);
-                    if (cell != null) {
-                        ImageView imageView = new ImageView();
-                        imageView.setName(cell.getImageName());
-                        layerView.addCell(imageView, location);
-                    }
-                }catch (Exception e) {
-                    System.out.println();
+                Cell cell = gameMap.getCell(location);
+                if (cell instanceof Player) {
+                    PlayerCellView playerCellView = new PlayerCellView();
+                    playerCellView.setPlayer(player);
+                    layerView.addCell(playerCellView, location);
+                }
+                if (cell != null) {
+                    ImageView imageView = new ImageView();
+                    imageView.setName(cell.getImageName());
+                    layerView.addCell(imageView, location);
                 }
             }
         }
@@ -283,6 +297,34 @@ public class GameMapView extends View {
         GameMapLayerView highlightLayerView = layers.get(_LAYER_HIGHLIGHT);
         highlightLayerView.removeAllCells();
         this.initHighlightLayer();
+
+        repaint();
+    }
+
+    /**
+     * This method regreshes AttackrangeLayer.
+     */
+    public void refreshRange(){
+        GameMapLayerView rangeLayerView = layers.get(_LAYER_RANGE);
+        rangeLayerView.removeAllCells();
+
+        HashMap<String, String> playerParties = new HashMap<>();
+        playerParties.put(Player.PLAYER_PARTY_PLAYER, "player");
+        playerParties.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
+        playerParties.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
+
+//        Map<Player, List<Point>> attackRanges = gameMap.getAttackRanges();
+//
+//        for (Player player : attackRanges.keySet()) {
+//            ImageView imageView = new ImageView();
+//            imageView.setName("attack_range_" + playerParties.get(player.getPlayerParty()) + ".png");
+//
+//            List<Point> points = attackRanges.get(player);
+//            for (Point point : points) {
+//                rangeLayerView.addCell(imageView, point);
+//            }
+//
+//        }
 
         repaint();
     }

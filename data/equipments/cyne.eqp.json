@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipment.EquipmentSolid",
+    "_object": {
+      "name": "Cyne",
+      "type": "Boots",
+      "enhancedAttribute": "AC",
+      "enhancedValue": 5
+    }
+  }
+}

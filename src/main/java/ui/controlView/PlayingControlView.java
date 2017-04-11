@@ -1,12 +1,9 @@
 package ui.controlView;
 
-import logic.Player;
+import logic.player.Player;
 import ui.scene.PlayScene;
-import ui.view.View;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * @author Kai QI
@@ -76,6 +73,7 @@ public class PlayingControlView extends ControlView {
     public void initSubviews() {
 
         JLabel label;
+        JButton button;
 
         label = new JLabel("", JLabel.LEFT);
         label.setSize(160, 40);
@@ -89,36 +87,21 @@ public class PlayingControlView extends ControlView {
         add(label);
         playerNameLabel = label;
 
-        JButton button;
-
-        button = new JButton();
+        button = new JButton("View Attribute");
         button.setSize(160, 40);
         button.setLocation(10, 110);
         add(button);
-        button.setText("View Attribute");
         JButton viewAttributesButton = button;
 
-        button = new JButton();
+        button = new JButton("View Inventory");
         button.setSize(160, 40);
         button.setLocation(10, 160);
         add(button);
-        button.setText("View Inventory");
         JButton viewInventoryButton = button;
 
-        viewAttributesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playScene.viewAttribute(player);
-            }
-        });
+        viewAttributesButton.addActionListener(e -> playScene.viewAttribute(player));
 
-        viewInventoryButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                playScene.viewInventory(player);
-
-            }
-        });
+        viewInventoryButton.addActionListener(e -> playScene.viewInventory(player));
     }
 
     /**
