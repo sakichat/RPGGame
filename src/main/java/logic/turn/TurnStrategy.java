@@ -1,8 +1,5 @@
 package logic.turn;
 
-import com.sun.org.apache.regexp.internal.RE;
-import logic.Play;
-import logic.map.Cell;
 import logic.map.Point;
 import logic.player.Player;
 
@@ -21,19 +18,19 @@ public abstract class TurnStrategy {
 
     protected abstract Point preferredNextLocation();
 
-    public final List<Player> attackTargetsInNear(){
+    public final List<Point> attackTargetsInNear(){
         // TODO: 08/04/2017
         return null;
     }
 
-    protected abstract boolean couldAttack(Player targetPlayer);
+    public abstract boolean couldAttack(Point target);
 
-    public final List<Cell> interactTargetsInNear(){
+    public final List<Point> interactTargetsInNear(){
         // TODO: 08/04/2017
         return null;
     }
 
-    protected abstract boolean couldInteract(Cell cell);
+    protected abstract boolean couldInteract(Point target);
 
     public abstract Point preferredAttackingLocation();
 

@@ -1,8 +1,6 @@
 package logic.turn;
 
-import logic.map.Cell;
 import logic.map.Point;
-import logic.player.Player;
 
 /**
  * Created by GU_HAN on 2017-04-08.
@@ -16,13 +14,13 @@ public class TurnStrategyFriendly extends TurnStrategy {
     }
 
     @Override
-    protected boolean couldAttack(Player targetPlayer) {
+    public boolean couldAttack(Point target) {
         // TODO: 10/04/2017
         return false;
     }
 
     @Override
-    protected boolean couldInteract(Cell cell) {
+    protected boolean couldInteract(Point target) {
         // TODO: 10/04/2017
         return false;
     }
