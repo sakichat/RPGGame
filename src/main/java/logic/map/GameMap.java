@@ -332,7 +332,7 @@ public class GameMap {
         List<Point> attackRange = new LinkedList<>();
 
         List<Point.Direction> directions = Point.Direction.directions();
-        int range = player.getAttackRange();
+        int range = player.getRangeForAttack();
         Point location = player.getLocation();
 
         for (Point.Direction direction : directions) {

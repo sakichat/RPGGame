@@ -4,23 +4,16 @@ attack roll{
   if(d20 == 1){
     miss;
     attackRoll = 0;
-  } else {
+    return;
+  }
 
-    if(d20 == 20) {
-      newAttackRoll = d20 + getAttackBonus();
-
-      if (newAttackRoll >= hostilePlayer.ATTRIBUTE_ARMOR_CLASS) {
-        criticalRoll = attackRoll + newAttackRoll;
-        threatRange = 20;
-        modifier = 2;
-        // Exception: Extra damage dice over and above a weapon’s normal damage
-        // is not multiplied when you score a critical hit.
-      } else {
-
-        if(attackRoll >= hostilePlayer.ATTRIBUTE_ARMOR_CLASS) {
-          attackRoll = attackRoll;
-        }
-      }
+  if(d20 == 20) {
+    newAttackRoll = d20 + getAttackBonus();
+     if (newAttackRoll >= hostilePlayer.ATTRIBUTE_ARMOR_CLASS) {
+      criticalRoll = attackRoll + newAttackRoll;
+      modifier = 2;
+      // Exception: Extra damage dice over and above a weapon’s normal damage
+      // is not multiplied when you score a critical hit.
     }
   }
 }

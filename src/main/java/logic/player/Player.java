@@ -256,6 +256,11 @@ public class Player extends Cell {
         return null;
     }
 
+    public int getRangeForAttack() {
+        // TODO: 10/04/2017
+        return 0;
+    }
+    
     /**
      * This method is used to equip the equipment on the character.
      * The equip action will replace the current one on the same slot.
@@ -393,63 +398,6 @@ public class Player extends Cell {
         dropInventories(handOutEquipment);
         pickUpEquipment(gotEquipment);
         return handOutEquipment;
-    }
-
-    /**
-     * property of multipleAttacks
-     */
-
-    @Expose
-    private Map<String,Integer> multipleAttacks = new HashMap<>();
-
-    /**
-     * The method is used to attack a hostilePlayer with multiple attack strategy and formula.
-     * @param hostilePlayer
-     */
-    public void attack(Player hostilePlayer) {
-        boolean has = false;
-        int damage = getAttackBonus() + getAbilityModifier(ABILITY_STR);
-        System.out.println(damage);
-        for (String hostilePlayerName: multipleAttacks.keySet()){
-            if (hostilePlayerName.equals(hostilePlayer.getName())){
-               has = true;
-            }
-        }
-
-        if (!has){
-            multipleAttacks.put(hostilePlayer.getName(),3);
-        }
-
-        if (multipleAttacks.get(hostilePlayer.getName()) == 0) {
-            hostilePlayer.setHp(0);
-        } else {
-            if (multipleAttacks.get(hostilePlayer.getName()) == 3) {
-                if (hostilePlayer.getHp() - damage > 0) {
-                    hostilePlayer.setHp(hostilePlayer.getHp() - damage);
-                } else {
-                    hostilePlayer.setHp(0);
-                }
-            } else if (multipleAttacks.get(hostilePlayer.getName()) == 2) {
-                if (hostilePlayer.getHp() - (damage - 2) > 0) {
-                    if (damage - 2 <= 0){
-                        hostilePlayer.setHp(0);
-                    }else
-                    hostilePlayer.setHp(hostilePlayer.getHp() - (damage - 2));
-                } else {
-                    hostilePlayer.setHp(0);
-
-                }
-            } else if (multipleAttacks.get(hostilePlayer.getName()) == 1) {
-                hostilePlayer.setHp(0);
-            }
-
-            for (String name : multipleAttacks.keySet()) {
-                if (name.equals(hostilePlayer.getName())) {
-                    int times = multipleAttacks.get(name);
-                    multipleAttacks.put(name, times - 1);
-                }
-            }
-        }
     }
 
     /**
@@ -757,8 +705,7 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getAttackBonus() {
-        int strModifier = getAbilityModifier(ABILITY_STR);
-        return level + strModifier;
+        return level;
     }
 
     /**
@@ -766,6 +713,7 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getTotalAttackBonus() {
+        // TODO: 10/04/2017
         return getAttackBonus() + enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS);
     }
 
@@ -782,22 +730,11 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getTotalDamageBonus() {
+        // TODO: 10/04/2017
         return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
     }
 
-    /**
-     * This method gets attack range for weapons.
-     */
-    public int getAttackRange() {
 
-        Weapon weapon = (Weapon) equipments.get(Equipment.WEAPON);
-
-        if (weapon != null) {
-            return weapon.getRange();
-        }
-
-        return 0;
-    }
 
     /**
      * Properties of remainStep and getter & setter.
@@ -875,6 +812,24 @@ public class Player extends Cell {
     public List<Effect> getEffects() {
         return effects;
     }
+
+
+
+    public void attack(Player player) {
+        // TODO: 10/04/2017
+    }
+
+    // attack
+    private boolean shouldDealDamage(Player player){
+        // TODO: 10/04/2017
+        return false;
+    }
+
+    private int rollDamage(){
+        // TODO: 10/04/2017
+        return 0;
+    }
+
 
     /**
      * The method is override for the equals method, which is used to compare player object.
