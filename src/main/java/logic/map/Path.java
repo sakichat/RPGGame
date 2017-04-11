@@ -75,6 +75,22 @@ public class Path implements Iterable<Point> {
     }
 
     /**
+     * The method is to compare two path object.
+     * @param path Path
+     * @return boolean
+     */
+    protected boolean equalsToPath(Path path) {
+        for (Point point : this) {
+            for (Point targetPoint : path) {
+                if (!point.equals(targetPoint)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
      * The override method of iterable, which means the Path object is iterable.
      * @return Iterator object
      */
