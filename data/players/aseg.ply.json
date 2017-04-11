@@ -1,24 +1,15 @@
 {
   "abilityScores": {
-    "STR": 13,
-    "WIS": 7,
-    "CON": 17,
-    "DEX": 14,
-    "CHA": 11,
-    "INT": 13
+    "STR": 15,
+    "WIS": 10,
+    "CON": 20,
+    "DEX": 17,
+    "CHA": 14,
+    "INT": 15
   },
   "backpack": [
     {
-      "_class": "logic.equipments.EquipmentSolid",
-      "_object": {
-        "name": "Iran",
-        "type": "Helmet",
-        "enhancedAttribute": "WIS",
-        "enhancedValue": 2
-      }
-    },
-    {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
         "name": "Kusha",
         "type": "Shield",
@@ -27,18 +18,27 @@
       }
     },
     {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
-        "name": "Holes",
+        "name": "holes",
         "type": "Ring",
         "enhancedAttribute": "WIS",
         "enhancedValue": 5
+      }
+    },
+    {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Iran",
+        "type": "Helmet",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 2
       }
     }
   ],
   "equipments": {
     "Armor": {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
         "name": "Israh",
         "type": "Armor",
@@ -47,12 +47,13 @@
       }
     },
     "Weapon": {
-      "_class": "logic.equipments.WeaponDecoratorBurning",
+      "_class": "logic.equipment.WeaponDecoratorBurning",
       "_object": {
         "decoratedWeapon": {
-          "_class": "logic.equipments.WeaponSolid",
+          "_class": "logic.equipment.WeaponSolid",
           "_object": {
             "range": 2,
+            "weaponType": "RANGED",
             "name": "fire weapon",
             "type": "Weapon",
             "enhancedAttribute": "AB",
@@ -68,5 +69,7 @@
   "playerType": "Tank",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 58
+  "hp": 49,
+  "totalHp": 49,
+  "remainStep": 0
 }
