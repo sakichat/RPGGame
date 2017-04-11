@@ -736,6 +736,7 @@ public class Player extends Cell {
     /**
      * The declaration of the property effects, which used to store the effects of enchantments weapon.
      */
+    @Expose
     private List<Effect> effects = new LinkedList<>();
 
     /**
