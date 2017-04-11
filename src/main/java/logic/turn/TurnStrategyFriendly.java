@@ -14,18 +14,19 @@ public class TurnStrategyFriendly extends TurnStrategy {
     @Override
     protected Point preferredNextLocation() {
 
-        Play play = Play.getCurrentPlay();
-        GameMap gameMap = play.getCurrentMap();
-        GameMapGraph gameMapGraph = gameMap.getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(getPlayer().getLocation(), getPlayer().getRangeForMove());
+        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
+        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
 
-        Point result = points.get((int)(Math.random() * points.size()));
-        return result;
+        if (points.size() != 0){
+            Point result = points.get((int)(Math.random() * points.size()));
+            return result;
+        }else {
+            return null;
+        }
     }
 
     @Override
     public boolean couldAttack(Point target) {
-        // TODO: 10/04/2017
         return false;
     }
 
@@ -36,7 +37,7 @@ public class TurnStrategyFriendly extends TurnStrategy {
         Play play = Play.getCurrentPlay();
         GameMap gameMap = play.getCurrentMap();
         Cell cell = gameMap.getCell(target);
-        if (cell instanceof Chest){
+        if (cell.getCellType().equals(Cell.Type.CHEST)){
             result = true;
         }
 
@@ -46,21 +47,27 @@ public class TurnStrategyFriendly extends TurnStrategy {
     @Override
     public Point preferredAttackingLocation() {
 
-        Play play = Play.getCurrentPlay();
-        GameMap gameMap = play.getCurrentMap();
-        GameMapGraph gameMapGraph = gameMap.getGraph();
+        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(getPlayer().getLocation(), getPlayer().getRangeForAttack());
-        Point result = points.get((int)(Math.random() * points.size()));
-        return result;
+        if (points.size() != 0){
+            Point result = points.get((int)(Math.random() * points.size()));
+            return result;
+        }else {
+            return null;
+        }
     }
 
     @Override
     public Point preferredInteractionLocation() {
-        Play play = Play.getCurrentPlay();
-        GameMap gameMap = play.getCurrentMap();
-        GameMapGraph gameMapGraph = gameMap.getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(getPlayer().getLocation(), 1);
-        Point result = points.get((int)(Math.random() * points.size()));
-        return result;
+
+        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
+        List<Point> points = interactTargetsInNear();
+        if (points.size() != 0){
+            Point result = points.get((int)(Math.random() * points.size()));
+            return result;
+        }else {
+            return null;
+        }
+
     }
 }
