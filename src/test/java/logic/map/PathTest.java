@@ -109,17 +109,14 @@ public class PathTest {
         }
     }
 
+    /**
+     * This method tests the equal of the path.
+     * @throws Exception
+     */
     @Test
     public void equalsToPath() throws Exception {
-//        path.addLocationsToLocation(location2);
-//        for (Point point : path) {
-//            System.out.println(point);
-//        }
-        path.addLocation(new Point(3, 2));
-        path.addLocation(new Point(3, 3));
-        path.addLocation(new Point(3, 4));
-        path.addLocation(new Point(3, 5));
-        
+        path.addLocationsToLocation(location2);
+
         Path path2 = new Path();
         path2.addLocation(new Point(3, 1));
         path2.addLocation(new Point(3, 2));
