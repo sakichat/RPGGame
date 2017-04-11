@@ -61,7 +61,9 @@ public abstract class TurnStrategy {
     public final List<Point> interactTargetsInNear(){
 
         GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1).stream().filter(i -> couldInteract(i)).collect(Collectors.toList());
+        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1).stream()
+                .filter(i -> couldInteract(i))
+                .collect(Collectors.toList());
         return points;
     }
 
