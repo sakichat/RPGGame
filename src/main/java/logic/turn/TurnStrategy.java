@@ -1,39 +1,43 @@
 package logic.turn;
 
+import com.sun.org.apache.regexp.internal.RE;
 import logic.Play;
 import logic.map.Cell;
+import logic.map.Point;
 import logic.player.Player;
 
-public class TurnStrategy {
+import java.util.List;
+
+public abstract class TurnStrategy {
     private Player player;
 
-    public Player getPlayer() {
+    public final Player getPlayer() {
         return player;
     }
 
-    public void setPlayer(Player player) {
+    public final void setPlayer(Player player) {
         this.player = player;
     }
 
-    public void turn(){
+    protected abstract Point preferredNextLocation();
 
-    }
-    
-    private boolean attackTargetsInNear(){
+    public final List<Player> attackTargetsInNear(){
         // TODO: 08/04/2017
-        return false;
+        return null;
     }
 
-    protected boolean couldAttack(Player targetPlayer) {
-        return true;
-    }
+    protected abstract boolean couldAttack(Player targetPlayer);
 
-    private boolean interactTargetsInNear(){
+    public final List<Cell> interactTargetsInNear(){
         // TODO: 08/04/2017
-        return false;
+        return null;
     }
 
-    protected boolean couldInteract(Cell cell) {
-        return true;
-    }
+    protected abstract boolean couldInteract(Cell cell);
+
+    public abstract Point preferredAttackingLocation();
+
+    public abstract Point preferredInteractionLocation();
+
+
 }
