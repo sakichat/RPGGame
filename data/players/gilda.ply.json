@@ -15,7 +15,7 @@
           "_class": "logic.equipments.WeaponSolid",
           "_object": {
             "range": 2,
-            "name": "fire weapon",
+            "name": "fire",
             "type": "Weapon",
             "enhancedAttribute": "AB",
             "enhancedValue": 3
@@ -62,7 +62,6 @@
       }
     }
   },
-  "multipleAttacks": {},
   "level": 2,
   "name": "Gilda",
   "playerType": "Nimble",

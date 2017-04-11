@@ -107,13 +107,11 @@
       }
     }
   },
-  "multipleAttacks": {},
   "level": 4,
   "name": "testPlayer",
   "playerType": "Nimble",
   "playerParty": "Not Defined",
   "isDead": false,
   "hp": 31,
-  "totalHp": 31,
-  "remainStep": 0
+  "totalHp": 31
 }

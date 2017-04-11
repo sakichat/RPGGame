@@ -47,13 +47,11 @@
       }
     }
   },
-  "multipleAttacks": {},
   "level": 14,
   "name": "Wendru",
   "playerType": "Bully",
   "playerParty": "Not Defined",
   "isDead": false,
   "hp": 119,
-  "totalHp": 119,
-  "remainStep": 0
+  "totalHp": 119
 }

@@ -36,7 +36,7 @@
           "_object": {
             "range": 2,
             "weaponType": "RANGED",
-            "name": "fire weapon",
+            "name": "fire",
             "type": "Weapon",
             "enhancedAttribute": "AB",
             "enhancedValue": 3
@@ -45,13 +45,11 @@
       }
     }
   },
-  "multipleAttacks": {},
   "level": 10,
   "name": "Lippa",
   "playerType": "Nimble",
   "playerParty": "Not Defined",
   "isDead": false,
   "hp": 65,
-  "totalHp": 65,
-  "remainStep": 0
+  "totalHp": 65
 }

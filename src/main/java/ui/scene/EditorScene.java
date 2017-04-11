@@ -163,9 +163,7 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
 
         ItemEditingScene itemEditingScene = new ItemEditingScene();
         itemEditingScene.setEquipment(equipment);
-        if (equipment instanceof Weapon) {
-            itemEditingScene.setWeaponSubPanelEnabeld(true);
-        }
+        itemEditingScene.dataToView();
         navigationView.push(itemEditingScene);
     }
 

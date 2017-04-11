@@ -66,7 +66,7 @@
           "_object": {
             "range": 2,
             "weaponType": "RANGED",
-            "name": "fire weapon",
+            "name": "fire",
             "type": "Weapon",
             "enhancedAttribute": "AB",
             "enhancedValue": 3
@@ -75,13 +75,11 @@
       }
     }
   },
-  "multipleAttacks": {},
   "level": 4,
   "name": "Khankad",
   "playerType": "Tank",
   "playerParty": "Not Defined",
   "isDead": false,
   "hp": 30,
-  "totalHp": 30,
-  "remainStep": 0
+  "totalHp": 30
 }

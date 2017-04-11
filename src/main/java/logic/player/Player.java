@@ -734,33 +734,6 @@ public class Player extends Cell {
         return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
     }
 
-
-
-    /**
-     * Properties of remainStep and getter & setter.
-     */
-    @Deprecated
-    @Expose
-    private int remainStep;
-
-    /**
-     * Getter for remainStep.
-     * @return
-     */
-    @Deprecated
-    public int getRemainStep() {
-        return remainStep;
-    }
-
-    /**
-     * Setter for remainStep.
-     * @param remainStep
-     */
-    @Deprecated
-    public void setRemainStep(int remainStep) {
-        this.remainStep = remainStep;
-    }
-
     /**
      * The declaration of property strategy.
      */

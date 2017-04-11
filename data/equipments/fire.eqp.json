@@ -7,7 +7,7 @@
         "_object": {
           "range": 2,
           "weaponType": "RANGED",
-          "name": "fire weapon",
+          "name": "fire",
           "type": "Weapon",
           "enhancedAttribute": "AB",
           "enhancedValue": 3

@@ -48,6 +48,9 @@ public class ItemEditingScene extends Scene {
         if(equipment.getEnhancedAttribute() == null){
             equipment.setEnhancedAttribute(Player.ABILITY_STR);
         }
+        if (equipment instanceof Weapon) {
+            setWeaponSubPanelEnabeld(true);
+        }
         dataToView();
     }
 
@@ -265,9 +268,9 @@ public class ItemEditingScene extends Scene {
         weaponSubPanel.setSize(1000, 190);
         weaponSubPanel.setLocation(0, 260);
         weaponSubPanel.setBackground(new Color(0xFFFFFF));
-        if (weaponSubPanelEnabeld) {
-            contentView.add(weaponSubPanel);
-        }
+//        if (weaponSubPanelEnabeld) {
+//            contentView.add(weaponSubPanel);
+//        }
 
         label = new JLabel("Weapon", JLabel.RIGHT);
         label.setSize(120, 30);
@@ -487,19 +490,16 @@ public class ItemEditingScene extends Scene {
 
         armorClassButton.addActionListener(e -> {
             equipment.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
-//            enhanceOnLabel.setText("Armor Class");
             enhanceOnLabel.setText("AC");
         });
 
         attackBonusButton.addActionListener(e -> {
             equipment.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
-//            enhanceOnLabel.setText("Attack Bonus");
             enhanceOnLabel.setText("AB");
         });
 
         damageBonusButton.addActionListener(e -> {
             equipment.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
-//            enhanceOnLabel.setText("Damage Bonus");
             enhanceOnLabel.setText("DB");
         });
 
@@ -509,12 +509,6 @@ public class ItemEditingScene extends Scene {
         });
 
         validateButton.addActionListener(e -> {
-
-//            Integer enhancedValue = Integer.valueOf(valueTextField.getText());
-//            equipment.setEnhancedValue(enhancedValue);
-//
-//            Integer rangeValue = Integer.valueOf(rangeTextField.getText());
-//            ((Weapon)equipment).setRange(rangeValue);
 
             System.out.println(equipment);
 
@@ -595,26 +589,24 @@ public class ItemEditingScene extends Scene {
      */
     public void dataToView(){
 
-        if (equipment instanceof Weapon) {
-            nameLabel.setText(equipment.displayName());
-        } else {
-            nameLabel.setText(equipment.getName());
-        }
-
         typeLabel.setText(equipment.getType());
         enhanceOnLabel.setText(equipment.getEnhancedAttribute());
         valueTextField.setText(equipment.getEnhancedValue() + "");
 
-        if (equipment instanceof Weapon){
-            Weapon weapon = (Weapon) this.equipment;
+        if (weaponSubPanelEnabeld) {
 
-            int range = weapon.getRange();
-            rangeTextField.setText(range + "");
+            Weapon weapon = (Weapon)equipment;
 
-            String enhancementsChainText = weapon.enchantmentsChainText();
-            effectsValueLabel.setText(enhancementsChainText);
+            nameLabel.setText(equipment.displayName());
+
+            contentView.add(weaponSubPanel);
+            weaponTypeLabel.setText(weapon.getWeaponType().display());
+            rangeTextField.setText(weapon.getRange() + "");
+            effectsValueLabel.setText(weapon.enchantmentsChainText());
+
+        } else {
+            nameLabel.setText(equipment.getName());
         }
-
     }
 
 

@@ -80,13 +80,11 @@
       }
     }
   },
-  "multipleAttacks": {},
   "level": 2,
   "name": "Asheley",
   "playerType": "Nimble",
   "playerParty": "Not Defined",
   "isDead": false,
   "hp": 11,
-  "totalHp": 11,
-  "remainStep": 0
+  "totalHp": 11
 }
