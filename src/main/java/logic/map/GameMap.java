@@ -276,6 +276,7 @@ public class GameMap {
         GameMapGraph graph = getGraph();
         graph.addIgnoreType(Cell.Type.CHEST);
         graph.addIgnoreType(Cell.Type.PLAYER);
+        graph.addIgnoreType(Cell.Type.EXIT);
 
         Point startPoint = entrances.get(0).getLocation();
         Point endPoint = exits.get(0).getLocation();
