@@ -246,7 +246,7 @@ public class Player extends Cell {
 
     /**
      * The method is used to return the weapon player object is wearing.
-     * @return
+     * @return Weapon
      */
     public Weapon getWeapon() {
         Equipment equipment = equipments.get(Equipment.WEAPON);
@@ -256,9 +256,15 @@ public class Player extends Cell {
         return null;
     }
 
+    /**
+     * This method is used to return weapon's range.
+     * @return Integer
+     */
     public int getRangeForAttack() {
-        // TODO: 10/04/2017
-        return 0;
+        if (getWeapon().getRange() != 0) {
+            return getWeapon().getRange();
+        }
+        return 1;
     }
     
     /**
@@ -696,20 +702,22 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getTotalAttackBonus() {
-        // TODO: 10/04/2017
-        return level + enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS);
+        if (getWeapon().getWeaponType() == Weapon.Type.MELEE){
+            return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR);
+        } else {
+            return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR)
+                    + getWeapon().getRange();
+        }
     }
+
 
     /**
      * This method is used to calculate the total damage bonus value enhanced by equipments.
      * @return Integer
      */
     public int getTotalDamageBonus() {
-        // TODO: 10/04/2017
-        return getAbilityModifier(ABILITY_STR) + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
+        return rollDamage() + getAbilityModifier(ABILITY_STR);
     }
-
-
 
     /**
      * Properties of remainStep and getter & setter.
@@ -791,20 +799,37 @@ public class Player extends Cell {
 
 
     public void attack(Player player) {
-        // TODO: 10/04/2017
+        if (shouldDealDamage(player)) {
+            if (Dice.rool(20) == 1) {
+                
+            }
+        }
+        // shoulddealdamage
+        // attack roll > 1 true
+        //      damage roll
+        //           damage roll
+        //  weapon generate effect if not null weapon.attach(attch)
     }
 
     // attack
     private boolean shouldDealDamage(Player player){
-        // TODO: 10/04/2017
+        int attackRoll = Dice.rool(20) + getTotalAttackBonus();
         return false;
     }
 
+    /**
+     * This method is used for roll the damage
+     * @return Integer
+     */
     private int rollDamage(){
-        // TODO: 10/04/2017
-        return 0;
-    }
+        int rollDamage = Dice.rool(8) + getAbilityModifier(ABILITY_STR);
 
+        if (rollDamage <= 1) {
+            return 1;
+        }
+
+        return rollDamage;
+    }
 
     /**
      * The method is override for the equals method, which is used to compare player object.
