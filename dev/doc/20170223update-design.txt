@@ -109,8 +109,9 @@ Attack
 Strategy
 +   Computer
     +   move
-        to exit
+        to hostile
         shortest path,
+        to exit
         though onPlayer, chest
     +   attack *
         onPlayer if on the way && hostile
@@ -141,7 +142,7 @@ Strategy
 
 
 Effect
-+   Freezing
++   Freezing*
     +   move
     cannot move in EB turns
 
@@ -153,7 +154,7 @@ Effect
     +   hp
         die now
 
-+   Frightening
++   Frightening*
     +   move
         run away from character in EB turns
 
@@ -205,6 +206,68 @@ Effect
 
 
 
+
+turn
++   effects
++   move
+    +   computer
+        +   select
+        +   move by timer
+    +   human
+        +   show range
+        +   select
+        +   move by timer
++   attack
+    +   computer
+        if (has target){
+            +   select
+            +   attack
+        }
+    +   human
+        if (has target){
+            +   show range
+            +   select
+            +   attack
+        }
++   interact
+    +   computer
+        if (has target){
+            +   select
+            +   interact
+        }
+    +   human
+        if (has target){
+            +   show range
+            +   select
+            +   interact
+        }
+
+
+
+
+
+Layers
++   glass celling
+    *   glass
+
++   highlight
+    +   current
+        current focus point
+    +   selection
+        selection focus point
+
++   objects
+    *   player cells
+        +   hp bar
+        +   effects
+        +   player
+    *   non-player cells
+
++   range
+    *   effective cell
+
++   background
+    *   background cell
 
 
 
