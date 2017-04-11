@@ -1,4 +1,12 @@
-import logic.*;
+import logic.CampaignTest;
+import logic.PlayTest;
+import logic.equipment.EquipmentTest;
+import logic.map.GameMapGraphTest;
+import logic.map.MapValidatorTest;
+import logic.map.MovementTest;
+import logic.map.PathTest;
+import logic.player.PlayerExplorerTest;
+import logic.player.PlayerTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import persistence.FileManagerTest;
@@ -12,11 +20,15 @@ import persistence.MapFileManagerTest;
  * This class is for testSuite.
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({CampaignTest.class,
+@Suite.SuiteClasses({
                     EquipmentTest.class ,
+                    GameMapGraphTest.class,
                     MapValidatorTest.class,
+                    MovementTest.class,
+                    PathTest.class,
                     PlayerExplorerTest.class,
                     PlayerTest.class,
+                    CampaignTest.class,
                     PlayTest.class,
                     FileManagerTest.class,
                     MapFileManagerTest.class})

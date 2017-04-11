@@ -1,4 +1,4 @@
-package logic;
+package logic.player;
 
 import logic.player.*;
 import org.junit.Assert;

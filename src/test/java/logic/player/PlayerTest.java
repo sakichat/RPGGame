@@ -1,9 +1,8 @@
-package logic;
+package logic.player;
 
 import logic.equipment.Equipment;
 import logic.equipment.EquipmentFactory;
 import logic.map.Chest;
-import logic.player.Player;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -96,9 +95,7 @@ public class PlayerTest {
         int preCon = player.getTotalAbilityScore(Player.ABILITY_CON);
         int preWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
         int preCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
-        int preAC  = player.getArmorClass();
-        int preAB  = player.getAttackBonus();
-        int preDB  = player.getDamageBonus();
+        int dexModifier1 = player.getAbilityModifier(Player.ABILITY_DEX);
 
         player.equip(equipmentHelmetInt3);
 
@@ -108,9 +105,7 @@ public class PlayerTest {
         int nowCon = player.getTotalAbilityScore(Player.ABILITY_CON);
         int nowWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
         int nowCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
-        int nowAC  = player.getArmorClass();
-        int nowAB  = player.getAttackBonus();
-        int nowDB  = player.getDamageBonus();
+        int dexModifier = player.getAbilityModifier(Player.ABILITY_DEX);
 
         Assert.assertTrue(preInt == nowInt - equipmentHelmetInt3.getEnhancedValue());
         Assert.assertTrue(preStr == nowStr);
@@ -118,9 +113,7 @@ public class PlayerTest {
         Assert.assertTrue(preCon == nowCon);
         Assert.assertTrue(preWis == nowWis);
         Assert.assertTrue(preCha == nowCha);
-        Assert.assertTrue(preAC  == nowAC);
-        Assert.assertTrue(preAB  == nowAB);
-        Assert.assertTrue(preDB  == nowDB);
+
     }
 
     /**

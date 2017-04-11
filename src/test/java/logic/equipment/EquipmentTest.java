@@ -1,7 +1,5 @@
-package logic;
+package logic.equipment;
 
-import logic.equipment.Equipment;
-import logic.equipment.EquipmentFactory;
 import logic.player.Player;
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,15 +24,35 @@ public class EquipmentTest {
     @Test
     public void validateWeapon() throws Exception {
         EquipmentFactory equipmentFactory = new EquipmentFactory();
-        
-        equipment = equipmentFactory.newEquipment("", Equipment.WEAPON, Player.ATTRIBUTE_ARMOR_CLASS, 3);
-        Assert.assertEquals(false, equipment.validate());
 
-        equipment = equipmentFactory.newEquipment("", Equipment.WEAPON, Player.ABILITY_STR, 6);
-        Assert.assertEquals(false, equipment.validate());
+        Weapon weapon = equipmentFactory.newWeapon();
+        weapon.setType(Equipment.WEAPON);
+        weapon.setEnhancedValue(3);
+        weapon.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
+        weapon.setRange(2);
+        weapon.setWeaponType(Weapon.Type.RANGED);
 
-        equipment = equipmentFactory.newEquipment("", Equipment.WEAPON, Player.ATTRIBUTE_DAMAGE_BONUS, 2);
-        Assert.assertEquals(true, equipment.validate());
+        Assert.assertTrue(!weapon.validate());
+
+
+        weapon = equipmentFactory.newWeapon();
+        weapon.setType(Equipment.WEAPON);
+        weapon.setEnhancedAttribute(Player.ABILITY_STR);
+        weapon.setEnhancedValue(1);
+        weapon.setRange(1);
+        weapon.setWeaponType(Weapon.Type.RANGED);
+
+        Assert.assertTrue(!weapon.validate());
+
+
+        weapon = equipmentFactory.newWeapon();
+        weapon.setType(Equipment.WEAPON);
+        weapon.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
+        weapon.setEnhancedValue(2);
+        weapon.setRange(1);
+        weapon.setWeaponType(Weapon.Type.MELEE);
+
+        Assert.assertTrue(weapon.validate());
     }
 
     /**

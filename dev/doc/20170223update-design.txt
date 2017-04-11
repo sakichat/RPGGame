@@ -242,6 +242,12 @@ turn
             +   interact
         }
 
+template
++   effects.turn()
+    for each, pause
++   showRange
+    pause
++
 
 
 

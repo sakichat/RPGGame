@@ -1,6 +1,7 @@
 package logic.player;
 
 import com.google.gson.annotations.Expose;
+import logic.Play;
 import logic.effect.Effect;
 import logic.map.Cell;
 import logic.map.Chest;
@@ -246,7 +247,7 @@ public class Player extends Cell {
 
     /**
      * The method is used to return the weapon player object is wearing.
-     * @return
+     * @return Weapon
      */
     public Weapon getWeapon() {
         Equipment equipment = equipments.get(Equipment.WEAPON);
@@ -256,9 +257,23 @@ public class Player extends Cell {
         return null;
     }
 
+    /**
+     * This method is used to return weapon's range.
+     * @return Integer
+     */
     public int getRangeForAttack() {
-        // TODO: 10/04/2017
-        return 0;
+        if (this.getWeapon().getRange() != 0) {
+            return this.getWeapon().getRange();
+        }
+        return 1;
+    }
+
+    /**
+     * This method is used to return movement's range
+     * @return Integer
+     */
+    public int getRangeForMove(){
+        return 3;
     }
     
     /**
@@ -683,56 +698,39 @@ public class Player extends Cell {
      */
 
     /**
-     * This method is used to calculate the armor class value based on the D20 rules.
-     * @return Integer
-     */
-    public int getArmorClass() {
-        int dexModifier = getAbilityModifier(ABILITY_DEX);
-        return 10 + dexModifier;
-    }
-
-    /**
      * This method is used to get the total armor class of object after enhanced by equipments.
      * @return Integer
      */
     public int getTotalArmorClass() {
-        return getArmorClass() + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
+        return 10 + getAbilityModifier(ABILITY_DEX) + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
     }
 
-
-    /**
-     * This method is used to calculate the attack bonus value based on the D20 rules.
-     * @return Integer
-     */
-    public int getAttackBonus() {
-        return level;
-    }
 
     /**
      * This method is used to calculate the total attack bonus value enhanced by equipments.
      * @return Integer
      */
     public int getTotalAttackBonus() {
-        // TODO: 10/04/2017
-        return getAttackBonus() + enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS);
+        if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
+            return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR);
+        } else {
+            return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR)
+                    + this.getWeapon().getRange();
+        }
     }
 
-    /**
-     * This method is used to calculate the damage bonus value based on the D20 rules.
-     * @return Integer
-     */
-    public int getDamageBonus() {
-        return getAbilityModifier(ABILITY_STR);
-    }
 
     /**
      * This method is used to calculate the total damage bonus value enhanced by equipments.
      * @return Integer
      */
     public int getTotalDamageBonus() {
-        // TODO: 10/04/2017
-        return getDamageBonus() + enhancedValueOnEquipments(ATTRIBUTE_DAMAGE_BONUS);
+        if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
+            return rollDamage() + getAbilityModifier(ABILITY_STR);
+        }
+        return rollDamage();
     }
+
 
     /**
      * The declaration of property strategy.
@@ -789,20 +787,47 @@ public class Player extends Cell {
 
 
     public void attack(Player player) {
-        // TODO: 10/04/2017
+        int damage;
+        if (shouldDealDamage(player)) {
+            if (Dice.rool(20) != 1) {
+                damage = Dice.rool(8) + getAbilityModifier(ABILITY_STR);
+                player.damage(damage);
+                this.getWeapon()
+            }
+        }
+        // shoulddealdamage
+        // attack roll > 1 true
+        //      damage roll
+        //           damage roll
+        //  weapon generate effect if not null weapon.attach(attch)
     }
 
-    // attack
-    private boolean shouldDealDamage(Player player){
-        // TODO: 10/04/2017
+    /**
+     * This method is used to judge whether player do the damage
+     * @param targetPlayer
+     * @return Boolean
+     */
+    private boolean shouldDealDamage(Player targetPlayer){
+        int attackRoll = Dice.rool(20) + getTotalAttackBonus() + getAbilityModifier(ABILITY_STR);
+        if (attackRoll > targetPlayer.getTotalArmorClass()) {
+            return true;
+        }
         return false;
     }
 
+    /**
+     * This method is used for roll the damage
+     * @return Integer
+     */
     private int rollDamage(){
-        // TODO: 10/04/2017
-        return 0;
-    }
+        int rollDamage = Dice.rool(8) + getAbilityModifier(ABILITY_STR);
 
+        if (rollDamage <= 1) {
+            return 1;
+        }
+
+        return rollDamage;
+    }
 
     /**
      * The method is override for the equals method, which is used to compare player object.
@@ -823,6 +848,7 @@ public class Player extends Cell {
     public int hashCode() {
         return super.hashCode();
     }
+
 
 
 }
