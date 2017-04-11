@@ -4,18 +4,24 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Kai QI on 2017/4/6.
+ * @author Kai Qi
+ * @version 0.2
  */
 public class PathTest {
-
+    /**
+     * These parameters are for initializing.
+     */
     private Point location1;
     private Point location2;
     private Path path;
     private Point location3;
 
+    /**
+     * This method is for initializing.
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         path = new Path();
@@ -25,11 +31,10 @@ public class PathTest {
         path.addLocation(location1);
     }
 
-    @Test
-    public void addLocation() throws Exception {
-
-    }
-
+    /**
+     * This method tests the addLocation.
+     * @throws Exception
+     */
     @Test
     public void addLocationsToLocation() throws Exception {
         {
@@ -60,6 +65,10 @@ public class PathTest {
 
     }
 
+    /**
+     * This method tests the movement.
+     * @throws Exception
+     */
     @Test
     public void getMovement() throws Exception {
         {
@@ -99,8 +108,5 @@ public class PathTest {
             Assert.assertEquals(7, movement.getMoves().size());
         }
     }
-
-
-
 
 }

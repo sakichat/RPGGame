@@ -12,7 +12,7 @@ import org.junit.Test;
  *
  * This class tests map validation.
  */
-public class MapValidatorTest {
+public class GameMapTest {
     /**
      * This parameter is to define a GameMap as an arttribute.
      */

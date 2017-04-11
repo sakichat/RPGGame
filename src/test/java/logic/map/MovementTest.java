@@ -4,19 +4,26 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Kai QI on 2017/4/6.
+ * @author Kai Qi
+ * @version 0.2
  */
 public class MovementTest {
 
+    /**
+     * These parameters are for initializing.
+     */
     private Movement movement;
     private Point.Direction move1;
     private Point.Direction move2;
     private Point.Direction move3;
     private Point.Direction move4;
 
+    /**
+     * This method is for initializing.
+     * @throws Exception
+     */
     @Before
     public void setUp() throws Exception {
         movement = new Movement();
@@ -27,7 +34,10 @@ public class MovementTest {
         movement.addMove(move1);
     }
 
-
+    /**
+     * This method tests the addMove.
+     * @throws Exception
+     */
     @Test
     public void addMove() throws Exception {
         Assert.assertEquals(1, movement.getMoves().size());
