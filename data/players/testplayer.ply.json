@@ -1,48 +1,24 @@
 {
   "abilityScores": {
-    "STR": 12,
-    "WIS": 16,
-    "CON": 8,
-    "DEX": 8,
-    "CHA": 8,
-    "INT": 8
+    "STR": 14,
+    "WIS": 10,
+    "CON": 16,
+    "DEX": 18,
+    "CHA": 13,
+    "INT": 14
   },
   "backpack": [
     {
-      "_class": "logic.equipments.WeaponDecoratorFreezing",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
-        "decoratedWeapon": {
-          "_class": "logic.equipments.WeaponSolid",
-          "_object": {
-            "range": 2,
-            "name": "Gare",
-            "type": "Weapon",
-            "enhancedAttribute": "DB",
-            "enhancedValue": 5
-          }
-        }
-      }
-    },
-    {
-      "_class": "logic.equipments.EquipmentSolid",
-      "_object": {
-        "name": "Cyne",
-        "type": "Boots",
+        "name": "Israh",
+        "type": "Armor",
         "enhancedAttribute": "AC",
-        "enhancedValue": 5
-      }
-    },
-    {
-      "_class": "logic.equipments.EquipmentSolid",
-      "_object": {
-        "name": "Homes",
-        "type": "Ring",
-        "enhancedAttribute": "CHA",
         "enhancedValue": 2
       }
     },
     {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
         "name": "Iran",
         "type": "Helmet",
@@ -51,18 +27,48 @@
       }
     },
     {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
-        "name": "Israh",
-        "type": "Armor",
-        "enhancedAttribute": "AC",
+        "name": "homes",
+        "type": "Ring",
+        "enhancedAttribute": "CHA",
         "enhancedValue": 2
+      }
+    },
+    {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    },
+    {
+      "_class": "logic.equipment.WeaponDecoratorSlaying",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponDecoratorBurning",
+          "_object": {
+            "decoratedWeapon": {
+              "_class": "logic.equipment.WeaponSolid",
+              "_object": {
+                "range": 1,
+                "weaponType": "MELEE",
+                "name": "Gare",
+                "type": "Weapon",
+                "enhancedAttribute": "DB",
+                "enhancedValue": 5
+              }
+            }
+          }
+        }
       }
     }
   ],
   "equipments": {
     "Belt": {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
         "name": "Ered",
         "type": "Belt",
@@ -71,7 +77,7 @@
       }
     },
     "Ring": {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
         "name": "Tige",
         "type": "Ring",
@@ -80,13 +86,24 @@
       }
     },
     "Weapon": {
-      "_class": "logic.equipments.WeaponSolid",
+      "_class": "logic.equipment.WeaponDecoratorBurning",
       "_object": {
-        "range": 6,
-        "name": "Wige",
-        "type": "Weapon",
-        "enhancedAttribute": "AB",
-        "enhancedValue": 4
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponDecoratorFreezing",
+          "_object": {
+            "decoratedWeapon": {
+              "_class": "logic.equipment.WeaponSolid",
+              "_object": {
+                "range": 1,
+                "weaponType": "MELEE",
+                "name": "Wige",
+                "type": "Weapon",
+                "enhancedAttribute": "AB",
+                "enhancedValue": 4
+              }
+            }
+          }
+        }
       }
     }
   },
@@ -96,5 +113,7 @@
   "playerType": "Nimble",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 28
+  "hp": 31,
+  "totalHp": 31,
+  "remainStep": 0
 }

@@ -1,36 +1,47 @@
 {
   "abilityScores": {
-    "STR": 15,
-    "WIS": 11,
+    "STR": 16,
+    "WIS": 8,
     "CON": 17,
     "DEX": 16,
-    "CHA": 14,
-    "INT": 15
+    "CHA": 12,
+    "INT": 14
   },
   "backpack": [
     {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.WeaponDecoratorBurning",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponDecoratorFreezing",
+          "_object": {
+            "decoratedWeapon": {
+              "_class": "logic.equipment.WeaponSolid",
+              "_object": {
+                "range": 1,
+                "weaponType": "MELEE",
+                "name": "Wige",
+                "type": "Weapon",
+                "enhancedAttribute": "AB",
+                "enhancedValue": 4
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
         "name": "Ered",
         "type": "Belt",
         "enhancedAttribute": "STR",
         "enhancedValue": 2
       }
-    },
-    {
-      "_class": "logic.equipments.WeaponSolid",
-      "_object": {
-        "range": 6,
-        "name": "Wige",
-        "type": "Weapon",
-        "enhancedAttribute": "AB",
-        "enhancedValue": 4
-      }
     }
   ],
   "equipments": {
     "Helmet": {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
         "name": "Adrah",
         "type": "Helmet",
@@ -39,7 +50,7 @@
       }
     },
     "Belt": {
-      "_class": "logic.equipments.EquipmentSolid",
+      "_class": "logic.equipment.EquipmentSolid",
       "_object": {
         "name": "Ered",
         "type": "Belt",
@@ -48,12 +59,13 @@
       }
     },
     "Weapon": {
-      "_class": "logic.equipments.WeaponDecoratorBurning",
+      "_class": "logic.equipment.WeaponDecoratorBurning",
       "_object": {
         "decoratedWeapon": {
-          "_class": "logic.equipments.WeaponSolid",
+          "_class": "logic.equipment.WeaponSolid",
           "_object": {
             "range": 2,
+            "weaponType": "RANGED",
             "name": "fire weapon",
             "type": "Weapon",
             "enhancedAttribute": "AB",
@@ -69,5 +81,7 @@
   "playerType": "Tank",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 32
+  "hp": 30,
+  "totalHp": 30,
+  "remainStep": 0
 }

@@ -1,34 +1,41 @@
 {
   "abilityScores": {
-    "STR": 16,
-    "WIS": 11,
-    "CON": 17,
-    "DEX": 17,
-    "CHA": 12,
-    "INT": 15
+    "STR": 12,
+    "WIS": 8,
+    "CON": 12,
+    "DEX": 13,
+    "CHA": 11,
+    "INT": 12
   },
   "backpack": [
     {
       "_class": "logic.equipment.EquipmentSolid",
       "_object": {
-        "name": "Israh",
-        "type": "Armor",
+        "name": "Cyne",
+        "type": "Boots",
         "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    },
+    {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Tige",
+        "type": "Ring",
+        "enhancedAttribute": "CON",
         "enhancedValue": 2
       }
     },
     {
       "_class": "logic.equipment.EquipmentSolid",
       "_object": {
-        "name": "Iran",
-        "type": "Helmet",
-        "enhancedAttribute": "WIS",
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
         "enhancedValue": 2
       }
-    }
-  ],
-  "equipments": {
-    "Weapon": {
+    },
+    {
       "_class": "logic.equipment.WeaponDecoratorBurning",
       "_object": {
         "decoratedWeapon": {
@@ -44,14 +51,25 @@
         }
       }
     }
+  ],
+  "equipments": {
+    "Helmet": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Adrah",
+        "type": "Helmet",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 4
+      }
+    }
   },
   "multipleAttacks": {},
-  "level": 10,
-  "name": "Lippa",
+  "level": 2,
+  "name": "Gildai",
   "playerType": "Nimble",
   "playerParty": "Not Defined",
   "isDead": false,
-  "hp": 65,
-  "totalHp": 65,
+  "hp": 14,
+  "totalHp": 14,
   "remainStep": 0
 }
