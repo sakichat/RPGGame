@@ -5,7 +5,7 @@ import logic.map.Point;
 
 public class TurnStrategyComputer extends TurnStrategy {
     @Override
-    protected Point preferredNextLocation() {
+    public Point preferredNextLocation() {
         return null;
     }
 

@@ -12,7 +12,7 @@ import java.util.List;
 public class TurnStrategyFriendly extends TurnStrategy {
 
     @Override
-    protected Point preferredNextLocation() {
+    public Point preferredNextLocation() {
 
         GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
