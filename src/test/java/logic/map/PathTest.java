@@ -109,4 +109,28 @@ public class PathTest {
         }
     }
 
+    @Test
+    public void equalsToPath() throws Exception {
+//        path.addLocationsToLocation(location2);
+//        for (Point point : path) {
+//            System.out.println(point);
+//        }
+        path.addLocation(new Point(3, 2));
+        path.addLocation(new Point(3, 3));
+        path.addLocation(new Point(3, 4));
+        path.addLocation(new Point(3, 5));
+        
+        Path path2 = new Path();
+        path2.addLocation(new Point(3, 1));
+        path2.addLocation(new Point(3, 2));
+        path2.addLocation(new Point(3, 3));
+        path2.addLocation(new Point(3, 4));
+        path2.addLocation(new Point(3, 5));
+
+        for (Point point : path2) {
+            System.out.println(point);
+        }
+
+        Assert.assertTrue(path.equalsToPath(path2));
+    }
 }
