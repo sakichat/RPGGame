@@ -17,6 +17,18 @@ import java.util.*;
  */
 public class Play {
 
+    public static class CurrentPlay{
+        private static Play currentPlay;
+
+        public  Play getCurrentPlay() {
+            return currentPlay;
+        }
+
+        public  void setCurrentPlay(Play currentPlay) {
+            this.currentPlay = currentPlay;
+        }
+    }
+
     @Expose
     private String name;
 
