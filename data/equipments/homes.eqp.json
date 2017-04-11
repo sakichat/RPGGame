@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipment.EquipmentSolid",
+    "_object": {
+      "name": "homes",
+      "type": "Ring",
+      "enhancedAttribute": "CHA",
+      "enhancedValue": 2
+    }
+  }
+}

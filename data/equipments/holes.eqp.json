@@ -1,0 +1,11 @@
+{
+  "equipment": {
+    "_class": "logic.equipment.EquipmentSolid",
+    "_object": {
+      "name": "holes",
+      "type": "Ring",
+      "enhancedAttribute": "WIS",
+      "enhancedValue": 5
+    }
+  }
+}
