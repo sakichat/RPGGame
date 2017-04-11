@@ -1,6 +1,7 @@
 package logic.player;
 
 import com.google.gson.annotations.Expose;
+import logic.Play;
 import logic.effect.Effect;
 import logic.map.Cell;
 import logic.map.Chest;
@@ -265,6 +266,14 @@ public class Player extends Cell {
             return getWeapon().getRange();
         }
         return 1;
+    }
+
+    /**
+     * This method is used to return movement's range
+     * @return Integer
+     */
+    public int getRangeForMove(){
+        return 3;
     }
     
     /**
@@ -799,9 +808,10 @@ public class Player extends Cell {
 
 
     public void attack(Player player) {
+        int damage = 0;
         if (shouldDealDamage(player)) {
-            if (Dice.rool(20) == 1) {
-                
+            if (Dice.rool(20) != 1) {
+                damage = Dice.rool(8) + getAbilityModifier(ABILITY_STR);
             }
         }
         // shoulddealdamage
@@ -811,9 +821,16 @@ public class Player extends Cell {
         //  weapon generate effect if not null weapon.attach(attch)
     }
 
-    // attack
-    private boolean shouldDealDamage(Player player){
-        int attackRoll = Dice.rool(20) + getTotalAttackBonus();
+    /**
+     * This method is used to judge whether player do the damage
+     * @param targetPlayer
+     * @return Boolean
+     */
+    private boolean shouldDealDamage(Player targetPlayer){
+        int attackRoll = Dice.rool(20) + getTotalAttackBonus() + getAbilityModifier(ABILITY_STR);
+        if (attackRoll > targetPlayer.getTotalArmorClass()) {
+            return true;
+        }
         return false;
     }
 
