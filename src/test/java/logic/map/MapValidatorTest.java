@@ -1,6 +1,5 @@
-package logic;
+package logic.map;
 
-import logic.map.*;
 import logic.player.Player;
 import org.junit.Assert;
 import org.junit.Before;
@@ -93,10 +92,11 @@ public class MapValidatorTest {
      */
     @Test
     public void validate5() throws Exception{
-        gameMapTest.addCell(new Obstacle(), new Point(0, 0));
-        gameMapTest.addCell(new Obstacle(), new Point(2, 2));
+//        gameMapTest.addCell(new Obstacle(), new Point(0, 0));
+//        gameMapTest.addCell(new Obstacle(), new Point(2, 2));
 
         String reachable = gameMapTest.validate();
+        System.out.println(reachable);
 
         Assert.assertTrue(GameMap.VALIDATION_SUCCESS == gameMapTest.validate());
     }

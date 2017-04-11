@@ -1,9 +1,8 @@
-package logic;
+package logic.player;
 
 import logic.equipment.Equipment;
 import logic.equipment.EquipmentFactory;
 import logic.map.Chest;
-import logic.player.Player;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -114,7 +113,7 @@ public class PlayerTest {
         Assert.assertTrue(preCon == nowCon);
         Assert.assertTrue(preWis == nowWis);
         Assert.assertTrue(preCha == nowCha);
-   
+
     }
 
     /**
