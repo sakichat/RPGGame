@@ -21,12 +21,37 @@ public abstract class TurnStrategy {
         this.player = player;
     }
 
-    protected abstract Point preferredNextLocation();
+    public abstract Point preferredNextLocation();
 
     public final List<Point> attackTargetsInNear(){
         GameMap gameMap = Play.getCurrentPlay().getCurrentMap();
         GameMapGraph gameMapGraph = gameMap.getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForAttack()).stream().filter(i -> {if ((Player)(gameMap.getCell(i)))}).collect(Collectors.toList());
+        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForAttack());
+
+//        points = points.stream()
+//                .filter(i -> {
+//                    Cell cell = gameMap.getCell(i);
+//                    if (cell == null) {
+//                        return false;
+//                    }
+//
+//                    if (!(cell instanceof Player)){
+//                        return false;
+//                    }
+//
+//                    Player player = (Player) cell;
+//                    return player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE);
+//                })
+//                .collect(Collectors.toList());
+
+
+        points = points.stream()
+                .map(gameMap::getCell)
+                .filter(c -> c != null && c instanceof Player)
+                .map(c -> (Player)c)
+                .filter(p -> p.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))
+                .map(Player::getLocation)
+                .collect(Collectors.toList());
         return points;
 
     }
@@ -36,7 +61,9 @@ public abstract class TurnStrategy {
     public final List<Point> interactTargetsInNear(){
 
         GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1).stream().filter(i -> couldInteract(i)).collect(Collectors.toList());
+        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1).stream()
+                .filter(i -> couldInteract(i))
+                .collect(Collectors.toList());
         return points;
     }
 

@@ -8,7 +8,9 @@ import logic.map.Chest;
 import logic.Dice;
 import logic.equipment.Weapon;
 import logic.equipment.Equipment;
+import logic.map.Point;
 import logic.turn.TurnStrategy;
+import logic.turn.TurnThread;
 
 import java.util.*;
 
@@ -731,28 +733,6 @@ public class Player extends Cell {
         return 0;
     }
 
-
-    /**
-     * The declaration of property strategy.
-     */
-    private TurnStrategy strategy;
-
-    /**
-     * Getter for strategy.
-     * @return
-     */
-    public TurnStrategy getStrategy() {
-        return strategy;
-    }
-
-    /**
-     * Setter for strategy.
-     * @param strategy Strategy
-     */
-    public void setStrategy(TurnStrategy strategy) {
-        this.strategy = strategy;
-    }
-
     /**
      * The declaration of the property effects, which used to store the effects of enchantments weapon.
      */
@@ -847,4 +827,52 @@ public class Player extends Cell {
 
 
 
+    /**
+     * The declaration of property strategy.
+     */
+    private TurnStrategy strategy;
+
+    /**
+     * Getter for strategy.
+     * @return
+     */
+    public TurnStrategy getStrategy() {
+        return strategy;
+    }
+
+    /**
+     * Setter for strategy.
+     * @param strategy Strategy
+     */
+    public void setStrategy(TurnStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void turn(){
+        //  effects
+        for (Effect effect : effects) {
+            effect.turn();
+            TurnThread.pause(TurnThread.PAUSE_NORMAL);
+        }
+
+        if (hp == 0) {
+            return;
+        }
+
+        //  show range;
+        // TODO: 10/04/2017
+
+        Point location = strategy.preferredNextLocation();
+        if (location != null) {
+            //  show target
+            // TODO: 10/04/2017
+
+            //  move animation
+            // TODO: 10/04/2017
+        }
+
+
+
+
+    }
 }

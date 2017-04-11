@@ -10,12 +10,12 @@ import java.util.List;
 public class TurnStrategyFrightened extends TurnStrategy {
 
     @Override
-    protected Point preferredNextLocation() {
+    public Point preferredNextLocation() {
         GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
 
         if (points.size() != 0) {
-            Point result = points.get((int)(Math.random() * points.size()));
+            Point result = points.get((int) (Math.random() * points.size()));
             return result;
         }
 

@@ -4,7 +4,7 @@ import logic.map.Point;
 
 public class TurnStrategyHuman extends TurnStrategy {
     @Override
-    protected Point preferredNextLocation() {
+    public Point preferredNextLocation() {
         return null;
     }
 
