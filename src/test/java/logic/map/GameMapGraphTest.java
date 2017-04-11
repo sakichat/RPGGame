@@ -118,11 +118,21 @@ public class GameMapGraphTest {
     @Test
     public void shortestPath() throws Exception {
         GameMapGraph graph = realMap.getGraph();
-        Path path = graph.shortestPath(centerPoint, rightTopPoint);
+//        Path path = graph.shortestPath(centerPoint, rightTopPoint);
+//        int length = path.getLocations().size();
+//
+//        Assert.assertEquals(11, length);
 
-        int length = path.getLocations().size();
 
-        Assert.assertEquals(11, length);
+        graph.printValues();
+//        Path path1 = graph.shortestPath(new Point(0, 0), new Point(0, 1));
+        Path path1 = graph.shortestPath(new Point(3, 1), new Point(5, 1));
+//        Path path1 = graph.shortestPath(new Point(3, 3), new Point(5, 3));
+//        Path path1 = graph.shortestPath(new Point(4, 4), new Point(5, 3));
+//        Path path1 = graph.shortestPath(new Point(7, 5), new Point(5, 3));
+//        Path path1 = graph.shortestPath(new Point(0, 8), new Point(5, 3));
+        graph.setValueByPath(path1);
+        graph.printValues();
     }
 
     /**

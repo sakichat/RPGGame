@@ -92,8 +92,8 @@ public class GameMapTest {
      */
     @Test
     public void validate5() throws Exception{
-//        gameMapTest.addCell(new Obstacle(), new Point(0, 0));
-//        gameMapTest.addCell(new Obstacle(), new Point(2, 2));
+        gameMapTest.addCell(new Obstacle(), new Point(0, 0));
+        gameMapTest.addCell(new Obstacle(), new Point(2, 2));
 
         String reachable = gameMapTest.validate();
         System.out.println(reachable);
