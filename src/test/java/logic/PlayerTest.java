@@ -97,9 +97,6 @@ public class PlayerTest {
         int preWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
         int preCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
         int dexModifier1 = player.getAbilityModifier(Player.ABILITY_DEX);
-        int preAC  = 10 + dexModifier1;
-        int preAB  = player.level;
-        int preDB  = player.getAbilityModifier(Player.ABILITY_STR);
 
         player.equip(equipmentHelmetInt3);
 
@@ -110,9 +107,6 @@ public class PlayerTest {
         int nowWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
         int nowCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
         int dexModifier = player.getAbilityModifier(Player.ABILITY_DEX);
-        int nowAC  = 10 + dexModifier;
-        int nowAB  = player.level;
-        int nowDB  = player.getAbilityModifier(Player.ABILITY_STR);
 
         Assert.assertTrue(preInt == nowInt - equipmentHelmetInt3.getEnhancedValue());
         Assert.assertTrue(preStr == nowStr);
@@ -120,9 +114,7 @@ public class PlayerTest {
         Assert.assertTrue(preCon == nowCon);
         Assert.assertTrue(preWis == nowWis);
         Assert.assertTrue(preCha == nowCha);
-        Assert.assertTrue(preAC  == nowAC);
-        Assert.assertTrue(preAB  == nowAB);
-        Assert.assertTrue(preDB  == nowDB);
+   
     }
 
     /**
