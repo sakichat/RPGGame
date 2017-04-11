@@ -81,14 +81,6 @@ public class Path implements Iterable<Point> {
      */
     protected boolean equalsToPath(Path path) {
 
-//        for (Point point : this) {
-//            for (Point targetPoint : path) {
-//                if (!point.equals(targetPoint)) {
-//                    return false;
-//                }
-//            }
-//        }
-
         List<Point> targetLocations = path.getLocations();
         if (locations.size() != targetLocations.size()) {
             return false;
