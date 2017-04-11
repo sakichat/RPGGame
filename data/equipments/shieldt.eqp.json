@@ -1,8 +1,8 @@
 {
   "equipment": {
-    "_class": "logic.equipments.EquipmentSolid",
+    "_class": "logic.equipment.EquipmentSolid",
     "_object": {
-      "name": "shield",
+      "name": "ShieldT",
       "type": "Shield",
       "enhancedAttribute": "AC",
       "enhancedValue": 1

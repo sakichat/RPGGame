@@ -1,6 +1,6 @@
 {
   "equipment": {
-    "_class": "logic.equipments.EquipmentSolid",
+    "_class": "logic.equipment.EquipmentSolid",
     "_object": {
       "name": "Nela",
       "type": "Belt",
