@@ -262,8 +262,8 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getRangeForAttack() {
-        if (getWeapon().getRange() != 0) {
-            return getWeapon().getRange();
+        if (this.getWeapon().getRange() != 0) {
+            return this.getWeapon().getRange();
         }
         return 1;
     }
@@ -711,11 +711,11 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getTotalAttackBonus() {
-        if (getWeapon().getWeaponType() == Weapon.Type.MELEE){
+        if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
             return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR);
         } else {
             return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR)
-                    + getWeapon().getRange();
+                    + this.getWeapon().getRange();
         }
     }
 
@@ -725,7 +725,10 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getTotalDamageBonus() {
-        return rollDamage() + getAbilityModifier(ABILITY_STR);
+        if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
+            return rollDamage() + getAbilityModifier(ABILITY_STR);
+        }
+        return rollDamage();
     }
 
     /**
@@ -808,10 +811,12 @@ public class Player extends Cell {
 
 
     public void attack(Player player) {
-        int damage = 0;
+        int damage;
         if (shouldDealDamage(player)) {
             if (Dice.rool(20) != 1) {
                 damage = Dice.rool(8) + getAbilityModifier(ABILITY_STR);
+                player.damage(damage);
+                this.getWeapon()
             }
         }
         // shoulddealdamage
