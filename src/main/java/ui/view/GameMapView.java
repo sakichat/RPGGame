@@ -274,6 +274,11 @@ public class GameMapView extends View {
             for (int x = 0; x < gridWidth; x++) {
                 Point location = new Point(x, y);
                 Cell cell = gameMap.getCell(location);
+                if (cell instanceof Player) {
+                    PlayerCellView playerCellView = new PlayerCellView();
+                    playerCellView.setPlayer(player);
+                    layerView.addCell(playerCellView, location);
+                }
                 if (cell != null) {
                     ImageView imageView = new ImageView();
                     imageView.setName(cell.getImageName());
