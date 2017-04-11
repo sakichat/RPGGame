@@ -47,8 +47,7 @@ public class TurnStrategyFriendly extends TurnStrategy {
     @Override
     public Point preferredAttackingLocation() {
 
-        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(getPlayer().getLocation(), getPlayer().getRangeForAttack());
+        List<Point> points = attackTargetsInNear();
         if (points.size() != 0){
             Point result = points.get((int)(Math.random() * points.size()));
             return result;

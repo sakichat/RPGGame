@@ -551,6 +551,14 @@ public class Player extends Cell {
         return isDead;
     }
 
+    public boolean isAlive(){
+        if (!isDead()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     /**
      * Setter for isDead
      * @param dead
