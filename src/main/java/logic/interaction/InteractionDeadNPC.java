@@ -19,8 +19,8 @@ public class InteractionDeadNPC extends Interaction<Player> {
         for (int i = 0; i < lootSize; i++) {
             Equipment lootEquipment = inventories.get(0);
             player.pickUpEquipment(lootEquipment);
-            player.dropInventories(lootEquipment);
-            inventories.remove(0);
+            target.dropInventories(lootEquipment);
+//            inventories.remove(0);
         }
 
     }
