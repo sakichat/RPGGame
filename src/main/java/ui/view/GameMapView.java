@@ -212,11 +212,9 @@ public class GameMapView extends View implements Observer {
         GameMapLayerView layerView = layers.get(_LAYER_TARGET);
 
         Play play = PlayRuntime.currentRuntime().getPlay();
-        if (play.isTargetLocationEnabled()) {
+        if (play.isTargetLocationEnabled())
             selectedLocation = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
-
-        } else
-            selectedLocation = new Point(0, 0);
+        else selectedLocation = new Point(0, 0);
 
         selectionView = new ImageView();
         selectionView.setName("selected_target.png");
