@@ -2,13 +2,8 @@ package logic.effect;
 
 
 public class EffectBurning extends Effect {
-    private int damage;
 
-    @Override
-    public String getImageName() {
-        String imageName = "burning.png";
-        return imageName;
-    }
+    private int damage;
 
     public void setDamage(int damage) {
         this.damage = damage;
@@ -18,5 +13,11 @@ public class EffectBurning extends Effect {
     protected void affect() {
         onPlayer.damage(damage * 5);
 
+    }
+
+    @Override
+    public String getImageName() {
+        String imageName = "burning.png";
+        return imageName;
     }
 }

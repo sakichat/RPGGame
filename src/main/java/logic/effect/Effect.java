@@ -7,35 +7,17 @@ public class Effect {
     private int turns;
     private String imageName;
 
-    public String getImageName() {
-        return imageName;
-    }
-
-    public void setImageName(String imageName) {
-        this.imageName = imageName;
-    }
-
-    public Player getOnPlayer() {
-        return onPlayer;
-    }
-
     public void setOnPlayer(Player onPlayer) {
         this.onPlayer = onPlayer;
         attaching();
-    }
-
-    public int getTurns() {
-        return turns;
     }
 
     public void setTurns(int turns) {
         this.turns = turns;
     }
 
-    public final void turn(){
-        affect();
-        turns--;
-        detaching();
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
     }
 
     private void attaching() {
@@ -60,6 +42,24 @@ public class Effect {
 
     protected void willDetach(){
 
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public Player getOnPlayer() {
+        return onPlayer;
+    }
+
+    public int getTurns() {
+        return turns;
+    }
+
+    public final void turn(){
+        affect();
+        turns--;
+        detaching();
     }
 
 

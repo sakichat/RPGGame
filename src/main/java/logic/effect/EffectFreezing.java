@@ -8,12 +8,6 @@ public class EffectFreezing extends Effect {
     private TurnStrategy turnStrategy;
 
     @Override
-    public String getImageName() {
-        String imageName = "freezing.png";
-        return imageName;
-    }
-
-    @Override
     protected void didAttach() {
         turnStrategy = onPlayer.getStrategy();
         onPlayer.setStrategy(new TurnStrategyFrozen());
@@ -23,5 +17,11 @@ public class EffectFreezing extends Effect {
     protected void willDetach() {
         onPlayer.setStrategy(turnStrategy);
 
+    }
+
+    @Override
+    public String getImageName() {
+        String imageName = "freezing.png";
+        return imageName;
     }
 }
