@@ -720,12 +720,15 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getTotalAttackBonus() {
-        if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
-            return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR);
-        } else {
-            return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR)
-                    + this.getWeapon().getRange();
+        if (this.getWeapon() != null) {
+            if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
+                return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR);
+            } else {
+                return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR)
+                        + this.getWeapon().getRange();
+            }
         }
+        return 0;
     }
 
 
@@ -734,9 +737,13 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getTotalDamageBonus() {
-        if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
-            return getAbilityModifier(ABILITY_STR);
+        if (this.getWeapon() != null) {
+            if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
+                return getAbilityModifier(ABILITY_STR);
+            }
+            return 0;
         }
+
         return 0;
     }
 
