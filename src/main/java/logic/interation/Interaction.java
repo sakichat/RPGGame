@@ -1,6 +1,7 @@
 package logic.interation;
 
 import logic.Play;
+import logic.PlayRuntime;
 import logic.map.GameMap;
 import logic.player.Player;
 
@@ -10,7 +11,7 @@ public abstract class Interaction {
     protected Player player;
 
     public Interaction() {
-        play = Play.getCurrentPlay();
+        play = PlayRuntime.currentRuntime().getPlay();
         gameMap = play.getCurrentMap();
         player = play.getPlayer();
     }
