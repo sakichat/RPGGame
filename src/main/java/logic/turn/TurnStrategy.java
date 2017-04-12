@@ -1,6 +1,7 @@
 package logic.turn;
 
 import logic.Play;
+import logic.PlayRuntime;
 import logic.map.Cell;
 import logic.map.GameMap;
 import logic.map.GameMapGraph;
@@ -24,7 +25,7 @@ public abstract class TurnStrategy {
     public abstract Point preferredNextLocation();
 
     public final List<Point> attackTargetsInNear(){
-        GameMap gameMap = Play.getCurrentPlay().getCurrentMap();
+        GameMap gameMap = PlayRuntime.currentRuntime().getMap();
         GameMapGraph gameMapGraph = gameMap.getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForAttack());
 
@@ -60,7 +61,7 @@ public abstract class TurnStrategy {
 
     public final List<Point> interactTargetsInNear(){
 
-        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
+        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1).stream()
                 .filter(i -> couldInteract(i))
                 .collect(Collectors.toList());
