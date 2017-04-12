@@ -16,10 +16,18 @@ import java.util.stream.Stream;
  */
 public class GameMap extends Observable {
 
+    //  =======================================================================
+    //  Section - Constructor
+    //  =======================================================================
+
 
     public final static class Update {
         public final static String CELL        = "cell change";
     }
+
+    //  =======================================================================
+    //  Section - Cells
+    //  =======================================================================
 
     @Expose
     private String name;
@@ -194,6 +202,11 @@ public class GameMap extends Observable {
         return true;
     }
 
+    //  =======================================================================
+    //  Section - Convenions
+    //  =======================================================================
+
+
     private List<Point> locationsList() {
         List<Point> locations = new LinkedList<>();
         for (int i = 0; i < height; i++) {
@@ -262,6 +275,10 @@ public class GameMap extends Observable {
 
 
 
+    //  =======================================================================
+    //  Section - Game
+    //  =======================================================================
+    
     public void adaptEquipments(int level) {
 
 
@@ -290,6 +307,11 @@ public class GameMap extends Observable {
         return objectiveFulfilled;
     }
 
+
+    //  =======================================================================
+    //  Section - Graph
+    //  =======================================================================
+    
     public GameMapGraph getGraph(){
         return new GameMapGraph(this);
     }
