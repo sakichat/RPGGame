@@ -1,6 +1,8 @@
 package logic.turn;
 
 
+import logic.PlayRuntime;
+
 public class TurnThread extends Thread{
 
     public static double PAUSE_FAST = 0.2;
@@ -13,5 +15,10 @@ public class TurnThread extends Thread{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void run() {
+        PlayRuntime.currentRuntime().getMainPlayer();
     }
 }

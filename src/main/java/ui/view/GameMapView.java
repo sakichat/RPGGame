@@ -275,7 +275,6 @@ public class GameMapView extends View implements Observer {
                 .check()) {
             SwingUtilities.invokeLater(this::refreshRange);
         }
-
     }
 
     /**

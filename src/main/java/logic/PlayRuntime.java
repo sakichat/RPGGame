@@ -23,7 +23,7 @@ public class PlayRuntime {
         return play.getCurrentMap();
     }
 
-    public Player getPlayer() {
+    public Player getMainPlayer() {
         return play.getMainPlayer();
     }
 
