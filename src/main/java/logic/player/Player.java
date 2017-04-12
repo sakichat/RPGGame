@@ -447,18 +447,6 @@ public class Player extends Cell {
      */
     public void lootDeadNPC(Player deadNPC) {
 
-        List<Equipment> inventories = deadNPC.getInventories();
-
-        int backpackEmptySize = 10 - backpack.size();
-        int inventoriesSize = inventories.size();
-        int lootSize = Math.min(backpackEmptySize, inventoriesSize);
-
-        for (int i = 0; i < lootSize; i++) {
-            Equipment lootEquipment = inventories.get(0);
-            pickUpEquipment(lootEquipment);
-            deadNPC.dropInventories(lootEquipment);
-            inventories.remove(0);
-        }
     }
 
 
