@@ -328,17 +328,6 @@ public class GameMapView extends View implements Observer {
     }
 
     /**
-     * This method refreshes TargetLayer.
-     */
-    public void refreshTarget() {
-//        GameMapLayerView highlightLayerView = layers.get(_LAYER_TARGET);
-//        highlightLayerView.removeAllCells();
-//        this.initTargetLayer();
-//
-//        repaint();
-    }
-
-    /**
      * This method refreshes RangeLayer.
      */
     public void refreshRange(){

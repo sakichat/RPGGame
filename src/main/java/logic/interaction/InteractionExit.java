@@ -21,8 +21,6 @@ public class InteractionExit extends Interaction<Exit> {
         } else {
             playRuntime.getPlay().moveToNextMap();
             playRuntime.getMapView().setGameMap(playRuntime.getPlay().currentMap());
-
-            playRuntime.getMapView().refreshTarget();
         }
     }
 }
