@@ -71,19 +71,26 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
         JButton button;
 
-        button = new JButton("Skip");
+        button = new JButton("Start");
         button.setLocation(600, 40);
+        button.setSize(160, 40);
+        contentView.add(button);
+        JButton startButton = button;
+
+        button = new JButton("Skip");
+        button.setLocation(600, 100);
         button.setSize(160, 40);
         contentView.add(button);
         JButton skipButton = button;
 
         button = new JButton("Select");
-        button.setLocation(600, 100);
+        button.setLocation(600, 160);
         button.setSize(160, 40);
         contentView.add(button);
         JButton selectButton = button;
 
         repaint();
+
 
         backButton.addActionListener(e -> PlayScene.this.navigationView.popTo(MainScene.class));
 
@@ -92,6 +99,8 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
             PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
+        startButton.addActionListener(e -> PlayRuntime.currentRuntime());
+        
         skipButton.addActionListener(e -> {});
 
         selectButton.addActionListener(e -> {});
