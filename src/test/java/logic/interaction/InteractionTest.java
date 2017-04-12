@@ -41,6 +41,7 @@ public class InteractionTest {
         Equipment equipmentRingCon3   = equipmentFactory.newEquipment("A", Equipment.RING,  Player.ABILITY_CON, 3);
         Equipment equipmentWeaponAB5  = equipmentFactory.newEquipment("A", Equipment.WEAPON,Player.ATTRIBUTE_ATTACK_BONUS, 5);
 
+        chest = new Chest();
         chest.addEquipment(equipmentArmorAC1);
         chest.addEquipment(equipmentArmorAC3);
         chest.addEquipment(equipmentArmorAC5);
@@ -52,10 +53,15 @@ public class InteractionTest {
         InteractionFactory interactionFactory = new InteractionFactory();
         int pre = player.equipmentsInBackpack().size();
         int chestSize = chest.getEquipments().size();
-        interactionFactory.interaction(player, chest);
+
+        Interaction interaction = interactionFactory.interaction(player, chest);
+        interaction.interact();
 
         int now = player.equipmentsInBackpack().size();
 
+
+
+        System.out.println(pre+" "+chestSize+" "+now);
         Assert.assertTrue(pre + chestSize == now);
 
     }
