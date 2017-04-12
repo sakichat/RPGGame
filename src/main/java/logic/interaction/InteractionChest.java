@@ -1,14 +1,13 @@
 package logic.interaction;
 
 import logic.equipment.Equipment;
-import logic.map.Cell;
 import logic.map.Chest;
 
 
 public class InteractionChest extends Interaction<Chest> {
 
     @Override
-    public void interact(Chest target) {
+    public void interact() {
         int availableSpaceInBackpack = 10 - player.equipmentsInBackpack().size();
         int chestSize = target.getEquipments().size();
         int lootSize = Math.min(availableSpaceInBackpack, chestSize);
@@ -19,4 +18,5 @@ public class InteractionChest extends Interaction<Chest> {
             target.dropEquipment(lootEquipment);
         }
     }
+
 }

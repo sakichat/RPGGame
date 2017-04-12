@@ -1,7 +1,6 @@
 package logic.interaction;
 
 import logic.equipment.Equipment;
-import logic.map.Cell;
 import logic.player.Player;
 
 import java.util.List;
@@ -9,8 +8,7 @@ import java.util.List;
 
 public class InteractionDeadNPC extends Interaction<Player> {
     @Override
-    public void interact(Player target) {
-
+    public void interact() {
 
         List<Equipment> inventories = target.getInventories();
 
@@ -26,4 +24,5 @@ public class InteractionDeadNPC extends Interaction<Player> {
         }
 
     }
+
 }

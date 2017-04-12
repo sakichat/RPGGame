@@ -265,39 +265,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      */
     private void interactWith(Cell targetCell) {
 
-        if (targetCell instanceof Player) {
-
-            Player targetPlayer = (Player) targetCell;
-
-            if (targetPlayer.isDead()) {
-                interactWithDeadNPC(targetPlayer);
-
-            } else {
-                if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_FRIENDLY)) {
-                    interactWithFriendlyNPC(targetPlayer);
-
-                } else if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
-                    interactWithHostileNPC(targetPlayer);
-
-                }
-            }
-
-        } else if (targetCell instanceof Chest) {
-            Chest chest = (Chest) targetCell;
-            interactWithChest(chest);
-
-        } else if (targetCell instanceof Exit) {
-
-            Exit exit = (Exit) targetCell;
-
-            System.out.println(play.getCurrentMap().finishObjective());
-            exit.setImageName("exit_close.png");
-
-
-            if (play.getCurrentMap().finishObjective()) {
-                interactWithExit(exit);
-            }
-        }
     }
 
     /**

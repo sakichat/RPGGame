@@ -406,6 +406,9 @@ public class Player extends Cell {
         }
     }
 
+    public int availableSpotsInBackpack(){
+        return 0;
+    }
 
     /**
      * The method will be called by a NPC.
@@ -430,15 +433,7 @@ public class Player extends Cell {
      */
     public void lootChest(Chest chest) {
 
-        int backpackEmptySize = 10 - backpack.size();
-        int chestSize = chest.getEquipments().size();
-        int lootSize = Math.min(backpackEmptySize, chestSize);
 
-        for (int i = 0; i < lootSize; i++) {
-            Equipment lootEquipment = chest.getEquipments().get(0);
-            pickUpEquipment(lootEquipment);
-            chest.dropEquipment(lootEquipment);
-        }
     }
 
     /**

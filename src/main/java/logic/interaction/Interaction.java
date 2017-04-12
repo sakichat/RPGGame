@@ -1,7 +1,5 @@
 package logic.interaction;
 
-import logic.Play;
-import logic.PlayRuntime;
 import logic.map.Cell;
 import logic.player.Player;
 
@@ -17,5 +15,15 @@ public abstract class Interaction<T extends Cell> {
         this.player = player;
     }
 
-    public abstract void interact(T target);
+    protected T target;
+
+    public T getTarget() {
+        return target;
+    }
+
+    public void setTarget(T target) {
+        this.target = target;
+    }
+
+    public abstract void interact();
 }
