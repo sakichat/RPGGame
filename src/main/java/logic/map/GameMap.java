@@ -282,10 +282,8 @@ public class GameMap extends Observable {
     }
 
     public boolean finishObjective() {
-
-        List<Player> players = this.getPlayers();
-
-        boolean objectiveFulfilled = players.stream()
+        
+        boolean objectiveFulfilled = getPlayers().stream()
                 .filter(p -> p.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))
                 .allMatch(Player::isDead);
 
