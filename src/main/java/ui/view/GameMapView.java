@@ -74,8 +74,6 @@ public class GameMapView extends View {
         setup();
     }
 
-//    private Player player;
-
     /**
      * This method is to set the size of this GameMapView, and to call initLayers() method.
      */
