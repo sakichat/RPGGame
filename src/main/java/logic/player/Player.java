@@ -27,12 +27,23 @@ public class Player extends Cell {
     //  Section - Constructor
     //  =======================================================================
 
+    /**
+     * Constructor without parameters.
+     */
+    public Player() {
+    }
 
+    /**
+     * Constructor with parameters, level and name.
+     * @param name String
+     */
+    public Player(String name) {
+        this.name = name;
+    }
 
     //  =======================================================================
     //  Section - Basic
     //  =======================================================================
-
 
     @Expose
     private String name;
@@ -54,7 +65,7 @@ public class Player extends Cell {
 
     /**
      * Getter for the name.
-     * @return String
+     * @return name
      */
     public String getName() {
         return name;
@@ -70,7 +81,7 @@ public class Player extends Cell {
 
     /**
      * Getter for the playerType.
-     * @return
+     * @return playerType
      */
     public String getPlayerType() {
         return playerType;
@@ -78,7 +89,7 @@ public class Player extends Cell {
 
     /**
      * Setter for the playerType.
-     * @param playerType
+     * @param playerType String
      */
     public void setPlayerType(String playerType) {
         this.playerType = playerType;
@@ -88,7 +99,7 @@ public class Player extends Cell {
 
     /**
      * Getter for the playerParty.
-     * @return
+     * @return playerParty
      */
     public String getPlayerParty() {
         return playerParty;
@@ -96,7 +107,7 @@ public class Player extends Cell {
 
     /**
      * Setter for the playerParty.
-     * @param playerParty
+     * @param playerParty String
      */
     public void setPlayerParty(String playerParty) {
         this.playerParty = playerParty;
@@ -108,7 +119,9 @@ public class Player extends Cell {
     //  Section - HP
     //  =======================================================================
 
-
+    /**
+     * The declaration of property hp
+     */
     @Expose
     private int hp;
 
@@ -139,7 +152,7 @@ public class Player extends Cell {
 
     /**
      * The method is used to minus damage from hp.
-     * @param damage
+     * @param damage int
      */
     public void damage(int damage) {
         setHp(getHp() - damage);
@@ -155,7 +168,7 @@ public class Player extends Cell {
 
     /**
      * Getter for hp.
-     * @return Integer
+     * @return int
      */
     public int getHp() {
         return hp;
@@ -178,7 +191,7 @@ public class Player extends Cell {
 
     /**
      * Getter of totalHp
-     * @return
+     * @return int
      */
     public int getTotalHp() {
         return totalHp;
@@ -186,31 +199,45 @@ public class Player extends Cell {
 
     /**
      * Setter of totalHp
-     * @param totalHp
+     * @param totalHp int
      */
     public void setTotalHp(int totalHp) {
         this.totalHp = totalHp;
     }
 
-
     //  =======================================================================
     //  Section - Level
     //  =======================================================================
+    /**
+     * The declaration of property level
+     */
+    @Expose
+    private int level = 1;
 
+    /**
+     * Getter for the level.
+     * @return int
+     */
+    public int getLevel() {
+        return level;
+    }
 
-    
+    /**
+     * Setter for the level.
+     */
+    public void setLevel(int level) {
+        this.level = level;
+        generateTotalHp();
+        setChanged();
+        notifyObservers(Update.LEVEL);
+    }
 
     //  =======================================================================
     //  Section - Abilities
     //  =======================================================================
-
-
-
-
-
-
-
-
+    /**
+     * The declaration of static properties
+     */
     public final static String ABILITY_STR = "STR";
     public final static String ABILITY_DEX = "DEX";
     public final static String ABILITY_CON = "CON";
@@ -237,54 +264,6 @@ public class Player extends Cell {
     private Map<String, Integer> abilityScores = new HashMap<>();
 
     /**
-     * This method is used to get the ability score of object based on the given name of the ability.
-     * @param abilityScoreName String
-     * @return Integer
-     */
-    public Integer getAbilityScore(String abilityScoreName) {
-
-        Integer score = abilityScores.get(abilityScoreName);
-        return score != null ? score : 0;
-    }
-
-    /**
-     * This method is used to get the total ability score of object after enhanced by equipments.
-     * @param abilityScoreName String
-     * @return Integer
-     */
-    public Integer getTotalAbilityScore(String abilityScoreName){
-        return getAbilityScore(abilityScoreName) + enhancedValueOnEquipments(abilityScoreName);
-    }
-
-    /**
-     * This method is used to calculate the modifiers for each ability score, based on the D20 formulas..
-     * @param name String
-     * @return Integer ,the value of the modifier
-     */
-    public Integer getAbilityModifier(String name) {
-        Integer ability = getAbilityScore(name);
-        if (ability != null) {
-            return (int) (Math.floor(ability / 2.0 - 5));
-        } else  {
-            return 0;
-        }
-    }
-
-    /**
-     * This method is used to get the total ability modifiers of object after enhanced by equipments.
-     * @param name String
-     * @return Integer
-     */
-    public Integer getTotalAbilityModifier(String name) {
-        Integer ability = getTotalAbilityScore(name);
-        if (ability != null) {
-            return (int) (Math.floor(ability / 2.0 - 5));
-        } else  {
-            return 0;
-        }
-    }
-
-    /**
      * This method is used to calculate the ability scores based on the D20 formulas.
      */
     public void generateAbilities() {
@@ -297,7 +276,6 @@ public class Player extends Cell {
         setChanged();
         notifyObservers(Update.ABILITY);
     }
-
 
     /**
      * The method is used to calculate the ability scores based on different fighter type.
@@ -356,12 +334,102 @@ public class Player extends Cell {
         notifyObservers(Update.ABILITY);
     }
 
+    /**
+     * This method is used to get the total armor class of object after enhanced by equipments.
+     * @return Integer
+     */
+    public int getTotalArmorClass() {
+        return 10 + getAbilityModifier(ABILITY_DEX) + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
+    }
+
+
+    /**
+     * This method is used to calculate the total attack bonus value enhanced by equipments.
+     * @return Integer
+     */
+    public int getTotalAttackBonus() {
+        if (this.getWeapon() != null) {
+            if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
+                return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR);
+            } else {
+                return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR)
+                        + this.getWeapon().getRange();
+            }
+        }
+        return 0;
+    }
+
+
+    /**
+     * This method is used to calculate the total damage bonus value enhanced by equipments.
+     * @return Integer
+     */
+    public int getTotalDamageBonus() {
+        if (this.getWeapon() != null) {
+            if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
+                return getAbilityModifier(ABILITY_STR);
+            }
+            return 0;
+        }
+
+        return 0;
+    }
+
+    /**
+     * This method is used to get the ability score of object based on the given name of the ability.
+     * @param abilityScoreName String
+     * @return Integer
+     */
+    public Integer getAbilityScore(String abilityScoreName) {
+
+        Integer score = abilityScores.get(abilityScoreName);
+        return score != null ? score : 0;
+    }
+
+    /**
+     * This method is used to get the total ability score of object after enhanced by equipments.
+     * @param abilityScoreName String
+     * @return Integer
+     */
+    public Integer getTotalAbilityScore(String abilityScoreName){
+        return getAbilityScore(abilityScoreName) + enhancedValueOnEquipments(abilityScoreName);
+    }
+
+    /**
+     * This method is used to calculate the modifiers for each ability score, based on the D20 formulas..
+     * @param name String
+     * @return Integer ,the value of the modifier
+     */
+    public Integer getAbilityModifier(String name) {
+        Integer ability = getAbilityScore(name);
+        if (ability != null) {
+            return (int) (Math.floor(ability / 2.0 - 5));
+        } else  {
+            return 0;
+        }
+    }
+
+    /**
+     * This method is used to get the total ability modifiers of object after enhanced by equipments.
+     * @param name String
+     * @return Integer
+     */
+    public Integer getTotalAbilityModifier(String name) {
+        Integer ability = getTotalAbilityScore(name);
+        if (ability != null) {
+            return (int) (Math.floor(ability / 2.0 - 5));
+        } else  {
+            return 0;
+        }
+    }
 
     //  =======================================================================
     //  Section - Backpack
     //  =======================================================================
-    
 
+    /**
+     * The declaration of property backpack
+     */
     @Expose
     private List<Equipment> backpack = new LinkedList<>();
 
@@ -418,8 +486,52 @@ public class Player extends Cell {
     //  =======================================================================
     //  Section - Inventory
     //  =======================================================================
-    
 
+    /**
+     * The method is used to get all inventories the player owned.
+     * @return all the equipments in backpack or worn.
+     */
+    public List<Equipment> getInventories() {
+        List<Equipment> inventory = new LinkedList<>();
+
+        for (Equipment equipment : equipments.values()) {
+            inventory.add(equipment);
+        }
+
+        for (Equipment equipment : backpack) {
+            inventory.add(equipment);
+        }
+
+        return inventory;
+    }
+
+    /**
+     * The method is used to drop an inventory.
+     * @param dropEquipment the equipment which is requested to drop from inventories.
+     */
+    public void dropInventories(Equipment dropEquipment) {
+
+        boolean worn = false;
+
+        String type = dropEquipment.getType();
+        if (equipments.get(type) != null) {
+            worn = equipments.get(type).getName().equals(dropEquipment.getName());
+        }
+
+        if (worn) {
+            unequip(dropEquipment);
+        }
+
+        dropEquipment(dropEquipment);
+    }
+
+    //  =======================================================================
+    //  Section - Equipment Common
+    //  =======================================================================
+
+    /**
+     * The declaration of property equipments
+     */
     @Expose
     private Map<String, Equipment> equipments = new HashMap<>();
 
@@ -462,7 +574,7 @@ public class Player extends Cell {
     public int getRangeForMove(){
         return 3;
     }
-    
+
     /**
      * This method is used to equip the equipment on the character.
      * The equip action will replace the current one on the same slot.
@@ -521,61 +633,6 @@ public class Player extends Cell {
     }
 
     /**
-     * The following methods are used to manage inventories.
-     */
-
-    /**
-     * The method is used to get all inventories the player owned.
-     * @return all the equipments in backpack or worn.
-     */
-    public List<Equipment> getInventories() {
-        List<Equipment> inventory = new LinkedList<>();
-
-        for (Equipment equipment : equipments.values()) {
-            inventory.add(equipment);
-        }
-
-        for (Equipment equipment : backpack) {
-            inventory.add(equipment);
-        }
-
-        return inventory;
-    }
-
-    /**
-     * The method is used to drop an inventory.
-     * @param dropEquipment the equipment which is requested to drop from inventories.
-     */
-    public void dropInventories(Equipment dropEquipment) {
-
-        boolean worn = false;
-
-        String type = dropEquipment.getType();
-        if (equipments.get(type) != null) {
-            worn = equipments.get(type).getName().equals(dropEquipment.getName());
-        }
-
-        if (worn) {
-            unequip(dropEquipment);
-        }
-
-        dropEquipment(dropEquipment);
-    }
-
-    //  =======================================================================
-    //  Section - Equipment Common
-    //  =======================================================================
-
-
-    /**
-     * Interaction methods.
-     * NPCs refresh their inventories according to the player level;
-     * Friendly players hand out random equipments to complete exchange;
-     * Loot the chest;
-     * Loot the dead NPCs.
-     */
-
-    /**
      * This method is used by NPCs to refresh the value of inventories.
      * according to the level of player.
      * @param level
@@ -593,168 +650,10 @@ public class Player extends Cell {
         return  availableSpaceInBackpack;
     }
 
-    /**
-     * The method will be called by a NPC.
-     * The NPC will random pick an equipment from their inventory to hand out.
-     * @param gotEquipment
-     * @return The return value will be the equipment random picked up.
-     */
-    public Equipment randomExchange(Equipment gotEquipment) {
-
-        List<Equipment> inventories = getInventories();
-        int randomIndex = (int)(Math.random() * inventories.size());
-        Equipment handOutEquipment = inventories.get(randomIndex);
-
-        dropInventories(handOutEquipment);
-        pickUpEquipment(gotEquipment);
-        return handOutEquipment;
-    }
-
-    /**
-     * The method is used by a player to loot a chest.
-     * @param chest
-     */
-    public void lootChest(Chest chest) {
-
-
-    }
-
-    /**
-     * The method is used by a player to loot a deadNPC.
-     * @param deadNPC
-     */
-    public void lootDeadNPC(Player deadNPC) {
-
-    }
-
-
-    /**
-     * Level, name, playerType, playerParty, isDead and Getter & Setter & constructor.
-     */
-
-
-
-
-    @Expose
-    private int level = 1;
-
-
-    /**
-     * Getter for the level.
-     * @return int
-     */
-    public int getLevel() {
-        return level;
-    }
-
-    /**
-     * Setter for the level.
-     */
-    public void setLevel(int level) {
-        this.level = level;
-        generateTotalHp();
-        setChanged();
-        notifyObservers(Update.LEVEL);
-    }
-
-
-
-
-
-
-    /**
-     * Constructor without parameters.
-     */
-    public Player() {
-    }
-
-    /**
-     * Constructor with parameters, level and name.
-     * @param name String
-     */
-    public Player(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Override the getter for the ImageName
-     * @return
-     */
-    @Override
-    public String getImageName() {
-        String imageName;
-
-        if (isDead()) {
-            imageName = "rip.png";
-            return imageName;
-        }
-
-        HashMap<String, String> partyNames = new HashMap<>();
-        partyNames.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
-        partyNames.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
-        partyNames.put(Player.PLAYER_PARTY_PLAYER, "player");
-        partyNames.put(Player.PLAYER_PARTY_NOT_DEFINED, "nd");
-
-        HashMap<String, String> typeNames = new HashMap<>();
-        typeNames.put(PLAYER_TYPE_BULLY, "bully");
-        typeNames.put(PLAYER_TYPE_TANK, "tank");
-        typeNames.put(PLAYER_TYPE_NIMBLE, "nimble");
-
-        return partyNames.get(playerParty) + "_" + typeNames.get(playerType) + ".png";
-    }
-
-
-
-    /**
-     * Attributes calculate methods.
-     */
-
-    /**
-     * This method is used to get the total armor class of object after enhanced by equipments.
-     * @return Integer
-     */
-    public int getTotalArmorClass() {
-        return 10 + getAbilityModifier(ABILITY_DEX) + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
-    }
-
-
-    /**
-     * This method is used to calculate the total attack bonus value enhanced by equipments.
-     * @return Integer
-     */
-    public int getTotalAttackBonus() {
-        if (this.getWeapon() != null) {
-            if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
-                return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR);
-            } else {
-                return enhancedValueOnEquipments(ATTRIBUTE_ATTACK_BONUS) + getAbilityModifier(ABILITY_STR)
-                        + this.getWeapon().getRange();
-            }
-        }
-        return 0;
-    }
-
-
-    /**
-     * This method is used to calculate the total damage bonus value enhanced by equipments.
-     * @return Integer
-     */
-    public int getTotalDamageBonus() {
-        if (this.getWeapon() != null) {
-            if (this.getWeapon().getWeaponType() == Weapon.Type.MELEE){
-                return getAbilityModifier(ABILITY_STR);
-            }
-            return 0;
-        }
-
-        return 0;
-    }
-
 
     //  =======================================================================
     //  Section - Effects
     //  =======================================================================
-
 
     /**
      * The declaration of the property effects, which used to store the effects of enchantments weapon.
@@ -834,32 +733,10 @@ public class Player extends Cell {
         return rollDamage;
     }
 
-    /**
-     * The method is override for the equals method, which is used to compare player object.
-     * @param obj
-     * @return
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Player)) return false;
-        return this.getName().equals(((Player) obj).getName());
-    }
-
-    /**
-     * The mothod is override method of hashcode calculator.
-     * @return
-     */
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-
     //  =======================================================================
     //  Section - Turn Strategy
     //  =======================================================================
     
-
     /**
      * The declaration of property strategy.
      */
@@ -949,14 +826,103 @@ public class Player extends Cell {
     }
 
     //  =======================================================================
+    //  Section - Display
+    //  =======================================================================
+
+    /**
+     * Override the getter for the ImageName
+     * @return imageName
+     */
+    @Override
+    public String getImageName() {
+        String imageName;
+
+        if (isDead()) {
+            imageName = "rip.png";
+            return imageName;
+        }
+
+        HashMap<String, String> partyNames = new HashMap<>();
+        partyNames.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
+        partyNames.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
+        partyNames.put(Player.PLAYER_PARTY_PLAYER, "player");
+        partyNames.put(Player.PLAYER_PARTY_NOT_DEFINED, "nd");
+
+        HashMap<String, String> typeNames = new HashMap<>();
+        typeNames.put(PLAYER_TYPE_BULLY, "bully");
+        typeNames.put(PLAYER_TYPE_TANK, "tank");
+        typeNames.put(PLAYER_TYPE_NIMBLE, "nimble");
+
+        return partyNames.get(playerParty) + "_" + typeNames.get(playerType) + ".png";
+    }
+
+
+
+    //  =======================================================================
+    //  Section - Event
+    //  =======================================================================
+
+    /**
+     * The method will be called by a NPC.
+     * The NPC will random pick an equipment from their inventory to hand out.
+     * @param gotEquipment
+     * @return The return value will be the equipment random picked up.
+     */
+    public Equipment randomExchange(Equipment gotEquipment) {
+
+        List<Equipment> inventories = getInventories();
+        int randomIndex = (int)(Math.random() * inventories.size());
+        Equipment handOutEquipment = inventories.get(randomIndex);
+
+        dropInventories(handOutEquipment);
+        pickUpEquipment(gotEquipment);
+        return handOutEquipment;
+    }
+
+    //  =======================================================================
     //  Section - Object
     //  =======================================================================
 
+    /**
+     * The method is override for the equals method, which is used to compare player object.
+     * @param obj
+     * @return
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Player)) return false;
+        return this.getName().equals(((Player) obj).getName());
+    }
 
+    /**
+     * The mothod is override method of hashcode calculator.
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 
     //  =======================================================================
     //  Section - Other
     //  =======================================================================
+
+    /**
+     * The method is used by a player to loot a chest.
+     * @param chest
+     */
+    public void lootChest(Chest chest) {
+
+
+    }
+
+    /**
+     * The method is used by a player to loot a deadNPC.
+     * @param deadNPC
+     */
+    public void lootDeadNPC(Player deadNPC) {
+
+    }
 
 
 }
