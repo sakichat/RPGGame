@@ -1,7 +1,6 @@
 package logic.map;
 
 import com.google.gson.annotations.Expose;
-import logic.Play;
 import logic.player.Player;
 
 import java.util.LinkedList;
@@ -263,7 +262,7 @@ public class GameMap extends Observable {
 
 
 
-    public void refreshLevel(int level) {
+    public void adaptEquipments(int level) {
 
 
         List<Chest> chests = this.getChests();
@@ -278,7 +277,7 @@ public class GameMap extends Observable {
         }
 
         for (Chest chest : chests) {
-            chest.chestLevelRefresh(level);
+            chest.adaptEquipments(level);
         }
 
     }

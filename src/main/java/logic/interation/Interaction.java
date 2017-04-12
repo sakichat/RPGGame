@@ -21,8 +21,4 @@ public abstract class Interaction {
 
     public abstract void execute();
 
-    protected void requestUpdateMapView(){
-        GameMapView mapView = PlayRuntime.currentRuntime().getMapView();
-        SwingUtilities.invokeLater(mapView::refreshContent);
-    }
 }

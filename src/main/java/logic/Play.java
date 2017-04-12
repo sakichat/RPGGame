@@ -2,11 +2,9 @@ package logic;
 
 import com.google.gson.annotations.Expose;
 import logic.map.Cell;
-import logic.map.Chest;
 import logic.map.GameMap;
 import logic.map.Point;
 import logic.player.Player;
-import logic.turn.TurnThread;
 import persistence.MapFileManager;
 
 import java.util.*;
@@ -209,7 +207,7 @@ public class Play {
             if (currentMap.canPlace(enter)){
                 currentMap.addCell(player, enter);
                 this.direction = direction;
-                currentMap.refreshLevel(player.getLevel());
+                currentMap.adaptEquipments(player.getLevel());
                 break;
             }
         }
@@ -220,26 +218,7 @@ public class Play {
      * This method is to refresh level of all the characters and chests on the map.
      */
 
-//    @Deprecated
-//    private void mapLevelRefresh() {
-//
-//        List<Chest> chests = currentMap.getChests();
-//        List<Player> players = currentMap.getPlayers();
-//
-//        int level = player.getLevel();
-//
-//        for (Player character : players) {
-//            if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
-//                character.setLevel(level);
-//                character.inventoryLevelRefresh();
-//            }
-//        }
-//
-//        for (Chest chest : chests) {
-//            chest.chestLevelRefresh(level);
-//        }
-//
-//    }
+
 
     /**
      * This method is used for judge whether the objectives are fulfilled
@@ -280,23 +259,9 @@ public class Play {
     }
 
     /**
-     * This method is used for removing chest when it is empty.
-     */
-    public void refreshChest() {
-        Point location = player.getLocation();
-        Point chestPoint = location.add(direction);
-
-        Chest chest = (Chest) currentMap.getCell(chestPoint);
-        if (chest.isChestEmpty()) {
-            currentMap.removeCell(chestPoint);
-        }
-    }
-
-    /**
      * This method is used for removing dead player when his inventory is empty.
      */
     public void refreshPlayer( ) {
-
         Player targetPlayer = (Player) getTarget();
 
         Point location = player.getLocation();

@@ -6,6 +6,7 @@ import logic.map.GameMap;
 import logic.map.Point;
 import logic.player.Player;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -265,7 +266,7 @@ public class GameMapView extends View implements Observer {
         if (BaseUpdate.when(arg)
                 .match(GameMap.Update.CELL)
                 .check()){
-            refreshContent();
+            SwingUtilities.invokeLater(this::refreshContent);
         }
     }
 

@@ -132,9 +132,9 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
             PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
-        skipButton.addActionListener(e -> move(Point.Direction.UP));
+        skipButton.addActionListener(e -> {});
 
-        selectButton.addActionListener(e -> move(Point.Direction.DOWN));
+        selectButton.addActionListener(e -> {});
 
 //        interactButton.addActionListener(e -> {
 //            Cell targetCell = play.getTarget();
@@ -150,16 +150,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         PlayFileManager.save(play);
     }
 
-    /**
-     * This method sets move actions for buttons.
-     * @param direction
-     */
-    public void move(Point.Direction direction) {
-        play.setDirection(direction);
-        play.move();
-
-        gameMapView.refreshContent();
-    }
 
     /**
      * This method implements MapDelegation and refresh controlViewContainerView.
@@ -303,11 +293,9 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
             System.out.println(play.getCurrentMap().finishObjective());
             exit.setImageName("exit_close.png");
 
-            gameMapView.refreshContent();
 
             if (play.getCurrentMap().finishObjective()) {
                 interactWithExit(exit);
-
             }
         }
     }
@@ -320,7 +308,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
         play.getPlayer().lootDeadNPC(targetPlayer);
         play.refreshPlayer();
-        gameMapView.refreshContent();
 
     }
 
@@ -375,7 +362,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     private void interactWithHostileNPC(Player targetPlayer) {
 
         play.getPlayer().attack(targetPlayer);
-        gameMapView.refreshContent();
 
     }
 
@@ -384,11 +370,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * @param chest
      */
     private void interactWithChest(Chest chest) {
-
         play.getPlayer().lootChest(chest);
-        play.refreshChest();
-        gameMapView.refreshContent();
-
     }
 
     /**
@@ -407,7 +389,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
             play.moveToNextMap();
             gameMapView.setGameMap(play.getCurrentMap());
 
-            gameMapView.refreshContent();
             gameMapView.refreshHighlight();
         }
     }

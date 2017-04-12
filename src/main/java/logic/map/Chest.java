@@ -1,6 +1,7 @@
 package logic.map;
 
 import com.google.gson.annotations.Expose;
+import logic.PlayRuntime;
 import logic.equipment.Equipment;
 
 import java.util.LinkedList;
@@ -45,7 +46,7 @@ public class Chest extends Cell{
      * This method is used to check if the chest is full or not.
      * @return
      */
-    private boolean isChestFull() {
+    private boolean isFull() {
         if (equipments.size() >= 10) {
             return true;
         } else {
@@ -57,7 +58,7 @@ public class Chest extends Cell{
      * This method is used to check if the chest is empty or not.
      * @return
      */
-    public boolean isChestEmpty(){
+    public boolean isEmpty(){
         if (equipments.isEmpty()) {
             return true;
         } else {
@@ -75,7 +76,7 @@ public class Chest extends Cell{
      * @param e
      */
     public void addEquipment(Equipment e) {
-        if (!isChestFull()) {
+        if (!isFull()) {
             equipments.add(e);
             setChanged();
             notifyObservers(CHEST_CHANGE);
@@ -90,6 +91,7 @@ public class Chest extends Cell{
         equipments.remove(e);
         setChanged();
         notifyObservers(CHEST_CHANGE);
+        tryQuit();
     }
 
     /**
@@ -97,11 +99,17 @@ public class Chest extends Cell{
      * @param level int
      */
 
-    public void chestLevelRefresh(int level){
+    public void adaptEquipments(int level){
         if (equipments != null){
             for (Equipment equipment : equipments){
                 equipment.levelRefresh(level);
             }
+        }
+    }
+
+    private void tryQuit(){
+        if (isEmpty()) {
+            PlayRuntime.currentRuntime().getMap().removeCell(this.getLocation());
         }
     }
 

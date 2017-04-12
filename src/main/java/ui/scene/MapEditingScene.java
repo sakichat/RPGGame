@@ -190,8 +190,6 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
     public void build(Cell cell) {
         Point location = gameMapView.getSelectedLocation();
         gameMap.addCell(cell, location);
-
-        gameMapView.refreshContent();
         refreshControlView();
     }
 
@@ -203,8 +201,6 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
     public void destroy() {
         Point location = gameMapView.getSelectedLocation();
         gameMap.removeCell(location);
-
-        gameMapView.refreshContent();
         refreshControlView();
     }
 
