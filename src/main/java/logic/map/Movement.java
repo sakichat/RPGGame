@@ -46,8 +46,6 @@ public class Movement implements Iterable<Point.Direction> {
 
     @Override
     public String toString() {
-        return "Movement{" +
-                "moves=" + moves +
-                '}';
+        return "Movement " + moves;
     }
 }

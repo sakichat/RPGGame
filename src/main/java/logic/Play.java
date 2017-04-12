@@ -214,10 +214,23 @@ public class Play extends Observable{
     //  Section - Target
     //  =======================================================================
 
+
+    private boolean targetLocationEnabled;
+
     private Point targetLocation;
 
     public Cell getTarget(){
         return currentMap.getCell(targetLocation);
+    }
+
+    public boolean isTargetLocationEnabled() {
+        return targetLocationEnabled;
+    }
+
+    public void setTargetLocationEnabled(boolean targetLocationEnabled) {
+        this.targetLocationEnabled = targetLocationEnabled;
+        setChanged();
+        notifyObservers(Update.TARGET);
     }
 
     public Point getTargetLocation() {
@@ -226,9 +239,7 @@ public class Play extends Observable{
 
     public void setTargetLocation(Point targetLocation) {
         this.targetLocation = targetLocation;
-        setChanged();
-//        notifyObservers(Update.TARGET);
-        notifyObservers(targetLocation);
+        setTargetLocationEnabled(true);
     }
 
 

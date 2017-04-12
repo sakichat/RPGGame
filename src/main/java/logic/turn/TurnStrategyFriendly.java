@@ -16,7 +16,6 @@ public class TurnStrategyFriendly extends TurnStrategy {
 
         GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
-        System.out.println(points);
         if (points.size() != 0){
             Point result = points.get((int)(Math.random() * points.size()));
             return result;

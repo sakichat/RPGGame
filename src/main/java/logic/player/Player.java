@@ -149,7 +149,6 @@ public class Player extends Cell {
         }
 
         setHp(totalHp);
-
     }
 
     /**
@@ -181,6 +180,7 @@ public class Player extends Cell {
      * @param hp int
      */
     public void setHp(int hp) {
+
         if (hp < 0) {
             hp = 0;
         }
@@ -845,6 +845,8 @@ public class Player extends Cell {
 
         if (isDead()) {
             imageName = "rip.png";
+            System.out.println(hp + "/" + totalHp);
+            System.out.println("rip");
             return imageName;
         }
 
