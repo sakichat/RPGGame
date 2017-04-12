@@ -1,6 +1,7 @@
 package logic.turn;
 
 import logic.Play;
+import logic.PlayRuntime;
 import logic.map.*;
 import logic.player.Player;
 
@@ -14,7 +15,7 @@ public class TurnStrategyFriendly extends TurnStrategy {
     @Override
     public Point preferredNextLocation() {
 
-        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
+        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
 
         if (points.size() != 0){
@@ -34,7 +35,7 @@ public class TurnStrategyFriendly extends TurnStrategy {
     protected boolean couldInteract(Point target) {
 
         boolean result = false;
-        Play play = Play.getCurrentPlay();
+        Play play = PlayRuntime.currentRuntime().getPlay();
         GameMap gameMap = play.getCurrentMap();
         Cell cell = gameMap.getCell(target);
         if (cell.getCellType().equals(Cell.Type.CHEST)){
@@ -59,7 +60,7 @@ public class TurnStrategyFriendly extends TurnStrategy {
     @Override
     public Point preferredInteractionLocation() {
 
-        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
+        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
         List<Point> points = interactTargetsInNear();
         if (points.size() != 0){
             Point result = points.get((int)(Math.random() * points.size()));
