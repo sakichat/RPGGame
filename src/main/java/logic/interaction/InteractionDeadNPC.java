@@ -4,7 +4,7 @@ import logic.map.Cell;
 import logic.player.Player;
 
 
-public class InteractionFriendlyNPC extends Interaction<Player> {
+public class InteractionDeadNPC extends Interaction<Player> {
     @Override
     public void interact(Player target) {
 
