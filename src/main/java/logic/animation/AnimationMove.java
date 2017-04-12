@@ -22,7 +22,7 @@ public class AnimationMove extends Animation {
         for (Point.Direction direction : movement) {
             target = source.add(direction);
             gameMap.moveCell(source, target);
-            TurnThread.pause(TurnThread.PAUSE_FAST);
+            TurnThread.pause(TurnThread.PAUSE_NORMAL);
             source = target;
         }
     }

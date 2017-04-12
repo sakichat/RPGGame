@@ -13,8 +13,8 @@ public class Dice {
      * @param face , the number of dice faces.
      * @return int, the result of the dice.
      */
-    public static int rool(int face) {
-        return (int)(Math.random() * face + 1);
+    public static int roll(int face) {
+        return roll(1, face, 0);
     }
 
     /**
@@ -23,8 +23,8 @@ public class Dice {
      * @param modifier , the dice modifier which is defined in the D20 rules.
      * @return int, the result of the dice.
      */
-    public static int rool(int face, int modifier) {
-        return rool(face) + modifier;
+    public static int roll(int face, int modifier) {
+        return roll(1, face, modifier);
     }
 
     /**
@@ -34,11 +34,13 @@ public class Dice {
      * @param modifier , the dice modifier which is defined in the D20 rules.
      * @return int, the final result.
      */
-    public static int rool(int times, int face, int modifier) {
+    public static int roll(int times, int face, int modifier) {
         int value = 0;
         for (int i = 0; i < times; i++) {
-            value += rool(face);
+            value += (int)(Math.random() * face + 1);
         }
-        return value + modifier;
+        int result = value + modifier;
+        Logger.getInstance().log(String.format("Dice.roll %dd%d + %d -> %d", times, face, modifier, result));
+        return result;
     }
 }

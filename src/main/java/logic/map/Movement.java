@@ -43,4 +43,11 @@ public class Movement implements Iterable<Point.Direction> {
     public Iterator<Point.Direction> iterator() {
         return moves.iterator();
     }
+
+    @Override
+    public String toString() {
+        return "Movement{" +
+                "moves=" + moves +
+                '}';
+    }
 }

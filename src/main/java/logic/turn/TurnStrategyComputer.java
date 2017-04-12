@@ -29,7 +29,7 @@ public class TurnStrategyComputer extends TurnStrategy {
     public boolean couldAttack(Point target) {
         boolean result = false;
         Play play = PlayRuntime.currentRuntime().getPlay();
-        GameMap gameMap = play.getCurrentMap();
+        GameMap gameMap = play.currentMap();
         Cell cell = gameMap.getCell(target);
         if (cell == null){
             return result;
@@ -50,7 +50,7 @@ public class TurnStrategyComputer extends TurnStrategy {
     protected boolean couldInteract(Point target) {
         boolean result = false;
         Play play = PlayRuntime.currentRuntime().getPlay();
-        GameMap gameMap = play.getCurrentMap();
+        GameMap gameMap = play.currentMap();
         Cell cell = gameMap.getCell(target);
         if (cell.getCellType().equals(Cell.Type.CHEST)){
             result = true;

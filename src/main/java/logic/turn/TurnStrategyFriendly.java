@@ -3,7 +3,6 @@ package logic.turn;
 import logic.Play;
 import logic.PlayRuntime;
 import logic.map.*;
-import logic.player.Player;
 
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class TurnStrategyFriendly extends TurnStrategy {
 
         boolean result = false;
         Play play = PlayRuntime.currentRuntime().getPlay();
-        GameMap gameMap = play.getCurrentMap();
+        GameMap gameMap = play.currentMap();
         Cell cell = gameMap.getCell(target);
         if (cell.getCellType().equals(Cell.Type.CHEST)){
             result = true;

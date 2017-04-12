@@ -20,7 +20,7 @@ public class PlayRuntime {
         return play;
     }
     public GameMap getMap() {
-        return play.getCurrentMap();
+        return play.currentMap();
     }
 
     public Player getMainPlayer() {
@@ -51,7 +51,8 @@ public class PlayRuntime {
     }
 
     public void begin(){
-
+        turnThread = new TurnThread();
+        turnThread.start();
     }
 
     public void end(){

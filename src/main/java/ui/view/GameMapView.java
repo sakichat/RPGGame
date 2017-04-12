@@ -262,7 +262,6 @@ public class GameMapView extends View implements Observer {
         layerView.moveCell(selectedLocation, location);
         selectedLocation = location;
         repaint();
-
         delegate.gameMapViewSelectPerformAction(this, location);
     }
 

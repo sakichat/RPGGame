@@ -1,7 +1,9 @@
 package logic.turn;
 
 
+import logic.Play;
 import logic.PlayRuntime;
+import logic.player.Player;
 
 public class TurnThread extends Thread{
 
@@ -19,6 +21,13 @@ public class TurnThread extends Thread{
 
     @Override
     public void run() {
-        PlayRuntime.currentRuntime().getMainPlayer();
+        PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+
+        while (!playRuntime.getMap().finishObjective()){
+            Play play = playRuntime.getPlay();
+            Player currentPlayer = play.currentPlayer();
+            currentPlayer.turn();
+            play.nextPlayer();
+        }
     }
 }

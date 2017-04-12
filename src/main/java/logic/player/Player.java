@@ -138,10 +138,10 @@ public class Player extends Cell {
      * The method also is called when the CON modifier changed, aka, when the type changes.
      */
     public void generateTotalHp() {
-        totalHp = Dice.rool(10);
+        totalHp = Dice.roll(10);
 
         for (int i = 0; i < level - 1; i++) {
-            int hitDie = Dice.rool(10);
+            int hitDie = Dice.roll(10);
             int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
             totalHp += levelAdvances > 1 ? levelAdvances : 1;
         }
@@ -267,12 +267,12 @@ public class Player extends Cell {
      * This method is used to calculate the ability scores based on the D20 formulas.
      */
     public void generateAbilities() {
-        abilityScores.put(ABILITY_STR, Dice.rool(4, 6, 0));
-        abilityScores.put(ABILITY_DEX, Dice.rool(4, 6, 0));
-        abilityScores.put(ABILITY_CON, Dice.rool(4, 6, 0));
-        abilityScores.put(ABILITY_INT, Dice.rool(4, 6, 0));
-        abilityScores.put(ABILITY_WIS, Dice.rool(4, 6, 0));
-        abilityScores.put(ABILITY_CHA, Dice.rool(4, 6, 0));
+        abilityScores.put(ABILITY_STR, Dice.roll(4, 6, 0));
+        abilityScores.put(ABILITY_DEX, Dice.roll(4, 6, 0));
+        abilityScores.put(ABILITY_CON, Dice.roll(4, 6, 0));
+        abilityScores.put(ABILITY_INT, Dice.roll(4, 6, 0));
+        abilityScores.put(ABILITY_WIS, Dice.roll(4, 6, 0));
+        abilityScores.put(ABILITY_CHA, Dice.roll(4, 6, 0));
         setChanged();
         notifyObservers(Update.ABILITY);
     }
@@ -285,7 +285,7 @@ public class Player extends Cell {
 
         List<Integer> diceResults = new LinkedList<>();
         for (int i = 0; i < 6; i++) {
-            diceResults.add(Dice.rool(4, 6, 0));
+            diceResults.add(Dice.roll(4, 6, 0));
         }
 
         diceResults.sort((o1, o2) -> {
@@ -698,7 +698,7 @@ public class Player extends Cell {
      */
     public void attack(Player player) {
         if (shouldDealDamage(player)) {
-            if (Dice.rool(20) != 1) {
+            if (Dice.roll(20) != 1) {
                 int damage = rollDamage() + getTotalDamageBonus();
                 player.damage(damage);
                 this.getWeapon().attach(player);
@@ -712,7 +712,7 @@ public class Player extends Cell {
      * @return Boolean
      */
     private boolean shouldDealDamage(Player targetPlayer){
-        int attackRoll = Dice.rool(20) + getTotalAttackBonus() + getAbilityModifier(ABILITY_STR);
+        int attackRoll = Dice.roll(20) + getTotalAttackBonus() + getAbilityModifier(ABILITY_STR);
         if (attackRoll > targetPlayer.getTotalArmorClass()) {
             return true;
         }
@@ -724,7 +724,7 @@ public class Player extends Cell {
      * @return Integer
      */
     private int rollDamage(){
-        int rollDamage = Dice.rool(8) + getAbilityModifier(ABILITY_STR);
+        int rollDamage = Dice.roll(8) + getAbilityModifier(ABILITY_STR);
 
         if (rollDamage <= 1) {
             return 1;
@@ -756,6 +756,7 @@ public class Player extends Cell {
      */
     public void setStrategy(TurnStrategy strategy) {
         this.strategy = strategy;
+        strategy.setPlayer(this);
     }
 
     public void turn(){
@@ -791,6 +792,7 @@ public class Player extends Cell {
             //  move animation
             GameMap currentMap = PlayRuntime.currentRuntime().getMap();
             Movement movement = currentMap.getGraph().shortestPath(location, target).getMovement(3);
+            System.out.println(movement);
             AnimationMove interactionMove = new AnimationMove();
             interactionMove.setMovement(movement);
             interactionMove.execute();

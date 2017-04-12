@@ -34,15 +34,18 @@ public class Logger {
         return shareInstance;
     }
 
+
     /**
      * The method is used to show the message along with the date.
      * @param message String
      */
-    public void showMesaage(String message){
+    public void log(String message){
         Date date = new Date();
         String pattern = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String dateText = simpleDateFormat.format(date);
-        System.out.println(message + dateText);
+        System.out.println("LOG " + dateText + ": " + message);
     }
+
+
 }

@@ -5,9 +5,12 @@ import logic.map.Cell;
 import logic.map.GameMap;
 import logic.map.Point;
 import logic.player.Player;
+import logic.turn.TurnStrategyAggressive;
+import logic.turn.TurnStrategyFriendly;
 import persistence.MapFileManager;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Qi Xia
@@ -85,29 +88,27 @@ public class Play extends Observable{
     public void resolveMap(){
         String mapName = campaign.getMapName(currentMapIndex);
         currentMap = MapFileManager.read(mapName);
-        enterIntoMap(mainPlayer);
-        resolvePlayersOrder();
+        currentMap.enter(mainPlayer);
+        initStrategy();
+        initTurnOrder();
     }
 
+    private void initStrategy(){
+        List<Player> players = currentMap.getPlayers();
+        for (Player player : players) {
+            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_FRIENDLY)) {
+                player.setStrategy(new TurnStrategyFriendly());
+
+            } else if (player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
+                player.setStrategy(new TurnStrategyAggressive());
+            }
+        }
+    }
 
     /**
      * This is a method makes mainPlayer enter into the map.
      * @return Point
      */
-    private void enterIntoMap(Player player){
-        Point entrance = currentMap.getEntrances().get(0).getLocation();
-
-        List<Point.Direction> directions = Point.Direction.directions();
-        for (Point.Direction direction : directions) {
-            Point enter = entrance.add(direction);
-
-            if (currentMap.canPlace(enter)){
-                currentMap.addCell(player, enter);
-                currentMap.adaptEquipments(player.getLevel());
-                break;
-            }
-        }
-    }
 
     /**
      * This is the method for exit from currentMap,
@@ -155,7 +156,7 @@ public class Play extends Observable{
      * Getter for currentMap.
      * @return GameMap
      */
-    public GameMap getCurrentMap() {
+    public GameMap currentMap() {
         return currentMap;
     }
 
@@ -170,14 +171,14 @@ public class Play extends Observable{
     /**
      * This is the method for sort the players in play list
      */
-    public void resolvePlayersOrder(){
+    public void initTurnOrder(){
         playerOrders = new LinkedList<>(currentMap.getPlayers());
         Map<Player, Integer> initiativeValues = new HashMap<Player, Integer>();
 
         int sortStandard;
 
         for (Player sortingPlayer : playerOrders) {
-            int diceScore = Dice.rool(20);
+            int diceScore = Dice.roll(20);
             int dexScore = sortingPlayer.getTotalAbilityModifier(Player.ABILITY_DEX);
             sortStandard = diceScore + dexScore;
             initiativeValues.put(sortingPlayer, sortStandard);
@@ -190,17 +191,24 @@ public class Play extends Observable{
                     }
                 }
         );
+        List<String> orders = playerOrders.stream().map(p -> p.getName() + "(" + p.getPlayerParty() + ")").collect(Collectors.toList());
+        Logger.getInstance().log(orders.toString());
     }
 
     public Player currentPlayer(){
-        return playerOrders.get(currentMapIndex);
+        return playerOrders.get(currentPlayerIndex);
     }
 
     public Player nextPlayer(){
         currentPlayerIndex += 1;
         currentPlayerIndex %= playerOrders.size();
+        Logger.getInstance().log("turn to " + currentPlayer().getName());
+
+        setChanged();
+        notifyObservers(Update.CURRENT);
         return currentPlayer();
     }
+
 
     //  =======================================================================
     //  Section - Target
@@ -218,6 +226,8 @@ public class Play extends Observable{
 
     public void setTargetLocation(Point targetLocation) {
         this.targetLocation = targetLocation;
+        setChanged();
+        notifyObservers(Update.TARGET);
     }
 
 
@@ -227,6 +237,8 @@ public class Play extends Observable{
 
     public static class Update{
         public static String RANGE = "play range";
+        public static String TARGET = "play target";
+        public static String CURRENT = "play current";
     }
 
     //  =======================================================================

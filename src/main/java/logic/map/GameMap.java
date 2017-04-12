@@ -342,10 +342,24 @@ public class GameMap extends Observable {
 
         return reachable ? VALIDATION_SUCCESS : VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE;
     }
+
+    public void enter(Player player){
+        Point entrance = getEntrances().get(0).getLocation();
+
+        List<Point.Direction> directions = Point.Direction.directions();
+        for (Point.Direction direction : directions) {
+            Point enter = entrance.add(direction);
+
+            if (canPlace(enter)){
+                addCell(player, enter);
+                adaptEquipments(player.getLevel());
+                break;
+            }
+        }
+    }
     
-    public void adaptEquipments(int level) {
-
-
+    private void adaptEquipments(int level) {
+        // TODO: 12/04/2017 Lambda
         List<Chest> chests = this.getChests();
         List<Player> players = this.getPlayers();
 
