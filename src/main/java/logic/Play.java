@@ -1,6 +1,7 @@
 package logic;
 
 import com.google.gson.annotations.Expose;
+import logic.map.Cell;
 import logic.map.GameMap;
 import logic.map.Point;
 import logic.player.Player;
@@ -61,7 +62,11 @@ public class Play extends Observable{
     public void setMainPlayer(Player mainPlayer) {
         this.mainPlayer = mainPlayer;
     }
-    
+
+    //  =======================================================================
+    //  Section - Campaign
+    //  =======================================================================
+
 
     @Expose
     private Campaign campaign;
@@ -70,34 +75,7 @@ public class Play extends Observable{
     private int currentMapIndex;
 
     @Expose
-    private GameMap currentMasp;
-
-
-    /**
-     * Getter for campaign
-     * @return Campaign
-     */
-    public Campaign getCampaign() {
-        return campaign;
-    }
-
-    /**
-     * Setter for campaign
-     * @param campaign
-     */
-    public void setCampaign(Campaign campaign) {
-        this.campaign = campaign;
-    }
-
-
-
-    /**
-     * Getter for currentMap.
-     * @return GameMap
-     */
-    public GameMap getCurrentMap() {
-        return currentMap;
-    }
+    private GameMap currentMap;
 
 
     /**
@@ -155,6 +133,35 @@ public class Play extends Observable{
     }
 
 
+    /**
+     * Getter for campaign
+     * @return Campaign
+     */
+    public Campaign getCampaign() {
+        return campaign;
+    }
+
+    /**
+     * Setter for campaign
+     * @param campaign
+     */
+    public void setCampaign(Campaign campaign) {
+        this.campaign = campaign;
+    }
+
+
+
+    /**
+     * Getter for currentMap.
+     * @return GameMap
+     */
+    public GameMap getCurrentMap() {
+        return currentMap;
+    }
+
+    //  =======================================================================
+    //  Section - Order
+    //  =======================================================================
 
     @Expose
     private LinkedList<Player> playerList;
@@ -182,6 +189,25 @@ public class Play extends Observable{
                     }
                 }
         );
+    }
+
+
+    //  =======================================================================
+    //  Section - Target
+    //  =======================================================================
+
+    private Point targetLocation;
+
+    public Cell getTarget(){
+        return currentMap.getCell(targetLocation);
+    }
+
+    public Point getTargetLocation() {
+        return targetLocation;
+    }
+
+    public void setTargetLocation(Point targetLocation) {
+        this.targetLocation = targetLocation;
     }
 
 

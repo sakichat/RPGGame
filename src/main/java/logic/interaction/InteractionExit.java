@@ -12,18 +12,19 @@ import ui.scene.PlayScene;
 public class InteractionExit extends Interaction<Exit> {
     @Override
     public void interact() {
-//        int currentLevel = play.getMainPlayer().getLevel();
-//        play.getMainPlayer().setLevel(currentLevel + 1);
-//
-//
-//        if (play.isLastMap()) {
-//            FinishScene finishScene = new FinishScene();
-//            PlayScene.this.navigationView.push(finishScene);
-//        } else {
-//            play.moveToNextMap();
-//            gameMapView.setGameMap(play.getCurrentMap());
-//
-//            gameMapView.refreshHighlight();
-//        }
+        PlayRuntime playRuntime = new PlayRuntime();
+        int currentLevel = player.getLevel();
+        player.setLevel(currentLevel + 1);
+
+
+        if (playRuntime.getPlay().isLastMap()) {
+            FinishScene finishScene = new FinishScene();
+            playRuntime.getPlayScene().getNavigationView().push(finishScene);
+        } else {
+            playRuntime.getPlay().moveToNextMap();
+            playRuntime.getMapView().setGameMap(playRuntime.getPlay().getCurrentMap());
+
+            playRuntime.getMapView().refreshHighlight();
+        }
     }
 }

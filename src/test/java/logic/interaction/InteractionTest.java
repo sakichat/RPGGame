@@ -50,16 +50,15 @@ public class InteractionTest {
 
     @Test
     public void interactChest() throws Exception {
-        InteractionFactory interactionFactory = new InteractionFactory();
+
         int pre = player.equipmentsInBackpack().size();
         int chestSize = chest.getEquipments().size();
 
+        InteractionFactory interactionFactory = new InteractionFactory();
         Interaction interaction = interactionFactory.interaction(player, chest);
         interaction.interact();
 
         int now = player.equipmentsInBackpack().size();
-
-
 
         System.out.println(pre+" "+chestSize+" "+now);
         Assert.assertTrue(pre + chestSize == now);
