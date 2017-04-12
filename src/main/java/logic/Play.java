@@ -17,17 +17,7 @@ import java.util.*;
  * This is the class for play.
  */
 public class Play {
-
-    private static Play currentPlay;
-
-    public static Play getCurrentPlay() {
-        return currentPlay;
-    }
-
-    public static void setCurrentPlay(Play currentPlay) {
-        Play.currentPlay = currentPlay;
-    }
-
+    
     @Expose
     private String name;
 
