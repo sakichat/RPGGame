@@ -13,11 +13,9 @@ import java.util.List;
  */
 public class Point {
 
-    @Expose
-    private int x;
-
-    @Expose
-    private int y;
+    //  =======================================================================
+    //  Section - Constructor
+    //  =======================================================================
 
     /**
      * this is the constructor
@@ -36,18 +34,16 @@ public class Point {
     }
 
 
+    //  =======================================================================
+    //  Section - Basic
+    //  =======================================================================
 
-    public Point copy(){
-        Point copyedPoint = new Point(x,y);
-        return copyedPoint;
-    }
+    @Expose
+    private int x;
 
-    public Point sub(Point delta){
-        Point point = new Point();
-        point.x = x - delta.x;
-        point.y = y - delta.y;
-        return point;
-    }
+    @Expose
+    private int y;
+
 
     /**
      * this method is to add point
@@ -61,9 +57,11 @@ public class Point {
         return point;
     }
 
-
-    public Point add(Direction direction){
-        return add(direction.toPoint());
+    public Point sub(Point delta){
+        Point point = new Point();
+        point.x = x - delta.x;
+        point.y = y - delta.y;
+        return point;
     }
 
     /**
@@ -95,6 +93,11 @@ public class Point {
     public void setY(int y) {
         this.y = y;
     }
+
+    //  =======================================================================
+    //  Section - Object
+    //  =======================================================================
+
 
     /**
      * this method is to show the Point
@@ -139,23 +142,14 @@ public class Point {
         return result;
     }
 
-
-    public Direction toDirection(){
-        if (x == 0){
-            if (y > 0){
-                return Direction.DOWN;
-            } else {
-                return Direction.UP;
-            }
-        } else if (y == 0){
-            if (x > 0){
-                return Direction.RIGHT;
-            } else {
-                return Direction.LEFT;
-            }
-        }
-        return null;
+    public Point copy(){
+        return new Point(x,y);
     }
+
+
+    //  =======================================================================
+    //  Section - Direction
+    //  =======================================================================
 
     public static enum Direction {
         UP(0, -1),
@@ -182,5 +176,26 @@ public class Point {
             return directions;
         }
 
+    }
+
+    public Direction toDirection(){
+        if (x == 0){
+            if (y > 0){
+                return Direction.DOWN;
+            } else {
+                return Direction.UP;
+            }
+        } else if (y == 0){
+            if (x > 0){
+                return Direction.RIGHT;
+            } else {
+                return Direction.LEFT;
+            }
+        }
+        return null;
+    }
+
+    public Point add(Direction direction){
+        return add(direction.toPoint());
     }
 }
