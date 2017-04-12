@@ -105,8 +105,8 @@ public class GameMapView extends View implements Observer {
     private final static int _LAYER_RANGE           = 1;
     private final static int _LAYER_CONTENT         = 2;
     private final static int _LAYER_CURRENT         = 3;
-    private final static int _LAYER_TARGET          = 3;
-    private final static int _LAYER_EVENT           = 4;
+    private final static int _LAYER_TARGET          = 4;
+    private final static int _LAYER_EVENT           = 5;
 
 
     /**
@@ -122,6 +122,7 @@ public class GameMapView extends View implements Observer {
         initBackgroundLayer();
         initRangeLayer();
         initContentLayer();
+        initCurrentLayer();
         initTargetLayer();
         initEventLayer();
     }
@@ -188,6 +189,16 @@ public class GameMapView extends View implements Observer {
         return selectedLocation;
     }
 
+    private void initCurrentLayer() {
+        newLayer();
+        GameMapLayerView layerView = layers.get(_LAYER_CURRENT);
+
+        selectedLocation = PlayRuntime.currentRuntime().getMainPlayer().getLocation();
+        selectionView = new ImageView();
+        selectionView.setName("selected_current.png");
+        layerView.addCell(selectionView, selectedLocation);
+    }
+
     /**
      * This property is for a new ImageView
      */
@@ -200,10 +211,18 @@ public class GameMapView extends View implements Observer {
         newLayer();
         GameMapLayerView layerView = layers.get(_LAYER_TARGET);
 
-        selectedLocation = new Point(0, 0);
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        if (play.isTargetLocationEnabled()) {
+            selectedLocation = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
+
+        } else
+            selectedLocation = new Point(0, 0);
+
         selectionView = new ImageView();
-        selectionView.setName("selected.png");
+        selectionView.setName("selected_target.png");
         layerView.addCell(selectionView, selectedLocation);
+        repaint();
+
     }
 
     /**
@@ -314,11 +333,11 @@ public class GameMapView extends View implements Observer {
      * This method refreshes TargetLayer.
      */
     public void refreshTarget() {
-        GameMapLayerView highlightLayerView = layers.get(_LAYER_TARGET);
-        highlightLayerView.removeAllCells();
-        this.initTargetLayer();
-
-        repaint();
+//        GameMapLayerView highlightLayerView = layers.get(_LAYER_TARGET);
+//        highlightLayerView.removeAllCells();
+//        this.initTargetLayer();
+//
+//        repaint();
     }
 
     /**
