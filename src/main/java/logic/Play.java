@@ -234,10 +234,18 @@ public class Play extends Observable{
     //  =======================================================================
 
     public enum RangeIndicationMode {
-        MOVE, ATTACK;
+        MOVE("movement"), ATTACK("attack");
+
+        private String name;
+
+        RangeIndicationMode(String name) {
+            this.name = name;
+        }
 
         public String getImageName(){
-            return null;
+            String imageName = "data/images/" + name+ "_range.png";
+
+            return imageName;
         }
     }
 

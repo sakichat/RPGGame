@@ -100,7 +100,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         });
 
         startButton.addActionListener(e -> PlayRuntime.currentRuntime());
-        
+
         skipButton.addActionListener(e -> {});
 
         selectButton.addActionListener(e -> {});

@@ -261,7 +261,7 @@ public class PlayerPanel extends Panel implements Observer {
         Integer totalAbilityModifierCHA = player.getTotalAbilityModifier(Player.ABILITY_CHA);
         chaAbilityView.modifierLabel.setText(TextDisplay.signedNumber(totalAbilityModifierCHA));
 
-        hpValueLabel.setText(player.getHp() + "");
+        hpValueLabel.setText(player.getHp() +  "/" + player.getTotalHp() + "");
         abValueLabel.setText(player.getTotalAttackBonus() + "");
         acValueLabel.setText(player.getTotalArmorClass() + "");
         dbValueLabel.setText(player.getTotalDamageBonus() + "");

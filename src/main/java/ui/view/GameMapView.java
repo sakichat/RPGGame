@@ -323,7 +323,9 @@ public class GameMapView extends View implements Observer {
      * This method regreshes AttackrangeLayer.
      */
     public void refreshRange(){
-        // TODO: 12/04/2017  
+        GameMapLayerView layerView = layers.get(_LAYER_RANGE);
+        layerView.removeAllCells();
+
         repaint();
     }
 }
