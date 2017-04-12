@@ -105,8 +105,8 @@ public class GameMapView extends View implements Observer {
     private final static int _LAYER_RANGE           = 1;
     private final static int _LAYER_CONTENT         = 2;
     private final static int _LAYER_CURRENT         = 3;
-    private final static int _LAYER_TARGET          = 4;
-    private final static int _LAYER_EVENT           = 5;
+    private final static int _LAYER_TARGET          = 3;
+    private final static int _LAYER_EVENT           = 4;
 
 
     /**
@@ -329,11 +329,13 @@ public class GameMapView extends View implements Observer {
         layerView.removeAllCells();
 
         Play play = PlayRuntime.currentRuntime().getPlay();
-        play.setRangeIndication(play.getRangeIndicationLocations(), play.getRangeIndicationMode());
-        ImageView imageView = new ImageView();
-        imageView.setName(play.getRangeIndicationMode().getImageName());
-        play.getRangeIndicationLocations().forEach(point -> layerView.addCell(imageView, point));
-
-        repaint();
+        if (play.isRangeIndicationEnabled()) {
+            play.getRangeIndicationLocations().forEach(point -> {
+                ImageView imageView = new ImageView();
+                imageView.setName(play.getRangeIndicationMode().getImageName());
+                layerView.addCell(imageView, point);
+            });
+            repaint();
+        }
     }
 }

@@ -191,7 +191,7 @@ public class Play extends Observable{
                     }
                 }
         );
-        List<String> orders = playerOrders.stream().map(p -> p.getName() + "(" + p.getPlayerParty() + ")").collect(Collectors.toList());
+        List<String> orders = playerOrders.stream().map(p -> p.toString()).collect(Collectors.toList());
         Logger.getInstance().log(orders.toString());
     }
 
@@ -202,7 +202,7 @@ public class Play extends Observable{
     public Player nextPlayer(){
         currentPlayerIndex += 1;
         currentPlayerIndex %= playerOrders.size();
-        Logger.getInstance().log("turn to " + currentPlayer().getName());
+        Logger.getInstance().log("turn to " + currentPlayer());
 
         setChanged();
         notifyObservers(Update.CURRENT);
@@ -262,9 +262,28 @@ public class Play extends Observable{
         }
     }
 
-    private RangeIndicationMode rangeIndicationMode;
+
+    private boolean rangeIndicationEnabled;
+
+    private RangeIndicationMode rangeIndicationMode = RangeIndicationMode.MOVE;
 
     private List<Point> rangeIndicationLocations;
+
+    public void setRangeIndication(List<Point> locations, RangeIndicationMode mode){
+        rangeIndicationLocations = locations;
+        rangeIndicationMode = mode;
+        setRangeIndicationEnabled(true);
+    }
+
+    public boolean isRangeIndicationEnabled() {
+        return rangeIndicationEnabled;
+    }
+
+    public void setRangeIndicationEnabled(boolean rangeIndicationEnabled) {
+        this.rangeIndicationEnabled = rangeIndicationEnabled;
+        setChanged();
+        notifyObservers(Update.RANGE);
+    }
 
     public RangeIndicationMode getRangeIndicationMode() {
         return rangeIndicationMode;
@@ -274,11 +293,5 @@ public class Play extends Observable{
         return rangeIndicationLocations;
     }
 
-    public void setRangeIndication(List<Point> locations, RangeIndicationMode mode){
-        rangeIndicationLocations = locations;
-        rangeIndicationMode = mode;
 
-        setChanged();
-        notifyObservers(Update.RANGE);
-    }
 }

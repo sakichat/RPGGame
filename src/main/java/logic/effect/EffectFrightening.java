@@ -8,7 +8,7 @@ import logic.turn.TurnStrategyFrightened;
 
 public class EffectFrightening extends Effect {
     private TurnStrategy turnStrategy;
-    private Player combatant = PlayRuntime.currentRuntime().getMainPlayer();
+    private Player combatant = PlayRuntime.currentRuntime().getPlay().currentPlayer();
 
     @Override
     protected void didAttach() {

@@ -99,7 +99,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
             PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
-        startButton.addActionListener(e -> PlayRuntime.currentRuntime());
+        startButton.addActionListener(e -> PlayRuntime.currentRuntime().begin());
 
         skipButton.addActionListener(e -> {});
 

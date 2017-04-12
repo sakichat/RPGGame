@@ -24,6 +24,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
      * This parameter create a new Play().
      */
     Play play = new Play();
+    private Player player;
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -43,6 +44,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
     JLabel playerNameLabel;
     JLabel campaignNameLabel;
     JLabel playerModeLabel;
+    private JTextField playNameTextField;
 
     public final static String HUMAN_PLAYER_MODE        = "Human Player";
     public final static String COMPUTER_PLAYER_MODE     = "Computer Player";
@@ -61,7 +63,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         label.setLocation(20, 20);
         contentView.add(label);
 
-        JTextField playNameTextField = new JTextField();
+        playNameTextField = new JTextField();
         playNameTextField.setSize(160, 40);
         playNameTextField.setLocation(150, 20);
         contentView.add(playNameTextField);
@@ -149,15 +151,31 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
 
         createButton.addActionListener(e -> {
             PlayScene playScene = new PlayScene();
-            play.setName(playNameTextField.getText());
+            viewToData();
 
             PlayRuntime playRuntime = PlayRuntime.currentRuntime();
 
             playRuntime.initiate(playScene, play);
             PlayCreationScene.this.navigationView.push(playScene);
-            playRuntime.begin();
 
         });
+    }
+
+    private void viewToData(){
+        play.setName(playNameTextField.getText());
+
+        play.setMainPlayer(player);
+        player.setPlayerParty(Player.PLAYER_PARTY_MAIN);
+
+        if (playerModeLabel.getText().equals(HUMAN_PLAYER_MODE)){
+            System.out.println("human");
+            TurnStrategyHuman turnStrategyHuman = new TurnStrategyHuman();
+            player.setStrategy(turnStrategyHuman);
+        }else if (playerModeLabel.getText().equals(COMPUTER_PLAYER_MODE)){
+            System.out.println("computer");
+            TurnStrategyComputer turnStrategyComputer = new TurnStrategyComputer();
+            player.setStrategy(turnStrategyComputer);
+        }
     }
 
     /**
@@ -180,18 +198,8 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
     public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
         contentView.remove(playerSelectorPanel);
 
-        player.setPlayerParty(Player.PLAYER_PARTY_MAIN);
-        play.setMainPlayer(player);
+        this.player = player;
         playerNameLabel.setText(player.getName());
-
-        if (playerModeLabel.getText().equals(HUMAN_PLAYER_MODE)){
-            TurnStrategyHuman turnStrategyHuman = new TurnStrategyHuman();
-            player.setStrategy(turnStrategyHuman);
-        }else if (playerModeLabel.getText().equals(COMPUTER_PLAYER_MODE)){
-            TurnStrategyComputer turnStrategyComputer = new TurnStrategyComputer();
-            player.setStrategy(turnStrategyComputer);
-        }
-
     }
 
     /**

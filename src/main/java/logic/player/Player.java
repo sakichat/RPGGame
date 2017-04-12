@@ -1,6 +1,8 @@
 package logic.player;
 
 import com.google.gson.annotations.Expose;
+import com.oracle.tools.packager.Log;
+import logic.Logger;
 import logic.PlayRuntime;
 import logic.effect.Effect;
 import logic.animation.AnimationMove;
@@ -785,14 +787,16 @@ public class Player extends Cell {
         // TODO: 10/04/2017
 
         Point target = strategy.preferredNextLocation();
+
         if (target != null) {
+            Logger.getInstance().log(this + " is moving to " + target);
             //  show target
             // TODO: 10/04/2017
 
             //  move animation
             GameMap currentMap = PlayRuntime.currentRuntime().getMap();
             Movement movement = currentMap.getGraph().shortestPath(location, target).getMovement(3);
-            System.out.println(movement);
+            Logger.getInstance().log("Movement " + movement);
             AnimationMove interactionMove = new AnimationMove();
             interactionMove.setMovement(movement);
             interactionMove.execute();
@@ -885,6 +889,12 @@ public class Player extends Cell {
     //  Section - Object
     //  =======================================================================
 
+
+    @Override
+    public String toString() {
+        return "Player " + name + "(" + playerParty + ")@" + location;
+    }
+
     /**
      * The method is override for the equals method, which is used to compare player object.
      * @param obj
@@ -909,22 +919,10 @@ public class Player extends Cell {
     //  Section - Other
     //  =======================================================================
 
-    /**
-     * The method is used by a player to loot a chest.
-     * @param chest
-     */
-    public void lootChest(Chest chest) {
 
 
-    }
 
-    /**
-     * The method is used by a player to loot a deadNPC.
-     * @param deadNPC
-     */
-    public void lootDeadNPC(Player deadNPC) {
 
-    }
 
 
 }
