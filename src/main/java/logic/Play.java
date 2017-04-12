@@ -6,6 +6,7 @@ import logic.map.Chest;
 import logic.map.GameMap;
 import logic.map.Point;
 import logic.player.Player;
+import logic.turn.TurnThread;
 import persistence.MapFileManager;
 
 import java.util.*;
@@ -135,6 +136,7 @@ public class Play {
     public void resolveMap(){
         String mapName = campaign.getMapName(currentMapIndex);
         currentMap = MapFileManager.read(mapName);
+        // TODO: 12/04/2017  
         enterIntoMap();
     }
 
@@ -205,6 +207,8 @@ public class Play {
      * This is a method makes player enter into the map.
      * @return Point
      */
+
+    @Deprecated
     private void enterIntoMap(){
         Point entrance = currentMap.getEntrances().get(0).getLocation();
 
@@ -225,6 +229,8 @@ public class Play {
     /**
      * This method is to refresh level of all the characters and chests on the map.
      */
+
+    @Deprecated
     private void mapLevelRefresh() {
 
         List<Chest> chests = currentMap.getChests();
@@ -309,7 +315,5 @@ public class Play {
             currentMap.removeCell(targetLocation);
         }
     }
-
-
 
 }

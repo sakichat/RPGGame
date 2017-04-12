@@ -1,12 +1,12 @@
 package logic.map;
 
 import com.google.gson.annotations.Expose;
+import logic.Play;
 import logic.player.Player;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * @author Qi Xia
@@ -141,6 +141,25 @@ public class GameMap {
         return false;
     }
 
+    /**
+     * this method is to if the cell is out of bounds
+     * @param location Point
+     * @return Boolean
+     */
+    public boolean pointInMap(Point location) {
+        int x = location.getX();
+        if (x < 0 || x >= width) {
+            return false;
+        }
+
+        int y = location.getY();
+        if (y < 0 || y >= height) {
+            return false;
+        }
+
+        return true;
+    }
+
 
     /**
      * this method is to move cell
@@ -158,6 +177,24 @@ public class GameMap {
         cells[endY][endX] = cell;
         cells[startY][startX] = null;
         cell.setLocation(endPoint);
+    }
+
+    private List<Point> locationsList() {
+        List<Point> locations = new LinkedList<>();
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                locations.add(new Point(j, i));
+            }
+        }
+        return locations;
+    }
+
+    public Stream<Point> getLocationsStream(){
+        return locationsList().stream();
+    }
+
+    public Iterable<Point> getLocations(){
+        return locationsList();
     }
 
     /**
@@ -233,6 +270,23 @@ public class GameMap {
         return chests;
     }
 
+    public void enter(Player player) {
+
+    }
+
+    public void refreshLevel(int level) {
+
+    }
+
+    public boolean finishObjective() {
+        return false;
+    }
+
+    public GameMapGraph getGraph(){
+        return new GameMapGraph(this);
+    }
+
+
     public final static String VALIDATION_SUCCESS = "Valid";
     public final static String VALIDATION_ERROR_NO_ENTRANCE = "No entrance";
     public final static String VALIDATION_ERROR_TOO_MANY_ENTRANCES = "Should be only one entrance";
@@ -285,82 +339,7 @@ public class GameMap {
         return reachable ? VALIDATION_SUCCESS : VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE;
     }
 
-    /**
-     * this method is to if the cell is out of bounds
-     * @param location Point
-     * @return Boolean
-     */
-    public boolean pointInMap(Point location) {
-        int x = location.getX();
-        if (x < 0 || x >= width) {
-            return false;
-        }
-
-        int y = location.getY();
-        if (y < 0 || y >= height) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
-     * This method is used for provide the range points for all the players.
-     */
-
-    @Deprecated
-    public Map<Player, List<Point>> getAttackRanges() {
-
-        Map<Player, List<Point>> attackRanges = new HashMap<>();
-        List<Player> players = getPlayers();
-
-        for (Player player : players) {
-            attackRanges.put(player, getAttackRange(player));
-        }
-
-        return attackRanges;
-    }
-
-    /**
-     * The method is used to provide the range points for one player.
-     * @param player Player
-     * @return List<Point>
-     */
-
-    @Deprecated
-    private List<Point> getAttackRange(Player player) {
-
-        List<Point> attackRange = new LinkedList<>();
-
-        List<Point.Direction> directions = Point.Direction.directions();
-        int range = player.getRangeForAttack();
-        Point location = player.getLocation();
-
-        for (Point.Direction direction : directions) {
-            for (int i = 0; i < range; i++) {
-                Point rangePoint = location.add(direction);
-                if (pointInMap(rangePoint)) {
-                    attackRange.add(rangePoint);
-                }
-            }
-        }
-
-        return attackRange;
-    }
 
 
-    public GameMapGraph getGraph(){
-        return new GameMapGraph(this);
-    }
 
-
-    public Iterable<Point> fullLocations(){
-        List<Point> locations = new LinkedList<>();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                locations.add(new Point(j, i));
-            }
-        }
-        return locations;
-    }
 }

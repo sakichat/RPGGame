@@ -43,7 +43,7 @@ public class GameMapGraph {
     }
 
     public void printValues(){
-        Iterable<Point> locations = gameMap.fullLocations();
+        Iterable<Point> locations = gameMap.getLocations();
         int y = 0;
         for (Point location : locations) {
             if (location.getY() != y) {
