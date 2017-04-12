@@ -2,6 +2,7 @@ package logic.player;
 
 import com.google.gson.annotations.Expose;
 import logic.Play;
+import logic.PlayRuntime;
 import logic.effect.Effect;
 import logic.interation.InteractionMove;
 import logic.map.*;
@@ -894,7 +895,7 @@ public class Player extends Cell {
             // TODO: 10/04/2017
 
             //  move animation
-            GameMap currentMap = Play.getCurrentPlay().getCurrentMap();
+            GameMap currentMap = PlayRuntime.currentRuntime().getMap();
             Movement movement = currentMap.getGraph().shortestPath(location, target).getMovement(3);
             InteractionMove interactionMove = new InteractionMove();
             interactionMove.setMovement(movement);
@@ -921,7 +922,7 @@ public class Player extends Cell {
         //  show target
         // TODO: 11/04/2017
 
-        GameMap currentMap = Play.getCurrentPlay().getCurrentMap();
+        GameMap currentMap = PlayRuntime.currentRuntime().getMap();
         Player player = (Player) currentMap.getCell(point);
         attack(player);
     }
