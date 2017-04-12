@@ -589,7 +589,8 @@ public class Player extends Cell {
     }
 
     public int availableSpotsInBackpack(){
-        return 0;
+        int availableSpaceInBackpack = 10 - equipmentsInBackpack().size();
+        return  availableSpaceInBackpack;
     }
 
     /**

@@ -12,14 +12,14 @@ public class InteractionDeadNPC extends Interaction<Player> {
 
         List<Equipment> inventories = target.getInventories();
 
-        int backpackEmptySize = 10 - target.equipmentsInBackpack().size();
+        int availableSpaceInBackpack = player.availableSpotsInBackpack();
         int inventoriesSize = inventories.size();
-        int lootSize = Math.min(backpackEmptySize, inventoriesSize);
+        int lootSize = Math.min(availableSpaceInBackpack, inventoriesSize);
 
         for (int i = 0; i < lootSize; i++) {
             Equipment lootEquipment = inventories.get(0);
-            target.pickUpEquipment(lootEquipment);
-            target.dropInventories(lootEquipment);
+            player.pickUpEquipment(lootEquipment);
+            player.dropInventories(lootEquipment);
             inventories.remove(0);
         }
 

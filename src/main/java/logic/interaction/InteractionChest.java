@@ -8,7 +8,7 @@ public class InteractionChest extends Interaction<Chest> {
 
     @Override
     public void interact() {
-        int availableSpaceInBackpack = 10 - player.equipmentsInBackpack().size();
+        int availableSpaceInBackpack = player.availableSpotsInBackpack();
         int chestSize = target.getEquipments().size();
         int lootSize = Math.min(availableSpaceInBackpack, chestSize);
 
