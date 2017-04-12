@@ -307,7 +307,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     private void interactWithDeadNPC(Player targetPlayer) {
 
         play.getPlayer().lootDeadNPC(targetPlayer);
-        play.refreshPlayer();
 
     }
 
