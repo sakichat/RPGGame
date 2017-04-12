@@ -12,8 +12,8 @@ import ui.scene.PlayScene;
 public class InteractionExit extends Interaction<Exit> {
     @Override
     public void interact() {
-//        int currentLevel = play.getPlayer().getLevel();
-//        play.getPlayer().setLevel(currentLevel + 1);
+//        int currentLevel = play.getMainPlayer().getLevel();
+//        play.getMainPlayer().setLevel(currentLevel + 1);
 //
 //
 //        if (play.isLastMap()) {

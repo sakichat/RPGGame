@@ -263,11 +263,11 @@ Layers
         selection focus point
 
 +   objects
-    *   player cells
+    *   mainPlayer cells
         +   hp bar
         +   effects
-        +   player
-    *   non-player cells
+        +   mainPlayer
+    *   non-mainPlayer cells
 
 +   range
     *   effective cell

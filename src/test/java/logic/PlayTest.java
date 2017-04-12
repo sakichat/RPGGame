@@ -34,7 +34,7 @@ public class PlayTest {
         player = PlayerFileManager.read("testplayer");
 
         play.setCampaign(campaign);
-        play.setPlayer(player);
+        play.setMainPlayer(player);
         play.resolveMap();
     }
 
@@ -45,12 +45,12 @@ public class PlayTest {
     @Test
     public void moveToNextCell() throws Exception {
         play.setDirection(Point.Direction.DOWN);
-        Point previousLocation = play.getPlayer().getLocation();
+        Point previousLocation = play.getMainPlayer().getLocation();
 
         play.move();
         play.move();
 
-        Point nowLocation = play.getPlayer().getLocation();
+        Point nowLocation = play.getMainPlayer().getLocation();
         boolean notChangeLocation = previousLocation == nowLocation;
 
         Assert.assertEquals(false, notChangeLocation);
@@ -62,11 +62,11 @@ public class PlayTest {
     @Test
     public void moveBorderTest() throws Exception {
         play.setDirection(Point.Direction.LEFT);
-        Point previousLocation = play.getPlayer().getLocation();
+        Point previousLocation = play.getMainPlayer().getLocation();
 
         play.move();
 
-        Point nowLocation = play.getPlayer().getLocation();
+        Point nowLocation = play.getMainPlayer().getLocation();
 
         boolean notChangeLocation = previousLocation == nowLocation;
 
@@ -80,18 +80,18 @@ public class PlayTest {
     @Test
     public void cannotMoveTest() throws Exception {
         play.setDirection(Point.Direction.RIGHT);
-        System.out.println(play.getPlayer().getLocation());
+        System.out.println(play.getMainPlayer().getLocation());
 
         play.move();
         play.move();
         play.move();
         play.setDirection(Point.Direction.DOWN);
 
-        Point previousLocation = play.getPlayer().getLocation();
+        Point previousLocation = play.getMainPlayer().getLocation();
 
         play.move();
 
-        Point nowLocation = play.getPlayer().getLocation();
+        Point nowLocation = play.getMainPlayer().getLocation();
 
         boolean notChangeLocation = previousLocation == nowLocation;
 

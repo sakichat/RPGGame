@@ -8,14 +8,10 @@ import ui.scene.PlayScene;
 import ui.view.GameMapView;
 
 public class PlayRuntime {
-    private static PlayRuntime currentRuntime;
+    private static PlayRuntime currentRuntime = new PlayRuntime();
 
     public static PlayRuntime currentRuntime() {
         return currentRuntime;
-    }
-
-    public static void setCurrentRuntime(PlayRuntime currentRuntime) {
-        PlayRuntime.currentRuntime = currentRuntime;
     }
 
     private Play play;
@@ -23,17 +19,12 @@ public class PlayRuntime {
     public Play getPlay() {
         return play;
     }
-
-    public void setPlay(Play play) {
-        this.play = play;
-    }
-
     public GameMap getMap() {
         return play.getCurrentMap();
     }
 
     public Player getPlayer() {
-        return play.getPlayer();
+        return play.getMainPlayer();
     }
 
     private TurnThread turnThread;
@@ -42,21 +33,29 @@ public class PlayRuntime {
         return turnThread;
     }
 
-    public void setTurnThread(TurnThread turnThread) {
-        this.turnThread = turnThread;
-    }
-
     private PlayScene playScene;
 
     public PlayScene getPlayScene() {
         return playScene;
     }
 
-    public void setPlayScene(PlayScene playScene) {
-        this.playScene = playScene;
-    }
-
     public GameMapView getMapView(){
         return playScene.getGameMapView();
+    }
+
+    public void initiate(PlayScene playScene, Play play){
+        this.playScene = playScene;
+        this.play = play;
+        playScene.setPlay(play);
+        play.resolveMap();
+    }
+
+    public void begin(){
+
+    }
+
+    public void end(){
+        this.playScene = null;
+        this.play = null;
     }
 }

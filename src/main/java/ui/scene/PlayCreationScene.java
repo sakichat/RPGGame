@@ -2,6 +2,7 @@ package ui.scene;
 
 import logic.Campaign;
 import logic.Play;
+import logic.PlayRuntime;
 import logic.player.Player;
 import ui.panel.CampaignSelectorPanel;
 import ui.panel.PlayerSelectorPanel;
@@ -147,9 +148,13 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         createButton.addActionListener(e -> {
             PlayScene playScene = new PlayScene();
             play.setName(playNameTextField.getText());
-            play.resolveMap();
-            playScene.setPlay(play);
+
+            PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+
+            playRuntime.initiate(playScene, play);
             PlayCreationScene.this.navigationView.push(playScene);
+            playRuntime.begin();
+
         });
     }
 
@@ -174,7 +179,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         contentView.remove(playerSelectorPanel);
 
         player.setPlayerParty(Player.PLAYER_PARTY_PLAYER);
-        play.setPlayer(player);
+        play.setMainPlayer(player);
         playerNameLabel.setText(player.getName());
     }
 

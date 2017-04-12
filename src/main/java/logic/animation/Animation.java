@@ -13,7 +13,7 @@ public abstract class Animation {
     public Animation() {
         play = PlayRuntime.currentRuntime().getPlay();
         gameMap = play.getCurrentMap();
-        player = play.getPlayer();
+        player = play.getMainPlayer();
     }
 
     public abstract void execute();

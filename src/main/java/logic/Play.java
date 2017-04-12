@@ -1,7 +1,6 @@
 package logic;
 
 import com.google.gson.annotations.Expose;
-import logic.map.Cell;
 import logic.map.GameMap;
 import logic.map.Point;
 import logic.player.Player;
@@ -15,27 +14,14 @@ import java.util.*;
  * This is the class for play.
  */
 public class Play extends Observable{
-    
+
+    //  =======================================================================
+    //  Section - Basic
+    //  =======================================================================
+
     @Expose
     private String name;
 
-    @Expose
-    private Campaign campaign;
-
-    @Expose
-    private Player player;
-
-    @Expose
-    private int currentMapIndex;
-
-    @Expose
-    private Point.Direction direction;
-
-    @Expose
-    private GameMap currentMap;
-
-    @Expose
-    private LinkedList<Player> playerList;
 
     /**
      * Getter for name.
@@ -53,6 +39,40 @@ public class Play extends Observable{
         this.name = name;
     }
 
+    //  =======================================================================
+    //  Section - Context
+    //  =======================================================================
+
+    @Expose
+    private Player mainPlayer;
+
+    /**
+     * Getter for mainPlayer
+     * @return Player
+     */
+    public Player getMainPlayer() {
+        return mainPlayer;
+    }
+
+    /**
+     * Setter for mainPlayer
+     * @param mainPlayer
+     */
+    public void setMainPlayer(Player mainPlayer) {
+        this.mainPlayer = mainPlayer;
+    }
+    
+
+    @Expose
+    private Campaign campaign;
+
+    @Expose
+    private int currentMapIndex;
+
+    @Expose
+    private GameMap currentMasp;
+
+
     /**
      * Getter for campaign
      * @return Campaign
@@ -69,37 +89,7 @@ public class Play extends Observable{
         this.campaign = campaign;
     }
 
-    /**
-     * Getter for player
-     * @return Player
-     */
-    public Player getPlayer() {
-        return player;
-    }
 
-    /**
-     * Setter for player
-     * @param player
-     */
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    /**
-     * Getter for direction
-     * @return direction
-     */
-    public Point.Direction getDirection() {
-        return direction;
-    }
-
-    /**
-     * Setter for direction
-     * @param direction
-     */
-    public void setDirection(Point.Direction direction) {
-        this.direction = direction;
-    }
 
     /**
      * Getter for currentMap.
@@ -109,23 +99,36 @@ public class Play extends Observable{
         return currentMap;
     }
 
-    /**
-     * Getter for playerList.
-     * @return LinkedList<Player>
-     */
-    public LinkedList<Player> getPlayerList() {
-        return playerList;
-    }
 
     /**
      * This is the method for get currentMap,
-     * and add player into the map(enter).
+     * and add mainPlayer into the map(enter).
      */
     public void resolveMap(){
         String mapName = campaign.getMapName(currentMapIndex);
         currentMap = MapFileManager.read(mapName);
         // TODO: 12/04/2017
-        enterIntoMap(player);
+        enterIntoMap(mainPlayer);
+    }
+
+
+    /**
+     * This is a method makes mainPlayer enter into the map.
+     * @return Point
+     */
+    private void enterIntoMap(Player player){
+        Point entrance = currentMap.getEntrances().get(0).getLocation();
+
+        List<Point.Direction> directions = Point.Direction.directions();
+        for (Point.Direction direction : directions) {
+            Point enter = entrance.add(direction);
+
+            if (currentMap.canPlace(enter)){
+                currentMap.addCell(player, enter);
+                currentMap.adaptEquipments(player.getLevel());
+                break;
+            }
+        }
     }
 
     /**
@@ -136,6 +139,7 @@ public class Play extends Observable{
         currentMapIndex++;
         resolveMap();
     }
+
 
     /**
      * This is the method for judging
@@ -149,6 +153,11 @@ public class Play extends Observable{
         }
         return false;
     }
+
+
+
+    @Expose
+    private LinkedList<Player> playerList;
 
     /**
      * This is the method for sort the players in play list
@@ -175,93 +184,18 @@ public class Play extends Observable{
         );
     }
 
-    /**
-     * This is the method to make player move.
-     */
-    public void move(){
-        Point location = player.getLocation();
-        Point targetLocation = location.add(direction);
-//        int differenceX = Math.abs(location.getX() - targetLocation.getX());
-//        int differenceY = Math.abs(location.getY() - targetLocation.getY());
-//        int difference = differenceX + differenceY;
-//        difference <= 1 &&
 
-        if ( currentMap.canPlace(targetLocation)){
-            currentMap.moveCell(location, targetLocation);
-        }
-    }
+    //  =======================================================================
+    //  Section - Observer
+    //  =======================================================================
 
-    /**
-     * This is a method makes player enter into the map.
-     * @return Point
-     */
-
-    @Deprecated
-    private void enterIntoMap(Player player){
-        Point entrance = currentMap.getEntrances().get(0).getLocation();
-
-        List<Point.Direction> directions = Point.Direction.directions();
-        for (Point.Direction direction : directions) {
-            Point enter = entrance.add(direction);
-
-            if (currentMap.canPlace(enter)){
-                currentMap.addCell(player, enter);
-                this.direction = direction;
-                currentMap.adaptEquipments(player.getLevel());
-                break;
-            }
-        }
-    }
-
-
-    /**
-     * This method is to refresh level of all the characters and chests on the map.
-     */
-
-
-
-    /**
-     * This method is used for judge whether the objectives are fulfilled
-     * @return Boolean
-     */
-
-    @Deprecated
-    public Boolean isObjective() {
-        List<Player> players = currentMap.getPlayers();
-        List<Player> hostilePlayers = new LinkedList<Player>();
-
-        for (Player player : players) {
-            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
-                hostilePlayers.add(player);
-            }
-        }
-
-        boolean objectiveFulfilled = true;
-
-        for (Player hostilePlayer : hostilePlayers) {
-            if (!hostilePlayer.isDead()) {
-                objectiveFulfilled = false;
-            }
-        }
-
-        return objectiveFulfilled;
-    }
-
-    /**
-     * This is the method for get target cell in direction
-     * @return Cell
-     */
-    public Cell getTarget(){
-        Point location = player.getLocation();
-        Point targetLocation = location.add(direction);
-        Cell cell = currentMap.getCell(targetLocation);
-        return cell;
-    }
-
-    
     public static class Update{
         public static String RANGE = "play range";
     }
+
+    //  =======================================================================
+    //  Section - Range
+    //  =======================================================================
 
     public enum RangeIndicationMode {
         MOVE, ATTACK

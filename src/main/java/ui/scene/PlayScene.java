@@ -155,7 +155,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
         } else {
             PlayingControlView playingControlView = new PlayingControlView();
-            playingControlView.setPlayer(play.getPlayer());
+            playingControlView.setPlayer(play.getMainPlayer());
             controlView = playingControlView;
 
         }
@@ -263,10 +263,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     @Override
     public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
 
-        play.getPlayer().dropInventories(equipment);
+        play.getMainPlayer().dropInventories(equipment);
         Player targetPlayer = (Player) play.getTarget();
         Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
-        play.getPlayer().pickUpEquipment(exchangeEquipmentRandom);
+        play.getMainPlayer().pickUpEquipment(exchangeEquipmentRandom);
 
     }
 
