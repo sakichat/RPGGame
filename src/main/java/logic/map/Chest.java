@@ -102,7 +102,7 @@ public class Chest extends Cell{
     public void adaptEquipments(int level){
         if (equipments != null){
             for (Equipment equipment : equipments){
-                equipment.levelRefresh(level);
+                equipment.adapt(level);
             }
         }
     }

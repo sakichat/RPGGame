@@ -195,7 +195,7 @@ public class EquipmentSolid implements Equipment{
      * this method is to refresh the value of equipment according to the level of player
      * @param level int
      */
-    public void levelRefresh(int level) {
+    public void adapt(int level) {
         if (level >= 1 && level <= 4){
             this.setEnhancedValue(1);
         }else if (level >= 5 && level <= 8){

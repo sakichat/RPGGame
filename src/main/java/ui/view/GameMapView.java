@@ -1,6 +1,7 @@
 package ui.view;
 
 import logic.BaseUpdate;
+import logic.Play;
 import logic.map.Cell;
 import logic.map.GameMap;
 import logic.map.Point;
@@ -265,9 +266,15 @@ public class GameMapView extends View implements Observer {
     public void update(Observable o, Object arg) {
         if (BaseUpdate.when(arg)
                 .match(GameMap.Update.CELL)
-                .check()){
+                .check()) {
             SwingUtilities.invokeLater(this::refreshContent);
+
+        } else if (BaseUpdate.when(arg)
+                .match(Play.Update.RANGE)
+                .check()) {
+            SwingUtilities.invokeLater(this::refreshRange);
         }
+
     }
 
     /**
@@ -317,27 +324,7 @@ public class GameMapView extends View implements Observer {
      * This method regreshes AttackrangeLayer.
      */
     public void refreshRange(){
-        GameMapLayerView rangeLayerView = layers.get(_LAYER_RANGE);
-        rangeLayerView.removeAllCells();
-
-        HashMap<String, String> playerParties = new HashMap<>();
-        playerParties.put(Player.PLAYER_PARTY_PLAYER, "player");
-        playerParties.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
-        playerParties.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
-
-//        Map<Player, List<Point>> attackRanges = gameMap.getAttackRanges();
-//
-//        for (Player player : attackRanges.keySet()) {
-//            ImageView imageView = new ImageView();
-//            imageView.setName("attack_range_" + playerParties.get(player.getPlayerParty()) + ".png");
-//
-//            List<Point> points = attackRanges.get(player);
-//            for (Point point : points) {
-//                rangeLayerView.addCell(imageView, point);
-//            }
-//
-//        }
-
+        // TODO: 12/04/2017  
         repaint();
     }
 }

@@ -271,8 +271,7 @@ public class GameMap extends Observable {
 
         for (Player character : players) {
             if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
-                character.setLevel(level);
-                character.inventoryLevelRefresh();
+                character.adaptEquipments(level);
             }
         }
 
@@ -360,6 +359,7 @@ public class GameMap extends Observable {
 
         return reachable ? VALIDATION_SUCCESS : VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE;
     }
+
 
 
 

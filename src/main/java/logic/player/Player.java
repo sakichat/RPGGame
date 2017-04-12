@@ -1,7 +1,6 @@
 package logic.player;
 
 import com.google.gson.annotations.Expose;
-import logic.Play;
 import logic.PlayRuntime;
 import logic.effect.Effect;
 import logic.interation.InteractionMove;
@@ -397,14 +396,13 @@ public class Player extends Cell {
     /**
      * This method is used by NPCs to refresh the value of inventories.
      * according to the level of player.
+     * @param level
      */
-    public void inventoryLevelRefresh(){
-
+    public void adaptEquipments(int level){
+        setLevel(level);
         List<Equipment> inventories = getInventories();
-        if (!inventories.isEmpty()) {
-            for (Equipment equipment : inventories) {
-                equipment.levelRefresh(level);
-            }
+        for (Equipment equipment : inventories) {
+            equipment.adapt(level);
         }
     }
 

@@ -65,8 +65,8 @@ public abstract class WeaponDecorator implements Weapon {
     }
 
     @Override
-    public void levelRefresh(int level) {
-        decoratedWeapon.levelRefresh(level);
+    public void adapt(int level) {
+        decoratedWeapon.adapt(level);
     }
 
     @Override

@@ -14,7 +14,7 @@ import java.util.*;
  * @version 0.2
  * This is the class for play.
  */
-public class Play {
+public class Play extends Observable{
     
     @Expose
     private String name;
@@ -258,4 +258,32 @@ public class Play {
         return cell;
     }
 
+    
+    public static class Update{
+        public static String RANGE = "play range";
+    }
+
+    public enum RangeIndicationMode {
+        MOVE, ATTACK
+    }
+
+    private RangeIndicationMode rangeIndicationMode;
+
+    private List<Point> rangeIndicationLocations;
+
+    public RangeIndicationMode getRangeIndicationMode() {
+        return rangeIndicationMode;
+    }
+
+    public List<Point> getRangeIndicationLocations() {
+        return rangeIndicationLocations;
+    }
+
+    public void setRangeIndication(List<Point> locations, RangeIndicationMode mode){
+        rangeIndicationLocations = locations;
+        rangeIndicationMode = mode;
+
+        setChanged();
+        notifyObservers(Update.RANGE);
+    }
 }

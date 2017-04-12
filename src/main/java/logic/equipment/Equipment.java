@@ -30,7 +30,7 @@ public interface Equipment {
     int getEnhancedValue();
     void setEnhancedValue(int enhancedValue);
 
-    void levelRefresh(int level);
+    void adapt(int level);
 
     String displayName();
 
