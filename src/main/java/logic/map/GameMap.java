@@ -261,16 +261,48 @@ public class GameMap extends Observable {
         return chests;
     }
 
-    public void enter(Player player) {
 
-    }
 
     public void refreshLevel(int level) {
+
+
+        List<Chest> chests = this.getChests();
+        List<Player> players = this.getPlayers();
+
+
+        for (Player character : players) {
+            if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
+                character.setLevel(level);
+                character.inventoryLevelRefresh();
+            }
+        }
+
+        for (Chest chest : chests) {
+            chest.chestLevelRefresh(level);
+        }
 
     }
 
     public boolean finishObjective() {
-        return false;
+
+        List<Player> players = this.getPlayers();
+        List<Player> hostilePlayers = new LinkedList<Player>();
+
+        for (Player player : players) {
+            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
+                hostilePlayers.add(player);
+            }
+        }
+
+        boolean objectiveFulfilled = true;
+
+        for (Player hostilePlayer : hostilePlayers) {
+            if (!hostilePlayer.isDead()) {
+                objectiveFulfilled = false;
+            }
+        }
+
+        return objectiveFulfilled;
     }
 
     public GameMapGraph getGraph(){

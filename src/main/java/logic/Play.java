@@ -127,7 +127,7 @@ public class Play {
         String mapName = campaign.getMapName(currentMapIndex);
         currentMap = MapFileManager.read(mapName);
         // TODO: 12/04/2017
-        enterIntoMap();
+        enterIntoMap(player);
     }
 
     /**
@@ -199,7 +199,7 @@ public class Play {
      */
 
     @Deprecated
-    private void enterIntoMap(){
+    private void enterIntoMap(Player player){
         Point entrance = currentMap.getEntrances().get(0).getLocation();
 
         List<Point.Direction> directions = Point.Direction.directions();
@@ -209,7 +209,7 @@ public class Play {
             if (currentMap.canPlace(enter)){
                 currentMap.addCell(player, enter);
                 this.direction = direction;
-                mapLevelRefresh();
+                currentMap.refreshLevel(player.getLevel());
                 break;
             }
         }
