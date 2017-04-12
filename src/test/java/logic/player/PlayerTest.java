@@ -2,6 +2,8 @@ package logic.player;
 
 import logic.equipment.Equipment;
 import logic.equipment.EquipmentFactory;
+import logic.equipment.Weapon;
+import logic.equipment.WeaponDecoratorBurning;
 import logic.map.Chest;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,6 +22,7 @@ public class PlayerTest {
      * These parameters is pre-defined attributes for every method in this test class to use.
      */
     private Player player;
+    private Player targetPlayer;
     private Equipment equipmentArmorAC1;
     private Equipment equipmentArmorAC3;
     private Equipment equipmentArmorAC5;
@@ -34,6 +37,7 @@ public class PlayerTest {
     private Equipment equipmentBootsAC3;
     private Equipment equipmentRingCon3;
     private Equipment equipmentWeaponAB5;
+    private Weapon    weaponDB3Range2;
     private Chest chest;
 
     /**
@@ -44,6 +48,9 @@ public class PlayerTest {
     public void setUp() throws Exception {
         player = new Player();
         player.generateAbilities();
+
+        targetPlayer = new Player();
+        targetPlayer.generateAbilities();
 
         EquipmentFactory equipmentFactory = new EquipmentFactory();
 
@@ -62,6 +69,13 @@ public class PlayerTest {
         equipmentBootsAC3   = equipmentFactory.newEquipment("A", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
         equipmentRingCon3   = equipmentFactory.newEquipment("A", Equipment.RING,  Player.ABILITY_CON, 3);
         equipmentWeaponAB5  = equipmentFactory.newEquipment("A", Equipment.WEAPON,Player.ATTRIBUTE_ATTACK_BONUS, 5);
+
+        weaponDB3Range2 = equipmentFactory.newWeapon();
+        weaponDB3Range2.setType(Equipment.WEAPON);
+        weaponDB3Range2.setEnhancedValue(3);
+        weaponDB3Range2.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
+        weaponDB3Range2.setRange(2);
+        weaponDB3Range2.setWeaponType(Weapon.Type.RANGED);
 
         player.pickUpEquipment(equipmentArmorAC1);
         player.pickUpEquipment(equipmentArmorAC3);
@@ -261,12 +275,17 @@ public class PlayerTest {
     }
 
     /**
-     * This case tests an attack hits if the attack roll is greater than the armor class of the target.
+     * This method tests the weapon's special effects in combat using the Decorator pattern.
      * @throws Exception
      */
     @Test
-    public void attack1() throws Exception {
+    public void specialEffect() throws Exception {
+        player.dropEquipment(equipmentArmorAC1);
 
+        WeaponDecoratorBurning weaponDecoratorBurning = new WeaponDecoratorBurning(weaponDB3Range2);
+
+        player.pickUpEquipment(weaponDecoratorBurning);
+        player.equip(weaponDecoratorBurning);
     }
 
     /**
@@ -274,9 +293,27 @@ public class PlayerTest {
      * @throws Exception
      */
     @Test
+    public void attack1() throws Exception {
+        int x = targetPlayer.getTotalArmorClass();
+        System.out.println(x);
+//        player.shouldDealDamage(targetPlayer);
+    }
+
+    /**
+     * This case tests an attack hits if the attack roll is greater than the armor class of the target.
+     * @throws Exception
+     */
+    @Test
     public void attack2() throws Exception {
 
     }
 
+    /**
+     * This case tests the damage inflicted is using the right damage modifiers.
+     * @throws Exception
+     */
+    @Test
+    public void damage() throws Exception {
 
+    }
 }

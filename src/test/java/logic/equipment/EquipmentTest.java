@@ -81,4 +81,9 @@ public class EquipmentTest {
         equipment = equipmentFactory.newEquipment("", Equipment.BOOTS, Player.ABILITY_DEX, 1);
         Assert.assertEquals(true, equipment.validate());
     }
+
+    @Test
+    public void name() throws Exception {
+
+    }
 }
