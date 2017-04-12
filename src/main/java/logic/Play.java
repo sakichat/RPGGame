@@ -163,6 +163,8 @@ public class Play extends Observable{
     //  Section - Order
     //  =======================================================================
 
+    private int currentPlayerIndex;
+
     private LinkedList<Player> playerOrders;
 
     /**
@@ -190,6 +192,15 @@ public class Play extends Observable{
         );
     }
 
+    public Player currentPlayer(){
+        return playerOrders.get(currentMapIndex);
+    }
+
+    public Player nextPlayer(){
+        currentPlayerIndex += 1;
+        currentPlayerIndex %= playerOrders.size();
+        return currentPlayer();
+    }
 
     //  =======================================================================
     //  Section - Target
@@ -223,7 +234,11 @@ public class Play extends Observable{
     //  =======================================================================
 
     public enum RangeIndicationMode {
-        MOVE, ATTACK
+        MOVE, ATTACK;
+
+        public String getImageName(){
+            return null;
+        }
     }
 
     private RangeIndicationMode rangeIndicationMode;
