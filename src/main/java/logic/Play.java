@@ -227,7 +227,8 @@ public class Play extends Observable{
     public void setTargetLocation(Point targetLocation) {
         this.targetLocation = targetLocation;
         setChanged();
-        notifyObservers(Update.TARGET);
+//        notifyObservers(Update.TARGET);
+        notifyObservers(targetLocation);
     }
 
 

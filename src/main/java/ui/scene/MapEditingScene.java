@@ -10,6 +10,8 @@ import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * This MapEditingScene class is for editing game map view which extends Scene class
@@ -17,7 +19,8 @@ import javax.swing.*;
  * @author Siyu Chen
  * @version 0.2
  */
-public class MapEditingScene extends Scene implements   GameMapView.Delegate,
+public class MapEditingScene extends Scene implements   Observer,
+                                                        GameMapView.Delegate,
                                                         PlayerSelectorPanel.Delegate,
                                                         EquipmentSelectorPanel.Delegate {
 
@@ -315,4 +318,8 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
         gameMapView.refreshContent();
     }
 
+    @Override
+    public void update(Observable o, Object arg) {
+        gameMapViewSelectPerformAction(gameMapView, (Point)arg);
+    }
 }
