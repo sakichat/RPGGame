@@ -14,7 +14,7 @@ import logic.player.Player;
 public class Simulation {
     public static Player player() {
         Player player = new Player();
-        player.setPlayerParty(Player.PLAYER_PARTY_PLAYER);
+        player.setPlayerParty(Player.PLAYER_PARTY_MAIN);
         player.setPlayerType(Player.PLAYER_TYPE_BULLY);
         player.setName("Test");
         player.setLevel(10);
@@ -42,7 +42,7 @@ public class Simulation {
 
         player.setTotalHp(10);
         player.setPlayerType(Player.PLAYER_TYPE_BULLY);
-        player.setPlayerParty(Player.PLAYER_PARTY_PLAYER);
+        player.setPlayerParty(Player.PLAYER_PARTY_MAIN);
         player.addEffect(new EffectFreezing());
         player.addEffect(new EffectBurning());
 

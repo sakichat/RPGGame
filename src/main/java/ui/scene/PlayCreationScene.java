@@ -178,7 +178,7 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
     public void playerSelectorPerformAction(PlayerSelectorPanel playerSelectorPanel, Player player) {
         contentView.remove(playerSelectorPanel);
 
-        player.setPlayerParty(Player.PLAYER_PARTY_PLAYER);
+        player.setPlayerParty(Player.PLAYER_PARTY_MAIN);
         play.setMainPlayer(player);
         playerNameLabel.setText(player.getName());
     }

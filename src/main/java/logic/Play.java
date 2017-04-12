@@ -85,8 +85,8 @@ public class Play extends Observable{
     public void resolveMap(){
         String mapName = campaign.getMapName(currentMapIndex);
         currentMap = MapFileManager.read(mapName);
-        // TODO: 12/04/2017
         enterIntoMap(mainPlayer);
+        resolvePlayersOrder();
     }
 
 
@@ -163,26 +163,25 @@ public class Play extends Observable{
     //  Section - Order
     //  =======================================================================
 
-    @Expose
-    private LinkedList<Player> playerList;
+    private LinkedList<Player> playerOrders;
 
     /**
      * This is the method for sort the players in play list
      */
-    public void playerSortList(){
-        playerList = new LinkedList<>(currentMap.getPlayers());
+    public void resolvePlayersOrder(){
+        playerOrders = new LinkedList<>(currentMap.getPlayers());
         Map<Player, Integer> initiativeValues = new HashMap<Player, Integer>();
 
         int sortStandard;
 
-        for (Player sortingPlayer : playerList) {
+        for (Player sortingPlayer : playerOrders) {
             int diceScore = Dice.rool(20);
             int dexScore = sortingPlayer.getTotalAbilityModifier(Player.ABILITY_DEX);
             sortStandard = diceScore + dexScore;
             initiativeValues.put(sortingPlayer, sortStandard);
         }
 
-        Collections.sort(playerList, new Comparator<Player>() {
+        Collections.sort(playerOrders, new Comparator<Player>() {
                     @Override
                     public int compare(Player o1, Player o2) {
                         return initiativeValues.get(o2).compareTo(initiativeValues.get(o1));

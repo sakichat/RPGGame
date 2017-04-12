@@ -351,7 +351,7 @@ public class GameMap extends Observable {
 
 
         for (Player character : players) {
-            if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
+            if (!character.equals(Player.PLAYER_PARTY_MAIN)){
                 character.adaptEquipments(level);
             }
         }

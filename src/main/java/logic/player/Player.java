@@ -61,7 +61,7 @@ public class Player extends Cell {
     public final static String PLAYER_PARTY_NOT_DEFINED = "Not Defined";
     public final static String PLAYER_PARTY_FRIENDLY    = "Friendly";
     public final static String PLAYER_PARTY_HOSTILE     = "Hostile";
-    public final static String PLAYER_PARTY_PLAYER      = "Player";
+    public final static String PLAYER_PARTY_MAIN        = "Main";
 
     /**
      * Getter for the name.
@@ -845,7 +845,7 @@ public class Player extends Cell {
         HashMap<String, String> partyNames = new HashMap<>();
         partyNames.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
         partyNames.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
-        partyNames.put(Player.PLAYER_PARTY_PLAYER, "player");
+        partyNames.put(Player.PLAYER_PARTY_MAIN, "player");
         partyNames.put(Player.PLAYER_PARTY_NOT_DEFINED, "nd");
 
         HashMap<String, String> typeNames = new HashMap<>();

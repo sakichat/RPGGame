@@ -46,8 +46,8 @@ public class PlayRuntime {
     public void initiate(PlayScene playScene, Play play){
         this.playScene = playScene;
         this.play = play;
-        playScene.setPlay(play);
         play.resolveMap();
+        playScene.setPlay(play);
     }
 
     public void begin(){
