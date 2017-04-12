@@ -6,6 +6,7 @@ import logic.player.Player;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -202,16 +203,22 @@ public class GameMap {
      * @return List<Entrance>
      */
     public List<Entrance> getEntrances(){
-        LinkedList<Entrance> entrances = new LinkedList<>();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (cells[i][j] instanceof Entrance){
-                    Cell cell = cells[i][j];
-                    Entrance entrance = (Entrance) cell;
-                    entrances.add(entrance);
-                }
-            }
-        }
+        List<Entrance> entrances = getLocationsStream() .map(this::getCell)
+                                                        .filter(cell -> cell instanceof Entrance)
+                                                        .map(entrance -> (Entrance)entrance)
+                                                        .collect(Collectors.toList());
+
+
+//        LinkedList<Entrance> entrances = new LinkedList<>();
+//        for (int i = 0; i < height; i++) {
+//            for (int j = 0; j < width; j++) {
+//                if (cells[i][j] instanceof Entrance){
+//                    Cell cell = cells[i][j];
+//                    Entrance entrance = (Entrance) cell;
+//                    entrances.add(entrance);
+//                }
+//            }
+//        }
 
         return entrances;
     }
@@ -221,16 +228,21 @@ public class GameMap {
      * @return List<Exit>
      */
     public List<Exit> getExits() {
-        LinkedList<Exit> exits = new LinkedList<>();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (cells[i][j] instanceof Exit){
-                    Cell cell = cells[i][j];
-                    Exit exit = (Exit) cell;
-                    exits.add(exit);
-                }
-            }
-        }
+        List<Exit> exits = getLocationsStream() .map(this::getCell)
+                                                .filter(cell -> cell instanceof Exit)
+                                                .map(exit -> (Exit)exit)
+                                                .collect(Collectors.toList());
+
+//        LinkedList<Exit> exits = new LinkedList<>();
+//        for (int i = 0; i < height; i++) {
+//            for (int j = 0; j < width; j++) {
+//                if (cells[i][j] instanceof Exit){
+//                    Cell cell = cells[i][j];
+//                    Exit exit = (Exit) cell;
+//                    exits.add(exit);
+//                }
+//            }
+//        }
         return exits;
     }
 
@@ -238,17 +250,22 @@ public class GameMap {
      * this method is to get all players on the map
      * @return List<Player>
      */
-    public LinkedList<Player> getPlayers(){
-        LinkedList<Player> players = new LinkedList<>();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (cells[i][j] instanceof Player){
-                    Cell cell = cells[i][j];
-                    Player player = (Player) cell;
-                    players.add(player);
-                }
-            }
-        }
+    public List<Player> getPlayers(){
+        List<Player> players = getLocationsStream() .map(this::getCell)
+                                                    .filter(cell -> cell instanceof Player)
+                                                    .map(player -> (Player)player)
+                                                    .collect(Collectors.toList());
+
+//        LinkedList<Player> players = new LinkedList<>();
+//        for (int i = 0; i < height; i++) {
+//            for (int j = 0; j < width; j++) {
+//                if (cells[i][j] instanceof Player){
+//                    Cell cell = cells[i][j];
+//                    Player player = (Player) cell;
+//                    players.add(player);
+//                }
+//            }
+//        }
         return players;
     }
 
@@ -257,16 +274,21 @@ public class GameMap {
      * @return List<Chest>
      */
     public List<Chest> getChests(){
-        LinkedList<Chest> chests = new LinkedList<>();
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (cells[i][j] instanceof Chest){
-                    Cell cell = cells[i][j];
-                    Chest chest = (Chest) cell;
-                    chests.add(chest);
-                }
-            }
-        }
+        List<Chest> chests = getLocationsStream()   .map(this::getCell)
+                                                    .filter(cell -> cell instanceof Chest)
+                                                    .map(chest -> (Chest)chest)
+                                                    .collect(Collectors.toList());
+
+//        LinkedList<Chest> chests = new LinkedList<>();
+//        for (int i = 0; i < height; i++) {
+//            for (int j = 0; j < width; j++) {
+//                if (cells[i][j] instanceof Chest){
+//                    Cell cell = cells[i][j];
+//                    Chest chest = (Chest) cell;
+//                    chests.add(chest);
+//                }
+//            }
+//        }
         return chests;
     }
 
