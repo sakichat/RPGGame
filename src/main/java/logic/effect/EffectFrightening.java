@@ -1,14 +1,14 @@
 package logic.effect;
 
 
-import logic.Play;
+import logic.PlayRuntime;
 import logic.player.Player;
 import logic.turn.TurnStrategy;
 import logic.turn.TurnStrategyFrightened;
 
 public class EffectFrightening extends Effect {
     private TurnStrategy turnStrategy;
-    private Player combatant = Play.getCurrentPlay().getPlayer();
+    private Player combatant = PlayRuntime.currentRuntime().getPlayer();
 
     @Override
     protected void didAttach() {
