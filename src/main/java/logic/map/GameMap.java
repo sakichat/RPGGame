@@ -26,7 +26,7 @@ public class GameMap extends Observable {
     }
 
     //  =======================================================================
-    //  Section - basic
+    //  Section - Basic
     //  =======================================================================
 
     @Expose
@@ -38,8 +38,21 @@ public class GameMap extends Observable {
     @Expose
     private int height;
 
-    @Expose
-    private Cell[][] cells;
+    /**
+     * this method is to set name of map
+     * @param name String
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * this method is to get name of map
+     * @return String
+     */
+    public String getName() {
+        return name;
+    }
 
     /**
      * this method is to get width
@@ -75,21 +88,6 @@ public class GameMap extends Observable {
         cells = new Cell[height][width];
     }
 
-    /**
-     * this method is to set name of map
-     * @param name String
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * this method is to get name of map
-     * @return String
-     */
-    public String getName() {
-        return name;
-    }
 
 
 
@@ -101,7 +99,8 @@ public class GameMap extends Observable {
     //  =======================================================================
 
 
-
+    @Expose
+    private Cell[][] cells;
 
     /**
      * this method is to add cell

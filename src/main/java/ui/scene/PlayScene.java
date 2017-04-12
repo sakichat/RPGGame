@@ -259,33 +259,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         repaint();
     }
 
-    /**
-     * This method judges what action should be done according to targetCell.
-     * @param targetCell
-     */
-    private void interactWith(Cell targetCell) {
-
-    }
-
-    /**
-     * This method is for interacting with dead NPC.
-     * @param targetPlayer
-     */
-    private void interactWithDeadNPC(Player targetPlayer) {
-
-        play.getPlayer().lootDeadNPC(targetPlayer);
-
-    }
-
-    /**
-     * This method is for interacting with friendly NPC.
-     * @param targetPlayer
-     */
-    private void interactWithFriendlyNPC(Player targetPlayer) {
-
-        showInventoryPanelToExchange(play.getPlayer());
-
-    }
 
     /**
      * This method is used to show the InventoryPanel when player exchange equipment with friendly NPC
@@ -321,42 +294,13 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
     }
 
-    /**
-     * This method is for interacting with hostile NPC.
-     * @param targetPlayer
-     */
-    private void interactWithHostileNPC(Player targetPlayer) {
-
-        play.getPlayer().attack(targetPlayer);
-
-    }
-
-    /**
-     * This method is for interacting with chest.
-     * @param chest
-     */
-    private void interactWithChest(Chest chest) {
-        play.getPlayer().lootChest(chest);
-    }
 
     /**
      * This method is for interact
      */
     private void interactWithExit(Exit exit) {
 
-        int currentLevel = play.getPlayer().getLevel();
-        play.getPlayer().setLevel(currentLevel + 1);
 
-
-        if (play.isLastMap()) {
-            FinishScene finishScene = new FinishScene();
-            PlayScene.this.navigationView.push(finishScene);
-        } else {
-            play.moveToNextMap();
-            gameMapView.setGameMap(play.getCurrentMap());
-
-            gameMapView.refreshHighlight();
-        }
     }
 
 
