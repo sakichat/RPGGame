@@ -139,8 +139,8 @@ public class InventoryPanel extends Panel implements Observer {
     public void update(Observable O, Object x) {
 
         boolean change = false;
-        change = change || x.equals(Player.EQUIPMENT_CHANGE);
-        change = change || x.equals(Player.BACKPACK_CHANGE);
+        change = change || x.equals(Player.Update.EQUIPMENT);
+        change = change || x.equals(Player.Update.BACKPACK);
 
         if (change) {
             dataToView();

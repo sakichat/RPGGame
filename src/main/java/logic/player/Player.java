@@ -31,27 +31,30 @@ public class Player extends Cell {
     public final static String ABILITY_WIS = "WIS";
     public final static String ABILITY_CHA = "CHA";
 
-    public final static String ATTRIBUTE_ARMOR_CLASS = "AC";
-    public final static String ATTRIBUTE_ATTACK_BONUS = "AB";
-    public final static String ATTRIBUTE_DAMAGE_BONUS = "DB";
+    public final static String ATTRIBUTE_ARMOR_CLASS    = "AC";
+    public final static String ATTRIBUTE_ATTACK_BONUS   = "AB";
+    public final static String ATTRIBUTE_DAMAGE_BONUS   = "DB";
 
-    public final static String LEVEL_CHANGE = "level change";
-    public final static String PLAYER_TYPE_CHANGE = "playerType change";
-    public final static String PLAYER_PARTY_CHANGE = "playerParty change";
-    public final static String ABILITY_CHANGE = "ability change";
-    public final static String HP_CHANGE = "hp change";
-    public final static String BACKPACK_CHANGE = "backpack change";
-    public final static String EQUIPMENT_CHANGE = "equipment change";
-    public final static String DEAD_CHANGE = "dead change";
-
-    public final static String PLAYER_TYPE_BULLY = "Bully";
-    public final static String PLAYER_TYPE_NIMBLE = "Nimble";
-    public final static String PLAYER_TYPE_TANK = "Tank";
+    public final static String PLAYER_TYPE_BULLY        = "Bully";
+    public final static String PLAYER_TYPE_NIMBLE       = "Nimble";
+    public final static String PLAYER_TYPE_TANK         = "Tank";
 
     public final static String PLAYER_PARTY_NOT_DEFINED = "Not Defined";
-    public final static String PLAYER_PARTY_FRIENDLY = "Friendly";
-    public final static String PLAYER_PARTY_HOSTILE = "Hostile";
-    public final static String PLAYER_PARTY_PLAYER = "Player";
+    public final static String PLAYER_PARTY_FRIENDLY    = "Friendly";
+    public final static String PLAYER_PARTY_HOSTILE     = "Hostile";
+    public final static String PLAYER_PARTY_PLAYER      = "Player";
+
+    public final static class Update {
+        public final static String LEVEL        = "level change";
+        public final static String PLAYER_TYPE  = "playerType change";
+        public final static String PLAYER_PARTY = "playerParty change";
+        public final static String ABILITY      = "ability change";
+        public final static String HP           = "hp change";
+        public final static String BACKPACK     = "backpack change";
+        public final static String EQUIPMENT    = "equipment change";
+        public final static String ALIVE        = "dead change";
+    }
+
 
     /**
      * Abilities and methods.
@@ -119,7 +122,7 @@ public class Player extends Cell {
         abilityScores.put(ABILITY_WIS, Dice.rool(4, 6, 0));
         abilityScores.put(ABILITY_CHA, Dice.rool(4, 6, 0));
         setChanged();
-        notifyObservers(ABILITY_CHANGE);
+        notifyObservers(Update.ABILITY);
     }
 
 
@@ -177,7 +180,7 @@ public class Player extends Cell {
         }
 
         setChanged();
-        notifyObservers(ABILITY_CHANGE);
+        notifyObservers(Update.ABILITY);
     }
 
     /**
@@ -215,7 +218,7 @@ public class Player extends Cell {
         if (! isBackpackFull()) {
             backpack.add(e);
             setChanged();
-            notifyObservers(BACKPACK_CHANGE);
+            notifyObservers(Update.BACKPACK);
         }
     }
 
@@ -226,7 +229,7 @@ public class Player extends Cell {
     public void dropEquipment(Equipment e) {
         backpack.remove(e);
         setChanged();
-        notifyObservers(BACKPACK_CHANGE);
+        notifyObservers(Update.BACKPACK);
     }
 
 
@@ -294,10 +297,10 @@ public class Player extends Cell {
         backpack.remove(e);
 
         setChanged();
-        notifyObservers(EQUIPMENT_CHANGE);
+        notifyObservers(Update.EQUIPMENT);
 
         setChanged();
-        notifyObservers(BACKPACK_CHANGE);
+        notifyObservers(Update.BACKPACK);
     }
 
     /**
@@ -311,10 +314,10 @@ public class Player extends Cell {
         equipments.remove(type);
 
         setChanged();
-        notifyObservers(EQUIPMENT_CHANGE);
+        notifyObservers(Update.EQUIPMENT);
 
         setChanged();
-        notifyObservers(BACKPACK_CHANGE);
+        notifyObservers(Update.BACKPACK);
     }
 
     /**
@@ -489,7 +492,7 @@ public class Player extends Cell {
         this.level = level;
         generateTotalHp();
         setChanged();
-        notifyObservers(LEVEL_CHANGE);
+        notifyObservers(Update.LEVEL);
     }
 
     /**
@@ -523,7 +526,7 @@ public class Player extends Cell {
     public void setPlayerType(String playerType) {
         this.playerType = playerType;
         setChanged();
-        notifyObservers(PLAYER_TYPE_CHANGE);
+        notifyObservers(Update.PLAYER_TYPE);
     }
 
     /**
@@ -541,7 +544,7 @@ public class Player extends Cell {
     public void setPlayerParty(String playerParty) {
         this.playerParty = playerParty;
         setChanged();
-        notifyObservers(PLAYER_PARTY_CHANGE);
+        notifyObservers(Update.PLAYER_PARTY);
     }
 
     /**
@@ -566,7 +569,7 @@ public class Player extends Cell {
     public void setDead(boolean dead) {
         isDead = dead;
         setChanged();
-        notifyObservers(DEAD_CHANGE);
+        notifyObservers(Update.ALIVE);
     }
 
     /**
@@ -642,7 +645,7 @@ public class Player extends Cell {
         this.hp = hp;
 
         setChanged();
-        notifyObservers(HP_CHANGE);
+        notifyObservers(Update.HP);
     }
 
     /**

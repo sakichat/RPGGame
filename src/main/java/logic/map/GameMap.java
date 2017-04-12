@@ -7,6 +7,7 @@ import logic.player.Player;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Observable;
 import java.util.stream.Stream;
 
 /**
@@ -14,7 +15,12 @@ import java.util.stream.Stream;
  * @version 0.2
  * this class is the map
  */
-public class GameMap {
+public class GameMap extends Observable {
+
+
+    public final static class Update {
+        public final static String CELL        = "cell change";
+    }
 
     @Expose
     private String name;
@@ -89,6 +95,9 @@ public class GameMap {
         cells[y][x] = cell;
 
         cell.location = location;
+
+        setChanged();
+        notifyObservers(Update.CELL);
     }
 
     /**
@@ -99,6 +108,30 @@ public class GameMap {
         int x = location.getX();
         int y = location.getY();
         cells[y][x] = null;
+
+        setChanged();
+        notifyObservers(Update.CELL);
+    }
+
+    /**
+     * this method is to move cell
+     * @param startPoint Point
+     * @param endPoint Point
+     */
+    public void moveCell(Point startPoint, Point endPoint){
+
+        int startX = startPoint.getX();
+        int startY = startPoint.getY();
+        int endX = endPoint.getX();
+        int endY = endPoint.getY();
+
+        Cell cell = cells[startY][startX];
+        cells[endY][endX] = cell;
+        cells[startY][startX] = null;
+        cell.setLocation(endPoint);
+
+        setChanged();
+        notifyObservers(Update.CELL);
     }
 
     /**
@@ -142,6 +175,7 @@ public class GameMap {
         return false;
     }
 
+
     /**
      * this method is to if the cell is out of bounds
      * @param location Point
@@ -159,25 +193,6 @@ public class GameMap {
         }
 
         return true;
-    }
-
-
-    /**
-     * this method is to move cell
-     * @param startPoint Point
-     * @param endPoint Point
-     */
-    public void moveCell(Point startPoint, Point endPoint){
-
-        int startX = startPoint.getX();
-        int startY = startPoint.getY();
-        int endX = endPoint.getX();
-        int endY = endPoint.getY();
-
-        Cell cell = cells[startY][startX];
-        cells[endY][endX] = cell;
-        cells[startY][startX] = null;
-        cell.setLocation(endPoint);
     }
 
     private List<Point> locationsList() {
@@ -314,6 +329,7 @@ public class GameMap {
 
         return reachable ? VALIDATION_SUCCESS : VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE;
     }
+
 
 
 

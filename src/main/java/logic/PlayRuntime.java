@@ -4,6 +4,8 @@ package logic;
 import logic.map.GameMap;
 import logic.player.Player;
 import logic.turn.TurnThread;
+import ui.scene.PlayScene;
+import ui.view.GameMapView;
 
 public class PlayRuntime {
     private static PlayRuntime currentRuntime;
@@ -42,5 +44,19 @@ public class PlayRuntime {
 
     public void setTurnThread(TurnThread turnThread) {
         this.turnThread = turnThread;
+    }
+
+    private PlayScene playScene;
+
+    public PlayScene getPlayScene() {
+        return playScene;
+    }
+
+    public void setPlayScene(PlayScene playScene) {
+        this.playScene = playScene;
+    }
+
+    public GameMapView getMapView(){
+        return playScene.getGameMapView();
     }
 }

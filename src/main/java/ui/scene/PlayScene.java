@@ -26,6 +26,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     private GameMapView gameMapView;
     private EquipmentPanel equipmentPanel;
 
+    public GameMapView getGameMapView() {
+        return gameMapView;
+    }
+
     /**
      * This is a setter for Play
      * @param play

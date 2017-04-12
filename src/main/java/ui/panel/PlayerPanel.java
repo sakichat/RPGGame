@@ -55,11 +55,11 @@ public class PlayerPanel extends Panel implements Observer {
     public void update(Observable O, Object x) {
 
         boolean change = false;
-        change = change || x.equals(Player.LEVEL_CHANGE);
-        change = change || x.equals(Player.PLAYER_TYPE_CHANGE);
-        change = change || x.equals(Player.PLAYER_PARTY_CHANGE);
-        change = change || x.equals(Player.ABILITY_CHANGE);
-        change = change || x.equals(Player.HP_CHANGE);
+        change = change || x.equals(Player.Update.LEVEL);
+        change = change || x.equals(Player.Update.PLAYER_TYPE);
+        change = change || x.equals(Player.Update.PLAYER_PARTY);
+        change = change || x.equals(Player.Update.ABILITY);
+        change = change || x.equals(Player.Update.HP);
 
         if (change) {
             dataToView();

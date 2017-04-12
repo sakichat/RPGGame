@@ -1,5 +1,6 @@
 package ui.view;
 
+import logic.BaseUpdate;
 import logic.effect.Effect;
 import logic.effect.EffectBurning;
 import logic.effect.EffectFreezing;
@@ -14,6 +15,7 @@ import java.util.Observer;
  * Created by Penelope on 2017-04-01.
  */
 public class PlayerCellView extends View implements Observer{
+
     private Player player;
 
     public Player getPlayer() {
@@ -27,7 +29,12 @@ public class PlayerCellView extends View implements Observer{
 
     @Override
     public void update(Observable o, Object x) {
-        if (x.equals(Player.HP_CHANGE)) {
+        if (BaseUpdate.when(x)
+                .match(Player.Update.ALIVE)
+                .match(Player.Update.HP)
+                .match(Player.Update.PLAYER_PARTY)
+                .match(Player.Update.PLAYER_TYPE)
+                .check()){
             repaint();
         }
     }

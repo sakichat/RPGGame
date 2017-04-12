@@ -4,6 +4,9 @@ import logic.Play;
 import logic.PlayRuntime;
 import logic.map.GameMap;
 import logic.player.Player;
+import ui.view.GameMapView;
+
+import javax.swing.*;
 
 public abstract class Interaction {
     protected Play play;
@@ -18,5 +21,8 @@ public abstract class Interaction {
 
     public abstract void execute();
 
-
+    protected void requestUpdateMapView(){
+        GameMapView mapView = PlayRuntime.currentRuntime().getMapView();
+        SwingUtilities.invokeLater(mapView::refreshContent);
+    }
 }

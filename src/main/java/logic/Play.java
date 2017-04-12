@@ -126,7 +126,7 @@ public class Play {
     public void resolveMap(){
         String mapName = campaign.getMapName(currentMapIndex);
         currentMap = MapFileManager.read(mapName);
-        // TODO: 12/04/2017  
+        // TODO: 12/04/2017
         enterIntoMap();
     }
 
@@ -156,7 +156,7 @@ public class Play {
      * This is the method for sort the players in play list
      */
     public void playerSortList(){
-        playerList = currentMap.getPlayers();
+        playerList = new LinkedList<>(currentMap.getPlayers());
         Map<Player, Integer> initiativeValues = new HashMap<Player, Integer>();
 
         int sortStandard;
@@ -245,6 +245,8 @@ public class Play {
      * This method is used for judge whether the objectives are fulfilled
      * @return Boolean
      */
+
+    @Deprecated
     public Boolean isObjective() {
         List<Player> players = currentMap.getPlayers();
         List<Player> hostilePlayers = new LinkedList<Player>();

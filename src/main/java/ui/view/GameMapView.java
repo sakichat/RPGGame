@@ -1,5 +1,6 @@
 package ui.view;
 
+import logic.BaseUpdate;
 import logic.map.Cell;
 import logic.map.GameMap;
 import logic.map.Point;
@@ -8,10 +9,8 @@ import logic.player.Player;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /**
  * This GameMapView class extends View class, and it can build map views.
@@ -21,7 +20,7 @@ import java.util.Map;
  * @author Siyu Chen
  * @version 0.2
  */
-public class GameMapView extends View {
+public class GameMapView extends View implements Observer {
 
     /**
      * It is a implements for Delegate
@@ -70,8 +69,12 @@ public class GameMapView extends View {
      * @param gameMap
      */
     public void setGameMap(GameMap gameMap) {
+        if (this.gameMap != null) {
+            this.gameMap.deleteObserver(this);
+        }
         this.gameMap = gameMap;
         setup();
+        gameMap.addObserver(this);
     }
 
     /**
@@ -255,6 +258,15 @@ public class GameMapView extends View {
         repaint();
 
         delegate.gameMapViewSelectPerformAction(this, location);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (BaseUpdate.when(arg)
+                .match(GameMap.Update.CELL)
+                .check()){
+            refreshContent();
+        }
     }
 
     /**
