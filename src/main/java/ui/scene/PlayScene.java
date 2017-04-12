@@ -19,16 +19,11 @@ import javax.swing.*;
  */
 public class PlayScene extends Scene implements GameMapView.Delegate, InventoryPanel.Delegate {
 
-    /**
-     * These parameters set play on this scene and create gameMapView and equipmentPanel.
-     */
-    private Play play;
-    private GameMapView gameMapView;
-    private EquipmentPanel equipmentPanel;
+    //  =======================================================================
+    //  Section - Context
+    //  =======================================================================
 
-    public GameMapView getGameMapView() {
-        return gameMapView;
-    }
+    private Play play;
 
     /**
      * This is a setter for Play
@@ -42,6 +37,11 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
     }
 
+    //  =======================================================================
+    //  Section - Life Cycle
+    //  =======================================================================
+
+
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
      */
@@ -53,10 +53,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         saveButtonEnabled = true;
     }
 
-    /**
-     * These parameters are specific for view or buttons.
-     */
-    private View controlViewContainerView;
 
     /**
      * This method creates components on this scene
@@ -87,48 +83,12 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         contentView.add(button);
         JButton selectButton = button;
 
-//        button = new JButton(new ImageIcon("data/images/up_button.png"));
-//        button.setLocation(700, 30);
-//        button.setSize(40, 40);
-//        upDirectionButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton(new ImageIcon("data/images/left_button.png"));
-//        button.setLocation(650, 80);
-//        button.setSize(40, 40);
-//        leftDirectionButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton(new ImageIcon("data/images/center_button.png"));
-//        button.setLocation(700, 80);
-//        button.setSize(40, 40);
-//        interactButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton(new ImageIcon("data/images/right_button.png"));
-//        button.setLocation(750, 80);
-//        button.setSize(40, 40);
-//        rightDirectionButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton(new ImageIcon("data/images/down_button.png"));
-//        button.setLocation(700, 130);
-//        button.setSize(40, 40);
-//        downDirectionButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton("Finish");
-//        button.setSize(140, 40);
-//        button.setLocation(650, 210);
-//        contentView.add(button);
-//        JButton finishButton = button;
-
         repaint();
 
         backButton.addActionListener(e -> PlayScene.this.navigationView.popTo(MainScene.class));
 
         saveButton.addActionListener(e -> {
-            save();
+            PlayFileManager.save(play);
             PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
@@ -143,23 +103,19 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
     }
 
-    /**
-     * This method can save a play to a file.
-     */
-    public void save() {
-        PlayFileManager.save(play);
-    }
 
+    //  =======================================================================
+    //  Section - Views
+    //  =======================================================================
+
+    private GameMapView gameMapView;
 
     /**
-     * This method implements MapDelegation and refresh controlViewContainerView.
-     * @param gameMapView
-     * @param location
+     * These parameters are specific for view or buttons.
      */
-    @Override
-    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
-        refreshControlView();
-    }
+    private View controlViewContainerView;
+
+    private EquipmentPanel equipmentPanel;
 
     /**
      * This method gets cell and its location
@@ -177,6 +133,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         controlViewContainerView.repaint();
 
     }
+
 
     /**
      * This method generates what should be shown on controlViewContainerView.
@@ -208,17 +165,36 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         return controlView;
     }
 
+    public GameMapView getGameMapView() {
+        return gameMapView;
+    }
+
+
     /**
      * Relative methods about view player
      */
     PlayerPanel playerPanel;
     InventoryPanel inventoryPanel;
 
+    //  =======================================================================
+    //  Section - Events
+    //  =======================================================================
+
+    /**
+     * This method implements MapDelegation and refresh controlViewContainerView.
+     * @param gameMapView
+     * @param location
+     */
+    @Override
+    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
+        refreshControlView();
+    }
+
     /**
      * This method creates view Attribute action.
      * @param player
      */
-    public void viewAttribute(Player player) {
+    public void showAttributesInspector(Player player) {
         playerPanel = new PlayerPanel();
         playerPanel.setPlayer(player);
         playerPanel.setLocation(450, 10);
@@ -231,7 +207,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * This method creates view Inventory action.
      * @param player
      */
-    public void viewInventory(Player player) {
+    public void showInventoryInspector(Player player) {
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setPlayer(player);
         if (player.getPlayerParty().equals(Player.PLAYER_PARTY_PLAYER)) {
@@ -250,7 +226,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * The method is used to showChestViewInside.
      * @param chest
      */
-    public void showChestViewInside(Chest chest) {
+    public void showChestInspector(Chest chest) {
         equipmentPanel = new EquipmentPanel();
         equipmentPanel.setLocation(420, 10);
         equipmentPanel.setChest(chest);
@@ -265,7 +241,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * This method should be called by the ActionListener of interactButton button.
      * @param player
      */
-    private void showInventoryPanelToExchange(Player player) {
+    private void showInventoryInspectorForExchang(Player player) {
 
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setLocation(330, 10);
@@ -291,15 +267,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         Player targetPlayer = (Player) play.getTarget();
         Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
         play.getPlayer().pickUpEquipment(exchangeEquipmentRandom);
-
-    }
-
-
-    /**
-     * This method is for interact
-     */
-    private void interactWithExit(Exit exit) {
-
 
     }
 
