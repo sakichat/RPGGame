@@ -20,7 +20,7 @@ public class InteractionDeadNPC extends Interaction<Player> {
             Equipment lootEquipment = inventories.get(0);
             player.pickUpEquipment(lootEquipment);
             target.dropInventories(lootEquipment);
-//            inventories.remove(0);
+            inventories.remove(0);
         }
 
     }

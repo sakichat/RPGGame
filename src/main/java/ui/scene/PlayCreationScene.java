@@ -4,6 +4,8 @@ import logic.Campaign;
 import logic.Play;
 import logic.PlayRuntime;
 import logic.player.Player;
+import logic.turn.TurnStrategyComputer;
+import logic.turn.TurnStrategyHuman;
 import ui.panel.CampaignSelectorPanel;
 import ui.panel.PlayerSelectorPanel;
 
@@ -181,6 +183,15 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         player.setPlayerParty(Player.PLAYER_PARTY_MAIN);
         play.setMainPlayer(player);
         playerNameLabel.setText(player.getName());
+
+        if (playerModeLabel.getText().equals(HUMAN_PLAYER_MODE)){
+            TurnStrategyHuman turnStrategyHuman = new TurnStrategyHuman();
+            player.setStrategy(turnStrategyHuman);
+        }else if (playerModeLabel.getText().equals(COMPUTER_PLAYER_MODE)){
+            TurnStrategyComputer turnStrategyComputer = new TurnStrategyComputer();
+            player.setStrategy(turnStrategyComputer);
+        }
+
     }
 
     /**
