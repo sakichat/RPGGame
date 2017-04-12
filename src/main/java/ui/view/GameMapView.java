@@ -2,6 +2,7 @@ package ui.view;
 
 import logic.BaseUpdate;
 import logic.Play;
+import logic.PlayRuntime;
 import logic.map.Cell;
 import logic.map.GameMap;
 import logic.map.Point;
@@ -13,11 +14,12 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * This GameMapView class extends View class, and it can build map views.
  * It contains four map layers: Background Layer for the basic map cells; Content Layer for adding items on map;
- * Highlight Layer for showing the selected cell; Event Layer for triggering the event on cell.
+ * Target Layer for showing the selected cell; Event Layer for triggering the event on cell.
  * These four map layers are saved in a List<> for getting it easily.
  * @author Siyu Chen
  * @version 0.2
@@ -102,8 +104,9 @@ public class GameMapView extends View implements Observer {
     private final static int _LAYER_BACKGROUND      = 0;
     private final static int _LAYER_RANGE           = 1;
     private final static int _LAYER_CONTENT         = 2;
-    private final static int _LAYER_HIGHLIGHT       = 3;
-    private final static int _LAYER_EVENT           = 4;
+    private final static int _LAYER_CURRENT         = 3;
+    private final static int _LAYER_TARGET          = 4;
+    private final static int _LAYER_EVENT           = 5;
 
 
     /**
@@ -119,7 +122,7 @@ public class GameMapView extends View implements Observer {
         initBackgroundLayer();
         initRangeLayer();
         initContentLayer();
-        initHighlightLayer();
+        initTargetLayer();
         initEventLayer();
     }
 
@@ -193,9 +196,9 @@ public class GameMapView extends View implements Observer {
     /**
      * This method is to show the selected cell on this layer
      */
-    private void initHighlightLayer(){
+    private void initTargetLayer(){
         newLayer();
-        GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
+        GameMapLayerView layerView = layers.get(_LAYER_TARGET);
 
         selectedLocation = new Point(0, 0);
         selectionView = new ImageView();
@@ -250,12 +253,12 @@ public class GameMapView extends View implements Observer {
     }
 
     /**
-     * This method gets location from the Event layer and pass the parameter to Highlight layer.
-     * So that it can draw the selected cell on Highlight layer.
+     * This method gets location from the Event layer and pass the parameter to Target layer.
+     * So that it can draw the selected cell on Target layer.
      * @param location
      */
     private void cellPressed(Point location){
-        GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
+        GameMapLayerView layerView = layers.get(_LAYER_TARGET);
         layerView.moveCell(selectedLocation, location);
         selectedLocation = location;
         repaint();
@@ -309,22 +312,28 @@ public class GameMapView extends View implements Observer {
     }
 
     /**
-     * This method refreshes HighlightLayer.
+     * This method refreshes TargetLayer.
      */
-    public void refreshHighlight() {
-        GameMapLayerView highlightLayerView = layers.get(_LAYER_HIGHLIGHT);
+    public void refreshTarget() {
+        GameMapLayerView highlightLayerView = layers.get(_LAYER_TARGET);
         highlightLayerView.removeAllCells();
-        this.initHighlightLayer();
+        this.initTargetLayer();
 
         repaint();
     }
 
     /**
-     * This method regreshes AttackrangeLayer.
+     * This method refreshes RangeLayer.
      */
     public void refreshRange(){
         GameMapLayerView layerView = layers.get(_LAYER_RANGE);
         layerView.removeAllCells();
+
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        play.setRangeIndication(play.getRangeIndicationLocations(), play.getRangeIndicationMode());
+        ImageView imageView = new ImageView();
+        imageView.setName(play.getRangeIndicationMode().getImageName());
+        play.getRangeIndicationLocations().forEach(point -> layerView.addCell(imageView, point));
 
         repaint();
     }
