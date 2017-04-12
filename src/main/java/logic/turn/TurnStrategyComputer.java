@@ -2,10 +2,7 @@ package logic.turn;
 
 import logic.Play;
 import logic.PlayRuntime;
-import logic.map.Cell;
-import logic.map.GameMap;
-import logic.map.GameMapGraph;
-import logic.map.Point;
+import logic.map.*;
 import logic.player.Player;
 
 import java.util.List;
@@ -13,84 +10,66 @@ import java.util.List;
 
 public class TurnStrategyComputer extends TurnStrategy {
     @Override
-    public Point preferredNextLocation() {
-        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
-
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
-        }
+    public Path preferredMovingPath() {
+        return new Path();
     }
 
     @Override
     public boolean couldAttack(Point target) {
-        boolean result = false;
-        Play play = PlayRuntime.currentRuntime().getPlay();
-        GameMap gameMap = play.currentMap();
-        Cell cell = gameMap.getCell(target);
-        if (cell == null){
-            return result;
-        }else {
-            if (cell.getCellType().equals(Cell.Type.PLAYER)){
-                Player targetPlayer = (Player)cell;
-                    if (targetPlayer.isAlive()){
-                        result = true;
 
-                }
-            }
-        }
-
-        return result;
+        return false;
     }
 
     @Override
     protected boolean couldInteract(Point target) {
-        boolean result = false;
-        Play play = PlayRuntime.currentRuntime().getPlay();
-        GameMap gameMap = play.currentMap();
-        Cell cell = gameMap.getCell(target);
-        if (cell.getCellType().equals(Cell.Type.CHEST)){
-            result = true;
-        }
-        if (cell == null){
-            return result;
-        }else {
-            if (cell.getCellType().equals(Cell.Type.PLAYER)){
-                Player targetPlayer = (Player)cell;
-                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))){
-                    if (targetPlayer.isAlive()){
-                        result = true;
-                    }
-                }
-            }
-        }
+//        boolean result = false;
+//        Play play = PlayRuntime.currentRuntime().getPlay();
+//        GameMap gameMap = play.currentMap();
+//        Cell cell = gameMap.getCell(target);
+//        if (cell.getCellType().equals(Cell.Type.CHEST)){
+//            result = true;
+//        }
+//        if (cell == null){
+//            return result;
+//        }else {
+//            if (cell.getCellType().equals(Cell.Type.PLAYER)){
+//                Player targetPlayer = (Player)cell;
+//                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))){
+//                    if (targetPlayer.isAlive()){
+//                        result = true;
+//                    }
+//                }
+//            }
+//        }
+//
+//        return result;
 
-        return result;
+        return false;
     }
 
     @Override
     public Point preferredAttackingLocation() {
-        List<Point> points = attackTargetsInNear();
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
-        }
+//        List<Point> points = attackTargetsInNear();
+//        if (points.size() != 0){
+//            Point result = points.get((int)(Math.random() * points.size()));
+//            return result;
+//        }else {
+//            return null;
+//        }
+        return null;
     }
 
     @Override
     public Point preferredInteractionLocation() {
-        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
-        List<Point> points = interactTargetsInNear();
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
-        }
+//        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
+//        List<Point> points = interactTargetsInNear();
+//        if (points.size() != 0){
+//            Point result = points.get((int)(Math.random() * points.size()));
+//            return result;
+//        }else {
+//            return null;
+//        }
+
+        return null;
     }
 }

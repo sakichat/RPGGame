@@ -1,101 +1,40 @@
 package logic.turn;
 
-import logic.Play;
 import logic.PlayRuntime;
-import logic.map.Cell;
-import logic.map.GameMap;
-import logic.map.GameMapGraph;
-import logic.map.Point;
+import logic.map.*;
 import logic.player.Player;
-
-import java.util.List;
 
 public class TurnStrategyAggressive extends TurnStrategy {
     @Override
-    public Point preferredNextLocation() {
+    public Path preferredMovingPath() {
 
-        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
-
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
-        }
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        Player mainPlayer = runtime.getPlay().getMainPlayer();
+        GameMap map = runtime.getMap();
+        GameMapGraph gameMapGraph = map.getGraph();
+        gameMapGraph.addIgnoreType(Cell.Type.CHEST);
+        gameMapGraph.addIgnoreType(Cell.Type.PLAYER);
+        Path path = gameMapGraph.path(player.getLocation(), mainPlayer.getLocation(), 3);
+        return path;
     }
 
     @Override
     public boolean couldAttack(Point target) {
-        boolean result = false;
-        Play play = PlayRuntime.currentRuntime().getPlay();
-        GameMap gameMap = play.currentMap();
-        Cell cell = gameMap.getCell(target);
-        if (cell == null){
-            return result;
-        }else {
-            if (cell.getCellType().equals(Cell.Type.PLAYER)){
-                Player targetPlayer = (Player)cell;
-                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))){
-                    if (targetPlayer.isAlive()){
-                        result = true;
-                    }
-
-                }
-            }
-        }
-
-        return result;
+        return false;
     }
 
     @Override
     protected boolean couldInteract(Point target) {
-
-        boolean result = false;
-        Play play = PlayRuntime.currentRuntime().getPlay();
-        GameMap gameMap = play.currentMap();
-        Cell cell = gameMap.getCell(target);
-        if (cell.getCellType().equals(Cell.Type.CHEST)){
-            result = true;
-        }
-        if (cell == null){
-            return result;
-        }else {
-            if (cell.getCellType().equals(Cell.Type.PLAYER)){
-                Player targetPlayer = (Player)cell;
-                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))){
-                    if (targetPlayer.isAlive()){
-                        result = true;
-                    }
-                }
-            }
-        }
-
-        return result;
+        return false;
     }
 
     @Override
     public Point preferredAttackingLocation() {
-
-        List<Point> points = attackTargetsInNear();
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
-        }
+        return null;
     }
 
     @Override
     public Point preferredInteractionLocation() {
-
-        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
-        List<Point> points = interactTargetsInNear();
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
-        }
+        return null;
     }
 }

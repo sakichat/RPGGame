@@ -1,11 +1,7 @@
 package logic.turn;
 
-import logic.Play;
 import logic.PlayRuntime;
-import logic.map.Cell;
-import logic.map.GameMap;
-import logic.map.GameMapGraph;
-import logic.map.Point;
+import logic.map.*;
 import logic.player.Player;
 
 import java.util.List;
@@ -22,7 +18,7 @@ public abstract class TurnStrategy {
         this.player = player;
     }
 
-    public abstract Point preferredNextLocation();
+    public abstract Path preferredMovingPath();
 
     public final List<Point> attackTargetsInNear(){
         GameMap gameMap = PlayRuntime.currentRuntime().getMap();

@@ -1,7 +1,6 @@
 package logic.player;
 
 import com.google.gson.annotations.Expose;
-import com.oracle.tools.packager.Log;
 import logic.Logger;
 import logic.PlayRuntime;
 import logic.effect.Effect;
@@ -786,16 +785,16 @@ public class Player extends Cell {
         //  show range;
         // TODO: 10/04/2017
 
-        Point target = strategy.preferredNextLocation();
+        Path path = strategy.preferredMovingPath();
+        Logger.getInstance().log(this + " wants to move by " + path);
 
-        if (target != null) {
-            Logger.getInstance().log(this + " is moving to " + target);
+        if (!path.stay()) {
+            Logger.getInstance().log(this + " is moving to " + path.getLastLocation());
             //  show target
             // TODO: 10/04/2017
 
             //  move animation
-            GameMap currentMap = PlayRuntime.currentRuntime().getMap();
-            Movement movement = currentMap.getGraph().shortestPath(location, target).getMovement(3);
+            Movement movement = path.getMovement(3);
             Logger.getInstance().log("Movement " + movement);
             AnimationMove interactionMove = new AnimationMove();
             interactionMove.setMovement(movement);

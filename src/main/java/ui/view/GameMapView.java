@@ -312,9 +312,8 @@ public class GameMapView extends View implements Observer {
                 Point location = new Point(x, y);
                 Cell cell = gameMap.getCell(location);
                 if (cell instanceof Player) {
-                    Player player = new Player();
                     PlayerCellView playerCellView = new PlayerCellView();
-                    playerCellView.setPlayer(player);
+                    playerCellView.setPlayer((Player) cell);
                     layerView.addCell(playerCellView, location);
                 }else if (cell != null) {
                     ImageView imageView = new ImageView();

@@ -1,13 +1,14 @@
 package logic.turn;
 
 
+import logic.map.Path;
 import logic.map.Point;
 
 public class TurnStrategyFrozen extends TurnStrategy {
     @Override
-    public Point preferredNextLocation() {
+    public Path preferredMovingPath() {
         // TODO: 10/04/2017
-        return null;
+        return new Path();
     }
 
     @Override

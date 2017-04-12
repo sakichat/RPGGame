@@ -1,11 +1,12 @@
 package logic.turn;
 
+import logic.map.Path;
 import logic.map.Point;
 
 public class TurnStrategyHuman extends TurnStrategy {
     @Override
-    public Point preferredNextLocation() {
-        return null;
+    public Path preferredMovingPath() {
+        return new Path();
     }
 
     @Override

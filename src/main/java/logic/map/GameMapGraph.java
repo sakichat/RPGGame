@@ -148,6 +148,8 @@ public class GameMapGraph {
     public Path shortestPath(Point source, Point target){
         bfs(source);
 
+        printValues();
+        System.out.println(source + " to " + target);
         if (getValue(target) == Integer.MAX_VALUE) {
             return null;
         }
@@ -176,6 +178,29 @@ public class GameMapGraph {
         steps.forEach(path::addLocationsToLocation);
 
         return path;
+    }
+
+    public Path path(Point source, Point target, int range){
+        Path path = shortestPath(source, target);
+        Path cutPath = new Path();
+        List<Point> locations = path.getLocations();
+        cutPath.addLocation(locations.get(0));
+
+        for (int i = 1; i < locations.size(); i++) {
+            if (i > range) {
+                break;
+            }
+
+            Point location = locations.get(i);
+
+            if (gameMap.canPlace(location)) {
+                cutPath.addLocation(location);
+            } else {
+                break;
+            }
+        }
+
+        return cutPath;
     }
 
     private Point.Direction downsideDirection(Point source) {

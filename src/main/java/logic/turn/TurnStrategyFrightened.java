@@ -1,9 +1,9 @@
 package logic.turn;
 
-import logic.Play;
 import logic.PlayRuntime;
 import logic.effect.EffectFrightening;
 import logic.map.GameMapGraph;
+import logic.map.Path;
 import logic.map.Point;
 
 import java.util.*;
@@ -11,7 +11,7 @@ import java.util.*;
 public class TurnStrategyFrightened extends TurnStrategy {
 
     @Override
-    public Point preferredNextLocation() {
+    public Path preferredMovingPath() {
         GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
 
@@ -28,7 +28,7 @@ public class TurnStrategyFrightened extends TurnStrategy {
             }
         }
 
-        return farestPoint;
+        return gameMapGraph.path(player.getLocation(), farestPoint, 3);
     }
 
     @Override

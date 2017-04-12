@@ -12,15 +12,15 @@ import java.util.List;
 public class TurnStrategyFriendly extends TurnStrategy {
 
     @Override
-    public Point preferredNextLocation() {
+    public Path preferredMovingPath() {
 
         GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
         if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
+            Point target = points.get((int)(Math.random() * points.size()));
+            return gameMapGraph.path(player.getLocation(), target, 3);
+        } else {
+            return new Path();
         }
     }
 
