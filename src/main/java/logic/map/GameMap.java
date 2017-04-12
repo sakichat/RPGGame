@@ -284,21 +284,10 @@ public class GameMap extends Observable {
     public boolean finishObjective() {
 
         List<Player> players = this.getPlayers();
-        List<Player> hostilePlayers = new LinkedList<Player>();
 
-        for (Player player : players) {
-            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
-                hostilePlayers.add(player);
-            }
-        }
-
-        boolean objectiveFulfilled = true;
-
-        for (Player hostilePlayer : hostilePlayers) {
-            if (!hostilePlayer.isDead()) {
-                objectiveFulfilled = false;
-            }
-        }
+        boolean objectiveFulfilled = players.stream()
+                .filter(p -> p.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))
+                .allMatch(Player::isDead);
 
         return objectiveFulfilled;
     }
