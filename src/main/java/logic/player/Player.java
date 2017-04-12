@@ -23,6 +23,194 @@ import java.util.*;
  */
 public class Player extends Cell {
 
+    //  =======================================================================
+    //  Section - Constructor
+    //  =======================================================================
+
+
+
+    //  =======================================================================
+    //  Section - Basic
+    //  =======================================================================
+
+
+    @Expose
+    private String name;
+
+    @Expose
+    private String playerType;
+
+    public final static String PLAYER_TYPE_BULLY        = "Bully";
+    public final static String PLAYER_TYPE_NIMBLE       = "Nimble";
+    public final static String PLAYER_TYPE_TANK         = "Tank";
+
+    @Expose
+    private String playerParty = PLAYER_PARTY_NOT_DEFINED;
+
+    public final static String PLAYER_PARTY_NOT_DEFINED = "Not Defined";
+    public final static String PLAYER_PARTY_FRIENDLY    = "Friendly";
+    public final static String PLAYER_PARTY_HOSTILE     = "Hostile";
+    public final static String PLAYER_PARTY_PLAYER      = "Player";
+
+    /**
+     * Getter for the name.
+     * @return String
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Setter for the name.
+     * @param name String
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * Getter for the playerType.
+     * @return
+     */
+    public String getPlayerType() {
+        return playerType;
+    }
+
+    /**
+     * Setter for the playerType.
+     * @param playerType
+     */
+    public void setPlayerType(String playerType) {
+        this.playerType = playerType;
+        setChanged();
+        notifyObservers(Update.PLAYER_TYPE);
+    }
+
+    /**
+     * Getter for the playerParty.
+     * @return
+     */
+    public String getPlayerParty() {
+        return playerParty;
+    }
+
+    /**
+     * Setter for the playerParty.
+     * @param playerParty
+     */
+    public void setPlayerParty(String playerParty) {
+        this.playerParty = playerParty;
+        setChanged();
+        notifyObservers(Update.PLAYER_PARTY);
+    }
+
+    //  =======================================================================
+    //  Section - HP
+    //  =======================================================================
+
+
+    @Expose
+    private int hp;
+
+    /**
+     * The declaration of property totalHp
+     */
+    @Expose
+    private int totalHp;
+
+    /**
+     * The method is used to generate totalHp according to the D20 rule.
+     * The method is called when the player object is edited or created.
+     * The method also is called when the level changes.
+     * The method also is called when the CON modifier changed, aka, when the type changes.
+     */
+    public void generateTotalHp() {
+        totalHp = Dice.rool(10);
+
+        for (int i = 0; i < level - 1; i++) {
+            int hitDie = Dice.rool(10);
+            int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
+            totalHp += levelAdvances > 1 ? levelAdvances : 1;
+        }
+
+        setHp(totalHp);
+
+    }
+
+    /**
+     * The method is used to minus damage from hp.
+     * @param damage
+     */
+    public void damage(int damage) {
+        setHp(getHp() - damage);
+    }
+
+    public boolean isDead() {
+        return hp == 0;
+    }
+
+    public boolean isAlive(){
+        return !isDead();
+    }
+
+    /**
+     * Getter for hp.
+     * @return Integer
+     */
+    public int getHp() {
+        return hp;
+    }
+
+    /**
+     * Setter for hp.
+     * @param hp int
+     */
+    public void setHp(int hp) {
+        if (hp < 0) {
+            hp = 0;
+        }
+
+        this.hp = hp;
+
+        setChanged();
+        notifyObservers(Update.HP);
+    }
+
+    /**
+     * Getter of totalHp
+     * @return
+     */
+    public int getTotalHp() {
+        return totalHp;
+    }
+
+    /**
+     * Setter of totalHp
+     * @param totalHp
+     */
+    public void setTotalHp(int totalHp) {
+        this.totalHp = totalHp;
+    }
+
+
+    //  =======================================================================
+    //  Section - Level
+    //  =======================================================================
+
+
+    
+
+    //  =======================================================================
+    //  Section - Abilities
+    //  =======================================================================
+
+
+
+
+
+
+
+
     public final static String ABILITY_STR = "STR";
     public final static String ABILITY_DEX = "DEX";
     public final static String ABILITY_CON = "CON";
@@ -34,15 +222,6 @@ public class Player extends Cell {
     public final static String ATTRIBUTE_ATTACK_BONUS   = "AB";
     public final static String ATTRIBUTE_DAMAGE_BONUS   = "DB";
 
-    public final static String PLAYER_TYPE_BULLY        = "Bully";
-    public final static String PLAYER_TYPE_NIMBLE       = "Nimble";
-    public final static String PLAYER_TYPE_TANK         = "Tank";
-
-    public final static String PLAYER_PARTY_NOT_DEFINED = "Not Defined";
-    public final static String PLAYER_PARTY_FRIENDLY    = "Friendly";
-    public final static String PLAYER_PARTY_HOSTILE     = "Hostile";
-    public final static String PLAYER_PARTY_PLAYER      = "Player";
-
     public final static class Update {
         public final static String LEVEL        = "level change";
         public final static String PLAYER_TYPE  = "playerType change";
@@ -53,11 +232,6 @@ public class Player extends Cell {
         public final static String EQUIPMENT    = "equipment change";
         public final static String ALIVE        = "dead change";
     }
-
-
-    /**
-     * Abilities and methods.
-     */
 
     @Expose
     private Map<String, Integer> abilityScores = new HashMap<>();
@@ -182,9 +356,11 @@ public class Player extends Cell {
         notifyObservers(Update.ABILITY);
     }
 
-    /**
-     * Backpack and methods.
-     */
+
+    //  =======================================================================
+    //  Section - Backpack
+    //  =======================================================================
+    
 
     @Expose
     private List<Equipment> backpack = new LinkedList<>();
@@ -238,10 +414,11 @@ public class Player extends Cell {
         }
     }
 
-    /**
-     * Equipments and methods.
-     * The property of equipments here is means the worn equipments on the player
-     */
+    
+    //  =======================================================================
+    //  Section - Inventory
+    //  =======================================================================
+    
 
     @Expose
     private Map<String, Equipment> equipments = new HashMap<>();
@@ -385,6 +562,11 @@ public class Player extends Cell {
         dropEquipment(dropEquipment);
     }
 
+    //  =======================================================================
+    //  Section - Equipment Common
+    //  =======================================================================
+
+
     /**
      * Interaction methods.
      * NPCs refresh their inventories according to the player level;
@@ -449,20 +631,12 @@ public class Player extends Cell {
      * Level, name, playerType, playerParty, isDead and Getter & Setter & constructor.
      */
 
+
+
+
     @Expose
     private int level = 1;
 
-    @Expose
-    private String name;
-
-    @Expose
-    private String playerType;
-
-    @Expose
-    private String playerParty = PLAYER_PARTY_NOT_DEFINED;
-
-    @Expose
-    private boolean isDead;
 
     /**
      * Getter for the level.
@@ -482,82 +656,10 @@ public class Player extends Cell {
         notifyObservers(Update.LEVEL);
     }
 
-    /**
-     * Getter for the name.
-     * @return String
-     */
-    public String getName() {
-        return name;
-    }
 
-    /**
-     * Setter for the name.
-     * @param name String
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    /**
-     * Getter for the playerType.
-     * @return
-     */
-    public String getPlayerType() {
-        return playerType;
-    }
 
-    /**
-     * Setter for the playerType.
-     * @param playerType
-     */
-    public void setPlayerType(String playerType) {
-        this.playerType = playerType;
-        setChanged();
-        notifyObservers(Update.PLAYER_TYPE);
-    }
 
-    /**
-     * Getter for the playerParty.
-     * @return
-     */
-    public String getPlayerParty() {
-        return playerParty;
-    }
-
-    /**
-     * Setter for the playerParty.
-     * @param playerParty
-     */
-    public void setPlayerParty(String playerParty) {
-        this.playerParty = playerParty;
-        setChanged();
-        notifyObservers(Update.PLAYER_PARTY);
-    }
-
-    /**
-     * getter for isDead.
-     */
-    public boolean isDead() {
-        return isDead;
-    }
-
-    public boolean isAlive(){
-        if (!isDead()){
-            return true;
-        }else {
-            return false;
-        }
-    }
-
-    /**
-     * Setter for isDead
-     * @param dead
-     */
-    public void setDead(boolean dead) {
-        isDead = dead;
-        setChanged();
-        notifyObservers(Update.ALIVE);
-    }
 
     /**
      * Constructor without parameters.
@@ -581,7 +683,7 @@ public class Player extends Cell {
     public String getImageName() {
         String imageName;
 
-        if (isDead) {
+        if (isDead()) {
             imageName = "rip.png";
             return imageName;
         }
@@ -601,97 +703,6 @@ public class Player extends Cell {
     }
 
 
-    /**
-     * Hp and methods.
-     */
-
-    @Expose
-    private int hp;
-
-    /**
-     * Getter for hp.
-     * @return Integer
-     */
-    public int getHp() {
-        return hp;
-    }
-
-    /**
-     * Setter for hp.
-     * @param hp int
-     */
-    public void setHp(int hp) {
-        if (hp < 0) {
-            hp = 0;
-        }
-
-        if (hp == 0) {
-            dead();
-        }
-
-        this.hp = hp;
-
-        setChanged();
-        notifyObservers(Update.HP);
-    }
-
-    /**
-     * The method is used to minus damage from hp.
-     * @param damage
-     */
-    public void damage(int damage) {
-        setHp(getHp() - damage);
-    }
-
-    /**
-     * The method is to describe the dead status;
-     * @return
-     */
-    private void dead() {
-        setDead(true);
-        setImageName(getImageName());
-    }
-
-    /**
-     * The declaration of property totalHp
-     */
-    @Expose
-    private int totalHp;
-
-    /**
-     * Getter of totalHp
-     * @return
-     */
-    public int getTotalHp() {
-        return totalHp;
-    }
-
-    /**
-     * Setter of totalHp
-     * @param totalHp
-     */
-    public void setTotalHp(int totalHp) {
-        this.totalHp = totalHp;
-    }
-
-    /**
-     * The method is used to generate totalHp according to the D20 rule.
-     * The method is called when the player object is edited or created.
-     * The method also is called when the level changes.
-     * The method also is called when the CON modifier changed, aka, when the type changes.
-     */
-    public void generateTotalHp() {
-        totalHp = Dice.rool(10);
-
-        for (int i = 0; i < level - 1; i++) {
-            int hitDie = Dice.rool(10);
-            int levelAdvances = hitDie + getAbilityModifier(ABILITY_CON);
-            totalHp += levelAdvances > 1 ? levelAdvances : 1;
-        }
-
-        setHp(totalHp);
-
-    }
 
     /**
      * Attributes calculate methods.
@@ -738,6 +749,12 @@ public class Player extends Cell {
         return 0;
     }
 
+
+    //  =======================================================================
+    //  Section - Effects
+    //  =======================================================================
+
+
     /**
      * The declaration of the property effects, which used to store the effects of enchantments weapon.
      */
@@ -769,6 +786,11 @@ public class Player extends Cell {
     public List<Effect> getEffects() {
         return effects;
     }
+
+
+    //  =======================================================================
+    //  Section - Attack
+    //  =======================================================================
 
     /**
      * This method if used for attack
@@ -832,6 +854,10 @@ public class Player extends Cell {
     }
 
 
+    //  =======================================================================
+    //  Section - Turn Strategy
+    //  =======================================================================
+    
 
     /**
      * The declaration of property strategy.
@@ -920,5 +946,16 @@ public class Player extends Cell {
     private void turnInteract() {
         //  interact
     }
+
+    //  =======================================================================
+    //  Section - Object
+    //  =======================================================================
+
+
+
+    //  =======================================================================
+    //  Section - Other
+    //  =======================================================================
+
 
 }
