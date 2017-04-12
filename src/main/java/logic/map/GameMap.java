@@ -231,17 +231,6 @@ public class GameMap {
                                                     .filter(cell -> cell instanceof Player)
                                                     .map(player -> (Player)player)
                                                     .collect(Collectors.toList());
-
-//        LinkedList<Player> players = new LinkedList<>();
-//        for (int i = 0; i < height; i++) {
-//            for (int j = 0; j < width; j++) {
-//                if (cells[i][j] instanceof Player){
-//                    Cell cell = cells[i][j];
-//                    Player player = (Player) cell;
-//                    players.add(player);
-//                }
-//            }
-//        }
         return players;
     }
 
