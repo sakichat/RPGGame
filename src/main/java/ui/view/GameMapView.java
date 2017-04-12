@@ -79,6 +79,7 @@ public class GameMapView extends View implements Observer {
         gameMap.addObserver(this);
     }
 
+
     /**
      * This method is to set the size of this GameMapView, and to call initLayers() method.
      */
@@ -297,8 +298,7 @@ public class GameMapView extends View implements Observer {
                     PlayerCellView playerCellView = new PlayerCellView();
                     playerCellView.setPlayer(player);
                     layerView.addCell(playerCellView, location);
-                }
-                if (cell != null) {
+                }else if (cell != null) {
                     ImageView imageView = new ImageView();
                     imageView.setName(cell.getImageName());
                     layerView.addCell(imageView, location);
