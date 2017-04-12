@@ -219,17 +219,6 @@ public class GameMap {
                                                 .filter(cell -> cell instanceof Exit)
                                                 .map(exit -> (Exit)exit)
                                                 .collect(Collectors.toList());
-
-//        LinkedList<Exit> exits = new LinkedList<>();
-//        for (int i = 0; i < height; i++) {
-//            for (int j = 0; j < width; j++) {
-//                if (cells[i][j] instanceof Exit){
-//                    Cell cell = cells[i][j];
-//                    Exit exit = (Exit) cell;
-//                    exits.add(exit);
-//                }
-//            }
-//        }
         return exits;
     }
 
