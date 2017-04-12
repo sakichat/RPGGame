@@ -258,19 +258,4 @@ public class Play {
         return cell;
     }
 
-    /**
-     * This method is used for removing dead player when his inventory is empty.
-     */
-    public void refreshPlayer( ) {
-        Player targetPlayer = (Player) getTarget();
-
-        Point location = player.getLocation();
-        Point targetLocation = location.add(direction);
-
-        int size = targetPlayer.getInventories().size();
-        if (size == 0) {
-            currentMap.removeCell(targetLocation);
-        }
-    }
-
 }

@@ -230,8 +230,14 @@ public class Player extends Cell {
         backpack.remove(e);
         setChanged();
         notifyObservers(Update.BACKPACK);
+        tryQuit();
     }
 
+    private void tryQuit() {
+        if (isDead() && getInventories().size() == 0) {
+            PlayRuntime.currentRuntime().getMap().removeCell(getLocation());
+        }
+    }
 
     /**
      * Equipments and methods.
@@ -933,4 +939,5 @@ public class Player extends Cell {
     private void turnInteract() {
         //  interact
     }
+
 }
