@@ -1,6 +1,7 @@
 package logic.turn;
 
 import logic.Play;
+import logic.PlayRuntime;
 import logic.effect.EffectFrightening;
 import logic.map.GameMapGraph;
 import logic.map.Point;
@@ -11,7 +12,7 @@ public class TurnStrategyFrightened extends TurnStrategy {
 
     @Override
     public Point preferredNextLocation() {
-        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
+        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
 
         EffectFrightening effectFrightening = new EffectFrightening();
