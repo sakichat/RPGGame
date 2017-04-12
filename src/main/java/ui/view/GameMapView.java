@@ -74,7 +74,7 @@ public class GameMapView extends View {
         setup();
     }
 
-    private Player player;
+//    private Player player;
 
     /**
      * This method is to set the size of this GameMapView, and to call initLayers() method.
@@ -275,6 +275,7 @@ public class GameMapView extends View {
                 Point location = new Point(x, y);
                 Cell cell = gameMap.getCell(location);
                 if (cell instanceof Player) {
+                    Player player = new Player();
                     PlayerCellView playerCellView = new PlayerCellView();
                     playerCellView.setPlayer(player);
                     layerView.addCell(playerCellView, location);
