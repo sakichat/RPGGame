@@ -22,7 +22,7 @@ public class InteractionExit extends Interaction<Exit> {
             playRuntime.getPlay().moveToNextMap();
             playRuntime.getMapView().setGameMap(playRuntime.getPlay().currentMap());
 
-            playRuntime.getMapView().refreshHighlight();
+            playRuntime.getMapView().refreshTarget();
         }
     }
 }
