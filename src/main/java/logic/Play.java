@@ -220,26 +220,26 @@ public class Play {
      * This method is to refresh level of all the characters and chests on the map.
      */
 
-    @Deprecated
-    private void mapLevelRefresh() {
-
-        List<Chest> chests = currentMap.getChests();
-        List<Player> players = currentMap.getPlayers();
-
-        int level = player.getLevel();
-
-        for (Player character : players) {
-            if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
-                character.setLevel(level);
-                character.inventoryLevelRefresh();
-            }
-        }
-
-        for (Chest chest : chests) {
-            chest.chestLevelRefresh(level);
-        }
-
-    }
+//    @Deprecated
+//    private void mapLevelRefresh() {
+//
+//        List<Chest> chests = currentMap.getChests();
+//        List<Player> players = currentMap.getPlayers();
+//
+//        int level = player.getLevel();
+//
+//        for (Player character : players) {
+//            if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
+//                character.setLevel(level);
+//                character.inventoryLevelRefresh();
+//            }
+//        }
+//
+//        for (Chest chest : chests) {
+//            chest.chestLevelRefresh(level);
+//        }
+//
+//    }
 
     /**
      * This method is used for judge whether the objectives are fulfilled

@@ -300,12 +300,12 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
             Exit exit = (Exit) targetCell;
 
-            System.out.println(play.isObjective());
+            System.out.println(play.getCurrentMap().finishObjective());
             exit.setImageName("exit_close.png");
 
             gameMapView.refreshContent();
 
-            if (play.isObjective()) {
+            if (play.getCurrentMap().finishObjective()) {
                 interactWithExit(exit);
 
             }
