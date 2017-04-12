@@ -26,9 +26,9 @@ public class GameMap extends Observable {
     }
 
     //  =======================================================================
-    //  Section - Cells
+    //  Section - basic
     //  =======================================================================
-
+    
     @Expose
     private String name;
 
@@ -90,6 +90,18 @@ public class GameMap extends Observable {
     public String getName() {
         return name;
     }
+
+
+
+
+
+
+    //  =======================================================================
+    //  Section - Cells
+    //  =======================================================================
+
+
+
 
     /**
      * this method is to add cell
@@ -203,7 +215,7 @@ public class GameMap extends Observable {
     }
 
     //  =======================================================================
-    //  Section - Convenions
+    //  Section - Convenient
     //  =======================================================================
 
 
@@ -278,43 +290,6 @@ public class GameMap extends Observable {
     //  =======================================================================
     //  Section - Game
     //  =======================================================================
-    
-    public void adaptEquipments(int level) {
-
-
-        List<Chest> chests = this.getChests();
-        List<Player> players = this.getPlayers();
-
-
-        for (Player character : players) {
-            if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
-                character.adaptEquipments(level);
-            }
-        }
-
-        for (Chest chest : chests) {
-            chest.adaptEquipments(level);
-        }
-
-    }
-
-    public boolean finishObjective() {
-
-        boolean objectiveFulfilled = getPlayers().stream()
-                .filter(p -> p.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))
-                .allMatch(Player::isDead);
-
-        return objectiveFulfilled;
-    }
-
-
-    //  =======================================================================
-    //  Section - Graph
-    //  =======================================================================
-    
-    public GameMapGraph getGraph(){
-        return new GameMapGraph(this);
-    }
 
 
     public final static String VALIDATION_SUCCESS = "Valid";
@@ -368,6 +343,45 @@ public class GameMap extends Observable {
 
         return reachable ? VALIDATION_SUCCESS : VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE;
     }
+    
+    public void adaptEquipments(int level) {
+
+
+        List<Chest> chests = this.getChests();
+        List<Player> players = this.getPlayers();
+
+
+        for (Player character : players) {
+            if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
+                character.adaptEquipments(level);
+            }
+        }
+
+        for (Chest chest : chests) {
+            chest.adaptEquipments(level);
+        }
+
+    }
+
+    public boolean finishObjective() {
+
+        boolean objectiveFulfilled = getPlayers().stream()
+                .filter(p -> p.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))
+                .allMatch(Player::isDead);
+
+        return objectiveFulfilled;
+    }
+
+
+    //  =======================================================================
+    //  Section - Graph
+    //  =======================================================================
+    
+    public GameMapGraph getGraph(){
+        return new GameMapGraph(this);
+    }
+
+
 
 
 
