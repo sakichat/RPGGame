@@ -1,10 +1,10 @@
-package logic.interation;
+package logic.animation;
 
 import logic.map.Movement;
 import logic.map.Point;
 import logic.turn.TurnThread;
 
-public class InteractionMove extends Interaction {
+public class AnimationMove extends Animation {
     private Movement movement;
 
     public Movement getMovement() {

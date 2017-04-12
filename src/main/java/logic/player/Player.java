@@ -3,7 +3,7 @@ package logic.player;
 import com.google.gson.annotations.Expose;
 import logic.PlayRuntime;
 import logic.effect.Effect;
-import logic.interation.InteractionMove;
+import logic.animation.AnimationMove;
 import logic.map.*;
 import logic.Dice;
 import logic.equipment.Weapon;
@@ -904,7 +904,7 @@ public class Player extends Cell {
             //  move animation
             GameMap currentMap = PlayRuntime.currentRuntime().getMap();
             Movement movement = currentMap.getGraph().shortestPath(location, target).getMovement(3);
-            InteractionMove interactionMove = new InteractionMove();
+            AnimationMove interactionMove = new AnimationMove();
             interactionMove.setMovement(movement);
             interactionMove.execute();
         }
