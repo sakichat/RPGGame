@@ -55,28 +55,6 @@ public class TurnStrategyComputer extends TurnStrategy {
 
     @Override
     protected boolean couldInteract(Point target) {
-//        boolean result = false;
-//        Play play = PlayRuntime.currentRuntime().getPlay();
-//        GameMap gameMap = play.currentMap();
-//        Cell cell = gameMap.getCell(target);
-//        if (cell.getCellType().equals(Cell.Type.CHEST)){
-//            result = true;
-//        }
-//        if (cell == null){
-//            return result;
-//        }else {
-//            if (cell.getCellType().equals(Cell.Type.PLAYER)){
-//                Player targetPlayer = (Player)cell;
-//                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))){
-//                    if (targetPlayer.isAlive()){
-//                        result = true;
-//                    }
-//                }
-//            }
-//        }
-//
-//        return result;
-
         return false;
     }
 
