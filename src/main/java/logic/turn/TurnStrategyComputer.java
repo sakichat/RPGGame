@@ -1,5 +1,6 @@
 package logic.turn;
 
+import logic.Play;
 import logic.PlayRuntime;
 import logic.map.*;
 import logic.player.Player;
@@ -79,6 +80,17 @@ public class TurnStrategyComputer extends TurnStrategy {
      */
     @Override
     protected boolean couldInteract(Point target) {
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        GameMap map = runtime.getMap();
+
+        Cell targetCell = map.getCell(target);
+
+        if (targetCell != null) {
+            if (targetCell instanceof Exit){
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -103,6 +115,14 @@ public class TurnStrategyComputer extends TurnStrategy {
      */
     @Override
     public Point preferredInteractionLocation() {
-        return null;
+
+        TurnThread.waitForUser(TurnThread.UserResponse.INTERACT);
+
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        if (play.isTargetLocationEnabled()){
+            return play.getTargetLocation();
+        } else {
+            return null;
+        }
     }
 }
