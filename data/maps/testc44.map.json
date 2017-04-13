@@ -63,77 +63,7 @@
           "imageName": "wall.png"
         }
       },
-      {
-        "_class": "logic.player.Player",
-        "_object": {
-          "name": "Findelie",
-          "playerType": "Bully",
-          "playerParty": "Hostile",
-          "hp": 15,
-          "totalHp": 15,
-          "level": 3,
-          "abilityScores": {
-            "STR": 16,
-            "WIS": 7,
-            "CON": 13,
-            "DEX": 12,
-            "CHA": 8,
-            "INT": 11
-          },
-          "backpack": [
-            {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "Ered",
-                "type": "Belt",
-                "enhancedAttribute": "STR",
-                "enhancedValue": 2
-              }
-            },
-            {
-              "_class": "logic.equipment.WeaponDecoratorBurning",
-              "_object": {
-                "decoratedWeapon": {
-                  "_class": "logic.equipment.WeaponSolid",
-                  "_object": {
-                    "range": 2,
-                    "weaponType": "RANGED",
-                    "name": "fire",
-                    "type": "Weapon",
-                    "enhancedAttribute": "AB",
-                    "enhancedValue": 3
-                  }
-                }
-              }
-            }
-          ],
-          "equipments": {
-            "Helmet": {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "Adrah",
-                "type": "Helmet",
-                "enhancedAttribute": "AC",
-                "enhancedValue": 4
-              }
-            },
-            "Boots": {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "Cyne",
-                "type": "Boots",
-                "enhancedAttribute": "AC",
-                "enhancedValue": 5
-              }
-            }
-          },
-          "effects": [],
-          "location": {
-            "x": 3,
-            "y": 0
-          }
-        }
-      }
+      null
     ],
     [
       null,

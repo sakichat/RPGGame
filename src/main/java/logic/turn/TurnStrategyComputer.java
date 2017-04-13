@@ -27,6 +27,7 @@ public class TurnStrategyComputer extends TurnStrategy {
         Point target = null;
 
         if (map.finishObjective()) {
+            gameMapGraph.addIgnoreType(Cell.Type.EXIT);
             target = map.getExits().get(0).getLocation();
             return gameMapGraph.path(player.getLocation(), target, player.getRangeForMove());
         }
