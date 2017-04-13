@@ -5,6 +5,7 @@ import logic.player.Player;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.Observable;
 import java.util.stream.Stream;
@@ -359,21 +360,12 @@ public class GameMap extends Observable {
     }
     
     private void adaptEquipments(int level) {
-        // TODO: 12/04/2017 Lambda
-        List<Chest> chests = this.getChests();
-        List<Player> players = this.getPlayers();
+        this.getPlayers().stream()
+                .filter(p -> !(p.getPlayerParty().equals(Player.PLAYER_PARTY_MAIN)))
+                .forEach(player -> adaptEquipments(level));
 
-
-        for (Player character : players) {
-            if (!character.equals(Player.PLAYER_PARTY_MAIN)){
-                character.adaptEquipments(level);
-            }
-        }
-
-        for (Chest chest : chests) {
-            chest.adaptEquipments(level);
-        }
-
+        this.getChests().stream()
+                .forEach(adaptEquipments(level););
     }
 
     public boolean finishObjective() {
