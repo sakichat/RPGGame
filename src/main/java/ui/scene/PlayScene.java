@@ -41,9 +41,12 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
     public void setPlay(Play play) {
         this.play = play;
 
+
+    }
+
+    public void refreshMap(){
         titleLabel.setText(play.getName() + " - " + play.currentMap().getName());
         gameMapView.setGameMap(play.currentMap());
-
     }
 
     //  =======================================================================

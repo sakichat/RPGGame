@@ -19,16 +19,17 @@ public class InteractionExit extends Interaction<Exit> {
     @Override
     public void interact() {
         PlayRuntime playRuntime = new PlayRuntime();
-        int currentLevel = player.getLevel();
-        player.setLevel(currentLevel + 1);
+        if (playRuntime.getMap().finishObjective()) {
+            int currentLevel = player.getLevel();
+            player.setLevel(currentLevel + 1);
 
-
-        if (playRuntime.getPlay().isLastMap()) {
-            FinishScene finishScene = new FinishScene();
-            playRuntime.getPlayScene().getNavigationView().push(finishScene);
-        } else {
-            playRuntime.getPlay().moveToNextMap();
-            playRuntime.getMapView().setGameMap(playRuntime.getPlay().currentMap());
+            if (playRuntime.getPlay().isLastMap()) {
+                playRuntime.stop();
+                playRuntime.toFinish("Success");
+            } else {
+                playRuntime.stop();
+                playRuntime.toNextMap();
+            }
         }
     }
 }

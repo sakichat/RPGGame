@@ -14,6 +14,7 @@ import logic.equipment.Weapon;
 import logic.equipment.Equipment;
 import logic.turn.TurnStrategy;
 import logic.turn.TurnStrategyAggressive;
+import logic.turn.TurnStrategyFriendly;
 import logic.turn.TurnThread;
 
 import java.util.*;
@@ -172,6 +173,15 @@ public class Player extends Cell {
         setHp(getHp() - damage);
     }
 
+    private void didDead(){
+        effects.clear();
+        PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+        if (this == playRuntime.getMainPlayer()){
+            playRuntime.stop();
+            playRuntime.toFinish("Dead");
+        }
+    }
+
     /**
      * The method isDead
      * @return boolean
@@ -204,7 +214,7 @@ public class Player extends Cell {
 
         if (hp <= 0) {
             hp = 0;
-            effects.clear();
+            didDead();
         }
 
         this.hp = hp;
@@ -212,6 +222,7 @@ public class Player extends Cell {
         setChanged();
         notifyObservers(Update.HP);
     }
+
 
     /**
      * Getter of totalHp
@@ -819,6 +830,13 @@ public class Player extends Cell {
     public void setStrategy(TurnStrategy strategy) {
         this.strategy = strategy;
         strategy.setPlayer(this);
+
+        PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+        if (strategy instanceof TurnStrategyFriendly &&
+                this == playRuntime.getMainPlayer()){
+            playRuntime.stop();
+            playRuntime.toFinish("Mad");
+        }
     }
 
     /**
@@ -826,15 +844,32 @@ public class Player extends Cell {
      */
     public void turn(){
 
+        PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+
         turnEffect();
-        if (hp == 0) {
+        if (isDead()){
+            return;
+        }
+        if (playRuntime.isStopped()){
             return;
         }
 
         turnMove();
+        if (playRuntime.isStopped()){
+            return;
+        }
+
         turnAttack();
+        if (playRuntime.isStopped()){
+            return;
+        }
+
         turnInteract();
+        if (playRuntime.isStopped()){
+            return;
+        }
     }
+
 
     /**
      * The method of turnEffect

@@ -4,6 +4,7 @@ package logic;
 import logic.map.GameMap;
 import logic.player.Player;
 import logic.turn.TurnThread;
+import ui.scene.FinishScene;
 import ui.scene.PlayScene;
 import ui.view.GameMapView;
 
@@ -108,6 +109,7 @@ public class PlayRuntime {
         this.play = play;
         play.resolveMap();
         playScene.setPlay(play);
+        playScene.refreshMap();
         play.addObserver(playScene);
         play.addObserver(playScene.getGameMapView());
     }
@@ -118,27 +120,12 @@ public class PlayRuntime {
     private volatile boolean stopped;
 
     /**
-     * This method isStopped
-     * @return Boolean
-     */
-    public boolean isStopped() {
-        return stopped;
-    }
-
-    /**
-     * setter
-     * @param stopped
-     */
-    public void setStopped(boolean stopped) {
-        this.stopped = stopped;
-    }
-
-    /**
      * The method of begin
      */
     public void begin(){
         turnThread = new TurnThread();
         turnThread.start();
+        stopped = false;
     }
 
     /**
@@ -146,6 +133,20 @@ public class PlayRuntime {
      */
 
     public void stop(){
+        stopped = true;
+    }
 
+    public boolean isStopped() {
+        return stopped;
+    }
+
+    public void toNextMap(){
+        play.moveToNextMap();
+        playScene.refreshMap();
+    }
+
+    public void toFinish(String message){
+        FinishScene finishScene = new FinishScene();
+        playScene.getNavigationView().push(finishScene);
     }
 }

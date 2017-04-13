@@ -83,6 +83,7 @@ public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
 
         PlayScene playScene = new PlayScene();
         playScene.setPlay(play);
+        playScene.refreshMap();
         navigationView.push(playScene);
 
     }
