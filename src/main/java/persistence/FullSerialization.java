@@ -4,9 +4,19 @@ import com.google.gson.*;
 
 import java.lang.reflect.Type;
 
-
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class FullSerialization implements JsonSerializer<Object>, JsonDeserializer<Object> {
 
+    /**
+     * This is the method used for serialize
+     * @param object
+     * @param type
+     * @param jsonSerializationContext
+     * @return JsonElement
+     */
     @Override
     public JsonElement serialize(Object object, Type type, JsonSerializationContext jsonSerializationContext) {
 
@@ -19,6 +29,14 @@ public class FullSerialization implements JsonSerializer<Object>, JsonDeserializ
         return jsonObject;
     }
 
+    /**
+     * This is the method used for deserialize
+     * @param jsonElement
+     * @param type
+     * @param jsonDeserializationContext
+     * @return Object
+     * @throws JsonParseException
+     */
     @Override
     public Object deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext)
             throws JsonParseException {

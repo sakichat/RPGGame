@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * Target Layer for showing the selected cell; Event Layer for triggering the event on cell.
  * These four map layers are saved in a List<> for getting it easily.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class GameMapView extends View implements Observer {
 
@@ -148,7 +148,9 @@ public class GameMapView extends View implements Observer {
         refreshContent();
     }
 
-
+    /**
+     * The method of initCurrentLayer
+     */
     private void initCurrentLayer() {
         newLayer();
         refreshCurrentLayer();
@@ -220,6 +222,11 @@ public class GameMapView extends View implements Observer {
         PlayRuntime.currentRuntime().getPlay().setTargetLocation(location);
     }
 
+    /**
+     * Override method of update, used in observer.
+     * @param o
+     * @param arg
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (BaseUpdate.when(arg)
@@ -296,6 +303,9 @@ public class GameMapView extends View implements Observer {
         repaint();
     }
 
+    /**
+     * The method of refreshCurrentLayer
+     */
     private void refreshCurrentLayer() {
         GameMapLayerView layerView = layers.get(_LAYER_CURRENT);
         layerView.removeAllCells();
@@ -312,6 +322,9 @@ public class GameMapView extends View implements Observer {
         repaint();
     }
 
+    /**
+     * The method of refreshTargetLayer
+     */
     private void refreshTargetLayer() {
         GameMapLayerView layerView = layers.get(_LAYER_TARGET);
         layerView.removeAllCells();

@@ -5,7 +5,7 @@ import java.util.LinkedList;
 /**
  * This NavigationView implements changes of views.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class NavigationView extends View {
 

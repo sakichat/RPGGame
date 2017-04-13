@@ -1,8 +1,5 @@
 package logic.map;
 
-
-import logic.PlayRuntime;
-
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,14 +53,26 @@ public class Path implements Iterable<Point> {
         }
     }
 
+    /**
+     * The method of size
+     * @return int
+     */
     public int size(){
         return locations.size();
     }
 
+    /**
+     * The method of getLastLocation
+     * @return Point
+     */
     public Point getLastLocation(){
         return locations.get(locations.size() - 1);
     }
 
+    /**
+     * The method of stay
+     * @return boolean
+     */
     public boolean stay(){
         return locations.size() <= 1;
     }
@@ -118,6 +127,10 @@ public class Path implements Iterable<Point> {
         return locations.iterator();
     }
 
+    /**
+     * The method of toString
+     * @return String
+     */
     @Override
     public String toString() {
         List<String> points = locations.stream().map(p -> p.toString()).collect(Collectors.toList());

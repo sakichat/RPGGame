@@ -11,7 +11,7 @@ import java.awt.event.MouseMotionListener;
 /**
  * This Panel class sets a template for other panels which extends View calss
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class Panel extends View {
 

@@ -11,19 +11,34 @@ import java.awt.*;
 
 /**
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  *
  * This scene is for editing the equipments.
  */
 public class ItemEditingScene extends Scene {
 
+    /**
+     * property of equipment
+     */
     private Equipment equipment;
+
+    /**
+     * property of weaponSubPanelEnabeld
+     */
     private boolean weaponSubPanelEnabeld;
 
+    /**
+     * The method of isWeaponSubPanelEnabeld
+     * @return boolean
+     */
     public boolean isWeaponSubPanelEnabeld() {
         return weaponSubPanelEnabeld;
     }
 
+    /**
+     * The method of setWeaponSubPanelEnabeld
+     * @param weaponSubPanelEnabeld boolean
+     */
     public void setWeaponSubPanelEnabeld(boolean weaponSubPanelEnabeld) {
         this.weaponSubPanelEnabeld = weaponSubPanelEnabeld;
     }

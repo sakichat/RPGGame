@@ -49,6 +49,10 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
         return super.enchantmentsChainText() + " Burning ";
     }
 
+    /**
+     * The method is to generate the effect on player.
+     * @return
+     */
     @Override
     protected Effect generateEffect() {
         EffectBurning effectBurning = new EffectBurning();

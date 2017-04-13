@@ -12,21 +12,38 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created by Penelope on 2017-04-01.
+ * @author Siyu Chen
+ * @version 0.3
  */
 public class PlayerCellView extends View implements Observer{
 
+    /**
+     * property of player
+     */
     private Player player;
 
+    /**
+     * Getter of player
+     * @return
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * Setter for player
+     * @param player
+     */
     public void setPlayer(Player player) {
         this.player = player;
         player.addObserver(this);
     }
 
+    /**
+     * override method of update, used for observers
+     * @param o
+     * @param x
+     */
     @Override
     public void update(Observable o, Object x) {
         if (BaseUpdate.when(x)
@@ -39,6 +56,10 @@ public class PlayerCellView extends View implements Observer{
         }
     }
 
+    /**
+     * The method of showInHpBar
+     * @return
+     */
     private int showInHpBar() {
         double hpPercentage = (double)player.getHp() / (double)player.getTotalHp();
         int hpQuantity = (int)(hpPercentage * 40);
@@ -46,6 +67,10 @@ public class PlayerCellView extends View implements Observer{
         return hpQuantity;
     }
 
+    /**
+     * the override method of paint.
+     * @param g
+     */
     @Override
     public void paint(Graphics g) {
         ImageIcon playerImageView = new ImageIcon("data/images/" + player.getImageName());

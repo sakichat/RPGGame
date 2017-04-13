@@ -1,6 +1,6 @@
 package logic.effect;
 
-
+import logic.player.Player;
 import logic.turn.TurnStrategyFriendly;
 
 /**
@@ -15,5 +15,6 @@ public class EffectPacifying extends Effect {
     @Override
     protected void didAttach() {
         onPlayer.setStrategy(new TurnStrategyFriendly());
+        onPlayer.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
     }
 }

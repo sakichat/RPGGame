@@ -119,7 +119,6 @@ public abstract class WeaponDecorator implements Weapon {
 
     @Override
     public void attach(Player target) {
-        // to read
         target.addEffect(generateEffect());
         decoratedWeapon.attach(target);
     }

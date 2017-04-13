@@ -7,7 +7,7 @@ import javax.swing.*;
 
 /**
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  */
 public class EquipmentView extends View {
 
@@ -16,10 +16,18 @@ public class EquipmentView extends View {
      */
     private Equipment equipment;
 
+    /**
+     * Getter for equipment
+     * @return
+     */
     public Equipment getEquipment() {
         return equipment;
     }
 
+    /**
+     * Setter for equipment
+     * @param equipment Equipment
+     */
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
         dataToView();

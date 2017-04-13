@@ -7,6 +7,9 @@ package logic.player;
  */
 public class PlayerExplorer {
 
+    /**
+     * The property of playerBuilder
+     */
     private PlayerBuilder playerBuilder;
 
     /**

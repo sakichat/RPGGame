@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * This Window class extends JFrame class and is to create a frame in the application
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class Window extends JFrame{
     private View contentView;

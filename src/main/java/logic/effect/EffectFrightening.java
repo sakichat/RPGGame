@@ -1,6 +1,5 @@
 package logic.effect;
 
-
 import logic.PlayRuntime;
 import logic.player.Player;
 import logic.turn.TurnStrategy;

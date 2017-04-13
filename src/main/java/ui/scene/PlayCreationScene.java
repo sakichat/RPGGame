@@ -16,7 +16,7 @@ import java.awt.*;
  * This class extends Scene and implements PlayerDelegate and CampaignDelegate.
  * It is for creating a play with selected currentPlayer and selected campaign.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Delegate, CampaignSelectorPanel.Delegate {
 
@@ -161,6 +161,9 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         });
     }
 
+    /**
+     * The method is viewToData
+     */
     private void viewToData(){
         play.setName(playNameTextField.getText());
 

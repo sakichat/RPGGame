@@ -13,10 +13,8 @@ import org.junit.Test;
 import persistence.MapFileManager;
 
 /**
- * Created by GU_HAN on 2017-04-12.
- *
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  */
 public class InteractionTest {
     /*

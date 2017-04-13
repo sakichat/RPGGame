@@ -11,6 +11,11 @@ import java.util.List;
  * @version 0.3
  */
 public class TurnStrategyComputer extends TurnStrategy {
+
+    /**
+     * @override This method is used for find path
+     * @return Path
+     */
     @Override
     public Path preferredMovingPath() {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
@@ -43,6 +48,11 @@ public class TurnStrategyComputer extends TurnStrategy {
         return gameMapGraph.path(player.getLocation(), target, player.getRangeForMove());
     }
 
+    /**
+     * @override This method is used for couldAttack
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     public boolean couldAttack(Point target) {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
@@ -58,11 +68,20 @@ public class TurnStrategyComputer extends TurnStrategy {
         return false;
     }
 
+    /**
+     * @override This method is used for couldInteract
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     protected boolean couldInteract(Point target) {
         return false;
     }
 
+    /**
+     * @override This method is used for preferredAttackingLocation
+     * @return Point
+     */
     @Override
     public Point preferredAttackingLocation() {
         List<Point> attackTargets = attackTargetsInNear();
@@ -74,6 +93,10 @@ public class TurnStrategyComputer extends TurnStrategy {
         return null;
     }
 
+    /**
+     * @override This method is used for preferredInteractionLocation
+     * @return Point
+     */
     @Override
     public Point preferredInteractionLocation() {
         return null;

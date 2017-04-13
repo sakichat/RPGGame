@@ -47,5 +47,9 @@ public interface Weapon extends Equipment{
      */
     String enchantmentsChainText();
 
+    /**
+     * abstract method, which is used to show the affection on player who wear it.
+     * @param target
+     */
     void attach(Player target);
 }

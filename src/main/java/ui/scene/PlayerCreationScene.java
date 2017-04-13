@@ -8,7 +8,7 @@ import java.awt.*;
 /**
  * This is a PlayerCreationScene to show the scene for creating currentPlayer name which extends Scene class
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class PlayerCreationScene extends Scene {
 
@@ -27,7 +27,7 @@ public class PlayerCreationScene extends Scene {
 
     /**
      * This is a setter for currentPlayer.
-     * @param player
+     * @param player Player
      */
     public void setPlayer(Player player) {
         this.player = player;

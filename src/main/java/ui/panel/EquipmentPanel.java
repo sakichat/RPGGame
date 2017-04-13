@@ -12,7 +12,7 @@ import java.util.Observer;
 /**
  * This is a view class extends Panel, and implements Observer
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  */
 public class EquipmentPanel extends Panel implements Observer{
 

@@ -1,11 +1,11 @@
 {
   "abilityScores": {
-    "STR": 16,
-    "WIS": 8,
-    "CON": 17,
-    "DEX": 16,
-    "CHA": 12,
-    "INT": 14
+    "STR": 24,
+    "WIS": 24,
+    "CON": 24,
+    "DEX": 24,
+    "CHA": 24,
+    "INT": 24
   },
   "backpack": [
     {

@@ -9,7 +9,7 @@ import javax.swing.*;
 /**
  * This is a MapCreationScene to show the scene for creating map name which extends Scene class
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class MapCreationScene extends Scene {
 

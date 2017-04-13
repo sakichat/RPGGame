@@ -12,7 +12,7 @@ import javax.swing.*;
  * It concludes four different functions of creating or editing details of the currentPlayer.
  *
  * @author Kai QI
- * @version 0.2
+ * @version 0.3
  */
 public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.Delegate, InventoryPanel.Delegate{
 

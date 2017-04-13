@@ -44,6 +44,10 @@ public class Movement implements Iterable<Point.Direction> {
         return moves.iterator();
     }
 
+    /**
+     * The override method of toString.
+     * @return
+     */
     @Override
     public String toString() {
         return "Movement " + moves;

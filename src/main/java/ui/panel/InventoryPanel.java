@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  * @author Kai QI
- * @version 0.2
+ * @version 0.3
  */
 public class InventoryPanel extends Panel implements Observer {
     /**

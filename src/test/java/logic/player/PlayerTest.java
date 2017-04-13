@@ -10,9 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  *
  * This class tests wearing items correctly influence the character's abilities, character cannot wear more than
  * one item of each kind, and looting a chest.
@@ -152,11 +151,6 @@ public class PlayerTest {
         Assert.assertTrue(pre == after - equipmentArmorAC5.getEnhancedValue());
     }
 
-    @Test
-    public void interac() throws Exception {
-
-    }
-
     /**
      * This case tests if the currentPlayer will correctly loot the chest, which means the currentPlayer will get
      * the item in the chest to his backpack.
@@ -164,7 +158,6 @@ public class PlayerTest {
      */
     @Test
     public void lootChest1() throws Exception {
-//        currentPlayer.dropEquipment(equipmentArmorAC1);
 //        currentPlayer.dropEquipment(equipmentArmorAC3);
 //        currentPlayer.dropEquipment(equipmentArmorAC5);
 //        currentPlayer.dropEquipment(equipmentHelmetInt3);
@@ -318,7 +311,27 @@ public class PlayerTest {
      */
     @Test
     public void attack2() throws Exception {
-        
+        Player player1 = new Player();
+
+        while(player1.getAbilityScore(Player.ABILITY_STR) != 24){
+            player1.generateAbilities();
+        }
+
+        EquipmentFactory equipmentFactory = new EquipmentFactory();
+
+        Weapon weapon = equipmentFactory.newWeapon();
+        weapon.setType(Equipment.WEAPON);
+        weapon.setEnhancedValue(5);
+        weapon.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
+        weapon.setRange(5);
+        weapon.setWeaponType(Weapon.Type.RANGED);
+        player1.pickUpEquipment(weapon);
+
+        Player player2 = new Player();
+
+        boolean canAttack = player1.shouldDealDamage(player2);
+
+        Assert.assertTrue(canAttack);
     }
 
     /**

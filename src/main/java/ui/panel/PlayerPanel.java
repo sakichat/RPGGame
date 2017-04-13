@@ -10,8 +10,7 @@ import java.util.Observer;
 
 /**
  * @author Kai QI
- * @version 0.2
- *
+ * @version 0.3
  * This class if for PlayerPanel.
  */
 public class PlayerPanel extends Panel implements Observer {

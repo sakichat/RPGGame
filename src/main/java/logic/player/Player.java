@@ -17,12 +17,9 @@ import logic.turn.TurnThread;
 import java.util.*;
 
 /**
- *
  * This Class is currentPlayer, which includes users and NPCs.
- *
  * @author Kai QI
  * @version 0.3
- *
  */
 public class Player extends Cell {
 
@@ -48,9 +45,15 @@ public class Player extends Cell {
     //  Section - Basic
     //  =======================================================================
 
+    /**
+     * The property of name
+     */
     @Expose
     private String name;
 
+    /**
+     * The property of playerType
+     */
     @Expose
     private String playerType;
 
@@ -58,6 +61,9 @@ public class Player extends Cell {
     public final static String PLAYER_TYPE_NIMBLE       = "Nimble";
     public final static String PLAYER_TYPE_TANK         = "Tank";
 
+    /**
+     * The property of playerParty
+     */
     @Expose
     private String playerParty = PLAYER_PARTY_NOT_DEFINED;
 
@@ -164,10 +170,18 @@ public class Player extends Cell {
         setHp(getHp() - damage);
     }
 
+    /**
+     * The method isDead
+     * @return boolean
+     */
     public boolean isDead() {
         return hp == 0;
     }
 
+    /**
+     * The method isAlive
+     * @return boolean
+     */
     public boolean isAlive(){
         return !isDead();
     }
@@ -216,6 +230,7 @@ public class Player extends Cell {
     //  =======================================================================
     //  Section - Level
     //  =======================================================================
+
     /**
      * The declaration of property level
      */
@@ -268,6 +283,9 @@ public class Player extends Cell {
         public final static String ALIVE        = "dead change";
     }
 
+    /**
+     * The property of abilityScores
+     */
     @Expose
     private Map<String, Integer> abilityScores = new HashMap<>();
 
@@ -489,6 +507,9 @@ public class Player extends Cell {
         tryQuit();
     }
 
+    /**
+     * The method tryQuit
+     */
     private void tryQuit() {
         if (isDead() && getInventories().size() == 0) {
             PlayRuntime.currentRuntime().getMap().removeCell(getLocation());
@@ -660,6 +681,10 @@ public class Player extends Cell {
         }
     }
 
+    /**
+     * The method of availableSpotsInBackpack
+     * @return int
+     */
     public int availableSpotsInBackpack(){
         int availableSpaceInBackpack = 10 - equipmentsInBackpack().size();
         return  availableSpaceInBackpack;
@@ -731,7 +756,7 @@ public class Player extends Cell {
      * @param targetPlayer
      * @return Boolean
      */
-    private boolean shouldDealDamage(Player targetPlayer){
+    protected boolean shouldDealDamage(Player targetPlayer){
         int attackRoll = generateAttackRoll();
         int armorClass = targetPlayer.getTotalArmorClass();
         return attackRoll > armorClass;
@@ -794,6 +819,9 @@ public class Player extends Cell {
         strategy.setPlayer(this);
     }
 
+    /**
+     * The method of trun.
+     */
     public void turn(){
 
         turnEffect();
@@ -806,6 +834,9 @@ public class Player extends Cell {
 //        turnInteract();
     }
 
+    /**
+     * The method of turnEffect
+     */
     private void turnEffect() {
         //  effects
         for (Effect effect : effects) {
@@ -814,6 +845,9 @@ public class Player extends Cell {
         }
     }
 
+    /**
+     * The method of turnMove
+     */
     private void turnMove() {
         GameMap map = PlayRuntime.currentRuntime().getMap();
         GameMapGraph graph = map.getGraph();
@@ -852,6 +886,9 @@ public class Player extends Cell {
         PlayRuntime.currentRuntime().getPlay().updateCurrent();
     }
 
+    /**
+     * The method turnAttack
+     */
     private void turnAttack() {
 
         //  attack
@@ -896,6 +933,9 @@ public class Player extends Cell {
         new AnimationHideTarget().animate();
     }
 
+    /**
+     * The method turnInteract
+     */
     private void turnInteract() {
         //  interact
     }
@@ -958,7 +998,10 @@ public class Player extends Cell {
     //  Section - Object
     //  =======================================================================
 
-
+    /**
+     * The override method of toString
+     * @return
+     */
     @Override
     public String toString() {
         return "Player " + name + "(" + playerParty + ")@" + location;

@@ -9,6 +9,11 @@ import logic.player.Player;
  * @version 0.3
  */
 public class TurnStrategyHuman extends TurnStrategy {
+
+    /**
+     * @override This method is used for find path
+     * @return Path
+     */
     @Override
     public Path preferredMovingPath() {
         TurnThread.waitForUser(TurnThread.UserResponse.MOVE);
@@ -23,6 +28,11 @@ public class TurnStrategyHuman extends TurnStrategy {
         }
     }
 
+    /**
+     * @override This method is used for couldAttack
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     public boolean couldAttack(Point target) {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
@@ -38,6 +48,11 @@ public class TurnStrategyHuman extends TurnStrategy {
         return false;
     }
 
+    /**
+     * @override This method is used for couldInteract
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     protected boolean couldInteract(Point target) {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
@@ -53,12 +68,20 @@ public class TurnStrategyHuman extends TurnStrategy {
         return false;
     }
 
+    /**
+     * @override This method is used for preferredAttackingLocation
+     * @return Point
+     */
     @Override
     public Point preferredAttackingLocation() {
         TurnThread.waitForUser(TurnThread.UserResponse.ATTACK);
         return PlayRuntime.currentRuntime().getPlay().getTargetLocation();
     }
 
+    /**
+     * @override This method is used for preferredInteractionLocation
+     * @return Point
+     */
     @Override
     public Point preferredInteractionLocation() {
         TurnThread.waitForUser(TurnThread.UserResponse.INTERACT);

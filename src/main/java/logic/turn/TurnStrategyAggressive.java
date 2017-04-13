@@ -28,6 +28,11 @@ public class TurnStrategyAggressive extends TurnStrategy {
         return path;
     }
 
+    /**
+     * @override This method is used for couldAttack
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     public boolean couldAttack(Point target) {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
@@ -42,6 +47,11 @@ public class TurnStrategyAggressive extends TurnStrategy {
         return false;
     }
 
+    /**
+     * @override This method is used for couldInteract
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     protected boolean couldInteract(Point target) {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
@@ -58,6 +68,10 @@ public class TurnStrategyAggressive extends TurnStrategy {
         return false;
     }
 
+    /**
+     * @override This method is used for preferredAttackingLocation
+     * @return Point
+     */
     @Override
     public Point preferredAttackingLocation() {
         List<Point> attackTargets = attackTargetsInNear();
@@ -69,6 +83,10 @@ public class TurnStrategyAggressive extends TurnStrategy {
         return null;
     }
 
+    /**
+     * @override This method is used for preferredInteractionLocation
+     * @return Point
+     */
     @Override
     public Point preferredInteractionLocation() {
         List<Point> interactTargets = interactTargetsInNear();

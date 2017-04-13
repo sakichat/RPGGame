@@ -6,8 +6,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Kai QI
- * @version 0.2
- *
+ * @version 0.3
  * This class is for entranceControlView.
  */
 public class EntranceControlView extends ControlView {

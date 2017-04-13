@@ -6,10 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by GU_HAN on 2017-03-01.
  * @author GU_HAN
- * @version 0.2
- *
+ * @version 0.3
  * This class tests map validation.
  */
 public class GameMapTest {

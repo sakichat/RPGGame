@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * @author Li Zhen
- * @version 0.1
+ * @version 0.3
  * this class is the panel of playerSelector
  */
 public class PlayerSelectorPanel extends Panel {
