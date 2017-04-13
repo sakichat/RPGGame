@@ -3,7 +3,7 @@ package logic.player;
 /**
  * this is the class to build typle of Nimble Player
  * @author Li Zhen
- * @version 0.2
+ * @version 0.3
  */
 public class PlayerBuilderNimble extends PlayerBuilder {
     /**

@@ -3,7 +3,7 @@ package logic.player;
 /**
  * this is the class that command the different builders of currentPlayer
  * @author Li Zhen
- * @version 0.2
+ * @version 0.3
  */
 public class PlayerExplorer {
 

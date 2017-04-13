@@ -3,7 +3,7 @@ package logic.player;
 /**
  * this class is a abstract class to build the currentPlayer
  * @author Li Zhen
- * @version 0.2
+ * @version 0.3
  */
 public abstract class PlayerBuilder {
     protected Player playerProduct;
