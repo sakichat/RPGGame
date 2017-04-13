@@ -10,6 +10,9 @@ import persistence.PlayerFileManager;
 
 /**
  * Created by GU_HAN on 2017-04-13.
+ *
+ * @author GU_HAN
+ * @version 0.3
  */
 public class TurnStrategyTest {
 
