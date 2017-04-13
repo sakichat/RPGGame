@@ -385,6 +385,8 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
      */
     @Override
     public void inventoryEnhancedPerformAction(InventoryPanel inventoryPanel) {
-        playerPanel.dataToView();
+        if (playerPanel != null) {
+            playerPanel.dataToView();
+        }
     }
 }
