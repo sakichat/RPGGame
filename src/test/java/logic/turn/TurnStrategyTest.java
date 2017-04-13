@@ -2,6 +2,7 @@ package logic.turn;
 
 import logic.Play;
 import logic.PlayRuntime;
+import logic.map.Point;
 import org.junit.Before;
 import org.junit.Test;
 import persistence.CampaignFileManager;
@@ -27,11 +28,18 @@ public class TurnStrategyTest {
         Play play = new Play();
         play.setCampaign(CampaignFileManager.read("testcampaign"));
         play.setMainPlayer(PlayerFileManager.read("asheley"));
-
-        PlayRuntime.currentRuntime().setPlay(play);
-        PlayRuntime.currentRuntime().begin();
+        play.getMainPlayer().setStrategy(new TurnStrategyComputer());
 
         PlayRuntime.currentRuntime().initiate(new PlayScene(), play);
+
+        PlayRuntime.currentRuntime().begin();
+        Point location1 = PlayRuntime.currentRuntime().getMainPlayer().getLocation();
+        System.out.println(location1.getX() + " " + location1.getY());
+
+        PlayRuntime.currentRuntime().begin();
+        PlayRuntime.currentRuntime().getPlay().currentPlayer().getLocation();
+
+
 
 
 
