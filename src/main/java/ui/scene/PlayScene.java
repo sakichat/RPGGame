@@ -27,6 +27,9 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
     //  =======================================================================
 
     private Play play;
+    private JButton startButton;
+    private JButton skipButton;
+    private JButton selectButton;
 
     /**
      * This is a setter for Play
@@ -77,19 +80,19 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         button.setLocation(600, 40);
         button.setSize(160, 40);
         contentView.add(button);
-        JButton startButton = button;
+        startButton = button;
 
         button = new JButton("Skip");
         button.setLocation(600, 100);
         button.setSize(160, 40);
         contentView.add(button);
-        JButton skipButton = button;
+        skipButton = button;
 
         button = new JButton("Select");
         button.setLocation(600, 160);
         button.setSize(160, 40);
         contentView.add(button);
-        JButton selectButton = button;
+        selectButton = button;
 
         repaint();
 
@@ -109,12 +112,6 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         });
 
         selectButton.addActionListener(e -> {});
-
-//        interactButton.addActionListener(e -> {
-//            Cell targetCell = play.getTarget();
-//            interactWith(targetCell);
-//        });
-
     }
 
 
@@ -123,6 +120,24 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
     //  =======================================================================
 
     private GameMapView gameMapView;
+
+    public void setEnableControls(boolean enableControls) {
+        if (enableControls) {
+            backButton.setEnabled(true);
+            saveButton.setEnabled(true);
+            startButton.setEnabled(true);
+            skipButton.setEnabled(true);
+            selectButton.setEnabled(true);
+
+        } else {
+            backButton.setEnabled(false);
+            saveButton.setEnabled(false);
+            startButton.setEnabled(false);
+            skipButton.setEnabled(false);
+            selectButton.setEnabled(false);
+            
+        }
+    }
 
     /**
      * These parameters are specific for view or buttons.
