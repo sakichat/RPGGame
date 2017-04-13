@@ -21,6 +21,9 @@ public class TurnStrategyComputer extends TurnStrategy {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
         GameMap map = runtime.getMap();
         GameMapGraph gameMapGraph = map.getGraph();
+        gameMapGraph.addIgnoreType(Cell.Type.CHEST);
+        gameMapGraph.addIgnoreType(Cell.Type.PLAYER);
+
         Point target = null;
 
         if (map.finishObjective()) {

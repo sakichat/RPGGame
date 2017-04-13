@@ -4,6 +4,7 @@ package logic.turn;
 import logic.Logger;
 import logic.Play;
 import logic.PlayRuntime;
+import logic.animation.AnimationLog;
 import logic.player.Player;
 
 import javax.swing.*;
@@ -82,9 +83,12 @@ public class TurnThread extends Thread{
             Player currentPlayer = play.currentPlayer();
             if (currentPlayer.isAlive()) {
                 currentPlayer.turn();
-                Logger.getInstance().log(currentPlayer + " finished its turn");
+                Logger.getInstance().log("finished its turn");
             }
             play.nextPlayer();
+            Logger.getInstance().log("===================================================");
+            Logger.getInstance().log("TURN to " + play.currentPlayer());
+
             if (play.currentPlayer() != play.getMainPlayer()) {
                 waitForUser(UserResponse.TURN);
             }

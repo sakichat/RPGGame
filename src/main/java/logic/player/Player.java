@@ -913,7 +913,7 @@ public class Player extends Cell {
 
         //  select target
         Path path = strategy.preferredMovingPath();
-        Logger.getInstance().log(this + " wants to move by " + path);
+        Logger.getInstance().log("wants to move by " + path);
 
         if (path.stay()) {
             new AnimationLog().setMessage("Moving Skiped").animate();
@@ -922,7 +922,7 @@ public class Player extends Cell {
         }
 
         Point targetLocation = path.getLastLocation();
-        Logger.getInstance().log(this + " is moving to " + targetLocation);
+        Logger.getInstance().log("is moving to " + targetLocation);
 
         //  show target
         new AnimationDisplayTarget()
@@ -931,7 +931,7 @@ public class Player extends Cell {
 
         //  move animation
         Movement movement = path.getMovement(3);
-        Logger.getInstance().log(this + " got its move " + movement);
+        Logger.getInstance().log("got its move " + movement);
         new AnimationMove()
                 .setMovement(movement)
                 .animate();
