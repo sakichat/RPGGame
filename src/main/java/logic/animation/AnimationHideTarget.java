@@ -5,7 +5,8 @@ import logic.PlayRuntime;
 import logic.turn.TurnThread;
 
 /**
- * Created on 12/04/2017.
+ * @author Qi Xia
+ * @version 0.3
  */
 public class AnimationHideTarget extends Animation {
     @Override

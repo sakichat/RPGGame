@@ -11,9 +11,17 @@ import logic.player.Player;
  */
 public class WeaponDecoratorFrightening extends WeaponDecorator {
 
+    /**
+     * This method is used for WeaponDecoratorFrightening
+     * @param decoratedWeapon
+     */
     public WeaponDecoratorFrightening(Weapon decoratedWeapon) {
         super(decoratedWeapon);
     }
+
+    /**
+     * @override methods
+     */
 
     @Override
     public String displayName() {

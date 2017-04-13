@@ -10,9 +10,17 @@ import logic.effect.EffectFreezing;
  */
 public class WeaponDecoratorFreezing extends WeaponDecorator {
 
+    /**
+     * This method is WeaponDecoratorFreezing
+     * @param decoratedWeapon
+     */
     public WeaponDecoratorFreezing(Weapon decoratedWeapon) {
         super(decoratedWeapon);
     }
+
+    /**
+     * @override methods
+     */
 
     @Override
     public String displayName () {

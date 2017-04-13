@@ -51,7 +51,6 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
 
     @Override
     protected Effect generateEffect() {
-        // TODO: 08/04/2017
         EffectBurning effectBurning = new EffectBurning();
         effectBurning.setDamage(decoratedWeapon.getEnhancedValue());
         effectBurning.setTurns(3);

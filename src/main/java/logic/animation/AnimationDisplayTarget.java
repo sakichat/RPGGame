@@ -6,10 +6,15 @@ import logic.map.Point;
 import logic.turn.TurnThread;
 
 /**
- * Created on 12/04/2017.
+ * @author Qi Xia
+ * @version 0.3
  */
 public class AnimationDisplayTarget extends Animation {
 
+    /**
+     *
+     * @return
+     */
     public Point getTarget() {
         return target;
     }

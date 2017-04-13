@@ -9,11 +9,18 @@ import logic.player.Player;
  */
 public class WeaponSolid extends EquipmentSolid implements Weapon{
 
+    /**
+     * attributes
+     */
     @Expose
     private int range;
+
     @Expose
     private Weapon.Type weaponType;
 
+    /**
+     * getter and setter
+     */
     public int getRange() {
         return range;
     }
@@ -22,6 +29,9 @@ public class WeaponSolid extends EquipmentSolid implements Weapon{
         this.range = range;
     }
 
+    /**
+     * @override method
+     */
     @Override
     public Weapon.Type getWeaponType() {
         return weaponType;
@@ -47,8 +57,11 @@ public class WeaponSolid extends EquipmentSolid implements Weapon{
         return "";
     }
 
+    /**
+     * @override attach method
+     * @param target
+     */
     @Override
     public void attach(Player target) {
-        // do nothing
     }
 }

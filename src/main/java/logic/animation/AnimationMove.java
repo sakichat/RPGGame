@@ -4,6 +4,10 @@ import logic.map.Movement;
 import logic.map.Point;
 import logic.turn.TurnThread;
 
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class AnimationMove extends Animation {
     private Movement movement;
 

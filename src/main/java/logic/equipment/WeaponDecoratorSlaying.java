@@ -12,10 +12,17 @@ import logic.player.Player;
  */
 public class WeaponDecoratorSlaying extends WeaponDecorator {
 
+    /**
+     * This method is used for WeaponDecoratorSlaying
+     * @param decoratedWeapon
+     */
     public WeaponDecoratorSlaying(Weapon decoratedWeapon) {
         super(decoratedWeapon);
     }
 
+    /**
+     * @override methods
+     */
     @Override
     public String displayName() {
         return super.displayName() + " S";

@@ -10,19 +10,33 @@ import logic.player.Player;
  */
 public abstract class WeaponDecorator implements Weapon {
 
+    /**
+     * attribute
+     */
     @Expose
     protected Weapon decoratedWeapon;
 
+    /**
+     * This method is used to decoratedWeapon
+     * @param decoratedWeapon
+     */
     public WeaponDecorator(Weapon decoratedWeapon) {
         this.decoratedWeapon = decoratedWeapon;
     }
 
+    /**
+     * This method is used to validate
+     * @return Boolean
+     */
     @Override
     public boolean validate() {
         return decoratedWeapon.validate();
     }
 
-    //region Description
+    /**
+     * @override getter and setter
+     */
+
     @Override
     public String getName() {
         return decoratedWeapon.getName();
@@ -32,7 +46,6 @@ public abstract class WeaponDecorator implements Weapon {
     public void setName(String name) {
         decoratedWeapon.setName(name);
     }
-    //endregion
 
     @Override
     public String getType() {
