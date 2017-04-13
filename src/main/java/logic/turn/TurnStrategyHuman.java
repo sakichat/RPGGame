@@ -25,8 +25,10 @@ public class TurnStrategyHuman extends TurnStrategy {
         GameMap map = runtime.getMap();
 
         Player targetPlayer = map.getPlayer(target);
-        if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
-            return true;
+        if (targetPlayer != null) {
+            if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
+                return true;
+            }
         }
 
         return false;
