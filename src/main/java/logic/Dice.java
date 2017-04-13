@@ -3,7 +3,7 @@ package logic;
 /**
  *
  * @author Kai QI
- * @version 0.2
+ * @version 0.3
  * This class is the dice result generator.
  */
 public class Dice {
