@@ -113,6 +113,27 @@ public class PlayRuntime {
     }
 
     /**
+     * attribute
+     */
+    private volatile boolean stopped;
+
+    /**
+     * This method isStopped
+     * @return Boolean
+     */
+    public boolean isStopped() {
+        return stopped;
+    }
+
+    /**
+     * setter
+     * @param stopped
+     */
+    public void setStopped(boolean stopped) {
+        this.stopped = stopped;
+    }
+
+    /**
      * The method of begin
      */
     public void begin(){
@@ -120,11 +141,7 @@ public class PlayRuntime {
         turnThread.start();
     }
 
-    /**
-     * The method of end
-     */
-    public void end(){
-        this.playScene = null;
-        this.play = null;
+    public void stop(){
+
     }
 }

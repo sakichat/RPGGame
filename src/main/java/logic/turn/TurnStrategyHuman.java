@@ -39,13 +39,7 @@ public class TurnStrategyHuman extends TurnStrategy {
         GameMap map = runtime.getMap();
 
         Player targetPlayer = map.getPlayer(target);
-        if (targetPlayer != null) {
-            if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
-                return true;
-            }
-        }
-
-        return false;
+        return targetPlayer != null;
     }
 
     /**
@@ -60,11 +54,18 @@ public class TurnStrategyHuman extends TurnStrategy {
 
         Cell targetCell = map.getCell(target);
         if (targetCell != null) {
-            if (targetCell instanceof Chest || player.isDead()){
+            if (targetCell instanceof Chest){
                 return true;
+
+            } else if (targetCell instanceof Player) {
+                Player targetPlayer = (Player) targetCell;
+                if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_FRIENDLY)){
+                    return true;
+                } else if (targetPlayer.isDead()){
+                    return true;
+                }
             }
         }
-
         return false;
     }
 

@@ -12,26 +12,7 @@ import logic.player.Player;
  */
 public class TurnThread extends Thread{
 
-    /**
-     * attribute
-     */
-    private volatile boolean end;
 
-    /**
-     * This method isEnd
-     * @return Boolean
-     */
-    public boolean isEnd() {
-        return end;
-    }
-
-    /**
-     * setter
-     * @param end
-     */
-    public void setEnd(boolean end) {
-        this.end = end;
-    }
 
     /**
      * static constant
