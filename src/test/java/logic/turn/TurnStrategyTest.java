@@ -4,52 +4,61 @@ import logic.Play;
 import logic.PlayRuntime;
 import logic.map.Point;
 import logic.player.Player;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.Assert;
 import persistence.CampaignFileManager;
 import persistence.PlayerFileManager;
-import ui.scene.PlayScene;
 
 /**
  * Created by GU_HAN on 2017-04-13.
  */
 public class TurnStrategyTest {
 
-    @Before
-    public void setUp() throws Exception {
-
-    }
-
     /**
      * computer ai
      * @throws Exception
      */
-    @Test
     public void aiPlayer() throws Exception {
 
         Play play = new Play();
-        play.setCampaign(CampaignFileManager.read("humantest"));
+        play.setCampaign(CampaignFileManager.read("computertest"));
         play.setMainPlayer(PlayerFileManager.read("testplayer"));
         play.getMainPlayer().setStrategy(new TurnStrategyComputer());
 
-        PlayRuntime.currentRuntime().initiate(new PlayScene(), play);
-
-        PlayRuntime.currentRuntime().begin();
+//        PlayRuntime.currentRuntime().initiate(new PlayScene(), play);
+//
+//        PlayRuntime.currentRuntime().begin();
 
         Player player1 = PlayRuntime.currentRuntime().getPlay().currentPlayer();
+//        player1.turn();
         Point location1 = player1.getLocation();
         System.out.println(location1.getX() + " " + location1.getY());
-        player1.turn();
+        PlayRuntime.currentRuntime().stop();
 
-        Player player2 = PlayRuntime.currentRuntime().getPlay().currentPlayer();
-        Point location2 = player2.getLocation();
-        System.out.println(location2.getX() + " " + location2.getY());
-        player2.turn();
+        boolean result = true;
+        TurnStrategy strategy = player1.getStrategy();
+        if(strategy instanceof TurnStrategyFriendly){
+            result = location1.equals(new Point(1, 1))
+                    ||location1.equals(new Point(2, 1))
+                    ||location1.equals(new Point(3, 1))
+                    ||location1.equals(new Point(0, 2))
+                    ||location1.equals(new Point(1, 2))
+                    ||location1.equals(new Point(2, 2));
+        }else if(strategy instanceof TurnStrategyComputer){
+            result = location1.equals(new Point(1, 1))
+                    ||location1.equals(new Point(2, 1))
+                    ||location1.equals(new Point(3, 1))
+                    ||location1.equals(new Point(0, 2))
+                    ||location1.equals(new Point(0, 3))
+                    ||location1.equals(new Point(1, 2));
+        }else if(strategy instanceof TurnStrategyAggressive){
+            result = location1.equals(new Point(1, 1))
+                    ||location1.equals(new Point(2, 1))
+                    ||location1.equals(new Point(3, 1))
+                    ||location1.equals(new Point(0, 2))
+                    ||location1.equals(new Point(0, 3))
+                    ||location1.equals(new Point(1, 2));
+        }
 
-        Player player3 = PlayRuntime.currentRuntime().getPlay().currentPlayer();
-        Point location3 = player3.getLocation();;
-        System.out.println(location3.getX() + " " + location3.getY());
-        player3.turn();
+        Assert.assertTrue(result);
     }
-
 }
