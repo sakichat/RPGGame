@@ -14,8 +14,9 @@ public class AnimationDisplayTarget extends Animation {
         return target;
     }
 
-    public void setTarget(Point target) {
+    public AnimationDisplayTarget setTarget(Point target) {
         this.target = target;
+        return this;
     }
 
     private Point target;

@@ -784,7 +784,7 @@ public class Player extends Cell {
         }
 
         turnMove();
-//        turnAttack();
+        turnAttack();
 //        turnInteract();
     }
 
@@ -800,9 +800,9 @@ public class Player extends Cell {
         //  move
         //  show range;
 
-        AnimationDisplayRange animationDisplayRange = new AnimationDisplayRange();
-        animationDisplayRange.setRangeIndicationMode(Play.RangeIndicationMode.MOVE);
-        animationDisplayRange.animate();
+        new AnimationDisplayRange()
+                .setRangeIndicationMode(Play.RangeIndicationMode.MOVE)
+                .animate();
 
         Path path = strategy.preferredMovingPath();
         Logger.getInstance().log(this + " wants to move by " + path);
@@ -812,20 +812,22 @@ public class Player extends Cell {
             Logger.getInstance().log(this + " is moving to " + targetLocation);
 
             //  show target
-            AnimationDisplayTarget animationDisplayTarget = new AnimationDisplayTarget();
-            animationDisplayTarget.setTarget(targetLocation);
-            animationDisplayTarget.animate();
+            new AnimationDisplayTarget()
+                    .setTarget(targetLocation)
+                    .animate();
 
             //  move animation
             Movement movement = path.getMovement(3);
             Logger.getInstance().log("Movement " + movement);
-            AnimationMove interactionMove = new AnimationMove();
-            interactionMove.setMovement(movement);
-            interactionMove.animate();
+            new AnimationMove()
+                    .setMovement(movement)
+                    .animate();
         }
 
         new AnimationHideRange().animate();
         new AnimationHideTarget().animate();
+
+        PlayRuntime.currentRuntime().getPlay().notifyObservers(Play.Update.CURRENT);
     }
 
     private void turnAttack() {
@@ -836,20 +838,27 @@ public class Player extends Cell {
         }
 
         //  show range
-        // TODO: 11/04/2017
 
-        Point point = strategy.preferredAttackingLocation();
+        new AnimationDisplayRange()
+                .setRangeIndicationMode(Play.RangeIndicationMode.ATTACK)
+                .animate();
 
-        if (point == null){
+        Point targetLocation = strategy.preferredAttackingLocation();
+
+        if (targetLocation == null){
             return;
         }
 
-        //  show target
-        // TODO: 11/04/2017
-
         GameMap currentMap = PlayRuntime.currentRuntime().getMap();
-        Player player = (Player) currentMap.getCell(point);
-        attack(player);
+        Player targetPlayer = (Player) currentMap.getCell(targetLocation);
+        Logger.getInstance().log(this + " is going to attack " + targetPlayer);
+
+        //  show target
+        new AnimationDisplayTarget()
+                .setTarget(targetLocation)
+                .animate();
+
+        attack(targetPlayer);
     }
 
     private void turnInteract() {

@@ -17,8 +17,9 @@ public class AnimationDisplayRange extends Animation {
         return rangeIndicationMode;
     }
 
-    public void setRangeIndicationMode(Play.RangeIndicationMode rangeIndicationMode) {
+    public AnimationDisplayRange setRangeIndicationMode(Play.RangeIndicationMode rangeIndicationMode) {
         this.rangeIndicationMode = rangeIndicationMode;
+        return this;
     }
 
     @Override

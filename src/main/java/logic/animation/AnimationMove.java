@@ -11,8 +11,9 @@ public class AnimationMove extends Animation {
         return movement;
     }
 
-    public void setMovement(Movement movement) {
+    public AnimationMove setMovement(Movement movement) {
         this.movement = movement;
+        return this;
     }
 
     @Override
