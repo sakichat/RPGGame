@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  * This is the class for play.
  */
 public class Play extends Observable{
@@ -23,6 +23,9 @@ public class Play extends Observable{
     //  Section - Basic
     //  =======================================================================
 
+    /**
+     * property of name
+     */
     @Expose
     private String name;
 
@@ -47,6 +50,9 @@ public class Play extends Observable{
     //  Section - Context
     //  =======================================================================
 
+    /**
+     * property of mainPlayer
+     */
     @Expose
     private Player mainPlayer;
 
@@ -70,16 +76,27 @@ public class Play extends Observable{
     //  Section - Campaign
     //  =======================================================================
 
-
+    /**
+     * property of campaign
+     */
     @Expose
     private Campaign campaign;
 
+    /**
+     * property of currentMapIndex
+     */
     @Expose
     private int currentMapIndex;
 
+    /**
+     * property of currentMap
+     */
     @Expose
     private GameMap currentMap;
 
+    /**
+     * The method of setCurrentMap
+     */
     public void setCurrentMap(GameMap currentMap) {
         this.currentMap = currentMap;
     }
@@ -96,6 +113,9 @@ public class Play extends Observable{
         initTurnOrder();
     }
 
+    /**
+     * The method of initStrategy
+     */
     private void initStrategy(){
         List<Player> players = currentMap.getPlayers();
         for (Player player : players) {
@@ -107,11 +127,6 @@ public class Play extends Observable{
             }
         }
     }
-
-    /**
-     * This is a method makes mainPlayer enter into the map.
-     * @return Point
-     */
 
     /**
      * This is the method for exit from currentMap,
@@ -153,8 +168,6 @@ public class Play extends Observable{
         this.campaign = campaign;
     }
 
-
-
     /**
      * Getter for currentMap.
      * @return GameMap
@@ -167,8 +180,14 @@ public class Play extends Observable{
     //  Section - Order
     //  =======================================================================
 
+    /**
+     * property of currentPlayerIndex
+     */
     private int currentPlayerIndex;
 
+    /**
+     * property of playerOrders
+     */
     private LinkedList<Player> playerOrders;
 
     /**
@@ -198,10 +217,18 @@ public class Play extends Observable{
         Logger.getInstance().log(orders.toString());
     }
 
+    /**
+     * The method of currentPlayer
+     * @return Player
+     */
     public Player currentPlayer(){
         return playerOrders.get(currentPlayerIndex);
     }
 
+    /**
+     * The method of nextPlayer
+     * @return Player
+     */
     public Player nextPlayer(){
         currentPlayerIndex += 1;
         currentPlayerIndex %= playerOrders.size();
@@ -217,29 +244,54 @@ public class Play extends Observable{
     //  Section - Target
     //  =======================================================================
 
-
+    /**
+     * Property of targetLocationEnabled
+     */
     private boolean targetLocationEnabled;
 
+    /**
+     * Property of targetLocation
+     */
     private Point targetLocation;
 
+    /**
+     * The method of getTarget
+     * @return Cell
+     */
     public Cell getTarget(){
         return currentMap.getCell(targetLocation);
     }
 
+    /**
+     * The method of isTargetLocationEnabled
+     * @return boolean
+     */
     public boolean isTargetLocationEnabled() {
         return targetLocationEnabled;
     }
 
+    /**
+     * The method of setTargetLocationEnabled
+     * @param targetLocationEnabled boolean
+     */
     public void setTargetLocationEnabled(boolean targetLocationEnabled) {
         this.targetLocationEnabled = targetLocationEnabled;
         setChanged();
         notifyObservers(Update.TARGET);
     }
 
+    /**
+     * The method of getTargetLocation
+     * @return
+     */
     public Point getTargetLocation() {
         return targetLocation;
     }
 
+    /**
+     * The method of setTargetLocation
+     * @param targetLocation Point
+     */
     public void setTargetLocation(Point targetLocation) {
         this.targetLocation = targetLocation;
         setTargetLocationEnabled(true);
@@ -250,6 +302,9 @@ public class Play extends Observable{
     //  Section - Observer
     //  =======================================================================
 
+    /**
+     * The method of Update
+     */
     public static class Update{
         public static String RANGE = "play range";
         public static String TARGET = "play target";
@@ -260,6 +315,9 @@ public class Play extends Observable{
     //  Section - Range
     //  =======================================================================
 
+    /**
+     * The method of RangeIndicationMode
+     */
     public enum RangeIndicationMode {
         MOVE("movement"), ATTACK("attack");
 
@@ -274,33 +332,62 @@ public class Play extends Observable{
         }
     }
 
-
+    /**
+     * property of rangeIndicationEnabled
+     */
     private boolean rangeIndicationEnabled;
 
+    /**
+     * property of rangeIndicationMode
+     */
     private RangeIndicationMode rangeIndicationMode = RangeIndicationMode.MOVE;
 
+    /**
+     * property of rangeIndicationLocations
+     */
     private List<Point> rangeIndicationLocations;
 
+    /**
+     * The method of setRangeIndication
+     * @param locations List
+     * @param mode RangeIndicationMode
+     */
     public void setRangeIndication(List<Point> locations, RangeIndicationMode mode){
         rangeIndicationLocations = locations;
         rangeIndicationMode = mode;
         setRangeIndicationEnabled(true);
     }
 
+    /**
+     * The method of isRangeIndicationEnabled
+     * @return
+     */
     public boolean isRangeIndicationEnabled() {
         return rangeIndicationEnabled;
     }
 
+    /**
+     * The method of setRangeIndicationEnabled
+     * @param rangeIndicationEnabled boolean
+     */
     public void setRangeIndicationEnabled(boolean rangeIndicationEnabled) {
         this.rangeIndicationEnabled = rangeIndicationEnabled;
         setChanged();
         notifyObservers(Update.RANGE);
     }
 
+    /**
+     * The method of getRangeIndicationMode
+     * @return RangeIndicationMode
+     */
     public RangeIndicationMode getRangeIndicationMode() {
         return rangeIndicationMode;
     }
 
+    /**
+     * The method of getRangeIndicationLocations
+     * @return List
+     */
     public List<Point> getRangeIndicationLocations() {
         return rangeIndicationLocations;
     }
