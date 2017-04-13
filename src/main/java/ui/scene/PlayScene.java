@@ -137,14 +137,16 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
      */
     private void refreshControlView(){
         Point location = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
-        GameMap gameMap = PlayRuntime.currentRuntime().getMap();
-        Cell cell = gameMap.getCell(location);
-        View view = generateControlView(cell);
+        if (location != null) {
+            GameMap gameMap = PlayRuntime.currentRuntime().getMap();
+            Cell cell = gameMap.getCell(location);
+            View view = generateControlView(cell);
 
-        controlViewContainerView.removeAll();
-        controlViewContainerView.add(view);
+            controlViewContainerView.removeAll();
+            controlViewContainerView.add(view);
 
-        controlViewContainerView.repaint();
+            controlViewContainerView.repaint();
+        }
 
     }
 

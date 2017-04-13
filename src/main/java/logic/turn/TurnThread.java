@@ -1,6 +1,7 @@
 package logic.turn;
 
 
+import logic.Logger;
 import logic.Play;
 import logic.PlayRuntime;
 import logic.player.Player;
@@ -36,13 +37,15 @@ public class TurnThread extends Thread{
             Play play = playRuntime.getPlay();
             Player currentPlayer = play.currentPlayer();
             currentPlayer.turn();
+            Logger.getInstance().log(currentPlayer + " finished its turn");
 
+            play.nextPlayer();
             try {
                 Thread.sleep((int)(1000000 * 1000));
             } catch (InterruptedException e) {
+
             }
 
-            play.nextPlayer();
         }
     }
 }

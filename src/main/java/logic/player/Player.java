@@ -563,10 +563,12 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getRangeForAttack() {
-        if (this.getWeapon().getRange() != 0) {
-            return this.getWeapon().getRange();
+        Weapon weapon = this.getWeapon();
+        if (weapon != null) {
+            return weapon.getRange();
+        } else {
+            return 1;
         }
-        return 1;
     }
 
     /**
@@ -797,8 +799,6 @@ public class Player extends Cell {
     }
 
     private void turnMove() {
-        //  move
-        //  show range;
 
         new AnimationDisplayRange()
                 .setRangeIndicationMode(Play.RangeIndicationMode.MOVE)
@@ -818,7 +818,7 @@ public class Player extends Cell {
 
             //  move animation
             Movement movement = path.getMovement(3);
-            Logger.getInstance().log("Movement " + movement);
+            Logger.getInstance().log(this + " got its move " + movement);
             new AnimationMove()
                     .setMovement(movement)
                     .animate();
