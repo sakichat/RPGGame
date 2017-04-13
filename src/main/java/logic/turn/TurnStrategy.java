@@ -3,10 +3,13 @@ package logic.turn;
 import logic.PlayRuntime;
 import logic.map.*;
 import logic.player.Player;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author Li Zhen
+ * @version 0.3
+ */
 public abstract class TurnStrategy {
     protected Player player;
 

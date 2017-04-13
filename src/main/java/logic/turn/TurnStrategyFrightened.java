@@ -5,9 +5,12 @@ import logic.effect.EffectFrightening;
 import logic.map.GameMapGraph;
 import logic.map.Path;
 import logic.map.Point;
-
 import java.util.*;
 
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class TurnStrategyFrightened extends TurnStrategy {
 
     @Override
