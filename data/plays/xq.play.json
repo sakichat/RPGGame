@@ -1,0 +1,670 @@
+{
+  "name": "xq",
+  "mainPlayer": {
+    "name": "testPlayer",
+    "playerType": "Nimble",
+    "playerParty": "Main",
+    "hp": 62,
+    "totalHp": 67,
+    "level": 8,
+    "abilityScores": {
+      "STR": 14,
+      "WIS": 10,
+      "CON": 16,
+      "DEX": 18,
+      "CHA": 13,
+      "INT": 14
+    },
+    "backpack": [
+      {
+        "_class": "logic.equipment.EquipmentSolid",
+        "_object": {
+          "name": "Israh",
+          "type": "Armor",
+          "enhancedAttribute": "AC",
+          "enhancedValue": 2
+        }
+      },
+      {
+        "_class": "logic.equipment.EquipmentSolid",
+        "_object": {
+          "name": "Iran",
+          "type": "Helmet",
+          "enhancedAttribute": "WIS",
+          "enhancedValue": 2
+        }
+      },
+      {
+        "_class": "logic.equipment.EquipmentSolid",
+        "_object": {
+          "name": "homes",
+          "type": "Ring",
+          "enhancedAttribute": "CHA",
+          "enhancedValue": 2
+        }
+      },
+      {
+        "_class": "logic.equipment.EquipmentSolid",
+        "_object": {
+          "name": "Cyne",
+          "type": "Boots",
+          "enhancedAttribute": "AC",
+          "enhancedValue": 5
+        }
+      },
+      {
+        "_class": "logic.equipment.WeaponDecoratorFrightening",
+        "_object": {
+          "decoratedWeapon": {
+            "_class": "logic.equipment.WeaponDecoratorBurning",
+            "_object": {
+              "decoratedWeapon": {
+                "_class": "logic.equipment.WeaponSolid",
+                "_object": {
+                  "range": 3,
+                  "weaponType": "RANGED",
+                  "name": "fire",
+                  "type": "Weapon",
+                  "enhancedAttribute": "AB",
+                  "enhancedValue": 5
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "_class": "logic.equipment.WeaponDecoratorPacifying",
+        "_object": {
+          "decoratedWeapon": {
+            "_class": "logic.equipment.WeaponSolid",
+            "_object": {
+              "range": 3,
+              "weaponType": "RANGED",
+              "name": "WeaponT",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          }
+        }
+      },
+      {
+        "_class": "logic.equipment.WeaponDecoratorSlaying",
+        "_object": {
+          "decoratedWeapon": {
+            "_class": "logic.equipment.WeaponSolid",
+            "_object": {
+              "range": 1,
+              "weaponType": "MELEE",
+              "name": "Wige",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            }
+          }
+        }
+      },
+      {
+        "_class": "logic.equipment.WeaponDecoratorFrightening",
+        "_object": {
+          "decoratedWeapon": {
+            "_class": "logic.equipment.WeaponSolid",
+            "_object": {
+              "range": 1,
+              "weaponType": "MELEE",
+              "name": "frighten",
+              "type": "Weapon",
+              "enhancedAttribute": "DB",
+              "enhancedValue": 5
+            }
+          }
+        }
+      },
+      {
+        "_class": "logic.equipment.WeaponDecoratorFreezing",
+        "_object": {
+          "decoratedWeapon": {
+            "_class": "logic.equipment.WeaponSolid",
+            "_object": {
+              "range": 2,
+              "weaponType": "RANGED",
+              "name": "freezing",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            }
+          }
+        }
+      }
+    ],
+    "equipments": {
+      "Weapon": {
+        "_class": "logic.equipment.WeaponDecoratorFreezing",
+        "_object": {
+          "decoratedWeapon": {
+            "_class": "logic.equipment.WeaponDecoratorBurning",
+            "_object": {
+              "decoratedWeapon": {
+                "_class": "logic.equipment.WeaponDecoratorFrightening",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponDecoratorPacifying",
+                    "_object": {
+                      "decoratedWeapon": {
+                        "_class": "logic.equipment.WeaponDecoratorSlaying",
+                        "_object": {
+                          "decoratedWeapon": {
+                            "_class": "logic.equipment.WeaponSolid",
+                            "_object": {
+                              "range": 1,
+                              "weaponType": "MELEE",
+                              "name": "Gare",
+                              "type": "Weapon",
+                              "enhancedAttribute": "DB",
+                              "enhancedValue": 5
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Ring": {
+        "_class": "logic.equipment.EquipmentSolid",
+        "_object": {
+          "name": "strongRing",
+          "type": "Ring",
+          "enhancedAttribute": "STR",
+          "enhancedValue": 5
+        }
+      },
+      "Belt": {
+        "_class": "logic.equipment.EquipmentSolid",
+        "_object": {
+          "name": "Ered",
+          "type": "Belt",
+          "enhancedAttribute": "STR",
+          "enhancedValue": 5
+        }
+      }
+    },
+    "effects": [],
+    "strategy": {
+      "_class": "logic.turn.TurnStrategyHuman",
+      "_object": {}
+    },
+    "location": {
+      "x": 1,
+      "y": 0
+    }
+  },
+  "campaign": {
+    "name": "HumanTest",
+    "mapNames": [
+      "testMap44",
+      "testMap66"
+    ]
+  },
+  "currentMapIndex": 0,
+  "currentMap": {
+    "name": "testMap44",
+    "width": 4,
+    "height": 4,
+    "cells": [
+      [
+        {
+          "_class": "logic.map.Entrance",
+          "_object": {
+            "location": {
+              "x": 0,
+              "y": 0
+            },
+            "imageName": "entrance.png"
+          }
+        },
+        {
+          "_class": "logic.player.Player",
+          "_object": {
+            "name": "testPlayer",
+            "playerType": "Nimble",
+            "playerParty": "Main",
+            "hp": 62,
+            "totalHp": 67,
+            "level": 8,
+            "abilityScores": {
+              "STR": 14,
+              "WIS": 10,
+              "CON": 16,
+              "DEX": 18,
+              "CHA": 13,
+              "INT": 14
+            },
+            "backpack": [
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Israh",
+                  "type": "Armor",
+                  "enhancedAttribute": "AC",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Iran",
+                  "type": "Helmet",
+                  "enhancedAttribute": "WIS",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "homes",
+                  "type": "Ring",
+                  "enhancedAttribute": "CHA",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Cyne",
+                  "type": "Boots",
+                  "enhancedAttribute": "AC",
+                  "enhancedValue": 5
+                }
+              },
+              {
+                "_class": "logic.equipment.WeaponDecoratorFrightening",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponDecoratorBurning",
+                    "_object": {
+                      "decoratedWeapon": {
+                        "_class": "logic.equipment.WeaponSolid",
+                        "_object": {
+                          "range": 3,
+                          "weaponType": "RANGED",
+                          "name": "fire",
+                          "type": "Weapon",
+                          "enhancedAttribute": "AB",
+                          "enhancedValue": 5
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "_class": "logic.equipment.WeaponDecoratorPacifying",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponSolid",
+                    "_object": {
+                      "range": 3,
+                      "weaponType": "RANGED",
+                      "name": "WeaponT",
+                      "type": "Weapon",
+                      "enhancedAttribute": "DB",
+                      "enhancedValue": 5
+                    }
+                  }
+                }
+              },
+              {
+                "_class": "logic.equipment.WeaponDecoratorSlaying",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponSolid",
+                    "_object": {
+                      "range": 1,
+                      "weaponType": "MELEE",
+                      "name": "Wige",
+                      "type": "Weapon",
+                      "enhancedAttribute": "AB",
+                      "enhancedValue": 5
+                    }
+                  }
+                }
+              },
+              {
+                "_class": "logic.equipment.WeaponDecoratorFrightening",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponSolid",
+                    "_object": {
+                      "range": 1,
+                      "weaponType": "MELEE",
+                      "name": "frighten",
+                      "type": "Weapon",
+                      "enhancedAttribute": "DB",
+                      "enhancedValue": 5
+                    }
+                  }
+                }
+              },
+              {
+                "_class": "logic.equipment.WeaponDecoratorFreezing",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponSolid",
+                    "_object": {
+                      "range": 2,
+                      "weaponType": "RANGED",
+                      "name": "freezing",
+                      "type": "Weapon",
+                      "enhancedAttribute": "AB",
+                      "enhancedValue": 5
+                    }
+                  }
+                }
+              }
+            ],
+            "equipments": {
+              "Weapon": {
+                "_class": "logic.equipment.WeaponDecoratorFreezing",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponDecoratorBurning",
+                    "_object": {
+                      "decoratedWeapon": {
+                        "_class": "logic.equipment.WeaponDecoratorFrightening",
+                        "_object": {
+                          "decoratedWeapon": {
+                            "_class": "logic.equipment.WeaponDecoratorPacifying",
+                            "_object": {
+                              "decoratedWeapon": {
+                                "_class": "logic.equipment.WeaponDecoratorSlaying",
+                                "_object": {
+                                  "decoratedWeapon": {
+                                    "_class": "logic.equipment.WeaponSolid",
+                                    "_object": {
+                                      "range": 1,
+                                      "weaponType": "MELEE",
+                                      "name": "Gare",
+                                      "type": "Weapon",
+                                      "enhancedAttribute": "DB",
+                                      "enhancedValue": 5
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "Ring": {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "strongRing",
+                  "type": "Ring",
+                  "enhancedAttribute": "STR",
+                  "enhancedValue": 5
+                }
+              },
+              "Belt": {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Ered",
+                  "type": "Belt",
+                  "enhancedAttribute": "STR",
+                  "enhancedValue": 5
+                }
+              }
+            },
+            "effects": [],
+            "strategy": {
+              "_class": "logic.turn.TurnStrategyHuman",
+              "_object": {}
+            },
+            "location": {
+              "x": 1,
+              "y": 0
+            }
+          }
+        },
+        null,
+        null
+      ],
+      [
+        null,
+        {
+          "_class": "logic.player.Player",
+          "_object": {
+            "name": "Findelie",
+            "playerType": "Bully",
+            "playerParty": "Hostile",
+            "hp": 61,
+            "totalHp": 61,
+            "level": 8,
+            "abilityScores": {
+              "STR": 16,
+              "WIS": 7,
+              "CON": 13,
+              "DEX": 12,
+              "CHA": 8,
+              "INT": 11
+            },
+            "backpack": [
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Ered",
+                  "type": "Belt",
+                  "enhancedAttribute": "STR",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.WeaponDecoratorBurning",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponSolid",
+                    "_object": {
+                      "range": 2,
+                      "weaponType": "RANGED",
+                      "name": "fire",
+                      "type": "Weapon",
+                      "enhancedAttribute": "AB",
+                      "enhancedValue": 2
+                    }
+                  }
+                }
+              },
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Adrah",
+                  "type": "Helmet",
+                  "enhancedAttribute": "AC",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Cyne",
+                  "type": "Boots",
+                  "enhancedAttribute": "AC",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Ered",
+                  "type": "Belt",
+                  "enhancedAttribute": "STR",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.WeaponDecoratorPacifying",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponSolid",
+                    "_object": {
+                      "range": 3,
+                      "weaponType": "RANGED",
+                      "name": "WeaponT",
+                      "type": "Weapon",
+                      "enhancedAttribute": "DB",
+                      "enhancedValue": 2
+                    }
+                  }
+                }
+              }
+            ],
+            "equipments": {
+              "Helmet": {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Adrah",
+                  "type": "Helmet",
+                  "enhancedAttribute": "AC",
+                  "enhancedValue": 2
+                }
+              },
+              "Boots": {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Cyne",
+                  "type": "Boots",
+                  "enhancedAttribute": "AC",
+                  "enhancedValue": 2
+                }
+              }
+            },
+            "effects": [],
+            "strategy": {
+              "_class": "logic.turn.TurnStrategyAggressive",
+              "_object": {}
+            },
+            "location": {
+              "x": 1,
+              "y": 1
+            }
+          }
+        },
+        null,
+        null
+      ],
+      [
+        null,
+        null,
+        null,
+        null
+      ],
+      [
+        null,
+        {
+          "_class": "logic.player.Player",
+          "_object": {
+            "name": "Aseg",
+            "playerType": "Nimble",
+            "playerParty": "Friendly",
+            "hp": 62,
+            "totalHp": 62,
+            "level": 8,
+            "abilityScores": {
+              "STR": 15,
+              "WIS": 11,
+              "CON": 16,
+              "DEX": 17,
+              "CHA": 13,
+              "INT": 14
+            },
+            "backpack": [
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Kusha",
+                  "type": "Shield",
+                  "enhancedAttribute": "AC",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "holes",
+                  "type": "Ring",
+                  "enhancedAttribute": "WIS",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Iran",
+                  "type": "Helmet",
+                  "enhancedAttribute": "WIS",
+                  "enhancedValue": 2
+                }
+              },
+              {
+                "_class": "logic.equipment.WeaponDecoratorBurning",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponSolid",
+                    "_object": {
+                      "range": 2,
+                      "weaponType": "RANGED",
+                      "name": "fire",
+                      "type": "Weapon",
+                      "enhancedAttribute": "AB",
+                      "enhancedValue": 2
+                    }
+                  }
+                }
+              }
+            ],
+            "equipments": {
+              "Armor": {
+                "_class": "logic.equipment.EquipmentSolid",
+                "_object": {
+                  "name": "Israh",
+                  "type": "Armor",
+                  "enhancedAttribute": "AC",
+                  "enhancedValue": 2
+                }
+              }
+            },
+            "effects": [],
+            "strategy": {
+              "_class": "logic.turn.TurnStrategyFriendly",
+              "_object": {}
+            },
+            "location": {
+              "x": 1,
+              "y": 3
+            }
+          }
+        },
+        {
+          "_class": "logic.map.Exit",
+          "_object": {
+            "location": {
+              "x": 2,
+              "y": 3
+            },
+            "imageName": "exit.png"
+          }
+        },
+        null
+      ]
+    ]
+  }
+}
