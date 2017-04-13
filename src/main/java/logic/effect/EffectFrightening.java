@@ -15,7 +15,7 @@ public class EffectFrightening extends Effect {
     private Player combatant = PlayRuntime.currentRuntime().getPlay().currentPlayer();
 
     /**
-     *
+     * This method is used to attach effect on player
      */
     @Override
     protected void didAttach() {
@@ -23,11 +23,18 @@ public class EffectFrightening extends Effect {
         onPlayer.setStrategy(new TurnStrategyFrightened());
     }
 
+    /**
+     * This method is used to detach effect from player once
+     */
     @Override
     protected void willDetach() {
         onPlayer.setStrategy(turnStrategy);
     }
 
+    /**
+     * getter combatant
+     * @return Player
+     */
     public Player getCombatant() {
         return combatant;
     }
