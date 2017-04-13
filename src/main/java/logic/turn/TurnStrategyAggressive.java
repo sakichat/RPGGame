@@ -61,6 +61,12 @@ public class TurnStrategyAggressive extends TurnStrategy {
 
     @Override
     public Point preferredInteractionLocation() {
+        List<Point> interactTargets = interactTargetsInNear();
+
+        if (interactTargets != null){
+            return interactTargets.get(0);
+        }
+
         return null;
     }
 }

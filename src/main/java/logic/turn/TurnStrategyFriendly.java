@@ -31,7 +31,6 @@ public class TurnStrategyFriendly extends TurnStrategy {
 
     @Override
     protected boolean couldInteract(Point target) {
-
         PlayRuntime runtime = PlayRuntime.currentRuntime();
         GameMap map = runtime.getMap();
 
@@ -51,15 +50,12 @@ public class TurnStrategyFriendly extends TurnStrategy {
 
     @Override
     public Point preferredInteractionLocation() {
+        List<Point> interactTargets = interactTargetsInNear();
 
-        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
-        List<Point> points = interactTargetsInNear();
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
+        if (interactTargets != null){
+            return interactTargets.get(0);
         }
 
+        return null;
     }
 }

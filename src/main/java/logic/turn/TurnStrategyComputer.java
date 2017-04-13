@@ -71,15 +71,6 @@ public class TurnStrategyComputer extends TurnStrategy {
 
     @Override
     public Point preferredInteractionLocation() {
-//        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
-//        List<Point> points = interactTargetsInNear();
-//        if (points.size() != 0){
-//            Point result = points.get((int)(Math.random() * points.size()));
-//            return result;
-//        }else {
-//            return null;
-//        }
-
         return null;
     }
 }
