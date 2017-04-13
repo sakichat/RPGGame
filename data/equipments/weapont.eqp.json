@@ -1,6 +1,6 @@
 {
   "equipment": {
-    "_class": "logic.equipment.WeaponDecoratorFreezing",
+    "_class": "logic.equipment.WeaponDecoratorPacifying",
     "_object": {
       "decoratedWeapon": {
         "_class": "logic.equipment.WeaponSolid",
