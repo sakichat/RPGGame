@@ -192,7 +192,7 @@ public class EquipmentSolid implements Equipment{
     }
 
     /**
-     * this method is to refresh the value of equipment according to the level of player
+     * this method is to refresh the value of equipment according to the level of currentPlayer
      * @param level int
      */
     public void adapt(int level) {

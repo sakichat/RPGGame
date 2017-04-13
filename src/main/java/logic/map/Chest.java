@@ -95,7 +95,7 @@ public class Chest extends Cell{
     }
 
     /**
-     * this method is to refresh the value of equipment accoding to the level of player
+     * this method is to refresh the value of equipment accoding to the level of currentPlayer
      * @param level int
      */
 

@@ -7,9 +7,9 @@ import logic.player.Player;
 
 public class TurnThread extends Thread{
 
-    public static double PAUSE_FAST = 0.2;
-    public static double PAUSE_NORMAL = 0.5;
-    public static double PAUSE_SLOW = 0.1;
+    public static double PAUSE_FAST = 1;
+    public static double PAUSE_NORMAL = 2;
+    public static double PAUSE_SLOW = 3;
 
     public static void pause(double duration){
         try {

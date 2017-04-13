@@ -9,7 +9,7 @@ import javax.swing.*;
 
 /**
  * This is a class for players to create or edit the details of their characters.
- * It concludes four different functions of creating or editing details of the player.
+ * It concludes four different functions of creating or editing details of the currentPlayer.
  *
  * @author Kai QI
  * @version 0.2
@@ -17,7 +17,7 @@ import javax.swing.*;
 public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.Delegate, InventoryPanel.Delegate{
 
     /**
-     * Declaration of the property player and getter & setter
+     * Declaration of the property currentPlayer and getter & setter
      */
     private Player player;
 
@@ -172,7 +172,7 @@ public class PlayerEditingScene extends Scene implements EquipmentSelectorPanel.
     }
 
     /**
-     * this method is used to save the object player to a file.
+     * this method is used to save the object currentPlayer to a file.
      */
     private void save(){
         PlayerFileManager.save(player);

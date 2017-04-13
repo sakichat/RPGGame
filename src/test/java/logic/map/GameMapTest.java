@@ -122,7 +122,7 @@ public class GameMapTest {
     }
 
     /**
-     * This case tests if the map can be saved when player is not defined its party.
+     * This case tests if the map can be saved when currentPlayer is not defined its party.
      * @throws Exception
      */
     @Test

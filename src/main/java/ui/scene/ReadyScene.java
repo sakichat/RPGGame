@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * This ReadyScene means players have already created a play within player and campaign.
+ * This ReadyScene means players have already created a play within currentPlayer and campaign.
  * @author Siyu Chen
  * @version 0.2
  */

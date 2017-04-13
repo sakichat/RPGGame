@@ -8,14 +8,14 @@ import logic.player.Player;
 public abstract class Animation {
     protected Play play;
     protected GameMap gameMap;
-    protected Player player;
+    protected Player currentPlayer;
 
     public Animation() {
         play = PlayRuntime.currentRuntime().getPlay();
         gameMap = play.currentMap();
-        player = play.currentPlayer();
+        currentPlayer = play.currentPlayer();
     }
 
-    public abstract void execute();
+    public abstract void animate();
 
 }

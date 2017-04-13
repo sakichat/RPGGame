@@ -2,7 +2,10 @@ package logic.player;
 
 import com.google.gson.annotations.Expose;
 import logic.Logger;
+import logic.Play;
 import logic.PlayRuntime;
+import logic.animation.AnimationDisplayRange;
+import logic.animation.AnimationHideRange;
 import logic.effect.Effect;
 import logic.animation.AnimationMove;
 import logic.map.*;
@@ -16,7 +19,7 @@ import java.util.*;
 
 /**
  *
- * This Class is player, which includes users and NPCs.
+ * This Class is currentPlayer, which includes users and NPCs.
  *
  * @author Kai QI
  * @version 0.3
@@ -134,7 +137,7 @@ public class Player extends Cell {
 
     /**
      * The method is used to generate totalHp according to the D20 rule.
-     * The method is called when the player object is edited or created.
+     * The method is called when the currentPlayer object is edited or created.
      * The method also is called when the level changes.
      * The method also is called when the CON modifier changed, aka, when the type changes.
      */
@@ -489,7 +492,7 @@ public class Player extends Cell {
     //  =======================================================================
 
     /**
-     * The method is used to get all inventories the player owned.
+     * The method is used to get all inventories the currentPlayer owned.
      * @return all the equipments in backpack or worn.
      */
     public List<Equipment> getInventories() {
@@ -546,7 +549,7 @@ public class Player extends Cell {
     }
 
     /**
-     * The method is used to return the weapon player object is wearing.
+     * The method is used to return the weapon currentPlayer object is wearing.
      * @return Weapon
      */
     public Weapon getWeapon() {
@@ -635,7 +638,7 @@ public class Player extends Cell {
 
     /**
      * This method is used by NPCs to refresh the value of inventories.
-     * according to the level of player.
+     * according to the level of currentPlayer.
      * @param level
      */
     public void adaptEquipments(int level){
@@ -663,7 +666,7 @@ public class Player extends Cell {
     private List<Effect> effects = new LinkedList<>();
 
     /**
-     * The method is used to add effect to the player.
+     * The method is used to add effect to the currentPlayer.
      * @param effect Effect
      */
     public void addEffect(Effect effect){
@@ -673,7 +676,7 @@ public class Player extends Cell {
     }
 
     /**
-     * The method is used to remove effect to the player.
+     * The method is used to remove effect to the currentPlayer.
      * @param effect Effect
      */
     public void removeEffect(Effect effect){
@@ -708,7 +711,7 @@ public class Player extends Cell {
     }
 
     /**
-     * This method is used to judge whether player do the damage
+     * This method is used to judge whether currentPlayer do the damage
      * @param targetPlayer
      * @return Boolean
      */
@@ -783,13 +786,17 @@ public class Player extends Cell {
     private void turnMove() {
         //  move
         //  show range;
-        // TODO: 10/04/2017
+
+        AnimationDisplayRange animationDisplayRange = new AnimationDisplayRange();
+        animationDisplayRange.setRangeIndicationMode(Play.RangeIndicationMode.MOVE);
+        animationDisplayRange.animate();
 
         Path path = strategy.preferredMovingPath();
         Logger.getInstance().log(this + " wants to move by " + path);
 
         if (!path.stay()) {
             Logger.getInstance().log(this + " is moving to " + path.getLastLocation());
+
             //  show target
             // TODO: 10/04/2017
 
@@ -798,8 +805,11 @@ public class Player extends Cell {
             Logger.getInstance().log("Movement " + movement);
             AnimationMove interactionMove = new AnimationMove();
             interactionMove.setMovement(movement);
-            interactionMove.execute();
+            interactionMove.animate();
         }
+
+        AnimationHideRange animationHideRange = new AnimationHideRange();
+        animationHideRange.animate();
     }
 
     private void turnAttack() {
@@ -852,7 +862,7 @@ public class Player extends Cell {
         HashMap<String, String> partyNames = new HashMap<>();
         partyNames.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
         partyNames.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
-        partyNames.put(Player.PLAYER_PARTY_MAIN, "player");
+        partyNames.put(Player.PLAYER_PARTY_MAIN, "currentPlayer");
         partyNames.put(Player.PLAYER_PARTY_NOT_DEFINED, "nd");
 
         HashMap<String, String> typeNames = new HashMap<>();
@@ -897,7 +907,7 @@ public class Player extends Cell {
     }
 
     /**
-     * The method is override for the equals method, which is used to compare player object.
+     * The method is override for the equals method, which is used to compare currentPlayer object.
      * @param obj
      * @return
      */

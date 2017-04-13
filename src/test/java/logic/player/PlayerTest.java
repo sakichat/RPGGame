@@ -131,8 +131,8 @@ public class PlayerTest {
     }
 
     /**
-     * This case tests if player can wear more than one item of each kind, wihch means
-     * if the player will drop previous item if he already wears one of the same category.
+     * This case tests if currentPlayer can wear more than one item of each kind, wihch means
+     * if the currentPlayer will drop previous item if he already wears one of the same category.
      * @throws Exception
      */
     @Test
@@ -158,55 +158,55 @@ public class PlayerTest {
     }
 
     /**
-     * This case tests if the player will correctly loot the chest, which means the player will get
+     * This case tests if the currentPlayer will correctly loot the chest, which means the currentPlayer will get
      * the item in the chest to his backpack.
      * @throws Exception
      */
     @Test
     public void lootChest1() throws Exception {
-//        player.dropEquipment(equipmentArmorAC1);
-//        player.dropEquipment(equipmentArmorAC3);
-//        player.dropEquipment(equipmentArmorAC5);
-//        player.dropEquipment(equipmentHelmetInt3);
-//        player.dropEquipment(equipmentHelmetWis5);
-//        player.dropEquipment(equipmentHelmetAC2);
-//        player.dropEquipment(equipmentShieldAC3);
-//        player.dropEquipment(equipmentShieldAC4);
+//        currentPlayer.dropEquipment(equipmentArmorAC1);
+//        currentPlayer.dropEquipment(equipmentArmorAC3);
+//        currentPlayer.dropEquipment(equipmentArmorAC5);
+//        currentPlayer.dropEquipment(equipmentHelmetInt3);
+//        currentPlayer.dropEquipment(equipmentHelmetWis5);
+//        currentPlayer.dropEquipment(equipmentHelmetAC2);
+//        currentPlayer.dropEquipment(equipmentShieldAC3);
+//        currentPlayer.dropEquipment(equipmentShieldAC4);
 //
 //        int chestSize    = chest.getEquipments().size();
-//        int previousSize = player.equipmentsInBackpack().size();
+//        int previousSize = currentPlayer.equipmentsInBackpack().size();
 //
-//        player.lootChest(chest);
+//        currentPlayer.lootChest(chest);
 //
-//        int nowSize         = player.equipmentsInBackpack().size();
-//        boolean containItem = player.equipmentsInBackpack().contains(equipmentBootsAC3);
+//        int nowSize         = currentPlayer.equipmentsInBackpack().size();
+//        boolean containItem = currentPlayer.equipmentsInBackpack().contains(equipmentBootsAC3);
 //
 //        Assert.assertEquals(nowSize, previousSize + chestSize);
 //        Assert.assertTrue(containItem);
     }
 
     /**
-     * This case tests if the player will correctly loot the chest, which means the player's backpack
+     * This case tests if the currentPlayer will correctly loot the chest, which means the currentPlayer's backpack
      * will get as much as equipments as it can. Besides, the chest will keep the left items as well.
      * @throws Exception
      */
     @Test
     public void lootChest2() throws Exception {
-//        player.dropEquipment(equipmentArmorAC1);
-//        player.dropEquipment(equipmentArmorAC3);
+//        currentPlayer.dropEquipment(equipmentArmorAC1);
+//        currentPlayer.dropEquipment(equipmentArmorAC3);
 //        int previousChestSize = chest.getEquipments().size();
-//        int previousPlayerBackpackSize = player.equipmentsInBackpack().size();
+//        int previousPlayerBackpackSize = currentPlayer.equipmentsInBackpack().size();
 //
-//        player.lootChest(chest);
+//        currentPlayer.lootChest(chest);
 //
 //        int nowChestSize = chest.getEquipments().size();
 //
-//        Assert.assertTrue(player.isBackpackFull());
+//        Assert.assertTrue(currentPlayer.isBackpackFull());
 //        Assert.assertEquals(nowChestSize, previousChestSize - (10 - previousPlayerBackpackSize));
     }
 
     /**
-     * This case tests if the generateAbilities method will correctly set up player's abilities.
+     * This case tests if the generateAbilities method will correctly set up currentPlayer's abilities.
      * @throws Exception
      */
     @Test
@@ -301,7 +301,7 @@ public class PlayerTest {
     public void attack1() throws Exception {
         int x = targetPlayer.getTotalArmorClass();
         System.out.println(x);
-//        player.shouldDealDamage(targetPlayer);
+//        currentPlayer.shouldDealDamage(targetPlayer);
     }
 
     /**

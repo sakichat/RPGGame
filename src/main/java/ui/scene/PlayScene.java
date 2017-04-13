@@ -13,7 +13,7 @@ import ui.view.View;
 import javax.swing.*;
 
 /**
- * This is a PlayScene for player to play on created maps.
+ * This is a PlayScene for currentPlayer to play on created maps.
  * @author Siyu Chen
  * @version 0.2
  */
@@ -180,7 +180,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
 
     /**
-     * Relative methods about view player
+     * Relative methods about view currentPlayer
      */
     PlayerPanel playerPanel;
     InventoryPanel inventoryPanel;
@@ -246,7 +246,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
 
     /**
-     * This method is used to show the InventoryPanel when player exchange equipment with friendly NPC
+     * This method is used to show the InventoryPanel when currentPlayer exchange equipment with friendly NPC
      * This method should be called by the ActionListener of interactButton button.
      * @param player
      */

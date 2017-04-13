@@ -36,8 +36,8 @@ public abstract class TurnStrategy {
 //                        return false;
 //                    }
 //
-//                    Player player = (Player) cell;
-//                    return player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE);
+//                    Player currentPlayer = (Player) cell;
+//                    return currentPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE);
 //                })
 //                .collect(Collectors.toList());
 

@@ -14,7 +14,7 @@ import java.awt.*;
 
 /**
  * This class extends Scene and implements PlayerDelegate and CampaignDelegate.
- * It is for creating a play with selected player and selected campaign.
+ * It is for creating a play with selected currentPlayer and selected campaign.
  * @author Siyu Chen
  * @version 0.2
  */

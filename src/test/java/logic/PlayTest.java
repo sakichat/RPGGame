@@ -39,7 +39,7 @@ public class PlayTest {
     }
 
     /**
-     * This case tests if the player as an arttribute can be changed after moving.
+     * This case tests if the currentPlayer as an arttribute can be changed after moving.
      * @throws Exception
      */
     @Test
@@ -56,7 +56,7 @@ public class PlayTest {
 //        Assert.assertEquals(false, notChangeLocation);
 }
     /**
-     * This case tests if the player will move out of border.
+     * This case tests if the currentPlayer will move out of border.
      * @throws Exception
      */
     @Test
@@ -74,7 +74,7 @@ public class PlayTest {
     }
 
     /**
-     * This case tests if the player will move into the obstacle.
+     * This case tests if the currentPlayer will move into the obstacle.
      * @throws Exception
      */
     @Test

@@ -22,7 +22,7 @@ public class PlayingControlView extends ControlView {
     private Player player;
 
     /**
-     * This method is the player getter.
+     * This method is the currentPlayer getter.
      * @return
      */
     public Player getPlayer() {
@@ -30,7 +30,7 @@ public class PlayingControlView extends ControlView {
     }
 
     /**
-     * This method is the player setter.
+     * This method is the currentPlayer setter.
      * @param player
      */
     public void setPlayer(Player player) {

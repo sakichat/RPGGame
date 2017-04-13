@@ -168,7 +168,7 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
     }
 
     /**
-     * This method is used to edit the player.
+     * This method is used to edit the currentPlayer.
      */
     private void playerEdit(){
         PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();

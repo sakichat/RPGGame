@@ -298,7 +298,7 @@ public class GameMap extends Observable {
     public final static String VALIDATION_ERROR_NO_EXIT = "No exit";
     public final static String VALIDATION_ERROR_TOO_MANY_EXITS = "Should be only one exit";
     public final static String VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE = "The exit is not reachable";
-    public final static String VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED = "The player party is not defined";
+    public final static String VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED = "The currentPlayer party is not defined";
 
     /**
      * this method is to validate the map
@@ -325,7 +325,7 @@ public class GameMap extends Observable {
 
         List<Player> players = getPlayers();
 
-        // if player party is not defined
+        // if currentPlayer party is not defined
         for (Player player: players) {
             if (player.getPlayerParty().equals(Player.PLAYER_PARTY_NOT_DEFINED)){
                 return VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED;

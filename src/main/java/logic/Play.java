@@ -267,7 +267,7 @@ public class Play extends Observable{
         }
 
         public String getImageName(){
-            String imageName = "data/images/" + name+ "_range.png";
+            String imageName = "data/images/" + name + "_range.png";
 
             return imageName;
         }

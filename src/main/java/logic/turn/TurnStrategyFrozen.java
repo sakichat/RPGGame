@@ -7,7 +7,6 @@ import logic.map.Point;
 public class TurnStrategyFrozen extends TurnStrategy {
     @Override
     public Path preferredMovingPath() {
-        // TODO: 10/04/2017
         return new Path();
     }
 

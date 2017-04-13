@@ -17,7 +17,7 @@ import java.util.Observer;
 public class PlayerPanel extends Panel implements Observer {
 
     /**
-     * The attribute player and Getter & Setter.
+     * The attribute currentPlayer and Getter & Setter.
      */
     private Player player;
 

@@ -222,7 +222,7 @@ public class MapEditingScene extends Scene implements   Observer,
     }
 
     /**
-     * This method is to paint a player on the specific cell view and remove the selector panel
+     * This method is to paint a currentPlayer on the specific cell view and remove the selector panel
      * @param playerSelectorPanel PlayerSelectorPanel
      * @param player              Player
      */
@@ -280,7 +280,7 @@ public class MapEditingScene extends Scene implements   Observer,
     }
 
     /**
-     * Properties and methods about player setting.
+     * Properties and methods about currentPlayer setting.
      */
     private PlayerPanel playerPanel;
 

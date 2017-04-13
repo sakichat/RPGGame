@@ -16,13 +16,13 @@ public class AnimationMove extends Animation {
     }
 
     @Override
-    public void execute() {
-        Point source = player.getLocation();
+    public void animate() {
+        Point source = currentPlayer.getLocation();
         Point target;
         for (Point.Direction direction : movement) {
             target = source.add(direction);
             gameMap.moveCell(source, target);
-            TurnThread.pause(TurnThread.PAUSE_NORMAL);
+            TurnThread.pause(TurnThread.PAUSE_FAST);
             source = target;
         }
     }

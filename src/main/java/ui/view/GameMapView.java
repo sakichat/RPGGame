@@ -191,12 +191,7 @@ public class GameMapView extends View implements Observer {
 
     private void initCurrentLayer() {
         newLayer();
-        GameMapLayerView layerView = layers.get(_LAYER_CURRENT);
-
-        selectedLocation = PlayRuntime.currentRuntime().getMainPlayer().getLocation();
-        selectionView = new ImageView();
-        selectionView.setName("selected_current.png");
-        layerView.addCell(selectionView, selectedLocation);
+        refreshCurrentLayer();
     }
 
     /**
@@ -209,19 +204,10 @@ public class GameMapView extends View implements Observer {
      */
     private void initTargetLayer(){
         newLayer();
-        GameMapLayerView layerView = layers.get(_LAYER_TARGET);
-
-        Play play = PlayRuntime.currentRuntime().getPlay();
-        if (play.isTargetLocationEnabled())
-            selectedLocation = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
-        else selectedLocation = new Point(0, 0);
-
-        selectionView = new ImageView();
-        selectionView.setName("selected_target.png");
-        layerView.addCell(selectionView, selectedLocation);
-        repaint();
+        refreshTargetLayer();
 
     }
+
 
     /**
      * This method adds an event if a cell is pressed and to get the location of this cell
@@ -293,7 +279,31 @@ public class GameMapView extends View implements Observer {
                 .match(Play.Update.RANGE)
                 .check()) {
             SwingUtilities.invokeLater(this::refreshRange);
+
+        } else if (BaseUpdate.when(arg)
+                .match(Play.Update.TARGET)
+                .check()) {
+            SwingUtilities.invokeLater(this::refreshTargetLayer);
         }
+    }
+
+
+    /**
+     * This method refreshes RangeLayer.
+     */
+    public void refreshRange(){
+        GameMapLayerView layerView = layers.get(_LAYER_RANGE);
+        layerView.removeAllCells();
+
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        if (play.isRangeIndicationEnabled()) {
+            play.getRangeIndicationLocations().forEach(point -> {
+                ImageView imageView = new ImageView();
+                imageView.setName(play.getRangeIndicationMode().getImageName());
+                layerView.addCell(imageView, point);
+            });
+        }
+        repaint();
     }
 
     /**
@@ -326,21 +336,29 @@ public class GameMapView extends View implements Observer {
         repaint();
     }
 
-    /**
-     * This method refreshes RangeLayer.
-     */
-    public void refreshRange(){
-        GameMapLayerView layerView = layers.get(_LAYER_RANGE);
+    private void refreshCurrentLayer() {
+        GameMapLayerView layerView = layers.get(_LAYER_CURRENT);
+
+        Point location = PlayRuntime.currentRuntime().getMainPlayer().getLocation();
+        ImageView imageView = new ImageView();
+        imageView.setName("selected_current.png");
+        layerView.addCell(imageView, location);
+
+        repaint();
+    }
+
+    private void refreshTargetLayer() {
+        GameMapLayerView layerView = layers.get(_LAYER_TARGET);
         layerView.removeAllCells();
 
         Play play = PlayRuntime.currentRuntime().getPlay();
-        if (play.isRangeIndicationEnabled()) {
-            play.getRangeIndicationLocations().forEach(point -> {
-                ImageView imageView = new ImageView();
-                imageView.setName(play.getRangeIndicationMode().getImageName());
-                layerView.addCell(imageView, point);
-            });
-            repaint();
+        if (play.isTargetLocationEnabled()) {
+            Point targetLocation = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
+            ImageView imageView = new ImageView();
+            imageView.setName("selected_target.png");
+            layerView.addCell(imageView, targetLocation);
         }
+
+        repaint();
     }
 }
