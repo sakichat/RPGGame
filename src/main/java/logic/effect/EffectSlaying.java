@@ -6,6 +6,9 @@ package logic.effect;
  */
 public class EffectSlaying extends Effect {
 
+    /**
+     * This method is used to attach effect on player
+     */
     @Override
     protected void didAttach() {
         onPlayer.damage(onPlayer.getHp());
