@@ -109,7 +109,6 @@ public class PlayRuntime {
     public void initiate(PlayScene playScene, Play play){
         this.playScene = playScene;
         this.play = play;
-        play.resolveMap();
         playScene.setPlay(play);
         playScene.refreshMap();
         play.addObserver(playScene);
