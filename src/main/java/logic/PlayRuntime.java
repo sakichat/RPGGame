@@ -149,7 +149,7 @@ public class PlayRuntime {
     public void toFinish(String message){
         SwingUtilities.invokeLater(() -> {
             FinishScene finishScene = new FinishScene();
-            finishScene.setMessageLabel(message);
+            finishScene.setMessage(message);
             playScene.getNavigationView().push(finishScene);
         });
     }

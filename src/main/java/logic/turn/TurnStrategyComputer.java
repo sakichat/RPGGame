@@ -115,14 +115,12 @@ public class TurnStrategyComputer extends TurnStrategy {
      */
     @Override
     public Point preferredInteractionLocation() {
+        List<Point> targetsInNear = interactTargetsInNear();
 
-        TurnThread.waitForUser(TurnThread.UserResponse.INTERACT);
-
-        Play play = PlayRuntime.currentRuntime().getPlay();
-        if (play.isTargetLocationEnabled()){
-            return play.getTargetLocation();
-        } else {
-            return null;
+        if (targetsInNear != null){
+            return targetsInNear.get(0);
         }
+        
+        return null;
     }
 }
