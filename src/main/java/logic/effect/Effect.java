@@ -72,24 +72,39 @@ public class Effect {
     }
 
     /**
-     * This method
+     * This method is used to detach effect once
      */
     protected void willDetach(){
 
     }
 
+    /**
+     * imageName getter
+     * @return String
+     */
     public String getImageName() {
         return imageName;
     }
 
+    /**
+     * onPlayer getter
+     * @return Player
+     */
     public Player getOnPlayer() {
         return onPlayer;
     }
 
+    /**
+     * turns getter
+     * @return Integer
+     */
     public int getTurns() {
         return turns;
     }
 
+    /**
+     * This is the method for a turn
+     */
     public final void turn(){
         affect();
         turns--;
