@@ -8,20 +8,38 @@ import logic.player.Player;
 
 public class TurnThread extends Thread{
 
+    /**
+     * attribute
+     */
     private volatile boolean end;
 
+    /**
+     * This method isEnd
+     * @return Boolean
+     */
     public boolean isEnd() {
         return end;
     }
 
+    /**
+     * setter
+     * @param end
+     */
     public void setEnd(boolean end) {
         this.end = end;
     }
 
+    /**
+     * static constant
+     */
     public static double PAUSE_FAST = 1;
     public static double PAUSE_NORMAL = 2;
     public static double PAUSE_SLOW = 3;
 
+    /**
+     * This method is pause
+     * @param duration
+     */
     public static void pause(double duration){
         try {
             Thread.sleep((int)(duration * 1000));
@@ -29,6 +47,10 @@ public class TurnThread extends Thread{
         }
     }
 
+    /**
+     * This method is waitForUser
+     * @param userResponse
+     */
     public static void waitForUser(UserResponse userResponse){
 
         setUserResponse(userResponse);
@@ -42,6 +64,9 @@ public class TurnThread extends Thread{
         }
     }
 
+    /**
+     * This method is backToRun
+     */
     public static void backToRun(){
 
         PlayRuntime.currentRuntime().getPlayScene().setEnableControls(false);
@@ -49,6 +74,9 @@ public class TurnThread extends Thread{
         PlayRuntime.currentRuntime().getTurnThread().interrupt();
     }
 
+    /**
+     * This method is for run the play
+     */
     @Override
     public void run() {
         
@@ -67,16 +95,30 @@ public class TurnThread extends Thread{
         }
     }
 
+    /**
+     * attribute static constant
+     */
     private static volatile UserResponse userResponse;
 
+    /**
+     * gettter
+     * @return UserResponse
+     */
     public static UserResponse getUserResponse() {
         return userResponse;
     }
 
+    /**
+     * setter
+     * @param userResponse
+     */
     public static void setUserResponse(UserResponse userResponse) {
         TurnThread.userResponse = userResponse;
     }
 
+    /**
+     * enum method
+     */
     public enum UserResponse {
         TURN,
         MOVE,
