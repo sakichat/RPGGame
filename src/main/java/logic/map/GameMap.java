@@ -365,7 +365,7 @@ public class GameMap extends Observable {
                 .forEach(player -> adaptEquipments(level));
 
         this.getChests().stream()
-                .forEach(adaptEquipments(level););
+                .forEach(chest -> adaptEquipments(level));
     }
 
     public boolean finishObjective() {
