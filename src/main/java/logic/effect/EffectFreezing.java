@@ -9,14 +9,23 @@ import logic.turn.TurnStrategyFrozen;
  * @version 0.3
  */
 public class EffectFreezing extends Effect {
+    /**
+     * attribute
+     */
     private TurnStrategy turnStrategy;
 
+    /**
+     * This method is used to attach effect on player
+     */
     @Override
     protected void didAttach() {
         turnStrategy = onPlayer.getStrategy();
         onPlayer.setStrategy(new TurnStrategyFrozen());
     }
 
+    /**
+     * This method is used to detach effect once
+     */
     @Override
     protected void willDetach() {
         onPlayer.setStrategy(turnStrategy);
