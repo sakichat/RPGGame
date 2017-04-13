@@ -820,7 +820,7 @@ public class Player extends Cell {
     }
 
     /**
-     * The method of trun.
+     * The method of turn, which is the whole action in a turn.
      */
     public void turn(){
 

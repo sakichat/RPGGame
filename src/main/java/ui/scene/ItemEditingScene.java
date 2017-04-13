@@ -602,11 +602,13 @@ public class ItemEditingScene extends Scene {
      */
     public void dataToView(){
 
-        if (equipment instanceof Weapon) {
-            nameLabel.setText(equipment.displayName());
-        } else {
-            nameLabel.setText(equipment.getName());
-        }
+//        if (equipment instanceof Weapon) {
+//            nameLabel.setText(equipment.displayName());
+//        } else {
+//            nameLabel.setText(equipment.getName());
+//        }
+        
+        nameLabel.setText(equipment.getName());
 
         typeLabel.setText(equipment.getType());
         enhanceOnLabel.setText(equipment.getEnhancedAttribute());
