@@ -868,7 +868,7 @@ public class Player extends Cell {
     }
 
     /**
-     *
+     * The method turnAttack
      */
     private void turnAttack() {
         //  attack
@@ -901,6 +901,9 @@ public class Player extends Cell {
         attack(targetPlayer);
     }
 
+    /**
+     * The method turnInteract
+     */
     private void turnInteract() {
         //  interact
     }
@@ -963,7 +966,10 @@ public class Player extends Cell {
     //  Section - Object
     //  =======================================================================
 
-
+    /**
+     * The override method of toString
+     * @return
+     */
     @Override
     public String toString() {
         return "Player " + name + "(" + playerParty + ")@" + location;
