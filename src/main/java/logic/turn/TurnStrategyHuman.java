@@ -74,6 +74,10 @@ public class TurnStrategyHuman extends TurnStrategy {
         return PlayRuntime.currentRuntime().getPlay().getTargetLocation();
     }
 
+    /**
+     * @override This method is used for preferredInteractionLocation
+     * @return Point
+     */
     @Override
     public Point preferredInteractionLocation() {
         TurnThread.waitForUser(TurnThread.UserResponse.INTERACT);

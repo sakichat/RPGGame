@@ -93,6 +93,10 @@ public class TurnStrategyComputer extends TurnStrategy {
         return null;
     }
 
+    /**
+     * @override This method is used for preferredInteractionLocation
+     * @return Point
+     */
     @Override
     public Point preferredInteractionLocation() {
         return null;
