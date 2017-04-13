@@ -24,6 +24,11 @@ public class TurnStrategyHuman extends TurnStrategy {
         return gameMapGraph.path(player.getLocation(), targetLocation, player.getRangeForMove());
     }
 
+    /**
+     * @override This method is used for couldAttack
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     public boolean couldAttack(Point target) {
         PlayRuntime runtime = PlayRuntime.currentRuntime();

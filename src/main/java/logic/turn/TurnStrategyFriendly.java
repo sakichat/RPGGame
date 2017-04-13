@@ -28,6 +28,11 @@ public class TurnStrategyFriendly extends TurnStrategy {
         }
     }
 
+    /**
+     * @override This method is used for couldAttack
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     public boolean couldAttack(Point target) {
         return false;

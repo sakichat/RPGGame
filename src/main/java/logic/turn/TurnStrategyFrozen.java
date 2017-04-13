@@ -19,6 +19,11 @@ public class TurnStrategyFrozen extends TurnStrategy {
         return new Path();
     }
 
+    /**
+     * @override This method is used for couldAttack
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     public boolean couldAttack(Point target) {
         return false;

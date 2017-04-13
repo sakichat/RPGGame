@@ -28,6 +28,11 @@ public class TurnStrategyAggressive extends TurnStrategy {
         return path;
     }
 
+    /**
+     * @override This method is used for couldAttack
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     public boolean couldAttack(Point target) {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
