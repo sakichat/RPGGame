@@ -4,8 +4,6 @@ import logic.PlayRuntime;
 import logic.map.*;
 import logic.player.Player;
 
-import java.util.List;
-
 public class TurnStrategyHuman extends TurnStrategy {
     @Override
     public Path preferredMovingPath() {
