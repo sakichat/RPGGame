@@ -33,4 +33,5 @@ import persistence.MapFileManagerTest;
                     FileManagerTest.class,
                     MapFileManagerTest.class})
 public class TestSuite {
+    
 }
