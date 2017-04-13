@@ -14,15 +14,18 @@ import persistence.MapFileManager;
 
 /**
  * Created by GU_HAN on 2017-04-12.
+ *
+ * @author GU_HAN
+ * @version 0.2
  */
 public class InteractionTest {
+    /*
+      These parameters are for pre-defined attributes.
+     */
     private Player player;
     private Player player2;
-    private Interaction interaction;
     private Chest chest;
-    private Player friendlyNPC;
-    private Player hostileNPC;
-    private Player deadNPC;
+
     @Before
     public void setUp() throws Exception {
         player = new Player();
@@ -44,7 +47,6 @@ public class InteractionTest {
         play.setCurrentMap(MapFileManager.read("testmap1"));
         PlayRuntime.currentRuntime().setPlay(play);
         chest = (Chest)PlayRuntime.currentRuntime().getMap().getCell(new Point(1, 3));
-
     }
 
     /**
