@@ -64,6 +64,10 @@ public class TurnStrategyHuman extends TurnStrategy {
         return false;
     }
 
+    /**
+     * @override This method is used for preferredAttackingLocation
+     * @return Point
+     */
     @Override
     public Point preferredAttackingLocation() {
         TurnThread.waitForUser(TurnThread.UserResponse.ATTACK);

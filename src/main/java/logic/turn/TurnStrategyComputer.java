@@ -78,6 +78,10 @@ public class TurnStrategyComputer extends TurnStrategy {
         return false;
     }
 
+    /**
+     * @override This method is used for preferredAttackingLocation
+     * @return Point
+     */
     @Override
     public Point preferredAttackingLocation() {
         List<Point> attackTargets = attackTargetsInNear();
