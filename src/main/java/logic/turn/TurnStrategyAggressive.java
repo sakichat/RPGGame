@@ -24,6 +24,16 @@ public class TurnStrategyAggressive extends TurnStrategy {
         Player mainPlayer = runtime.getPlay().getMainPlayer();
         GameMap map = runtime.getMap();
 
+        map.getPlayer(target);
+
+        if (! (cell instanceof Player)) {
+            return false;
+        } else if (((Player)cell).equals(mainPlayer)) {
+            return true;
+        } else {
+            return false;
+        }
+        return false;
     }
 
     @Override
