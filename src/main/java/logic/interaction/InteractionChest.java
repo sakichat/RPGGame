@@ -12,6 +12,7 @@ public class InteractionChest extends Interaction<Chest> {
 
     /**
      * override the interact method in superclass
+     * this method is to interact with chest
      */
     @Override
     public void interact() {

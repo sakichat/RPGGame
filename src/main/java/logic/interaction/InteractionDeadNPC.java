@@ -17,6 +17,7 @@ public class InteractionDeadNPC extends Interaction<Player> {
 
     /**
      * override the interact method in superclass
+     * this method is to interact with DeadNPC
      */
     @Override
     public void interact() {

@@ -26,17 +26,29 @@ public class WeaponDecoratorSlaying extends WeaponDecorator {
     }
 
     /**
-     * @override methods
+     * this method is to get name
+     * @return name String
      */
+
     @Override
     public String displayName() {
         return super.displayName() + " SLA";
     }
 
+    /**
+     * this method is to get enchantment which is added burning
+     * @return String enchantment
+     */
+
     @Override
     public String enchantmentsChainText(){
         return super.enchantmentsChainText() + " Slaying ";
     }
+
+    /**
+     * The method is to generate the effect on player.
+     * @return
+     */
 
     @Override
     protected Effect generateEffect() {

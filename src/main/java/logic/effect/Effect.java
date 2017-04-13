@@ -114,6 +114,11 @@ public class Effect {
         detaching();
     }
 
+    /**
+     * this method is to override the toString
+     * @return String
+     */
+
     @Override
     public String toString() {
         return getClass().getSimpleName();

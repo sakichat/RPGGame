@@ -14,6 +14,7 @@ public class InteractionExit extends Interaction<Exit> {
 
     /**
      * override the interact method in superclass
+     * this method is to interact with Exit
      */
     @Override
     public void interact() {

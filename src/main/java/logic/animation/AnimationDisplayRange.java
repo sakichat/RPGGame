@@ -38,6 +38,12 @@ public class AnimationDisplayRange extends Animation {
 
     private List<Point> locations;
 
+    /**
+     * this method is to set Location
+     * @param locations List<Point>
+     * @return AnimationDisplayRange
+     */
+
     public AnimationDisplayRange setLocations(List<Point> locations) {
         this.locations = locations;
         return this;
@@ -45,6 +51,7 @@ public class AnimationDisplayRange extends Animation {
 
 
     /**
+     * this method is the animate
      * @override method for animate
      */
     @Override
