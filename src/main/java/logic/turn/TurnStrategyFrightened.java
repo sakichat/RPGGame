@@ -31,7 +31,7 @@ public class TurnStrategyFrightened extends TurnStrategy {
             }
         }
 
-        return gameMapGraph.path(player.getLocation(), farestPoint, 3);
+        return gameMapGraph.path(player.getLocation(), farestPoint, player.getRangeForMove());
     }
 
     @Override

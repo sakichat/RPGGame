@@ -14,7 +14,7 @@ public class TurnStrategyAggressive extends TurnStrategy {
         GameMapGraph gameMapGraph = map.getGraph();
         gameMapGraph.addIgnoreType(Cell.Type.CHEST);
         gameMapGraph.addIgnoreType(Cell.Type.PLAYER);
-        Path path = gameMapGraph.path(player.getLocation(), mainPlayer.getLocation(), 3);
+        Path path = gameMapGraph.path(player.getLocation(), mainPlayer.getLocation(), player.getRangeForMove());
         return path;
     }
 
