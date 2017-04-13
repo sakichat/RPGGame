@@ -4,6 +4,10 @@ package logic.effect;
 import logic.turn.TurnStrategy;
 import logic.turn.TurnStrategyFrozen;
 
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class EffectFreezing extends Effect {
     private TurnStrategy turnStrategy;
 
