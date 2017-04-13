@@ -1,5 +1,8 @@
 package ui.scene;
 
+import logic.BaseUpdate;
+import logic.Play;
+import logic.PlayRuntime;
 import logic.equipment.Equipment;
 import logic.map.*;
 import logic.player.Player;
@@ -20,7 +23,6 @@ import java.util.Observer;
  * @version 0.2
  */
 public class MapEditingScene extends Scene implements   Observer,
-                                                        GameMapView.Delegate,
                                                         PlayerSelectorPanel.Delegate,
                                                         EquipmentSelectorPanel.Delegate {
 
@@ -73,7 +75,6 @@ public class MapEditingScene extends Scene implements   Observer,
         gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);
         contentView.add(gameMapView);
-        gameMapView.setDelegate(this);
 
         JButton validateButton = new JButton("Validate");
         validateButton.setLocation(550, 40);
@@ -124,23 +125,14 @@ public class MapEditingScene extends Scene implements   Observer,
         MapFileManager.save(gameMap);
     }
 
-    /**
-     * This method gets parameters from game map view layer and pass the cell location to MapEditingScene
-     * Then calls the refreshControlView() method to set up controlViewContainerView
-     * @param gameMapView
-     * @param location
-     */
-    @Override
-    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
-        refreshControlView();
-    }
+
 
     /**
      * This method gets cell and its location
      * And then call generateControlView() method to add a correct controlView to controlViewContainerView
      */
     private void refreshControlView(){
-        Point location = gameMapView.getSelectedLocation();
+        Point location = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
         Cell cell = gameMap.getCell(location);
         View view = generateControlView(cell);
         controlViewContainerView.removeAll();
@@ -191,7 +183,7 @@ public class MapEditingScene extends Scene implements   Observer,
      * @param cell
      */
     public void build(Cell cell) {
-        Point location = gameMapView.getSelectedLocation();
+        Point location = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
         gameMap.addCell(cell, location);
         refreshControlView();
     }
@@ -202,7 +194,7 @@ public class MapEditingScene extends Scene implements   Observer,
      * After that, it calls refreshControlView() method to reset controlViewContainerView.
      */
     public void destroy() {
-        Point location = gameMapView.getSelectedLocation();
+        Point location = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
         gameMap.removeCell(location);
         refreshControlView();
     }
@@ -320,6 +312,10 @@ public class MapEditingScene extends Scene implements   Observer,
 
     @Override
     public void update(Observable o, Object arg) {
-        gameMapViewSelectPerformAction(gameMapView, (Point)arg);
+        if (BaseUpdate.when(arg)
+                .match(Play.Update.TARGET)
+                .check()){
+            refreshControlView();
+        }
     }
 }

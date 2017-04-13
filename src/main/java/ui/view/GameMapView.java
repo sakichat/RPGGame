@@ -26,33 +26,6 @@ import java.util.stream.Collectors;
  */
 public class GameMapView extends View implements Observer {
 
-    /**
-     * It is a implements for Delegate
-     */
-    public interface Delegate {
-        void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location);
-    }
-
-    /**
-     * This is a property for delegate
-     */
-    private Delegate delegate;
-
-    /**
-     * getter
-     * @return Delegate
-     */
-    public Delegate getDelegate() {
-        return delegate;
-    }
-
-    /**
-     * setter
-     * @param delegate
-     */
-    public void setDelegate(Delegate delegate) {
-        this.delegate = delegate;
-    }
 
     /**
      * This is a property for GameMap
@@ -175,19 +148,6 @@ public class GameMapView extends View implements Observer {
         refreshContent();
     }
 
-    /**
-     * The selectedLocation property is for location of the cell which has been chosen.
-     */
-    private Point selectedLocation;
-
-
-    /**
-     * This method is for classes to get the location of the selected cell
-     * @return selectedLocation
-     */
-    public Point getSelectedLocation() {
-        return selectedLocation;
-    }
 
     private void initCurrentLayer() {
         newLayer();
@@ -262,10 +222,7 @@ public class GameMapView extends View implements Observer {
      */
     private void cellPressed(Point location){
         GameMapLayerView layerView = layers.get(_LAYER_TARGET);
-        layerView.moveCell(selectedLocation, location);
-        selectedLocation = location;
-        repaint();
-        delegate.gameMapViewSelectPerformAction(this, location);
+        PlayRuntime.currentRuntime().getPlay().setTargetLocation(location);
     }
 
     @Override
@@ -339,11 +296,13 @@ public class GameMapView extends View implements Observer {
     private void refreshCurrentLayer() {
         GameMapLayerView layerView = layers.get(_LAYER_CURRENT);
 
-        Point location = PlayRuntime.currentRuntime().getMainPlayer().getLocation();
-        ImageView imageView = new ImageView();
-        imageView.setName("selected_current.png");
-        layerView.addCell(imageView, location);
-
+        Player mainPlayer = PlayRuntime.currentRuntime().getMainPlayer();
+        if (mainPlayer != null) {
+            Point location = mainPlayer.getLocation();
+            ImageView imageView = new ImageView();
+            imageView.setName("selected_current.png");
+            layerView.addCell(imageView, location);
+        }
         repaint();
     }
 

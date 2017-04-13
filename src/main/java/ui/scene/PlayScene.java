@@ -11,13 +11,15 @@ import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * This is a PlayScene for currentPlayer to play on created maps.
  * @author Siyu Chen
  * @version 0.2
  */
-public class PlayScene extends Scene implements GameMapView.Delegate, InventoryPanel.Delegate {
+public class PlayScene extends Scene implements Observer, InventoryPanel.Delegate {
 
     //  =======================================================================
     //  Section - Context
@@ -62,7 +64,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);
         contentView.add(gameMapView);
-        gameMapView.setDelegate(this);
 
         controlViewContainerView = new View();
         controlViewContainerView.setLocation(820, 0);
@@ -131,8 +132,8 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * And then call generateControlView() method to add a correct controlView to controlViewContainerView
      */
     private void refreshControlView(){
-        Point location = gameMapView.getSelectedLocation();
-        GameMap gameMap = gameMapView.getGameMap();
+        Point location = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
+        GameMap gameMap = PlayRuntime.currentRuntime().getMap();
         Cell cell = gameMap.getCell(location);
         View view = generateControlView(cell);
 
@@ -189,14 +190,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     //  Section - Events
     //  =======================================================================
 
-    /**
-     * This method implements MapDelegation and refresh controlViewContainerView.
-     * @param gameMapView
-     * @param location
-     */
+
     @Override
-    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
-        refreshControlView();
+    public void update(Observable o, Object arg) {
+
     }
 
     /**

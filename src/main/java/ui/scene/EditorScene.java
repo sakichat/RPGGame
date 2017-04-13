@@ -1,6 +1,8 @@
 package ui.scene;
 
 import logic.Campaign;
+import logic.Play;
+import logic.PlayRuntime;
 import logic.equipment.Equipment;
 import logic.equipment.Weapon;
 import logic.map.GameMap;
@@ -214,8 +216,15 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
     public void mapSelectorPerformAction(MapSelectorPanel mapSelectorPanel, GameMap gameMap) {
         remove(mapSelectorPanel);
 
+        Play play = new Play();
+        play.setCurrentMap(gameMap);
+        PlayRuntime.currentRuntime().setPlay(play);
+
         MapEditingScene mapEditingScene = new MapEditingScene();
         mapEditingScene.setGameMap(gameMap);
+
+        play.addObserver(mapEditingScene);
+
         navigationView.push(mapEditingScene);
     }
 

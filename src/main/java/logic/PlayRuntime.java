@@ -4,6 +4,7 @@ package logic;
 import logic.map.GameMap;
 import logic.player.Player;
 import logic.turn.TurnThread;
+import ui.scene.MapEditingScene;
 import ui.scene.PlayScene;
 import ui.view.GameMapView;
 
@@ -15,6 +16,10 @@ public class PlayRuntime {
     }
 
     private Play play;
+
+    public void setPlay(Play play) {
+        this.play = play;
+    }
 
     public Play getPlay() {
         return play;

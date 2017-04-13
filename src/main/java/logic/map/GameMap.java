@@ -362,10 +362,10 @@ public class GameMap extends Observable {
     private void adaptEquipments(int level) {
         this.getPlayers().stream()
                 .filter(p -> !(p.getPlayerParty().equals(Player.PLAYER_PARTY_MAIN)))
-                .forEach(player -> adaptEquipments(level));
+                .forEach(player -> player.adaptEquipments(level));
 
         this.getChests().stream()
-                .forEach(chest -> adaptEquipments(level));
+                .forEach(chest -> chest.adaptEquipments(level));
     }
 
     public boolean finishObjective() {

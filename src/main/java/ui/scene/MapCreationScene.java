@@ -1,5 +1,7 @@
 package ui.scene;
 
+import logic.Play;
+import logic.PlayRuntime;
 import logic.map.GameMap;
 
 import javax.swing.*;
@@ -113,8 +115,15 @@ public class MapCreationScene extends Scene {
                 gameMap.setWidth(gridWidth);
                 gameMap.setHeight(gridHeight);
 
+                Play play = new Play();
+                play.setCurrentMap(gameMap);
+                PlayRuntime.currentRuntime().setPlay(play);
+
                 MapEditingScene mapEditingScene = new MapEditingScene();
                 mapEditingScene.setGameMap(gameMap);
+
+                play.addObserver(mapEditingScene);
+
                 MapCreationScene.this.navigationView.push(mapEditingScene);
             }
         });

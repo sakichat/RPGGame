@@ -80,6 +80,9 @@ public class Play extends Observable{
     @Expose
     private GameMap currentMap;
 
+    public void setCurrentMap(GameMap currentMap) {
+        this.currentMap = currentMap;
+    }
 
     /**
      * This is the method for get currentMap,
