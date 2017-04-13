@@ -8,7 +8,7 @@ import javax.swing.*;
 
 /**
  * @author Kai QI
- * @version 0.2
+ * @version 0.3
  *
  * This class is for emptyControlView.
  */

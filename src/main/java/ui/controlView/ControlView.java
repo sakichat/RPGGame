@@ -7,7 +7,7 @@ import ui.view.View;
 /**
  * This ControlView sets a template of other control views which extends View class
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class ControlView extends View {
     /**
