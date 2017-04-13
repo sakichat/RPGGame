@@ -300,8 +300,10 @@ public class GameMapView extends View implements Observer {
         GameMapLayerView layerView = layers.get(_LAYER_CURRENT);
         layerView.removeAllCells();
 
-        Player currentPlayer = PlayRuntime.currentRuntime().getPlay().currentPlayer();
-        if (currentPlayer != null) {
+
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        if (play.getMainPlayer() != null) {
+            Player currentPlayer = play.currentPlayer();
             Point location = currentPlayer.getLocation();
             ImageView imageView = new ImageView();
             imageView.setName("selected_current.png");
