@@ -29,6 +29,11 @@ public class TurnStrategyFrozen extends TurnStrategy {
         return false;
     }
 
+    /**
+     * @override This method is used for couldInteract
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     protected boolean couldInteract(Point target) {
         return false;
