@@ -10,9 +10,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  *
  * This class tests wearing items correctly influence the character's abilities, character cannot wear more than
  * one item of each kind, and looting a chest.

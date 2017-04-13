@@ -14,10 +14,8 @@ import persistence.FileManagerTest;
 import persistence.MapFileManagerTest;
 
 /**
- * Created by GU_HAN on 2017-03-19.
  * @author GU_HAN
- * @version 0.2
- *
+ * @version 0.3
  * This class is for testSuite.
  */
 @RunWith(Suite.class)

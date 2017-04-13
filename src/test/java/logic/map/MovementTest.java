@@ -5,9 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by Kai QI on 2017/4/6.
  * @author Kai Qi
- * @version 0.2
+ * @version 0.3
  */
 public class MovementTest {
 

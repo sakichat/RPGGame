@@ -9,9 +9,8 @@ import persistence.CampaignFileManager;
 import persistence.PlayerFileManager;
 
 /**
- * Created by GU_HAN on 2017-03-20.
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  *
  * This class tests character movement on the map.
  */

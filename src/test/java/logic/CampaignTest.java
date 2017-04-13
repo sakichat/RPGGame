@@ -5,9 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by GU_HAN on 2017-03-02.
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  *
  * This class is for validate the campaign.
  */

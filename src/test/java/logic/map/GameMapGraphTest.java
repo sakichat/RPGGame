@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  * This class tests the class of GameMapGraph.
  */
 public class GameMapGraphTest {

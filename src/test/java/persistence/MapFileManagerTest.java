@@ -6,10 +6,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Created by GU_HAN on 2017-03-19.
  * @author GU_HAN
- * @version 0.2
- *
+ * @version 0.3
  * This class tests map loading.
  */
 public class MapFileManagerTest {
