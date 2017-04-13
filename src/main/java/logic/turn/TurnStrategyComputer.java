@@ -11,6 +11,11 @@ import java.util.List;
  * @version 0.3
  */
 public class TurnStrategyComputer extends TurnStrategy {
+
+    /**
+     * @override This method is used for find path
+     * @return Path
+     */
     @Override
     public Path preferredMovingPath() {
         PlayRuntime runtime = PlayRuntime.currentRuntime();

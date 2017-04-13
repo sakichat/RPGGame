@@ -9,6 +9,11 @@ import logic.player.Player;
  * @version 0.3
  */
 public class TurnStrategyHuman extends TurnStrategy {
+
+    /**
+     * @override This method is used for find path
+     * @return Path
+     */
     @Override
     public Path preferredMovingPath() {
         TurnThread.waitForUser(TurnThread.UserResponse.MOVE);

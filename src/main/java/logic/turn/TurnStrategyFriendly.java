@@ -11,6 +11,10 @@ import java.util.List;
  */
 public class TurnStrategyFriendly extends TurnStrategy {
 
+    /**
+     * @override This method is used for find path
+     * @return Path
+     */
     @Override
     public Path preferredMovingPath() {
 
