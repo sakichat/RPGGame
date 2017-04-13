@@ -6,7 +6,8 @@ import logic.map.*;
 import java.util.List;
 
 /**
- * Created by GU_HAN on 2017-04-08.
+ * @author Li Zhen
+ * @version 0.3
  */
 public class TurnStrategyFriendly extends TurnStrategy {
 

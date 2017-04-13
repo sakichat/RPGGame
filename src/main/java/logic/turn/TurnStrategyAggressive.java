@@ -3,10 +3,18 @@ package logic.turn;
 import logic.PlayRuntime;
 import logic.map.*;
 import logic.player.Player;
-
 import java.util.List;
 
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class TurnStrategyAggressive extends TurnStrategy {
+
+    /**
+     * @override This method is used for find path
+     * @return Path
+     */
     @Override
     public Path preferredMovingPath() {
 

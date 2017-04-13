@@ -4,7 +4,16 @@ package logic.turn;
 import logic.map.Path;
 import logic.map.Point;
 
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class TurnStrategyFrozen extends TurnStrategy {
+
+    /**
+     * @override This method is used for find path
+     * @return Path
+     */
     @Override
     public Path preferredMovingPath() {
         return new Path();

@@ -6,7 +6,10 @@ import logic.player.Player;
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * @author Li Zhen
+ * @version 0.3
+ */
 public class TurnStrategyComputer extends TurnStrategy {
     @Override
     public Path preferredMovingPath() {

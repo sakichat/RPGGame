@@ -1,6 +1,5 @@
 package logic;
 
-
 import java.util.LinkedList;
 import java.util.List;
 
