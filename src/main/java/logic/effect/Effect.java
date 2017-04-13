@@ -21,6 +21,10 @@ public class Effect {
     @Expose
     private String imageName;
 
+    public void setRemoveFlag(boolean removeFlag) {
+        this.removeFlag = removeFlag;
+    }
+
     private boolean removeFlag;
 
     public boolean isRemoveFlag() {

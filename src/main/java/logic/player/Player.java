@@ -175,7 +175,7 @@ public class Player extends Cell {
     }
 
     private void didDead(){
-        effects.clear();
+        effects.forEach(e -> e.setRemoveFlag(true));
         PlayRuntime playRuntime = PlayRuntime.currentRuntime();
         if (this == playRuntime.getMainPlayer()){
             playRuntime.stop();
@@ -882,6 +882,11 @@ public class Player extends Cell {
      * The method of turnEffect
      */
     private void turnEffect() {
+
+        effects = effects.stream()
+                .filter(e -> !e.isRemoveFlag())
+                .collect(Collectors.toList());
+
         //  effects
         for (Effect effect : effects) {
             effect.turn();
@@ -910,23 +915,28 @@ public class Player extends Cell {
         Path path = strategy.preferredMovingPath();
         Logger.getInstance().log(this + " wants to move by " + path);
 
-        if (!path.stay()) {
-            Point targetLocation = path.getLastLocation();
-            Logger.getInstance().log(this + " is moving to " + targetLocation);
-
-            //  show target
-            new AnimationDisplayTarget()
-                    .setTarget(targetLocation)
-                    .animate();
-
-            //  move animation
-            Movement movement = path.getMovement(3);
-            Logger.getInstance().log(this + " got its move " + movement);
-            new AnimationMove()
-                    .setMovement(movement)
-                    .animate();
+        if (path.stay()) {
+            new AnimationLog().setMessage("Moving Skiped").animate();
+            new AnimationHideRange().animate();
+            return;
         }
 
+        Point targetLocation = path.getLastLocation();
+        Logger.getInstance().log(this + " is moving to " + targetLocation);
+
+        //  show target
+        new AnimationDisplayTarget()
+                .setTarget(targetLocation)
+                .animate();
+
+        //  move animation
+        Movement movement = path.getMovement(3);
+        Logger.getInstance().log(this + " got its move " + movement);
+        new AnimationMove()
+                .setMovement(movement)
+                .animate();
+
+        //  fade animation
         new AnimationHideRange().animate();
         new AnimationHideTarget().animate();
 
@@ -937,12 +947,6 @@ public class Player extends Cell {
      * The method turnAttack
      */
     private void turnAttack() {
-
-        //  check attack
-        List<Point> points = strategy.attackTargetsInNear();
-        if (points.size() == 0) {
-            return;
-        }
 
 
         GameMap map = PlayRuntime.currentRuntime().getMap();
@@ -957,10 +961,21 @@ public class Player extends Cell {
                 .setRangeIndicationMode(Play.RangeIndicationMode.ATTACK)
                 .animate();
 
+
+        //  check attack
+        List<Point> points = strategy.attackTargetsInNear();
+        if (points.size() == 0) {
+            new AnimationLog().setMessage("Attack Skiped").animate();
+            new AnimationHideRange().animate();
+            return;
+        }
+
+
         //  select target
         Point targetLocation = strategy.preferredAttackingLocation();
 
         if (targetLocation == null){
+            new AnimationLog().setMessage("Attack Skiped").animate();
             new AnimationHideRange().animate();
             return;
         }
@@ -984,12 +999,6 @@ public class Player extends Cell {
      * The method turnInteract
      */
     private void turnInteract() {
-        //  check interact
-        List<Point> points = strategy.interactTargetsInNear();
-        if (points.size() == 0) {
-            return;
-        }
-
 
         GameMap map = PlayRuntime.currentRuntime().getMap();
         GameMapGraph graph = map.getGraph();
@@ -1003,10 +1012,20 @@ public class Player extends Cell {
                 .setRangeIndicationMode(Play.RangeIndicationMode.INTERACT)
                 .animate();
 
+        //  check interact
+        List<Point> points = strategy.interactTargetsInNear();
+
+        if (points.size() == 0) {
+            new AnimationLog().setMessage("Interaction Skipped").animate();
+            new AnimationHideRange().animate();
+            return;
+        }
+
         //  select target
         Point targetLocation = strategy.preferredInteractionLocation();
 
         if (targetLocation == null){
+            new AnimationLog().setMessage("Interaction Skipped").animate();
             new AnimationHideRange().animate();
             return;
         }
