@@ -18,14 +18,10 @@ public class WeaponDecoratorFreezing extends WeaponDecorator {
         super(decoratedWeapon);
     }
 
-
-
     /**
      * this method is to get origin
      * @return DecoratorComponent
      */
-
-
     @Override
     public Weapon getOrigin() {
         return decoratedWeapon.getOrigin();
