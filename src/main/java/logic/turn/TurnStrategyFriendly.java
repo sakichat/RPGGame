@@ -32,15 +32,16 @@ public class TurnStrategyFriendly extends TurnStrategy {
     @Override
     protected boolean couldInteract(Point target) {
 
-        boolean result = false;
-        Play play = PlayRuntime.currentRuntime().getPlay();
-        GameMap gameMap = play.currentMap();
-        Cell cell = gameMap.getCell(target);
-        if (cell.getCellType().equals(Cell.Type.CHEST)){
-            result = true;
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        GameMap map = runtime.getMap();
+
+        Cell targetCell = map.getCell(target);
+
+        if (targetCell instanceof Chest) {
+            return true;
         }
 
-        return result;
+        return false;
     }
 
     @Override
