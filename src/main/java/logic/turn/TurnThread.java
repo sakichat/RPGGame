@@ -6,6 +6,10 @@ import logic.Play;
 import logic.PlayRuntime;
 import logic.player.Player;
 
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class TurnThread extends Thread{
 
     /**

@@ -16,12 +16,9 @@ import logic.turn.TurnThread;
 import java.util.*;
 
 /**
- *
  * This Class is currentPlayer, which includes users and NPCs.
- *
  * @author Kai QI
  * @version 0.3
- *
  */
 public class Player extends Cell {
 
