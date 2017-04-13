@@ -5,12 +5,12 @@
       "decoratedWeapon": {
         "_class": "logic.equipment.WeaponSolid",
         "_object": {
-          "range": 2,
+          "range": 3,
           "weaponType": "RANGED",
           "name": "fire",
           "type": "Weapon",
           "enhancedAttribute": "AB",
-          "enhancedValue": 3
+          "enhancedValue": 5
         }
       }
     }

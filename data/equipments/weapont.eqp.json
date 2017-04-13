@@ -1,26 +1,16 @@
 {
   "equipment": {
-    "_class": "logic.equipment.WeaponDecoratorPacifying",
+    "_class": "logic.equipment.WeaponDecoratorFreezing",
     "_object": {
       "decoratedWeapon": {
-        "_class": "logic.equipment.WeaponDecoratorFrightening",
+        "_class": "logic.equipment.WeaponSolid",
         "_object": {
-          "decoratedWeapon": {
-            "_class": "logic.equipment.WeaponDecoratorSlaying",
-            "_object": {
-              "decoratedWeapon": {
-                "_class": "logic.equipment.WeaponSolid",
-                "_object": {
-                  "range": 3,
-                  "weaponType": "RANGED",
-                  "name": "WeaponT",
-                  "type": "Weapon",
-                  "enhancedAttribute": "DB",
-                  "enhancedValue": 2
-                }
-              }
-            }
-          }
+          "range": 3,
+          "weaponType": "RANGED",
+          "name": "WeaponT",
+          "type": "Weapon",
+          "enhancedAttribute": "DB",
+          "enhancedValue": 5
         }
       }
     }
