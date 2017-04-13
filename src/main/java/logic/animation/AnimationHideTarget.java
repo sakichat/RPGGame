@@ -9,6 +9,10 @@ import logic.turn.TurnThread;
  * @version 0.3
  */
 public class AnimationHideTarget extends Animation {
+
+    /**
+     * @override method to animate
+     */
     @Override
     public void animate() {
         Play play = PlayRuntime.currentRuntime().getPlay();

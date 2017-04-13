@@ -12,20 +12,31 @@ import logic.turn.TurnThread;
 public class AnimationDisplayTarget extends Animation {
 
     /**
-     *
-     * @return
+     * target getter
+     * @return Point
      */
     public Point getTarget() {
         return target;
     }
 
+    /**
+     * target setter
+     * @param target
+     * @return AnimationDisplayTarget
+     */
     public AnimationDisplayTarget setTarget(Point target) {
         this.target = target;
         return this;
     }
 
+    /**
+     * attribute
+     */
     private Point target;
 
+    /**
+     * @override method to animate
+     */
     @Override
     public void animate() {
         Play play = PlayRuntime.currentRuntime().getPlay();
