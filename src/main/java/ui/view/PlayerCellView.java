@@ -12,7 +12,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created by Penelope on 2017-04-01.
+ * @author Siyu Chen
+ * @version 0.3
  */
 public class PlayerCellView extends View implements Observer{
 

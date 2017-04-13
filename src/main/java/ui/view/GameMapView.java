@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * Target Layer for showing the selected cell; Event Layer for triggering the event on cell.
  * These four map layers are saved in a List<> for getting it easily.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class GameMapView extends View implements Observer {
 

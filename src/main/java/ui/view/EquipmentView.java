@@ -7,7 +7,7 @@ import javax.swing.*;
 
 /**
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  */
 public class EquipmentView extends View {
 

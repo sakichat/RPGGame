@@ -9,7 +9,8 @@ import logic.map.Point;
 import logic.player.Player;
 
 /**
- * Created by Penelope on 2017-04-09.
+ * @author Siyu Chen
+ * @version 0.3
  */
 public class Simulation {
     public static Player player() {

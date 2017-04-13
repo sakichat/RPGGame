@@ -5,7 +5,7 @@ import javax.swing.*;
 /**
  * This class is to set the lay out of ability view.
  * @author Kai QI
- * @version 0.2
+ * @version 0.3
  */
 public class AbilityView extends View {
 
