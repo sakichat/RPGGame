@@ -1,5 +1,14 @@
 
+demo
+demo.testPlayer
 logic
+logic.animation
+logic.effect
+logic.equipment
+logic.interaction
+logic.map
+logic.player
+logic.turn
 persistence
 ui.controlView
 ui.panel
