@@ -109,7 +109,13 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
         skipButton.addActionListener(e -> TurnThread.backToRun());
 
-        selectButton.addActionListener(e -> {});
+        selectButton.addActionListener(e -> {
+            switch (TurnThread.getUserResponse()){
+                case MOVE:      tryMove();      break;
+                case ATTACK:    tryAttack();    break;
+                case INTERACT:  tryInteract();  break;
+            }
+        });
     }
 
 
@@ -226,7 +232,7 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
         List<Point> rangePoints = graph.pointsInRange(mainPlayer.getLocation(), mainPlayer.getRangeForMove());
         if (rangePoints.contains(targetLocation)) {
-            //TODO
+            TurnThread.backToRun();
         }
 
     }
@@ -237,7 +243,7 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
         List<Point> points = mainPlayer.getStrategy().attackTargetsInNear();
         if (points.contains(targetLocation)) {
-            //TODO
+            TurnThread.backToRun();
         }
 
     }
@@ -248,7 +254,7 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
         List<Point> points = mainPlayer.getStrategy().interactTargetsInNear();
         if (points.contains(targetLocation)) {
-            //TODO
+            TurnThread.backToRun();
         }
     }
 
