@@ -20,7 +20,7 @@ public class TurnStrategyComputer extends TurnStrategy {
 
         if (map.finishObjective()) {
             target = map.getExits().get(0).getLocation();
-            return gameMapGraph.path(player.getLocation(), target, 3);
+            return gameMapGraph.path(player.getLocation(), target, player.getRangeForMove());
         }
 
         List<Player> players = map.getPlayers();
@@ -40,7 +40,7 @@ public class TurnStrategyComputer extends TurnStrategy {
             }
         }
 
-        return gameMapGraph.path(player.getLocation(), target, 3);
+        return gameMapGraph.path(player.getLocation(), target, player.getRangeForMove());
     }
 
     @Override

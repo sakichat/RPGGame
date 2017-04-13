@@ -18,7 +18,7 @@ public class TurnStrategyFriendly extends TurnStrategy {
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
         if (points.size() != 0){
             Point target = points.get((int)(Math.random() * points.size()));
-            return gameMapGraph.path(player.getLocation(), target, 3);
+            return gameMapGraph.path(player.getLocation(), target, player.getRangeForMove());
         } else {
             return new Path();
         }
