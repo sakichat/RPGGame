@@ -28,29 +28,8 @@ public abstract class TurnStrategy {
         GameMapGraph gameMapGraph = gameMap.getGraph();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForAttack());
 
-//        points = points.stream()
-//                .filter(i -> {
-//                    Cell cell = gameMap.getCell(i);
-//                    if (cell == null) {
-//                        return false;
-//                    }
-//
-//                    if (!(cell instanceof Player)){
-//                        return false;
-//                    }
-//
-//                    Player currentPlayer = (Player) cell;
-//                    return currentPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE);
-//                })
-//                .collect(Collectors.toList());
-
-
         points = points.stream()
-                .map(gameMap::getCell)
-                .filter(c -> c != null && c instanceof Player)
-                .map(c -> (Player)c)
-                .filter(p -> p.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))
-                .map(Player::getLocation)
+                .filter(p -> couldAttack(p))
                 .collect(Collectors.toList());
         return points;
 
@@ -61,7 +40,8 @@ public abstract class TurnStrategy {
     public final List<Point> interactTargetsInNear(){
 
         GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1).stream()
+        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1);
+        points = points.stream()
                 .filter(i -> couldInteract(i))
                 .collect(Collectors.toList());
         return points;

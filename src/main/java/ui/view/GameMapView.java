@@ -221,7 +221,6 @@ public class GameMapView extends View implements Observer {
      * @param location
      */
     private void cellPressed(Point location){
-        GameMapLayerView layerView = layers.get(_LAYER_TARGET);
         PlayRuntime.currentRuntime().getPlay().setTargetLocation(location);
     }
 
