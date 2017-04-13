@@ -1,4 +1,10 @@
 {
+  "name": "testPlayer",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "hp": 67,
+  "totalHp": 67,
+  "level": 8,
   "abilityScores": {
     "STR": 14,
     "WIS": 10,
@@ -45,7 +51,7 @@
       }
     },
     {
-      "_class": "logic.equipment.WeaponDecoratorSlaying",
+      "_class": "logic.equipment.WeaponDecoratorFrightening",
       "_object": {
         "decoratedWeapon": {
           "_class": "logic.equipment.WeaponDecoratorBurning",
@@ -53,14 +59,46 @@
             "decoratedWeapon": {
               "_class": "logic.equipment.WeaponSolid",
               "_object": {
-                "range": 1,
-                "weaponType": "MELEE",
-                "name": "Gare",
+                "range": 3,
+                "weaponType": "RANGED",
+                "name": "fire",
                 "type": "Weapon",
-                "enhancedAttribute": "DB",
+                "enhancedAttribute": "AB",
                 "enhancedValue": 5
               }
             }
+          }
+        }
+      }
+    },
+    {
+      "_class": "logic.equipment.WeaponDecoratorPacifying",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponSolid",
+          "_object": {
+            "range": 3,
+            "weaponType": "RANGED",
+            "name": "WeaponT",
+            "type": "Weapon",
+            "enhancedAttribute": "DB",
+            "enhancedValue": 5
+          }
+        }
+      }
+    },
+    {
+      "_class": "logic.equipment.WeaponDecoratorSlaying",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponSolid",
+          "_object": {
+            "range": 1,
+            "weaponType": "MELEE",
+            "name": "Wige",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 5
           }
         }
       }
@@ -86,20 +124,35 @@
       }
     },
     "Weapon": {
-      "_class": "logic.equipment.WeaponDecoratorBurning",
+      "_class": "logic.equipment.WeaponDecoratorFreezing",
       "_object": {
         "decoratedWeapon": {
-          "_class": "logic.equipment.WeaponDecoratorFreezing",
+          "_class": "logic.equipment.WeaponDecoratorBurning",
           "_object": {
             "decoratedWeapon": {
-              "_class": "logic.equipment.WeaponSolid",
+              "_class": "logic.equipment.WeaponDecoratorFrightening",
               "_object": {
-                "range": 1,
-                "weaponType": "MELEE",
-                "name": "Wige",
-                "type": "Weapon",
-                "enhancedAttribute": "AB",
-                "enhancedValue": 4
+                "decoratedWeapon": {
+                  "_class": "logic.equipment.WeaponDecoratorPacifying",
+                  "_object": {
+                    "decoratedWeapon": {
+                      "_class": "logic.equipment.WeaponDecoratorSlaying",
+                      "_object": {
+                        "decoratedWeapon": {
+                          "_class": "logic.equipment.WeaponSolid",
+                          "_object": {
+                            "range": 1,
+                            "weaponType": "MELEE",
+                            "name": "Gare",
+                            "type": "Weapon",
+                            "enhancedAttribute": "DB",
+                            "enhancedValue": 5
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
               }
             }
           }
@@ -107,11 +160,5 @@
       }
     }
   },
-  "level": 4,
-  "name": "testPlayer",
-  "playerType": "Nimble",
-  "playerParty": "Not Defined",
-  "isDead": false,
-  "hp": 31,
-  "totalHp": 31
+  "effects": []
 }

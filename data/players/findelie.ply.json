@@ -1,11 +1,17 @@
 {
+  "name": "Findelie",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "hp": 15,
+  "totalHp": 15,
+  "level": 3,
   "abilityScores": {
-    "STR": 18,
-    "WIS": 10,
-    "CON": 17,
+    "STR": 16,
+    "WIS": 7,
+    "CON": 13,
     "DEX": 12,
-    "CHA": 10,
-    "INT": 12
+    "CHA": 8,
+    "INT": 11
   },
   "backpack": [
     {
@@ -54,11 +60,5 @@
       }
     }
   },
-  "level": 3,
-  "name": "Findelie",
-  "playerType": "Bully",
-  "playerParty": "Not Defined",
-  "isDead": false,
-  "hp": 17,
-  "totalHp": 17
+  "effects": []
 }

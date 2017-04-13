@@ -1,11 +1,17 @@
 {
+  "name": "Aseg",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "hp": 35,
+  "totalHp": 35,
+  "level": 6,
   "abilityScores": {
     "STR": 15,
-    "WIS": 10,
-    "CON": 20,
+    "WIS": 11,
+    "CON": 16,
     "DEX": 17,
-    "CHA": 14,
-    "INT": 15
+    "CHA": 13,
+    "INT": 14
   },
   "backpack": [
     {
@@ -34,19 +40,8 @@
         "enhancedAttribute": "WIS",
         "enhancedValue": 2
       }
-    }
-  ],
-  "equipments": {
-    "Armor": {
-      "_class": "logic.equipment.EquipmentSolid",
-      "_object": {
-        "name": "Israh",
-        "type": "Armor",
-        "enhancedAttribute": "AC",
-        "enhancedValue": 2
-      }
     },
-    "Weapon": {
+    {
       "_class": "logic.equipment.WeaponDecoratorBurning",
       "_object": {
         "decoratedWeapon": {
@@ -62,12 +57,17 @@
         }
       }
     }
+  ],
+  "equipments": {
+    "Armor": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Israh",
+        "type": "Armor",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
+    }
   },
-  "level": 6,
-  "name": "Aseg",
-  "playerType": "Tank",
-  "playerParty": "Not Defined",
-  "isDead": false,
-  "hp": 49,
-  "totalHp": 49
+  "effects": []
 }

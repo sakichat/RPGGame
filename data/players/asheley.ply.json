@@ -1,11 +1,17 @@
 {
+  "name": "Asheley",
+  "playerType": "Nimble",
+  "playerParty": "Not Defined",
+  "hp": 18,
+  "totalHp": 18,
+  "level": 2,
   "abilityScores": {
-    "STR": 12,
+    "STR": 16,
     "WIS": 8,
-    "CON": 13,
+    "CON": 16,
     "DEX": 19,
-    "CHA": 9,
-    "INT": 9
+    "CHA": 11,
+    "INT": 14
   },
   "backpack": [
     {
@@ -37,28 +43,8 @@
         "enhancedAttribute": "CON",
         "enhancedValue": 2
       }
-    }
-  ],
-  "equipments": {
-    "Helmet": {
-      "_class": "logic.equipment.EquipmentSolid",
-      "_object": {
-        "name": "Adrah",
-        "type": "Helmet",
-        "enhancedAttribute": "AC",
-        "enhancedValue": 4
-      }
     },
-    "Ring": {
-      "_class": "logic.equipment.EquipmentSolid",
-      "_object": {
-        "name": "holes",
-        "type": "Ring",
-        "enhancedAttribute": "WIS",
-        "enhancedValue": 5
-      }
-    },
-    "Weapon": {
+    {
       "_class": "logic.equipment.WeaponDecoratorSlaying",
       "_object": {
         "decoratedWeapon": {
@@ -79,12 +65,26 @@
         }
       }
     }
+  ],
+  "equipments": {
+    "Helmet": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Adrah",
+        "type": "Helmet",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 4
+      }
+    },
+    "Ring": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "holes",
+        "type": "Ring",
+        "enhancedAttribute": "WIS",
+        "enhancedValue": 5
+      }
+    }
   },
-  "level": 2,
-  "name": "Asheley",
-  "playerType": "Nimble",
-  "playerParty": "Not Defined",
-  "isDead": false,
-  "hp": 11,
-  "totalHp": 11
+  "effects": []
 }

@@ -1,11 +1,17 @@
 {
+  "name": "Gildai",
+  "playerType": "Tank",
+  "playerParty": "Not Defined",
+  "hp": 16,
+  "totalHp": 16,
+  "level": 2,
   "abilityScores": {
-    "STR": 24,
-    "WIS": 24,
-    "CON": 24,
-    "DEX": 24,
-    "CHA": 24,
-    "INT": 24
+    "STR": 12,
+    "WIS": 10,
+    "CON": 14,
+    "DEX": 14,
+    "CHA": 10,
+    "INT": 12
   },
   "backpack": [
     {
@@ -63,11 +69,5 @@
       }
     }
   },
-  "level": 2,
-  "name": "Gildai",
-  "playerType": "Nimble",
-  "playerParty": "Not Defined",
-  "isDead": false,
-  "hp": 14,
-  "totalHp": 14
+  "effects": []
 }
