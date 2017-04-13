@@ -34,7 +34,8 @@ public class InteractionFactory {
 
             } else {
                 if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_FRIENDLY)) {
-
+                    interaction = new InteractionFriendlyNPC();
+                    interaction.setTarget(targetPlayer);
                 }
             }
 

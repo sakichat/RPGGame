@@ -6,6 +6,8 @@ import logic.Play;
 import logic.PlayRuntime;
 import logic.animation.*;
 import logic.effect.Effect;
+import logic.interaction.Interaction;
+import logic.interaction.InteractionFactory;
 import logic.map.*;
 import logic.Dice;
 import logic.equipment.Weapon;
@@ -831,7 +833,7 @@ public class Player extends Cell {
 
         turnMove();
         turnAttack();
-//        turnInteract();
+        turnInteract();
     }
 
     /**
@@ -882,7 +884,6 @@ public class Player extends Cell {
         new AnimationHideRange().animate();
         new AnimationHideTarget().animate();
 
-
         PlayRuntime.currentRuntime().getPlay().updateCurrent();
     }
 
@@ -891,7 +892,7 @@ public class Player extends Cell {
      */
     private void turnAttack() {
 
-        //  attack
+        //  check attack
         List<Point> points = strategy.attackTargetsInNear();
         if (points.size() == 0) {
             return;
@@ -937,7 +938,49 @@ public class Player extends Cell {
      * The method turnInteract
      */
     private void turnInteract() {
-        //  interact
+        //  check interact
+        List<Point> points = strategy.interactTargetsInNear();
+        if (points.size() == 0) {
+            return;
+        }
+
+
+        GameMap map = PlayRuntime.currentRuntime().getMap();
+        GameMapGraph graph = map.getGraph();
+        graph.ignoreAll();
+
+        //  show range
+        List<Point> pointsInRange = graph.pointsInRange(location, 1);
+
+        new AnimationDisplayRange()
+                .setLocations(pointsInRange)
+                .setRangeIndicationMode(Play.RangeIndicationMode.ATTACK)
+                .animate();
+
+        //  select target
+        Point targetLocation = strategy.preferredInteractionLocation();
+
+        if (targetLocation == null){
+            new AnimationHideRange().animate();
+            return;
+        }
+
+        //  show target
+        new AnimationDisplayTarget()
+                .setTarget(targetLocation)
+                .animate();
+
+        //  attack
+        Cell target = map.getCell(targetLocation);
+        InteractionFactory interactionFactory = new InteractionFactory();
+        Interaction interaction = interactionFactory.interaction(this, target);
+
+        if (interaction != null) {
+            interaction.interact();
+        }
+
+        new AnimationHideRange().animate();
+        new AnimationHideTarget().animate();
     }
 
     //  =======================================================================

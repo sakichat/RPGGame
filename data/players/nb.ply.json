@@ -1,0 +1,90 @@
+{
+  "name": "nb",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "hp": 35,
+  "totalHp": 35,
+  "level": 12,
+  "abilityScores": {
+    "STR": 14,
+    "WIS": 12,
+    "CON": 14,
+    "DEX": 14,
+    "CHA": 13,
+    "INT": 13
+  },
+  "backpack": [],
+  "equipments": {
+    "Helmet": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Adrah",
+        "type": "Helmet",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 4
+      }
+    },
+    "Shield": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Kusha",
+        "type": "Shield",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
+    },
+    "Belt": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 2
+      }
+    },
+    "Armor": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Israh",
+        "type": "Armor",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 2
+      }
+    },
+    "Ring": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Selah",
+        "type": "Ring",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    },
+    "Boots": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    },
+    "Weapon": {
+      "_class": "logic.equipment.WeaponDecoratorBurning",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "weaponType": "RANGED",
+            "name": "fire",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 3
+          }
+        }
+      }
+    }
+  },
+  "effects": []
+}

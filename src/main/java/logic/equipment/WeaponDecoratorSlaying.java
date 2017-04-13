@@ -20,17 +20,17 @@ public class WeaponDecoratorSlaying extends WeaponDecorator {
         super(decoratedWeapon);
     }
 
+    @Override
+    public Weapon getOrigin() {
+        return decoratedWeapon.getOrigin();
+    }
+
     /**
      * @override methods
      */
     @Override
     public String displayName() {
-        return super.displayName() + " S";
-    }
-
-    @Override
-    public Weapon getOrigin() {
-        return decoratedWeapon.getOrigin();
+        return super.displayName() + " SLA";
     }
 
     @Override

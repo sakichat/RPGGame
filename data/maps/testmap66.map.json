@@ -17,7 +17,36 @@
       null,
       null,
       null,
-      null,
+      {
+        "_class": "logic.map.Chest",
+        "_object": {
+          "equipments": [
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Ered",
+                "type": "Belt",
+                "enhancedAttribute": "STR",
+                "enhancedValue": 2
+              }
+            },
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "holes",
+                "type": "Ring",
+                "enhancedAttribute": "WIS",
+                "enhancedValue": 5
+              }
+            }
+          ],
+          "location": {
+            "x": 4,
+            "y": 0
+          },
+          "imageName": "chest.png"
+        }
+      },
       null
     ],
     [
@@ -108,7 +137,27 @@
       null
     ],
     [
-      null,
+      {
+        "_class": "logic.map.Chest",
+        "_object": {
+          "equipments": [
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Cyne",
+                "type": "Boots",
+                "enhancedAttribute": "AC",
+                "enhancedValue": 5
+              }
+            }
+          ],
+          "location": {
+            "x": 0,
+            "y": 2
+          },
+          "imageName": "chest.png"
+        }
+      },
       null,
       null,
       null,

@@ -18,18 +18,18 @@ public class WeaponDecoratorFreezing extends WeaponDecorator {
         super(decoratedWeapon);
     }
 
+    @Override
+    public Weapon getOrigin() {
+        return decoratedWeapon.getOrigin();
+    }
+
     /**
      * @override methods
      */
 
     @Override
     public String displayName () {
-        return super.displayName() + " Frz";
-    }
-
-    @Override
-    public Weapon getOrigin() {
-        return decoratedWeapon.getOrigin();
+        return super.displayName() + " FRZ";
     }
 
     @Override
