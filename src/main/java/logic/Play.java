@@ -207,9 +207,13 @@ public class Play extends Observable{
         currentPlayerIndex %= playerOrders.size();
         Logger.getInstance().log("turn to " + currentPlayer());
 
+        updateCurrent();
+        return currentPlayer();
+    }
+
+    public void updateCurrent(){
         setChanged();
         notifyObservers(Update.CURRENT);
-        return currentPlayer();
     }
 
 

@@ -14,9 +14,13 @@ public class TurnStrategyHuman extends TurnStrategy {
         TurnThread.waitForUser(TurnThread.UserResponse.MOVE);
         Point targetLocation = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
 
-        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
-
-        return gameMapGraph.path(player.getLocation(), targetLocation, player.getRangeForMove());
+        if (targetLocation != null) {
+            GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
+            gameMapGraph.addIgnoreType(Cell.Type.PLAYER);
+            return gameMapGraph.path(player.getLocation(), targetLocation, player.getRangeForMove());
+        } else {
+            return new Path();
+        }
     }
 
     @Override

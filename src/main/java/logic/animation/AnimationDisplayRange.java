@@ -35,12 +35,20 @@ public class AnimationDisplayRange extends Animation {
         return this;
     }
 
+
+    private List<Point> locations;
+
+    public AnimationDisplayRange setLocations(List<Point> locations) {
+        this.locations = locations;
+        return this;
+    }
+
+
     /**
      * @override method for animate
      */
     @Override
     public void animate() {
-        List<Point> locations = gameMap.getGraph().pointsInRange(currentPlayer.getLocation(), 3);
         play.setRangeIndication(locations, rangeIndicationMode);
         TurnThread.pause(TurnThread.PAUSE_NORMAL);
     }

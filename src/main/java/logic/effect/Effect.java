@@ -1,5 +1,6 @@
 package logic.effect;
 
+import logic.Logger;
 import logic.player.Player;
 
 /**
@@ -43,6 +44,7 @@ public class Effect {
      * This method is used to put on and detach effect
      */
     private void attaching() {
+        Logger.getInstance().log(this + " attached on " + onPlayer);
         didAttach();
         detaching();
     }
@@ -54,6 +56,7 @@ public class Effect {
         if (turns == 0){
             willDetach();
             onPlayer.removeEffect(this);
+            Logger.getInstance().log(this + " left from " + onPlayer);
         }
     }
 
@@ -111,5 +114,8 @@ public class Effect {
         detaching();
     }
 
-
+    @Override
+    public String toString() {
+        return getClass().getSimpleName();
+    }
 }

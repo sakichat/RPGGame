@@ -130,6 +130,13 @@ public class GameMapGraph {
 
     private List<Cell.Type> ignoreTypes = new LinkedList<>();
 
+    public void ignoreAll(){
+        Cell.Type[] types = Cell.Type.values();
+        for (Cell.Type type : types) {
+            addIgnoreType(type);
+        }
+    }
+
     public void addIgnoreType(Cell.Type type){
         ignoreTypes.add(type);
     }

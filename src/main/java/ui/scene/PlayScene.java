@@ -4,6 +4,8 @@ import logic.*;
 import logic.equipment.Equipment;
 import logic.map.*;
 import logic.player.Player;
+import logic.turn.TurnStrategy;
+import logic.turn.TurnStrategyHuman;
 import logic.turn.TurnThread;
 import persistence.PlayFileManager;
 import ui.controlView.*;
@@ -83,17 +85,17 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         contentView.add(button);
         startButton = button;
 
-        button = new JButton("Skip");
-        button.setLocation(600, 100);
-        button.setSize(160, 40);
-        contentView.add(button);
-        skipButton = button;
-
         button = new JButton("Select");
         button.setLocation(600, 160);
         button.setSize(160, 40);
         contentView.add(button);
         selectButton = button;
+
+        button = new JButton("Next");
+        button.setLocation(600, 100);
+        button.setSize(160, 40);
+        contentView.add(button);
+        skipButton = button;
 
         repaint();
 
@@ -107,7 +109,10 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
         startButton.addActionListener(e -> PlayRuntime.currentRuntime().begin());
 
-        skipButton.addActionListener(e -> TurnThread.backToRun());
+        skipButton.addActionListener(e -> {
+            PlayRuntime.currentRuntime().getPlay().setTargetLocationEnabled(false);
+            TurnThread.backToRun();
+        });
 
         selectButton.addActionListener(e -> {
             switch (TurnThread.getUserResponse()){
@@ -130,8 +135,14 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
             backButton.setEnabled(true);
             saveButton.setEnabled(true);
             startButton.setEnabled(true);
-            skipButton.setEnabled(true);
-            selectButton.setEnabled(true);
+            if (play.currentPlayer().getStrategy() instanceof TurnStrategyHuman) {
+                skipButton.setText("Skip " + TurnThread.getUserResponse().toString());
+                skipButton.setEnabled(true);
+                selectButton.setEnabled(true);
+            } else {
+                skipButton.setText("Next");
+                skipButton.setEnabled(true);
+            }
 
         } else {
             backButton.setEnabled(false);

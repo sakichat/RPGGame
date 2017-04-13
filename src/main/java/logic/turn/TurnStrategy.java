@@ -45,6 +45,7 @@ public abstract class TurnStrategy {
     public final List<Point> attackTargetsInNear(){
         GameMap gameMap = PlayRuntime.currentRuntime().getMap();
         GameMapGraph gameMapGraph = gameMap.getGraph();
+        gameMapGraph.ignoreAll();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForAttack());
 
         points = points.stream()
@@ -68,6 +69,7 @@ public abstract class TurnStrategy {
     public final List<Point> interactTargetsInNear(){
 
         GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
+        gameMapGraph.ignoreAll();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1);
         points = points.stream()
                 .filter(i -> couldInteract(i))

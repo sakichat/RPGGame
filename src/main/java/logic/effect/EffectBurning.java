@@ -1,5 +1,7 @@
 package logic.effect;
 
+import logic.Logger;
+
 /**
  * @author Qi Xia
  * @version 0.3
@@ -24,7 +26,9 @@ public class EffectBurning extends Effect {
      */
     @Override
     protected void affect() {
-        onPlayer.damage(damage * 5);
+        int damage = this.damage * 5;
+        Logger.getInstance().log(this + " deal " + damage + " damage");
+        onPlayer.damage(damage);
 
     }
 

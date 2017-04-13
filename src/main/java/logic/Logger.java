@@ -41,7 +41,7 @@ public class Logger {
      */
     public void log(String message){
         Date date = new Date();
-        String pattern = "yyyy-MM-dd";
+        String pattern = "hh:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String dateText = simpleDateFormat.format(date);
         System.out.println("LOG " + dateText + ": " + message);

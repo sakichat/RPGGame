@@ -11,6 +11,7 @@ import logic.Dice;
 import logic.equipment.Weapon;
 import logic.equipment.Equipment;
 import logic.turn.TurnStrategy;
+import logic.turn.TurnStrategyAggressive;
 import logic.turn.TurnThread;
 
 import java.util.*;
@@ -156,6 +157,10 @@ public class Player extends Cell {
      * @param damage int
      */
     public void damage(int damage) {
+        if (playerParty.equals(PLAYER_PARTY_FRIENDLY)){
+            playerParty = PLAYER_PARTY_HOSTILE;
+            strategy = new TurnStrategyAggressive();
+        }
         setHp(getHp() - damage);
     }
 
@@ -181,8 +186,9 @@ public class Player extends Cell {
      */
     public void setHp(int hp) {
 
-        if (hp < 0) {
+        if (hp <= 0) {
             hp = 0;
+            effects.clear();
         }
 
         this.hp = hp;
@@ -341,7 +347,12 @@ public class Player extends Cell {
      * @return Integer
      */
     public int getTotalArmorClass() {
-        return 10 + getAbilityModifier(ABILITY_DEX) + enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
+        int dexModi = getAbilityModifier(ABILITY_DEX);
+        int ac = enhancedValueOnEquipments(Player.ATTRIBUTE_ARMOR_CLASS);
+        int result = 10 + dexModi + ac;
+        String message = String.format("total AC : AC basic %d, AC bonus %d, DEX modi %d -> %d", 10, ac, dexModi, result);
+        Logger.getInstance().log(message);
+        return result;
     }
 
 
@@ -696,34 +707,24 @@ public class Player extends Cell {
     //  Section - Attack
     //  =======================================================================
 
-    /**
-     * This method is to create damage
-     * @return
-     */
-    protected int generateDamage(){
-        return rollDamage() + getTotalDamageBonus();
-    }
 
     /**
      * This method if used for attack
      * @param player
      */
     public void attack(Player player) {
-        if (shouldDealDamage(player)) {
-            if (Dice.roll(20) != 1) {
-                int damage = generateDamage();
-                player.damage(damage);
-                this.getWeapon().attach(player);
-            }
-        }
-    }
 
-    /**
-     * This method is to create attack roll.
-     * @return
-     */
-    protected int generateAttackRoll(){
-        return Dice.roll(20) + getTotalAttackBonus() + getAbilityModifier(ABILITY_STR);
+        if (shouldDealDamage(player)) {
+            int damage = generateDamage();
+            Logger.getInstance().log(this + " deal " + damage + " damage to " + player);
+            player.damage(damage);
+            Weapon weapon = this.getWeapon();
+            if (weapon != null) {
+                weapon.attach(player);
+            }
+        } else {
+            Logger.getInstance().log("The attack is blocked.");
+        }
     }
     /**
      * This method is used to judge whether currentPlayer do the damage
@@ -732,25 +733,40 @@ public class Player extends Cell {
      */
     private boolean shouldDealDamage(Player targetPlayer){
         int attackRoll = generateAttackRoll();
-        if (attackRoll > targetPlayer.getTotalArmorClass()) {
-            return true;
-        }
-        return false;
+        int armorClass = targetPlayer.getTotalArmorClass();
+        return attackRoll > armorClass;
     }
 
     /**
-     * This method is used for roll the damage
-     * @return Integer
+     * This method is to create attack roll.
+     * @return
      */
-    private int rollDamage(){
-        int rollDamage = Dice.roll(8) + getAbilityModifier(ABILITY_STR);
-
-        if (rollDamage <= 1) {
-            return 1;
-        }
-
-        return rollDamage;
+    int generateAttackRoll(){
+        int roll = Dice.roll(20);
+        int attackBonus = getTotalAttackBonus();
+        int result = roll + attackBonus;
+        String message = String.format("attack roll : roll %d, AB %d -> %d", roll, attackBonus, result);
+        Logger.getInstance().log(message);
+        return result;
     }
+
+    /**
+     * This method is to create damage
+     * @return
+     */
+    int generateDamage(){
+
+        int roll = Dice.roll(8);
+        int damageBonus = getTotalDamageBonus();
+        int result = roll + damageBonus;
+        if (result < 1) {
+            result = 1;
+        }
+        String message = String.format("damage roll : roll %d, DB %d -> %d", roll, damageBonus, result);
+        Logger.getInstance().log(message);
+        return result;
+    }
+
 
     //  =======================================================================
     //  Section - Turn Strategy
@@ -799,11 +815,16 @@ public class Player extends Cell {
     }
 
     private void turnMove() {
+        GameMap map = PlayRuntime.currentRuntime().getMap();
+        GameMapGraph graph = map.getGraph();
 
+        //  show range
         new AnimationDisplayRange()
+                .setLocations(graph.pointsInRange(location, getRangeForMove()))
                 .setRangeIndicationMode(Play.RangeIndicationMode.MOVE)
                 .animate();
 
+        //  select target
         Path path = strategy.preferredMovingPath();
         Logger.getInstance().log(this + " wants to move by " + path);
 
@@ -827,38 +848,52 @@ public class Player extends Cell {
         new AnimationHideRange().animate();
         new AnimationHideTarget().animate();
 
-        PlayRuntime.currentRuntime().getPlay().notifyObservers(Play.Update.CURRENT);
+
+        PlayRuntime.currentRuntime().getPlay().updateCurrent();
     }
 
     private void turnAttack() {
+
         //  attack
         List<Point> points = strategy.attackTargetsInNear();
         if (points.size() == 0) {
             return;
         }
 
+
+        GameMap map = PlayRuntime.currentRuntime().getMap();
+        GameMapGraph graph = map.getGraph();
+        graph.ignoreAll();
+
         //  show range
+        List<Point> pointsInRange = graph.pointsInRange(location, getRangeForAttack());
 
         new AnimationDisplayRange()
+                .setLocations(pointsInRange)
                 .setRangeIndicationMode(Play.RangeIndicationMode.ATTACK)
                 .animate();
 
+        //  select target
         Point targetLocation = strategy.preferredAttackingLocation();
 
         if (targetLocation == null){
+            new AnimationHideRange().animate();
             return;
         }
-
-        GameMap currentMap = PlayRuntime.currentRuntime().getMap();
-        Player targetPlayer = (Player) currentMap.getCell(targetLocation);
-        Logger.getInstance().log(this + " is going to attack " + targetPlayer);
 
         //  show target
         new AnimationDisplayTarget()
                 .setTarget(targetLocation)
                 .animate();
 
+        //  attack
+        Player targetPlayer = (Player) map.getCell(targetLocation);
+        Logger.getInstance().log(this + " is going to attack " + targetPlayer);
         attack(targetPlayer);
+
+
+        new AnimationHideRange().animate();
+        new AnimationHideTarget().animate();
     }
 
     private void turnInteract() {

@@ -18,9 +18,9 @@ public class TurnThread extends Thread{
         this.end = end;
     }
 
-    public static double PAUSE_FAST = 1;
-    public static double PAUSE_NORMAL = 2;
-    public static double PAUSE_SLOW = 3;
+    public static double PAUSE_FAST = 0.5;
+    public static double PAUSE_NORMAL = 1;
+    public static double PAUSE_SLOW = 2;
 
     public static void pause(double duration){
         try {
@@ -59,9 +59,10 @@ public class TurnThread extends Thread{
         while (!playRuntime.getMap().finishObjective()){
             Play play = playRuntime.getPlay();
             Player currentPlayer = play.currentPlayer();
-            currentPlayer.turn();
-            Logger.getInstance().log(currentPlayer + " finished its turn");
-
+            if (currentPlayer.isAlive()) {
+                currentPlayer.turn();
+                Logger.getInstance().log(currentPlayer + " finished its turn");
+            }
             play.nextPlayer();
             waitForUser(UserResponse.TURN);
         }
