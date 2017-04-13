@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @author Guangbi Zhang
- * @version 0.2
+ * @version 0.3
  */
 public class PlayFileManager {
 

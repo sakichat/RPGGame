@@ -4,7 +4,10 @@ import com.google.gson.*;
 
 import java.lang.reflect.Type;
 
-
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class FullSerialization implements JsonSerializer<Object>, JsonDeserializer<Object> {
 
     /**
