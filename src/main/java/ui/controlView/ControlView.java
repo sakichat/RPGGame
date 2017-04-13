@@ -7,7 +7,7 @@ import ui.view.View;
 /**
  * This ControlView sets a template of other control views which extends View class
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class ControlView extends View {
     /**
@@ -31,12 +31,23 @@ public class ControlView extends View {
         this.mapEditingScene = mapEditingScene;
     }
 
+    /**
+     * property of playScene
+     */
     protected PlayScene playScene;
 
+    /**
+     * The method of getPlayScene
+     * @return PlayScene
+     */
     public PlayScene getPlayScene() {
         return playScene;
     }
 
+    /**
+     * The method of setPlayScene
+     * @param playScene
+     */
     public void setPlayScene(PlayScene playScene) {
         this.playScene = playScene;
     }

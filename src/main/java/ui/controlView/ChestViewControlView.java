@@ -7,7 +7,7 @@ import javax.swing.*;
 /**
  * This class for viewing chest inside during play
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class ChestViewControlView extends ControlView {
     /**
@@ -58,7 +58,7 @@ public class ChestViewControlView extends ControlView {
         add(button);
         JButton viewInsideButton = button;
 
-        viewInsideButton.addActionListener(e -> playScene.showChestViewInside(chest));
+        viewInsideButton.addActionListener(e -> playScene.showChestInspector(chest));
 
     }
 

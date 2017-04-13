@@ -10,18 +10,26 @@ import logic.effect.EffectFreezing;
  */
 public class WeaponDecoratorFreezing extends WeaponDecorator {
 
+    /**
+     * This method is WeaponDecoratorFreezing
+     * @param decoratedWeapon
+     */
     public WeaponDecoratorFreezing(Weapon decoratedWeapon) {
         super(decoratedWeapon);
     }
 
     @Override
-    public String displayName () {
-        return super.displayName() + " Frz";
-    }
-
-    @Override
     public Weapon getOrigin() {
         return decoratedWeapon.getOrigin();
+    }
+
+    /**
+     * @override methods
+     */
+
+    @Override
+    public String displayName () {
+        return super.displayName() + " FRZ";
     }
 
     @Override

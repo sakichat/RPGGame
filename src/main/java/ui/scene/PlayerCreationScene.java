@@ -6,28 +6,28 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * This is a PlayerCreationScene to show the scene for creating player name which extends Scene class
+ * This is a PlayerCreationScene to show the scene for creating currentPlayer name which extends Scene class
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class PlayerCreationScene extends Scene {
 
     /**
-     * This parameter sets a player in this Scene.
+     * This parameter sets a currentPlayer in this Scene.
      */
     private Player player;
 
     /**
-     * This is a getter for player.
-     * @return player
+     * This is a getter for currentPlayer.
+     * @return currentPlayer
      */
     public Player getPlayer() {
         return player;
     }
 
     /**
-     * This is a setter for player.
-     * @param player
+     * This is a setter for currentPlayer.
+     * @param player Player
      */
     public void setPlayer(Player player) {
         this.player = player;

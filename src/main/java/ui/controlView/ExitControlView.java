@@ -6,8 +6,7 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Kai QI
- * @version 0.2
- *
+ * @version 0.3
  * This class is for exitControlView.
  */
 public class ExitControlView extends ControlView {

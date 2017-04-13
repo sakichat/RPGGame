@@ -1,9 +1,9 @@
 package logic.map;
 
-
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Kai QI
@@ -54,6 +54,30 @@ public class Path implements Iterable<Point> {
     }
 
     /**
+     * The method of size
+     * @return int
+     */
+    public int size(){
+        return locations.size();
+    }
+
+    /**
+     * The method of getLastLocation
+     * @return Point
+     */
+    public Point getLastLocation(){
+        return locations.get(locations.size() - 1);
+    }
+
+    /**
+     * The method of stay
+     * @return boolean
+     */
+    public boolean stay(){
+        return locations.size() <= 1;
+    }
+
+    /**
      * The method is used to get movements from the path, based on the given steps.
      * @param steps the number of steps we want to get from the path.
      * @return Movement object
@@ -81,14 +105,6 @@ public class Path implements Iterable<Point> {
      */
     protected boolean equalsToPath(Path path) {
 
-//        for (Point point : this) {
-//            for (Point targetPoint : path) {
-//                if (!point.equals(targetPoint)) {
-//                    return false;
-//                }
-//            }
-//        }
-
         List<Point> targetLocations = path.getLocations();
         if (locations.size() != targetLocations.size()) {
             return false;
@@ -109,5 +125,15 @@ public class Path implements Iterable<Point> {
     @Override
     public Iterator<Point> iterator() {
         return locations.iterator();
+    }
+
+    /**
+     * The method of toString
+     * @return String
+     */
+    @Override
+    public String toString() {
+        List<String> points = locations.stream().map(p -> p.toString()).collect(Collectors.toList());
+        return "Path " + String.join(" -> ", points);
     }
 }

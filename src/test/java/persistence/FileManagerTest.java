@@ -4,9 +4,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Created by GU_HAN on 2017-02-27.
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  *
  * This class tests the fileManager method, to see if it can successfully transfer between file name and typing name.
  */

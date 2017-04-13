@@ -1,9 +1,9 @@
 package logic.player;
 
 /**
- * this class is a abstract class to build the player
+ * this class is a abstract class to build the currentPlayer
  * @author Li Zhen
- * @version 0.2
+ * @version 0.3
  */
 public abstract class PlayerBuilder {
     protected Player playerProduct;
@@ -27,8 +27,8 @@ public abstract class PlayerBuilder {
     }
 
     /**
-     * this method is to set player level
-     * @param playerProductlevel player product level
+     * this method is to set currentPlayer level
+     * @param playerProductlevel currentPlayer product level
      */
 
     public void setPlayerProductlevel(int playerProductlevel){
@@ -41,7 +41,7 @@ public abstract class PlayerBuilder {
     abstract void setPlayerType();
 
     /**
-     * this is a abstract method to generate ability of player
+     * this is a abstract method to generate ability of currentPlayer
      */
     abstract void generateAbilities();
 

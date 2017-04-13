@@ -6,10 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by GU_HAN on 2017-03-01.
  * @author GU_HAN
- * @version 0.2
- *
+ * @version 0.3
  * This class tests map validation.
  */
 public class GameMapTest {
@@ -122,7 +120,7 @@ public class GameMapTest {
     }
 
     /**
-     * This case tests if the map can be saved when player is not defined its party.
+     * This case tests if the map can be saved when currentPlayer is not defined its party.
      * @throws Exception
      */
     @Test
@@ -130,5 +128,13 @@ public class GameMapTest {
         gameMapTest.addCell(new Player(), new Point(0, 0));
 
         Assert.assertEquals(GameMap.VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED, gameMapTest.validate());
+    }
+
+    @Test
+    public void moveCell() throws Exception {
+        gameMapTest.moveCell(new Point(1, 1), new Point(0, 0));
+
+        Assert.assertTrue(gameMapTest.getCell(new Point(1, 1)) == null);
+        Assert.assertTrue(gameMapTest.getCell(new Point(0, 0)) instanceof Exit);
     }
 }

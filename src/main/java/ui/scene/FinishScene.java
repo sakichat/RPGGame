@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 /**
  * This class is the last scene in whole game, and it can back to MainScene with ending the campaign.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class FinishScene extends Scene {
     /**

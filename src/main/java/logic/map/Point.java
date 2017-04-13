@@ -8,16 +8,14 @@ import java.util.List;
 
 /**
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  * this class is the Point
  */
 public class Point {
 
-    @Expose
-    private int x;
-
-    @Expose
-    private int y;
+    //  =======================================================================
+    //  Section - Constructor
+    //  =======================================================================
 
     /**
      * this is the constructor
@@ -36,18 +34,16 @@ public class Point {
     }
 
 
+    //  =======================================================================
+    //  Section - Basic
+    //  =======================================================================
 
-    public Point copy(){
-        Point copyedPoint = new Point(x,y);
-        return copyedPoint;
-    }
+    @Expose
+    private int x;
 
-    public Point sub(Point delta){
-        Point point = new Point();
-        point.x = x - delta.x;
-        point.y = y - delta.y;
-        return point;
-    }
+    @Expose
+    private int y;
+
 
     /**
      * this method is to add point
@@ -61,9 +57,16 @@ public class Point {
         return point;
     }
 
-
-    public Point add(Direction direction){
-        return add(direction.toPoint());
+    /**
+     * this method is to sub point
+     * @param delta Point
+     * @return Point
+     */
+    public Point sub(Point delta){
+        Point point = new Point();
+        point.x = x - delta.x;
+        point.y = y - delta.y;
+        return point;
     }
 
     /**
@@ -96,6 +99,11 @@ public class Point {
         this.y = y;
     }
 
+    //  =======================================================================
+    //  Section - Object
+    //  =======================================================================
+
+
     /**
      * this method is to show the Point
      * @return String
@@ -103,10 +111,9 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        return "(" + x +
+                ", " + y +
+                ")";
     }
 
     /**
@@ -139,24 +146,22 @@ public class Point {
         return result;
     }
 
-
-    public Direction toDirection(){
-        if (x == 0){
-            if (y > 0){
-                return Direction.DOWN;
-            } else {
-                return Direction.UP;
-            }
-        } else if (y == 0){
-            if (x > 0){
-                return Direction.RIGHT;
-            } else {
-                return Direction.LEFT;
-            }
-        }
-        return null;
+    /**
+     * The method of copy
+     * @return Point
+     */
+    public Point copy(){
+        return new Point(x,y);
     }
 
+
+    //  =======================================================================
+    //  Section - Direction
+    //  =======================================================================
+
+    /**
+     * The method of Direction
+     */
     public static enum Direction {
         UP(0, -1),
         DOWN(0, 1),
@@ -182,5 +187,35 @@ public class Point {
             return directions;
         }
 
+    }
+
+    /**
+     * The method of toDirection
+     * @return Direction
+     */
+    public Direction toDirection(){
+        if (x == 0){
+            if (y > 0){
+                return Direction.DOWN;
+            } else {
+                return Direction.UP;
+            }
+        } else if (y == 0){
+            if (x > 0){
+                return Direction.RIGHT;
+            } else {
+                return Direction.LEFT;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * The method of add
+     * @param direction Direction
+     * @return Point
+     */
+    public Point add(Direction direction){
+        return add(direction.toPoint());
     }
 }

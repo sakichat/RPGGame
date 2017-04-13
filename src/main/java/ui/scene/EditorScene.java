@@ -1,6 +1,8 @@
 package ui.scene;
 
 import logic.Campaign;
+import logic.Play;
+import logic.PlayRuntime;
 import logic.equipment.Equipment;
 import logic.equipment.Weapon;
 import logic.map.GameMap;
@@ -12,7 +14,7 @@ import javax.swing.*;
 /**
  * This class for choosing editor and creation.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegate,
                                                   PlayerSelectorPanel.Delegate,
@@ -168,7 +170,7 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
     }
 
     /**
-     * This method is used to edit the player.
+     * This method is used to edit the currentPlayer.
      */
     private void playerEdit(){
         PlayerSelectorPanel playerSelectorPanel = new PlayerSelectorPanel();
@@ -214,8 +216,16 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
     public void mapSelectorPerformAction(MapSelectorPanel mapSelectorPanel, GameMap gameMap) {
         remove(mapSelectorPanel);
 
+        Play play = new Play();
+        play.setCurrentMap(gameMap);
+        PlayRuntime.currentRuntime().setPlay(play);
+
         MapEditingScene mapEditingScene = new MapEditingScene();
         mapEditingScene.setGameMap(gameMap);
+
+        play.addObserver(mapEditingScene);
+        play.addObserver(mapEditingScene.getGameMapView());
+
         navigationView.push(mapEditingScene);
     }
 

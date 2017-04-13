@@ -5,16 +5,37 @@ import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+/**
+ * @author Kai QI
+ * @version 0.3
+ * The class is GameMapGraph.
+ */
 public class GameMapGraph {
+
+    /**
+     * property of gameMap
+     */
     private GameMap gameMap;
+
+    /**
+     * This is a method for constructor.
+     */
 
     public GameMapGraph(GameMap gameMap) {
         this.gameMap = gameMap;
         values = new int[gameMap.getHeight()][gameMap.getWidth()];
     }
 
+    /**
+     * property of values.
+     */
     private int[][] values;
 
+    /**
+     * The method is getValue
+     * @param location Point
+     * @return int
+     */
     private int getValue(Point location){
         if (gameMap.pointInMap(location)) {
             return values[location.getY()][location.getX()];
@@ -23,10 +44,18 @@ public class GameMapGraph {
         }
     }
 
+    /**
+     * The method is setValue
+     * @param location Point
+     * @param value void
+     */
     private void setValue(Point location, int value){
         values[location.getY()][location.getX()] = value;
     }
 
+    /**
+     * The method is resetValues
+     */
     private void resetValues(){
         for (int i = 0; i < gameMap.getHeight(); i++) {
             for (int j = 0; j < gameMap.getWidth(); j++) {
@@ -35,6 +64,10 @@ public class GameMapGraph {
         }
     }
 
+    /**
+     * The method is setValueByPath
+     * @param path Path
+     */
     void setValueByPath(Path path){
         resetValues();
         for (Point point : path) {
@@ -42,29 +75,36 @@ public class GameMapGraph {
         }
     }
 
+    /**
+     * The method is printValues
+     */
     public void printValues(){
-        Iterable<Point> locations = gameMap.fullLocations();
+        Iterable<Point> locations = gameMap.getLocations();
         int y = 0;
         for (Point location : locations) {
             if (location.getY() != y) {
-                System.out.println();
                 y = location.getY();
             }
 
             int value = getValue(location);
-            if (value == Integer.MAX_VALUE){
-                System.out.printf("  %s", gameMap.hasCell(location) ? "x" : ".");
-            } else {
-                System.out.printf("%3d", value);
-            }
         }
-        System.out.println();
     }
 
+    /**
+     * The method is bfs.
+     * @param source Point
+     * @return List
+     */
     private List<Point> bfs(Point source) {
         return bfs(source, v -> true);
     }
 
+    /**
+     * The method is bfs
+     * @param source Point
+     * @param rangeLimit Predicate
+     * @return List
+     */
     private List<Point> bfs(Point source, Predicate<Integer> rangeLimit) {
         resetValues();
         LinkedList<Point> visitedLocations = new LinkedList<>();
@@ -116,12 +156,25 @@ public class GameMapGraph {
         return visitedLocations;
     }
 
+    /**
+     * The method is pointsInRange
+     * @param source Point
+     * @param range int
+     * @return List
+     */
     public List<Point> pointsInRange(Point source, int range) {
         List<Point> points = bfs(source, r -> r <= range);
         points.remove(0);
         return points;
     }
 
+    /**
+     * The method is cellsInRange
+     * @param source Point
+     * @param range int
+     * @param cellType Type
+     * @return List
+     */
     public List<Cell> cellsInRange(Point source, int range, Cell.Type cellType) {
         if (!ignoreTypes.contains(cellType)){
             addIgnoreType(cellType);
@@ -135,8 +188,22 @@ public class GameMapGraph {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * the property of ignoreTypes
+     */
     private List<Cell.Type> ignoreTypes = new LinkedList<>();
 
+    public void ignoreAll(){
+        Cell.Type[] types = Cell.Type.values();
+        for (Cell.Type type : types) {
+            addIgnoreType(type);
+        }
+    }
+
+    /**
+     * The method of addIgnoreType
+     * @param type
+     */
     public void addIgnoreType(Cell.Type type){
         ignoreTypes.add(type);
     }
@@ -145,9 +212,16 @@ public class GameMapGraph {
         return ignoreTypes.contains(cell.getCellType());
     }
 
+    /**
+     * The method of shortestPath
+     * @param source Point
+     * @param target Point
+     * @return Path
+     */
     public Path shortestPath(Point source, Point target){
         bfs(source);
 
+        printValues();
         if (getValue(target) == Integer.MAX_VALUE) {
             return null;
         }
@@ -172,12 +246,46 @@ public class GameMapGraph {
         Path path = new Path();
         path.addLocation(source);
 
-        steps.forEach(System.out::println);
         steps.forEach(path::addLocationsToLocation);
 
         return path;
     }
 
+    /**
+     * The method of path
+     * @param source Point
+     * @param target Point
+     * @param range int
+     * @return Path
+     */
+    public Path path(Point source, Point target, int range){
+        Path path = shortestPath(source, target);
+        Path cutPath = new Path();
+        List<Point> locations = path.getLocations();
+        cutPath.addLocation(locations.get(0));
+
+        for (int i = 1; i < locations.size(); i++) {
+            if (i > range) {
+                break;
+            }
+
+            Point location = locations.get(i);
+
+            if (gameMap.canPlace(location)) {
+                cutPath.addLocation(location);
+            } else {
+                break;
+            }
+        }
+
+        return cutPath;
+    }
+
+    /**
+     * The method of downsideDirection
+     * @param source Point
+     * @return Direction
+     */
     private Point.Direction downsideDirection(Point source) {
         int value = getValue(source);
         List<Point.Direction> directions = Arrays.asList(Point.Direction.values());
@@ -191,11 +299,23 @@ public class GameMapGraph {
                 .get();
     }
 
+    /**
+     * The method of distanceBetween
+     * @param source Point
+     * @param target Point
+     * @return int
+     */
     public int distanceBetween(Point source, Point target){
         bfs(source);
         return getValue(target);
     }
 
+    /**
+     * The method of isReachable
+     * @param source Point
+     * @param target Point
+     * @return boolean
+     */
     public boolean isReachable(Point source, Point target){
         return distanceBetween(source, target) != Integer.MAX_VALUE;
     }

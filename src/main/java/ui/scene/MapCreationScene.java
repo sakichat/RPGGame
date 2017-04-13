@@ -1,5 +1,7 @@
 package ui.scene;
 
+import logic.Play;
+import logic.PlayRuntime;
 import logic.map.GameMap;
 
 import javax.swing.*;
@@ -7,7 +9,7 @@ import javax.swing.*;
 /**
  * This is a MapCreationScene to show the scene for creating map name which extends Scene class
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class MapCreationScene extends Scene {
 
@@ -113,8 +115,16 @@ public class MapCreationScene extends Scene {
                 gameMap.setWidth(gridWidth);
                 gameMap.setHeight(gridHeight);
 
+                Play play = new Play();
+                play.setCurrentMap(gameMap);
+                PlayRuntime.currentRuntime().setPlay(play);
+
                 MapEditingScene mapEditingScene = new MapEditingScene();
                 mapEditingScene.setGameMap(gameMap);
+
+                play.addObserver(mapEditingScene);
+                play.addObserver(mapEditingScene.getGameMapView());
+
                 MapCreationScene.this.navigationView.push(mapEditingScene);
             }
         });

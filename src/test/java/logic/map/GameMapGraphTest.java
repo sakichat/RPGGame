@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  * This class tests the class of GameMapGraph.
  */
 public class GameMapGraphTest {
@@ -128,49 +128,26 @@ public class GameMapGraphTest {
 
             Assert.assertTrue(path.equalsToPath(points));
         }
-//        {
-//            Path path = graph.shortestPath(new Point(0, 0), new Point(0, 1));
-//            Path points = new Path();
-//            points.addLocation(new Point(0, 0));
-//            points.addLocation(new Point(0, 1));
-//
-//            Assert.assertTrue(path.equalsToPath(points));
-//        }
-//        {
-//            Path path = graph.shortestPath(new Point(3, 1), new Point(5, 1));
-//            graph.setValueByPath(path);
-//            graph.printValues();
-//            Path points = new Path();
-//            points.addLocation(new Point(4, 4));
-//            points.addLocation(new Point(4, 5));
-//            points.addLocation(new Point(5, 5));
-//            points.addLocation(new Point(6, 5));
-//            points.addLocation(new Point(7, 5));
-//            points.addLocation(new Point(8, 5));
-//            points.addLocation(new Point(8, 4));
-//            points.addLocation(new Point(8, 3));
-//            points.addLocation(new Point(8, 2));
-//            points.addLocation(new Point(8, 1));
-//            points.addLocation(new Point(8, 0));
-//
-//            Assert.assertTrue(path.equalsToPath(points));
-//        }
+        {
+            Path path = graph.shortestPath(new Point(0, 0), new Point(0, 1));
+            Path points = new Path();
+            points.addLocation(new Point(0, 0));
+            points.addLocation(new Point(0, 1));
 
+            Assert.assertTrue(path.equalsToPath(points));
+        }
+        {
+            Path path = graph.shortestPath(new Point(3, 1), new Point(5, 1));
+            graph.setValueByPath(path);
+            graph.printValues();
+            Path points = new Path();
+            points.addLocation(new Point(3, 1));
+            points.addLocation(new Point(3, 0));
+            points.addLocationsToLocation(new Point(5, 0));
+            points.addLocation(new Point(5, 1));
 
-//        int length = path.getLocations().size();
-
-//        Assert.assertEquals(11, length);
-
-
-//        graph.printValues();
-//        Path path1 = graph.shortestPath(new Point(0, 0), new Point(0, 1));
-//        Path path1 = graph.shortestPath(new Point(3, 1), new Point(5, 1));
-//        Path path1 = graph.shortestPath(new Point(3, 3), new Point(5, 3));
-//        Path path1 = graph.shortestPath(new Point(4, 4), new Point(5, 3));
-//        Path path1 = graph.shortestPath(new Point(7, 5), new Point(5, 3));
-//        Path path1 = graph.shortestPath(new Point(0, 8), new Point(5, 3));
-//        graph.setValueByPath(path1);
-//        graph.printValues();
+            Assert.assertTrue(path.equalsToPath(points));
+        }
     }
 
     /**

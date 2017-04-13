@@ -20,16 +20,6 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
     }
 
     /**
-     * this method is to get name
-     * @return name String
-     */
-
-    @Override
-    public String displayName() {
-        return super.displayName() + " B";
-    }
-
-    /**
      * this method is to get origin
      * @return DecoratorComponent
      */
@@ -37,6 +27,16 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
     @Override
     public Weapon getOrigin() {
         return decoratedWeapon.getOrigin();
+    }
+
+    /**
+     * this method is to get name
+     * @return name String
+     */
+
+    @Override
+    public String displayName() {
+        return super.displayName() + " BUR";
     }
 
     /**
@@ -49,9 +49,12 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
         return super.enchantmentsChainText() + " Burning ";
     }
 
+    /**
+     * The method is to generate the effect on player.
+     * @return
+     */
     @Override
     protected Effect generateEffect() {
-        // TODO: 08/04/2017
         EffectBurning effectBurning = new EffectBurning();
         effectBurning.setDamage(decoratedWeapon.getEnhancedValue());
         effectBurning.setTurns(3);

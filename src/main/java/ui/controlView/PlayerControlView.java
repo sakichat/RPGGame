@@ -6,8 +6,7 @@ import javax.swing.*;
 
 /**
  * @author Kai QI
- * @version 0.2
- *
+ * @version 0.3
  * This class is for PlayerControlView.
  */
 public class PlayerControlView extends ControlView {
@@ -19,7 +18,7 @@ public class PlayerControlView extends ControlView {
     private Player player;
 
     /**
-     * This method is the player getter.
+     * This method is the currentPlayer getter.
      * @return
      */
     public Player getPlayer() {
@@ -27,7 +26,7 @@ public class PlayerControlView extends ControlView {
     }
 
     /**
-     * This method is the player setter.
+     * This method is the currentPlayer setter.
      * @param player
      */
     public void setPlayer(Player player) {
@@ -104,13 +103,11 @@ public class PlayerControlView extends ControlView {
         becomeFriendlyButton.addActionListener(e -> {
             player.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
             dataToView();
-            mapEditingScene.refreshMapView();
         });
 
         becomeHostileButton.addActionListener(e -> {
             player.setPlayerParty(Player.PLAYER_PARTY_HOSTILE);
             dataToView();
-            mapEditingScene.refreshMapView();
         });
 
         viewAttributesButton.addActionListener(e -> mapEditingScene.showAttributePanel(player));

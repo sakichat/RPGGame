@@ -1,100 +1,100 @@
 package logic.turn;
 
-import logic.Play;
-import logic.map.Cell;
-import logic.map.GameMap;
-import logic.map.GameMapGraph;
-import logic.map.Point;
+import logic.PlayRuntime;
+import logic.map.*;
 import logic.player.Player;
-
 import java.util.List;
 
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class TurnStrategyAggressive extends TurnStrategy {
+
+    /**
+     * @override This method is used for find path
+     * @return Path
+     */
     @Override
-    public Point preferredNextLocation() {
+    public Path preferredMovingPath() {
 
-        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForMove());
-
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
-        }
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        Player mainPlayer = runtime.getPlay().getMainPlayer();
+        GameMap map = runtime.getMap();
+        GameMapGraph gameMapGraph = map.getGraph();
+        gameMapGraph.addIgnoreType(Cell.Type.CHEST);
+        gameMapGraph.addIgnoreType(Cell.Type.PLAYER);
+        Path path = gameMapGraph.path(player.getLocation(), mainPlayer.getLocation(), player.getRangeForMove());
+        return path;
     }
 
+    /**
+     * @override This method is used for couldAttack
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     public boolean couldAttack(Point target) {
-        boolean result = false;
-        Play play = Play.getCurrentPlay();
-        GameMap gameMap = play.getCurrentMap();
-        Cell cell = gameMap.getCell(target);
-        if (cell == null){
-            return result;
-        }else {
-            if (cell.getCellType().equals(Cell.Type.PLAYER)){
-                Player targetPlayer = (Player)cell;
-                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))){
-                    if (targetPlayer.isAlive()){
-                        result = true;
-                    }
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        GameMap map = runtime.getMap();
 
-                }
-            }
+        Player targetPlayer = map.getPlayer(target);
+
+        if (targetPlayer != null) {
+            return true;
         }
-
-        return result;
+        
+        return false;
     }
 
+    /**
+     * @override This method is used for couldInteract
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     protected boolean couldInteract(Point target) {
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        GameMap map = runtime.getMap();
 
-        boolean result = false;
-        Play play = Play.getCurrentPlay();
-        GameMap gameMap = play.getCurrentMap();
-        Cell cell = gameMap.getCell(target);
-        if (cell.getCellType().equals(Cell.Type.CHEST)){
-            result = true;
-        }
-        if (cell == null){
-            return result;
-        }else {
-            if (cell.getCellType().equals(Cell.Type.PLAYER)){
-                Player targetPlayer = (Player)cell;
-                if ((targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))){
-                    if (targetPlayer.isAlive()){
-                        result = true;
-                    }
-                }
+        Cell targetCell = map.getCell(target);
+
+        if (targetCell != null){
+            if (targetCell instanceof Chest) {
+                return true;
             }
         }
 
-        return result;
+        return false;
     }
 
+    /**
+     * @override This method is used for preferredAttackingLocation
+     * @return Point
+     */
     @Override
     public Point preferredAttackingLocation() {
+        List<Point> attackTargets = attackTargetsInNear();
 
-        List<Point> points = attackTargetsInNear();
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
+        if (attackTargets != null){
+            return attackTargets.get(0);
         }
+
+        return null;
     }
 
+    /**
+     * @override This method is used for preferredInteractionLocation
+     * @return Point
+     */
     @Override
     public Point preferredInteractionLocation() {
+        List<Point> interactTargets = interactTargetsInNear();
 
-        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
-        List<Point> points = interactTargetsInNear();
-        if (points.size() != 0){
-            Point result = points.get((int)(Math.random() * points.size()));
-            return result;
-        }else {
-            return null;
+        if (interactTargets != null){
+            return interactTargets.get(0);
         }
+
+        return null;
     }
 }

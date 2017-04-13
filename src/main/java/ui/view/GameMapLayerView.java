@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * This class is for building a layer on game map which extends View.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class GameMapLayerView extends View {
 
@@ -28,20 +28,36 @@ public class GameMapLayerView extends View {
     private int gridHeight;
     private View[][] cells;
 
+    /**
+     * Getter of gridWidth
+     * @return
+     */
     public int getGridWidth() {
         return gridWidth;
     }
 
+    /**
+     * Setter of gridWidth
+     * @param gridWidth
+     */
     public void setGridWidth(int gridWidth) {
         this.gridWidth = gridWidth;
 
         cells = new View[gridHeight][gridWidth];
     }
 
+    /**
+     * Getter for gridHeight
+     * @return
+     */
     public int getGridHeight() {
         return gridHeight;
     }
 
+    /**
+     * Setter for gridHeight
+     * @param gridHeight
+     */
     public void setGridHeight(int gridHeight) {
         this.gridHeight = gridHeight;
 

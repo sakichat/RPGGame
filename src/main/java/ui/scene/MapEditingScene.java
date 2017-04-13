@@ -1,5 +1,8 @@
 package ui.scene;
 
+import logic.BaseUpdate;
+import logic.Play;
+import logic.PlayRuntime;
 import logic.equipment.Equipment;
 import logic.map.*;
 import logic.player.Player;
@@ -10,14 +13,16 @@ import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * This MapEditingScene class is for editing game map view which extends Scene class
  * And implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
-public class MapEditingScene extends Scene implements   GameMapView.Delegate,
+public class MapEditingScene extends Scene implements   Observer,
                                                         PlayerSelectorPanel.Delegate,
                                                         EquipmentSelectorPanel.Delegate {
 
@@ -41,6 +46,10 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
         this.gameMap = gameMap;
         titleLabel.setText(gameMap.getName());
         gameMapView.setGameMap(gameMap);
+    }
+
+    public GameMapView getGameMapView() {
+        return gameMapView;
     }
 
     /**
@@ -70,7 +79,6 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
         gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);
         contentView.add(gameMapView);
-        gameMapView.setDelegate(this);
 
         JButton validateButton = new JButton("Validate");
         validateButton.setLocation(550, 40);
@@ -121,23 +129,14 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
         MapFileManager.save(gameMap);
     }
 
-    /**
-     * This method gets parameters from game map view layer and pass the cell location to MapEditingScene
-     * Then calls the refreshControlView() method to set up controlViewContainerView
-     * @param gameMapView
-     * @param location
-     */
-    @Override
-    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
-        refreshControlView();
-    }
+
 
     /**
      * This method gets cell and its location
      * And then call generateControlView() method to add a correct controlView to controlViewContainerView
      */
     private void refreshControlView(){
-        Point location = gameMapView.getSelectedLocation();
+        Point location = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
         Cell cell = gameMap.getCell(location);
         View view = generateControlView(cell);
         controlViewContainerView.removeAll();
@@ -188,10 +187,8 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
      * @param cell
      */
     public void build(Cell cell) {
-        Point location = gameMapView.getSelectedLocation();
+        Point location = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
         gameMap.addCell(cell, location);
-
-        gameMapView.refreshContent();
         refreshControlView();
     }
 
@@ -201,10 +198,8 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
      * After that, it calls refreshControlView() method to reset controlViewContainerView.
      */
     public void destroy() {
-        Point location = gameMapView.getSelectedLocation();
+        Point location = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
         gameMap.removeCell(location);
-
-        gameMapView.refreshContent();
         refreshControlView();
     }
 
@@ -223,7 +218,7 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
     }
 
     /**
-     * This method is to paint a player on the specific cell view and remove the selector panel
+     * This method is to paint a currentPlayer on the specific cell view and remove the selector panel
      * @param playerSelectorPanel PlayerSelectorPanel
      * @param player              Player
      */
@@ -281,7 +276,7 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
     }
 
     /**
-     * Properties and methods about player setting.
+     * Properties and methods about currentPlayer setting.
      */
     private PlayerPanel playerPanel;
 
@@ -314,9 +309,12 @@ public class MapEditingScene extends Scene implements   GameMapView.Delegate,
     /**
      * The method is used to refresh MapView.
      */
-
-    public void refreshMapView(){
-        gameMapView.refreshContent();
+    @Override
+    public void update(Observable o, Object arg) {
+        if (BaseUpdate.when(arg)
+                .match(Play.Update.TARGET)
+                .check()){
+            refreshControlView();
+        }
     }
-
 }

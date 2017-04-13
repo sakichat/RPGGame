@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  * this class is the Campaign
  */
 public class Campaign {

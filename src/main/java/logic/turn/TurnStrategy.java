@@ -1,76 +1,100 @@
 package logic.turn;
 
-import logic.Play;
-import logic.map.Cell;
-import logic.map.GameMap;
-import logic.map.GameMapGraph;
-import logic.map.Point;
+import logic.PlayRuntime;
+import logic.map.*;
 import logic.player.Player;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author Li Zhen
+ * @version 0.3
+ */
 public abstract class TurnStrategy {
+    /**
+     * attribute
+     */
     protected Player player;
 
+    /**
+     * player getter
+     * @return Player
+     */
     public final Player getPlayer() {
         return player;
     }
 
+    /**
+     * player setter
+     * @param player
+     */
     public final void setPlayer(Player player) {
         this.player = player;
     }
 
-    public abstract Point preferredNextLocation();
+    /**
+     * abstract method
+     * @return Path
+     */
+    public abstract Path preferredMovingPath();
 
+    /**
+     * This method is used for attackTargetsInNear
+     * @return List
+     */
     public final List<Point> attackTargetsInNear(){
-        GameMap gameMap = Play.getCurrentPlay().getCurrentMap();
+        GameMap gameMap = PlayRuntime.currentRuntime().getMap();
         GameMapGraph gameMapGraph = gameMap.getGraph();
+        gameMapGraph.ignoreAll();
         List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), player.getRangeForAttack());
 
-//        points = points.stream()
-//                .filter(i -> {
-//                    Cell cell = gameMap.getCell(i);
-//                    if (cell == null) {
-//                        return false;
-//                    }
-//
-//                    if (!(cell instanceof Player)){
-//                        return false;
-//                    }
-//
-//                    Player player = (Player) cell;
-//                    return player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE);
-//                })
-//                .collect(Collectors.toList());
-
-
         points = points.stream()
-                .map(gameMap::getCell)
-                .filter(c -> c != null && c instanceof Player)
-                .map(c -> (Player)c)
-                .filter(p -> p.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE))
-                .map(Player::getLocation)
+                .filter(p -> couldAttack(p))
                 .collect(Collectors.toList());
         return points;
 
     }
 
+    /**
+     * abstract method
+     * @param target
+     * @return Boolean
+     */
     public abstract boolean couldAttack(Point target);
 
+    /**
+     * This method is used to interactTargetsInNear
+     * @return List
+     */
     public final List<Point> interactTargetsInNear(){
 
-        GameMapGraph gameMapGraph = Play.getCurrentPlay().getCurrentMap().getGraph();
-        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1).stream()
+        GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
+        gameMapGraph.ignoreAll();
+        List<Point> points = gameMapGraph.pointsInRange(player.getLocation(), 1);
+        points = points.stream()
                 .filter(i -> couldInteract(i))
                 .collect(Collectors.toList());
         return points;
     }
 
+    /**
+     * abstract method
+     * @param target
+     * @return Boolean
+     */
     protected abstract boolean couldInteract(Point target);
 
+
+    /**
+     * This is a method for preferredAttackingLocation
+     * @return Point
+     */
     public abstract Point preferredAttackingLocation();
 
+    /**
+     * This is a method for preferredInteractionLocation
+     * @return Point
+     */
     public abstract Point preferredInteractionLocation();
 
 

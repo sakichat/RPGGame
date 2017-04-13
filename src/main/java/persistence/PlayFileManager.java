@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @author Guangbi Zhang
- * @version 0.2
+ * @version 0.3
  */
 public class PlayFileManager {
 
@@ -31,7 +31,6 @@ public class PlayFileManager {
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/plays/" + newName + ".play.json";
-        System.out.println(newName);
         return new File(newName);
     }
 

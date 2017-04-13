@@ -1,55 +1,31 @@
 package ui.view;
 
+import logic.BaseUpdate;
+import logic.Play;
+import logic.PlayRuntime;
 import logic.map.Cell;
 import logic.map.GameMap;
 import logic.map.Point;
 import logic.player.Player;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * This GameMapView class extends View class, and it can build map views.
  * It contains four map layers: Background Layer for the basic map cells; Content Layer for adding items on map;
- * Highlight Layer for showing the selected cell; Event Layer for triggering the event on cell.
+ * Target Layer for showing the selected cell; Event Layer for triggering the event on cell.
  * These four map layers are saved in a List<> for getting it easily.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
-public class GameMapView extends View {
+public class GameMapView extends View implements Observer {
 
-    /**
-     * It is a implements for Delegate
-     */
-    public interface Delegate {
-        void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location);
-    }
-
-    /**
-     * This is a property for delegate
-     */
-    private Delegate delegate;
-
-    /**
-     * getter
-     * @return Delegate
-     */
-    public Delegate getDelegate() {
-        return delegate;
-    }
-
-    /**
-     * setter
-     * @param delegate
-     */
-    public void setDelegate(Delegate delegate) {
-        this.delegate = delegate;
-    }
 
     /**
      * This is a property for GameMap
@@ -70,11 +46,14 @@ public class GameMapView extends View {
      * @param gameMap
      */
     public void setGameMap(GameMap gameMap) {
+        if (this.gameMap != null) {
+            this.gameMap.deleteObserver(this);
+        }
         this.gameMap = gameMap;
         setup();
+        gameMap.addObserver(this);
     }
 
-    private Player player;
 
     /**
      * This method is to set the size of this GameMapView, and to call initLayers() method.
@@ -98,8 +77,9 @@ public class GameMapView extends View {
     private final static int _LAYER_BACKGROUND      = 0;
     private final static int _LAYER_RANGE           = 1;
     private final static int _LAYER_CONTENT         = 2;
-    private final static int _LAYER_HIGHLIGHT       = 3;
-    private final static int _LAYER_EVENT           = 4;
+    private final static int _LAYER_CURRENT         = 3;
+    private final static int _LAYER_TARGET          = 4;
+    private final static int _LAYER_EVENT           = 5;
 
 
     /**
@@ -115,7 +95,8 @@ public class GameMapView extends View {
         initBackgroundLayer();
         initRangeLayer();
         initContentLayer();
-        initHighlightLayer();
+        initCurrentLayer();
+        initTargetLayer();
         initEventLayer();
     }
 
@@ -168,36 +149,23 @@ public class GameMapView extends View {
     }
 
     /**
-     * The selectedLocation property is for location of the cell which has been chosen.
+     * The method of initCurrentLayer
      */
-    private Point selectedLocation;
-
-
-    /**
-     * This method is for classes to get the location of the selected cell
-     * @return selectedLocation
-     */
-    public Point getSelectedLocation() {
-        return selectedLocation;
+    private void initCurrentLayer() {
+        newLayer();
+        refreshCurrentLayer();
     }
 
-    /**
-     * This property is for a new ImageView
-     */
-    private ImageView selectionView;
 
     /**
      * This method is to show the selected cell on this layer
      */
-    private void initHighlightLayer(){
+    private void initTargetLayer(){
         newLayer();
-        GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
+        refreshTargetLayer();
 
-        selectedLocation = new Point(0, 0);
-        selectionView = new ImageView();
-        selectionView.setName("selected.png");
-        layerView.addCell(selectionView, selectedLocation);
     }
+
 
     /**
      * This method adds an event if a cell is pressed and to get the location of this cell
@@ -246,24 +214,70 @@ public class GameMapView extends View {
     }
 
     /**
-     * This method gets location from the Event layer and pass the parameter to Highlight layer.
-     * So that it can draw the selected cell on Highlight layer.
+     * This method gets location from the Event layer and pass the parameter to Target layer.
+     * So that it can draw the selected cell on Target layer.
      * @param location
      */
     private void cellPressed(Point location){
-        GameMapLayerView layerView = layers.get(_LAYER_HIGHLIGHT);
-        layerView.moveCell(selectedLocation, location);
-        selectedLocation = location;
-        repaint();
+        PlayRuntime.currentRuntime().getPlay().setTargetLocation(location);
+    }
 
-        delegate.gameMapViewSelectPerformAction(this, location);
+    /**
+     * Override method of update, used in observer.
+     * @param o
+     * @param arg
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        if (BaseUpdate.when(arg)
+                .match(GameMap.Update.CELL)
+                .check()) {
+            SwingUtilities.invokeLater(this::refreshContent);
+
+        } else if (BaseUpdate.when(arg)
+                .match(Play.Update.RANGE)
+                .check()) {
+            SwingUtilities.invokeLater(this::refreshRange);
+
+        } else if (BaseUpdate.when(arg)
+                .match(Play.Update.TARGET)
+                .check()) {
+            SwingUtilities.invokeLater(this::refreshTargetLayer);
+
+        }  else if (BaseUpdate.when(arg)
+                .match(Play.Update.CURRENT)
+                .check()) {
+            SwingUtilities.invokeLater(this::refreshCurrentLayer);
+        }
+    }
+
+
+    /**
+     * This method refreshes RangeLayer.
+     */
+    private void refreshRange(){
+        GameMapLayerView layerView = layers.get(_LAYER_RANGE);
+        layerView.removeAllCells();
+
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        if (play.isRangeIndicationEnabled()) {
+            List<Point> rangeIndicationLocations = play.getRangeIndicationLocations();
+
+            for (Point location : rangeIndicationLocations) {
+                ImageView imageView = new ImageView();
+                imageView.setName(play.getRangeIndicationMode().getImageName());
+                layerView.addCell(imageView, location);
+
+            }
+        }
+        repaint();
     }
 
     /**
      * This method refreshes the Content layer when it occurs some event on that,
      * for example, add a new cell view, remove a cell view, or move a cell view, etc.
      */
-    public void refreshContent(){
+    private void refreshContent(){
         GameMapLayerView layerView = layers.get(_LAYER_CONTENT);
         layerView.removeAllCells();
 
@@ -276,10 +290,9 @@ public class GameMapView extends View {
                 Cell cell = gameMap.getCell(location);
                 if (cell instanceof Player) {
                     PlayerCellView playerCellView = new PlayerCellView();
-                    playerCellView.setPlayer(player);
+                    playerCellView.setPlayer((Player) cell);
                     layerView.addCell(playerCellView, location);
-                }
-                if (cell != null) {
+                }else if (cell != null) {
                     ImageView imageView = new ImageView();
                     imageView.setName(cell.getImageName());
                     layerView.addCell(imageView, location);
@@ -291,40 +304,38 @@ public class GameMapView extends View {
     }
 
     /**
-     * This method refreshes HighlightLayer.
+     * The method of refreshCurrentLayer
      */
-    public void refreshHighlight() {
-        GameMapLayerView highlightLayerView = layers.get(_LAYER_HIGHLIGHT);
-        highlightLayerView.removeAllCells();
-        this.initHighlightLayer();
+    private void refreshCurrentLayer() {
+        GameMapLayerView layerView = layers.get(_LAYER_CURRENT);
+        layerView.removeAllCells();
 
+
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        if (play.getMainPlayer() != null) {
+            Player currentPlayer = play.currentPlayer();
+            Point location = currentPlayer.getLocation();
+            ImageView imageView = new ImageView();
+            imageView.setName("selected_current.png");
+            layerView.addCell(imageView, location);
+        }
         repaint();
     }
 
     /**
-     * This method regreshes AttackrangeLayer.
+     * The method of refreshTargetLayer
      */
-    public void refreshRange(){
-        GameMapLayerView rangeLayerView = layers.get(_LAYER_RANGE);
-        rangeLayerView.removeAllCells();
+    private void refreshTargetLayer() {
+        GameMapLayerView layerView = layers.get(_LAYER_TARGET);
+        layerView.removeAllCells();
 
-        HashMap<String, String> playerParties = new HashMap<>();
-        playerParties.put(Player.PLAYER_PARTY_PLAYER, "player");
-        playerParties.put(Player.PLAYER_PARTY_HOSTILE, "hostile");
-        playerParties.put(Player.PLAYER_PARTY_FRIENDLY, "friendly");
-
-//        Map<Player, List<Point>> attackRanges = gameMap.getAttackRanges();
-//
-//        for (Player player : attackRanges.keySet()) {
-//            ImageView imageView = new ImageView();
-//            imageView.setName("attack_range_" + playerParties.get(player.getPlayerParty()) + ".png");
-//
-//            List<Point> points = attackRanges.get(player);
-//            for (Point point : points) {
-//                rangeLayerView.addCell(imageView, point);
-//            }
-//
-//        }
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        if (play.isTargetLocationEnabled()) {
+            Point targetLocation = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
+            ImageView imageView = new ImageView();
+            imageView.setName("selected_target.png");
+            layerView.addCell(imageView, targetLocation);
+        }
 
         repaint();
     }

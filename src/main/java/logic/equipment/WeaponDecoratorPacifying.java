@@ -10,18 +10,25 @@ import logic.effect.EffectPacifying;
  */
 public class WeaponDecoratorPacifying extends WeaponDecorator {
 
+    /**
+     * This method is used to WeaponDecoratorPacifying
+     * @param decoratedWeapon
+     */
     public WeaponDecoratorPacifying(Weapon decoratedWeapon) {
         super(decoratedWeapon);
     }
 
     @Override
-    public String displayName() {
-        return super.displayName() + " P";
-    }
-
-    @Override
     public Weapon getOrigin() {
         return decoratedWeapon.getOrigin();
+    }
+
+    /**
+     * @override methods
+     */
+    @Override
+    public String displayName() {
+        return super.displayName() + " PAC";
     }
 
     @Override

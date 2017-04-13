@@ -9,9 +9,8 @@ import java.util.List;
 
 /**
  * @author Li Zhen
- * @version 0.2
- *
- * this class is to manage the files of player
+ * @version 0.3
+ * this class is to manage the files of currentPlayer
  */
 public class PlayerFileManager {
     /**
@@ -32,7 +31,6 @@ public class PlayerFileManager {
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/players/" + newName + ".ply.json";
-        System.out.println(newName);
         return new File(newName);
 
     }

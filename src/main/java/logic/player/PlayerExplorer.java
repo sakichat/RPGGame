@@ -1,16 +1,19 @@
 package logic.player;
 
 /**
- * this is the class that command the different builders of player
+ * this is the class that command the different builders of currentPlayer
  * @author Li Zhen
- * @version 0.2
+ * @version 0.3
  */
 public class PlayerExplorer {
 
+    /**
+     * The property of playerBuilder
+     */
     private PlayerBuilder playerBuilder;
 
     /**
-     * this is the method that  set builder of player
+     * this is the method that  set builder of currentPlayer
      * @param playerBuilder PlayerBuilder
      */
     public void setPlayerBuilder(PlayerBuilder playerBuilder) {
@@ -18,7 +21,7 @@ public class PlayerExplorer {
     }
 
     /**
-     * this is the method that construct the player via plyerName and level
+     * this is the method that construct the currentPlayer via plyerName and level
      * @param playerName String
      * @param level int
      */

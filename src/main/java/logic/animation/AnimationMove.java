@@ -1,23 +1,43 @@
-package logic.interation;
+package logic.animation;
 
 import logic.map.Movement;
 import logic.map.Point;
 import logic.turn.TurnThread;
 
-public class InteractionMove extends Interaction {
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
+public class AnimationMove extends Animation {
+    /**
+     * attribute
+     */
     private Movement movement;
 
+    /**
+     * getter
+     * @return Movement
+     */
     public Movement getMovement() {
         return movement;
     }
 
-    public void setMovement(Movement movement) {
+    /**
+     * setter
+     * @param movement
+     * @return AnimationMove
+     */
+    public AnimationMove setMovement(Movement movement) {
         this.movement = movement;
+        return this;
     }
 
+    /**
+     * @override method to animate
+     */
     @Override
-    public void execute() {
-        Point source = player.getLocation();
+    public void animate() {
+        Point source = currentPlayer.getLocation();
         Point target;
         for (Point.Direction direction : movement) {
             target = source.add(direction);

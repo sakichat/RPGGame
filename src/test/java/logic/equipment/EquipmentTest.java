@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  *
  * This class is to test the class of Equipment.
  */
@@ -80,5 +80,24 @@ public class EquipmentTest {
 
         equipment = equipmentFactory.newEquipment("", Equipment.BOOTS, Player.ABILITY_DEX, 1);
         Assert.assertEquals(true, equipment.validate());
+    }
+
+    @Test
+    public void rangeWeapon() throws Exception {
+        EquipmentFactory equipmentFactory = new EquipmentFactory();
+
+        Weapon weapon = equipmentFactory.newWeapon();
+        weapon.setType(Equipment.WEAPON);
+        weapon.setEnhancedValue(3);
+        weapon.setEnhancedAttribute(Player.ATTRIBUTE_ARMOR_CLASS);
+        weapon.setRange(2);
+        weapon.setWeaponType(Weapon.Type.RANGED);
+
+        Player player1 = new Player();
+        Player player2 = new Player();
+
+//        GameMap gameMap = PlayRuntime.currentRuntime().getMap().addCell();
+
+        Assert.assertTrue(!weapon.validate());
     }
 }

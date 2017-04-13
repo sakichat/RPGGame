@@ -11,19 +11,34 @@ import java.awt.*;
 
 /**
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  *
  * This scene is for editing the equipments.
  */
 public class ItemEditingScene extends Scene {
 
+    /**
+     * property of equipment
+     */
     private Equipment equipment;
+
+    /**
+     * property of weaponSubPanelEnabeld
+     */
     private boolean weaponSubPanelEnabeld;
 
+    /**
+     * The method of isWeaponSubPanelEnabeld
+     * @return boolean
+     */
     public boolean isWeaponSubPanelEnabeld() {
         return weaponSubPanelEnabeld;
     }
 
+    /**
+     * The method of setWeaponSubPanelEnabeld
+     * @param weaponSubPanelEnabeld boolean
+     */
     public void setWeaponSubPanelEnabeld(boolean weaponSubPanelEnabeld) {
         this.weaponSubPanelEnabeld = weaponSubPanelEnabeld;
     }
@@ -510,8 +525,6 @@ public class ItemEditingScene extends Scene {
 
         validateButton.addActionListener(e -> {
 
-            System.out.println(equipment);
-
             if(equipment.validate()){
                 saveButton.setEnabled(true);
                 validateResultLabel.setText("Success!");
@@ -589,24 +602,41 @@ public class ItemEditingScene extends Scene {
      */
     public void dataToView(){
 
+//        if (equipment instanceof Weapon) {
+//            nameLabel.setText(equipment.displayName());
+//        } else {
+//            nameLabel.setText(equipment.getName());
+//        }
+        
+        nameLabel.setText(equipment.getName());
+
         typeLabel.setText(equipment.getType());
         enhanceOnLabel.setText(equipment.getEnhancedAttribute());
         valueTextField.setText(equipment.getEnhancedValue() + "");
 
-        if (weaponSubPanelEnabeld) {
+        if (equipment instanceof Weapon){
+            Weapon weapon = (Weapon) this.equipment;
 
-            Weapon weapon = (Weapon)equipment;
+            int range = weapon.getRange();
+            rangeTextField.setText(range + "");
 
             nameLabel.setText(equipment.displayName());
 
-            contentView.add(weaponSubPanel);
-            weaponTypeLabel.setText(weapon.getWeaponType().display());
-            rangeTextField.setText(weapon.getRange() + "");
-            effectsValueLabel.setText(weapon.enchantmentsChainText());
-
-        } else {
-            nameLabel.setText(equipment.getName());
+            String enhancementsChainText = weapon.enchantmentsChainText();
+            effectsValueLabel.setText(enhancementsChainText);
         }
+
+//        if (weaponSubPanelEnabeld) {
+//            Weapon weapon = (Weapon)equipment;
+//            contentView.add(weaponSubPanel);
+//            weaponTypeLabel.setText(weapon.getWeaponType().display());
+//            rangeTextField.setText(weapon.getRange() + "");
+//            effectsValueLabel.setText(weapon.enchantmentsChainText());
+//
+//        } else {
+//            nameLabel.setText(equipment.getName());
+//        }
+
     }
 
 

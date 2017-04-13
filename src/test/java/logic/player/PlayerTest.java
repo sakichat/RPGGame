@@ -2,15 +2,16 @@ package logic.player;
 
 import logic.equipment.Equipment;
 import logic.equipment.EquipmentFactory;
+import logic.equipment.Weapon;
+import logic.equipment.WeaponDecoratorBurning;
 import logic.map.Chest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by GU_HAN on 2017-02-26.
  * @author GU_HAN
- * @version 0.2
+ * @version 0.3
  *
  * This class tests wearing items correctly influence the character's abilities, character cannot wear more than
  * one item of each kind, and looting a chest.
@@ -20,6 +21,7 @@ public class PlayerTest {
      * These parameters is pre-defined attributes for every method in this test class to use.
      */
     private Player player;
+    private Player targetPlayer;
     private Equipment equipmentArmorAC1;
     private Equipment equipmentArmorAC3;
     private Equipment equipmentArmorAC5;
@@ -34,6 +36,7 @@ public class PlayerTest {
     private Equipment equipmentBootsAC3;
     private Equipment equipmentRingCon3;
     private Equipment equipmentWeaponAB5;
+    private Weapon    weaponDB3Range2;
     private Chest chest;
 
     /**
@@ -44,6 +47,9 @@ public class PlayerTest {
     public void setUp() throws Exception {
         player = new Player();
         player.generateAbilities();
+
+        targetPlayer = new Player();
+        targetPlayer.generateAbilities();
 
         EquipmentFactory equipmentFactory = new EquipmentFactory();
 
@@ -62,6 +68,13 @@ public class PlayerTest {
         equipmentBootsAC3   = equipmentFactory.newEquipment("A", Equipment.BOOTS, Player.ATTRIBUTE_ARMOR_CLASS, 3);
         equipmentRingCon3   = equipmentFactory.newEquipment("A", Equipment.RING,  Player.ABILITY_CON, 3);
         equipmentWeaponAB5  = equipmentFactory.newEquipment("A", Equipment.WEAPON,Player.ATTRIBUTE_ATTACK_BONUS, 5);
+
+        weaponDB3Range2 = equipmentFactory.newWeapon();
+        weaponDB3Range2.setType(Equipment.WEAPON);
+        weaponDB3Range2.setEnhancedValue(3);
+        weaponDB3Range2.setEnhancedAttribute(Player.ATTRIBUTE_DAMAGE_BONUS);
+        weaponDB3Range2.setRange(2);
+        weaponDB3Range2.setWeaponType(Weapon.Type.RANGED);
 
         player.pickUpEquipment(equipmentArmorAC1);
         player.pickUpEquipment(equipmentArmorAC3);
@@ -95,7 +108,6 @@ public class PlayerTest {
         int preCon = player.getTotalAbilityScore(Player.ABILITY_CON);
         int preWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
         int preCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
-        int dexModifier1 = player.getAbilityModifier(Player.ABILITY_DEX);
 
         player.equip(equipmentHelmetInt3);
 
@@ -105,7 +117,6 @@ public class PlayerTest {
         int nowCon = player.getTotalAbilityScore(Player.ABILITY_CON);
         int nowWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
         int nowCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
-        int dexModifier = player.getAbilityModifier(Player.ABILITY_DEX);
 
         Assert.assertTrue(preInt == nowInt - equipmentHelmetInt3.getEnhancedValue());
         Assert.assertTrue(preStr == nowStr);
@@ -117,8 +128,8 @@ public class PlayerTest {
     }
 
     /**
-     * This case tests if player can wear more than one item of each kind, wihch means
-     * if the player will drop previous item if he already wears one of the same category.
+     * This case tests if currentPlayer can wear more than one item of each kind, wihch means
+     * if the currentPlayer will drop previous item if he already wears one of the same category.
      * @throws Exception
      */
     @Test
@@ -138,56 +149,10 @@ public class PlayerTest {
         Assert.assertTrue(pre == after - equipmentArmorAC5.getEnhancedValue());
     }
 
-    /**
-     * This case tests if the player will correctly loot the chest, which means the player will get
-     * the item in the chest to his backpack.
-     * @throws Exception
-     */
-    @Test
-    public void lootChest1() throws Exception {
-        player.dropEquipment(equipmentArmorAC1);
-        player.dropEquipment(equipmentArmorAC3);
-        player.dropEquipment(equipmentArmorAC5);
-        player.dropEquipment(equipmentHelmetInt3);
-        player.dropEquipment(equipmentHelmetWis5);
-        player.dropEquipment(equipmentHelmetAC2);
-        player.dropEquipment(equipmentShieldAC3);
-        player.dropEquipment(equipmentShieldAC4);
 
-        int chestSize    = chest.getEquipments().size();
-        int previousSize = player.equipmentsInBackpack().size();
-
-        player.lootChest(chest);
-
-        int nowSize         = player.equipmentsInBackpack().size();
-        boolean containItem = player.equipmentsInBackpack().contains(equipmentBootsAC3);
-
-        Assert.assertEquals(nowSize, previousSize + chestSize);
-        Assert.assertTrue(containItem);
-    }
 
     /**
-     * This case tests if the player will correctly loot the chest, which means the player's backpack
-     * will get as much as equipments as it can. Besides, the chest will keep the left items as well.
-     * @throws Exception
-     */
-    @Test
-    public void lootChest2() throws Exception {
-        player.dropEquipment(equipmentArmorAC1);
-        player.dropEquipment(equipmentArmorAC3);
-        int previousChestSize = chest.getEquipments().size();
-        int previousPlayerBackpackSize = player.equipmentsInBackpack().size();
-
-        player.lootChest(chest);
-
-        int nowChestSize = chest.getEquipments().size();
-
-        Assert.assertTrue(player.isBackpackFull());
-        Assert.assertEquals(nowChestSize, previousChestSize - (10 - previousPlayerBackpackSize));
-    }
-
-    /**
-     * This case tests if the generateAbilities method will correctly set up player's abilities.
+     * This case tests if the generateAbilities method will correctly set up currentPlayer's abilities.
      * @throws Exception
      */
     @Test
@@ -261,12 +226,17 @@ public class PlayerTest {
     }
 
     /**
-     * This case tests an attack hits if the attack roll is greater than the armor class of the target.
+     * This method tests the weapon's special effects in combat using the Decorator pattern.
      * @throws Exception
      */
     @Test
-    public void attack1() throws Exception {
+    public void specialEffect() throws Exception {
+        player.dropEquipment(equipmentArmorAC1);
 
+        WeaponDecoratorBurning weaponDecoratorBurning = new WeaponDecoratorBurning(weaponDB3Range2);
+
+        player.pickUpEquipment(weaponDecoratorBurning);
+        player.equip(weaponDecoratorBurning);
     }
 
     /**
@@ -274,9 +244,90 @@ public class PlayerTest {
      * @throws Exception
      */
     @Test
+    public void attack1() throws Exception {
+        int attackRoll = player.generateAttackRoll();
+        int attackRoll2 = player.generateAttackRoll();
+        int attackRoll3 = player.generateAttackRoll();
+        int attackRoll4 = player.generateAttackRoll();
+        int attackRoll5 = player.generateAttackRoll();
+
+        Assert.assertTrue(attackRoll <= 39 && attackRoll >= -5);
+        Assert.assertTrue(attackRoll2 <= 39 && attackRoll2 >= -5);
+        Assert.assertTrue(attackRoll3 <= 39 && attackRoll3 >= -5);
+        Assert.assertTrue(attackRoll4 <= 39 && attackRoll4 >= -5);
+        Assert.assertTrue(attackRoll5 <= 39 && attackRoll5 >= -5);
+    }
+
+    /**
+     * This case tests an attack hits if the attack roll is greater than the armor class of the target.
+     * @throws Exception
+     */
+    @Test
     public void attack2() throws Exception {
+        Player player1 = new Player();
+
+        while(player1.getAbilityScore(Player.ABILITY_STR) != 24){
+            player1.generateAbilities();
+        }
+
+        EquipmentFactory equipmentFactory = new EquipmentFactory();
+
+        Weapon weapon = equipmentFactory.newWeapon();
+        weapon.setType(Equipment.WEAPON);
+        weapon.setEnhancedValue(5);
+        weapon.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
+        weapon.setRange(5);
+        weapon.setWeaponType(Weapon.Type.RANGED);
+        player1.pickUpEquipment(weapon);
+        player1.equip(weapon);
+
+        Player player2 = new Player();
+
+        boolean canAttack = player1.shouldDealDamage(player2);
+
+        Assert.assertTrue(canAttack);
+    }
+
+    @Test
+    public void notAttack() throws Exception {
+        Player player1 = new Player();
+        Player player2 = new Player();
+
+        while(player2.getAbilityScore(Player.ABILITY_DEX) != 24){
+            player2.generateAbilities();
+        }
+
+        player2.pickUpEquipment(equipmentArmorAC5);
+        player2.equip(equipmentArmorAC5);
+        player2.pickUpEquipment(equipmentBootsAC3);
+        player2.equip(equipmentBootsAC3);
+        player2.pickUpEquipment(equipmentHelmetAC2);
+        player2.equip(equipmentHelmetAC2);
+
+
+
+        boolean canNotAttack = !player1.shouldDealDamage(player2);
+
+        Assert.assertTrue(canNotAttack);
 
     }
 
+    /**
+     * This case tests the damage inflicted is using the right damage modifiers.
+     * @throws Exception
+     */
+    @Test
+    public void damage() throws Exception {
+        int damage = player.generateDamage();
+        int damage2 = player.generateDamage();
+        int damage3 = player.generateDamage();
+        int damage4 = player.generateDamage();
+        int damage5 = player.generateDamage();
 
+        Assert.assertTrue(damage <= 20 && damage >= 1);
+        Assert.assertTrue(damage2 <= 20 && damage2 >= 1);
+        Assert.assertTrue(damage3 <= 20 && damage3 >= 1);
+        Assert.assertTrue(damage4 <= 20 && damage4 >= 1);
+        Assert.assertTrue(damage5 <= 20 && damage5 >= 1);
+    }
 }

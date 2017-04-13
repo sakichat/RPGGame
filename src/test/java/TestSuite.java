@@ -1,6 +1,6 @@
 import logic.CampaignTest;
-import logic.PlayTest;
 import logic.equipment.EquipmentTest;
+import logic.interaction.InteractionTest;
 import logic.map.GameMapGraphTest;
 import logic.map.GameMapTest;
 import logic.map.MovementTest;
@@ -13,15 +13,14 @@ import persistence.FileManagerTest;
 import persistence.MapFileManagerTest;
 
 /**
- * Created by GU_HAN on 2017-03-19.
  * @author GU_HAN
- * @version 0.2
- *
+ * @version 0.3
  * This class is for testSuite.
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-                    EquipmentTest.class ,
+                    EquipmentTest.class,
+                    InteractionTest.class,
                     GameMapGraphTest.class,
                     GameMapTest.class,
                     MovementTest.class,
@@ -29,7 +28,6 @@ import persistence.MapFileManagerTest;
                     PlayerExplorerTest.class,
                     PlayerTest.class,
                     CampaignTest.class,
-                    PlayTest.class,
                     FileManagerTest.class,
                     MapFileManagerTest.class})
 public class TestSuite {

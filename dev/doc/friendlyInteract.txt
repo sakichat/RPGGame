@@ -1,0 +1,31 @@
+PlayScene.java
+
+private void interactWithFriendlyNPC(Player targetPlayer) {
+
+    showInventoryPanelToExchange(play.getPlayer());
+
+}
+
+private void showInventoryPanelToExchange(Player player) {
+
+    inventoryPanel = new InventoryPanel();
+    inventoryPanel.setLocation(330, 10);
+    inventoryPanel.setPlayer(player);
+    inventoryPanel.setButtonEnabled(true);
+    inventoryPanel.setButtonText("Swap");
+    inventoryPanel.dataToView();
+    contentView.add(inventoryPanel);
+    inventoryPanel.setDelegate(this);
+
+    repaint();
+}
+
+@Override
+public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
+
+    play.getPlayer().dropInventories(equipment);
+    Player targetPlayer = (Player) play.getTartget();
+    Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
+    play.getPlayer().pickUpEquipment(exchangeEquipmentRandom);
+
+}

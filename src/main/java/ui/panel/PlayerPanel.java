@@ -10,14 +10,13 @@ import java.util.Observer;
 
 /**
  * @author Kai QI
- * @version 0.2
- *
+ * @version 0.3
  * This class if for PlayerPanel.
  */
 public class PlayerPanel extends Panel implements Observer {
 
     /**
-     * The attribute player and Getter & Setter.
+     * The attribute currentPlayer and Getter & Setter.
      */
     private Player player;
 
@@ -55,11 +54,11 @@ public class PlayerPanel extends Panel implements Observer {
     public void update(Observable O, Object x) {
 
         boolean change = false;
-        change = change || x.equals(Player.LEVEL_CHANGE);
-        change = change || x.equals(Player.PLAYER_TYPE_CHANGE);
-        change = change || x.equals(Player.PLAYER_PARTY_CHANGE);
-        change = change || x.equals(Player.ABILITY_CHANGE);
-        change = change || x.equals(Player.HP_CHANGE);
+        change = change || x.equals(Player.Update.LEVEL);
+        change = change || x.equals(Player.Update.PLAYER_TYPE);
+        change = change || x.equals(Player.Update.PLAYER_PARTY);
+        change = change || x.equals(Player.Update.ABILITY);
+        change = change || x.equals(Player.Update.HP);
 
         if (change) {
             dataToView();
@@ -261,7 +260,7 @@ public class PlayerPanel extends Panel implements Observer {
         Integer totalAbilityModifierCHA = player.getTotalAbilityModifier(Player.ABILITY_CHA);
         chaAbilityView.modifierLabel.setText(TextDisplay.signedNumber(totalAbilityModifierCHA));
 
-        hpValueLabel.setText(player.getHp() + "");
+        hpValueLabel.setText(player.getHp() +  "/" + player.getTotalHp() + "");
         abValueLabel.setText(player.getTotalAttackBonus() + "");
         acValueLabel.setText(player.getTotalArmorClass() + "");
         dbValueLabel.setText(player.getTotalDamageBonus() + "");

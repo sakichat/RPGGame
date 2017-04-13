@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * This class defines a ImageView to paint images on cells
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class ImageView extends View {
 

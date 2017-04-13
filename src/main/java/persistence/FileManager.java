@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * this class is a fileManager to manage the files
  * @author Li Zhen
- * @version 0.2
+ * @version 0.3
  */
 
 
@@ -71,6 +71,10 @@ public class FileManager {
         return content;
     }
 
+    /**
+     * This is method used for defualt Gson
+     * @return Gson
+     */
     public static Gson defaultGson(){
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()

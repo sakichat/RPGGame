@@ -7,8 +7,7 @@ import javax.swing.*;
 
 /**
  * @author Kai QI
- * @version 0.2
- *
+ * @version 0.3
  * This class is for PlayingControlView.
  *
  */
@@ -22,7 +21,7 @@ public class PlayingControlView extends ControlView {
     private Player player;
 
     /**
-     * This method is the player getter.
+     * This method is the currentPlayer getter.
      * @return
      */
     public Player getPlayer() {
@@ -30,7 +29,7 @@ public class PlayingControlView extends ControlView {
     }
 
     /**
-     * This method is the player setter.
+     * This method is the currentPlayer setter.
      * @param player
      */
     public void setPlayer(Player player) {
@@ -99,9 +98,9 @@ public class PlayingControlView extends ControlView {
         add(button);
         JButton viewInventoryButton = button;
 
-        viewAttributesButton.addActionListener(e -> playScene.viewAttribute(player));
+        viewAttributesButton.addActionListener(e -> playScene.showAttributesInspector(player));
 
-        viewInventoryButton.addActionListener(e -> playScene.viewInventory(player));
+        viewInventoryButton.addActionListener(e -> playScene.showInventoryInspector(player));
     }
 
     /**

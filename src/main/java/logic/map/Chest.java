@@ -1,6 +1,7 @@
 package logic.map;
 
 import com.google.gson.annotations.Expose;
+import logic.PlayRuntime;
 import logic.equipment.Equipment;
 
 import java.util.LinkedList;
@@ -13,6 +14,9 @@ import java.util.List;
  */
 public class Chest extends Cell{
 
+    /**
+     * Property of equipments
+     */
     @Expose
     private List<Equipment> equipments = new LinkedList<>();
 
@@ -45,7 +49,7 @@ public class Chest extends Cell{
      * This method is used to check if the chest is full or not.
      * @return
      */
-    private boolean isChestFull() {
+    private boolean isFull() {
         if (equipments.size() >= 10) {
             return true;
         } else {
@@ -57,7 +61,7 @@ public class Chest extends Cell{
      * This method is used to check if the chest is empty or not.
      * @return
      */
-    public boolean isChestEmpty(){
+    public boolean isEmpty(){
         if (equipments.isEmpty()) {
             return true;
         } else {
@@ -75,7 +79,7 @@ public class Chest extends Cell{
      * @param e
      */
     public void addEquipment(Equipment e) {
-        if (!isChestFull()) {
+        if (!isFull()) {
             equipments.add(e);
             setChanged();
             notifyObservers(CHEST_CHANGE);
@@ -90,18 +94,28 @@ public class Chest extends Cell{
         equipments.remove(e);
         setChanged();
         notifyObservers(CHEST_CHANGE);
+        tryQuit();
     }
 
     /**
-     * this method is to refresh the value of equipment accoding to the level of player
+     * this method is to refresh the value of equipment accoding to the level of currentPlayer
      * @param level int
      */
 
-    public void chestLevelRefresh(int level){
+    public void adaptEquipments(int level){
         if (equipments != null){
             for (Equipment equipment : equipments){
-                equipment.levelRefresh(level);
+                equipment.adapt(level);
             }
+        }
+    }
+
+    /**
+     * The method is used to check is the object is in a map.
+     */
+    private void tryQuit(){
+        if (isEmpty()) {
+            PlayRuntime.currentRuntime().getMap().removeCell(this.getLocation());
         }
     }
 

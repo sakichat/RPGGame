@@ -2,51 +2,33 @@ package logic;
 
 import com.google.gson.annotations.Expose;
 import logic.map.Cell;
-import logic.map.Chest;
 import logic.map.GameMap;
 import logic.map.Point;
 import logic.player.Player;
+import logic.turn.TurnStrategyAggressive;
+import logic.turn.TurnStrategyFriendly;
 import persistence.MapFileManager;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  * This is the class for play.
  */
-public class Play {
+public class Play extends Observable{
 
-    private static Play currentPlay;
+    //  =======================================================================
+    //  Section - Basic
+    //  =======================================================================
 
-    public static Play getCurrentPlay() {
-        return currentPlay;
-    }
-
-    public static void setCurrentPlay(Play currentPlay) {
-        Play.currentPlay = currentPlay;
-    }
-
+    /**
+     * property of name
+     */
     @Expose
     private String name;
 
-    @Expose
-    private Campaign campaign;
-
-    @Expose
-    private Player player;
-
-    @Expose
-    private int currentMapIndex;
-
-    @Expose
-    private Point.Direction direction;
-
-    @Expose
-    private GameMap currentMap;
-
-    @Expose
-    private LinkedList<Player> playerList;
 
     /**
      * Getter for name.
@@ -63,6 +45,112 @@ public class Play {
     public void setName(String name) {
         this.name = name;
     }
+
+    //  =======================================================================
+    //  Section - Context
+    //  =======================================================================
+
+    /**
+     * property of mainPlayer
+     */
+    @Expose
+    private Player mainPlayer;
+
+    /**
+     * Getter for mainPlayer
+     * @return Player
+     */
+    public Player getMainPlayer() {
+        return mainPlayer;
+    }
+
+    /**
+     * Setter for mainPlayer
+     * @param mainPlayer
+     */
+    public void setMainPlayer(Player mainPlayer) {
+        this.mainPlayer = mainPlayer;
+    }
+
+    //  =======================================================================
+    //  Section - Campaign
+    //  =======================================================================
+
+    /**
+     * property of campaign
+     */
+    @Expose
+    private Campaign campaign;
+
+    /**
+     * property of currentMapIndex
+     */
+    @Expose
+    private int currentMapIndex;
+
+    /**
+     * property of currentMap
+     */
+    @Expose
+    private GameMap currentMap;
+
+    /**
+     * The method of setCurrentMap
+     */
+    public void setCurrentMap(GameMap currentMap) {
+        this.currentMap = currentMap;
+    }
+
+    /**
+     * This is the method for get currentMap,
+     * and add mainPlayer into the map(enter).
+     */
+    public void resolveMap(){
+        String mapName = campaign.getMapName(currentMapIndex);
+        currentMap = MapFileManager.read(mapName);
+        currentMap.enter(mainPlayer);
+        initStrategy();
+        initTurnOrder();
+    }
+
+    /**
+     * The method of initStrategy
+     */
+    private void initStrategy(){
+        List<Player> players = currentMap.getPlayers();
+        for (Player player : players) {
+            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_FRIENDLY)) {
+                player.setStrategy(new TurnStrategyFriendly());
+
+            } else if (player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
+                player.setStrategy(new TurnStrategyAggressive());
+            }
+        }
+    }
+
+    /**
+     * This is the method for exit from currentMap,
+     * move into next map.
+     */
+    public void moveToNextMap(){
+        currentMapIndex++;
+        resolveMap();
+    }
+
+
+    /**
+     * This is the method for judging
+     * whether currentMap is the last map in campaign.
+     * @return Boolean
+     */
+    public boolean isLastMap(){
+        int campaignSize = campaign.getMapNames().size();
+        if (currentMapIndex == (campaignSize - 1)) {
+            return true;
+        }
+        return false;
+    }
+
 
     /**
      * Getter for campaign
@@ -81,235 +169,232 @@ public class Play {
     }
 
     /**
-     * Getter for player
-     * @return Player
-     */
-    public Player getPlayer() {
-        return player;
-    }
-
-    /**
-     * Setter for player
-     * @param player
-     */
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    /**
-     * Getter for direction
-     * @return direction
-     */
-    public Point.Direction getDirection() {
-        return direction;
-    }
-
-    /**
-     * Setter for direction
-     * @param direction
-     */
-    public void setDirection(Point.Direction direction) {
-        this.direction = direction;
-    }
-
-    /**
      * Getter for currentMap.
      * @return GameMap
      */
-    public GameMap getCurrentMap() {
+    public GameMap currentMap() {
         return currentMap;
     }
 
-    /**
-     * Getter for playerList.
-     * @return LinkedList<Player>
-     */
-    public LinkedList<Player> getPlayerList() {
-        return playerList;
-    }
+    //  =======================================================================
+    //  Section - Order
+    //  =======================================================================
 
     /**
-     * This is the method for get currentMap,
-     * and add player into the map(enter).
+     * property of currentPlayerIndex
      */
-    public void resolveMap(){
-        String mapName = campaign.getMapName(currentMapIndex);
-        currentMap = MapFileManager.read(mapName);
-        enterIntoMap();
-    }
+    private int currentPlayerIndex;
 
     /**
-     * This is the method for exit from currentMap,
-     * move into next map.
+     * property of playerOrders
      */
-    public void moveToNextMap(){
-        currentMapIndex++;
-        resolveMap();
-    }
-
-    /**
-     * This is the method for judging
-     * whether currentMap is the last map in campaign.
-     * @return Boolean
-     */
-    public boolean isLastMap(){
-        int campaignSize = campaign.getMapNames().size();
-        if (currentMapIndex == (campaignSize - 1)) {
-            return true;
-        }
-        return false;
-    }
+    private LinkedList<Player> playerOrders;
 
     /**
      * This is the method for sort the players in play list
      */
-    public void playerSortList(){
-        playerList = currentMap.getPlayers();
+    public void initTurnOrder(){
+        playerOrders = new LinkedList<>(currentMap.getPlayers());
         Map<Player, Integer> initiativeValues = new HashMap<Player, Integer>();
 
         int sortStandard;
 
-        for (Player sortingPlayer : playerList) {
-            int diceScore = Dice.rool(20);
+        for (Player sortingPlayer : playerOrders) {
+            int diceScore = Dice.roll(20);
             int dexScore = sortingPlayer.getTotalAbilityModifier(Player.ABILITY_DEX);
             sortStandard = diceScore + dexScore;
             initiativeValues.put(sortingPlayer, sortStandard);
         }
 
-        Collections.sort(playerList, new Comparator<Player>() {
+        Collections.sort(playerOrders, new Comparator<Player>() {
                     @Override
                     public int compare(Player o1, Player o2) {
                         return initiativeValues.get(o2).compareTo(initiativeValues.get(o1));
                     }
                 }
         );
+        List<String> orders = playerOrders.stream().map(p -> p.toString()).collect(Collectors.toList());
+        Logger.getInstance().log(orders.toString());
     }
 
     /**
-     * This is the method to make player move.
+     * The method of currentPlayer
+     * @return Player
      */
-    public void move(){
-        Point location = player.getLocation();
-        Point targetLocation = location.add(direction);
-//        int differenceX = Math.abs(location.getX() - targetLocation.getX());
-//        int differenceY = Math.abs(location.getY() - targetLocation.getY());
-//        int difference = differenceX + differenceY;
-//        difference <= 1 &&
-
-        if ( currentMap.canPlace(targetLocation)){
-            currentMap.moveCell(location, targetLocation);
-        }
+    public Player currentPlayer(){
+        return playerOrders.get(currentPlayerIndex);
     }
 
     /**
-     * This is a method makes player enter into the map.
-     * @return Point
+     * The method of nextPlayer
+     * @return Player
      */
-    private void enterIntoMap(){
-        Point entrance = currentMap.getEntrances().get(0).getLocation();
+    public Player nextPlayer(){
+        currentPlayerIndex += 1;
+        currentPlayerIndex %= playerOrders.size();
+        Logger.getInstance().log("turn to " + currentPlayer());
 
-        List<Point.Direction> directions = Point.Direction.directions();
-        for (Point.Direction direction : directions) {
-            Point enter = entrance.add(direction);
+        updateCurrent();
+        return currentPlayer();
+    }
 
-            if (currentMap.canPlace(enter)){
-                currentMap.addCell(player, enter);
-                this.direction = direction;
-                mapLevelRefresh();
-                break;
-            }
-        }
+    public void updateCurrent(){
+        setChanged();
+        notifyObservers(Update.CURRENT);
     }
 
 
+    //  =======================================================================
+    //  Section - Target
+    //  =======================================================================
+
     /**
-     * This method is to refresh level of all the characters and chests on the map.
+     * Property of targetLocationEnabled
      */
-    private void mapLevelRefresh() {
-
-        List<Chest> chests = currentMap.getChests();
-        List<Player> players = currentMap.getPlayers();
-
-        int level = player.getLevel();
-
-        for (Player character : players) {
-            if (!character.equals(Player.PLAYER_PARTY_PLAYER)){
-                character.setLevel(level);
-                character.inventoryLevelRefresh();
-            }
-        }
-
-        for (Chest chest : chests) {
-            chest.chestLevelRefresh(level);
-        }
-
-    }
+    private boolean targetLocationEnabled;
 
     /**
-     * This method is used for judge whether the objectives are fulfilled
-     * @return Boolean
+     * Property of targetLocation
      */
-    public Boolean isObjective() {
-        List<Player> players = currentMap.getPlayers();
-        List<Player> hostilePlayers = new LinkedList<Player>();
-
-        for (Player player : players) {
-            if (player.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
-                hostilePlayers.add(player);
-            }
-        }
-
-        boolean objectiveFulfilled = true;
-
-        for (Player hostilePlayer : hostilePlayers) {
-            if (!hostilePlayer.isDead()) {
-                objectiveFulfilled = false;
-            }
-        }
-
-        return objectiveFulfilled;
-    }
+    private Point targetLocation;
 
     /**
-     * This is the method for get target cell in direction
+     * The method of getTarget
      * @return Cell
      */
     public Cell getTarget(){
-        Point location = player.getLocation();
-        Point targetLocation = location.add(direction);
-        Cell cell = currentMap.getCell(targetLocation);
-        return cell;
+        return currentMap.getCell(targetLocation);
     }
 
     /**
-     * This method is used for removing chest when it is empty.
+     * The method of isTargetLocationEnabled
+     * @return boolean
      */
-    public void refreshChest() {
-        Point location = player.getLocation();
-        Point chestPoint = location.add(direction);
+    public boolean isTargetLocationEnabled() {
+        return targetLocationEnabled;
+    }
 
-        Chest chest = (Chest) currentMap.getCell(chestPoint);
-        if (chest.isChestEmpty()) {
-            currentMap.removeCell(chestPoint);
+    /**
+     * The method of setTargetLocationEnabled
+     * @param targetLocationEnabled boolean
+     */
+    public void setTargetLocationEnabled(boolean targetLocationEnabled) {
+        this.targetLocationEnabled = targetLocationEnabled;
+        setChanged();
+        notifyObservers(Update.TARGET);
+    }
+
+    /**
+     * The method of getTargetLocation
+     * @return
+     */
+    public Point getTargetLocation() {
+        return targetLocation;
+    }
+
+    /**
+     * The method of setTargetLocation
+     * @param targetLocation Point
+     */
+    public void setTargetLocation(Point targetLocation) {
+        this.targetLocation = targetLocation;
+        setTargetLocationEnabled(true);
+    }
+
+
+    //  =======================================================================
+    //  Section - Observer
+    //  =======================================================================
+
+    /**
+     * The method of Update
+     */
+    public static class Update{
+        public static String RANGE = "play range";
+        public static String TARGET = "play target";
+        public static String CURRENT = "play current";
+    }
+
+    //  =======================================================================
+    //  Section - Range
+    //  =======================================================================
+
+    /**
+     * The method of RangeIndicationMode
+     */
+    public enum RangeIndicationMode {
+        MOVE("movement"), ATTACK("attack");
+
+        private String name;
+
+        RangeIndicationMode(String name) {
+            this.name = name;
+        }
+
+        public String getImageName(){
+            return name + "_range.png";
         }
     }
 
     /**
-     * This method is used for removing dead player when his inventory is empty.
+     * property of rangeIndicationEnabled
      */
-    public void refreshPlayer( ) {
+    private boolean rangeIndicationEnabled;
 
-        Player targetPlayer = (Player) getTarget();
+    /**
+     * property of rangeIndicationMode
+     */
+    private RangeIndicationMode rangeIndicationMode = RangeIndicationMode.MOVE;
 
-        Point location = player.getLocation();
-        Point targetLocation = location.add(direction);
+    /**
+     * property of rangeIndicationLocations
+     */
+    private List<Point> rangeIndicationLocations;
 
-        int size = targetPlayer.getInventories().size();
-        if (size == 0) {
-            currentMap.removeCell(targetLocation);
-        }
+    /**
+     * The method of setRangeIndication
+     * @param locations List
+     * @param mode RangeIndicationMode
+     */
+    public void setRangeIndication(List<Point> locations, RangeIndicationMode mode){
+        rangeIndicationLocations = locations;
+        rangeIndicationMode = mode;
+        setRangeIndicationEnabled(true);
     }
 
+    /**
+     * The method of isRangeIndicationEnabled
+     * @return
+     */
+    public boolean isRangeIndicationEnabled() {
+        return rangeIndicationEnabled;
+    }
+
+    /**
+     * The method of setRangeIndicationEnabled
+     * @param rangeIndicationEnabled boolean
+     */
+    public void setRangeIndicationEnabled(boolean rangeIndicationEnabled) {
+        this.rangeIndicationEnabled = rangeIndicationEnabled;
+        setChanged();
+        notifyObservers(Update.RANGE);
+    }
+
+    /**
+     * The method of getRangeIndicationMode
+     * @return RangeIndicationMode
+     */
+    public RangeIndicationMode getRangeIndicationMode() {
+        return rangeIndicationMode;
+    }
+
+    /**
+     * The method of getRangeIndicationLocations
+     * @return List
+     */
+    public List<Point> getRangeIndicationLocations() {
+        return rangeIndicationLocations;
+    }
 
 
 }

@@ -4,6 +4,9 @@ import logic.*;
 import logic.equipment.Equipment;
 import logic.map.*;
 import logic.player.Player;
+import logic.turn.TurnStrategy;
+import logic.turn.TurnStrategyHuman;
+import logic.turn.TurnThread;
 import persistence.PlayFileManager;
 import ui.controlView.*;
 import ui.panel.*;
@@ -11,20 +14,25 @@ import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
- * This is a PlayScene for player to play on created maps.
+ * This is a PlayScene for currentPlayer to play on created maps.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
-public class PlayScene extends Scene implements GameMapView.Delegate, InventoryPanel.Delegate {
+public class PlayScene extends Scene implements Observer, InventoryPanel.Delegate {
 
-    /**
-     * These parameters set play on this scene and create gameMapView and equipmentPanel.
-     */
+    //  =======================================================================
+    //  Section - Context
+    //  =======================================================================
+
     private Play play;
-    private GameMapView gameMapView;
-    private EquipmentPanel equipmentPanel;
+    private JButton startButton;
+    private JButton skipButton;
+    private JButton selectButton;
 
     /**
      * This is a setter for Play
@@ -33,10 +41,15 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     public void setPlay(Play play) {
         this.play = play;
 
-        titleLabel.setText(play.getName() + " - " + play.getCurrentMap().getName());
-        gameMapView.setGameMap(play.getCurrentMap());
+        titleLabel.setText(play.getName() + " - " + play.currentMap().getName());
+        gameMapView.setGameMap(play.currentMap());
 
     }
+
+    //  =======================================================================
+    //  Section - Life Cycle
+    //  =======================================================================
+
 
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
@@ -49,10 +62,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         saveButtonEnabled = true;
     }
 
-    /**
-     * These parameters are specific for view or buttons.
-     */
-    private View controlViewContainerView;
 
     /**
      * This method creates components on this scene
@@ -62,7 +71,6 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         gameMapView = new GameMapView();
         gameMapView.setLocation(40, 40);
         contentView.add(gameMapView);
-        gameMapView.setDelegate(this);
 
         controlViewContainerView = new View();
         controlViewContainerView.setLocation(820, 0);
@@ -71,118 +79,114 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
         JButton button;
 
-        button = new JButton("Skip");
+        button = new JButton("Start");
         button.setLocation(600, 40);
         button.setSize(160, 40);
         contentView.add(button);
-        JButton skipButton = button;
+        startButton = button;
 
         button = new JButton("Select");
+        button.setLocation(600, 160);
+        button.setSize(160, 40);
+        contentView.add(button);
+        selectButton = button;
+
+        button = new JButton("Next");
         button.setLocation(600, 100);
         button.setSize(160, 40);
         contentView.add(button);
-        JButton selectButton = button;
-
-//        button = new JButton(new ImageIcon("data/images/up_button.png"));
-//        button.setLocation(700, 30);
-//        button.setSize(40, 40);
-//        upDirectionButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton(new ImageIcon("data/images/left_button.png"));
-//        button.setLocation(650, 80);
-//        button.setSize(40, 40);
-//        leftDirectionButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton(new ImageIcon("data/images/center_button.png"));
-//        button.setLocation(700, 80);
-//        button.setSize(40, 40);
-//        interactButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton(new ImageIcon("data/images/right_button.png"));
-//        button.setLocation(750, 80);
-//        button.setSize(40, 40);
-//        rightDirectionButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton(new ImageIcon("data/images/down_button.png"));
-//        button.setLocation(700, 130);
-//        button.setSize(40, 40);
-//        downDirectionButton = button;
-//        contentView.add(button);
-//
-//        button = new JButton("Finish");
-//        button.setSize(140, 40);
-//        button.setLocation(650, 210);
-//        contentView.add(button);
-//        JButton finishButton = button;
+        skipButton = button;
 
         repaint();
+
 
         backButton.addActionListener(e -> PlayScene.this.navigationView.popTo(MainScene.class));
 
         saveButton.addActionListener(e -> {
-            save();
+            PlayFileManager.save(play);
             PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
-        skipButton.addActionListener(e -> move(Point.Direction.UP));
+        startButton.addActionListener(e -> PlayRuntime.currentRuntime().begin());
 
-        selectButton.addActionListener(e -> move(Point.Direction.DOWN));
+        skipButton.addActionListener(e -> {
+            PlayRuntime.currentRuntime().getPlay().setTargetLocationEnabled(false);
+            TurnThread.backToRun();
+        });
 
-//        interactButton.addActionListener(e -> {
-//            Cell targetCell = play.getTarget();
-//            interactWith(targetCell);
-//        });
+        selectButton.addActionListener(e -> {
+            switch (TurnThread.getUserResponse()){
+                case MOVE:      tryMove();      break;
+                case ATTACK:    tryAttack();    break;
+                case INTERACT:  tryInteract();  break;
+            }
+        });
+    }
 
+
+    //  =======================================================================
+    //  Section - Views
+    //  =======================================================================
+
+    /**
+     * The property of gameMapView
+     */
+    private GameMapView gameMapView;
+
+    /**
+     * The method of setEnableControls
+     * @param enableControls boolean
+     */
+    public void setEnableControls(boolean enableControls) {
+        if (enableControls) {
+            backButton.setEnabled(true);
+            saveButton.setEnabled(true);
+            startButton.setEnabled(true);
+            if (play.currentPlayer().getStrategy() instanceof TurnStrategyHuman) {
+                skipButton.setText("Skip " + TurnThread.getUserResponse().toString());
+                skipButton.setEnabled(true);
+                selectButton.setEnabled(true);
+            } else {
+                skipButton.setText("Next");
+                skipButton.setEnabled(true);
+            }
+
+        } else {
+            backButton.setEnabled(false);
+            saveButton.setEnabled(false);
+            startButton.setEnabled(false);
+            skipButton.setEnabled(false);
+            selectButton.setEnabled(false);
+            
+        }
     }
 
     /**
-     * This method can save a play to a file.
+     * These parameters are specific for view or buttons.
      */
-    public void save() {
-        PlayFileManager.save(play);
-    }
+    private View controlViewContainerView;
 
-    /**
-     * This method sets move actions for buttons.
-     * @param direction
-     */
-    public void move(Point.Direction direction) {
-        play.setDirection(direction);
-        play.move();
-
-        gameMapView.refreshContent();
-    }
-
-    /**
-     * This method implements MapDelegation and refresh controlViewContainerView.
-     * @param gameMapView
-     * @param location
-     */
-    @Override
-    public void gameMapViewSelectPerformAction(GameMapView gameMapView, Point location) {
-        refreshControlView();
-    }
+    private EquipmentPanel equipmentPanel;
 
     /**
      * This method gets cell and its location
      * And then call generateControlView() method to add a correct controlView to controlViewContainerView
      */
     private void refreshControlView(){
-        Point location = gameMapView.getSelectedLocation();
-        GameMap gameMap = gameMapView.getGameMap();
-        Cell cell = gameMap.getCell(location);
-        View view = generateControlView(cell);
+        Point location = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
+        if (location != null) {
+            GameMap gameMap = PlayRuntime.currentRuntime().getMap();
+            Cell cell = gameMap.getCell(location);
+            View view = generateControlView(cell);
 
-        controlViewContainerView.removeAll();
-        controlViewContainerView.add(view);
+            controlViewContainerView.removeAll();
+            controlViewContainerView.add(view);
 
-        controlViewContainerView.repaint();
+            controlViewContainerView.repaint();
+        }
 
     }
+
 
     /**
      * This method generates what should be shown on controlViewContainerView.
@@ -204,7 +208,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
 
         } else {
             PlayingControlView playingControlView = new PlayingControlView();
-            playingControlView.setPlayer(play.getPlayer());
+            playingControlView.setPlayer(play.getMainPlayer());
             controlView = playingControlView;
 
         }
@@ -215,16 +219,86 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     }
 
     /**
-     * Relative methods about view player
+     * The method of getGameMapView
+     * @return GameMapView
+     */
+    public GameMapView getGameMapView() {
+        return gameMapView;
+    }
+
+
+    /**
+     * Relative methods about view currentPlayer
      */
     PlayerPanel playerPanel;
     InventoryPanel inventoryPanel;
+
+    //  =======================================================================
+    //  Section - Events
+    //  =======================================================================
+
+
+    /**
+     * The mothod of update, observer.
+     * @param o Observable
+     * @param arg Object
+     */
+    @Override
+    public void update(Observable o, Object arg) {
+        if (BaseUpdate.when(arg)
+                .match(Play.Update.TARGET)
+                .check()){
+            SwingUtilities.invokeLater(this::refreshControlView);
+        }
+    }
+
+    /**
+     * The method of tryMove
+     */
+    private void tryMove(){
+        Point targetLocation = play.getTargetLocation();
+        Player mainPlayer = play.getMainPlayer();
+        GameMapGraph graph = play.currentMap().getGraph();
+
+        List<Point> rangePoints = graph.pointsInRange(mainPlayer.getLocation(), mainPlayer.getRangeForMove());
+        if (rangePoints.contains(targetLocation)) {
+            TurnThread.backToRun();
+        }
+
+    }
+
+    /**
+     * The method of tryAttack
+     */
+    private void tryAttack(){
+        Point targetLocation = play.getTargetLocation();
+        Player mainPlayer = play.getMainPlayer();
+
+        List<Point> points = mainPlayer.getStrategy().attackTargetsInNear();
+        if (points.contains(targetLocation)) {
+            TurnThread.backToRun();
+        }
+
+    }
+
+    /**
+     * The method of tryInteract
+     */
+    private void tryInteract(){
+        Point targetLocation = play.getTargetLocation();
+        Player mainPlayer = play.getMainPlayer();
+
+        List<Point> points = mainPlayer.getStrategy().interactTargetsInNear();
+        if (points.contains(targetLocation)) {
+            TurnThread.backToRun();
+        }
+    }
 
     /**
      * This method creates view Attribute action.
      * @param player
      */
-    public void viewAttribute(Player player) {
+    public void showAttributesInspector(Player player) {
         playerPanel = new PlayerPanel();
         playerPanel.setPlayer(player);
         playerPanel.setLocation(450, 10);
@@ -237,10 +311,10 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * This method creates view Inventory action.
      * @param player
      */
-    public void viewInventory(Player player) {
+    public void showInventoryInspector(Player player) {
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setPlayer(player);
-        if (player.getPlayerParty().equals(Player.PLAYER_PARTY_PLAYER)) {
+        if (player.getPlayerParty().equals(Player.PLAYER_PARTY_MAIN)) {
             inventoryPanel.setButtonEnabled(true);
             inventoryPanel.setButtonText("Drop");
             inventoryPanel.dataToView();
@@ -256,7 +330,7 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
      * The method is used to showChestViewInside.
      * @param chest
      */
-    public void showChestViewInside(Chest chest) {
+    public void showChestInspector(Chest chest) {
         equipmentPanel = new EquipmentPanel();
         equipmentPanel.setLocation(420, 10);
         equipmentPanel.setChest(chest);
@@ -265,77 +339,13 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
         repaint();
     }
 
-    /**
-     * This method judges what action should be done according to targetCell.
-     * @param targetCell
-     */
-    private void interactWith(Cell targetCell) {
-
-        if (targetCell instanceof Player) {
-
-            Player targetPlayer = (Player) targetCell;
-
-            if (targetPlayer.isDead()) {
-                interactWithDeadNPC(targetPlayer);
-
-            } else {
-                if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_FRIENDLY)) {
-                    interactWithFriendlyNPC(targetPlayer);
-
-                } else if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
-                    interactWithHostileNPC(targetPlayer);
-
-                }
-            }
-
-        } else if (targetCell instanceof Chest) {
-            Chest chest = (Chest) targetCell;
-            interactWithChest(chest);
-
-        } else if (targetCell instanceof Exit) {
-
-            Exit exit = (Exit) targetCell;
-
-            System.out.println(play.isObjective());
-            exit.setImageName("exit_close.png");
-
-            gameMapView.refreshContent();
-
-            if (play.isObjective()) {
-                interactWithExit(exit);
-
-            }
-        }
-    }
 
     /**
-     * This method is for interacting with dead NPC.
-     * @param targetPlayer
-     */
-    private void interactWithDeadNPC(Player targetPlayer) {
-
-        play.getPlayer().lootDeadNPC(targetPlayer);
-        play.refreshPlayer();
-        gameMapView.refreshContent();
-
-    }
-
-    /**
-     * This method is for interacting with friendly NPC.
-     * @param targetPlayer
-     */
-    private void interactWithFriendlyNPC(Player targetPlayer) {
-
-        showInventoryPanelToExchange(play.getPlayer());
-
-    }
-
-    /**
-     * This method is used to show the InventoryPanel when player exchange equipment with friendly NPC
+     * This method is used to show the InventoryPanel when currentPlayer exchange equipment with friendly NPC
      * This method should be called by the ActionListener of interactButton button.
      * @param player
      */
-    private void showInventoryPanelToExchange(Player player) {
+    public void showInventoryInspectorForExchange(Player player) {
 
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setLocation(330, 10);
@@ -357,55 +367,12 @@ public class PlayScene extends Scene implements GameMapView.Delegate, InventoryP
     @Override
     public void inventoryExchangePerformAction(InventoryPanel inventoryPanel, Equipment equipment) {
 
-        play.getPlayer().dropInventories(equipment);
+        play.getMainPlayer().dropInventories(equipment);
         Player targetPlayer = (Player) play.getTarget();
         Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
-        play.getPlayer().pickUpEquipment(exchangeEquipmentRandom);
+        play.getMainPlayer().pickUpEquipment(exchangeEquipmentRandom);
 
-    }
-
-    /**
-     * This method is for interacting with hostile NPC.
-     * @param targetPlayer
-     */
-    private void interactWithHostileNPC(Player targetPlayer) {
-
-        play.getPlayer().attack(targetPlayer);
-        gameMapView.refreshContent();
-
-    }
-
-    /**
-     * This method is for interacting with chest.
-     * @param chest
-     */
-    private void interactWithChest(Chest chest) {
-
-        play.getPlayer().lootChest(chest);
-        play.refreshChest();
-        gameMapView.refreshContent();
-
-    }
-
-    /**
-     * This method is for interact
-     */
-    private void interactWithExit(Exit exit) {
-
-        int currentLevel = play.getPlayer().getLevel();
-        play.getPlayer().setLevel(currentLevel + 1);
-
-
-        if (play.isLastMap()) {
-            FinishScene finishScene = new FinishScene();
-            PlayScene.this.navigationView.push(finishScene);
-        } else {
-            play.moveToNextMap();
-            gameMapView.setGameMap(play.getCurrentMap());
-
-            gameMapView.refreshContent();
-            gameMapView.refreshHighlight();
-        }
+        TurnThread.backToRun();
     }
 
 

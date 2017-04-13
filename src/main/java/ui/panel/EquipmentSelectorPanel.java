@@ -10,11 +10,11 @@ import ui.view.*;
 
 /**
  * @author Li Zhen
- * @version 0.1
+ * @version 0.3
  */
 
 /**
- * this class is to create panel to searchButton equipment to add to player
+ * this class is to create panel to searchButton equipment to add to currentPlayer
  */
 public class EquipmentSelectorPanel extends Panel {
 
