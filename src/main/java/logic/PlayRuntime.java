@@ -8,6 +8,8 @@ import ui.scene.FinishScene;
 import ui.scene.PlayScene;
 import ui.view.GameMapView;
 
+import javax.swing.*;
+
 /**
  * @author Kai QI
  * @version 0.3
@@ -146,7 +148,9 @@ public class PlayRuntime {
     }
 
     public void toFinish(String message){
-        FinishScene finishScene = new FinishScene();
-        playScene.getNavigationView().push(finishScene);
+        SwingUtilities.invokeLater(() -> {
+            FinishScene finishScene = new FinishScene();
+            playScene.getNavigationView().push(finishScene);
+        });
     }
 }

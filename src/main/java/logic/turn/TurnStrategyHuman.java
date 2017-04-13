@@ -1,5 +1,6 @@
 package logic.turn;
 
+import logic.Play;
 import logic.PlayRuntime;
 import logic.map.*;
 import logic.player.Player;
@@ -17,9 +18,10 @@ public class TurnStrategyHuman extends TurnStrategy {
     @Override
     public Path preferredMovingPath() {
         TurnThread.waitForUser(TurnThread.UserResponse.MOVE);
-        Point targetLocation = PlayRuntime.currentRuntime().getPlay().getTargetLocation();
+        Play play = PlayRuntime.currentRuntime().getPlay();
 
-        if (targetLocation != null) {
+        if (play.isTargetLocationEnabled()){
+            Point targetLocation = play.getTargetLocation();
             GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
             gameMapGraph.addIgnoreType(Cell.Type.PLAYER);
             return gameMapGraph.path(player.getLocation(), targetLocation, player.getRangeForMove());
@@ -53,8 +55,13 @@ public class TurnStrategyHuman extends TurnStrategy {
         GameMap map = runtime.getMap();
 
         Cell targetCell = map.getCell(target);
+
         if (targetCell != null) {
+
             if (targetCell instanceof Chest){
+                return true;
+
+            } else if (targetCell instanceof Exit){
                 return true;
 
             } else if (targetCell instanceof Player) {
@@ -76,7 +83,13 @@ public class TurnStrategyHuman extends TurnStrategy {
     @Override
     public Point preferredAttackingLocation() {
         TurnThread.waitForUser(TurnThread.UserResponse.ATTACK);
-        return PlayRuntime.currentRuntime().getPlay().getTargetLocation();
+
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        if (play.isTargetLocationEnabled()){
+            return play.getTargetLocation();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -86,6 +99,12 @@ public class TurnStrategyHuman extends TurnStrategy {
     @Override
     public Point preferredInteractionLocation() {
         TurnThread.waitForUser(TurnThread.UserResponse.INTERACT);
-        return PlayRuntime.currentRuntime().getPlay().getTargetLocation();
+
+        Play play = PlayRuntime.currentRuntime().getPlay();
+        if (play.isTargetLocationEnabled()){
+            return play.getTargetLocation();
+        } else {
+            return null;
+        }
     }
 }

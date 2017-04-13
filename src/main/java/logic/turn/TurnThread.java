@@ -78,7 +78,11 @@ public class TurnThread extends Thread{
             playRuntime.getPlayScene().setEnableControls(false)
         );
 
-        while (!playRuntime.getMap().finishObjective()){
+        while (true){
+            if (playRuntime.isStopped()){
+                break;
+            }
+
             Play play = playRuntime.getPlay();
             Player currentPlayer = play.currentPlayer();
             if (currentPlayer.isAlive()) {

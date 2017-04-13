@@ -1,6 +1,7 @@
 package ui.scene;
 
 import logic.*;
+import logic.animation.AnimationHideTarget;
 import logic.equipment.Equipment;
 import logic.map.*;
 import logic.player.Player;
@@ -119,7 +120,7 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         });
 
         skipButton.addActionListener(e -> {
-            PlayRuntime.currentRuntime().getPlay().setTargetLocationEnabled(false);
+            new AnimationHideTarget().animate();
             TurnThread.backToRun();
         });
 

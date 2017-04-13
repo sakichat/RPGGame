@@ -93,6 +93,7 @@ public class GameMapView extends View implements Observer {
      */
     private void initLayers() {
         layers.forEach(this::remove);
+        layers.clear();
 
         initBackgroundLayer();
         initRangeLayer();

@@ -18,7 +18,7 @@ public class InteractionExit extends Interaction<Exit> {
      */
     @Override
     public void interact() {
-        PlayRuntime playRuntime = new PlayRuntime();
+        PlayRuntime playRuntime = PlayRuntime.currentRuntime();
         if (playRuntime.getMap().finishObjective()) {
             int currentLevel = player.getLevel();
             player.setLevel(currentLevel + 1);
