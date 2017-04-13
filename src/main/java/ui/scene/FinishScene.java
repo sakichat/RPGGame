@@ -23,21 +23,22 @@ public class FinishScene extends Scene {
     }
 
     /**
-     * These parameters are for labels and buttons.
+     * These parameters are for messageLabel.
      */
-    private JLabel label;
-    private JButton button;
+    private JLabel messageLabel;
+
 
     /**
      * This method creates components on the main scene
      */
     protected void initSubviews() {
-        label = new JLabel("You Win !", JLabel.CENTER);
+        JLabel label = new JLabel("", JLabel.CENTER);
         label.setSize(160, 40);
         label.setLocation(20, 20);
         contentView.add(label);
+        messageLabel = label;
 
-        button = new JButton("Back");
+        JButton button = new JButton("Back");
         button.setSize(160, 40);
         button.setLocation(20, 80);
         contentView.add(button);
