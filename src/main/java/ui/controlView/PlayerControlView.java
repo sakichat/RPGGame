@@ -104,13 +104,11 @@ public class PlayerControlView extends ControlView {
         becomeFriendlyButton.addActionListener(e -> {
             player.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
             dataToView();
-            mapEditingScene.refreshMapView();
         });
 
         becomeHostileButton.addActionListener(e -> {
             player.setPlayerParty(Player.PLAYER_PARTY_HOSTILE);
             dataToView();
-            mapEditingScene.refreshMapView();
         });
 
         viewAttributesButton.addActionListener(e -> mapEditingScene.showAttributePanel(player));

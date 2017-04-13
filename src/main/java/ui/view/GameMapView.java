@@ -247,7 +247,7 @@ public class GameMapView extends View implements Observer {
     /**
      * This method refreshes RangeLayer.
      */
-    public void refreshRange(){
+    private void refreshRange(){
         GameMapLayerView layerView = layers.get(_LAYER_RANGE);
         layerView.removeAllCells();
 
@@ -266,7 +266,7 @@ public class GameMapView extends View implements Observer {
      * This method refreshes the Content layer when it occurs some event on that,
      * for example, add a new cell view, remove a cell view, or move a cell view, etc.
      */
-    public void refreshContent(){
+    private void refreshContent(){
         GameMapLayerView layerView = layers.get(_LAYER_CONTENT);
         layerView.removeAllCells();
 

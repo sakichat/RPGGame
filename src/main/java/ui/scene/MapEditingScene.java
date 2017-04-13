@@ -306,9 +306,6 @@ public class MapEditingScene extends Scene implements   Observer,
      * The method is used to refresh MapView.
      */
 
-    public void refreshMapView(){
-        gameMapView.refreshContent();
-    }
 
     @Override
     public void update(Observable o, Object arg) {
