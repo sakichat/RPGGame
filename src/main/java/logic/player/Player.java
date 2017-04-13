@@ -18,6 +18,7 @@ import logic.turn.TurnStrategyFriendly;
 import logic.turn.TurnThread;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This Class is currentPlayer, which includes users and NPCs.
@@ -720,8 +721,9 @@ public class Player extends Cell {
      */
     public void addEffect(Effect effect){
         effect.setOnPlayer(this);
-        effects.add(effect);
-
+        if (effect.getTurns() > 0) {
+            effects.add(effect);
+        }
     }
 
     /**
@@ -885,6 +887,10 @@ public class Player extends Cell {
             effect.turn();
             TurnThread.pause(TurnThread.PAUSE_NORMAL);
         }
+
+        effects = effects.stream()
+                .filter(e -> !e.isRemoveFlag())
+                .collect(Collectors.toList());
     }
 
     /**

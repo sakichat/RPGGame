@@ -13,7 +13,7 @@ public class EffectPacifying extends Effect {
      * This method is used to attach effect on player
      */
     @Override
-    protected void didAttach() {
+    protected void instantAffect() {
         onPlayer.setStrategy(new TurnStrategyFriendly());
         onPlayer.setPlayerParty(Player.PLAYER_PARTY_FRIENDLY);
     }

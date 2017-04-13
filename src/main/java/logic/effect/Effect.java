@@ -1,5 +1,6 @@
 package logic.effect;
 
+import com.google.gson.annotations.Expose;
 import logic.Logger;
 import logic.player.Player;
 
@@ -11,9 +12,21 @@ public class Effect {
     /**
      * attributes
      */
+
     protected Player onPlayer;
+
+    @Expose
     private int turns;
+
+    @Expose
     private String imageName;
+
+    private boolean removeFlag;
+
+    public boolean isRemoveFlag() {
+        return removeFlag;
+    }
+
 
     /**
      * onPlayer setter
@@ -44,9 +57,14 @@ public class Effect {
      * This method is used to put on and detach effect
      */
     private void attaching() {
-        Logger.getInstance().log(this + " attached on " + onPlayer);
-        didAttach();
-        detaching();
+        if (turns > 0) {
+            Logger.getInstance().log(this + " attached on " + onPlayer);
+            didAttach();
+            detaching();
+        } else {
+            Logger.getInstance().log(this + " made instance effect on " + onPlayer);
+            instantAffect();
+        }
     }
 
     /**
@@ -55,9 +73,13 @@ public class Effect {
     private void detaching() {
         if (turns == 0){
             willDetach();
-            onPlayer.removeEffect(this);
             Logger.getInstance().log(this + " left from " + onPlayer);
+            removeFlag = true;
         }
+    }
+
+    protected void instantAffect(){
+
     }
 
     /**
