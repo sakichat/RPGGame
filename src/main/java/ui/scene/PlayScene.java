@@ -12,6 +12,7 @@ import ui.view.GameMapView;
 import ui.view.View;
 
 import javax.swing.*;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -219,15 +220,36 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
     }
 
     private void tryMove(){
+        Point targetLocation = play.getTargetLocation();
+        Player mainPlayer = play.getMainPlayer();
+        GameMapGraph graph = play.currentMap().getGraph();
+
+        List<Point> rangePoints = graph.pointsInRange(mainPlayer.getLocation(), mainPlayer.getRangeForMove());
+        if (rangePoints.contains(targetLocation)) {
+            //TODO
+        }
 
     }
 
     private void tryAttack(){
+        Point targetLocation = play.getTargetLocation();
+        Player mainPlayer = play.getMainPlayer();
+
+        List<Point> points = mainPlayer.getStrategy().attackTargetsInNear();
+        if (points.contains(targetLocation)) {
+            //TODO
+        }
 
     }
 
     private void tryInteract(){
-        
+        Point targetLocation = play.getTargetLocation();
+        Player mainPlayer = play.getMainPlayer();
+
+        List<Point> points = mainPlayer.getStrategy().interactTargetsInNear();
+        if (points.contains(targetLocation)) {
+            //TODO
+        }
     }
 
     /**
