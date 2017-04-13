@@ -87,6 +87,27 @@ public class EquipmentTest {
         Assert.assertEquals(true, equipment.validate());
     }
 
+    /**
+     * This method tests the decorator.
+     * @throws Exception
+     */
+    @Test
+    public void decoratorTest() throws Exception{
+        EquipmentFactory equipmentFactory = new EquipmentFactory();
+
+        Weapon weapon = equipmentFactory.newWeapon();
+        weapon.setType(Equipment.WEAPON);
+        String pre = weapon.enchantmentsChainText();
+        WeaponDecoratorBurning weaponDecoratorBurning = new WeaponDecoratorBurning(weapon);
+        String now = weaponDecoratorBurning.enchantmentsChainText();
+        System.out.println(now);
+        Assert.assertTrue(now.endsWith(pre+ " Burning "));
+    }
+
+    /**
+     * This method tests the range.
+     * @throws Exception
+     */
     @Test
     public void rangeWeapon() throws Exception {
 
@@ -104,7 +125,7 @@ public class EquipmentTest {
 
         player1.pickUpEquipment(weapon);
         player1.equip(weapon);
-        player1.attack(player2);
+//        player1.attack(player2);
 
         GameMap gameMap = new GameMap();
         gameMap.setWidth(5);
@@ -129,6 +150,6 @@ public class EquipmentTest {
 
 //        GameMap gameMap = PlayRuntime.currentRuntime().getMap().addCell();
 
-        Assert.assertTrue(!weapon.validate());
+        Assert.assertTrue(weapon.getRange() == 3);
     }
 }
