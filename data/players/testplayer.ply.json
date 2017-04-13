@@ -118,6 +118,22 @@
           }
         }
       }
+    },
+    {
+      "_class": "logic.equipment.WeaponDecoratorFreezing",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponSolid",
+          "_object": {
+            "range": 2,
+            "weaponType": "RANGED",
+            "name": "freezing",
+            "type": "Weapon",
+            "enhancedAttribute": "AB",
+            "enhancedValue": 5
+          }
+        }
+      }
     }
   ],
   "equipments": {
