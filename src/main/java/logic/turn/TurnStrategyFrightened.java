@@ -13,6 +13,10 @@ import java.util.*;
  */
 public class TurnStrategyFrightened extends TurnStrategy {
 
+    /**
+     * @override This method is used for find path
+     * @return Path
+     */
     @Override
     public Path preferredMovingPath() {
         GameMapGraph gameMapGraph = PlayRuntime.currentRuntime().getMap().getGraph();
@@ -34,21 +38,39 @@ public class TurnStrategyFrightened extends TurnStrategy {
         return gameMapGraph.path(player.getLocation(), farestPoint, player.getRangeForMove());
     }
 
+    /**
+     * @override This method is used for couldAttack
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     public boolean couldAttack(Point target) {
         return false;
     }
 
+    /**
+     * @override This method is used for couldInteract
+     * @param target Point
+     * @return Boolean
+     */
     @Override
     protected boolean couldInteract(Point target) {
         return false;
     }
 
+    /**
+     * @override This method is used for preferredAttackingLocation
+     * @return Point
+     */
     @Override
     public Point preferredAttackingLocation() {
         return null;
     }
 
+    /**
+     * @override This method is used for preferredInteractionLocation
+     * @return Point
+     */
     @Override
     public Point preferredInteractionLocation() {
         return null;
