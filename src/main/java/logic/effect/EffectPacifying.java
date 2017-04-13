@@ -9,6 +9,9 @@ import logic.turn.TurnStrategyFriendly;
  */
 public class EffectPacifying extends Effect {
 
+    /**
+     * This method is used to attach effect on player
+     */
     @Override
     protected void didAttach() {
         onPlayer.setStrategy(new TurnStrategyFriendly());
