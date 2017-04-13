@@ -2,6 +2,9 @@ package logic.effect;
 
 import logic.player.Player;
 
+/**
+ * 
+ */
 public class Effect {
     protected Player onPlayer;
     private int turns;
