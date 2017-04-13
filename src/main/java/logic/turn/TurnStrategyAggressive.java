@@ -20,23 +20,16 @@ public class TurnStrategyAggressive extends TurnStrategy {
 
     @Override
     public boolean couldAttack(Point target) {
-//<<<<<<< HEAD
-//        PlayRuntime runtime = PlayRuntime.currentRuntime();
-//        Player mainPlayer = runtime.getPlay().getMainPlayer();
-//        GameMap map = runtime.getMap();
-//
-//        map.getPlayer(target);
-//
-//        if (! (cell instanceof Player)) {
-//            return false;
-//        } else if (((Player)cell).equals(mainPlayer)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//=======
-//
-//>>>>>>> origin/develop
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        Player mainPlayer = runtime.getPlay().getMainPlayer();
+        GameMap map = runtime.getMap();
+
+        Player targetPlayer = map.getPlayer(target);
+
+        if (targetPlayer.equals(mainPlayer)) {
+            return true;
+        }
+        
         return false;
     }
 
