@@ -20,6 +20,7 @@ public class TurnStrategyAggressive extends TurnStrategy {
 
     @Override
     public boolean couldAttack(Point target) {
+
         return false;
     }
 
