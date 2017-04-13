@@ -25,18 +25,24 @@ public class FinishScene extends Scene {
     /**
      * These parameters are for messageLabel.
      */
-    private JLabel messageLabel;
+    private String messageLabel;
 
+    public String getMessageLabel() {
+        return messageLabel;
+    }
+
+    public void setMessageLabel(String messageLabel) {
+        this.messageLabel = messageLabel;
+    }
 
     /**
      * This method creates components on the main scene
      */
     protected void initSubviews() {
-        JLabel label = new JLabel("", JLabel.CENTER);
+        JLabel label = new JLabel(messageLabel, JLabel.CENTER);
         label.setSize(160, 40);
         label.setLocation(20, 20);
         contentView.add(label);
-        messageLabel = label;
 
         JButton button = new JButton("Back");
         button.setSize(160, 40);
