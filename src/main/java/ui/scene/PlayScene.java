@@ -218,11 +218,15 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         }
     }
 
-    public void tryAttack(){
+    private void tryMove(){
 
     }
 
-    public void tryInteract(){
+    private void tryAttack(){
+
+    }
+
+    private void tryInteract(){
         
     }
 
