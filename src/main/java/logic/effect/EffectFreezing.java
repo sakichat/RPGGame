@@ -23,6 +23,10 @@ public class EffectFreezing extends Effect {
 
     }
 
+    /**
+     * This method is used to get imageName
+     * @return
+     */
     @Override
     public String getImageName() {
         String imageName = "freezing.png";
