@@ -152,11 +152,6 @@ public class PlayerTest {
         Assert.assertTrue(pre == after - equipmentArmorAC5.getEnhancedValue());
     }
 
-    @Test
-    public void interac() throws Exception {
-
-    }
-
     /**
      * This case tests if the currentPlayer will correctly loot the chest, which means the currentPlayer will get
      * the item in the chest to his backpack.
@@ -164,7 +159,6 @@ public class PlayerTest {
      */
     @Test
     public void lootChest1() throws Exception {
-//        currentPlayer.dropEquipment(equipmentArmorAC1);
 //        currentPlayer.dropEquipment(equipmentArmorAC3);
 //        currentPlayer.dropEquipment(equipmentArmorAC5);
 //        currentPlayer.dropEquipment(equipmentHelmetInt3);
