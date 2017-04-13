@@ -9,7 +9,7 @@ import ui.panel.MapSelectorPanel;
 /**
  * This class is a subclass of Scene and implements the interface MapDelegate.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class CampaignEditingScene extends Scene implements MapSelectorPanel.Delegate {
 

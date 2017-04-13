@@ -14,7 +14,7 @@ import javax.swing.*;
 /**
  * This class for choosing editor and creation.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegate,
                                                   PlayerSelectorPanel.Delegate,

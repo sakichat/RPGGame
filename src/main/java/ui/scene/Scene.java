@@ -8,7 +8,7 @@ import java.awt.*;
 /**
  * This class is a superclass for other scenes class.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class Scene extends View{
     public View contentView;

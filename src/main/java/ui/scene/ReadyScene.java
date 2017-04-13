@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 /**
  * This ReadyScene means players have already created a play within currentPlayer and campaign.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
 

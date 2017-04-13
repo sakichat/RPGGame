@@ -8,7 +8,7 @@ import java.awt.*;
 /**
  * This is a PlayerCreationScene to show the scene for creating currentPlayer name which extends Scene class
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class PlayerCreationScene extends Scene {
 

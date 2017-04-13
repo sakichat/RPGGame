@@ -20,7 +20,7 @@ import java.util.Observer;
  * This MapEditingScene class is for editing game map view which extends Scene class
  * And implements GameMapView.Delegate, PlayerDelegate, EquipmentDelegate
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class MapEditingScene extends Scene implements   Observer,
                                                         PlayerSelectorPanel.Delegate,

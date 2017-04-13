@@ -19,7 +19,7 @@ import java.util.Observer;
 /**
  * This is a PlayScene for currentPlayer to play on created maps.
  * @author Siyu Chen
- * @version 0.2
+ * @version 0.3
  */
 public class PlayScene extends Scene implements Observer, InventoryPanel.Delegate {
 
