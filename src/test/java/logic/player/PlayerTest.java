@@ -299,9 +299,17 @@ public class PlayerTest {
      */
     @Test
     public void attack1() throws Exception {
-        int x = targetPlayer.getTotalArmorClass();
-        System.out.println(x);
-//        currentPlayer.shouldDealDamage(targetPlayer);
+        int attackRoll = player.generateAttackRoll();
+        int attackRoll2 = player.generateAttackRoll();
+        int attackRoll3 = player.generateAttackRoll();
+        int attackRoll4 = player.generateAttackRoll();
+        int attackRoll5 = player.generateAttackRoll();
+
+        Assert.assertTrue(attackRoll <= 39 && attackRoll >= -5);
+        Assert.assertTrue(attackRoll2 <= 39 && attackRoll2 >= -5);
+        Assert.assertTrue(attackRoll3 <= 39 && attackRoll3 >= -5);
+        Assert.assertTrue(attackRoll4 <= 39 && attackRoll4 >= -5);
+        Assert.assertTrue(attackRoll5 <= 39 && attackRoll5 >= -5);
     }
 
     /**
@@ -310,7 +318,7 @@ public class PlayerTest {
      */
     @Test
     public void attack2() throws Exception {
-
+        
     }
 
     /**
@@ -319,6 +327,16 @@ public class PlayerTest {
      */
     @Test
     public void damage() throws Exception {
+        int damage = player.generateDamage();
+        int damage2 = player.generateDamage();
+        int damage3 = player.generateDamage();
+        int damage4 = player.generateDamage();
+        int damage5 = player.generateDamage();
 
+        Assert.assertTrue(damage <= 20 && damage >= -2);
+        Assert.assertTrue(damage2 <= 20 && damage2 >= -2);
+        Assert.assertTrue(damage3 <= 20 && damage3 >= -2);
+        Assert.assertTrue(damage4 <= 20 && damage4 >= -2);
+        Assert.assertTrue(damage5 <= 20 && damage5 >= -2);
     }
 }
