@@ -154,9 +154,11 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
             viewToData();
 
             PlayRuntime playRuntime = PlayRuntime.currentRuntime();
-            
-            play.resolveMap();
             playRuntime.initiate(playScene, play);
+
+            play.resolveMap();
+            playScene.refreshMap();
+
             PlayCreationScene.this.navigationView.push(playScene);
 
         });

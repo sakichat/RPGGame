@@ -62,6 +62,7 @@ public class PlayFileManager {
             p.getEffects().forEach(effect -> {
                 effect.setOnPlayer1(p);
             });
+            p.getStrategy().setPlayer(p);
         });
     }
 
