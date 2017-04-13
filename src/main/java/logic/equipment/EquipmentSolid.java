@@ -116,7 +116,6 @@ public class EquipmentSolid implements Equipment{
             } else if (weaponType.equals(Weapon.Type.RANGED)) {
                 weaponTypeValid = weaponRange > 1;
             }
-            System.out.println("weaponTypeValid = " + weaponTypeValid);
 
             enhancedAttributeValidate = weaponEnhancedAttributeValid && weaponTypeValid;
         }

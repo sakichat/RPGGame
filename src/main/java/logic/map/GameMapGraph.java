@@ -47,18 +47,11 @@ public class GameMapGraph {
         int y = 0;
         for (Point location : locations) {
             if (location.getY() != y) {
-                System.out.println();
                 y = location.getY();
             }
 
             int value = getValue(location);
-            if (value == Integer.MAX_VALUE){
-                System.out.printf("  %s", gameMap.hasCell(location) ? "x" : ".");
-            } else {
-                System.out.printf("%3d", value);
-            }
         }
-        System.out.println();
     }
 
     private List<Point> bfs(Point source) {
@@ -149,7 +142,6 @@ public class GameMapGraph {
         bfs(source);
 
         printValues();
-        System.out.println(source + " to " + target);
         if (getValue(target) == Integer.MAX_VALUE) {
             return null;
         }
@@ -174,7 +166,6 @@ public class GameMapGraph {
         Path path = new Path();
         path.addLocation(source);
 
-        steps.forEach(System.out::println);
         steps.forEach(path::addLocationsToLocation);
 
         return path;

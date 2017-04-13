@@ -32,7 +32,6 @@ public class PlayerFileManager {
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/players/" + newName + ".ply.json";
-        System.out.println(newName);
         return new File(newName);
 
     }

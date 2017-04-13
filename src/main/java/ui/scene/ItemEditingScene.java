@@ -510,8 +510,6 @@ public class ItemEditingScene extends Scene {
 
         validateButton.addActionListener(e -> {
 
-            System.out.println(equipment);
-
             if(equipment.validate()){
                 saveButton.setEnabled(true);
                 validateResultLabel.setText("Success!");

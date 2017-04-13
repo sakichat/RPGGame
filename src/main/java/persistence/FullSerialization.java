@@ -9,7 +9,6 @@ public class FullSerialization implements JsonSerializer<Object>, JsonDeserializ
 
     @Override
     public JsonElement serialize(Object object, Type type, JsonSerializationContext jsonSerializationContext) {
-        System.out.println(object.getClass().getName() + "  :  " + type.getTypeName());
 
         JsonElement element = FileManager.defaultGson().toJsonTree(object);
 

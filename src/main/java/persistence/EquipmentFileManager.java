@@ -33,7 +33,6 @@ public class EquipmentFileManager {
     public static File path(String name){
         String newName = FileManager.nameToFileName(name);
         newName = "data/equipments/" + newName + ".eqp.json";
-        System.out.println(newName);
         return new File(newName);
 
     }

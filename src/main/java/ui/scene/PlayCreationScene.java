@@ -168,11 +168,9 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         player.setPlayerParty(Player.PLAYER_PARTY_MAIN);
 
         if (playerModeLabel.getText().equals(HUMAN_PLAYER_MODE)){
-            System.out.println("human");
             TurnStrategyHuman turnStrategyHuman = new TurnStrategyHuman();
             player.setStrategy(turnStrategyHuman);
         }else if (playerModeLabel.getText().equals(COMPUTER_PLAYER_MODE)){
-            System.out.println("computer");
             TurnStrategyComputer turnStrategyComputer = new TurnStrategyComputer();
             player.setStrategy(turnStrategyComputer);
         }

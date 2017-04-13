@@ -879,8 +879,6 @@ public class Player extends Cell {
 
         if (isDead()) {
             imageName = "rip.png";
-            System.out.println(hp + "/" + totalHp);
-            System.out.println("rip");
             return imageName;
         }
 
