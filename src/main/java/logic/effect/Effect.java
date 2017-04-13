@@ -41,6 +41,10 @@ public class Effect {
         attaching();
     }
 
+    public void setOnPlayer1(Player onPlayer) {
+        this.onPlayer = onPlayer;
+    }
+
     /**
      * turns setter
      * @param turns

@@ -6,6 +6,7 @@ import logic.map.Cell;
 import logic.equipment.Equipment;
 import logic.equipment.Weapon;
 import logic.equipment.WeaponDecorator;
+import logic.turn.TurnStrategy;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -82,6 +83,7 @@ public class FileManager {
                 .registerTypeAdapter(Equipment.class, new FullSerialization())
                 .registerTypeAdapter(Weapon.class, new FullSerialization())
                 .registerTypeAdapter(WeaponDecorator.class, new FullSerialization())
+                .registerTypeAdapter(TurnStrategy.class, new FullSerialization())
                 .setPrettyPrinting()
                 .create();
         return gson;

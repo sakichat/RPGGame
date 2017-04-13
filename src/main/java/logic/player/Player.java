@@ -820,6 +820,8 @@ public class Player extends Cell {
     /**
      * The declaration of property strategy.
      */
+
+    @Expose
     private TurnStrategy strategy;
 
     /**

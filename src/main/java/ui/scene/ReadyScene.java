@@ -1,6 +1,7 @@
 package ui.scene;
 
 import logic.Play;
+import logic.PlayRuntime;
 import ui.panel.PlaySelectorPanel;
 
 import javax.swing.*;
@@ -81,9 +82,11 @@ public class ReadyScene extends Scene implements PlaySelectorPanel.Delegate{
 
         contentView.remove(playSelectorPanel);
 
+
         PlayScene playScene = new PlayScene();
-        playScene.setPlay(play);
-        playScene.refreshMap();
+        PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+
+        playRuntime.initiate(playScene, play);
         navigationView.push(playScene);
 
     }
