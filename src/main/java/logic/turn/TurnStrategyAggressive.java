@@ -4,6 +4,8 @@ import logic.PlayRuntime;
 import logic.map.*;
 import logic.player.Player;
 
+import java.util.List;
+
 public class TurnStrategyAggressive extends TurnStrategy {
     @Override
     public Path preferredMovingPath() {
@@ -48,6 +50,12 @@ public class TurnStrategyAggressive extends TurnStrategy {
 
     @Override
     public Point preferredAttackingLocation() {
+        List<Point> attackTargets = attackTargetsInNear();
+
+        if (attackTargets != null){
+            return attackTargets.get(0);
+        }
+
         return null;
     }
 
