@@ -30,7 +30,10 @@ public class TurnThread extends Thread{
     }
 
     public static void waitForUser(UserResponse userResponse){
+
         setUserResponse(userResponse);
+
+        PlayRuntime.currentRuntime().getPlayScene().setEnableControls(true);
 
         try {
             Thread.sleep(1000000 * 1000);
@@ -40,12 +43,18 @@ public class TurnThread extends Thread{
     }
 
     public static void backToRun(){
+
+        PlayRuntime.currentRuntime().getPlayScene().setEnableControls(false);
+
         PlayRuntime.currentRuntime().getTurnThread().interrupt();
     }
 
     @Override
     public void run() {
+        
         PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+
+        playRuntime.getPlayScene().setEnableControls(false);
 
         while (!playRuntime.getMap().finishObjective()){
             Play play = playRuntime.getPlay();
