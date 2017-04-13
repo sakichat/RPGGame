@@ -48,6 +48,10 @@ public class MapEditingScene extends Scene implements   Observer,
         gameMapView.setGameMap(gameMap);
     }
 
+    public GameMapView getGameMapView() {
+        return gameMapView;
+    }
+
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
      */

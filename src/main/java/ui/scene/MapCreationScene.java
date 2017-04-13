@@ -123,6 +123,7 @@ public class MapCreationScene extends Scene {
                 mapEditingScene.setGameMap(gameMap);
 
                 play.addObserver(mapEditingScene);
+                play.addObserver(mapEditingScene.getGameMapView());
 
                 MapCreationScene.this.navigationView.push(mapEditingScene);
             }

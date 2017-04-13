@@ -224,6 +224,7 @@ public class EditorScene extends Scene implements EquipmentSelectorPanel.Delegat
         mapEditingScene.setGameMap(gameMap);
 
         play.addObserver(mapEditingScene);
+        play.addObserver(mapEditingScene.getGameMapView());
 
         navigationView.push(mapEditingScene);
     }
