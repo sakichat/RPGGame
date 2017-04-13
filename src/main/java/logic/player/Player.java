@@ -47,9 +47,15 @@ public class Player extends Cell {
     //  Section - Basic
     //  =======================================================================
 
+    /**
+     * The property of name
+     */
     @Expose
     private String name;
 
+    /**
+     * The property of playerType
+     */
     @Expose
     private String playerType;
 
@@ -57,6 +63,9 @@ public class Player extends Cell {
     public final static String PLAYER_TYPE_NIMBLE       = "Nimble";
     public final static String PLAYER_TYPE_TANK         = "Tank";
 
+    /**
+     * The property of playerParty
+     */
     @Expose
     private String playerParty = PLAYER_PARTY_NOT_DEFINED;
 
@@ -159,10 +168,18 @@ public class Player extends Cell {
         setHp(getHp() - damage);
     }
 
+    /**
+     * The method isDead
+     * @return boolean
+     */
     public boolean isDead() {
         return hp == 0;
     }
 
+    /**
+     * The method isAlive
+     * @return boolean
+     */
     public boolean isAlive(){
         return !isDead();
     }
@@ -210,6 +227,7 @@ public class Player extends Cell {
     //  =======================================================================
     //  Section - Level
     //  =======================================================================
+
     /**
      * The declaration of property level
      */
@@ -262,6 +280,9 @@ public class Player extends Cell {
         public final static String ALIVE        = "dead change";
     }
 
+    /**
+     * The property of abilityScores
+     */
     @Expose
     private Map<String, Integer> abilityScores = new HashMap<>();
 
@@ -478,6 +499,9 @@ public class Player extends Cell {
         tryQuit();
     }
 
+    /**
+     * The method tryQuit
+     */
     private void tryQuit() {
         if (isDead() && getInventories().size() == 0) {
             PlayRuntime.currentRuntime().getMap().removeCell(getLocation());
@@ -649,6 +673,10 @@ public class Player extends Cell {
         }
     }
 
+    /**
+     * The method of availableSpotsInBackpack
+     * @return int
+     */
     public int availableSpotsInBackpack(){
         int availableSpaceInBackpack = 10 - equipmentsInBackpack().size();
         return  availableSpaceInBackpack;
@@ -778,6 +806,9 @@ public class Player extends Cell {
         strategy.setPlayer(this);
     }
 
+    /**
+     * The method of trun.
+     */
     public void turn(){
 
         turnEffect();
@@ -790,6 +821,9 @@ public class Player extends Cell {
 //        turnInteract();
     }
 
+    /**
+     * The method of turnEffect
+     */
     private void turnEffect() {
         //  effects
         for (Effect effect : effects) {
@@ -798,6 +832,9 @@ public class Player extends Cell {
         }
     }
 
+    /**
+     * The method of turnMove
+     */
     private void turnMove() {
 
         new AnimationDisplayRange()
@@ -830,6 +867,9 @@ public class Player extends Cell {
         PlayRuntime.currentRuntime().getPlay().notifyObservers(Play.Update.CURRENT);
     }
 
+    /**
+     *
+     */
     private void turnAttack() {
         //  attack
         List<Point> points = strategy.attackTargetsInNear();
