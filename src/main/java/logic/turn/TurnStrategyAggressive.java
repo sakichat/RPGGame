@@ -20,7 +20,10 @@ public class TurnStrategyAggressive extends TurnStrategy {
 
     @Override
     public boolean couldAttack(Point target) {
-        return false;
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        Player mainPlayer = runtime.getPlay().getMainPlayer();
+        GameMap map = runtime.getMap();
+
     }
 
     @Override
