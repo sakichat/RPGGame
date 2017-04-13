@@ -6,7 +6,7 @@ import logic.map.Chest;
 /**
  * @author Kai QI
  * @version 0.3
- *
+ * The class is a subclass of Interaction, which is used to interact with Chest
  */
 public class InteractionChest extends Interaction<Chest> {
 

@@ -9,10 +9,15 @@ import java.util.List;
 /**
  * @author Kai QI
  * @version 0.3
+ * The class is a subclass of Interaction, which is used to interact with Player
  *
  */
 
 public class InteractionDeadNPC extends Interaction<Player> {
+
+    /**
+     * override the interact method in superclass
+     */
     @Override
     public void interact() {
 
