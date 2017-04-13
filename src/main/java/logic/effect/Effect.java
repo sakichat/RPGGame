@@ -3,7 +3,8 @@ package logic.effect;
 import logic.player.Player;
 
 /**
- * 
+ * @author Qi Xia
+ * @version 0.3
  */
 public class Effect {
     protected Player onPlayer;
