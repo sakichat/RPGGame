@@ -13,7 +13,7 @@ public class InteractionChest extends Interaction<Chest> {
         int lootSize = Math.min(availableSpaceInBackpack, chestSize);
 
         for (int i = 0; i < lootSize; i++) {
-            Equipment lootEquipment = target.getEquipments().get(i);
+            Equipment lootEquipment = target.getEquipments().get(0);
             player.pickUpEquipment(lootEquipment);
             target.dropEquipment(lootEquipment);
         }
