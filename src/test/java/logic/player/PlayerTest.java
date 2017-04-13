@@ -323,7 +323,13 @@ public class PlayerTest {
 
         Player player2 = new Player();
 
-//        player1.should;
+        boolean canAttack = player1.shouldDealDamage(player2);
+        boolean cannotAttack = player2.shouldDealDamage(player1);
+
+        System.out.println(canAttack);
+
+        Assert.assertTrue(canAttack);
+//        Assert
 
     }
 
