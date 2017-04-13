@@ -168,7 +168,7 @@ public class Player extends Cell {
     public void damage(int damage) {
         if (playerParty.equals(PLAYER_PARTY_FRIENDLY)){
             playerParty = PLAYER_PARTY_HOSTILE;
-            strategy = new TurnStrategyAggressive();
+            this.setStrategy(new TurnStrategyAggressive());
         }
         setHp(getHp() - damage);
     }
