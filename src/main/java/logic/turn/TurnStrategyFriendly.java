@@ -36,10 +36,12 @@ public class TurnStrategyFriendly extends TurnStrategy {
 
         Cell targetCell = map.getCell(target);
 
-        if (targetCell instanceof Chest) {
-            return true;
+        if (targetCell != null) {
+            if (targetCell instanceof Chest) {
+                return true;
+            }
         }
-
+        
         return false;
     }
 
