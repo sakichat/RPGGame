@@ -697,13 +697,21 @@ public class Player extends Cell {
     //  =======================================================================
 
     /**
+     * This method is to create damage
+     * @return
+     */
+    protected int generateDamage(){
+        return rollDamage() + getTotalDamageBonus();
+    }
+
+    /**
      * This method if used for attack
      * @param player
      */
     public void attack(Player player) {
         if (shouldDealDamage(player)) {
             if (Dice.roll(20) != 1) {
-                int damage = rollDamage() + getTotalDamageBonus();
+                int damage = generateDamage();
                 player.damage(damage);
                 this.getWeapon().attach(player);
             }
@@ -711,12 +719,19 @@ public class Player extends Cell {
     }
 
     /**
+     * This method is to create attack roll.
+     * @return
+     */
+    protected int generateAttackRoll(){
+        return Dice.roll(20) + getTotalAttackBonus() + getAbilityModifier(ABILITY_STR);
+    }
+    /**
      * This method is used to judge whether currentPlayer do the damage
      * @param targetPlayer
      * @return Boolean
      */
     private boolean shouldDealDamage(Player targetPlayer){
-        int attackRoll = Dice.roll(20) + getTotalAttackBonus() + getAbilityModifier(ABILITY_STR);
+        int attackRoll = generateAttackRoll();
         if (attackRoll > targetPlayer.getTotalArmorClass()) {
             return true;
         }
