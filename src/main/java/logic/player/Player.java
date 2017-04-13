@@ -730,7 +730,7 @@ public class Player extends Cell {
      * @param targetPlayer
      * @return Boolean
      */
-    private boolean shouldDealDamage(Player targetPlayer){
+    protected boolean shouldDealDamage(Player targetPlayer){
         int attackRoll = generateAttackRoll();
         if (attackRoll > targetPlayer.getTotalArmorClass()) {
             return true;

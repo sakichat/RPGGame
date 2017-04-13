@@ -323,7 +323,7 @@ public class PlayerTest {
 
         Player player2 = new Player();
 
-        player1.should;
+//        player1.should;
 
     }
 
