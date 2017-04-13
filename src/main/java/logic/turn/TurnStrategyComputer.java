@@ -60,13 +60,12 @@ public class TurnStrategyComputer extends TurnStrategy {
 
     @Override
     public Point preferredAttackingLocation() {
-//        List<Point> points = attackTargetsInNear();
-//        if (points.size() != 0){
-//            Point result = points.get((int)(Math.random() * points.size()));
-//            return result;
-//        }else {
-//            return null;
-//        }
+        List<Point> attackTargets = attackTargetsInNear();
+
+        if (attackTargets != null){
+            return attackTargets.get(0);
+        }
+
         return null;
     }
 
