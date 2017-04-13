@@ -38,8 +38,10 @@ public class TurnStrategyHuman extends TurnStrategy {
         GameMap map = runtime.getMap();
 
         Cell targetCell = map.getCell(target);
-        if (targetCell instanceof Chest || player.isDead()){
-            return true;
+        if (targetCell != null) {
+            if (targetCell instanceof Chest || player.isDead()){
+                return true;
+            }
         }
 
         return false;
