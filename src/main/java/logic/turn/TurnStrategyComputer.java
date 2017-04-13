@@ -16,6 +16,12 @@ public class TurnStrategyComputer extends TurnStrategy {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
         GameMap map = runtime.getMap();
         GameMapGraph gameMapGraph = map.getGraph();
+        Point target = null;
+
+        if (map.finishObjective()) {
+            target = map.getExits().get(0).getLocation();
+            return gameMapGraph.path(player.getLocation(), target, 3);
+        }
 
         List<Player> players = map.getPlayers();
         LinkedList<Player> hostilePlayers = new LinkedList<>();
@@ -26,18 +32,15 @@ public class TurnStrategyComputer extends TurnStrategy {
         }
 
         int checkDistance = Integer.MAX_VALUE;
-        Player targetPlayer = null;
         for (Player hostilePlayer : hostilePlayers) {
             int distance = gameMapGraph.distanceBetween(player.getLocation(), hostilePlayer.getLocation());
             if (checkDistance > distance) {
                 checkDistance = distance;
-                targetPlayer = hostilePlayer;
+                target = hostilePlayer.getLocation();
             }
         }
 
-        Path path = gameMapGraph.path(player.getLocation(), targetPlayer.getLocation(), 3);
-
-        return path;
+        return gameMapGraph.path(player.getLocation(), target, 3);
     }
 
     @Override
