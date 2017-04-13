@@ -106,10 +106,7 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
         startButton.addActionListener(e -> PlayRuntime.currentRuntime().begin());
 
-        skipButton.addActionListener(e -> {
-            TurnThread turnThread = PlayRuntime.currentRuntime().getTurnThread();
-            turnThread.interrupt();
-        });
+        skipButton.addActionListener(e -> TurnThread.backToRun());
 
         selectButton.addActionListener(e -> {});
     }
@@ -219,6 +216,14 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
                 .check()){
             SwingUtilities.invokeLater(this::refreshControlView);
         }
+    }
+
+    public void tryAttack(){
+
+    }
+
+    public void tryInteract(){
+        
     }
 
     /**

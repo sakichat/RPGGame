@@ -29,6 +29,20 @@ public class TurnThread extends Thread{
         }
     }
 
+    public static void waitForUser(UserResponse userResponse){
+        setUserResponse(userResponse);
+
+        try {
+            Thread.sleep(1000000 * 1000);
+        } catch (InterruptedException e) {
+
+        }
+    }
+
+    public static void backToRun(){
+        PlayRuntime.currentRuntime().getTurnThread().interrupt();
+    }
+
     @Override
     public void run() {
         PlayRuntime playRuntime = PlayRuntime.currentRuntime();
@@ -40,12 +54,24 @@ public class TurnThread extends Thread{
             Logger.getInstance().log(currentPlayer + " finished its turn");
 
             play.nextPlayer();
-            try {
-                Thread.sleep((int)(1000000 * 1000));
-            } catch (InterruptedException e) {
-
-            }
-
+            waitForUser(UserResponse.TURN);
         }
+    }
+
+    private static volatile UserResponse userResponse;
+
+    public static UserResponse getUserResponse() {
+        return userResponse;
+    }
+
+    public static void setUserResponse(UserResponse userResponse) {
+        TurnThread.userResponse = userResponse;
+    }
+
+    public enum UserResponse {
+        TURN,
+        MOVE,
+        ATTACK,
+        INTERACT
     }
 }

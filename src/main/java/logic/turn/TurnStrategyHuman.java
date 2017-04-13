@@ -6,6 +6,8 @@ import logic.map.Point;
 public class TurnStrategyHuman extends TurnStrategy {
     @Override
     public Path preferredMovingPath() {
+        TurnThread.waitForUser(TurnThread.UserResponse.MOVE);
+
         return new Path();
     }
 
