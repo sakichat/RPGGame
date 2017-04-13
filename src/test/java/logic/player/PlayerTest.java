@@ -108,7 +108,6 @@ public class PlayerTest {
         int preCon = player.getTotalAbilityScore(Player.ABILITY_CON);
         int preWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
         int preCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
-        int dexModifier1 = player.getAbilityModifier(Player.ABILITY_DEX);
 
         player.equip(equipmentHelmetInt3);
 
@@ -118,7 +117,6 @@ public class PlayerTest {
         int nowCon = player.getTotalAbilityScore(Player.ABILITY_CON);
         int nowWis = player.getTotalAbilityScore(Player.ABILITY_WIS);
         int nowCha = player.getTotalAbilityScore(Player.ABILITY_CHA);
-        int dexModifier = player.getAbilityModifier(Player.ABILITY_DEX);
 
         Assert.assertTrue(preInt == nowInt - equipmentHelmetInt3.getEnhancedValue());
         Assert.assertTrue(preStr == nowStr);
@@ -151,52 +149,7 @@ public class PlayerTest {
         Assert.assertTrue(pre == after - equipmentArmorAC5.getEnhancedValue());
     }
 
-    /**
-     * This case tests if the currentPlayer will correctly loot the chest, which means the currentPlayer will get
-     * the item in the chest to his backpack.
-     * @throws Exception
-     */
-    @Test
-    public void lootChest1() throws Exception {
-//        currentPlayer.dropEquipment(equipmentArmorAC3);
-//        currentPlayer.dropEquipment(equipmentArmorAC5);
-//        currentPlayer.dropEquipment(equipmentHelmetInt3);
-//        currentPlayer.dropEquipment(equipmentHelmetWis5);
-//        currentPlayer.dropEquipment(equipmentHelmetAC2);
-//        currentPlayer.dropEquipment(equipmentShieldAC3);
-//        currentPlayer.dropEquipment(equipmentShieldAC4);
-//
-//        int chestSize    = chest.getEquipments().size();
-//        int previousSize = currentPlayer.equipmentsInBackpack().size();
-//
-//        currentPlayer.lootChest(chest);
-//
-//        int nowSize         = currentPlayer.equipmentsInBackpack().size();
-//        boolean containItem = currentPlayer.equipmentsInBackpack().contains(equipmentBootsAC3);
-//
-//        Assert.assertEquals(nowSize, previousSize + chestSize);
-//        Assert.assertTrue(containItem);
-    }
 
-    /**
-     * This case tests if the currentPlayer will correctly loot the chest, which means the currentPlayer's backpack
-     * will get as much as equipments as it can. Besides, the chest will keep the left items as well.
-     * @throws Exception
-     */
-    @Test
-    public void lootChest2() throws Exception {
-//        currentPlayer.dropEquipment(equipmentArmorAC1);
-//        currentPlayer.dropEquipment(equipmentArmorAC3);
-//        int previousChestSize = chest.getEquipments().size();
-//        int previousPlayerBackpackSize = currentPlayer.equipmentsInBackpack().size();
-//
-//        currentPlayer.lootChest(chest);
-//
-//        int nowChestSize = chest.getEquipments().size();
-//
-//        Assert.assertTrue(currentPlayer.isBackpackFull());
-//        Assert.assertEquals(nowChestSize, previousChestSize - (10 - previousPlayerBackpackSize));
-    }
 
     /**
      * This case tests if the generateAbilities method will correctly set up currentPlayer's abilities.

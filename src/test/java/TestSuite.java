@@ -1,5 +1,4 @@
 import logic.CampaignTest;
-import logic.PlayTest;
 import logic.equipment.EquipmentTest;
 import logic.interaction.InteractionTest;
 import logic.map.GameMapGraphTest;
@@ -29,9 +28,7 @@ import persistence.MapFileManagerTest;
                     PlayerExplorerTest.class,
                     PlayerTest.class,
                     CampaignTest.class,
-                    PlayTest.class,
                     FileManagerTest.class,
                     MapFileManagerTest.class})
 public class TestSuite {
-    
 }
