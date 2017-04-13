@@ -319,18 +319,26 @@ public class PlayerTest {
     @Test
     public void attack2() throws Exception {
         Player player1 = new Player();
-        player1.generateAbilities();
+
+        while(player1.getAbilityScore(Player.ABILITY_STR) != 24){
+            player1.generateAbilities();
+        }
+
+        EquipmentFactory equipmentFactory = new EquipmentFactory();
+
+        Weapon weapon = equipmentFactory.newWeapon();
+        weapon.setType(Equipment.WEAPON);
+        weapon.setEnhancedValue(5);
+        weapon.setEnhancedAttribute(Player.ATTRIBUTE_ATTACK_BONUS);
+        weapon.setRange(5);
+        weapon.setWeaponType(Weapon.Type.RANGED);
+        player1.pickUpEquipment(weapon);
 
         Player player2 = new Player();
 
         boolean canAttack = player1.shouldDealDamage(player2);
-        boolean cannotAttack = player2.shouldDealDamage(player1);
-
-        System.out.println(canAttack);
 
         Assert.assertTrue(canAttack);
-//        Assert
-
     }
 
     /**
