@@ -42,6 +42,13 @@ public class TurnStrategyComputer extends TurnStrategy {
 
     @Override
     public boolean couldAttack(Point target) {
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        GameMap map = runtime.getMap();
+
+        Player targetPlayer = map.getPlayer(target);
+        if (targetPlayer.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
+            return true;
+        }
 
         return false;
     }
