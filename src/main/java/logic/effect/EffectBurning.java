@@ -1,6 +1,9 @@
 package logic.effect;
 
-
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class EffectBurning extends Effect {
 
     private int damage;
