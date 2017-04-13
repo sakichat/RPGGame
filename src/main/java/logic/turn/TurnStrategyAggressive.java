@@ -21,12 +21,11 @@ public class TurnStrategyAggressive extends TurnStrategy {
     @Override
     public boolean couldAttack(Point target) {
         PlayRuntime runtime = PlayRuntime.currentRuntime();
-        Player mainPlayer = runtime.getPlay().getMainPlayer();
         GameMap map = runtime.getMap();
 
         Player targetPlayer = map.getPlayer(target);
 
-        if (targetPlayer.equals(mainPlayer)) {
+        if (targetPlayer != null) {
             return true;
         }
         
@@ -35,6 +34,15 @@ public class TurnStrategyAggressive extends TurnStrategy {
 
     @Override
     protected boolean couldInteract(Point target) {
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        GameMap map = runtime.getMap();
+
+        Cell targetCell = map.getCell(target);
+
+        if (targetCell instanceof Chest) {
+            return true;
+        }
+
         return false;
     }
 
