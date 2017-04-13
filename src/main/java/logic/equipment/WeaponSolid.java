@@ -44,7 +44,7 @@ public class WeaponSolid extends EquipmentSolid implements Weapon{
 
     @Override
     public String displayName() {
-        return "R" + getRange() + "*" + name;
+        return name + " *" + getRange();
     }
 
     @Override

@@ -345,7 +345,7 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
      * This method should be called by the ActionListener of interactButton button.
      * @param player
      */
-    private void showInventoryInspectorForExchang(Player player) {
+    public void showInventoryInspectorForExchange(Player player) {
 
         inventoryPanel = new InventoryPanel();
         inventoryPanel.setLocation(330, 10);
@@ -372,6 +372,7 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         Equipment exchangeEquipmentRandom = targetPlayer.randomExchange(equipment);
         play.getMainPlayer().pickUpEquipment(exchangeEquipmentRandom);
 
+        TurnThread.backToRun();
     }
 
 

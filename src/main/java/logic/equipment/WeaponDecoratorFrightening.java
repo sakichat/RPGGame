@@ -19,18 +19,18 @@ public class WeaponDecoratorFrightening extends WeaponDecorator {
         super(decoratedWeapon);
     }
 
+    @Override
+    public Weapon getOrigin() {
+        return decoratedWeapon.getOrigin();
+    }
+
     /**
      * @override methods
      */
 
     @Override
     public String displayName() {
-        return super.displayName() + " Frt";
-    }
-
-    @Override
-    public Weapon getOrigin() {
-        return decoratedWeapon.getOrigin();
+        return super.displayName() + " FRI";
     }
 
     @Override

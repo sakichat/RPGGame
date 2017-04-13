@@ -20,16 +20,6 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
     }
 
     /**
-     * this method is to get name
-     * @return name String
-     */
-
-    @Override
-    public String displayName() {
-        return super.displayName() + " B";
-    }
-
-    /**
      * this method is to get origin
      * @return DecoratorComponent
      */
@@ -37,6 +27,16 @@ public class WeaponDecoratorBurning extends WeaponDecorator {
     @Override
     public Weapon getOrigin() {
         return decoratedWeapon.getOrigin();
+    }
+
+    /**
+     * this method is to get name
+     * @return name String
+     */
+
+    @Override
+    public String displayName() {
+        return super.displayName() + " BUR";
     }
 
     /**
