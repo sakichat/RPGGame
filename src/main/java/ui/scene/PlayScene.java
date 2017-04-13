@@ -123,8 +123,15 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
     //  Section - Views
     //  =======================================================================
 
+    /**
+     * The property of gameMapView
+     */
     private GameMapView gameMapView;
 
+    /**
+     * The method of setEnableControls
+     * @param enableControls boolean
+     */
     public void setEnableControls(boolean enableControls) {
         if (enableControls) {
             backButton.setEnabled(true);
@@ -200,6 +207,10 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         return controlView;
     }
 
+    /**
+     * The method of getGameMapView
+     * @return GameMapView
+     */
     public GameMapView getGameMapView() {
         return gameMapView;
     }
@@ -216,6 +227,11 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
     //  =======================================================================
 
 
+    /**
+     * The mothod of update, observer.
+     * @param o Observable
+     * @param arg Object
+     */
     @Override
     public void update(Observable o, Object arg) {
         if (BaseUpdate.when(arg)
@@ -225,6 +241,9 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         }
     }
 
+    /**
+     * The method of tryMove
+     */
     private void tryMove(){
         Point targetLocation = play.getTargetLocation();
         Player mainPlayer = play.getMainPlayer();
@@ -237,6 +256,9 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
     }
 
+    /**
+     * The method of tryAttack
+     */
     private void tryAttack(){
         Point targetLocation = play.getTargetLocation();
         Player mainPlayer = play.getMainPlayer();
@@ -248,6 +270,9 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
     }
 
+    /**
+     * The method of tryInteract
+     */
     private void tryInteract(){
         Point targetLocation = play.getTargetLocation();
         Player mainPlayer = play.getMainPlayer();

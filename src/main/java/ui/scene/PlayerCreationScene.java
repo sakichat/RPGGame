@@ -27,7 +27,7 @@ public class PlayerCreationScene extends Scene {
 
     /**
      * This is a setter for currentPlayer.
-     * @param player
+     * @param player Player
      */
     public void setPlayer(Player player) {
         this.player = player;

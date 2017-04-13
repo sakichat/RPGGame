@@ -161,6 +161,9 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
         });
     }
 
+    /**
+     * The method is viewToData
+     */
     private void viewToData(){
         play.setName(playNameTextField.getText());
 

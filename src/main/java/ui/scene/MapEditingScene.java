@@ -309,8 +309,6 @@ public class MapEditingScene extends Scene implements   Observer,
     /**
      * The method is used to refresh MapView.
      */
-
-
     @Override
     public void update(Observable o, Object arg) {
         if (BaseUpdate.when(arg)

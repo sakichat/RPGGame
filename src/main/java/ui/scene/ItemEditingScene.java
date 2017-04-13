@@ -17,13 +17,28 @@ import java.awt.*;
  */
 public class ItemEditingScene extends Scene {
 
+    /**
+     * property of equipment
+     */
     private Equipment equipment;
+
+    /**
+     * property of weaponSubPanelEnabeld
+     */
     private boolean weaponSubPanelEnabeld;
 
+    /**
+     * The method of isWeaponSubPanelEnabeld
+     * @return boolean
+     */
     public boolean isWeaponSubPanelEnabeld() {
         return weaponSubPanelEnabeld;
     }
 
+    /**
+     * The method of setWeaponSubPanelEnabeld
+     * @param weaponSubPanelEnabeld boolean
+     */
     public void setWeaponSubPanelEnabeld(boolean weaponSubPanelEnabeld) {
         this.weaponSubPanelEnabeld = weaponSubPanelEnabeld;
     }

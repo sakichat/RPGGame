@@ -18,10 +18,18 @@ public class CampaignCreationScene extends Scene {
      */
     private Campaign campaign;
 
+    /**
+     * Getter of campaign
+     * @return
+     */
     public Campaign getCampaign() {
         return campaign;
     }
 
+    /**
+     * Setter of campaign
+     * @param campaign Campaign
+     */
     public void setCampaign(Campaign campaign) {
         this.campaign = campaign;
     }
