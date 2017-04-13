@@ -4,6 +4,7 @@ import logic.*;
 import logic.equipment.Equipment;
 import logic.map.*;
 import logic.player.Player;
+import logic.turn.TurnThread;
 import persistence.PlayFileManager;
 import ui.controlView.*;
 import ui.panel.*;
@@ -102,7 +103,10 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
         startButton.addActionListener(e -> PlayRuntime.currentRuntime().begin());
 
-        skipButton.addActionListener(e -> {});
+        skipButton.addActionListener(e -> {
+            TurnThread turnThread = PlayRuntime.currentRuntime().getTurnThread();
+            turnThread.interrupt();
+        });
 
         selectButton.addActionListener(e -> {});
 
@@ -193,7 +197,11 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
 
     @Override
     public void update(Observable o, Object arg) {
-
+        if (BaseUpdate.when(arg)
+                .match(Play.Update.TARGET)
+                .check()){
+            SwingUtilities.invokeLater(this::refreshControlView);
+        }
     }
 
     /**

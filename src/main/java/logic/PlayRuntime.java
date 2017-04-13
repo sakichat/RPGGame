@@ -53,6 +53,7 @@ public class PlayRuntime {
         this.play = play;
         play.resolveMap();
         playScene.setPlay(play);
+        play.addObserver(playScene);
         play.addObserver(playScene.getGameMapView());
     }
 

@@ -4,10 +4,8 @@ import com.google.gson.annotations.Expose;
 import logic.Logger;
 import logic.Play;
 import logic.PlayRuntime;
-import logic.animation.AnimationDisplayRange;
-import logic.animation.AnimationHideRange;
+import logic.animation.*;
 import logic.effect.Effect;
-import logic.animation.AnimationMove;
 import logic.map.*;
 import logic.Dice;
 import logic.equipment.Weapon;
@@ -810,10 +808,13 @@ public class Player extends Cell {
         Logger.getInstance().log(this + " wants to move by " + path);
 
         if (!path.stay()) {
-            Logger.getInstance().log(this + " is moving to " + path.getLastLocation());
+            Point targetLocation = path.getLastLocation();
+            Logger.getInstance().log(this + " is moving to " + targetLocation);
 
             //  show target
-            // TODO: 10/04/2017
+            AnimationDisplayTarget animationDisplayTarget = new AnimationDisplayTarget();
+            animationDisplayTarget.setTarget(targetLocation);
+            animationDisplayTarget.animate();
 
             //  move animation
             Movement movement = path.getMovement(3);
@@ -823,8 +824,8 @@ public class Player extends Cell {
             interactionMove.animate();
         }
 
-        AnimationHideRange animationHideRange = new AnimationHideRange();
-        animationHideRange.animate();
+        new AnimationHideRange().animate();
+        new AnimationHideTarget().animate();
     }
 
     private void turnAttack() {

@@ -7,6 +7,16 @@ import logic.player.Player;
 
 public class TurnThread extends Thread{
 
+    private volatile boolean end;
+
+    public boolean isEnd() {
+        return end;
+    }
+
+    public void setEnd(boolean end) {
+        this.end = end;
+    }
+
     public static double PAUSE_FAST = 1;
     public static double PAUSE_NORMAL = 2;
     public static double PAUSE_SLOW = 3;
@@ -15,7 +25,6 @@ public class TurnThread extends Thread{
         try {
             Thread.sleep((int)(duration * 1000));
         } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 
@@ -27,6 +36,12 @@ public class TurnThread extends Thread{
             Play play = playRuntime.getPlay();
             Player currentPlayer = play.currentPlayer();
             currentPlayer.turn();
+
+            try {
+                Thread.sleep((int)(1000000 * 1000));
+            } catch (InterruptedException e) {
+            }
+
             play.nextPlayer();
         }
     }

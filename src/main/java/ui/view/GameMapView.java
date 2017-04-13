@@ -154,10 +154,6 @@ public class GameMapView extends View implements Observer {
         refreshCurrentLayer();
     }
 
-    /**
-     * This property is for a new ImageView
-     */
-    private ImageView selectionView;
 
     /**
      * This method is to show the selected cell on this layer
@@ -240,6 +236,11 @@ public class GameMapView extends View implements Observer {
                 .match(Play.Update.TARGET)
                 .check()) {
             SwingUtilities.invokeLater(this::refreshTargetLayer);
+
+        }  else if (BaseUpdate.when(arg)
+                .match(Play.Update.CURRENT)
+                .check()) {
+            SwingUtilities.invokeLater(this::refreshCurrentLayer);
         }
     }
 
@@ -253,11 +254,14 @@ public class GameMapView extends View implements Observer {
 
         Play play = PlayRuntime.currentRuntime().getPlay();
         if (play.isRangeIndicationEnabled()) {
-            play.getRangeIndicationLocations().forEach(point -> {
+            List<Point> rangeIndicationLocations = play.getRangeIndicationLocations();
+
+            for (Point location : rangeIndicationLocations) {
                 ImageView imageView = new ImageView();
                 imageView.setName(play.getRangeIndicationMode().getImageName());
-                layerView.addCell(imageView, point);
-            });
+                layerView.addCell(imageView, location);
+
+            }
         }
         repaint();
     }
@@ -294,10 +298,11 @@ public class GameMapView extends View implements Observer {
 
     private void refreshCurrentLayer() {
         GameMapLayerView layerView = layers.get(_LAYER_CURRENT);
+        layerView.removeAllCells();
 
-        Player mainPlayer = PlayRuntime.currentRuntime().getMainPlayer();
-        if (mainPlayer != null) {
-            Point location = mainPlayer.getLocation();
+        Player currentPlayer = PlayRuntime.currentRuntime().getPlay().currentPlayer();
+        if (currentPlayer != null) {
+            Point location = currentPlayer.getLocation();
             ImageView imageView = new ImageView();
             imageView.setName("selected_current.png");
             layerView.addCell(imageView, location);
