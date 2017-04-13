@@ -16,11 +16,11 @@ import java.util.List;
  * this class is to manage the files of equipments
  */
 public class EquipmentFileManager {
+
     /**
      * this is to get file
      * @return File
      */
-
     public static File folderPath(){
         return new File("data/equipments");
     }
@@ -36,6 +36,7 @@ public class EquipmentFileManager {
         return new File(newName);
 
     }
+
     /**
      * this method is to read file to create a equipment
      * @param name String
@@ -49,25 +50,23 @@ public class EquipmentFileManager {
         return equipment;
 
     }
+
     /**
      * this method is to save equipement to a file
      * @param equipment Equipment
      */
-
     public static void save(Equipment equipment){
         String name = equipment.getName();
         File file = path(name);
         Gson gson = FileManager.defaultGson();
         String content = gson.toJson(new EquipmentWrapper(equipment));
         FileManager.stringToFile(content,file);
-
     }
 
     /**
      * this method is to get all the files
      * @return String[]
      */
-
     public static List<String> allNames(){
         File folder = new File("data/equipments/");
         
@@ -91,7 +90,6 @@ public class EquipmentFileManager {
      * @param filePath String
      * @return String
      */
-
     public static String filePathToName(String filePath){
         int number = filePath.indexOf(".");
         return FileManager.fileNameToName(filePath.substring(0, number));
@@ -100,11 +98,20 @@ public class EquipmentFileManager {
 
 }
 
+/**
+ * This is a inner class
+ */
 class EquipmentWrapper{
 
+    /**
+     * attribute
+     */
     @Expose
     private Equipment equipment;
 
+    /**
+     * construct
+     */
     public EquipmentWrapper() {
 
     }
@@ -113,10 +120,18 @@ class EquipmentWrapper{
         this.equipment = equipment;
     }
 
+    /**
+     * getter
+     * @return Equipment
+     */
     public Equipment getEquipment() {
         return equipment;
     }
 
+    /**
+     * Setter
+     * @param equipment
+     */
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
     }

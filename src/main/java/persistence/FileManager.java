@@ -71,6 +71,10 @@ public class FileManager {
         return content;
     }
 
+    /**
+     * This is method used for defualt Gson
+     * @return Gson
+     */
     public static Gson defaultGson(){
         Gson gson = new GsonBuilder()
                 .excludeFieldsWithoutExposeAnnotation()
