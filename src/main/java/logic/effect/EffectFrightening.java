@@ -6,6 +6,10 @@ import logic.player.Player;
 import logic.turn.TurnStrategy;
 import logic.turn.TurnStrategyFrightened;
 
+/**
+ * @author Qi Xia
+ * @version 0.3
+ */
 public class EffectFrightening extends Effect {
 
     /**
