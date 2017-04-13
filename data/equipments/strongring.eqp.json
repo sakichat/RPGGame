@@ -2,8 +2,8 @@
   "equipment": {
     "_class": "logic.equipment.EquipmentSolid",
     "_object": {
-      "name": "Ered",
-      "type": "Belt",
+      "name": "strongRing",
+      "type": "Ring",
       "enhancedAttribute": "STR",
       "enhancedValue": 5
     }

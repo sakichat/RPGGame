@@ -1,17 +1,17 @@
 {
   "name": "Gildai",
-  "playerType": "Tank",
+  "playerType": "Bully",
   "playerParty": "Not Defined",
-  "hp": 16,
-  "totalHp": 16,
+  "hp": 10,
+  "totalHp": 10,
   "level": 2,
   "abilityScores": {
-    "STR": 12,
-    "WIS": 10,
-    "CON": 14,
-    "DEX": 14,
-    "CHA": 10,
-    "INT": 12
+    "STR": 20,
+    "WIS": 11,
+    "CON": 17,
+    "DEX": 15,
+    "CHA": 13,
+    "INT": 13
   },
   "backpack": [
     {

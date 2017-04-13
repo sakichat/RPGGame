@@ -105,24 +105,6 @@
     }
   ],
   "equipments": {
-    "Belt": {
-      "_class": "logic.equipment.EquipmentSolid",
-      "_object": {
-        "name": "Ered",
-        "type": "Belt",
-        "enhancedAttribute": "STR",
-        "enhancedValue": 2
-      }
-    },
-    "Ring": {
-      "_class": "logic.equipment.EquipmentSolid",
-      "_object": {
-        "name": "Tige",
-        "type": "Ring",
-        "enhancedAttribute": "CON",
-        "enhancedValue": 2
-      }
-    },
     "Weapon": {
       "_class": "logic.equipment.WeaponDecoratorFreezing",
       "_object": {
@@ -157,6 +139,24 @@
             }
           }
         }
+      }
+    },
+    "Ring": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "strongRing",
+        "type": "Ring",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 5
+      }
+    },
+    "Belt": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 5
       }
     }
   },
