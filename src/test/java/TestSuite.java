@@ -1,6 +1,7 @@
 import logic.CampaignTest;
 import logic.PlayTest;
 import logic.equipment.EquipmentTest;
+import logic.interaction.InteractionTest;
 import logic.map.GameMapGraphTest;
 import logic.map.GameMapTest;
 import logic.map.MovementTest;
@@ -21,7 +22,8 @@ import persistence.MapFileManagerTest;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-                    EquipmentTest.class ,
+                    EquipmentTest.class,
+                    InteractionTest.class,
                     GameMapGraphTest.class,
                     GameMapTest.class,
                     MovementTest.class,
