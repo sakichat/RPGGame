@@ -326,12 +326,37 @@ public class PlayerTest {
         weapon.setRange(5);
         weapon.setWeaponType(Weapon.Type.RANGED);
         player1.pickUpEquipment(weapon);
+        player1.equip(weapon);
 
         Player player2 = new Player();
 
         boolean canAttack = player1.shouldDealDamage(player2);
 
         Assert.assertTrue(canAttack);
+    }
+
+    @Test
+    public void notAttack() throws Exception {
+        Player player1 = new Player();
+        Player player2 = new Player();
+
+        while(player2.getAbilityScore(Player.ABILITY_DEX) != 24){
+            player2.generateAbilities();
+        }
+
+        player2.pickUpEquipment(equipmentArmorAC5);
+        player2.equip(equipmentArmorAC5);
+        player2.pickUpEquipment(equipmentBootsAC3);
+        player2.equip(equipmentBootsAC3);
+        player2.pickUpEquipment(equipmentHelmetAC2);
+        player2.equip(equipmentHelmetAC2);
+
+
+
+        boolean canNotAttack = !player1.shouldDealDamage(player2);
+
+        Assert.assertTrue(canNotAttack);
+
     }
 
     /**
@@ -346,10 +371,10 @@ public class PlayerTest {
         int damage4 = player.generateDamage();
         int damage5 = player.generateDamage();
 
-        Assert.assertTrue(damage <= 20 && damage >= -2);
-        Assert.assertTrue(damage2 <= 20 && damage2 >= -2);
-        Assert.assertTrue(damage3 <= 20 && damage3 >= -2);
-        Assert.assertTrue(damage4 <= 20 && damage4 >= -2);
-        Assert.assertTrue(damage5 <= 20 && damage5 >= -2);
+        Assert.assertTrue(damage <= 20 && damage >= 1);
+        Assert.assertTrue(damage2 <= 20 && damage2 >= 1);
+        Assert.assertTrue(damage3 <= 20 && damage3 >= 1);
+        Assert.assertTrue(damage4 <= 20 && damage4 >= 1);
+        Assert.assertTrue(damage5 <= 20 && damage5 >= 1);
     }
 }
