@@ -8,6 +8,10 @@ import java.awt.*;
  * @version 0.3
  */
 public class GlassView extends View {
+
+    /**
+     * constructor
+     */
     public GlassView() {
         setBackground(new Color(0, 0, 0, Color.TRANSLUCENT));
     }

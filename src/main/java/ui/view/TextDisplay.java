@@ -6,6 +6,11 @@ package ui.view;
  * @version 0.3
  */
 public class TextDisplay {
+    /**
+     * The method is used to show the singed number
+     * @param value int
+     * @return String
+     */
     public static String signedNumber(int value){
         return value < 0 ? "" + value : "+" + value;
     }

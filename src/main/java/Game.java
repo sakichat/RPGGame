@@ -8,6 +8,10 @@ import ui.view.Window;
  * This is the main program.
  */
 public class Game {
+    /**
+     * The method is used to drive the whole project
+     * @param args String
+     */
     public static void main(String[] args) {
         NavigationView navigationView = new NavigationView();
         new Window(navigationView);
