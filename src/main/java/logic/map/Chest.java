@@ -14,6 +14,9 @@ import java.util.List;
  */
 public class Chest extends Cell{
 
+    /**
+     * Property of equipments
+     */
     @Expose
     private List<Equipment> equipments = new LinkedList<>();
 
@@ -107,6 +110,9 @@ public class Chest extends Cell{
         }
     }
 
+    /**
+     * The method is used to check is the object is in a map.
+     */
     private void tryQuit(){
         if (isEmpty()) {
             PlayRuntime.currentRuntime().getMap().removeCell(this.getLocation());

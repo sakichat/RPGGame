@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 
 /**
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  * this class is the map
  */
 public class GameMap extends Observable {
@@ -22,6 +22,9 @@ public class GameMap extends Observable {
     //  =======================================================================
 
 
+    /**
+     * This is a method.
+     */
     public final static class Update {
         public final static String CELL        = "cell change";
     }
@@ -30,12 +33,21 @@ public class GameMap extends Observable {
     //  Section - Basic
     //  =======================================================================
 
+    /**
+     * property of name
+     */
     @Expose
     private String name;
 
+    /**
+     * property of name
+     */
     @Expose
     private int width;
 
+    /**
+     * property of height
+     */
     @Expose
     private int height;
 
@@ -100,6 +112,9 @@ public class GameMap extends Observable {
     //  =======================================================================
 
 
+    /**
+     * The property os cells.
+     */
     @Expose
     private Cell[][] cells;
 
@@ -219,6 +234,9 @@ public class GameMap extends Observable {
     //  =======================================================================
 
 
+    /**
+     * This is a method.
+     */
     private List<Point> locationsList() {
         List<Point> locations = new LinkedList<>();
         for (int i = 0; i < height; i++) {
@@ -229,10 +247,16 @@ public class GameMap extends Observable {
         return locations;
     }
 
+    /**
+     * This is a method.
+     */
     public Stream<Point> getLocationsStream(){
         return locationsList().stream();
     }
 
+    /**
+     * This is a method getLocations.
+     */
     public Iterable<Point> getLocations(){
         return locationsList();
     }
@@ -358,6 +382,10 @@ public class GameMap extends Observable {
         return reachable ? VALIDATION_SUCCESS : VALIDATION_ERROR_EXIT_IS_NOT_REACHABLE;
     }
 
+    /**
+     * Method enter
+     * @param player
+     */
     public void enter(Player player){
         Point entrance = getEntrances().get(0).getLocation();
 
@@ -372,7 +400,11 @@ public class GameMap extends Observable {
             }
         }
     }
-    
+
+    /**
+     * Method adaptEquipments
+     * @param level
+     */
     private void adaptEquipments(int level) {
         this.getPlayers().stream()
                 .filter(p -> !(p.getPlayerParty().equals(Player.PLAYER_PARTY_MAIN)))
@@ -382,6 +414,10 @@ public class GameMap extends Observable {
                 .forEach(chest -> chest.adaptEquipments(level));
     }
 
+    /**
+     * Method finishObjective
+     * @return
+     */
     public boolean finishObjective() {
 
         boolean objectiveFulfilled = getPlayers().stream()
@@ -395,7 +431,11 @@ public class GameMap extends Observable {
     //  =======================================================================
     //  Section - Graph
     //  =======================================================================
-    
+
+    /**
+     * Method getGraph
+     * @return
+     */
     public GameMapGraph getGraph(){
         return new GameMapGraph(this);
     }

@@ -6,16 +6,23 @@ import java.util.Observable;
 
 /**
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  *
  * this is the cell class
  */
 public class Cell extends Observable{
 
+    /**
+     * This inner class is enum the type.
+     */
     public static enum Type {
         PLAYER, CHEST, OBSTACLE, ENTRANCE, EXIT
     }
 
+    /**
+     * The method is used to get the cellType.
+     * @return
+     */
     public Type getCellType(){
         String name = this.getClass().getSimpleName();
         return Type.valueOf(name.toUpperCase());
@@ -28,6 +35,9 @@ public class Cell extends Observable{
 
     }
 
+    /**
+     * Property of location
+     */
     @Expose
     protected Point location;
 
@@ -47,6 +57,9 @@ public class Cell extends Observable{
         this.location = location;
     }
 
+    /**
+     * Property of imageName.
+     */
     @Expose
     protected String imageName;
 
