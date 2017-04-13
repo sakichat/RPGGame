@@ -3,9 +3,16 @@ package logic.interaction;
 import logic.equipment.Equipment;
 import logic.map.Chest;
 
-
+/**
+ * @author Kai QI
+ * @version 0.3
+ *
+ */
 public class InteractionChest extends Interaction<Chest> {
 
+    /**
+     * override the interact method in superclass
+     */
     @Override
     public void interact() {
         int availableSpaceInBackpack = player.availableSpotsInBackpack();

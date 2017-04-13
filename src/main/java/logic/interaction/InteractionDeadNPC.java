@@ -6,6 +6,12 @@ import logic.player.Player;
 import java.util.List;
 
 
+/**
+ * @author Kai QI
+ * @version 0.3
+ *
+ */
+
 public class InteractionDeadNPC extends Interaction<Player> {
     @Override
     public void interact() {

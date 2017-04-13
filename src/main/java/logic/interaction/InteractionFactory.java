@@ -5,6 +5,13 @@ import logic.map.Chest;
 import logic.map.Exit;
 import logic.player.Player;
 
+
+/**
+ * @author Kai QI
+ * @version 0.3
+ *
+ */
+
 public class InteractionFactory {
     public Interaction interaction(Player source, Cell target){
 

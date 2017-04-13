@@ -5,7 +5,9 @@ import logic.map.Exit;
 import ui.scene.FinishScene;
 
 /**
- * Created on 12/04/2017.
+ * @author Kai QI
+ * @version 0.3
+ *
  */
 public class InteractionExit extends Interaction<Exit> {
     @Override
