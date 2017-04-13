@@ -274,6 +274,20 @@ public class GameMap extends Observable {
     }
 
     /**
+     * this method is to get player
+     * @param point
+     * @return Player
+     */
+    public Player getPlayer(Point point){
+        Cell cell = getCell(point);
+        if (cell instanceof Player) {
+            return (Player)cell;
+        }
+
+        return null;
+    }
+
+    /**
      * this method is to get all chests on the map
      * @return List<Chest>
      */
