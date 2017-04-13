@@ -222,6 +222,9 @@ public class Play extends Observable{
      * @return Player
      */
     public Player currentPlayer(){
+        if (playerOrders == null){
+            initTurnOrder();
+        }
         return playerOrders.get(currentPlayerIndex);
     }
 
