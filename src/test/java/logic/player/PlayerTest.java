@@ -318,7 +318,13 @@ public class PlayerTest {
      */
     @Test
     public void attack2() throws Exception {
-        
+        Player player1 = new Player();
+        player1.generateAbilities();
+
+        Player player2 = new Player();
+
+        player1.should;
+
     }
 
     /**
