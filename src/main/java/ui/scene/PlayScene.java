@@ -47,6 +47,9 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
     public void refreshMap(){
         titleLabel.setText(play.getName() + " - " + play.currentMap().getName());
         gameMapView.setGameMap(play.currentMap());
+        startButton.setEnabled(true);
+        skipButton.setEnabled(false);
+        selectButton.setEnabled(false);
     }
 
     //  =======================================================================
@@ -110,7 +113,10 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
             PlayScene.this.navigationView.popTo(MainScene.class);
         });
 
-        startButton.addActionListener(e -> PlayRuntime.currentRuntime().begin());
+        startButton.addActionListener(e -> {
+            PlayRuntime.currentRuntime().begin();
+            startButton.setEnabled(false);
+        });
 
         skipButton.addActionListener(e -> {
             PlayRuntime.currentRuntime().getPlay().setTargetLocationEnabled(false);
@@ -144,7 +150,6 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         if (enableControls) {
             backButton.setEnabled(true);
             saveButton.setEnabled(true);
-            startButton.setEnabled(true);
             if (play.currentPlayer().getStrategy() instanceof TurnStrategyHuman) {
                 skipButton.setText("Skip " + TurnThread.getUserResponse().toString());
                 skipButton.setEnabled(true);
@@ -157,7 +162,6 @@ public class PlayScene extends Scene implements Observer, InventoryPanel.Delegat
         } else {
             backButton.setEnabled(false);
             saveButton.setEnabled(false);
-            startButton.setEnabled(false);
             skipButton.setEnabled(false);
             selectButton.setEnabled(false);
             

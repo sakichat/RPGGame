@@ -989,7 +989,7 @@ public class Player extends Cell {
 
         new AnimationDisplayRange()
                 .setLocations(pointsInRange)
-                .setRangeIndicationMode(Play.RangeIndicationMode.ATTACK)
+                .setRangeIndicationMode(Play.RangeIndicationMode.INTERACT)
                 .animate();
 
         //  select target

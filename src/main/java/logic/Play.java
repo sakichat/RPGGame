@@ -323,7 +323,7 @@ public class Play extends Observable{
      * The method of RangeIndicationMode
      */
     public enum RangeIndicationMode {
-        MOVE("movement"), ATTACK("attack");
+        MOVE("movement"), ATTACK("attack"), INTERACT("interact");
 
         private String name;
 

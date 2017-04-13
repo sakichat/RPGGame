@@ -6,6 +6,8 @@ import logic.Play;
 import logic.PlayRuntime;
 import logic.player.Player;
 
+import javax.swing.*;
+
 /**
  * @author Qi Xia
  * @version 0.3
@@ -40,7 +42,9 @@ public class TurnThread extends Thread{
 
         setUserResponse(userResponse);
 
-        PlayRuntime.currentRuntime().getPlayScene().setEnableControls(true);
+        SwingUtilities.invokeLater(() ->
+            PlayRuntime.currentRuntime().getPlayScene().setEnableControls(true)
+        );
 
         try {
             Thread.sleep(1000000 * 1000);
@@ -54,7 +58,9 @@ public class TurnThread extends Thread{
      */
     public static void backToRun(){
 
-        PlayRuntime.currentRuntime().getPlayScene().setEnableControls(false);
+        SwingUtilities.invokeLater(() ->
+            PlayRuntime.currentRuntime().getPlayScene().setEnableControls(false)
+        );
 
         PlayRuntime.currentRuntime().getTurnThread().interrupt();
     }
@@ -67,7 +73,9 @@ public class TurnThread extends Thread{
         
         PlayRuntime playRuntime = PlayRuntime.currentRuntime();
 
-        playRuntime.getPlayScene().setEnableControls(false);
+        SwingUtilities.invokeLater(() ->
+            playRuntime.getPlayScene().setEnableControls(false)
+        );
 
         while (!playRuntime.getMap().finishObjective()){
             Play play = playRuntime.getPlay();
@@ -77,7 +85,9 @@ public class TurnThread extends Thread{
                 Logger.getInstance().log(currentPlayer + " finished its turn");
             }
             play.nextPlayer();
-            waitForUser(UserResponse.TURN);
+            if (play.currentPlayer() != play.getMainPlayer()) {
+                waitForUser(UserResponse.TURN);
+            }
         }
     }
 
