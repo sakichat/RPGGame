@@ -129,4 +129,12 @@ public class GameMapTest {
 
         Assert.assertEquals(GameMap.VALIDATION_ERROR_PLAYER_IS_NOT_DEFINED, gameMapTest.validate());
     }
+
+    @Test
+    public void moveCell() throws Exception {
+        gameMapTest.moveCell(new Point(1, 1), new Point(0, 0));
+
+        Assert.assertTrue(gameMapTest.getCell(new Point(1, 1)) == null);
+        Assert.assertTrue(gameMapTest.getCell(new Point(0, 0)) instanceof Exit);
+    }
 }
