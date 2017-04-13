@@ -9,10 +9,17 @@ import logic.player.Player;
 /**
  * @author Kai QI
  * @version 0.3
- *
+ * The class is used to create a new interaction object
  */
 
 public class InteractionFactory {
+
+    /**
+     * The method is used to interaction.
+     * @param source Player
+     * @param target Cell
+     * @return Interaction 
+     */
     public Interaction interaction(Player source, Cell target){
 
         Interaction interaction = null;
