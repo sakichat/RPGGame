@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * @author Qi Xia
- * @version 0.2
+ * @version 0.3
  * this class is the Point
  */
 public class Point {
@@ -57,6 +57,11 @@ public class Point {
         return point;
     }
 
+    /**
+     * this method is to sub point
+     * @param delta Point
+     * @return Point
+     */
     public Point sub(Point delta){
         Point point = new Point();
         point.x = x - delta.x;
@@ -141,6 +146,10 @@ public class Point {
         return result;
     }
 
+    /**
+     * The method of copy
+     * @return Point
+     */
     public Point copy(){
         return new Point(x,y);
     }
@@ -150,6 +159,9 @@ public class Point {
     //  Section - Direction
     //  =======================================================================
 
+    /**
+     * The method of Direction
+     */
     public static enum Direction {
         UP(0, -1),
         DOWN(0, 1),
@@ -177,6 +189,10 @@ public class Point {
 
     }
 
+    /**
+     * The method of toDirection
+     * @return Direction
+     */
     public Direction toDirection(){
         if (x == 0){
             if (y > 0){
@@ -194,6 +210,11 @@ public class Point {
         return null;
     }
 
+    /**
+     * The method of add
+     * @param direction Direction
+     * @return Point
+     */
     public Point add(Direction direction){
         return add(direction.toPoint());
     }
