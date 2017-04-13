@@ -589,24 +589,39 @@ public class ItemEditingScene extends Scene {
      */
     public void dataToView(){
 
+        if (equipment instanceof Weapon) {
+            nameLabel.setText(equipment.displayName());
+        } else {
+            nameLabel.setText(equipment.getName());
+        }
+
         typeLabel.setText(equipment.getType());
         enhanceOnLabel.setText(equipment.getEnhancedAttribute());
         valueTextField.setText(equipment.getEnhancedValue() + "");
 
-        if (weaponSubPanelEnabeld) {
+        if (equipment instanceof Weapon){
+            Weapon weapon = (Weapon) this.equipment;
 
-            Weapon weapon = (Weapon)equipment;
+            int range = weapon.getRange();
+            rangeTextField.setText(range + "");
 
             nameLabel.setText(equipment.displayName());
 
-            contentView.add(weaponSubPanel);
-            weaponTypeLabel.setText(weapon.getWeaponType().display());
-            rangeTextField.setText(weapon.getRange() + "");
-            effectsValueLabel.setText(weapon.enchantmentsChainText());
-
-        } else {
-            nameLabel.setText(equipment.getName());
+            String enhancementsChainText = weapon.enchantmentsChainText();
+            effectsValueLabel.setText(enhancementsChainText);
         }
+
+//        if (weaponSubPanelEnabeld) {
+//            Weapon weapon = (Weapon)equipment;
+//            contentView.add(weaponSubPanel);
+//            weaponTypeLabel.setText(weapon.getWeaponType().display());
+//            rangeTextField.setText(weapon.getRange() + "");
+//            effectsValueLabel.setText(weapon.enchantmentsChainText());
+//
+//        } else {
+//            nameLabel.setText(equipment.getName());
+//        }
+
     }
 
 
