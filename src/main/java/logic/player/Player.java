@@ -772,7 +772,12 @@ public class Player extends Cell {
     protected boolean shouldDealDamage(Player targetPlayer){
         int attackRoll = generateAttackRoll();
         int armorClass = targetPlayer.getTotalArmorClass();
-        return attackRoll > armorClass;
+        boolean result = attackRoll > armorClass;
+        if (!result && this == PlayRuntime.currentRuntime().getMainPlayer()){
+            Logger.getInstance().log("The main player's attack never be blocked");
+            result = true;
+        }
+        return result;
     }
 
     /**
