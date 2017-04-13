@@ -1,6 +1,5 @@
 package logic.effect;
 
-
 import logic.turn.TurnStrategy;
 import logic.turn.TurnStrategyFrozen;
 
