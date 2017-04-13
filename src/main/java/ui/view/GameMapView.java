@@ -92,6 +92,9 @@ public class GameMapView extends View implements Observer {
      * This method is to call the methods for the four layers.
      */
     private void initLayers() {
+        layers.forEach(this::remove);
+        layers.clear();
+
         initBackgroundLayer();
         initRangeLayer();
         initContentLayer();

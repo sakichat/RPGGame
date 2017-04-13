@@ -14,9 +14,11 @@ import logic.equipment.Weapon;
 import logic.equipment.Equipment;
 import logic.turn.TurnStrategy;
 import logic.turn.TurnStrategyAggressive;
+import logic.turn.TurnStrategyFriendly;
 import logic.turn.TurnThread;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This Class is currentPlayer, which includes users and NPCs.
@@ -167,9 +169,18 @@ public class Player extends Cell {
     public void damage(int damage) {
         if (playerParty.equals(PLAYER_PARTY_FRIENDLY)){
             playerParty = PLAYER_PARTY_HOSTILE;
-            strategy = new TurnStrategyAggressive();
+            this.setStrategy(new TurnStrategyAggressive());
         }
         setHp(getHp() - damage);
+    }
+
+    private void didDead(){
+        effects.forEach(e -> e.setRemoveFlag(true));
+        PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+        if (this == playRuntime.getMainPlayer()){
+            playRuntime.stop();
+            playRuntime.toFinish("Dead");
+        }
     }
 
     /**
@@ -204,7 +215,7 @@ public class Player extends Cell {
 
         if (hp <= 0) {
             hp = 0;
-            effects.clear();
+            didDead();
         }
 
         this.hp = hp;
@@ -212,6 +223,7 @@ public class Player extends Cell {
         setChanged();
         notifyObservers(Update.HP);
     }
+
 
     /**
      * Getter of totalHp
@@ -709,8 +721,9 @@ public class Player extends Cell {
      */
     public void addEffect(Effect effect){
         effect.setOnPlayer(this);
-        effects.add(effect);
-
+        if (effect.getTurns() > 0) {
+            effects.add(effect);
+        }
     }
 
     /**
@@ -761,7 +774,12 @@ public class Player extends Cell {
     protected boolean shouldDealDamage(Player targetPlayer){
         int attackRoll = generateAttackRoll();
         int armorClass = targetPlayer.getTotalArmorClass();
-        return attackRoll > armorClass;
+        boolean result = attackRoll > armorClass;
+        if (!result && this == PlayRuntime.currentRuntime().getMainPlayer()){
+            Logger.getInstance().log("The main player's attack never be blocked");
+            result = true;
+        }
+        return result;
     }
 
     /**
@@ -802,6 +820,8 @@ public class Player extends Cell {
     /**
      * The declaration of property strategy.
      */
+
+    @Expose
     private TurnStrategy strategy;
 
     /**
@@ -819,6 +839,13 @@ public class Player extends Cell {
     public void setStrategy(TurnStrategy strategy) {
         this.strategy = strategy;
         strategy.setPlayer(this);
+
+        PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+        if (strategy instanceof TurnStrategyFriendly &&
+                this == playRuntime.getMainPlayer()){
+            playRuntime.stop();
+            playRuntime.toFinish("Mad");
+        }
     }
 
     /**
@@ -826,25 +853,51 @@ public class Player extends Cell {
      */
     public void turn(){
 
+        PlayRuntime playRuntime = PlayRuntime.currentRuntime();
+
         turnEffect();
-        if (hp == 0) {
+        if (isDead()){
+            return;
+        }
+        if (playRuntime.isStopped()){
             return;
         }
 
         turnMove();
+        if (playRuntime.isStopped()){
+            return;
+        }
+
         turnAttack();
+        if (playRuntime.isStopped()){
+            return;
+        }
+
         turnInteract();
+        if (playRuntime.isStopped()){
+            return;
+        }
     }
+
 
     /**
      * The method of turnEffect
      */
     private void turnEffect() {
+
+        effects = effects.stream()
+                .filter(e -> !e.isRemoveFlag())
+                .collect(Collectors.toList());
+
         //  effects
         for (Effect effect : effects) {
             effect.turn();
             TurnThread.pause(TurnThread.PAUSE_NORMAL);
         }
+
+        effects = effects.stream()
+                .filter(e -> !e.isRemoveFlag())
+                .collect(Collectors.toList());
     }
 
     /**
@@ -862,25 +915,30 @@ public class Player extends Cell {
 
         //  select target
         Path path = strategy.preferredMovingPath();
-        Logger.getInstance().log(this + " wants to move by " + path);
+        Logger.getInstance().log("wants to move by " + path);
 
-        if (!path.stay()) {
-            Point targetLocation = path.getLastLocation();
-            Logger.getInstance().log(this + " is moving to " + targetLocation);
-
-            //  show target
-            new AnimationDisplayTarget()
-                    .setTarget(targetLocation)
-                    .animate();
-
-            //  move animation
-            Movement movement = path.getMovement(3);
-            Logger.getInstance().log(this + " got its move " + movement);
-            new AnimationMove()
-                    .setMovement(movement)
-                    .animate();
+        if (path.stay()) {
+            new AnimationLog().setMessage("Moving Skiped").animate();
+            new AnimationHideRange().animate();
+            return;
         }
 
+        Point targetLocation = path.getLastLocation();
+        Logger.getInstance().log("is moving to " + targetLocation);
+
+        //  show target
+        new AnimationDisplayTarget()
+                .setTarget(targetLocation)
+                .animate();
+
+        //  move animation
+        Movement movement = path.getMovement(3);
+        Logger.getInstance().log("got its move " + movement);
+        new AnimationMove()
+                .setMovement(movement)
+                .animate();
+
+        //  fade animation
         new AnimationHideRange().animate();
         new AnimationHideTarget().animate();
 
@@ -891,12 +949,6 @@ public class Player extends Cell {
      * The method turnAttack
      */
     private void turnAttack() {
-
-        //  check attack
-        List<Point> points = strategy.attackTargetsInNear();
-        if (points.size() == 0) {
-            return;
-        }
 
 
         GameMap map = PlayRuntime.currentRuntime().getMap();
@@ -911,10 +963,21 @@ public class Player extends Cell {
                 .setRangeIndicationMode(Play.RangeIndicationMode.ATTACK)
                 .animate();
 
+
+        //  check attack
+        List<Point> points = strategy.attackTargetsInNear();
+        if (points.size() == 0) {
+            new AnimationLog().setMessage("Attack Skiped").animate();
+            new AnimationHideRange().animate();
+            return;
+        }
+
+
         //  select target
         Point targetLocation = strategy.preferredAttackingLocation();
 
         if (targetLocation == null){
+            new AnimationLog().setMessage("Attack Skiped").animate();
             new AnimationHideRange().animate();
             return;
         }
@@ -938,12 +1001,6 @@ public class Player extends Cell {
      * The method turnInteract
      */
     private void turnInteract() {
-        //  check interact
-        List<Point> points = strategy.interactTargetsInNear();
-        if (points.size() == 0) {
-            return;
-        }
-
 
         GameMap map = PlayRuntime.currentRuntime().getMap();
         GameMapGraph graph = map.getGraph();
@@ -954,13 +1011,23 @@ public class Player extends Cell {
 
         new AnimationDisplayRange()
                 .setLocations(pointsInRange)
-                .setRangeIndicationMode(Play.RangeIndicationMode.ATTACK)
+                .setRangeIndicationMode(Play.RangeIndicationMode.INTERACT)
                 .animate();
+
+        //  check interact
+        List<Point> points = strategy.interactTargetsInNear();
+
+        if (points.size() == 0) {
+            new AnimationLog().setMessage("Interaction Skipped").animate();
+            new AnimationHideRange().animate();
+            return;
+        }
 
         //  select target
         Point targetLocation = strategy.preferredInteractionLocation();
 
         if (targetLocation == null){
+            new AnimationLog().setMessage("Interaction Skipped").animate();
             new AnimationHideRange().animate();
             return;
         }

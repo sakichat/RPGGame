@@ -1,8 +1,6 @@
 package ui.scene;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * This class is the last scene in whole game, and it can back to MainScene with ending the campaign.
@@ -10,6 +8,9 @@ import java.awt.event.ActionListener;
  * @version 0.3
  */
 public class FinishScene extends Scene {
+
+    private JLabel messageLabel;
+
     /**
      * This init() method overrides that in superclass to set up own properties for this subclass
      */
@@ -23,21 +24,29 @@ public class FinishScene extends Scene {
     }
 
     /**
-     * These parameters are for labels and buttons.
+     * These parameters are for message.
      */
-    private JLabel label;
-    private JButton button;
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+        messageLabel.setText(message);
+    }
 
     /**
      * This method creates components on the main scene
      */
     protected void initSubviews() {
-        label = new JLabel("You Win !", JLabel.CENTER);
-        label.setSize(160, 40);
-        label.setLocation(20, 20);
-        contentView.add(label);
+        messageLabel = new JLabel(message, JLabel.CENTER);
+        messageLabel.setSize(160, 40);
+        messageLabel.setLocation(20, 20);
+        contentView.add(messageLabel);
 
-        button = new JButton("Back");
+        JButton button = new JButton("Back");
         button.setSize(160, 40);
         button.setLocation(20, 80);
         contentView.add(button);

@@ -4,8 +4,11 @@ package logic;
 import logic.map.GameMap;
 import logic.player.Player;
 import logic.turn.TurnThread;
+import ui.scene.FinishScene;
 import ui.scene.PlayScene;
 import ui.view.GameMapView;
+
+import javax.swing.*;
 
 /**
  * @author Kai QI
@@ -106,11 +109,16 @@ public class PlayRuntime {
     public void initiate(PlayScene playScene, Play play){
         this.playScene = playScene;
         this.play = play;
-        play.resolveMap();
         playScene.setPlay(play);
+        playScene.refreshMap();
         play.addObserver(playScene);
         play.addObserver(playScene.getGameMapView());
     }
+
+    /**
+     * attribute
+     */
+    private volatile boolean stopped;
 
     /**
      * The method of begin
@@ -118,13 +126,31 @@ public class PlayRuntime {
     public void begin(){
         turnThread = new TurnThread();
         turnThread.start();
+        stopped = false;
     }
 
     /**
-     * The method of end
+     * constructor
      */
-    public void end(){
-        this.playScene = null;
-        this.play = null;
+
+    public void stop(){
+        stopped = true;
+    }
+
+    public boolean isStopped() {
+        return stopped;
+    }
+
+    public void toNextMap(){
+        play.moveToNextMap();
+        playScene.refreshMap();
+    }
+
+    public void toFinish(String message){
+        SwingUtilities.invokeLater(() -> {
+            FinishScene finishScene = new FinishScene();
+            finishScene.setMessage(message);
+            playScene.getNavigationView().push(finishScene);
+        });
     }
 }

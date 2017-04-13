@@ -24,17 +24,29 @@ public class WeaponDecoratorPacifying extends WeaponDecorator {
     }
 
     /**
-     * @override methods
+     * this method is to get name
+     * @return name String
      */
+
     @Override
     public String displayName() {
         return super.displayName() + " PAC";
     }
 
+    /**
+     * this method is to get enchantment which is added burning
+     * @return String enchantment
+     */
+
     @Override
     public String enchantmentsChainText(){
         return super.enchantmentsChainText() + " Pacifying ";
     }
+
+    /**
+     * The method is to generate the effect on player.
+     * @return
+     */
 
     @Override
     protected Effect generateEffect() {

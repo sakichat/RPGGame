@@ -18,24 +18,39 @@ public class WeaponDecoratorFreezing extends WeaponDecorator {
         super(decoratedWeapon);
     }
 
+    /**
+     * this method is to get origin
+     * @return DecoratorComponent
+     */
+
     @Override
     public Weapon getOrigin() {
         return decoratedWeapon.getOrigin();
     }
 
     /**
-     * @override methods
+     * this method is to get name
+     * @return name String
      */
-
     @Override
     public String displayName () {
         return super.displayName() + " FRZ";
     }
 
+    /**
+     * this method is to get enchantment which is added burning
+     * @return String enchantment
+     */
+
     @Override
     public String enchantmentsChainText(){
         return super.enchantmentsChainText() + " Freezing ";
     }
+
+    /**
+     * The method is to generate the effect on player.
+     * @return
+     */
 
     @Override
     protected Effect generateEffect() {

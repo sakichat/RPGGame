@@ -1,19 +1,34 @@
 {
   "equipment": {
-    "_class": "logic.equipment.WeaponDecoratorSlaying",
+    "_class": "logic.equipment.WeaponDecoratorFreezing",
     "_object": {
       "decoratedWeapon": {
         "_class": "logic.equipment.WeaponDecoratorBurning",
         "_object": {
           "decoratedWeapon": {
-            "_class": "logic.equipment.WeaponSolid",
+            "_class": "logic.equipment.WeaponDecoratorFrightening",
             "_object": {
-              "range": 1,
-              "weaponType": "MELEE",
-              "name": "Gare",
-              "type": "Weapon",
-              "enhancedAttribute": "DB",
-              "enhancedValue": 5
+              "decoratedWeapon": {
+                "_class": "logic.equipment.WeaponDecoratorPacifying",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponDecoratorSlaying",
+                    "_object": {
+                      "decoratedWeapon": {
+                        "_class": "logic.equipment.WeaponSolid",
+                        "_object": {
+                          "range": 1,
+                          "weaponType": "MELEE",
+                          "name": "Gare",
+                          "type": "Weapon",
+                          "enhancedAttribute": "DB",
+                          "enhancedValue": 5
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }

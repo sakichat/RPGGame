@@ -278,8 +278,24 @@ Layers
 
 
 
++   player dead
+    turn stop
+    finish scene
 
++   player exit
+        turn stop
+        next map
+        new turn
+    or
+        turn stop
+        finish scene
 
++   player mad
+    turn stop
+    finish scene
+
++   cancel
+    turn stop
 
 
 

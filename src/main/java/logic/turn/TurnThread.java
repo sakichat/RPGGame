@@ -4,7 +4,10 @@ package logic.turn;
 import logic.Logger;
 import logic.Play;
 import logic.PlayRuntime;
+import logic.animation.AnimationLog;
 import logic.player.Player;
+
+import javax.swing.*;
 
 /**
  * @author Qi Xia
@@ -12,26 +15,7 @@ import logic.player.Player;
  */
 public class TurnThread extends Thread{
 
-    /**
-     * attribute
-     */
-    private volatile boolean end;
 
-    /**
-     * This method isEnd
-     * @return Boolean
-     */
-    public boolean isEnd() {
-        return end;
-    }
-
-    /**
-     * setter
-     * @param end
-     */
-    public void setEnd(boolean end) {
-        this.end = end;
-    }
 
     /**
      * static constant
@@ -59,7 +43,9 @@ public class TurnThread extends Thread{
 
         setUserResponse(userResponse);
 
-        PlayRuntime.currentRuntime().getPlayScene().setEnableControls(true);
+        SwingUtilities.invokeLater(() ->
+            PlayRuntime.currentRuntime().getPlayScene().setEnableControls(true)
+        );
 
         try {
             Thread.sleep(1000000 * 1000);
@@ -73,7 +59,9 @@ public class TurnThread extends Thread{
      */
     public static void backToRun(){
 
-        PlayRuntime.currentRuntime().getPlayScene().setEnableControls(false);
+        SwingUtilities.invokeLater(() ->
+            PlayRuntime.currentRuntime().getPlayScene().setEnableControls(false)
+        );
 
         PlayRuntime.currentRuntime().getTurnThread().interrupt();
     }
@@ -86,17 +74,28 @@ public class TurnThread extends Thread{
         
         PlayRuntime playRuntime = PlayRuntime.currentRuntime();
 
-        playRuntime.getPlayScene().setEnableControls(false);
+        SwingUtilities.invokeLater(() ->
+            playRuntime.getPlayScene().setEnableControls(false)
+        );
 
-        while (!playRuntime.getMap().finishObjective()){
+        while (true){
+            if (playRuntime.isStopped()){
+                break;
+            }
+
             Play play = playRuntime.getPlay();
             Player currentPlayer = play.currentPlayer();
             if (currentPlayer.isAlive()) {
                 currentPlayer.turn();
-                Logger.getInstance().log(currentPlayer + " finished its turn");
+                Logger.getInstance().log("finished its turn");
             }
             play.nextPlayer();
-            waitForUser(UserResponse.TURN);
+            Logger.getInstance().log("===================================================");
+            Logger.getInstance().log("TURN to " + play.currentPlayer());
+
+            if (play.currentPlayer() != play.getMainPlayer()) {
+                waitForUser(UserResponse.TURN);
+            }
         }
     }
 

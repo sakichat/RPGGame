@@ -1,5 +1,6 @@
 package logic.effect;
 
+import com.google.gson.annotations.Expose;
 import logic.Logger;
 import logic.player.Player;
 
@@ -11,9 +12,25 @@ public class Effect {
     /**
      * attributes
      */
+
     protected Player onPlayer;
+
+    @Expose
     private int turns;
+
+    @Expose
     private String imageName;
+
+    public void setRemoveFlag(boolean removeFlag) {
+        this.removeFlag = removeFlag;
+    }
+
+    private boolean removeFlag;
+
+    public boolean isRemoveFlag() {
+        return removeFlag;
+    }
+
 
     /**
      * onPlayer setter
@@ -22,6 +39,10 @@ public class Effect {
     public void setOnPlayer(Player onPlayer) {
         this.onPlayer = onPlayer;
         attaching();
+    }
+
+    public void setOnPlayer1(Player onPlayer) {
+        this.onPlayer = onPlayer;
     }
 
     /**
@@ -44,9 +65,14 @@ public class Effect {
      * This method is used to put on and detach effect
      */
     private void attaching() {
-        Logger.getInstance().log(this + " attached on " + onPlayer);
-        didAttach();
-        detaching();
+        if (turns > 0) {
+            Logger.getInstance().log(this + " attached on " + onPlayer);
+            didAttach();
+            detaching();
+        } else {
+            Logger.getInstance().log(this + " made instance effect on " + onPlayer);
+            instantAffect();
+        }
     }
 
     /**
@@ -55,9 +81,13 @@ public class Effect {
     private void detaching() {
         if (turns == 0){
             willDetach();
-            onPlayer.removeEffect(this);
             Logger.getInstance().log(this + " left from " + onPlayer);
+            removeFlag = true;
         }
+    }
+
+    protected void instantAffect(){
+
     }
 
     /**
@@ -113,6 +143,11 @@ public class Effect {
         turns--;
         detaching();
     }
+
+    /**
+     * this method is to override the toString
+     * @return String
+     */
 
     @Override
     public String toString() {

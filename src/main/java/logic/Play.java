@@ -222,6 +222,9 @@ public class Play extends Observable{
      * @return Player
      */
     public Player currentPlayer(){
+        if (playerOrders == null){
+            initTurnOrder();
+        }
         return playerOrders.get(currentPlayerIndex);
     }
 
@@ -232,8 +235,6 @@ public class Play extends Observable{
     public Player nextPlayer(){
         currentPlayerIndex += 1;
         currentPlayerIndex %= playerOrders.size();
-        Logger.getInstance().log("turn to " + currentPlayer());
-
         updateCurrent();
         return currentPlayer();
     }
@@ -323,7 +324,7 @@ public class Play extends Observable{
      * The method of RangeIndicationMode
      */
     public enum RangeIndicationMode {
-        MOVE("movement"), ATTACK("attack");
+        MOVE("movement"), ATTACK("attack"), INTERACT("interact");
 
         private String name;
 

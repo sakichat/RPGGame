@@ -156,6 +156,10 @@ public class PlayCreationScene extends Scene implements PlayerSelectorPanel.Dele
             PlayRuntime playRuntime = PlayRuntime.currentRuntime();
 
             playRuntime.initiate(playScene, play);
+
+            play.resolveMap();
+            playScene.refreshMap();
+
             PlayCreationScene.this.navigationView.push(playScene);
 
         });

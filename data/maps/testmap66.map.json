@@ -18,15 +18,29 @@
       null,
       null,
       {
-        "_class": "logic.map.Chest",
+        "_class": "logic.player.Player",
         "_object": {
-          "equipments": [
+          "name": "Aseg",
+          "playerType": "Nimble",
+          "playerParty": "Friendly",
+          "hp": 35,
+          "totalHp": 35,
+          "level": 6,
+          "abilityScores": {
+            "STR": 15,
+            "WIS": 11,
+            "CON": 16,
+            "DEX": 17,
+            "CHA": 13,
+            "INT": 14
+          },
+          "backpack": [
             {
               "_class": "logic.equipment.EquipmentSolid",
               "_object": {
-                "name": "Ered",
-                "type": "Belt",
-                "enhancedAttribute": "STR",
+                "name": "Kusha",
+                "type": "Shield",
+                "enhancedAttribute": "AC",
                 "enhancedValue": 2
               }
             },
@@ -38,16 +52,197 @@
                 "enhancedAttribute": "WIS",
                 "enhancedValue": 5
               }
+            },
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Iran",
+                "type": "Helmet",
+                "enhancedAttribute": "WIS",
+                "enhancedValue": 2
+              }
+            },
+            {
+              "_class": "logic.equipment.WeaponDecoratorBurning",
+              "_object": {
+                "decoratedWeapon": {
+                  "_class": "logic.equipment.WeaponSolid",
+                  "_object": {
+                    "range": 2,
+                    "weaponType": "RANGED",
+                    "name": "fire",
+                    "type": "Weapon",
+                    "enhancedAttribute": "AB",
+                    "enhancedValue": 3
+                  }
+                }
+              }
             }
           ],
+          "equipments": {
+            "Armor": {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Israh",
+                "type": "Armor",
+                "enhancedAttribute": "AC",
+                "enhancedValue": 2
+              }
+            }
+          },
+          "effects": [],
           "location": {
             "x": 4,
             "y": 0
+          }
+        }
+      },
+      null
+    ],
+    [
+      {
+        "_class": "logic.map.Chest",
+        "_object": {
+          "equipments": [
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Cyne",
+                "type": "Boots",
+                "enhancedAttribute": "AC",
+                "enhancedValue": 5
+              }
+            },
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Adrah",
+                "type": "Helmet",
+                "enhancedAttribute": "AC",
+                "enhancedValue": 4
+              }
+            },
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Ered",
+                "type": "Belt",
+                "enhancedAttribute": "STR",
+                "enhancedValue": 2
+              }
+            },
+            {
+              "_class": "logic.equipment.WeaponDecoratorFrightening",
+              "_object": {
+                "decoratedWeapon": {
+                  "_class": "logic.equipment.WeaponDecoratorBurning",
+                  "_object": {
+                    "decoratedWeapon": {
+                      "_class": "logic.equipment.WeaponSolid",
+                      "_object": {
+                        "range": 3,
+                        "weaponType": "RANGED",
+                        "name": "fire",
+                        "type": "Weapon",
+                        "enhancedAttribute": "AB",
+                        "enhancedValue": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "location": {
+            "x": 0,
+            "y": 1
           },
           "imageName": "chest.png"
         }
       },
+      null,
+      null,
+      null,
+      null,
       null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "_class": "logic.player.Player",
+        "_object": {
+          "name": "Findelie",
+          "playerType": "Bully",
+          "playerParty": "Hostile",
+          "hp": 15,
+          "totalHp": 15,
+          "level": 3,
+          "abilityScores": {
+            "STR": 16,
+            "WIS": 7,
+            "CON": 13,
+            "DEX": 12,
+            "CHA": 8,
+            "INT": 11
+          },
+          "backpack": [
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Ered",
+                "type": "Belt",
+                "enhancedAttribute": "STR",
+                "enhancedValue": 2
+              }
+            },
+            {
+              "_class": "logic.equipment.WeaponDecoratorBurning",
+              "_object": {
+                "decoratedWeapon": {
+                  "_class": "logic.equipment.WeaponSolid",
+                  "_object": {
+                    "range": 2,
+                    "weaponType": "RANGED",
+                    "name": "fire",
+                    "type": "Weapon",
+                    "enhancedAttribute": "AB",
+                    "enhancedValue": 3
+                  }
+                }
+              }
+            }
+          ],
+          "equipments": {
+            "Helmet": {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Adrah",
+                "type": "Helmet",
+                "enhancedAttribute": "AC",
+                "enhancedValue": 4
+              }
+            },
+            "Boots": {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Cyne",
+                "type": "Boots",
+                "enhancedAttribute": "AC",
+                "enhancedValue": 5
+              }
+            }
+          },
+          "effects": [],
+          "location": {
+            "x": 5,
+            "y": 2
+          }
+        }
+      }
     ],
     [
       null,
@@ -56,18 +251,18 @@
         "_class": "logic.player.Player",
         "_object": {
           "name": "Gildai",
-          "playerType": "Nimble",
-          "playerParty": "Friendly",
-          "hp": 14,
-          "totalHp": 14,
+          "playerType": "Tank",
+          "playerParty": "Hostile",
+          "hp": 16,
+          "totalHp": 16,
           "level": 2,
           "abilityScores": {
-            "STR": 24,
-            "WIS": 24,
-            "CON": 24,
-            "DEX": 24,
-            "CHA": 24,
-            "INT": 24
+            "STR": 12,
+            "WIS": 10,
+            "CON": 14,
+            "DEX": 14,
+            "CHA": 10,
+            "INT": 12
           },
           "backpack": [
             {
@@ -128,7 +323,7 @@
           "effects": [],
           "location": {
             "x": 2,
-            "y": 1
+            "y": 3
           }
         }
       },
@@ -137,27 +332,23 @@
       null
     ],
     [
+      null,
+      null,
+      null,
+      null,
       {
-        "_class": "logic.map.Chest",
+        "_class": "logic.map.Exit",
         "_object": {
-          "equipments": [
-            {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "Cyne",
-                "type": "Boots",
-                "enhancedAttribute": "AC",
-                "enhancedValue": 5
-              }
-            }
-          ],
           "location": {
-            "x": 0,
-            "y": 2
+            "x": 4,
+            "y": 4
           },
-          "imageName": "chest.png"
+          "imageName": "exit.png"
         }
       },
+      null
+    ],
+    [
       null,
       null,
       null,
@@ -167,16 +358,16 @@
           "name": "Asheley",
           "playerType": "Nimble",
           "playerParty": "Friendly",
-          "hp": 11,
-          "totalHp": 11,
+          "hp": 18,
+          "totalHp": 18,
           "level": 2,
           "abilityScores": {
-            "STR": 12,
+            "STR": 16,
             "WIS": 8,
-            "CON": 13,
+            "CON": 16,
             "DEX": 19,
-            "CHA": 9,
-            "INT": 9
+            "CHA": 11,
+            "INT": 14
           },
           "backpack": [
             {
@@ -208,28 +399,8 @@
                 "enhancedAttribute": "CON",
                 "enhancedValue": 2
               }
-            }
-          ],
-          "equipments": {
-            "Helmet": {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "Adrah",
-                "type": "Helmet",
-                "enhancedAttribute": "AC",
-                "enhancedValue": 4
-              }
             },
-            "Ring": {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "holes",
-                "type": "Ring",
-                "enhancedAttribute": "WIS",
-                "enhancedValue": 5
-              }
-            },
-            "Weapon": {
+            {
               "_class": "logic.equipment.WeaponDecoratorSlaying",
               "_object": {
                 "decoratedWeapon": {
@@ -250,174 +421,6 @@
                 }
               }
             }
-          },
-          "effects": [],
-          "location": {
-            "x": 4,
-            "y": 2
-          }
-        }
-      },
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      null
-    ],
-    [
-      null,
-      {
-        "_class": "logic.player.Player",
-        "_object": {
-          "name": "Aseg",
-          "playerType": "Tank",
-          "playerParty": "Hostile",
-          "hp": 49,
-          "totalHp": 49,
-          "level": 6,
-          "abilityScores": {
-            "STR": 15,
-            "WIS": 10,
-            "CON": 20,
-            "DEX": 17,
-            "CHA": 14,
-            "INT": 15
-          },
-          "backpack": [
-            {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "Kusha",
-                "type": "Shield",
-                "enhancedAttribute": "AC",
-                "enhancedValue": 2
-              }
-            },
-            {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "holes",
-                "type": "Ring",
-                "enhancedAttribute": "WIS",
-                "enhancedValue": 5
-              }
-            },
-            {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "Iran",
-                "type": "Helmet",
-                "enhancedAttribute": "WIS",
-                "enhancedValue": 2
-              }
-            }
-          ],
-          "equipments": {
-            "Armor": {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "Israh",
-                "type": "Armor",
-                "enhancedAttribute": "AC",
-                "enhancedValue": 2
-              }
-            },
-            "Weapon": {
-              "_class": "logic.equipment.WeaponDecoratorBurning",
-              "_object": {
-                "decoratedWeapon": {
-                  "_class": "logic.equipment.WeaponSolid",
-                  "_object": {
-                    "range": 2,
-                    "weaponType": "RANGED",
-                    "name": "fire",
-                    "type": "Weapon",
-                    "enhancedAttribute": "AB",
-                    "enhancedValue": 3
-                  }
-                }
-              }
-            }
-          },
-          "effects": [],
-          "location": {
-            "x": 1,
-            "y": 4
-          }
-        }
-      },
-      null,
-      null,
-      {
-        "_class": "logic.map.Exit",
-        "_object": {
-          "location": {
-            "x": 4,
-            "y": 4
-          },
-          "imageName": "exit.png"
-        }
-      },
-      null
-    ],
-    [
-      null,
-      null,
-      null,
-      null,
-      null,
-      {
-        "_class": "logic.player.Player",
-        "_object": {
-          "name": "Khankad",
-          "playerType": "Tank",
-          "playerParty": "Friendly",
-          "hp": 30,
-          "totalHp": 30,
-          "level": 4,
-          "abilityScores": {
-            "STR": 24,
-            "WIS": 24,
-            "CON": 24,
-            "DEX": 24,
-            "CHA": 24,
-            "INT": 24
-          },
-          "backpack": [
-            {
-              "_class": "logic.equipment.WeaponDecoratorBurning",
-              "_object": {
-                "decoratedWeapon": {
-                  "_class": "logic.equipment.WeaponDecoratorFreezing",
-                  "_object": {
-                    "decoratedWeapon": {
-                      "_class": "logic.equipment.WeaponSolid",
-                      "_object": {
-                        "range": 1,
-                        "weaponType": "MELEE",
-                        "name": "Wige",
-                        "type": "Weapon",
-                        "enhancedAttribute": "AB",
-                        "enhancedValue": 4
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "_class": "logic.equipment.EquipmentSolid",
-              "_object": {
-                "name": "Ered",
-                "type": "Belt",
-                "enhancedAttribute": "STR",
-                "enhancedValue": 2
-              }
-            }
           ],
           "equipments": {
             "Helmet": {
@@ -429,39 +432,25 @@
                 "enhancedValue": 4
               }
             },
-            "Belt": {
+            "Ring": {
               "_class": "logic.equipment.EquipmentSolid",
               "_object": {
-                "name": "Ered",
-                "type": "Belt",
-                "enhancedAttribute": "STR",
-                "enhancedValue": 2
-              }
-            },
-            "Weapon": {
-              "_class": "logic.equipment.WeaponDecoratorBurning",
-              "_object": {
-                "decoratedWeapon": {
-                  "_class": "logic.equipment.WeaponSolid",
-                  "_object": {
-                    "range": 2,
-                    "weaponType": "RANGED",
-                    "name": "fire",
-                    "type": "Weapon",
-                    "enhancedAttribute": "AB",
-                    "enhancedValue": 3
-                  }
-                }
+                "name": "holes",
+                "type": "Ring",
+                "enhancedAttribute": "WIS",
+                "enhancedValue": 5
               }
             }
           },
           "effects": [],
           "location": {
-            "x": 5,
+            "x": 3,
             "y": 5
           }
         }
-      }
+      },
+      null,
+      null
     ]
   ]
 }

@@ -1,16 +1,21 @@
 {
   "equipment": {
-    "_class": "logic.equipment.WeaponDecoratorBurning",
+    "_class": "logic.equipment.WeaponDecoratorFrightening",
     "_object": {
       "decoratedWeapon": {
-        "_class": "logic.equipment.WeaponSolid",
+        "_class": "logic.equipment.WeaponDecoratorBurning",
         "_object": {
-          "range": 2,
-          "weaponType": "RANGED",
-          "name": "fire",
-          "type": "Weapon",
-          "enhancedAttribute": "AB",
-          "enhancedValue": 3
+          "decoratedWeapon": {
+            "_class": "logic.equipment.WeaponSolid",
+            "_object": {
+              "range": 3,
+              "weaponType": "RANGED",
+              "name": "fire",
+              "type": "Weapon",
+              "enhancedAttribute": "AB",
+              "enhancedValue": 5
+            }
+          }
         }
       }
     }

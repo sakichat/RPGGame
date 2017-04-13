@@ -25,7 +25,8 @@ public class WeaponDecoratorFrightening extends WeaponDecorator {
     }
 
     /**
-     * @override methods
+     * this method is to get name
+     * @return name String
      */
 
     @Override
@@ -33,10 +34,20 @@ public class WeaponDecoratorFrightening extends WeaponDecorator {
         return super.displayName() + " FRI";
     }
 
+    /**
+     * this method is to get enchantment which is added burning
+     * @return String enchantment
+     */
+
     @Override
     public String enchantmentsChainText(){
         return super.enchantmentsChainText() + " Frightening ";
     }
+
+    /**
+     * The method is to generate the effect on player.
+     * @return
+     */
 
     @Override
     protected Effect generateEffect() {

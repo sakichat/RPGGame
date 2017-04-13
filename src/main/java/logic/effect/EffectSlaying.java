@@ -10,7 +10,7 @@ public class EffectSlaying extends Effect {
      * This method is used to attach effect on player
      */
     @Override
-    protected void didAttach() {
+    protected void instantAffect() {
         onPlayer.damage(onPlayer.getHp());
     }
 }

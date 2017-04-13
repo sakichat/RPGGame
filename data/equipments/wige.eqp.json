@@ -1,21 +1,16 @@
 {
   "equipment": {
-    "_class": "logic.equipment.WeaponDecoratorBurning",
+    "_class": "logic.equipment.WeaponDecoratorSlaying",
     "_object": {
       "decoratedWeapon": {
-        "_class": "logic.equipment.WeaponDecoratorFreezing",
+        "_class": "logic.equipment.WeaponSolid",
         "_object": {
-          "decoratedWeapon": {
-            "_class": "logic.equipment.WeaponSolid",
-            "_object": {
-              "range": 1,
-              "weaponType": "MELEE",
-              "name": "Wige",
-              "type": "Weapon",
-              "enhancedAttribute": "AB",
-              "enhancedValue": 4
-            }
-          }
+          "range": 1,
+          "weaponType": "MELEE",
+          "name": "Wige",
+          "type": "Weapon",
+          "enhancedAttribute": "AB",
+          "enhancedValue": 5
         }
       }
     }
