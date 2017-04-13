@@ -2,16 +2,42 @@ package logic.turn;
 
 import logic.Play;
 import logic.PlayRuntime;
+import logic.interaction.Interaction;
 import logic.map.*;
 import logic.player.Player;
 
+import java.util.LinkedList;
 import java.util.List;
 
 
 public class TurnStrategyComputer extends TurnStrategy {
     @Override
     public Path preferredMovingPath() {
-        return new Path();
+        PlayRuntime runtime = PlayRuntime.currentRuntime();
+        GameMap map = runtime.getMap();
+        GameMapGraph gameMapGraph = map.getGraph();
+
+        List<Player> players = map.getPlayers();
+        LinkedList<Player> hostilePlayers = new LinkedList<>();
+        for (Player p : players) {
+            if (p.getPlayerParty().equals(Player.PLAYER_PARTY_HOSTILE)) {
+                hostilePlayers.add(p);
+            }
+        }
+
+        int checkDistance = Integer.MAX_VALUE;
+        Player targetPlayer = null;
+        for (Player hostilePlayer : hostilePlayers) {
+            int distance = gameMapGraph.distanceBetween(player.getLocation(), hostilePlayer.getLocation());
+            if (checkDistance > distance) {
+                checkDistance = distance;
+                targetPlayer = hostilePlayer;
+            }
+        }
+
+        Path path = gameMapGraph.path(player.getLocation(), targetPlayer.getLocation(), 3);
+
+        return path;
     }
 
     @Override
