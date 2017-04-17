@@ -1,0 +1,59 @@
+{
+  "name": "test",
+  "playerType": "Bully",
+  "playerParty": "Not Defined",
+  "hp": 21,
+  "totalHp": 21,
+  "level": 3,
+  "abilityScores": {
+    "STR": 20,
+    "WIS": 12,
+    "CON": 18,
+    "DEX": 17,
+    "CHA": 15,
+    "INT": 15
+  },
+  "backpack": [],
+  "equipments": {
+    "Belt": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Ered",
+        "type": "Belt",
+        "enhancedAttribute": "STR",
+        "enhancedValue": 5
+      }
+    },
+    "Boots": {
+      "_class": "logic.equipment.EquipmentSolid",
+      "_object": {
+        "name": "Cyne",
+        "type": "Boots",
+        "enhancedAttribute": "AC",
+        "enhancedValue": 5
+      }
+    },
+    "Weapon": {
+      "_class": "logic.equipment.WeaponDecoratorFrightening",
+      "_object": {
+        "decoratedWeapon": {
+          "_class": "logic.equipment.WeaponDecoratorBurning",
+          "_object": {
+            "decoratedWeapon": {
+              "_class": "logic.equipment.WeaponSolid",
+              "_object": {
+                "range": 3,
+                "weaponType": "RANGED",
+                "name": "fire",
+                "type": "Weapon",
+                "enhancedAttribute": "AB",
+                "enhancedValue": 5
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "effects": []
+}

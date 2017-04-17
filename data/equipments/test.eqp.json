@@ -1,0 +1,48 @@
+{
+  "equipment": {
+    "_class": "logic.equipment.WeaponDecoratorFreezing",
+    "_object": {
+      "decoratedWeapon": {
+        "_class": "logic.equipment.WeaponDecoratorFreezing",
+        "_object": {
+          "decoratedWeapon": {
+            "_class": "logic.equipment.WeaponDecoratorPacifying",
+            "_object": {
+              "decoratedWeapon": {
+                "_class": "logic.equipment.WeaponDecoratorFrightening",
+                "_object": {
+                  "decoratedWeapon": {
+                    "_class": "logic.equipment.WeaponDecoratorSlaying",
+                    "_object": {
+                      "decoratedWeapon": {
+                        "_class": "logic.equipment.WeaponDecoratorBurning",
+                        "_object": {
+                          "decoratedWeapon": {
+                            "_class": "logic.equipment.WeaponDecoratorFreezing",
+                            "_object": {
+                              "decoratedWeapon": {
+                                "_class": "logic.equipment.WeaponSolid",
+                                "_object": {
+                                  "range": 3,
+                                  "weaponType": "RANGED",
+                                  "name": "test",
+                                  "type": "Weapon",
+                                  "enhancedAttribute": "AB",
+                                  "enhancedValue": 3
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

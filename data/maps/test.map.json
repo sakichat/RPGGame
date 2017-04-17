@@ -1,0 +1,214 @@
+{
+  "name": "test",
+  "width": 5,
+  "height": 6,
+  "cells": [
+    [
+      null,
+      null,
+      null,
+      {
+        "_class": "logic.map.Obstacle",
+        "_object": {
+          "location": {
+            "x": 3,
+            "y": 0
+          },
+          "imageName": "wall.png"
+        }
+      },
+      {
+        "_class": "logic.map.Entrance",
+        "_object": {
+          "location": {
+            "x": 4,
+            "y": 0
+          },
+          "imageName": "entrance.png"
+        }
+      }
+    ],
+    [
+      null,
+      null,
+      null,
+      {
+        "_class": "logic.map.Obstacle",
+        "_object": {
+          "location": {
+            "x": 3,
+            "y": 1
+          },
+          "imageName": "wall.png"
+        }
+      },
+      null
+    ],
+    [
+      null,
+      null,
+      {
+        "_class": "logic.map.Exit",
+        "_object": {
+          "location": {
+            "x": 2,
+            "y": 2
+          },
+          "imageName": "exit.png"
+        }
+      },
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      {
+        "_class": "logic.map.Chest",
+        "_object": {
+          "equipments": [
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Cyne",
+                "type": "Boots",
+                "enhancedAttribute": "AC",
+                "enhancedValue": 5
+              }
+            },
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Ered",
+                "type": "Belt",
+                "enhancedAttribute": "STR",
+                "enhancedValue": 5
+              }
+            },
+            {
+              "_class": "logic.equipment.WeaponDecoratorFrightening",
+              "_object": {
+                "decoratedWeapon": {
+                  "_class": "logic.equipment.WeaponDecoratorBurning",
+                  "_object": {
+                    "decoratedWeapon": {
+                      "_class": "logic.equipment.WeaponSolid",
+                      "_object": {
+                        "range": 3,
+                        "weaponType": "RANGED",
+                        "name": "fire",
+                        "type": "Weapon",
+                        "enhancedAttribute": "AB",
+                        "enhancedValue": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "location": {
+            "x": 3,
+            "y": 3
+          },
+          "imageName": "chest.png"
+        }
+      },
+      null
+    ],
+    [
+      null,
+      {
+        "_class": "logic.player.Player",
+        "_object": {
+          "name": "Aseg",
+          "playerType": "Nimble",
+          "playerParty": "Hostile",
+          "hp": 35,
+          "totalHp": 35,
+          "level": 6,
+          "abilityScores": {
+            "STR": 15,
+            "WIS": 11,
+            "CON": 16,
+            "DEX": 17,
+            "CHA": 13,
+            "INT": 14
+          },
+          "backpack": [
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Kusha",
+                "type": "Shield",
+                "enhancedAttribute": "AC",
+                "enhancedValue": 2
+              }
+            },
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "holes",
+                "type": "Ring",
+                "enhancedAttribute": "WIS",
+                "enhancedValue": 5
+              }
+            },
+            {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Iran",
+                "type": "Helmet",
+                "enhancedAttribute": "WIS",
+                "enhancedValue": 2
+              }
+            },
+            {
+              "_class": "logic.equipment.WeaponDecoratorBurning",
+              "_object": {
+                "decoratedWeapon": {
+                  "_class": "logic.equipment.WeaponSolid",
+                  "_object": {
+                    "range": 2,
+                    "weaponType": "RANGED",
+                    "name": "fire",
+                    "type": "Weapon",
+                    "enhancedAttribute": "AB",
+                    "enhancedValue": 3
+                  }
+                }
+              }
+            }
+          ],
+          "equipments": {
+            "Armor": {
+              "_class": "logic.equipment.EquipmentSolid",
+              "_object": {
+                "name": "Israh",
+                "type": "Armor",
+                "enhancedAttribute": "AC",
+                "enhancedValue": 2
+              }
+            }
+          },
+          "effects": [],
+          "location": {
+            "x": 1,
+            "y": 4
+          }
+        }
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}
